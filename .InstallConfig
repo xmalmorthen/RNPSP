@@ -1,0 +1,5 @@
+#Consideraciones de instalación
+
+- CACHE
+    . El tipo de cache es por archivos "files", se escriben dentro de la carpeta "application/cache/ci_session",
+    se requiere configurar privilegios de escritura.

@@ -1,0 +1,51 @@
+/* Add here all your CSS customizations */
+.header {
+	height: 100px!Important;	
+}
+
+@media only screen and (min-width: 768px) {
+    html.fixed .inner-wrapper {
+        padding-top: 120px!Important;
+    }
+
+    html.fixed .sidebar-left {
+        position: fixed;
+        top: 100px;
+    }
+    html.fixed .page-header {
+        top: 100px;
+    }
+
+    .header-right {
+        padding-top: 53px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .header .logo-container {
+        height: 100px;
+    }
+    .header .header-right {
+        margin-top: 93px;
+    }
+    .userbox {
+        margin: 16px 0 9px 12px;
+    }
+}
+
+.sidebar-left .sidebar-header .sidebar-title {
+    color: #fff;
+    padding: 15px;
+    font-size: 2.5rem;
+}
+.page-header .breadcrumbs { 
+    padding-right: 10px;
+}
+
+.noImplementado{
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    padding: 2em;
+    text-align: center;
+}
