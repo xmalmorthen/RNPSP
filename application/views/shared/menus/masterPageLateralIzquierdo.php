@@ -14,8 +14,15 @@
         <div class="nano-content">
             <nav id="menu" class="nav-main" role="navigation">
                 <ul class="nav nav-main">
-                    <li class="nav-active"><a href="<?php echo site_url();?>"><i class="fa fa-home" aria-hidden="true"></i><span>Principal</span></a></li>
-                    <li><a href="<?php echo site_url('cedula');?>"><i class="fa fa-copy" aria-hidden="true"></i><span>Cédula</span></a></li>
+                    <li class=""><a href="<?php echo site_url();?>"><i class="fa fa-home" aria-hidden="true"></i><span>Principal</span></a></li>
+                    <li class="nav-parent">
+                        <a><i class="fa fa-id-card-o" aria-hidden="true"></i><span>Cédula</span></a>
+                        <ul class="nav nav-children">
+                            <li><a href="<?php echo site_url('alta/cedula/persona');?>">Alta de persona</a></li>
+                            <li><a href="<?php echo site_url('alta/cedula/aspirante');?>">Alta de aspirante</a></li>
+                            <li><a href="<?php echo site_url('cedula/replicar');?>">Replicar</a></li>                            
+                        </ul>
+                    </li>
                     <li class="nav-parent">
                         <a><i class="fa fa-copy" aria-hidden="true"></i><span>Consultas</span></a>
                         <ul class="nav nav-children">

@@ -41,8 +41,8 @@ $config['securityAccess']['general'] = TRUE;
 * Descripción: Arreglo de configuración de accesos
 */
 
-// $config['securityAccess']['/']['errors']['all']= securityMethods::anonymous;
-// $config['securityAccess']['/']['index']['all']= securityMethods::anonymous;
+$config['securityAccess']['/']['error']['all']= securityMethods::anonymous;
+$config['securityAccess']['/']['usersession']['all']= securityMethods::anonymous;
 // $config['securityAccess']['/']['log']['all']= securityMethods::anonymous;
 // $config['securityAccess']['pantalla_principal/']['index']['all']= securityMethods::anonymous;
 // $config['securityAccess']['pantalla_principal/']['about']['all']= securityMethods::anonymous;

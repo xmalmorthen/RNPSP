@@ -54,3 +54,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'Principal';
 $route['404_override'] = 'Error/e404';
 $route['translate_uri_dashes'] = FALSE;
+
+
+$route['Iniciar/Sesion'] = 'UserSession/index';
+$route['alta/cedula/(:any)'] = 'Cedula/$1';

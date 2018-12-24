@@ -71,33 +71,61 @@
 	</head>
 	<body>
 		<noscript><meta http-equiv="refresh" content="0;url=<?php echo site_url('Error/noScript') ?>"></noscript>
-		<section class="body">
-			<!-- HEADER -->
-			<?php echo $this->load->view('/shared/header',NULL,TRUE); ?>
-			<!-- /HEADER -->
-			<div class="inner-wrapper">	
-				<?php if ($this->session->has_userdata('SESSIONVAR')) { ?>
-					<!-- MENU -->
-					<?php echo $this->load->view('shared/menus/masterPageLateralIzquierdo',NULL,TRUE) ?>
-					<!-- /MENU -->
-				<?php } ?>
+		<!-- start: page -->
+		<section class="body-sign">
+			<div class="center-sign">
+				<a href="<?php echo base_url(); ?>" class="logo pull-left"><img src="<?php echo base_url('assets/images/logo.png'); ?>" height="54" alt="Gobierno del Estado de Colima" /></a>
 
-				<!-- HEADER BODY PAGE -->
-				<section role="main" class="content-body" style="<?php echo $this->session->has_userdata(SESSIONVAR) == false ? 'margin-left: 0px!Important;' : ''; ?>">
-					<header class="page-header" style="<?php echo $this->session->has_userdata(SESSIONVAR) == false ? 'left: 0px!Important;' : ''; ?>">
-						<h2><?php echo $this->session->flashdata('titleBody');?></h2>					
-						<div class="right-wrapper pull-right">
-							<?php echo $this->session->flashdata('breadcrumb'); ?>							
-						</div>
-					</header>
-					<!-- /HEADER BODY PAGE -->
+				<div class="panel panel-sign">
+					<div class="panel-title-sign mt-xl text-right">
+						<h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Iniciar sesión</h2>
+					</div>
+					<div class="panel-body">
+						<form action="<?php echo site_url('usuario/iniciarSesion'); ?>" method="post">
+							<div class="form-group mb-lg">
+								<label>Nombre de usuario</label>
+								<div class="input-group input-group-icon">
+									<input name="username" type="text" class="form-control input-lg" autofocus required/>
+									<span class="input-group-addon">
+										<span class="icon icon-lg">
+											<i class="fa fa-user"></i>
+										</span>
+									</span>
+								</div>
+							</div>
 
-					<!-- BODY -->
-					<?php echo isset($body) ? $body : '' ?>
-					<!-- BODY -->
-				</section>
+							<div class="form-group mb-lg">
+								<div class="clearfix">
+									<label class="pull-left">Contraseña</label>
+									<a href="pages-recover-password.html" class="pull-right">Contraseña perdida?</a>
+								</div>
+								<div class="input-group input-group-icon">
+									<input name="pwd" type="password" class="form-control input-lg" required/>
+									<span class="input-group-addon">
+										<span class="icon icon-lg">
+											<i class="fa fa-lock"></i>
+										</span>
+									</span>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-sm-8">
+									&nbsp;
+								</div>
+								<div class="col-sm-4 text-right">
+									<button class="btn btn-default hidden-xs submit">Iniciar sesión</button>
+									<button class="btn btn-default btn-block btn-lg visible-xs mt-lg submit">Iniciar sesión</button>
+								</div>
+							</div>
+							<br>
+							<p class="text-center">Aún no tienes una cuenta? <a href="<?php echo site_url('usuario/registrarse'); ?>">Regístrate!</a>
+						</form>
+					</div>
+				</div>
 			</div>
 		</section>
+		<!-- end: page -->
 	</body>	
 	<!-- Theme Base, Components and Settings -->
 	<script src="<?php echo base_url('assets/javascripts/theme.js'); ?>"></script>
@@ -107,4 +135,36 @@
 	
 	<!-- Theme Initialization Files -->
 	<script src="<?php echo base_url('assets/javascripts/theme.init.js'); ?>"></script>
+
+	<!-- JS -->
+	<script>
+		$(function() {      
+			$('.submit').on('click',function(e){
+				$.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+				e.preventDefault();
+				
+				var callUrl = base_url + "UserSession/ajaxLogIn",
+					model = $( this ).serialize();
+
+				$.post(callUrl,{
+					model: model
+				},
+				function (data) {					
+					if (data.status == true){
+						window.location.href = site_url;
+					} else {
+						$.LoadingOverlay("hide");
+						swal({ type: 'error', title: 'Error', html: data.message });
+					}
+				}).fail(function (err) {
+					$.LoadingOverlay("hide");
+					var msg = err.responseText;
+					swal({ type: 'error', title: 'Error', html: msg });
+				}).always(function () {
+
+				});
+			});
+		}); 	
+	</script>
+	<!-- /JS -->
 </html>

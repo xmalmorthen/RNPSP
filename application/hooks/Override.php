@@ -16,7 +16,12 @@ class Override {
             "js"    => ''
         ];        
 
-        echo $CI->load->view('shared/masterPage',$superMainModel,TRUE);
+        if ($CI->session->flashdata('noLayout') === TRUE){
+            echo $out;
+        } else {
+            echo $CI->load->view('shared/masterPage',$superMainModel,TRUE);
+        }
+
         return;
     }
 }

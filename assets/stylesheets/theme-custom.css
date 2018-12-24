@@ -49,3 +49,17 @@
     padding: 2em;
     text-align: center;
 }
+
+.body-sign .panel-sign .panel-title-sign .title {
+    background-color: #9c9c9c;
+}
+.body-sign .panel-sign .panel-body {
+    border-top-color: #9c9c9c;
+}
+.form-control:focus {
+    border-color: #9c9c9c;
+}
+
+.swal2-popup {
+    font-size: 1.5rem!Important;
+}

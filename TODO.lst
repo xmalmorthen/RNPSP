@@ -1,4 +1,4 @@
--HEADER/FOOTER
-    - Maquetarlas con base al template
--Vistas de ERROR
-    - Maquetarlas con base al template
+Inicio de sesión
+    - Implementar la escritura de variable de sesión para redireccionar a página principal
+    - Implementar el redirect al uri que llegue por parámetro en caso de intentar accesar directamente 
+    a página sin tener sesión iniciada

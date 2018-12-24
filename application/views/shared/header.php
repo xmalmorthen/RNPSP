@@ -10,6 +10,7 @@
     </div>
 
     <!-- start: search & user box -->
+    <?php if ($this->session->has_userdata(SESSIONVAR)) {?>
     <div class="header-right">
         <span class="separator"></span>
         <div id="userbox" class="userbox">
@@ -38,6 +39,7 @@
             </div>
         </div>
     </div>
+    <?php } ?>
     <!-- end: search & user box -->
 </header>
 <!-- end: header -->

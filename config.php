@@ -9,10 +9,10 @@ title = "Sistema Integral de Seguridad Pública"
 environment = development ;Se define en development o production
 [databaseDefault] ;Configuración de base de datos
 dbdriver = "sqlsrv" ;mysqli / mssql / sqlsrv
-hostname = ""
-username = ""
-password = ""
-database = ""
+hostname = "184.168.194.53"
+username = "zzhpregpersc4"
+password = "h705m!lD"
+database = "zzhpregpersonalc4"
 [sendMail] ;Configuración de correo electrónico
 protocol = ""
 smtp_host = ""
