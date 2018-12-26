@@ -1,13 +1,17 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Cedula extends CI_Controller {
+	function __construct()
+    {
+		parent::__construct();    
+		$this->load->library('breadcrumbs');
+	}
 
 	public function persona()
 	{
 		// BREADCRUMB
-		$this->mybreadcrumb->add('<i class="fa fa-home"></i>', base_url());		
-		$this->mybreadcrumb->add('[ Cédula ] Alta de Persona', base_url('alta/cedula/persona'));
-		$this->session->set_flashdata('breadcrumb',$this->mybreadcrumb->render());
+		$this->breadcrumbs->push('<i class="fa fa-home"></i>', site_url());		
+		$this->breadcrumbs->push('[ Cédula ] Alta de Persona', site_url('alta/cedula/persona'));
 		// /BREADCRUMB
 
 		// TITLE BODY PAGE
@@ -20,9 +24,8 @@ class Cedula extends CI_Controller {
 	public function aspirante()
 	{
 		// BREADCRUMB
-		$this->mybreadcrumb->add('<i class="fa fa-home"></i>', base_url());		
-		$this->mybreadcrumb->add('[ Cédula ] Alta de Aspirante', base_url('alta/cedula/aspirante'));
-		$this->session->set_flashdata('breadcrumb',$this->mybreadcrumb->render());
+		$this->breadcrumbs->push('<i class="fa fa-home"></i>', site_url());		
+		$this->breadcrumbs->push('[ Cédula ] Alta de Aspirante', site_url('alta/cedula/aspirante'));
 		// /BREADCRUMB
 
 		// TITLE BODY PAGE
@@ -35,9 +38,8 @@ class Cedula extends CI_Controller {
 	public function replicar()
 	{
 		// BREADCRUMB
-		$this->mybreadcrumb->add('<i class="fa fa-home"></i>', base_url());		
-		$this->mybreadcrumb->add('[ Cédula ] Replicar', base_url('cedula/replicar'));
-		$this->session->set_flashdata('breadcrumb',$this->mybreadcrumb->render());
+		$this->breadcrumbs->push('<i class="fa fa-home"></i>', site_url());		
+		$this->breadcrumbs->push('[ Cédula ] Replicar', site_url('cedula/replicar'));
 		// /BREADCRUMB
 
 		// TITLE BODY PAGE

@@ -33,7 +33,14 @@ abstract class securityMethods
 * Fecha: 01-09-2018
 * Descripción: Variable de configuración general de acceso
 */
-$config['securityAccess']['general'] = TRUE;
+$config['securityAccess']['general'] = FALSE;
+
+/*
+* Autor: Miguel Angel Rueda Aguilar
+* Fecha: 01-09-2018
+* Descripción: Variable de configuración general de privilegios
+*/
+$config['securityAccess']['privilegios'] = FALSE;
 
 /*
 * Autor: Miguel Angel Rueda Aguilar

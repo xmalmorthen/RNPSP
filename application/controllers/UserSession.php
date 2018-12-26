@@ -28,6 +28,19 @@ class UserSession extends CI_Controller {
             'message' => 'No especificado'
         );
 
+		//registrar sesión
+		$newdata = array(
+			'IdUsuario'             => 666
+		);
+
+		$this->session->set_userdata(SESSIONVAR,$newdata);
+		$_SESSION[SESSIONVAR] = $newdata;
+
+		$responseModel = array ( 
+            'status' => TRUE,
+            'message' => 'Éxito'
+        );
+
         header('Content-type: application/json');
         echo json_encode( $responseModel );
         exit;

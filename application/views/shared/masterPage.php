@@ -3,14 +3,14 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8 fixed" lang="es-MX"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9 fixed" lang="es-MX"> <![endif]-->
 <!--[if gt IE 8]> -->
-<html class="fixed" lang="es-MX">
+<html lang="es-MX">
 <!--<![endif]-->
 	<head>
 		<!-- Basic -->
 		<meta charset="iso-8859-1">
 
 		<title><?php echo isset($title) ? $title : ''; ?></title>
-		<meta name="keywords" content="HTML5 Admin Template" />
+		<meta name="keywords" content="<?php echo isset($title) ? $title : ''; ?>" />
 		<meta name="description" content="<?php echo isset($title) ? $title : ''; ?>">
 		<meta name="Xmal Morthen" content="">
 
@@ -19,40 +19,31 @@
 		<!-- Mobile Metas -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="apple-touch-icon" href="<?php echo base_url('assets/img/favIcons/apple-icon.png') ?>">
-		<link rel="shortcut icon" href="<?php echo base_url('assets/img/favIcons/favicon.ico') ?>">
+		
+		<!-- Favicon -->
+		<link rel="apple-touch-icon" href="<?php echo base_url('assets/images/favIcons/apple-icon.png') ?>">
+		<link rel="shortcut icon" href="<?php echo base_url('assets/images/favIcons/favicon.ico') ?>">
 
-		<!-- Web Fonts  -->
-		<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+		<!-- VENDOR -->		
+		<!-- CSS -->
+		<link href="<?php echo base_url('assets/vendor/css/bootstrap.min.css') ?>" rel="stylesheet" type="text/css" />
+		<link href="<?php echo base_url('assets/vendor/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet" type="text/css" />
+		<link href="<?php echo base_url('assets/vendor/css/style.css') ?>" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
+		<!-- /CSS -->
 
-		<!-- Vendor CSS -->
-		<link rel="stylesheet" href="<?php echo base_url('assets/vendor/bootstrap/css/bootstrap.css'); ?>" />
-		<link rel="stylesheet" href="<?php echo base_url('assets/vendor/font-awesome/font-awesome-4.7.0/css/font-awesome.min.css'); ?>" />
-		<link rel="stylesheet" href="<?php echo base_url('assets/vendor/magnific-popup/magnific-popup.css'); ?>" />
-		<link rel="stylesheet" href="<?php echo base_url('assets/vendor/bootstrap-datepicker/css/datepicker3.css'); ?>" />
-
-		<!-- Theme CSS -->
-		<link rel="stylesheet" href="<?php echo base_url('assets/stylesheets/theme.css'); ?>" />
-
-		<!-- Skin CSS -->
-		<link rel="stylesheet" href="<?php echo base_url('assets/stylesheets/skins/default.css'); ?>" />
-
-		<!-- Theme Custom CSS -->
-		<link rel="stylesheet" href="<?php echo base_url('assets/stylesheets/theme-custom.css'); ?>">
-
-		<!-- Head Libs -->
-		<script src="<?php echo base_url('assets/vendor/modernizr/modernizr.js'); ?>"></script>
-
-		<!-- Vendor -->
-		<script src="<?php echo base_url('assets/vendor/jquery/jquery.js'); ?>"></script>
-		<script src="<?php echo base_url('assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js'); ?>"></script>
-		<script src="<?php echo base_url('assets/vendor/bootstrap/js/bootstrap.js'); ?>"></script>
-		<script src="<?php echo base_url('assets/vendor/nanoscroller/nanoscroller.js'); ?>"></script>
-		<script src="<?php echo base_url('assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js'); ?>"></script>
-		<script src="<?php echo base_url('assets/vendor/magnific-popup/magnific-popup.js'); ?>"></script>
-		<script src="<?php echo base_url('assets/vendor/jquery-placeholder/jquery.placeholder.js'); ?>"></script>
-		<script src="<?php echo base_url('assets/vendor/loadingoverlay/loadingoverlay.min.js'); ?>"></script>
-		<script src="<?php echo base_url('assets/vendor/sweetalert/sweetalert2.all.min.js'); ?>"></script>
+		<!-- JS -->
+		<script src="<?php echo base_url('assets/vendor/js/modernizr.min.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/vendor/js/jquery.min.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/vendor/js/moment.min.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/vendor/js/popper.min.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/vendor/js/bootstrap.min.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/vendor/js/detect.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/vendor/js/fastclick.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/vendor/js/jquery.blockUI.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/vendor/js/jquery.nicescroll.js'); ?>"></script>
+		<!-- /JS -->
+		<!-- /VENDOR -->
 
 		<!-- JS -->
 		<script>
@@ -64,47 +55,39 @@
 					rsegments : JSON.parse('<?php echo json_encode($this->uri->rsegments);  ?>')
 				};
 		</script>
-		<!-- /JS -->	
-
-		<script src="<?php echo base_url('assets/javascripts/utils/compatibilidad.js'); ?>"></script>
-		<script src="<?php echo base_url('assets/javascripts/masterPage.js'); ?>"></script>		
-	</head>
-	<body>
-		<noscript><meta http-equiv="refresh" content="0;url=<?php echo site_url('Error/noScript') ?>"></noscript>
-		<section class="body">
+		<!-- /JS -->		
+</head>
+	<body class="adminbody">
+		<div id="main">
 			<!-- HEADER -->
 			<?php echo $this->load->view('/shared/header',NULL,TRUE); ?>
 			<!-- /HEADER -->
-			<div class="inner-wrapper">	
-				<?php if ($this->session->has_userdata('SESSIONVAR')) { ?>
-					<!-- MENU -->
-					<?php echo $this->load->view('shared/menus/masterPageLateralIzquierdo',NULL,TRUE) ?>
-					<!-- /MENU -->
-				<?php } ?>
-
-				<!-- HEADER BODY PAGE -->
-				<section role="main" class="content-body" style="<?php echo $this->session->has_userdata(SESSIONVAR) == false ? 'margin-left: 0px!Important;' : ''; ?>">
-					<header class="page-header" style="<?php echo $this->session->has_userdata(SESSIONVAR) == false ? 'left: 0px!Important;' : ''; ?>">
-						<h2><?php echo $this->session->flashdata('titleBody');?></h2>					
-						<div class="right-wrapper pull-right">
-							<?php echo $this->session->flashdata('breadcrumb'); ?>							
+	
+			<!-- MENU -->
+			<?php echo $this->load->view('/shared/menus/masterPageLateralIzquierdo',NULL,TRUE); ?>
+			<!-- /MENU -->
+ 
+    		<div class="content-page">
+				<div class="content">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-xl-12">
+								<div class="breadcrumb-holder">
+									<h1 class="main-title float-left"><?php echo $this->session->flashdata('titleBody'); ?></h1>													
+									<?php echo $this->breadcrumbs->show(); ?>
+									<div class="clearfix"></div>													
+								</div>
+							</div>
 						</div>
-					</header>
-					<!-- /HEADER BODY PAGE -->
-
-					<!-- BODY -->
-					<?php echo isset($body) ? $body : '' ?>
-					<!-- BODY -->
-				</section>
+						<div>
+							<!-- BODY -->
+							<?php echo isset($body) ? $body : '' ?>
+							<!-- BODY -->
+						</div>						
+					</div>
+				</div>
 			</div>
-		</section>
-	</body>	
-	<!-- Theme Base, Components and Settings -->
-	<script src="<?php echo base_url('assets/javascripts/theme.js'); ?>"></script>
-	
-	<!-- Theme Custom -->
-	<script src="<?php echo base_url('assets/javascripts/theme.custom.js'); ?>"></script>
-	
-	<!-- Theme Initialization Files -->
-	<script src="<?php echo base_url('assets/javascripts/theme.init.js'); ?>"></script>
+		</div>
+		<script src="<?php echo base_url('assets/vendor/js/pikeadmin.js'); ?>"></script>		
+	</body>
 </html>

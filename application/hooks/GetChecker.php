@@ -104,6 +104,10 @@ class GetChecker {
     private function _checkPrivilege(){
         global $OUT, $CFG, $URI, $RTR;
         
+        $securityAccessArray = $CFG->item('securityAccess');
+
+        if ($securityAccessArray['privilegios'] === FALSE) return;
+
         $user = $_SESSION[SESSIONVAR];
 
         $action = strtolower($RTR->method);
@@ -147,7 +151,7 @@ class GetChecker {
         }
 
         if (!$access){
-            $redirectURI = $CFG->site_url('errors/noPrivilegio');
+            $redirectURI = $CFG->site_url('Error/noPrivilegio');
             header('Location: ' . $redirectURI , TRUE,303);
             exit();
         }
