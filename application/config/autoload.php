@@ -58,8 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-//$autoload['libraries'] = array('session','MyPageCache','MyDataCache','Msg_reporting','Mybreadcrumb','database');
-$autoload['libraries'] = array('session','MyPageCache','MyDataCache','Msg_reporting');
+$autoload['libraries'] = array('session','MyPageCache','MyDataCache','Msg_reporting','database');
 
 /*
 | -------------------------------------------------------------------

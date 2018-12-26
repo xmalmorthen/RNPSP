@@ -1,8 +1,7 @@
 <div class="headerbar">
     <div class="headerbar-left">
         <a href="<?php echo site_url('/'); ?>" class="logo">
-            <img alt="Logo" src="<?php echo base_url('assets/images/logo.png') ?>" /> 
-            <span>Admin</span>
+            <img alt="Logo" src="<?php echo base_url('assets/images/logo.png') ?>" width="100px" /> 
         </a>
     </div>
     <nav class="navbar-custom">        

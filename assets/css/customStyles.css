@@ -1,0 +1,73 @@
+body {
+    background-color: #ffffff;
+}
+.headerbar .headerbar-left {
+    background: #f1f1f1;
+    padding-top: 4px;
+}
+.navbar-custom {
+    background-color: #f1f1f1;
+    min-height: 91px;    
+}
+.headerbar .headerbar-left .logo img {
+    background: url(../images/logo.png) no-repeat;
+    width: 240px;
+}
+#main.enlarged .headerbar .headerbar-left .logo img {
+    display: block; 
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: url(../images/escudo.png) no-repeat;
+    width: 70px;
+    height: 75px;
+    padding-left: 180px;
+    margin-top: 8px;
+}
+body.adminbody .main-sidebar.left {
+    padding-top: 41px;
+}
+.main-sidebar {
+    padding-top: 41px;
+    background: #f1f1f1;
+}
+.content-page .content {
+    margin-top: 93px;
+}
+.navbar-custom .menu-left {
+    padding-top: 41px;
+}
+.mobile.smallscreen .sidebar-inner.leftscroll {
+    overflow: hidden!important;
+}
+.button-menu-mobile {
+    color: #656565;
+}
+
+#sidebar-menu .subdrop {
+    color: #fff !important;
+    background-color: #414d58;
+    border-left: 2px solid #000000;
+}
+#sidebar-menu > ul > li > a {
+    color: #000000;
+}
+#sidebar-menu > ul > li > a:hover {
+    color: #FFF;
+	background-color: #848484;
+	border-left: 2px solid #000000; 
+}
+#sidebar-menu ul ul a {
+    color: #484f56;
+}
+#sidebar-menu ul ul a:hover {
+    color: red; 
+}
+#sidebar-menu > ul > li > a.active {
+    background-color: #404040;
+}
+
+@media (max-width: 768px){
+    .navbar-custom {
+        margin-left: 0px !important;
+    }
+}

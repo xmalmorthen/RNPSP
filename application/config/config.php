@@ -383,7 +383,7 @@ $config['encryption_key'] = 'RNPSP';
 |
 */
 
-$config['sess_driver'] = 'files';
+$config['sess_driver'] = 'database';
 $config['sess_cookie_name'] = 'ci_sessions';
 $config['sess_expiration'] = 7200;
 $config['sess_save_path'] = 'ci_sessions';
