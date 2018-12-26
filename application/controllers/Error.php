@@ -5,28 +5,34 @@ class Error extends CI_Controller {
 	
 	function __construct()
     {
-        parent::__construct();
-    }
+		parent::__construct();    
+		$this->load->library('breadcrumbs');
+	}
 
 	public function index()
 	{
+		// BREADCRUMB
+		$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');
+		$this->breadcrumbs->push('[ Error ] - 500', "Error");		
+		// /BREADCRUMB
+
 		// TITLE BODY PAGE
 		$this->session->set_flashdata('titleBody','Error');
 		// /TITLE BODY PAGE
-        // BREADCRUMB
-		$this->session->set_flashdata('breadcrumb',NULL);
-		// /BREADCRUMB
+
 		show_error('Error no controlado', 500, 'Ocurrió un error');
 	}
 
 	public function e404()
 	{
+        // BREADCRUMB
+		$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');
+		$this->breadcrumbs->push('[ Error ] - 404', "Error/e404");		
+		// /BREADCRUMB
+
         // TITLE BODY PAGE
 		$this->session->set_flashdata('titleBody','Error');
 		// /TITLE BODY PAGE
-        // BREADCRUMB
-		$this->session->set_flashdata('breadcrumb',NULL);
-		// /BREADCRUMB
 
 		$currentURL = current_url();
 		$params   = $_SERVER['QUERY_STRING'];
@@ -48,22 +54,28 @@ class Error extends CI_Controller {
 
     public function noPrivilegio()
     {
+		// BREADCRUMB
+		$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');
+		$this->breadcrumbs->push('[ Error ] - Privilegios', "Error/noPrivilegio");		
+		// /BREADCRUMB
+
         // TITLE BODY PAGE
 		$this->session->set_flashdata('titleBody','Error');
 		// /TITLE BODY PAGE
-        // BREADCRUMB
-		$this->session->set_flashdata('breadcrumb',NULL);
-		// /BREADCRUMB
+
         show_error('Privilegios insuficientes!', 403, 'Privilegios');       
     }
 
     public function noImplementado(){
-        // TITLE BODY PAGE
+        // BREADCRUMB
+		$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');
+		$this->breadcrumbs->push('[ Error ] - Implementación', "Error/noImplementado");		
+		// /BREADCRUMB
+
+		// TITLE BODY PAGE
 		$this->session->set_flashdata('titleBody','Error');
 		// /TITLE BODY PAGE
-        // BREADCRUMB
-		$this->session->set_flashdata('breadcrumb',NULL);
-		// /BREADCRUMB
+        
         show_error('Funcionalidad no implementada!', 403, 'No implementado');
     }
 	

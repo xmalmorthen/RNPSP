@@ -3,14 +3,14 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8 fixed" lang="es-MX"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9 fixed" lang="es-MX"> <![endif]-->
 <!--[if gt IE 8]> -->
-<html class="fixed" lang="es-MX">
+<html lang="es-MX">
 <!--<![endif]-->
 	<head>
 		<!-- Basic -->
 		<meta charset="iso-8859-1">
 
 		<title><?php echo isset($title) ? $title : ''; ?></title>
-		<meta name="keywords" content="HTML5 Admin Template" />
+		<meta name="keywords" content="<?php echo isset($title) ? $title : ''; ?>" />
 		<meta name="description" content="<?php echo isset($title) ? $title : ''; ?>">
 		<meta name="Xmal Morthen" content="">
 
@@ -19,40 +19,40 @@
 		<!-- Mobile Metas -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="apple-touch-icon" href="<?php echo base_url('assets/img/favIcons/apple-icon.png') ?>">
-		<link rel="shortcut icon" href="<?php echo base_url('assets/img/favIcons/favicon.ico') ?>">
+		
+		<!-- Favicon -->
+		<link rel="apple-touch-icon" href="<?php echo base_url('assets/images/favIcons/apple-icon.png') ?>">
+		<link rel="shortcut icon" href="<?php echo base_url('assets/images/favIcons/favicon.ico') ?>">
 
-		<!-- Web Fonts  -->
-		<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+		<!-- VENDOR -->		
+		<!-- CSS -->
+		<link href="<?php echo base_url('assets/vendor/css/animate.css') ?>" rel="stylesheet" type="text/css" />
+		<link href="<?php echo base_url('assets/vendor/css/bootstrap.min.css') ?>" rel="stylesheet" type="text/css" />
+		<link href="<?php echo base_url('assets/vendor/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet" type="text/css" />
+		<link href="<?php echo base_url('assets/vendor/css/style.css') ?>" rel="stylesheet" type="text/css" />
+		<link href="<?php echo base_url('assets/css/customStyles.css') ?>" rel="stylesheet" type="text/css" />		
+		<!-- /CSS -->
 
-		<!-- Vendor CSS -->
-		<link rel="stylesheet" href="<?php echo base_url('assets/vendor/bootstrap/css/bootstrap.css'); ?>" />
-		<link rel="stylesheet" href="<?php echo base_url('assets/vendor/font-awesome/font-awesome-4.7.0/css/font-awesome.min.css'); ?>" />
-		<link rel="stylesheet" href="<?php echo base_url('assets/vendor/magnific-popup/magnific-popup.css'); ?>" />
-		<link rel="stylesheet" href="<?php echo base_url('assets/vendor/bootstrap-datepicker/css/datepicker3.css'); ?>" />
+		<!-- JS -->
+		<script src="<?php echo base_url('assets/vendor/js/modernizr.min.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/vendor/js/jquery.min.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/vendor/js/moment.min.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/vendor/js/popper.min.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/vendor/js/bootstrap.min.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/vendor/js/detect.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/vendor/js/fastclick.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/vendor/js/jquery.blockUI.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/vendor/js/jquery.nicescroll.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/vendor/plugins/sweetAlert2/sweetalert2.all.min.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/vendor/plugins/LoadingOverlay/v2.1.5/loadingOverlay.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/vendor/plugins/jquery-validation/dist/jquery.validate.min.js'); ?>"></script>
+		<script src="<?php echo base_url("assets/vendor/plugins/jquery-validation/dist/messages_es.js"); ?>"></script>
+		<!-- /JS -->
+		<!-- /VENDOR -->
 
-		<!-- Theme CSS -->
-		<link rel="stylesheet" href="<?php echo base_url('assets/stylesheets/theme.css'); ?>" />
-
-		<!-- Skin CSS -->
-		<link rel="stylesheet" href="<?php echo base_url('assets/stylesheets/skins/default.css'); ?>" />
-
-		<!-- Theme Custom CSS -->
-		<link rel="stylesheet" href="<?php echo base_url('assets/stylesheets/theme-custom.css'); ?>">
-
-		<!-- Head Libs -->
-		<script src="<?php echo base_url('assets/vendor/modernizr/modernizr.js'); ?>"></script>
-
-		<!-- Vendor -->
-		<script src="<?php echo base_url('assets/vendor/jquery/jquery.js'); ?>"></script>
-		<script src="<?php echo base_url('assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js'); ?>"></script>
-		<script src="<?php echo base_url('assets/vendor/bootstrap/js/bootstrap.js'); ?>"></script>
-		<script src="<?php echo base_url('assets/vendor/nanoscroller/nanoscroller.js'); ?>"></script>
-		<script src="<?php echo base_url('assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js'); ?>"></script>
-		<script src="<?php echo base_url('assets/vendor/magnific-popup/magnific-popup.js'); ?>"></script>
-		<script src="<?php echo base_url('assets/vendor/jquery-placeholder/jquery.placeholder.js'); ?>"></script>
-		<script src="<?php echo base_url('assets/vendor/loadingoverlay/loadingoverlay.min.js'); ?>"></script>
-		<script src="<?php echo base_url('assets/vendor/sweetalert/sweetalert2.all.min.js'); ?>"></script>
+		<!-- CSS -->
+		<link href="<?php echo base_url('assets/css/views/logInView.css') ?>" rel="stylesheet" type="text/css" />
+		<!-- /CSS -->
 
 		<!-- JS -->
 		<script>
@@ -64,107 +64,112 @@
 					rsegments : JSON.parse('<?php echo json_encode($this->uri->rsegments);  ?>')
 				};
 		</script>
-		<!-- /JS -->	
-
-		<script src="<?php echo base_url('assets/javascripts/utils/compatibilidad.js'); ?>"></script>
-		<script src="<?php echo base_url('assets/javascripts/masterPage.js'); ?>"></script>		
-	</head>
-	<body>
-		<noscript><meta http-equiv="refresh" content="0;url=<?php echo site_url('Error/noScript') ?>"></noscript>
-		<!-- start: page -->
-		<section class="body-sign">
-			<div class="center-sign">
-				<a href="<?php echo base_url(); ?>" class="logo pull-left"><img src="<?php echo base_url('assets/images/logo.png'); ?>" height="54" alt="Gobierno del Estado de Colima" /></a>
-
-				<div class="panel panel-sign">
-					<div class="panel-title-sign mt-xl text-right">
-						<h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Iniciar sesión</h2>
-					</div>
-					<div class="panel-body">
-						<form action="<?php echo site_url('usuario/iniciarSesion'); ?>" method="post">
-							<div class="form-group mb-lg">
-								<label>Nombre de usuario</label>
-								<div class="input-group input-group-icon">
-									<input name="username" type="text" class="form-control input-lg" autofocus required/>
-									<span class="input-group-addon">
-										<span class="icon icon-lg">
-											<i class="fa fa-user"></i>
-										</span>
-									</span>
+		<script src="<?php echo base_url('assets/js/utils/compatibilidad.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/js/masterPage.js'); ?>"></script>
+		<!-- /JS -->		
+</head>
+	<body class="adminbody">
+		<div id="main" class="animated fadeIn faster">
+			<div class="headerbar">
+				<div class="headerbar-left">
+					<a href="<?php echo site_url('/'); ?>" class="logo">
+						<img alt="Logo" src="<?php echo base_url('assets/images/logo.png') ?>" width="100px" /> 
+					</a>
+				</div>
+				<nav class="navbar-custom">        
+					<ul class="list-inline menu-left mb-0">
+						<li class="float-left">
+							<div class='titleHeader'>
+								<span >Sistema Integral de Seguridad Pública</span>
+							</div>                
+						</li>            
+					</ul>
+				</nav>
+			</div>
+    		<div class="content-page">
+				<div class="content">
+					<br><br>
+					<div class="row justify-content-md-center">
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">						
+							<div class="card">
+								<div class="card-header">
+									<h2><i class="fa fa-user-circle-o" aria-hidden="true"></i> Inicio de sesión</h2>
 								</div>
+								<div class="card-body">
+									<form action="<?php echo site_url('usuario/iniciarSesion'); ?>" method="post" data-parsley-validate novalidate>
+										<input type="hidden" id="toGo" name="toGo" value="<?php echo isset($toGo) ? $toGo : ''; ?> ">
+										<div class="form-group">
+											<label for="userName">Nombre de usuario</label>
+											<input type="text" id="nombreUsuario" name="nombreUsuario" class="form-control" data-parsley-trigger="change" autofocus required value="XmalMorthen">
+										</div>
+										<div class="form-group">
+											<label for="emailAddress">Contraseña</label>
+											<input type="password" id="pwd" name="pwd" class="form-control" data-parsley-trigger="change" required value="123">
+										</div>
+										<div class="form-group text-right m-b-0">
+											<button class="btn btn-default submit">
+												Iniciar sesión
+											</button>
+									</form>
+								</div>														
 							</div>
-
-							<div class="form-group mb-lg">
-								<div class="clearfix">
-									<label class="pull-left">Contraseña</label>
-									<a href="pages-recover-password.html" class="pull-right">Contraseña perdida?</a>
-								</div>
-								<div class="input-group input-group-icon">
-									<input name="pwd" type="password" class="form-control input-lg" required/>
-									<span class="input-group-addon">
-										<span class="icon icon-lg">
-											<i class="fa fa-lock"></i>
-										</span>
-									</span>
-								</div>
-							</div>
-
-							<div class="row">
-								<div class="col-sm-8">
-									&nbsp;
-								</div>
-								<div class="col-sm-4 text-right">
-									<button class="btn btn-default hidden-xs submit">Iniciar sesión</button>
-									<button class="btn btn-default btn-block btn-lg visible-xs mt-lg submit">Iniciar sesión</button>
-								</div>
-							</div>
-							<br>
-							<p class="text-center">Aún no tienes una cuenta? <a href="<?php echo site_url('usuario/registrarse'); ?>">Regístrate!</a>
-						</form>
+						</div>
 					</div>
 				</div>
 			</div>
-		</section>
-		<!-- end: page -->
-	</body>	
-	<!-- Theme Base, Components and Settings -->
-	<script src="<?php echo base_url('assets/javascripts/theme.js'); ?>"></script>
-	
-	<!-- Theme Custom -->
-	<script src="<?php echo base_url('assets/javascripts/theme.custom.js'); ?>"></script>
-	
-	<!-- Theme Initialization Files -->
-	<script src="<?php echo base_url('assets/javascripts/theme.init.js'); ?>"></script>
-
-	<!-- JS -->
-	<script>
-		$(function() {      
-			$('.submit').on('click',function(e){
-				$.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
-				e.preventDefault();
-				
-				var callUrl = base_url + "UserSession/ajaxLogIn",
-					model = $( this ).serialize();
-
-				$.post(callUrl,{
-					model: model
-				},
-				function (data) {					
-					if (data.status == true){
-						window.location.href = site_url;
-					} else {
-						$.LoadingOverlay("hide");
-						swal({ type: 'error', title: 'Error', html: data.message });
-					}
-				}).fail(function (err) {
-					$.LoadingOverlay("hide");
-					var msg = err.responseText;
-					swal({ type: 'error', title: 'Error', html: msg });
-				}).always(function () {
-
-				});
+		</div>
+		<script src="<?php echo base_url('assets/vendor/js/pikeadmin.js'); ?>"></script>
+		<!-- JS -->
+		<script>
+			$.validator.setDefaults({
+				ignore: [':disabled'],
+				errorClass: "text-danger",
+				debug: true
 			});
-		}); 	
-	</script>
-	<!-- /JS -->
+
+			$(function() {
+				$('.submit').on('click',function(e){					
+					e.preventDefault();
+
+					try {
+						if (!$('form').valid()){
+							throw "Invalid FORM";
+						}
+
+						$.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+						
+						var callUrl = base_url + "UserSession/ajaxLogIn",
+						model = $('form').serialize();
+
+						$.post(callUrl,{
+							model: model
+						},
+						function (data) {					
+							if (data.status == true){
+								if (data.toGo.length > 0) {
+									window.location.href = data.toGo;
+								} else {
+									window.location.href = site_url;
+								}
+							} else {
+								$.LoadingOverlay("hide");
+								swal({ type: 'error', title: 'Error', html: data.message });
+							}
+						}).fail(function (err) {
+							$.LoadingOverlay("hide");
+							var msg = err.responseText;
+							swal({ type: 'error', title: 'Error', html: msg });
+						}).always(function () {
+
+						});
+						
+					}					
+					catch(err) {
+						$.LoadingOverlay("hide");
+					}
+				});
+			}); 	
+		</script>
+		<!-- /JS -->
+	</body>
 </html>

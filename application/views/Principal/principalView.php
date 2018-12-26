@@ -4,24 +4,118 @@
 <link rel="stylesheet" href="<?php echo base_url('assets/css/views/principalView.css') ?>">
 <!-- /CSS -->
 
-<br><br>
+<h1>Prueba de tabla</h1>
 <div class="row">
-  <div class="col-md-10">
+  <div class="col-md-12">
     <!-- BEGIN TABLE -->
     <table id="table" class="table display" style="width:100%">
       <thead>
           <tr>
-              <th>Modalidad</th>
-              <th>Acción</th>
-              <th>Estatus</th>
+              <th>Cmp1</th>
+              <th>Cmp2</th>
+              <th>Cmp3</th>
           </tr>
       </thead>
       <tbody>  
-          <tr>
-              <td>1</td>
-              <td>asd</td>
-              <td>qwe</td>
-          </tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
+          <tr><td>1</td><td>asd</td><td>qwe</td></tr>
       </tbody>
     </table>
     <!-- END TABLE -->
@@ -34,14 +128,14 @@
 <script src="<?php echo base_url('assets/js/views/principalView.js') ?>"></script>
 <script>
 	$(function() {
-    $('#table').DataTable({
-          "language": {
-              "url": base_url + "assets/vendor/datatable/Spanish.txt"
-          },
-          "columnDefs": [
-              { "orderable": false, "targets": [2] }
-          ]
-      });
-  }); 	
+        $('#table').DataTable({
+            "language": {
+                "url": base_url + "assets/vendor/datatable/Spanish.txt"
+            },
+            "columnDefs": [
+                { "orderable": false, "targets": [2] }
+            ]
+        });
+    });
 </script>
 <!-- /JS -->

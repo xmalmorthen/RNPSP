@@ -24,12 +24,13 @@
 		<link rel="apple-touch-icon" href="<?php echo base_url('assets/images/favIcons/apple-icon.png') ?>">
 		<link rel="shortcut icon" href="<?php echo base_url('assets/images/favIcons/favicon.ico') ?>">
 
-		<!-- VENDOR -->		
+		<!-- VENDOR -->
 		<!-- CSS -->
+		<link href="<?php echo base_url('assets/vendor/css/animate.css') ?>" rel="stylesheet" type="text/css" />
 		<link href="<?php echo base_url('assets/vendor/css/bootstrap.min.css') ?>" rel="stylesheet" type="text/css" />
 		<link href="<?php echo base_url('assets/vendor/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet" type="text/css" />
 		<link href="<?php echo base_url('assets/vendor/css/style.css') ?>" rel="stylesheet" type="text/css" />
-		<link href="<?php echo base_url('assets/css/customStyles.css') ?>" rel="stylesheet" type="text/css" />
+		<link href="<?php echo base_url('assets/css/customStyles.css') ?>" rel="stylesheet" type="text/css" />		
 		<!-- /CSS -->
 
 		<!-- JS -->
@@ -42,6 +43,8 @@
 		<script src="<?php echo base_url('assets/vendor/js/fastclick.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/vendor/js/jquery.blockUI.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/vendor/js/jquery.nicescroll.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/vendor/plugins/sweetAlert2/sweetalert2.all.min.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/vendor/plugins/LoadingOverlay/v2.1.5/loadingOverlay.js'); ?>"></script>
 		<!-- /JS -->
 		<!-- /VENDOR -->
 
@@ -55,10 +58,13 @@
 					rsegments : JSON.parse('<?php echo json_encode($this->uri->rsegments);  ?>')
 				};
 		</script>
+		<script src="<?php echo base_url('assets/js/utils/compatibilidad.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/js/masterPage.js'); ?>"></script>
 		<!-- /JS -->		
 </head>
 	<body class="adminbody">
-		<div id="main">
+		<noscript><meta http-equiv="refresh" content="0;url=<?php echo site_url('Error/noScript') ?>"></noscript>
+		<div id="main" class="animated fadeIn faster">
 			<!-- HEADER -->
 			<?php echo $this->load->view('/shared/header',NULL,TRUE); ?>
 			<!-- /HEADER -->

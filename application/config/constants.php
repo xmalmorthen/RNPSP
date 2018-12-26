@@ -104,7 +104,7 @@ defined('DEFAULTTIMEDATACACHE') OR define('DEFAULTTIMEDATACACHE', 1800);
 * Fecha: 01-09-2018
 * Descripción: Constante para el ruteo a la página de logueo				 
 */
-defined('LOGINPAGE') OR define('LOGINPAGE', 'Iniciar/Sesion');
+defined('LOGINPAGE') OR define('LOGINPAGE', 'Sesion/Iniciar');
 defined('DEFAULTSESSIONTYPE') OR define('DEFAULTSESSIONTYPE', 'userSession');
 
 /*

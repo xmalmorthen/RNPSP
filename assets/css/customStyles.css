@@ -1,5 +1,6 @@
 body {
     background-color: #ffffff;
+    font-family: "Open Sans", Arial, sans-serif;
 }
 .headerbar .headerbar-left {
     background: #f1f1f1;
@@ -7,12 +8,27 @@ body {
 }
 .navbar-custom {
     background-color: #f1f1f1;
-    min-height: 91px;    
+    min-height: 91px;
+    margin-left: 0px;    
+}
+.navbar-custom .nav-link {
+    color: #000000;
+}
+.navbar-custom ul.sessionSection {
+    padding-top: 41px;
 }
 .headerbar .headerbar-left .logo img {
     background: url(../images/logo.png) no-repeat;
     width: 240px;
 }
+.headerbar .titleHeader{
+    font-size: 2rem; 
+    padding-left: 8px;   
+}
+.headerbar .dropdown-menu{
+    border: 1px solid rgba(0,0,0,.15);
+}
+
 #main.enlarged .headerbar .headerbar-left .logo img {
     display: block; 
     -moz-box-sizing: border-box;
@@ -23,6 +39,7 @@ body {
     padding-left: 180px;
     margin-top: 8px;
 }
+
 body.adminbody .main-sidebar.left {
     padding-top: 41px;
 }
@@ -31,11 +48,14 @@ body.adminbody .main-sidebar.left {
     background: #f1f1f1;
 }
 .content-page .content {
-    margin-top: 93px;
+    margin-top: 91px;
 }
 .navbar-custom .menu-left {
     padding-top: 41px;
 }
+/* .navbar-custom .menu-left li.btnMnuMobile {
+    padding-top: 46px;
+} */
 .mobile.smallscreen .sidebar-inner.leftscroll {
     overflow: hidden!important;
 }
@@ -65,9 +85,63 @@ body.adminbody .main-sidebar.left {
 #sidebar-menu > ul > li > a.active {
     background-color: #404040;
 }
+#sidebar-menu ul ul li.active a {
+    color: red;
+}
+.breadcrumb-holder {
+    background-color: #cccccc;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  background: none!important;
+  color: black!important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  background: none!important;
+}
+ 
+.dataTables_wrapper .dataTables_paginate .paginate_button:active,
+.dataTables_wrapper .dataTables_paginate .current {
+  background: #cacaca!important;
+  background-color: #cacaca!important;
+}
+
+@media (max-width: 1024px){    
+    .headerbar .titleHeader{
+        font-size: 1.5rem;        
+    }
+}
 
 @media (max-width: 768px){
     .navbar-custom {
         margin-left: 0px !important;
+    }
+    #main.forced .headerbar .headerbar-left .logo img{
+        display: block; 
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        background: url(../images/escudo.png) no-repeat;
+        width: 70px;
+        height: 75px;
+        padding-left: 180px;
+        margin-top: 8px;
+    }
+
+    .headerbar .titleHeader{
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 550px){    
+    .headerbar .titleHeader{
+        font-size: .8rem;
+        width: 60%;
+    }
+}
+
+@media (max-width: 380px){    
+    .headerbar .titleHeader{
+        display: none;
     }
 }

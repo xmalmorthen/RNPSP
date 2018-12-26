@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?php echo base_url('assets/stylesheets/views/errorsView.css'); ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/css/views/errorsView.css'); ?>">
 <!-- start: page -->
 <section class="body-error">
     <div class="center-error pt-5">
@@ -6,7 +6,7 @@
             <div class="col-md-8">
                 <div class="main-error mb-xlg">
                     <h2 class="error-code text-dark text-center text-semibold m-none">404 <i class="fa fa-file"></i></h2>
-                    <p class="error-explanation text-center">Lo sentimos, pero la página que buscabas no existe.</p>
+                    <p class="error-explanation text-center">Lo sentimos, pero la página que buscas no existe.</p>
                 </div>
             </div>
             <div class="col-md-4">

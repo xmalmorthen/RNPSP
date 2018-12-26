@@ -55,6 +55,17 @@ $route['default_controller'] = 'Principal';
 $route['404_override'] = 'Error/e404';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['Sesion/Iniciar'] = 'UserSession/index';
+$route['Sesion/Terminar'] = 'UserSession/logOut';
 
-$route['Iniciar/Sesion'] = 'UserSession/index';
+$route['alta/cedula'] = 'Cedula';
 $route['alta/cedula/(:any)'] = 'Cedula/$1';
+
+$route['consulta'] = 'Consulta/tipo';
+$route['consulta/(:any)'] = 'Consulta/tipo/$1';
+
+$route['reporte'] = 'Reporte/tipo';
+$route['reporte/(:any)'] = 'Reporte/tipo/$1';
+
+$route['carga'] = 'Carga/tipo';
+$route['carga/(:any)'] = 'Carga/tipo/$1';

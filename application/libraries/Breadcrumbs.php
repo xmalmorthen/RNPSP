@@ -106,7 +106,7 @@ class Breadcrumbs {
 				if (end($keys) == $key) {
 					$output .= $this->crumb_last_open . '' . $crumb['page'] . '' . $this->crumb_close;
 				} else {
-					$output .= $this->crumb_open.'<a href="' . $crumb['href'] . '">' . $crumb['page'] . '</a> '.$this->crumb_divider.$this->crumb_close;
+					$output .= $this->crumb_open.'<a href="' . $crumb['href'] . '">' . $crumb['page'] . '</a> '.$this->crumb_close;
 				}
 			}
 			

@@ -1,13 +1,17 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Reporte extends CI_Controller {
+	function __construct()
+    {
+		parent::__construct();    
+		$this->load->library('breadcrumbs');
+	}
 
 	public function tipo($tipo = NULL)
 	{
 		// BREADCRUMB
-		$this->mybreadcrumb->add('<i class="fa fa-home"></i>', base_url());		
-		$this->mybreadcrumb->add('Reportes', base_url('Reportes'));		
-		$this->session->set_flashdata('breadcrumb',$this->mybreadcrumb->render());
+		$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');
+		$this->breadcrumbs->push('[ Reporte ] ' . ($tipo ? " - {$tipo}" : '') , "Reporte" . ($tipo ? "/{$tipo}" : ''));		
 		// /BREADCRUMB
 
 		// TITLE BODY PAGE

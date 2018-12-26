@@ -1,0 +1,37 @@
+.headerbar{
+    background: #f1f1f1;
+    padding: 4px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.body-error .error-code {
+    font-size: 140px;
+    font-size: 9rem;
+    line-height: 140px;
+    line-height: 14rem;
+    letter-spacing: -10px;
+}
+.m-none {
+    margin: 0 !important;
+}
+.text-semibold {
+    font-weight: 600;
+}
+.text-dark {
+    color: #171717 !important;
+}
+.body-error .error-explanation {
+    font-size: 20px;
+    font-size: 2rem;
+    line-height: 36px;
+    line-height: 3.6rem;
+}
+.headerbar .title{
+    font-size: 1.5rem;
+}
+
+@media (max-width: 595px){    
+    .headerbar .title{
+        display: none;
+    }
+}

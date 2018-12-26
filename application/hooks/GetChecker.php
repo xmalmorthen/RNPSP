@@ -88,7 +88,7 @@ class GetChecker {
         $user = isset($_SESSION[SESSIONVAR]) ? $_SESSION[SESSIONVAR] : NULL;
 
         if(!$user){                
-            $redirectURI = $CFG->site_url(LOGINPAGE) . "?logIn=true&toGo=" . base64_encode($CFG->site_url($URI->uri_string));
+            $redirectURI = $CFG->site_url(LOGINPAGE) . "?toGo=" . base64_encode($CFG->site_url($URI->uri_string));
 
             header('Location: ' . $redirectURI , TRUE,303);
             exit();
