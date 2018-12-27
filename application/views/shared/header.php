@@ -12,6 +12,9 @@
                     <i class="fa fa-user fa-2x" aria-hidden="true"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">                    
+                    <div class="dropdown-item noti-title">
+                        <h5 class="text-overflow"><small>Xmal Morthen</small></h5>
+                    </div>
                     <a href="<?php echo site_url('usuario/perfil'); ?>" class="dropdown-item notify-item">
                         <i class="fa fa-user"></i> <span>Perfil</span>
                     </a>

@@ -28,7 +28,12 @@ body {
 .headerbar .dropdown-menu{
     border: 1px solid rgba(0,0,0,.15);
 }
-
+.profile-dropdown {
+    width: 300px;
+}
+.notif .noti-title {
+    background-color: #4c6e8e;
+}
 #main.enlarged .headerbar .headerbar-left .logo img {
     display: block; 
     -moz-box-sizing: border-box;
@@ -91,16 +96,13 @@ body.adminbody .main-sidebar.left {
 .breadcrumb-holder {
     background-color: #cccccc;
 }
-
 .dataTables_wrapper .dataTables_paginate .paginate_button {
   background: none!important;
   color: black!important;
 }
-
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
   background: none!important;
 }
- 
 .dataTables_wrapper .dataTables_paginate .paginate_button:active,
 .dataTables_wrapper .dataTables_paginate .current {
   background: #cacaca!important;
