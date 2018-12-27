@@ -22,7 +22,7 @@ $(document).ready(function () {
                 footer: '<span>GUID de rastreo [ <strong>' + outputError.guid + '</strong> ]</span>',
                 showConfirmButton: true,
                 allowOutsideClick: false            
-            })
+            });
         }
     }
 });
