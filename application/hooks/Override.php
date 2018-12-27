@@ -17,6 +17,7 @@ class Override {
         ];        
 
         if ($CI->session->flashdata('noLayout') === TRUE){
+            $CI->session->set_flashdata('noLayout',FALSE);
             echo $out;
         } else {
             echo $CI->load->view('shared/masterPage',$superMainModel,TRUE);
