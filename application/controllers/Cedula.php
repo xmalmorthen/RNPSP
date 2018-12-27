@@ -10,7 +10,7 @@ class Cedula extends CI_Controller {
 	public function persona()
 	{
 		// BREADCRUMB
-		$this->breadcrumbs->push('<i class="fa fa-home"></i>', site_url());		
+		$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');		
 		$this->breadcrumbs->push('[ Cédula ] - Alta de Persona', site_url('alta/cedula/persona'));
 		// /BREADCRUMB
 
@@ -24,7 +24,7 @@ class Cedula extends CI_Controller {
 	public function aspirante()
 	{
 		// BREADCRUMB
-		$this->breadcrumbs->push('<i class="fa fa-home"></i>', site_url());		
+		$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');		
 		$this->breadcrumbs->push('[ Cédula ] - Alta de Aspirante', site_url('alta/cedula/aspirante'));
 		// /BREADCRUMB
 
@@ -38,7 +38,7 @@ class Cedula extends CI_Controller {
 	public function replicar()
 	{
 		// BREADCRUMB
-		$this->breadcrumbs->push('<i class="fa fa-home"></i>', site_url());		
+		$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');		
 		$this->breadcrumbs->push('[ Cédula ] - Replicar', site_url('cedula/replicar'));
 		// /BREADCRUMB
 

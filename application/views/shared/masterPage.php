@@ -57,10 +57,16 @@
 					segments : JSON.parse('<?php echo json_encode($this->uri->segments);  ?>'),
 					rsegments : JSON.parse('<?php echo json_encode($this->uri->rsegments);  ?>')
 				};
+
+			var outputError = {
+				errorMgs : "<?php echo $this->session->flashdata('outputError'); ?>",
+				guid : "<?php echo $this->config->item('GUID'); ?>",
+			}
 		</script>
 		<script src="<?php echo base_url('assets/js/utils/compatibilidad.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/js/masterPage.js'); ?>"></script>
-		<!-- /JS -->		
+		<!-- /JS -->
+		<?php $this->session->set_flashdata('outputError',''); //Destroy outputError flashdata ?>
 </head>
 	<body class="adminbody">
 		<noscript><meta http-equiv="refresh" content="0;url=<?php echo site_url('Error/noScript') ?>"></noscript>

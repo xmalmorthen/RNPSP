@@ -11,4 +11,18 @@ $(document).ready(function () {
     .closest('li').addClass('active')
     .closest('ul').css('display','block')
     .closest('li.submenu').find('a').first().addClass('subdrop active');
+    
+    if (typeof outputError !== 'undefined') {
+        if (outputError.errorMgs.length > 0){
+            Swal({
+                position: 'top-end',
+                type: 'error',
+                title: 'Error',
+                html: outputError.errorMgs,
+                footer: '<span>GUID de rastreo [ <strong>' + outputError.guid + '</strong> ]</span>',
+                showConfirmButton: true,
+                allowOutsideClick: false            
+            })
+        }
+    }
 });

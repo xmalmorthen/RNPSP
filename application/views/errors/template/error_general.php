@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="<?php echo base_url('assets/css/views/errorsView.css'); ?>">
-<!-- start: page -->
 <section class="body-error">
     <div class="center-error pt-5">
         <div class="row">
@@ -13,4 +12,3 @@
         </div>
     </div>
 </section>
-<!-- end: page -->

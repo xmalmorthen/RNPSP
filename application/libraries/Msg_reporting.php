@@ -106,4 +106,10 @@ class Msg_reporting {
             exit(utf8_decode($_msg));
         }
     }
+
+
+    public static function setOutputError($msg){
+        $CI =& get_instance();
+        $CI->session->set_flashdata('outputError',$msg);
+    }
 }
