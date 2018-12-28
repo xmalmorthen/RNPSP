@@ -4,14 +4,12 @@ class ajaxCatalogos extends CI_Controller {
 
 	function __construct()
     {
-		parent::__construct();
-		$this->load->library('encrypt');
-		$this->load->model('Principal_model');
+		parent::__construct();		
 	}
 	
-	public function index()
-	{
+	public function index(){
 		$query = $this->input->get('qry');
+		$params = $this->input->get('params');
 		
 		if (! $this->input->is_ajax_request()) {
 			if (ENVIRONMENT == 'production') redirect('Error/e404','location');
@@ -22,7 +20,7 @@ class ajaxCatalogos extends CI_Controller {
 				throw new Exception('Parámetros incorrectos');
 			}
 
-			$deCrypt = $this->_deCrypt($query);
+			$deCrypt = Utils::deCrypt($query);
 
 			if (!$deCrypt){
 				throw new rulesException('Cadena inválida');
@@ -30,11 +28,11 @@ class ajaxCatalogos extends CI_Controller {
 
 			$this->load->model("catalogos/ajaxCatalogos_model",'catalogo');
 
-			$response = $this->catalogo->get($deCrypt);
+			$fullQry = $deCrypt . ($params ? ' where ' . $params : '');
 
-			if ($response) {
-				$responseModel = $response;
-			}
+			$response = $this->catalogo->get($fullQry);
+
+			$responseModel = $response;
 		} 
 		catch (rulesException $e){	
 			header("HTTP/1.0 400 Bad Request");
@@ -44,15 +42,10 @@ class ajaxCatalogos extends CI_Controller {
 			$responseModel = [];
 		}
 		
-		//$this->output->set_header('Content-type: application/json');
 		header('Content-type: application/json');
 
         echo json_encode( [ 'results' => $responseModel ] );
         exit;
-	}
-
-	private function _crypt($cad){
-		return base64_encode($this->encrypt->encode($cad));
 	}
 
 	public function crypt($cad = NULL){
@@ -60,7 +53,7 @@ class ajaxCatalogos extends CI_Controller {
 		if (!$cad) 
 			show_error("Petición erronea [ {$this->config->item('GUID')} ]", 400, 'Ocurrió un error');
 
-		$crypt = $this->_crypt($cad);
+		$crypt = Utils::crypt($cad);
 
 		header('Content-type: application/json');
 		echo json_encode( 
@@ -69,11 +62,6 @@ class ajaxCatalogos extends CI_Controller {
 		]);
 		exit;
 	}
-
-	private function _deCrypt($cad){
-		return $this->encrypt->decode(base64_decode($cad));
-	}
-
 
 	public function deCrypt($cad = NULL){
 		$cad = $cad ? $cad : ($this->input->get('cad') ? $this->input->get('cad') : NULL);

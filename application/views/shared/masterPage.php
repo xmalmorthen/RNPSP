@@ -37,6 +37,7 @@
 		<script src="<?php echo base_url('assets/vendor/js/modernizr.min.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/vendor/js/jquery.min.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/vendor/js/moment.min.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/vendor/js/moment-with-locales.min.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/vendor/js/popper.min.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/vendor/js/bootstrap.min.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/vendor/js/detect.js'); ?>"></script>
@@ -45,6 +46,8 @@
 		<script src="<?php echo base_url('assets/vendor/js/jquery.nicescroll.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/vendor/plugins/sweetAlert2/sweetalert2.all.min.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/vendor/plugins/LoadingOverlay/v2.1.5/loadingOverlay.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/vendor/plugins/jquery-validation/dist/jquery.validate.min.js'); ?>"></script>
+		<script src="<?php echo base_url("assets/vendor/plugins/jquery-validation/dist/messages_es.js"); ?>"></script>
 		<!-- /JS -->
 		<!-- /VENDOR -->
 
@@ -62,11 +65,17 @@
 				errorMgs : "<?php echo $this->session->flashdata('outputError'); ?>",
 				guid : "<?php echo $this->config->item('GUID'); ?>",
 			}
+
+
+			var isSerializedFORM = "<?php echo $this->session->flashdata('isSerializedFORM') ? 'true' : 'false'; ?>";
 		</script>
 		<script src="<?php echo base_url('assets/js/utils/compatibilidad.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/js/masterPage.js'); ?>"></script>
 		<!-- /JS -->
-		<?php $this->session->set_flashdata('outputError',''); //Destroy outputError flashdata ?>
+		<?php 
+			$this->session->set_flashdata('outputError',''); //Destroy outputError flashdata 
+			$this->session->set_flashdata('isSerializedFORM',''); //Destroy isSerializedFORM flashdata 
+		?>
 </head>
 	<body class="adminbody">
 		<noscript><meta http-equiv="refresh" content="0;url=<?php echo site_url('Error/noScript') ?>"></noscript>

@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    moment.locale('es');
+    
     $.LoadingOverlaySetup({image:"",fontawesome : "fa fa-gear fa-spin",maxSize:150,minSize:20});
 
     window.addEventListener("beforeunload", function (e) {
@@ -25,4 +27,19 @@ $(document).ready(function () {
             });
         }
     }
+
+    $.validator.setDefaults({
+        ignore: [':disabled'],
+        errorClass: "text-danger",
+        debug: true,
+        errorPlacement: function(error, element) {
+            var placement = $(element).data('error');
+            if (placement) {
+                $(placement).append(error)
+            } else {
+                error.insertAfter(element);
+            }
+        }
+    });    
+
 });

@@ -9,4 +9,16 @@ class Utils {
         $var = str_replace('/', '-', $date);
         return date("m/d/Y", strtotime($var));
     }
+
+    public static function crypt($cad){
+        $CI = & get_instance();
+        $CI->load->library('encrypt');
+		return base64_encode($CI->encrypt->encode($cad));
+	}
+
+	public static function deCrypt($cad){
+        $CI = & get_instance();
+        $CI->load->library('encrypt');
+		return $CI->encrypt->decode(base64_decode($cad));
+	}
 }

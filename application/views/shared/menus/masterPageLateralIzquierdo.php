@@ -35,7 +35,15 @@
                 
                 <li class="submenu">
                     <a href="<?php echo site_url('carga');?>"><i class="fa fa-external-link" aria-hidden="true"></i> <span> Cargas </span> </a>                        
-                </li>                
+                </li>
+
+                <li class="submenu">
+                    <a><i class="fa fa-list-alt" aria-hidden="true"></i> <span> Ejemplos </span> <span class="menu-arrow"></span></a>
+                    <ul class="list-unstyled">
+                        <li><a href="<?php echo site_url('ejemplos/ejemplo1');?>">Ejemplo 1</a></li>
+                        <li><a href="<?php echo site_url('ejemplos/ejemplo2');?>">Ejemplo 2</a></li>
+                    </ul>
+                </li>
             </ul>
             <div class="clearfix"></div>
         </div>
