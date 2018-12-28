@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="<?php echo base_url('assets/css/views/principalView.css') ?>">
 <!-- /CSS -->
 
-<h1>Prueba de tabla</h1>
+<h1>Prueba de formulario</h1>
 
 <div class="row">    
     <div class="col-md-8">
@@ -46,6 +46,7 @@
     </div>
 </div>
 <div class="my-2">&nbsp;</div>
+<h1>Prueba de tabla</h1>
 <div class="row">
   <div class="col-md-12">
     <!-- BEGIN TABLE -->
@@ -182,13 +183,13 @@
         });
 
         table.on( 'draw', function () {
-            $('[name="table_length"]').select2();
+            //$('[name="table_length"]').select2();
         });
 
         $('.select2').select2();
                 
         $('#ajaxSelect').getCatalog({
-            query : 'SELECT ID_ACTIVO_SP as id, DESCRIPCION as text FROM CAT_ACTIVO_SP',
+            query : 'Yi8reWI5VGNTY2d1YmJ3YWRPRnhhU0pFZzhEWkZUR1lmUDdTdzhQUHFEdmVZbEJ3M0xmMVVBVVpmUE9sL3Fud2tKZkg3ZnRFS0ZrUElNdVVBNmVad1BPMUwzZVRvS0hMS2F4SVdOWDMxTmhTeFFNSjRmQmcyZXRRQTFSUjd0bWJzMkxZWldsd0pNL2dlQ1pJNkFHVGZ2RlJjK1NZeFZRS21VTXh5TGt1K0hzPQ==',
             emptyOption : true
         });
     });
