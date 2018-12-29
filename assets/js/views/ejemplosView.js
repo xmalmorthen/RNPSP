@@ -120,10 +120,11 @@ var objView = {
         getSerializedFORM : function(){
             $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
             serialized.get(function(data){
-                if (data.status == true){                    
-                    swal({ type: 'success', title: 'Formulario', html: 'Información recuperada'});
-
-                    //TODO : Populate form with data recover
+                if (data.status == true){
+                    unserialize.do($('form'),data,function(){
+                        $('.select2').select2();
+                        swal({ type: 'success', title: 'Formulario', html: 'Información recuperada'});
+                    });
                 } else {
                     throw data.message;
                 }

@@ -33,6 +33,8 @@ class Serialized{
         $CI =& get_instance();
 
         try {
+            $responseGet = $this->exist($idUsuario, $hashURL);
+
             $hashURL = hash('md5',$hashURL);
             $data = base64_encode(serialize($data));
 
@@ -41,8 +43,6 @@ class Serialized{
 				'hashURL' 	    => $hashURL,
                 'serialized'    => $data
 			];
-
-            $responseGet = $this->exist($idUsuario, $hashURL);
 
             if (!$responseGet) {
                 $CI->db->insert('maSerializedData', $serializedData);

@@ -24,4 +24,43 @@ var serialized = {
     delete : function(){
         
     }
+};
+
+var unserialize = {
+    do : function(form,object,callback){
+        $.each(object.serializedData, function(key,val) {                        
+            $obj = !$.isArray(val) ? form.find('[name="'+ key +'"]') : form.find('[name="'+ key +'[]"]');
+            $objTypeOf = $obj[0].tagName.toLowerCase();            
+
+            switch ($objTypeOf) {
+                case 'input':
+                    $type = $obj.attr('type').toLowerCase();
+                    switch ($type) {
+                        case 'text':
+                        case 'password':
+                        case 'date':
+                        case 'email':
+                        case 'hidden':
+                            $obj.val(val);
+                        break;
+                        case 'checkbox': 
+                            if ($.isArray(val)) {
+                                $.each(val, function(keyCheckBox,valCheckBox) {
+                                    $item = $obj.find('[value="' + valCheckBox + '"]');
+                                    $item.checked = true;
+                                    $item.prop('checked', true);
+                                });
+                            }
+                        break;
+                    }
+                break;
+                case 'select':                
+                    $obj.val(val);
+                break;                                    
+                default:
+                break;
+            }            
+        });        
+        callback();
+    }
 }

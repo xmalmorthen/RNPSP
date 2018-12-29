@@ -51,6 +51,30 @@
                     <input type="text" class="form-control singledatepicker" id="date" name="date" autocomplete="off" required/>
                 </div>                
             </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="checkbox[]" value="check1">
+                        <label class="form-check-label" for="defaultCheck1">Checkbox 1</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="checkbox[]" value="check2">
+                        <label class="form-check-label" for="defaultCheck1">Checkbox 2</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="checkbox[]" value="check3">
+                        <label class="form-check-label" for="defaultCheck1">Checkbox 3</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="checkbox[]" value="check4">
+                        <label class="form-check-label" for="defaultCheck1">Checkbox 4</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="checkbox[]" value="check5">
+                        <label class="form-check-label" for="defaultCheck1">Checkbox 5</label>
+                    </div>                    
+                </div>                                
+            </div>
             <button class="btn btn-primary guardarAvance">Guardar avance</button>
             <button class="btn btn-success submit">Registrar</button>
         </form>
@@ -186,6 +210,10 @@
 <script>
 	$(function() {
         objView.init();
+
+        debugger;
+        $('input [type="checkbox"]').checked = true;
+
     });
 </script>
 <!-- /JS -->
