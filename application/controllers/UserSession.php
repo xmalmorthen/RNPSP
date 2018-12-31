@@ -2,8 +2,7 @@
 
 class UserSession extends CI_Controller {
 
-	public function index()
-	{
+	public function index(){
 		// TITLE BODY PAGE
 		$this->session->set_flashdata('titleBody','Iniciar sesión');
 		// /TITLE BODY PAGE
@@ -90,6 +89,12 @@ class UserSession extends CI_Controller {
 		
 		header('Content-type: application/json');
         echo json_encode( $responseModel );
+        exit;
+	}
+
+	public function renovateSession($GUID){
+        header('Content-type: application/json');
+        echo json_encode( $this->config->item('sess_time_to_update') );
         exit;
 	}
 }

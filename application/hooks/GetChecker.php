@@ -90,7 +90,18 @@ class GetChecker {
         if(!$user){                
             $redirectURI = $CFG->site_url(LOGINPAGE) . "?toGo=" . base64_encode($CFG->site_url($URI->uri_string));
 
-            header('Location: ' . $redirectURI , TRUE,303);
+            $isAjaxRequest = ( ! empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest');
+
+            if (!$isAjaxRequest) {
+                header('Location: ' . $redirectURI , TRUE,303);
+            } else {
+                $responseModel = array ( 
+                    'status' => false,
+                    'message' => 'Sesión expirada...'
+                );
+                header('Content-type: application/json');
+                echo json_encode( $responseModel );
+            }
             exit();
         }
         $this->_checkPrivilege();

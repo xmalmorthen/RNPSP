@@ -52,6 +52,7 @@
 		<!-- /VENDOR -->
 
 		<!-- JS -->
+		<script src="<?php echo base_url('assets/js/utils/guid.js'); ?>"></script>
 		<script>
 			var base_url = '<?php echo base_url(); ?>',
 				site_url = '<?php echo site_url(); ?>',
@@ -66,7 +67,8 @@
 				guid : "<?php echo $this->config->item('GUID'); ?>",
 			}
 
-
+			var sess_time_to_update = " <?php echo $this->config->item('sess_time_to_update'); ?>";
+			
 			var isSerializedFORM = "<?php echo $this->session->flashdata('isSerializedFORM') ? 'true' : 'false'; ?>";
 		</script>
 		<script src="<?php echo base_url('assets/js/utils/compatibilidad.js'); ?>"></script>

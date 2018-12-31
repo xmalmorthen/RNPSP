@@ -23,11 +23,8 @@ var serialized = {
     },
     delete : function(){
         
-    }
-};
-
-var unserialize = {
-    do : function(form,object,callback){
+    },
+    unserialize : function(form,object,callback){
         $.each(object.serializedData, function(key,val) {                        
             $obj = !$.isArray(val) ? form.find('[name="'+ key +'"]') : form.find('[name="'+ key +'[]"]');
             $objTypeOf = $obj[0].tagName.toLowerCase();            
@@ -46,8 +43,13 @@ var unserialize = {
                         case 'checkbox': 
                             if ($.isArray(val)) {
                                 $.each(val, function(keyCheckBox,valCheckBox) {
-                                    $item = $obj.find('[value="' + valCheckBox + '"]');
-                                    $item.checked = true;
+                                    $item = null;
+                                    $obj.each(function (index, value) { 
+                                        if ($(this).val() === valCheckBox){
+                                            $item = $(this);
+                                            return false;
+                                        }                                        
+                                    });
                                     $item.prop('checked', true);
                                 });
                             }
@@ -63,4 +65,4 @@ var unserialize = {
         });        
         callback();
     }
-}
+};

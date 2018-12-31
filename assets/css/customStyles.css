@@ -185,3 +185,28 @@ input:focus, select:focus, .select2-selection:focus {
     outline: 0!Important;
     box-shadow: none!Important;
 }
+
+/* MARGIN RIGHT - {value} PERCENT */
+.mr-20p{
+    margin-right: 20%!Important;
+}
+.mr-30p{
+    margin-right: 30%!Important;
+}
+.mr-40p{
+    margin-right: 40%!Important;
+}
+.mr-50p{
+    margin-right: 50%!Important;
+}
+.mr-60p{
+    margin-right: 60%!Important;
+}
+.mr-70p{
+    margin-right: 70%!Important;
+}
+
+.swalSessionRemainTime {
+    font-size: 1.5em;
+    color: red;
+}

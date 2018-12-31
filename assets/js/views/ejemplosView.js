@@ -1,6 +1,7 @@
 var objView = {
     vars : {
-        table : null
+        table : null,
+        form : null
     },
     init : function(){
         // INIT DATATABLE
@@ -12,7 +13,9 @@ var objView = {
                                     { "orderable": false, "targets": [2] }
                                 ]
                             });
-        
+        // INIT ELEMENTS
+        objView.vars.form = $('form');
+
         // INIT SELECTS
         $('.select2').select2();
 
@@ -37,7 +40,7 @@ var objView = {
         if (isSerializedFORM === 'true'){
             Swal({
                 title: 'Guardado',
-                text: "Se encontró información guardada, desea recuperarla?",
+                html: "Se encontró información guardada, desea recuperarla?",
                 type: 'question',
                 position : 'top-end',
                 allowOutsideClick : false,
@@ -47,9 +50,29 @@ var objView = {
             }).then(function(result){
                 if (result.value === true){
                     objView.actions.getSerializedFORM();
-                    
                 } else if (result.dismiss === 'cancel') {
-                    objView.actions.deleteSerializedFORM();                    
+                    objView.vars.form.prepend('<div class="form-row"><div class="form-group col align-self-end"><button class="btn btn-outline-secondary pull-right btnRecoverProgress">Recuperar avance</button></div></div>');
+                    $('.btnRecoverProgress').on('click', function(e){
+                        e.preventDefault();
+                        Swal({
+                            title: 'Recuperación',
+                            html: "Se recuperará la última información guardada, cualquier cambio realizado será omitido...",
+                            type: 'info',
+                            position : 'top-end',
+                            allowOutsideClick : false,
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33'
+                        }).then(function(result){
+                            if (result.value === true){
+                                objView.actions.getSerializedFORM(function(result){
+                                    if (result){
+                                        $('.btnRecoverProgress').remove();
+                                    }
+                                });
+                            }
+                        });
+                    })
                 }
             });
         }
@@ -60,7 +83,7 @@ var objView = {
                 e.preventDefault();
                 $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
                     
-                model = $('form').serialize();
+                model = objView.vars.form.serialize();
 
                 serialized.save(model,function(data){
                     if (data.status == true){
@@ -77,14 +100,14 @@ var objView = {
             submit : function(e){
                 e.preventDefault();
                 try {
-                    if (!$('form').valid()){
+                    if (!objView.vars.form.valid()){
                         throw "Invalid FORM";
                     }
 
                     $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
                     
                     var callUrl = 'not end point', //base_url
-                    model = $('form').serialize();
+                    model = objView.vars.form.serialize();
 
                     $.LoadingOverlay("hide");
                     swal({ type: 'success', title: 'Post Form', html: 'Formulario enviado [ ' + model + ' ]' });
@@ -117,11 +140,11 @@ var objView = {
         }
     },
     actions : {
-        getSerializedFORM : function(){
+        getSerializedFORM : function(callback){
             $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
             serialized.get(function(data){
                 if (data.status == true){
-                    unserialize.do($('form'),data,function(){
+                    serialized.unserialize(objView.vars.form,data,function(){
                         $('.select2').select2();
                         swal({ type: 'success', title: 'Formulario', html: 'Información recuperada'});
                     });
@@ -129,13 +152,12 @@ var objView = {
                     throw data.message;
                 }
                 $.LoadingOverlay("hide");
+                callback(true);
             }, function(err){
                 $.LoadingOverlay("hide");
                 swal({ type: 'error', title: 'Error', html: err.status + ' - ' + err.statusText });
+                callback(false);
             });            
-        },
-        deleteSerializedFORM : function(){
-
         }
     }
 }

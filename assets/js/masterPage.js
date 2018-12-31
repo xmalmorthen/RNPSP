@@ -1,3 +1,45 @@
+// SESSION COUNTDOWN
+if ( typeof sess_time_to_update !== 'undefined') {
+    var timer = setInterval(function() { 
+        if (sess_time_to_update == 60 ){
+            Swal({
+                title: 'Sesión',
+                html: "Está a punto de expirar la sesión por inactividad,<br> desea mantener la sesión activa?<br><br> Tiempo restante: <span class='swalSessionRemainTime'><strong></strong> segundos.</span>",
+                footer: "<div>Se perderá cualquier avance no guardado...</div>",
+                type: 'question',
+                allowOutsideClick : false,
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                timer: sess_time_to_update * 1000,
+                onBeforeOpen: function() {
+                    timerInterval = setInterval(() => {
+                        Swal.getContent().querySelector('strong')
+                        .textContent = (Swal.getTimerLeft() / 1000)
+                        .toFixed(0)
+                    }, 500);
+                },
+                onClose: () => {
+                    // clearInterval(timerInterval)
+                }
+            }).then(function(result){
+                if (result.value === true){
+                    $.getJSON(site_url + 'UserSession/renovateSession/' + guid(), function(timeRemain) {
+                        sess_time_to_update = timeRemain;
+                    });
+                } else if (result.dismiss === 'cancel') {
+                    window.location.href = site_url + 'Sesion/Terminar';
+                }
+            });
+        }
+        if (sess_time_to_update == 1) {
+            window.location.href = site_url + 'Sesion/Terminar';
+        }
+        sess_time_to_update--;
+    }, 1000);
+}
+
+
 $(document).ready(function () {
     moment.locale('es');
     

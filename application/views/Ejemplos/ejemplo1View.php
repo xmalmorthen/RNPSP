@@ -75,12 +75,15 @@
                     </div>                    
                 </div>                                
             </div>
-            <button class="btn btn-primary guardarAvance">Guardar avance</button>
-            <button class="btn btn-success submit">Registrar</button>
+            <div class="btns">
+                <button class="btn btn-primary guardarAvance">Guardar avance</button>
+                <button class="btn btn-success submit">Registrar</button>
+            </div>
         </form>
     </div>
 </div>
 <div class="my-2">&nbsp;</div>
+<hr class="mr-30p">
 <h1>Prueba de tabla</h1>
 <div class="row">
   <div class="col-md-12">
@@ -210,10 +213,6 @@
 <script>
 	$(function() {
         objView.init();
-
-        debugger;
-        $('input [type="checkbox"]').checked = true;
-
     });
 </script>
 <!-- /JS -->
