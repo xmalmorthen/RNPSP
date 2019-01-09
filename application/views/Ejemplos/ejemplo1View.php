@@ -10,6 +10,7 @@
 
 <div class="row">    
     <div class="col-md-8">
+        <!-- FORM -->
         <form autocomplete="off" action="#">
             <input type="hidden" name="current_url" id="current_url" value="<?php echo current_url(); ?>">
             <div class="form-row">
@@ -80,6 +81,46 @@
                 <button class="btn btn-success submit">Registrar</button>
             </div>
         </form>
+        <!-- /FORM -->
+    </div>
+</div>
+
+<div class="my-2">&nbsp;</div>
+<hr class="mr-30p">
+<h1>Prueba de tabs</h1>
+<div class="row">
+    <div class="col-md-12">
+        <!-- TABS -->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="Tab1-tab" data-toggle="tab" href="#Tab1" role="tab" aria-controls="Tab1" aria-selected="true">Tab1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Tab2</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="Tab3-tab" data-toggle="tab" href="#Tab3" role="tab" aria-controls="Tab3" aria-selected="false">Tab3</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="Tab1" role="tabpanel" aria-labelledby="Tab1-tab">
+                <div class="m-3">
+                    <p>Contenido de TAB 1</p>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="m-3">
+                    <p>Contenido de TAB 2</p>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="Tab3" role="tabpanel" aria-labelledby="Tab3-tab">
+                <div class="m-3">
+                    <p>Contenido de TAB 3</p>
+                </div>
+            </div>
+        </div>
+        <!-- FIN - TAB3 -->
+      </div>
     </div>
 </div>
 <div class="my-2">&nbsp;</div>
