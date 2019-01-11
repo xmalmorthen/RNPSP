@@ -9,45 +9,42 @@ class Ejemplos extends CI_Controller {
 		$this->load->model('Ejemplos_model');
 	}
 	
-	// public function ejemplo1(){
+	public function ejemplo1(){
+		// BREADCRUMB
+		$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');
+		// /BREADCRUMB
 
-	// 	exit('break');
-
-	// 	// BREADCRUMB
-	// 	$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');
-	// 	// /BREADCRUMB
-
-	// 	// TITLE BODY PAGE
-	// 	$this->session->set_flashdata('titleBody','Ejemplos');
-	// 	// /TITLE BODY PAGE
+		// TITLE BODY PAGE
+		$this->session->set_flashdata('titleBody','Ejemplos');
+		// /TITLE BODY PAGE
 		
-	// 	$model = [];
-	// 	try {
-	// 		// FIND SERIALIZED MODEL			
-	// 		$serialized = new Serialized();			
-	// 		$isSerialized = $serialized->exist($this->session->userdata(SESSIONVAR)['IdUsuario'],current_url());
-	// 		$this->session->set_flashdata('isSerializedFORM',$isSerialized);
+		$model = [];
+		try {
+			// FIND SERIALIZED MODEL			
+			$serialized = new Serialized();			
+			$isSerialized = $serialized->exist($this->session->userdata(SESSIONVAR)['IdUsuario'],current_url());
+			$this->session->set_flashdata('isSerializedFORM',$isSerialized);
 
-	// 		//$response = $this->Ejemplos_model->tmpTestXmal();
+			//$response = $this->Ejemplos_model->tmpTestXmal();
 
-	// 		$this->load->model('catalogos/CAT_ACADEMIA_model');
+			$this->load->model('catalogos/CAT_ACADEMIA_model');
 
-	// 		// $response = $this->CAT_ACADEMIA_model->getById(1);
-	// 		// $response = $this->CAT_ACADEMIA_model->getByField([
-	// 		// 	'ID_ACADEMIA' => '1',
-	// 		// 	'DESCRIPCION' => 'INSTITUTO DE FORMACION EN AGUASCALIENTES'
-	// 		// ]);
+			// $response = $this->CAT_ACADEMIA_model->getById(1);
+			// $response = $this->CAT_ACADEMIA_model->getByField([
+			// 	'ID_ACADEMIA' => '1',
+			// 	'DESCRIPCION' => 'INSTITUTO DE FORMACION EN AGUASCALIENTES'
+			// ]);
 
-	// 		$model['data']['catalogs'] = [
-	// 			'CAT_ACADEMIA' => $this->CAT_ACADEMIA_model->get()
-	// 		];
+			$model['data']['catalogs'] = [
+				'CAT_ACADEMIA' => $this->CAT_ACADEMIA_model->get()
+			];
 
-	// 		//die(var_dump($model->data->catalogs));
+			//die(var_dump($model->data->catalogs));
 
-	// 	} catch(Exception $e){		
-	// 		Msg_reporting::setOutputError($e->getMessage());
-	// 	}
+		} catch(Exception $e){		
+			Msg_reporting::setOutputError($e->getMessage());
+		}
 
-	// 	$this->load->view('Ejemplos/ejemplo1View',$model);
-	// }
+		$this->load->view('Ejemplos/ejemplo1View',$model);
+	}
 }

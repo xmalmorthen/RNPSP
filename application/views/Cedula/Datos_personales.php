@@ -1,19 +1,18 @@
 <!-- CSS -->
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dise.css">
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dise.css">
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dise.css">
+<!-- <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css"> -->
+<!-- <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dise.css"> -->
+<!-- <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css"> -->
+<link rel="stylesheet" href="<?php echo base_url('assets/css/dise.css'); ?>">
+<!-- <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css"> -->
+<!-- <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dise.css"> -->
 
 <link rel="stylesheet" href="<?php echo base_url('assets/vendor/datatable/jquery.dataTables.min.css'); ?>">
 <link rel="stylesheet" href="<?php echo base_url("assets/vendor/datatable/dataTables.bootstrap.min.css"); ?>">
 <link rel="stylesheet" href="<?php echo base_url("assets/vendor/plugins/select2/css/select2.min.css"); ?>">
 <link rel="stylesheet" href="<?php echo base_url("assets/vendor/plugins/datetimepicker/css/daterangepicker.css"); ?>"> 
-<link rel="stylesheet" href="<?php echo base_url('assets/css/views/ejemplosView.css') ?>">
+<!-- <link rel="stylesheet" href="<?php echo base_url('assets/css/views/ejemplosView.css') ?>"> -->
+
 <!-- /CSS -->
-
-
 
 <div class="container">
 
@@ -846,7 +845,7 @@
                         </div>
                         <div class="col-md-4">
                         <span class="clr">*</span>Monto 
-                            <input type="text" class="form-control" id="@pMONTO" name="@pMONTO">|
+                            <input type="text" class="form-control" id="@pMONTO" name="@pMONTO">
                         </div>
                     </div>
                     <br>
@@ -902,14 +901,14 @@
 <script src="<?php echo base_url("assets/vendor/datatable/jquery.dataTables.min.js"); ?>"></script>
 <script src="<?php echo base_url('assets/vendor/plugins/select2/js/select2.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/plugins/datetimepicker/js/daterangepicker.js') ?>"></script>
-<script src="<?php echo base_url('assets/js/views/ejemplosView.js') ?>"></script>
-<script src="<?php echo base_url('assets/js/utils/catalogs.js') ?>"></script>
-<script src="<?php echo base_url('assets/js/utils/serialized.js') ?>"></script>
-<script src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
-<script>
-	$(function() {
-        objView.init();
-    });
-</script>
+<!-- <script src="<?php echo base_url('assets/js/views/ejemplosView.js') ?>"></script> -->
+<!-- <script src="<?php echo base_url('assets/js/utils/catalogs.js') ?>"></script> -->
+<!-- <script src="<?php echo base_url('assets/js/utils/serialized.js') ?>"></script> -->
+<!-- <script src="<?php echo base_url(); ?>assets/js/jquery.js"></script> -->
+<!-- <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script> -->
+<!-- <script> -->
+	<!-- $(function() { -->
+        <!-- objView.init(); -->
+    <!-- }); -->
+<!-- </script> -->
 <!-- /JS -->
