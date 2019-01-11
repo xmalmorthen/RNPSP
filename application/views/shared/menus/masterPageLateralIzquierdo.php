@@ -64,7 +64,7 @@
                                         <li class="submenu">
                                             <a href="#"><span>Datos generales</span> <span class="menu-arrow"></span> </a>
                                                <ul style="">
-                                                    <li><a href="<?php echo site_url();?>Cedula/Datos_personales"><span>Datos personales</span></a></li>
+                                                    <li><a href="<?php echo site_url();?>Cedula/datosPersonales/datosPersonalestab"><span>Datos personales</span></a></li>
                                                     <li><a href="<?php echo site_url();?>Cedula/Datos_personales"><span>Desarrollo académico</span></a></li>
                                                     <li><a href="<?php echo site_url();?>Cedula/Datos_personales"><span>Experiencia docente</span></a></li>
                                                     <li><a href="<?php echo site_url();?>Cedula/Datos_personales"><span>Domicilio actual</span></a></li>
