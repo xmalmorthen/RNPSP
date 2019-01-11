@@ -5,6 +5,53 @@
                 <li class="submenu">
                     <a href="<?php echo site_url();?>"><i class="fa fa-home" aria-hidden="true"></i><span> Principal </span> </a>
                 </li>
+
+                <li class="submenu">
+         
+                     <a><i class="fa fa-envelope-o" aria-hidden="true"></i><span> Solicitudes </span><span class="menu-arrow"></span></a>
+                    <ul>
+                  
+                    <li class="submenu">
+
+                         <a><i ></i><span> Nuevas </span><span class="menu-arrow"></span></a>
+                        <ul>
+                        <li class="submenu">
+                            <a><i ></i><span> Persona </span><span class="menu-arrow"></span></a>
+                                <ul style="">
+                                    <li><a href="<?php echo site_url();?>Solicitudes/Alta"><span>Alta </span></a></li>
+                                    <li><a href="<?php echo site_url();?>Solicitudes/Baja"><span>Baja</span></a></li>
+                                    <li><a href="<?php echo site_url();?>Solicitudes/Cambio"><span>Cambio</span></a></li>
+                                    <li><a href="<?php echo site_url();?>Solicitudes/Doble_adscripcion"><span>Doble adscripción</span></a></li>
+                                    <li><a href="<?php echo site_url();?>Solicitudes/Homonimo"><span>Homonimo</span></a></li>
+                                    <li><a href="<?php echo site_url();?>Solicitudes/Reingreso"><span>Reingreso</span></a></li>
+                                  
+                                </ul>
+                        </li>
+                        
+                        <li class="submenu">
+                            <a><i ></i><span> Aspirante </span><span class="menu-arrow"></span></a>
+                                 <ul style="">
+                                    <li><a href="<?php echo site_url();?>Solicitudes/Alta"><span>Alta </span></a></li>
+                                    <li><a href="<?php echo site_url();?>Solicitudes/Baja"><span>Baja</span></a></li>
+                                    <li><a href="<?php echo site_url();?>Solicitudes/Cambio"><span>Cambio</span></a></li>
+                                    <li><a href="<?php echo site_url();?>Solicitudes/Doble_adscripcion"><span>Doble adscripción</span></a></li>
+                                    <li><a href="<?php echo site_url();?>Solicitudes/Homonimo"><span>Homonimo</span></a></li>
+                                    <li><a href="<?php echo site_url();?>Solicitudes/Reingreso"><span>Reingreso</span></a></li>
+                                  
+                                </ul>
+                        </li>
+                        </ul>
+                    
+                    </li>
+                    
+                    
+                    </ul>
+                   
+               
+                
+                
+                
+                </li>
                 
                 <li class="submenu">
                    
