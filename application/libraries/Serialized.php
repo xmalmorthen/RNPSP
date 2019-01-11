@@ -17,9 +17,11 @@ class Serialized{
 
             $query = $CI->db->get();
 
-            $response = $query->result();
-            if (count($response) > 0) {
-                $returnResponse = $response[0]->existe > 0 ? TRUE : FALSE;
+            if ($query) {
+                $response = $query->result();
+                if (count($response) > 0) {
+                    $returnResponse = $response[0]->existe > 0 ? TRUE : FALSE;
+                }
             }
         }
         catch (Exception $e) {
