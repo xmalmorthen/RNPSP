@@ -20,10 +20,9 @@ function detectIE() {
 }
 
 var version = detectIE();
-
 if (version != false) {
     if (version < 12) {
-        var urlIncompatible = _site_url + 'Error/incompatible';
+        var urlIncompatible = site_url + 'Error/incompatible';
         window.location.href = urlIncompatible;
     }
 }
