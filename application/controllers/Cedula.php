@@ -13,15 +13,16 @@ class Cedula extends CI_Controller {
 	{
 		// BREADCRUMB
 		$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');		
-		$this->breadcrumbs->push('[ Cédula ] - Alta de Aspirante', site_url('alta/cedula/aspirante'));
+		$this->breadcrumbs->push('[ Cédula ] - Alta de Persona - Datos Generales - Datos Personales', site_url('alta/cedula/Datos_personales'));
 		// /BREADCRUMB
 
 		// TITLE BODY PAGE
-		$this->session->set_flashdata('titleBody','[ Cédula ] - Alta de aspirante');
+		$this->session->set_flashdata('titleBody','[ Cédula ] - Alta de Persona - Datos Generales - Datos Personales');
 		// /TITLE BODY PAGE
 
 		$this->load->view('Cedula/Datos_personales');
 	}
+	
 	public function Objetos_asignados()
 	{
 		// BREADCRUMB
