@@ -267,7 +267,7 @@
                                 
                             </div>
                             <div class="col-md-4">
-                                <button class="btn btn-default">Limpiar formulario</button>
+                                
                             </div>
                         </div>
                         <br>
@@ -298,9 +298,7 @@
 
                         
                     </div>
-                    
-                    <input type="button" name="previous" class="previous action-button-previous" style="height:40px;" value="Anterior"/>
-                    <input type="button" name="next" class="next action-button" style="height:40px;" value="Siguiente"/>
+                  
             </div>
             <div class="tab-pane fade" id="Experiencia_docente" role="tabpanel" aria-labelledby="Experiencia_docente-tab">
             <div class="Content">
@@ -346,7 +344,7 @@
                         </div>
                         <div class="col-md-4"></div>
                         <div class="col-md-4">
-                            <button class="btn btn-default">Limpiar formulario</button>
+                            
                         </div>
                     </div>
                     <br><br>
@@ -464,7 +462,7 @@
                             </div>
                             <div class="col-md-4"></div>
                             <div class="col-md-4">
-                                <button class="btn btn-default">Limpiar formulario</button>
+                                
                             </div>
                         </div>
                         <br>
@@ -619,7 +617,7 @@
                           </div>
                           <div class="col-md-4"></div>
                           <div class="col-md-4">
-                              <button class="btn btn-default">Limpiar formulario</button>
+                              
                           </div>
                       </div>
                       <br>
@@ -855,7 +853,7 @@
                         </div>
                         <div class="col-md-4"></div>
                         <div class="col-md-4">
-                            <button class="btn btn-default">Limpiar formulario</button>
+                            
                         </div>
                     </div>
                     <br><br>
@@ -893,6 +891,8 @@
         <!-- FIN - Experiencia_docente -->
       </div>
     </div>
+</div>
+
 </div>
 
 

@@ -7,6 +7,19 @@
             $this->load->library('breadcrumbs');
         }
 
+		public function index(){
+
+			// BREADCRUMB
+			$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');		
+			$this->breadcrumbs->push('[ Solicitudes ] - Solicitudes - Persona - Alta', site_url('alta/cedula/datosPersonales'));
+			// /BREADCRUMB
+		
+			// TITLE BODY PAGE
+			$this->session->set_flashdata('titleBody','[ Solicitudes ] - Solicitudes - Persona - Alta');
+			// /TITLE BODY PAGE
+		
+			$this->load->view('Solicitudes/index');
+        }
 
         public function Alta(){
 

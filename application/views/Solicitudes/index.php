@@ -4,19 +4,16 @@
 <link rel="stylesheet" href="<?php echo base_url('assets/vendor/datatable/jquery.dataTables.min.css'); ?>">
 <link rel="stylesheet" href="<?php echo base_url("assets/vendor/datatable/dataTables.bootstrap.min.css"); ?>">
 <link rel="stylesheet" href="<?php echo base_url("assets/vendor/plugins/select2/css/select2.min.css"); ?>">
-<link rel="stylesheet" href="<?php echo base_url("assets/vendor/plugins/datetimepicker/css/daterangepicker.css"); ?>"> 
+<link rel="stylesheet" href="<?php echo base_url("assets/vendor/plugins/datetimepicker/css/daterangepicker.css"); ?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/css/views/ejemplosView.css') ?>">
 <!-- /CSS -->
 
-             
+
     <div class="container">
 
     <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" id="Administracion-tab" data-toggle="tab" href="#Administracion" role="tab" aria-controls="Administracion" aria-selected="true">Administración</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="darBaja-tab" data-toggle="tab" href="#darBaja" role="tab" aria-controls="darBaja" aria-selected="false">Dar de baja</a>
             </li>
     </ul>
 
@@ -31,27 +28,33 @@
                 <table id="table" class="table display" style="width:100%">
                     <thead>
                         <tr>
+                            <th>Folio</th>
                             <th>Nombre</th>
                             <th>Apellido paterno</th>
                             <th>Apellido materno</th>
+                            <th>Fecha de registro</th>
+                            <th>Tipo de solicitud</th>
                             <th>Estatus</th>
-                            <th colspan="4">Acciones</th>
+                            <th colspan="4" style="text-align: center">Acciones</th>
                         </tr>
                     </thead>
-                    <tbody>  
+                    <tbody>
                         <tr>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                         <td>
-                            <a href="<?php echo site_url("personaCedula/datosPersonalestab") ?>"><i class="fa fa-print"></i></a>
+                            <a href="<?php echo site_url("personaCedula/index") ?>"><i class="fa fa-print"></i></a>
                         </td>
                         <td>
-                            <a href="<?php echo site_url("personaCedula/datosPersonalestab") ?>"><i class="fa fa-eye"></i></a>
+                            <a href="<?php echo site_url("personaCedula/index") ?>"><i class="fa fa-eye"></i></a>
                         </td>
                         <td>
-                            <a href="<?php echo site_url("personaCedula/datosPersonalestab") ?>"><i class="fa fa-pencil-square-o"></i></a>
+                            <a href="<?php echo site_url("personaCedula/index") ?>"><i class="fa fa-pencil-square-o"></i></a>
                         </td>
                         <td>
                             <a href="#"><i class="fa fa-trash"></i></a>
@@ -62,14 +65,17 @@
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                         <td>
-                            <a href="<?php echo site_url("personaCedula/datosPersonalestab") ?>"><i class="fa fa-print"></i></a>
+                            <a href="<?php echo site_url("personaCedula/index") ?>"><i class="fa fa-print"></i></a>
                         </td>
                         <td>
-                            <a href="<?php echo site_url("personaCedula/datosPersonalestab") ?>"><i class="fa fa-eye"></i></a>
+                            <a href="<?php echo site_url("personaCedula/index") ?>"><i class="fa fa-eye"></i></a>
                         </td>
                         <td>
-                            <a href="<?php echo site_url("personaCedula/datosPersonalestab") ?>"><i class="fa fa-pencil-square-o"></i></a>
+                            <a href="<?php echo site_url("personaCedula/index") ?>"><i class="fa fa-pencil-square-o"></i></a>
                         </td>
                         <td>
                             <a href="#"><i class="fa fa-trash"></i></a>
@@ -80,20 +86,23 @@
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                         <td>
-                            <a href="<?php echo site_url("personaCedula/datosPersonalestab") ?>"><i class="fa fa-print"></i></a>
+                            <a href="<?php echo site_url("personaCedula/index") ?>"><i class="fa fa-print"></i></a>
                         </td>
                         <td>
-                            <a href="<?php echo site_url("personaCedula/datosPersonalestab") ?>"><i class="fa fa-eye"></i></a>
+                            <a href="<?php echo site_url("personaCedula/index") ?>"><i class="fa fa-eye"></i></a>
                         </td>
                         <td>
-                            <a href="<?php echo site_url("personaCedula/datosPersonalestab") ?>"><i class="fa fa-pencil-square-o"></i></a>
+                            <a href="<?php echo site_url("personaCedula/index") ?>"><i class="fa fa-pencil-square-o"></i></a>
                         </td>
                         <td>
                             <a href="#"><i class="fa fa-trash"></i></a>
                         </td>
                         </tr>
-                        
+
                     </tbody>
                 </table>
                 <!-- END TABLE -->
@@ -104,7 +113,6 @@
         <div>
     </div>
         <br>
-        
     </div>
 
 <!-- JS -->
@@ -123,7 +131,7 @@
 
     $("#Nuevo").on("click",function(e){
         e.preventDefault();
-        window.location.href="<?php echo site_url("personaCedula/datosPersonalestab");?>";
+        location.href="<?php echo site_url("personaCedula/index");?>";
     })
 </script>
 <!-- /JS -->

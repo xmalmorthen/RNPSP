@@ -51,6 +51,8 @@
 		<!-- /JS -->
 		<!-- /VENDOR -->
 
+		
+
 		<!-- JS -->
 		<script src="<?php echo base_url('assets/js/utils/guid.js'); ?>"></script>
 		<script>
@@ -95,14 +97,17 @@
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-xl-12">
-								<div class="breadcrumb-holder">
-									<h1 class="main-title float-left"><?php echo $this->session->flashdata('titleBody'); ?></h1>													
+					
+								<div class="breadcrumb-holder fixed-top" style="margin-top: 91px;">
+									<h1 class="main-title float-left" hidden><?php echo $this->session->flashdata('titleBody'); ?></h1>													
 									<?php echo isset($this->breadcrumbs) ? $this->breadcrumbs->show() : ''; ?>
+							
 									<div class="clearfix"></div>													
 								</div>
 							</div>
 						</div>
 						<div>
+						<br><br><br><br>
 							<!-- BODY -->
 							<?php echo isset($body) ? $body : '' ?>
 							<!-- BODY -->
@@ -114,3 +119,4 @@
 		<script src="<?php echo base_url('assets/vendor/js/pikeadmin.js'); ?>"></script>		
 	</body>
 </html>
+

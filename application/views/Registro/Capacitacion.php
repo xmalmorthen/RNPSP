@@ -102,7 +102,7 @@
                             </div>
                             <div class="col-md-4"></div>
                                 <div class="col-md-4">
-                                    <button class="btn btn-default">Limpiar formulario</button>
+                                    
                                 </div>    
                             </div>
                             <br>
@@ -206,7 +206,7 @@
                             </div>
                             <div class="col-md-4"></div>
                             <div class="col-md-4">
-                                <button class="btn btn-default">Limpiar formulario</button>
+                                
                             </div>    
                         </div>
                         <br>
@@ -300,7 +300,7 @@
                             </div>
                             <div class="col-md-4"></div>
                             <div class="col-md-4">
-                                <button class="btn btn-default">Limpiar formulario</button>
+                                
                             </div>    
                         </div>
                         <br> 
@@ -373,7 +373,7 @@
                             </div>
                             <div class="col-md-4"></div>
                             <div class="col-md-4">
-                                <button class="btn btn-default">Limpiar formulario</button>
+                                
                             </div>    
                         </div>
                         <br>
@@ -449,7 +449,7 @@
                             </div>
                             <div class="col-md-4"></div>
                             <div class="col-md-4">
-                                <button class="btn btn-default">Limpiar formulario</button>
+                                
                             </div>    
                         </div>
                         <br>
