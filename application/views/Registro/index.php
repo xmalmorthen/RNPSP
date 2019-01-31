@@ -7,18 +7,14 @@
                 <li class="nav-item">
                     <a class="nav-link active" id="datosGenerales-tab" data-toggle="tab" href="#datosGenerales" role="tab" aria-controls="datosGenerales" aria-selected="true">Datos generales</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="objetosAsignados-tab" data-toggle="tab" href="#objetosAsignados" role="tab" aria-controls="objetosAsignados" aria-selected="false">Objetos asignados</a>
-                </li>
+            
                 <li class="nav-item">
                     <a class="nav-link" id="Laboral-tab" data-toggle="tab" href="#Laboral" role="tab" aria-controls="Laboral" aria-selected="false">Laboral</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="Capacitacion-tab" data-toggle="tab" href="#Capacitacion" role="tab" aria-controls="Capacitacion" aria-selected="false">Capacitación</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="Sanciones-tab" data-toggle="tab" href="#Sanciones" role="tab" aria-controls="Sanciones" aria-selected="false">Sanciones/Estimulos</a>
-                </li>
+          
                 <li class="nav-item">
                     <a class="nav-link" id="Identificacion-tab" data-toggle="tab" href="#Identificacion" role="tab" aria-controls="Identificacion" aria-selected="false">Identificación</a>
                 </li>
@@ -34,9 +30,7 @@
             <li class="nav-item">
                 <a class="nav-link" id="Desarrollo-tab" data-toggle="tab" href="#Desarrollo" role="tab" aria-controls="Desarrollo" aria-selected="false">Desarrollo académico</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="Experiencia_docente-tab" data-toggle="tab" href="#Experiencia_docente" role="tab" aria-controls="Experiencia_docente" aria-selected="false">Experiencia docente</a>
-            </li>
+         
             <li class="nav-item">
                 <a class="nav-link" id="Domicilio-tab" data-toggle="tab" href="#Domicilio" role="tab" aria-controls="Domicilio" aria-selected="false">Domicilio</a>
             </li>
@@ -46,41 +40,23 @@
             <li class="nav-item">
                 <a class="nav-link" id="Socioeconomicos-tab" data-toggle="tab" href="#Socioeconomicos" role="tab" aria-controls="Socioeconomicos" aria-selected="false">Socioeconómicos</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="Prestaciones-tab" data-toggle="tab" href="#Prestaciones" role="tab" aria-controls="Prestaciones" aria-selected="false">Prestaciones</a>
-            </li>
+        
         </ul>
     </div>
-    <div class="row" id="submenu_objetos_asignados" style="display: none">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" id="Armamento_asignado-tab" data-toggle="tab" href="#Armamento_asignado" role="tab" aria-controls="Armamento_asignado" aria-selected="true">Armamento asignado</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="Vehiculo_asignado-tab" data-toggle="tab" href="#Vehiculo_asignado" role="tab" aria-controls="Vehiculo_asignado" aria-selected="false">Vehículo asignado</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="Equipo_policial-tab" data-toggle="tab" href="#Equipo_policial_asignado" role="tab" aria-controls="Equipo_policial_asignado" aria-selected="false">Equipo policial</a>
-            </li>
-        </ul>
-    </div>
+
     <div class="row" id="submenu_laboral" style="display: none">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="Empleos_en_seguridad_publica-tab" data-toggle="tab" href="#Empleos_en_seguridad_publica" role="tab" aria-controls="Empleos_en_seguridad_publica" aria-selected="true">Empleos en seguridad pública</a>
+                <a class="nav-link active" id="Adscripcion_actual-tab" data-toggle="tab" href="#Adscripcion_actual" role="tab" aria-controls="Adscripcion_actual" aria-selected="false">Adscripción actual</a>
             </li>
+       
             <li class="nav-item">
                 <a class="nav-link" id="Empleos_diversos-tab" data-toggle="tab" href="#Empleos_diversos" role="tab" aria-controls="Empleos_diversos" aria-selected="false">Empleos diversos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="Adscripcion_actual-tab" data-toggle="tab" href="#Adscripcion_actual" role="tab" aria-controls="Adscripcion_actual" aria-selected="false">Adscripción actual</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" id="Actitudes_hacia_el_empleo-tab" data-toggle="tab" href="#Actitudes_hacia_el_empleo" role="tab" aria-controls="Actitudes_hacia_el_empleo" aria-selected="false">Actitudes hacia el empleo</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="Disciplina_policial-tab" data-toggle="tab" href="#Disciplina_policial" role="tab" aria-controls="Disciplina_policial" aria-selected="false">Disciplina policial</a>
-            </li>
+         
 
             <li class="nav-item">
                 <a class="nav-link" id="Comisiones-tab" data-toggle="tab" href="#Comisiones" role="tab" aria-controls="Comisiones" aria-selected="false">Comisiones</a>
@@ -89,36 +65,17 @@
     </div>
     <div class="row" id="submenu_capacitacion" style="display: none">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" id="Capacitacion_seguridad_publica-tab" data-toggle="tab" href="#Capacitacion_seguridad_publica" role="tab" aria-controls="Capacitacion_seguridad_publica" aria-selected="true">Capacitación de seguridad pública</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="Capacitacion_adicional-tab" data-toggle="tab" href="#Capacitacion_adicional" role="tab" aria-controls="Capacitacion_adicional" aria-selected="false">Capacitación adicional</a>
-            </li>
+         
             <li class="nav-item">
                 <a class="nav-link" id="Idiomas_dialectos-tab" data-toggle="tab" href="#Idiomas_dialectos" role="tab" aria-controls="Idiomas_dialectos" aria-selected="false">Idiomas y/o dialectos</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="Habilidades_aptitudes-tab" data-toggle="tab" href="#Habilidades_aptitudes" role="tab" aria-controls="Habilidades_aptitudes" aria-selected="false">Habilidades y aptitudes</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="Afiliacion_agrupaciones-tab" data-toggle="tab" href="#Afiliacion_agrupaciones" role="tab" aria-controls="Afiliacion_agrupaciones" aria-selected="false">Afiliación a agrupaciones</a>
-            </li>
+           
         </ul>
     </div>
-    <div class="row" id="submenu_sanciones_y_estimulos" style="display: none" >
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" id="Sanciones_recomendaciones-tab" data-toggle="tab" href="#Sanciones_recomendaciones" role="tab" aria-controls="Sanciones_recomendaciones" aria-selected="true">Sanciones y/o recomendaciones</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="Resoluciones_ministeriales_judiciales-tab" data-toggle="tab" href="#Resoluciones_ministeriales_judiciales" role="tab" aria-controls="Resoluciones_ministeriales_judiciales" aria-selected="false">Resoluciones ministeriales y/o judiciales</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="Estimulos_recibidos-tab" data-toggle="tab" href="#Estimulos_recibidos" role="tab" aria-controls="Estimulos_recibidos" aria-selected="false">Estímulos recibidos</a>
-            </li>
-        </ul>
-    </div>
+
     <div class="row" id="submenu_identificacion" style="display: none">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
@@ -279,7 +236,7 @@
 
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <span class="clr">*</span>Motivo de cambio de CIB <!-- PENDIENTE -->
+                                                    Motivo de cambio de CIB 
                                                     <input type="text" class="form-control">
                                                     <br>
                                                 </div>
@@ -400,8 +357,8 @@
                                                         <th>Id nivel</th>
                                                         <th>Máxima escolaridad</th>
                                                         <th>Especialidad</th>
-                                                        <th>Año de inicio</th>
-                                                        <th>Año de término</th>
+                                                        <th>Fecha de inicio</th>
+                                                        <th>Fecha de término</th>
                                                         <th>Promedio</th>
                                                     </thead>
                                                     <tbody>
@@ -440,99 +397,7 @@
                                         </div>
                                     </div>
                                     <!-- Fin de tab de desarrollo académico -->
-                                    <!-- Inicio de experiencia docente  -->
-                                    <div class="tab-pane" id="Experiencia_docente" role="tabpanel" aria-labelledby="Experiencia_docente-tab">
-                                        <div class="container">
-                                        <br>
-                                            <div class="row">
-                                                <div class="col-md-4">
-
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <center><strong class="titulo">Experiencia docente</strong></center>
-                                                </div>
-                                            </div>
-                                            <br>
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <span class="clr">*</span>Nombre del curso
-                                                    <input type="text" class="form-control" id="@pCURSO" name="@pCURSO" required>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <span class="clr">*</span>Nombre de la Institución
-                                                    <input type="text" class="form-control" id="@pINSTITUCION" name="@pINSTITUCION" required>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <span class="clr">*</span>Fecha de inicio
-                                                    <input type="date" class="form-control" id="@pFECHA_INICIO" name="@pFECHA_INICIO" required>
-                                                </div>
-                                            </div>
-                                            <br>
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    Fecha de término
-                                                    <input type="date"  class="form-control" id="@pFECHA_TERMINO" namne="@pFECHA_TERMINO">
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <span class="clr">*</span>Institución que certifica
-                                                    <input type="text" class="form-control" id="@pCERTIFICADO" name="@pCERTIFICADO" required>
-                                                </div>
-                                            </div>
-                                            <br>
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <button class="btn btn-default">Guardar información docente</button>
-                                                </div>
-                                                <div class="col-md-4"></div>
-                                                <div class="col-md-4">
-
-                                                </div>
-                                            </div>
-                                            <br>
-                                            <hr>
-                                            <br>
-                                          <!-- PENDIENTE POR CHECAR, LOS CAMPOS NO CONCUERDAN  -->
-                                            <table id="table" class="table display" style="width:100%">
-                                                <thead>
-                                                    <th>Id experiencia docente</th>
-                                                    <th>Nombre del curso</th>
-                                                    <th>Nombre de la institución</th>
-                                                    <th>Institución que certifica</th>
-                                                    <th>Fecha de inicio</th>
-                                                    <th>Fecha de término</th>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-4"></div>
-                                            <div class="col-md-4">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <button class="btn btn-default"> Anterior</button>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <button class="btn btn-default">Siguiente</button>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="col-md-4"></div>
-
-                                        </div>
-
-                                    </div>
-                                    <!-- Fin de tab de expriencia docente -->
+                              
                                     <!-- Inicio de tab de domicilio  -->
                                     <div class="tab-pane" id="Domicilio" role="tabpanel" aria-labelledby="Domicilio-tab">
                                         <div class="container">
@@ -1021,87 +886,7 @@
                                     </div>
                                     <!-- Fin de tab de socioeconomicos -->
                                     <!-- Inicio de tab de prestaciones -->
-                                    <div class="tab-pane fade" id="Prestaciones" role="tabpanel"aria-labelledby="Prestaciones-tab" >
-                                    <div class="Content">
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-md-4">
-
-                                            </div>
-                                            <div class="col-md-4">
-                                                <center><strong class="titulo">Prestaciones</strong></center>
-
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <span class="clr">*</span>Tipo de prestación
-                                                <select name="" id="" class="form-control" id="ID_TIPO_PRESTACION" name="ID_TIPO_PRESTACION" required></select>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <span class="clr">*</span>Fecha de prestación
-                                                <input type="date" class="form-control" id="FECHA" name="FECHA" required>
-                                            </div>
-                                            <div class="col-md-4">
-                                            <span class="clr">*</span>Monto
-                                                <input type="text" class="form-control" id="MONTO" name="MONTO" required>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <button class="btn btn-default">Guardar prestación</button>
-                                            </div>
-                                            <div class="col-md-4"></div>
-                                            <div class="col-md-4">
-
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <hr>
-                                        <br>
-                                        <table id="table" class="table display">
-                                            <thead>
-                                                <th>Id prestación</th>
-                                                <th>Tipo de prestación</th>
-                                                <th>Fecha de prestación</th>
-                                                <th>Monto</th>
-                                                <th>Justificación</th>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-
-                                            </tbody>
-
-                                        </table>
-
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-4"></div>
-                                        <div class="col-md-4">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <button class="btn btn-default"> Anterior</button>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <button class="btn btn-default">Finalizar</button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-md-4"></div>
-
-                                    </div>
-
-                                     </div>
+                                   
 
                                     </div>
                                 </div>
@@ -1115,647 +900,10 @@
 
         </div>
     </div>
-    <div class="content_submenu_objetos_asignados" style="display: none">
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="Armamento_asignado" role="tabpanel" arialabelledby="Armamento_asignado-tab">
-                <div class="container">
-                    <form action="#" autocomplete="off">
-                            <br>
-                        <div class="row">
-                            <div class="col-md-4"></div>
-                            <div class="col-md-4">
-                                <center><strong class="titulo">Armamento asignado (de cargo)</strong></center>
-                            </div>
-                        </div>
-                        <br>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Número de licencia de portación
-                                <input type="text" class="form-control" id="pNUMERO_LICENCIA" name="pNUMERO_LICENCIA" required>
-                            </div>
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Número de matrícula
-                                <input type="text" class="form-control" id="pNumero_MATRICULA" name="pNumero_MATRICULA" required>
-                            </div>
-                            <div class="col-md-4">
-                                Inicio de vigencia
-                                <input type="date" class="form-control" id="pINICIO_LICENCIA" name="pINICIO_LICENCIA" required>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                Término de vigencia
-                                <input type="date"class="form-control"  id="pTERMINO_LICENCIA" name="pTERMINO_LICENCIA">
-                            </div>
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Tipo de arma <!-- Se llena del catalogo "TIPO_ARMA" -->
-                                <select class="form-control" id="pID_TIPO_ARMA" name="pID_TIPO_ARMA" required></select>
-                            </div>
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Marca de arma <!-- Se llena del catalogo "MARCA_ARMA" dependiendo del catalogo "TIPO_ARMA" -->
-                                <select class="form-control" id="pID_MARCA_ARMA" name="pID_MARCA_ARMA" required ></select>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Modelo de arma <!-- Se llena del catalogo "MODELO_ARMA" dependiendo del catalogo "TIPO_ARMA" y "MARCA_ARMA" -->
-                                <select name="pID_MODELO_ARMA" id="pID_MODELO_ARMA" class="form-control" required></select>
-                            </div>
-                            <div class="col-md-4">
-                                Calibre de arma <!-- Se llena del catalogo "CALIBRE_ARMA" dependiendo del catalogo "TIPO_ARMA", "MARCA_ARMA" y "MODELO_ARMA" -->
-                                <select name="pID_CALIBRE_ARMA" id="pID_CALIBRE_ARMA" class="form-control"></select>
-                            </div>
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Fecha de asignación
-                                <input type="date" name="pINICIO_ASIGNACION" id="pINICIO_ASIGNACION" class="form-control" required>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                Término de asignación
-                                <input type="date" name="pTERMINO_ASIGNACION" id="pTERMINO_ASIGNACION" class="form-control">
-                            </div>
-                            <div class="col-md-4">
-                                Documento de asignación
-                                <input type="text" class="form-control" id="pDOC_ASIGNACION" name="pDOC_ASIGNACION">
-                            </div>
-                            <div class="col-md-4">
-                                Documento de descargo
-                                <input type="text" class="form-control" id="pDOC_DESCARGO" name="pDOC_DESCARGO" >
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <button class="btn btn-default">Guardar arma</button>
-                            </div>
-                            <div class="col-md-4"></div>
-                            <div class="col-md-4">
-
-                            </div>
-                        </div>
-                        <br>
-                        <hr>
-                        <br>
-                        <table id="table" class="table display">
-                            <thead>
-                                <th>Id arma asignada</th>
-                                <th>Número de licencia</th>
-                                <th>Matrícula</th>
-                                <th>Tipo de arma</th>
-                                <th>Marca de arma</th>
-                                <th>Fecha de asignación</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <input type="number" id="pID_ALTERNA" name="pID_ALTERNA" hidden>
-                        <input type="number" id="pID_ESTADO_EMISOR" name="pID_ESTADO_EMISOR" hidden>
-                        <input type="number" id="pID_EMISOR" name="pID_EMISOR" hidden>
-                        <input type="number" id="pID_ARMA_EXT" name="pID_ARMA_EXT" hidden>
-
-
-                    </form>
-                    <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4">
-                           <center><button class="btn btn-default">Siguiente</button></center> 
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-            <div class="tab-pane fade show" id="Vehiculo_asignado" role="tabpanel" arialabelledby="Vehiculo_asignado-tab">
-                <div class="container">
-                    <form action="#" autocomplete="off">
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4"></div>
-                            <div class="col-md-4">
-                                <center><strong class="titulo">Vehículo asignado</strong></center>
-
-                            </div>
-                        </div>
-                        <br>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                Número de identificación vehicular (VIN)
-                                <input type="text" class="form-control" id="pVIN" name="pVIN">
-                            </div>
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Número de motor
-                                <input type="text" class="form-control" id="pMOTOR" name="pMOTOR" required>
-                            </div>
-                            <div class="col-md-4">
-                                Número de constancia de inscripción
-                                <input type="text" class="form-control" id="pNCI" name="pNCI">
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                            </div>
-                            <div class="col-md-4">
-                                <center><strong>Datos del vehículo</strong></center>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                Clase de vehículo   <!-- Se llena del catálogo "CLASE_VEHICULO" dependiendo del catálogo "TIPO_VEH"-->
-                                <select class="form-control"></select>
-                            </div>
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Tipo de vehículo<!-- Se llena con el catálogo "TIPO_VEH" -->
-                                <select class="form-control" id="pID_TIPO_VEH" name="pID_TIPO_VEH" required></select>
-                            </div>
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Marca  <!-- Se llena del catalogo "MARCA" depende del catálogo "TIPO_VEH" -->
-                                <select class="form-control" id="pID_MARCA" name="pID_MARCA" required></select>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Submarca <!-- Se llena del catálogo "SUBMARCA" y depende del catálogo "MARCA" y "TIPO_VEH" -->
-                                <select class="form-control" id="pID_SUBMARCA" name="pID_SUBMARCA" required></select>
-                            </div>
-                            <div class="col-md-4">
-                                Modelo
-                                <input type="text" class="form-control" id="pMODELO" name="pMODELO">
-                            </div>
-                            <div class="col-md-4">
-                                Placa
-                                <input type="" class="form-control" id="pPLACA" name="pPLACA">
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Tipo de asignación <!-- TIPO DE ASIGNACION DEL VEHICULO (1/2) = (TITULAR/ACOMPAÑANTE) -->
-                                <select class="form-control" id="pID_TIPO_ASIGNACION" name="pID_TIPO_ASIGNACION" required></select>
-                            </div>
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Fecha de inicio de asignación
-                                <input type="date" class="form-control" id="INICIO_ASIGNACION" name="INICIO_ASIGNACION" required>
-                            </div>
-                            <div class="col-md-4">
-                                Término de asignación
-                                <input type="date" class="form-control" id="pTERMINO_ASIGNACION" name="pTERMINO_ASIGNACION">
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                Documento de asignación
-                                <input type="text" class="form-control" id="pDOC_ASIGNACION" name="pDOC_ASIGNACION">
-                            </div>
-                            <div class="col-md-4">
-                                Documento de descargo
-                                <input type="text" class="form-control" id="pDOC_DESCARGO" name="pDOC_DESCARGO">
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <button class="btn btn-disable">Guardar vehículo</button>
-                            </div>
-                            <div class="col-md-4">
-                            </div>
-                            <div class="col-md-4">
-
-                            </div>
-                        </div>
-                        <br>
-                        <hr>
-                        <br> <!-- Verificar con el modelo de datos -->
-                        <table id="table" class="table display">
-                            <thead>
-                                <th>Id vehículo asignado</th>
-                                <th>VIN</th>
-                                <th>Número de motor</th>
-                                <th>Tipo de vehículo</th>
-                                <th>Modelo</th>
-                                <th>Placa</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <input type="number" id="pID_ALTERNA" name="pID_ALTERNA" hidden>
-                        <input type="number" id="pID_ESTADO_EMISOR" name="pID_ESTADO_EMISOR" hidden>
-                        <input type="number" id="pID_EMISOR" name="pID_EMISOR" hidden>
-                        <input type="number" id="pID_VEHICULO_ASIG_EXT" name="pID_VEHICULO_ASIG_EXT" hidden>
-
-
-
-                    </form>
-                    <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <button class="btn btn-default"> Anterior</button>
-                                </div>
-                                <div class="col-md-6">
-                                    <button class="btn btn-default">Siguiente</button>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-md-4"></div>
-
-                    </div>
-                </div>
-
-
-            </div>
-            <div class="tab-pane fade show" id="Equipo_policial_asignado" role="tabpanel" arialabelledby="Equipo_policial_asignado-tab">
-                <div class="container">
-                    <form action="#" autocomplete=off>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4"></div>
-                            <div class="col-md-4">
-                                <center><strong class="titulo">Equipo policial asignado</strong></center>
-                            </div>
-                        </div>
-                        <br>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Tipo de equipo <!-- Se llena del catálogo "TIPO_EQUIPO" -->
-                                <select  class="form-control" id="pID_TIPO_EQUIPO" name="pID_TIPO_EQUIPO" required></select>
-                            </div>
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Marca de equipo <!-- Se llena del catálogo "MARCA_EQUIPO" y depende del catálogo "TIPO_EQUIPO" -->
-                                <select class="form-control" id="pID_MARCA_EQUIPO" name="pID_MARCA_EQUIPO" required></select>
-                            </div>
-                            <div class="col-md-4">
-                                Modelo del equipo
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                Número de serie de equipo
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Fecha de inicio de asignación
-                                <input type="date" class="form-control" required>
-                            </div>
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Fecha de término de asignación
-                                <input type="date" class="form-control" required>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                Documento de asignación
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="col-md-4">
-                                Documento de descargo
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <button class="btn btn-default">Guardar equipo</button>
-                            </div>
-                        </div>
-                        <br>
-                        <hr>
-                        <br>
-                        <table class="table display">
-                            <thead>
-                                <th>Id equipo asignado</th>
-                                <th>Tipo de equipo</th>
-                                <th>Marca</th>
-                                <th>Inventario</th>
-                                <th>Serie</th>
-                                <th>Inicio de asignación</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <input type="number" id="pID_ALTERNA" name="pID_ALTERNA" hidden>
-                        <input type="number" id="pID_ESTADO_EMISOR" name="pID_ESTADO_EMISOR" hidden>
-                        <input type="number" id="pID_EMISOR" name="pID_EMISOR" hidden>
-                        <input type="number" id="pID_EQUIPO_ASIG_EXT" name="pID_EQUIPO_ASIG_EXT" hidden>
-
-
-                    </form>
-                    <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <button class="btn btn-default"> Anterior</button>
-                                </div>
-                                <div class="col-md-6">
-                                    <button class="btn btn-default">Finalizar</button>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-md-4"></div>
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-        </div>
-    </div>
+  
     <div class="content_submenu_laboral" style="display: none">
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="Empleos_en_seguridad_publica" role="tabpanel" aria-labelledby="Empleos_en_seguridad_publica-tab">
-                <form action="">
-                <br>
-                    <div class="row">
-                        <div class="col-md-4">
-
-                        </div>
-                        <div class="col-md-4">
-                            <center><strong class="titulo">Empleos en seguridad pública</strong></center>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <span class="clr">*</span>Dependencia <!-- Se llena del catalogo "DEPENDENCIA" -->
-                            <select  class="form-control" id="pID_DEPENDENCIA" name="pID_DEPENDENCIA" required>
-                                <option value="">Seleccione</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <span class="clr">*</span>Corporación <!-- Se llena del catalogo "INSTITUCION" -->
-                            <select  class="form-control" id="pINSTITUCION" name="pINSTITUCION" required>
-                                <option value="">Seleccione</option>
-                            </select>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-
-                        </div>
-                        <div class="col-md-4">
-                            <center><strong>Domicilio de la corporación</strong></center>
-
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            Código postal
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="col-md-4">
-                          Estado
-                          <select class="form-control" name="pID_ENTIDAD" id="ID_MUNICPIO"></select>
-                        </div>
-                        <div class="col-md-4">
-                          Municipio
-                            <select class="form-control" name="ID_MUNICPIO" id="ID_MUNICPIO"></select>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                      <div class="col-md-4">
-                          Colonia/Localidad
-                          <input type="text" class="form-control">
-                      </div>
-                      <div class="col-md-4">
-                          Calle
-                          <input type="text" class="form-control">
-                      </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            Número interior
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="col-md-4">
-                            Número exterior
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="col-md-4">
-                            Número telefónico
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <br>
-                    <hr>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                        <span class="clr">*</span>Fecha de ingreso
-                            <input type="date" id="pFECHA_INGRESO" name="pFECHA_INGRESO" required  class="form-control"  class="form-control">
-                        </div>
-                        <div class="col-md-4">
-                            <span class="clr">*</span>Fecha de separación
-                            <input type="date" id="pFECHA_BAJA" name="pFECHA_BAJA" required  class="form-control" class="form-control">
-                        </div>
-                        <div class="col-md-4">
-                            <span class="clr">*</span>Puesto funcional <!-- Se llena del catalogo "PUESTO" -->
-                            <select  class="form-control" id="pID_PUESTO" name="pID_PUESTO" required  class="form-control">
-                                <option value="">Seleccione</option>
-                            </select>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            Funciones
-                            <input type="text" id="pFUNCIONES" name="pFUNCIONES"  class="form-control">
-                        </div>
-                        <div class="col-md-4">
-                            Especialidad
-                            <input type="text" id="pESPECIALIDAD" name="pESPECIALIDAD"  class="form-control">
-                        </div>
-                        <div class="col-md-4">
-                            Rango o categoría
-                            <input type="text" id="pRANGO" name="pRANGO"  class="form-control">
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            Nivel de mando <!-- Se llena del catalogo "NIVEL_MANDO" -->
-                            <select  class="form-control" id="pID_NIVEL_MANDO" name="pID_NIVEL_MANDO"></select>
-                        </div>
-                        <div class="col-md-4">
-                            Número de placa
-                            <input type="text" id="pNUMERO_PLACA" name="pNUMERO_PLACA"  class="form-control">
-                        </div>
-                        <div class="col-md-4">
-                            Número de empleado
-                            <input type="text" id="pNUMERO_EMPLEADO" name="pNUMERO_EMPLEADO"  class="form-control">
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            Sueldo base (Mensual)
-                            <input type="text" id="SUELDO_BASE" name="SUELDO_BASE"  class="form-control">
-                        </div>
-                        <div class="col-md-4">
-                            Compensaciones (Mensuales)
-                            <input type="text" id="pCOMPENSACION" name="pCOMPENSACION"  class="form-control">
-                        </div>
-                        <div class="col-md-4">
-                            Área o departamento
-                            <input type="text"  class="form-control">
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            División
-                            <input type="text" id="pDIVISION" name="pDIVISION"  class="form-control">
-                        </div>
-                        <div class="col-md-4">
-                            CUIP del jefe inmediato
-                            <input type="text"  class="form-control">
-                        </div>
-                        <div class="col-md-4">
-                            Nombre del jefe inmediato
-                            <input type="text"  class="form-control">
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <span class="clr">*</span>Estado<!-- Se llena del catalogo "ENTIDAD" -->
-                            <select  class="form-control" id="pID_ENTIDAD" name="pID_ENTIDAD" required>
-                                <option value="">Seleccione</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4">
-                            <span class="clr">*</span>Municipio <!-- Se llena del catalogo "MUNICIPIO" dependiendo de la entidad -->
-                            <select  class="form-control" id="pID_MUNICIPIO" name="pID_MUNICIPIO" required>
-                                <option value="">Seleccione</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4">
-                            <span class="clr">*</span>Motivo de separación <!-- Se llena del catalogo "MOTIVO_MOV_LAB" -->
-                            <select  class="form-control" id="pID_MOTIVO_MOV_LAB" name="pID_MOTIVO_MOV_LAB" required><option value="">Seleccione</option></select>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <span class="clr">*</span>Tipo de separación <!-- Se llena del catalogo "TIPO_MOV_LAB" -->
-                            <select  class="form-control" id="ID_TIPO_MOV_LAB" name="ID_TIPO_MOV_LAB" required>
-                                <option value="">Seleccione</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4">
-                            Tipo de baja <!-- Existe "TIPO_BAJA" (ELEMENTO) "TIPO_BAJA_INSC"(ASPIRANTE) -->
-                            <select  class="form-control" id="pID_TIPO_BAJA" name="pID_TIPO_BAJA">
-                                <option value="">Seleccione</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4">
-                            Comentarios
-                            <input type="text" id="pOBSERVACION_BAJA" name="pOBSERVACION_BAJA"  class="form-control">
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            Funciones del puesto <!-- Se llena del catalogo "FUNCION_PUESTO" -->
-                            <select  class="form-control" id="pID_FUNCION_PUESTO" name="pID_FUNCION_PUESTO"></select>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <button class="btn btn-light">Guardar empleo</button>
-                        </div>
-                    </div>
-                    <br>
-                    <hr>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <table id="table" class="table display">
-                                <thead>
-                                    <tr>
-                                        <th>Id empleo en seguridad pública</th>
-                                        <th>Dependencia</th>
-                                        <th>Corporación</th>
-                                        <th>Fecha de ingreso</th>
-                                        <th>Fecha de separación</th>
-                                        <th>Número de empleado</th>
-                                        <th>Estado</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
-                    </div>
-                            <!-- HIDDEN INPUTS -->
-                    <input type="number" id="pID_ALTERNA" name="pID_ESTADO_EMISOR" autocomplete="off" hidden>
-                    <input type="number" id="pID_ESTADO_EMISOR" name="pID_ALTERNA" autocomplete="off" hidden>
-                    <input type="number" id="pID_EMISOR" name="pID_EMISOR" autocomplete="off" hidden>
-                    <input type="number" id="pID_DOC_BAJA" name="pID_DOC_BAJA" autocomplete="off" hidden>
-                    <input type="number" id="pID_DOC_BAJA" name="pID_DOC_BAJA" autocomplete="off" hidden>
-                    <input type="number" id="pID_TIPO_CONTRATO" name="pID_TIPO_CONTRATO" autocomplete="off" hidden>
-                    <input type="number" id="pID_TIPO_CONTRATO" name="pID_TIPO_CONTRATO" autocomplete="off" hidden>
-                    <input type="text" id="pNUMERO_EXPEDIENTE" name="pNUMERO_EXPEDIENTE" autocomplete="off" hidden>
-                    <input type="number" id="pID_CATEGORIA_PUEST" name="pID_CATEGORIA_PUEST" autocomplete="off" hidden>
-                    <input type="number" id="pID_JERARQUIA_PUEST" name="pID_JERARQUIA_PUEST" autocomplete="off" hidden>
-                    <input type="number" id="pID_AMBITO_PUESTO" name="pID_AMBITO_PUESTO" autocomplete="off" hidden>
-
-
-
-                </form>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><input type="button" name="next" class="btn btn-default" style="height:40px;" value="Siguiente"/></center>
-                    </div>
-                </div>
-
-            </div>
+        
 
             <div class="tab-pane fade" id="Empleos_diversos" role="tabpanel" aria-labelledby="Empleos_diversos-tab">
                 <form action="#">
@@ -1790,15 +938,15 @@
                             <br>
                             <div class="row">
                                 <div class="col-md-4">
-                                    Municipio <!-- Se llena del catalogo "MUNICIPIO" dependiendo del catalogo "ENTIDAD" -->
+                                <span class="clr">*</span>Municipio <!-- Se llena del catalogo "MUNICIPIO" dependiendo del catalogo "ENTIDAD" -->
                                     <select  class="form-control" id="pID_MUNICIPIO" name="pID_MUNICIPIO" required></select>
                                 </div>
                                 <div class="col-md-4">
-                                    <span class="clr">*</span>Colonia/Localidad
+                                    Colonia/Localidad
                                     <input type="text" id="pCOLONIA_EMP" name="pCOLONIA_EMP" required  class="form-control">
                                 </div>
                                 <div class="col-md-4">
-                                <span class="clr">*</span>Calle y número
+                                Calle y número
                                     <input type="text" id="pCALLE_Y_NUM_EMP" name="pCALLE_Y_NUM_EMP" required  class="form-control">
                                 </div>
                             </div>
@@ -1910,7 +1058,7 @@
             </div>
             <!-- Fin de tab de empleos diversos -->
             <!-- Inicio de adsccripción actual -->
-            <div class="tab-pane fade" id="Adscripcion_actual" role="tabpanel" aria-labelledby="Adscripcion_actual-tab">
+            <div class="tab-pane fade show active" id="Adscripcion_actual" role="tabpanel" aria-labelledby="Adscripcion_actual-tab">
                 <div class="container">
                     <form action="#" autocomplete="off">
 
@@ -2187,17 +1335,17 @@
                             ¿En qué tiempo desea ascender?
                             <input type="text" id="pTIEMPO_ASCENDER" name="pTIEMPO_ASCENDER" class="form-control">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4" style="margin-top: 21px;">
                             ¿Conoce el reglamento de los reconocimientos? <!-- S/N = SI/NO -->
                             <select id="pCONOCE_REG_RECON" name="pCONOCE_REG_RECON" class="form-control"><option value="" id="">Seleccione</option></select>
                         </div>
-                        <div class="col-md-4" >
+                        <div class="col-md-4" style="margin-top: 21px;">
                             ¿Razones por las que no ha obtenido un reconocimiento?
                             <input type="text" id="pRAZON_NO_RECON" name="pRAZON_NO_RECON" class="form-control">
                         </div>
                     </div>
                     <br>
-                    <div class="row">
+                    <div class="row" style="margin-top: 21px;">
                         <div class="col-md-4">
                             ¿Conoce la reglamentación de los ascensos? <!-- S/N = SI/NO -->
                             <select  class="form-control" id="pCONOCE_REG_ASCENSO" name="pCONOCE_REG_ASCENSO">
@@ -2247,96 +1395,8 @@
                     <div class="col-md-4"></div>
                 </div>
             </div>
-
             </div>
-            <!-- Inicio de disciplina policial -->
-            <div class="tab-pane fade" id="Disciplina_policial" role="tabpanel" aria-labelledby="Disciplina_policial-tab">
-                <div class="container">
-                    <form action="#" autocomplete="off">
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-
-                            </div>
-                            <div class="col-md-4">
-
-                                <center><strong class="titulo">Disciplina policial</strong></center>
-
-                            </div>
-                        </div>
-                        <br>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Tipo de disciplina <!-- Se llena del catalogo "TIPO_DISCIPLINA" -->
-                                <select  class="form-control" id="pTIPO" name="pTIPO" required><option value="">Seleccione</option></select>
-                            </div>
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Subtipo de disciplina <!-- Se llena del catalogo "SUBTIPO_DISCIPLINA" dependiendo del catalogo "TIPO_DISCIPLINA" -->
-                                <select  class="form-control" id="pID_SUBTIPO_DIS" name="pID_SUBTIPO_DIS" required><option value="">Seleccione</option></select>
-                            </div>
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Motivo de disciplina
-                                <input type="text" id="pMOTIVO" name="pMOTIVO" required class="form-control">
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <button class="btn btn-light">Guardar disciplina</button>
-                            </div>
-                            <div class="col-md-4">
-
-                            </div>
-                        </div>
-                        <br>
-                        <hr>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <table id="table" class="table display">
-                                    <thead>
-                                        <tr>
-                                            <th>Id disciplina</th>
-                                            <th>Tipo de disciplina</th>
-                                            <th>Subtipo de disciplina</th>
-                                            <th>Motivo de disciplina</th>
-                                        </tr>
-                                    </thead>
-                                </table>
-                            </div>
-                        </div>
-
-                        <!-- HIDDEN INPUTS  -->
-                        <input type="number" id="pID_ALTERNA" name="pID_ESTADO_EMISOR" autocomplete="off" hidden>
-                        <input type="number" id="pID_ESTADO_EMISOR" name="pID_ALTERNA" autocomplete="off" hidden>
-                        <input type="number" id="pID_EMISOR" name="pID_EMISOR" autocomplete="off" hidden>
-                        <input type="date" id="pFECHA_INICIO" name="pFECHA_INICIO" autocomplete="off" hidden>
-                        <input type="date" id="pFECHA_TERMINO" name="pFECHA_TERMINO" autocomplete="off" hidden>
-                        <input type="number" id="pDURACION_DIA" name="pDURACION_DIA" autocomplete="off" hidden>
-                        <input type="number" id="pDURACION_SEMANA" name="pDURACION_SEMANA" autocomplete="off" hidden>
-                        <input type="number" id="pDURACION_MES" name="pDURACION_MES" autocomplete="off" hidden>
-                        <input type="number" name="pID_TIPO_DISCIPLINA" id="pID_TIPO_DISCIPLINA" value="" hidden>
-                    </form>
-                    <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <button class="btn btn-default"> Anterior</button>
-                                </div>
-                                <div class="col-md-6">
-                                    <button class="btn btn-default">Siguiente</button>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-md-4"></div>
-
-                    </div>
-                </div>
-            </div>
-            <!-- Fin de disciplina policial -->
+      
             <!-- Inicio de comisiones -->
             <div class="tab-pane fade" id="Comisiones" role="tabpanel" aria-labelledby="Comisiones-tab">
                 <div class="container">
@@ -2443,240 +1503,9 @@
     </div>
     <div class="content_submenu_capacitacion" style="display: none">
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="Capacitacion_seguridad_publica" role="tabpanel" aria-labelledby="Capacitacion_seguridad_publica-tab">
-                <div class="container">
-                    <form action="#" autocomplete="off">
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4"></div>
-                            <div class="col-md-4">
-                                <center><strong class="titulo">Capacitación de seguridad pública</strong></center>
-
-                            </div>
-                        </div>
-                        <br>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Dependencia responsable <!-- Traer contenido del catalogo "DEP_RESPONSABLE" -->
-                                <select  class="form-control" id="pID_RESPONSABLE" name="pID_RESPONSABLE" required>
-                                    <option value=""></option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Institución capacitadora <!-- Se llena del catalogo  "INSTITUCION_CAPACI" -->
-                                <select  class="form-control" id="pINST_CAPACITA" name="pINST_CAPACITA" required>
-                                    <option value=""></option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                Nombre del curso
-                                <Input type="text" class="form-control" id="pCURSO" name="pCURSO">
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Tema del curso <!-- Se llena del catalogo de "TEMA" -->
-                                <select  class="form-control" id="pID_TEMA" name="pID_TEMA" required>
-                                    <option value=""></option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Nivel del curso recibido <!-- Se llena del catalogo "NIVEL" y depende del select "TEMA"-->
-                                <select  class="form-control" id="pID_NIVEL" name="pID_NIVEL" required>
-                                    <option value=""></option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                Eficiencia terminal <!-- Lo saca del catalogo de "EFICIENCIA" -->
-                                <select  class="form-control" id="pID_EFICIENCIA" name="pID_EFICIENCIA">
-                                    <option value=""></option>
-                                </select>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                Fecha de inicio
-                                <input type="date"  class="form-control" id="pINICIO" name="pINICIO">
-                            </div>
-                            <div class="col-md-4">
-                                Fecha de conclusión
-                                <input type="date"  class="form-control" id="pCONCLUSION" name="pCONCLUSION">
-                            </div>
-                            <div class="col-md-4">
-                                Duración en horas
-                                <Input type="text" class="form-control" id="pDURACION" name="pDURACION">
-                            </div>
-                        </div>
-                        <br>
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <button class="btn btn-default">Guardar capacitación</button>
-                            </div>
-                            <div class="col-md-4"></div>
-                                <div class="col-md-4">
-
-                                </div>
-                            </div>
-                            <br>
-                            <hr>
-                            <br>
-                            <table id="table" class="table display">
-                                <thead>
-                                    <th>Id capacitación</th>
-                                    <th>Dependencia responsable</th>
-                                    <th>Institución capacitadora</th>
-                                    <th>Nombre del curso</th>
-                                    <th>Tema del curso</th>
-                                    <th>Nivel del curso recibido</th>
-                                    <th>Duración en horas</th>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <input type="number" id="pID_ALTERNA" name="pID_ALTERNA" hidden>
-                        <input type="number" id="pID_ESTADO_EMISOR" name="pID_ESTADO_EMISOR" hidden>
-                        <input type="number" id="pID_EMISOR" name="pID_EMISOR" hidden>
-                        <input type="number" id="pID_CAPACITACION_EXT" name="pID_CAPACITACION_EXT" hidden>
-                    </form>
-                    <div class="row">
-                        <div class="col-md-4">
-
-                        </div>
-                        <div class="col-md-4">
-                            <center><input type="button" name="next" class="btn btn-default" style="height:40px;" value="Siguiente"/></center>
-                        </div>
-                    </div>
-                </div>
-            <div class="tab-pane fade" id="Capacitacion_adicional" role="tabpanel" aria-labelledby="Capacitacion_adicional-tab">
-                <div class="container">
-                    <form action="#" autocomplete="off">
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4"></div>
-                            <div class="col-md-4">
-                                <center><strong class="titulo">Capacitación adicional</strong></center>
-
-                            </div>
-                        </div>
-                        <br>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Institución o empresa
-                                <Input type="text" class="form-control" id="pEMPRESA" name="pEMPRESA" required>
-                            </div>
-                            <div class="col-md-4">
-                                Estudio o curso
-                                <Input type="text" class="form-control" id="pCURSO" name="pCURSO">
-                            </div>
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Tipo de curso <!--Se llena del catalogo "TIPO_CURSO_ADIC" -->
-                                <select  class="form-control" id="pID_TIPO_CURSO" name="pID_TIPO_CURSO" required>
-                                    <option value=""></option>
-                                </select>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <span class="clr">*</span>El curso fué <!-- Se llena del catalogo "MODALIDAD_CURSO"<-->
-                                <select name ="" id="" class="form-control" id="pID_MODALIDAD_CURSO" name="pID_MODALIDAD_CURSO" required>
-                                    <option value=""></option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Eficiencia terminal <!-- Se llena del catalogo "EFICIENCIA" -->
-                                <select  class="form-control" id="pID_EFICIENCIA" name="pID_EFICIENCIA" required>
-                                    <option value=""></option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                Fecha de inicio
-                                <input type="date"  class="form-control" id="pFECHA_INICIO" name=pFECHA_INICIO>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                Fecha de conclusión
-                                <input type="date"  class="form-control" id="pFECHA_FIN" name="pFECHA_FIN">
-                            </div>
-                            <div class="col-md-4">
-                                Duración en horas
-                                <Input type="text" class="form-control" id="pDURACION" name="pDURACION">
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <button class="btn btn-default">Guardar capacitación adicional</button>
-                            </div>
-                            <div class="col-md-4"></div>
-                            <div class="col-md-4">
-
-                            </div>
-                        </div>
-                        <br>
-                        <hr>
-                        <br>
-                        <table id="table" class="table display">
-                            <thead>
-                                <th>Id capacitación adicional</th>
-                                <th>Institución o empresa</th>
-                                <th>Estudio o curso</th>
-                                <th>Modalidad</th>
-                                <th>Eficiencia terminal</th>
-                                <th>Duración en horas</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <input type="number" id="pID_ALTERNA" name="pID_ALTERNA" hidden>
-                        <input type="number" id="pID_ESTADO_EMISOR" name="pID_ESTADO_EMISOR" hidden>
-                        <input type="number" id="pID_EMISOR" name="pID_EMISOR" hidden>
-                        <input type="number" id="pID_CAP_ADICIONAL_EXT" name="pID_CAP_ADICIONAL_EXT" hidden>
-                    </form>
-                    <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <button class="btn btn-default"> Anterior</button>
-                                </div>
-                                <div class="col-md-6">
-                                    <button class="btn btn-default">Siguiente</button>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-md-4"></div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="Idiomas_dialectos" role="tabpanel" aria-labelledby="Idiomas_dialectos-tab">
+         
+          
+            <div class="tab-pane fade show active" id="Idiomas_dialectos" role="tabpanel" aria-labelledby="Idiomas_dialectos-tab">
                 <div class="container">
                     <form action="#" autocomplete="off">
                         <br>
@@ -2826,7 +1655,6 @@
                             <thead>
                                 <th>Id habilidad y/o aptitud</th>
                                 <th>Tipo de habilidad y/o aptitud</th>
-                                <th>Descripción</th>
                                 <th>Grado</th>
                             </thead>
                             <tbody>
@@ -2862,435 +1690,10 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="Afiliacion_agrupaciones" role="tabpanel" aria-labelledby="Afiliacion_agrupaciones-tab">
-                <div class="container">
-                    <form action="#" autocomplete="off">
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4"></div>
-                            <div class="col-md-4">
-                                <center><strong class="titulo">Afiliación a agrupaciones</strong></center>
-
-                            </div>
-                        </div>
-                        <br>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Nombre
-                                <Input type="text" class="form-control" id="pNOMBRE_AGRUPACION" name="pNOMBRE_AGRUPACION" required>
-                            </div>
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Fecha de tipo de agrupación<!-- Se llena con el catalogo "TIPO_AGRUPACION" -->
-                                <select  class="form-control" id="pID_TIPO_AGRUPACION" name="pID_TIPO_AGRUPACION" required></select>
-                            </div>
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Fecha de inicio de afiliación
-                                <input type="date" class="form-control" id="pFECHA_INICIO" name="pFECHA_INICIO" required>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                Término de afiliación
-                                <input type="date" class="form-control" id="pFECHA_TERMINO" name="pFECHA_TERMINO">
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <button class="btn btn-default">Guardar afiliación</button>
-                            </div>
-                            <div class="col-md-4"></div>
-                            <div class="col-md-4">
-
-                            </div>
-                        </div>
-                        <br>
-                        <hr>
-                        <br>
-                        <table id="table" class="table display">
-                            <thead>
-                                <th>Id agrupación</th>
-                                <th>Nombre de la agrupación</th>
-                                <th>Tipo de agrupación</th>
-                                <th>Inicio de afiliación</th>
-                                <th>Término de afiliación</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <input type="number" id="pID_ALTERNA" name="pID_ALTERNA" hidden>
-                        <input type="number" id="pID_ESTADO_EMISOR" name="pID_ESTADO_EMISOR" hidden>
-                        <input type="number" id="pID_EMISOR" name="pID_EMISOR" hidden>
-                        <input type="number" id="pID_AGRUPACION_EXT" name="pID_AGRUPACION_EXT" hidden>
-                    </form>
-                    <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <button class="btn btn-default"> Anterior</button>
-                                </div>
-                                <div class="col-md-6">
-                                    <button class="btn btn-default">Finalizar</button>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-md-4"></div>
-
-                    </div>
-                </div>
-            </div>
+         
         </div>
     </div>
-    <div class="content_submenu_sanciones_y_estimulos" style="display: none">
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="Sanciones_recomendaciones" role="tabpanel" aria-labelledby="Sanciones_recomendaciones-tab">
-                <div class="container">
-                    <form action="#" autocomplete="off">
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4"></div>
-                            <div class="col-md-4">
-                                <center><strong class="titulo">Sanciones y/o recomendaciones</strong></center>
-                            </div>
-                        </div>
-                        <br>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                            <span class="clr">*</span>Tipo de sanción y/o recomendación <!-- Se llena del catálogo "TIPO_OBSERVACION" -->
-                                <select  class="form-control" id="pID_TIPO_OBS" name="pID_TIPO_OBS" required></select>
-                            </div>
-                            <div class="col-md-4">
-                            <span class="clr">*</span>Fecha de determinación
-                                <input type="date"  class="form-control" id="pDETERMINACION" name="pDETERMINACION" required>
-                            </div>
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Descripción de la sanción y/o recomendación
-                                <input type="text" class="form-control" id="pDESCRIPCION" name="pDESCRIPCION" required>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Situación de la sanción y/o recomendación
-                                <input type="text" class="form-control" id="pSITUACION" name="pSITUACION" required>
-                            </div>
-                            <div class="col-md-4">
-                                Fecha de inicio de la inhabilitación
-                                <input type="date" class="form-control" id="pFECHA_INICIO" name="pFECHA_INICIO">
-                            </div>
-                            <div class="col-md-4">
-                                Fecha de término de la inhabilitación
-                                <input type="date" class="form-control" id="pFECHA_TERMINO" name="pFECHA_TERMINO">
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Dependencia u organismo que emite la determinación <!-- Se llena del catálogo "DEPENDENCIA" -->
-                                <select  class="form-control" id="pID_DEPENDENCIA" name="pID_DEPENDENCIA" required></select>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <button class="btn btn-default">Guardar sanción</button>
-                            </div>
-                            <div class="col-md-4"></div>
-                            <div class="col-md-4">
-
-                            </div>
-                        </div>
-                        <br>
-                        <hr>
-                        <br>
-                        <table id="table" class="table display">
-                            <thead>
-                                <th>Id sanción y/o recomendación</th>
-                                <th>Descripción de la sanción y/o recomendación</th>
-                                <th>Situación de la sanción y/o recomendación</th>
-                                <th>Fecha de inicio de la inhabilitación</th>
-                                <th>Fecha de término de la inhabilitación</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <input type="number" id="pID_ALTERNA" name="pID_ALTERNA" hidden>
-                        <input type="number" id="pID_ESTADO_EMISOR" name="pID_ESTADO_EMISOR" hidden>
-                        <input type="number" id="pID_EMISOR" name="pID_EMISOR" hidden>
-                        <input type="number" id="pID_SANC_RECOM_EXT" name="pID_SANC_RECOM_EXT" hidden>
-                    </form>
-                    <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4">
-                            <center><input type="button" name="next" class="btn btn-default" style="height:40px;" value="Siguiente"/></center>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="Resoluciones_ministeriales_judiciales" role="tabpanel" aria-labelledby="Resoluciones_ministeriales_judiciales-tab">
-                <div class="container">
-                <form action="#" autocomplete="off">
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4">
-                            <center><strong class="titulo">Resoluciones ministeriales y/o judiciales</strong></center>
-
-                        </div>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <span class="clr">*</span>Institución emisora <!-- Se llena del catálogo "INSTITUCION" -->
-                            <select  class="form-control" id="pID_INSTITUCION" name="pID_INSTITUCION" required></select>
-                        </div>
-                        <div class="col-md-4">
-                            <span class="clr">*</span>Estado <!-- Se llena del catálogo de "ENTIDAD" -->
-                            <select  class="form-control" id="pID_ENTIDAD" name="pID_ENTIDAD" required></select>
-                        </div>
-                        <div class="col-md-4">
-                            Delito(s)
-                            <input type="text" class="form-control" id="pDELITO" name="pDELITO">
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            Motivo
-                            <input type="text" class="form-control" id="pMOTIVO" name="pMOTIVO">
-                        </div>
-                        <div class="col-md-4">
-                            Número de expediente
-                            <input type="text" class="form-control" id="pEXPEDIENTE" name="pEXPEDIENTE">
-                        </div>
-                        <div class="col-md-4">
-                            Agencia del ministerio público
-                            <input type="text" class="form-control" id="pAGENCIA_MP" name="pAGENCIA_MP">
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            Averiguación previa
-                            <input type="text" class="form-control" id="pAVERIGUACION_PREV" name="pAVERIGUACION_PREV">
-                        </div>
-                        <div class="col-md-4">
-                            Estado de la averiguación previa
-                            <input type="text" class="form-control" id="pESTADO_AVERIGUACIO" name="pESTADO_AVERIGUACIO">
-                        </div>
-                        <div class="col-md-4">
-                            <span class="clr">*</span>Tipo de fuero
-                            <input type="text" class="form-control" id="pFUERO" name="pFUERO" required>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            Fecha de inicio de la averiguación previa
-                            <input type="date"  class="form-control" id="pFECHA_AVERIGUACION" name="pFECHA_AVERIGUACION">
-                        </div>
-                        <div class="col-md-4">
-                            Fecha del estado de la averiguación previa
-                            <input type="date"  class="form-control" id="pFECHA_ESTADO_AV" name="pFECHA_ESTADO_AV">
-                        </div>
-                        <div class="col-md-4">
-                            Juzgado
-                            <input type="text" class="form-control" id="pJUZGADO" name="pJUZGADO">
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            Número de proceso
-                            <input type="text" class="form-control" id="pNUM_PROCESO" name="pNUM_PROCESO">
-                        </div>
-                        <div class="col-md-4">
-                            Estado procesal
-                            <input type="text" class="form-control" id="pESTADO_PROCESO" name="pESTADO_PROCESO">
-                        </div>
-                        <div class="col-md-4">
-                            Fecha de inicio del proceso
-                            <input type="date"  class="form-control" id="pFECHA_PROCESO" name="pFECHA_PROCESO">
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            Fecha del estado procesal
-                            <input type="date"  class="form-control" id="pFECHA_ESTADO_PROC" name="pFECHA_ESTADO_PROC">
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <button class="btn btn-default">Guardar resolución</button>
-                        </div>
-                        <div class="col-md-4"></div>
-                            <div class="col-md-4">
-
-                            </div>
-                        </div>
-                        <br>
-                        <hr>
-                        <br>
-                        <table id="table" class="table display">
-                            <thead>
-                                <th>Id resolución</th>
-                                <th>Estado</th>
-                                <th>Delito(s)</th>
-                                <th>Agencia del ministerio público</th>
-                                <th>Tipo de fuero</th>
-                                <th>Fecha de nicio de averiguación previa</th>
-                                <th>Fecha de estado de averiguación previa</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <input type="number" id="pID_ALTERNA" name="pID_ALTERNA" hidden>
-                        <input type="number" id="pID_ESTADO_EMISOR" name="pID_ESTADO_EMISOR" hidden>
-                        <input type="number" id="pID_EMISOR" name="pID_EMISOR" hidden>
-                        <input type="number" id="pID_PENAL_EXT" name="pID_PENAL_EXT" hidden>
-                        <input type="number" id="pID_DEPENDENCIA" name="pID_DEPENDENCIA" hidden>
-                    </div>
-                </form>
-                <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <button class="btn btn-default"> Anterior</button>
-                                </div>
-                                <div class="col-md-6">
-                                    <button class="btn btn-default">Siguiente</button>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-md-4"></div>
-
-                    </div>
-            </div>
-            <div class="tab-pane fade" id="Estimulos_recibidos" role="tabpanel" aria-labelledby="Estimulos_recibidos-tab">
-                <div class="container">
-                    <form action="#" autocomplete="off">
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4"></div>
-                            <div class="col-md-4">
-                                <center><strong class="titulo">Estímulos recibidos</strong></center>
-
-                            </div>
-                        </div>
-                        <br>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Tipo de estímulo <!-- Se llena del catálogo "TIPO_ESTIMULO" -->
-                                <select  class="form-control" id="pID_TIPO_ESTIMULO" name="pID_TIPO_ESTIMULO" required></select>
-                            </div>
-                            <div class="col-md-4">
-                                Descripción
-                                <input type="text" class="form-control" id="pDESCRIPCION" name="pDESCRIPCION">
-                            </div>
-                            <div class="col-md-4">
-                                Dependencia que otorga
-                                <input type="text" class="form-control" id="pDEPENDENCIA" name="pDEPENDENCIA">
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-
-                            <div class="col-md-4">
-                                <span class="clr">*</span>Fecha de otorgamiento
-                                <input type="date" class="form-control" id="pFECHA_OTORGAMIENTO" name="pFECHA_OTORGAMIENTO" required>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <button class="btn btn-default">Guardar estímulo</button>
-                            </div>
-                            <div class="col-md-4">
-                            </div>
-                            <div class="col-md-4">
-
-                            </div>
-                        </div>
-                        <br>
-                        <hr>
-                        <br>
-                        <table id="table" class="table display">
-                            <thead>
-                                <th>Id estimulo</th>
-                                <th>Tipo de estímulo</th>
-                                <th>Descripción</th>
-                                <th>Dependencia que otorga</th>
-                                <th>Fecha de otorgamiento</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <input type="number" id="pID_ALTERNA" name="pID_ALTERNA" hidden>
-                        <input type="number" id="pID_ESTADO_EMISOR" name="pID_ESTADO_EMISOR" hidden>
-                        <input type="number" id="pID_EMISOR" name="pID_EMISOR" hidden>
-                        <input type="number" id="pID_ESTIMULO_EXT" name="pID_ESTIMULO_EXT" hidden>
-                    </form>
-                    <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <button class="btn btn-default"> Anterior</button>
-                                </div>
-                                <div class="col-md-6">
-                                    <button class="btn btn-default">Finalizar</button>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-md-4"></div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  
     <div class="content_submenu_identificacion"  style="display: none">
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="mediafiliacion" role="tabpanel" aria-labelledby="mediaFiliacion-tab">
@@ -3638,6 +2041,11 @@
                         </div>
 
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <hr>
+                        </div>
+                    </div>
                     <br>
                     <div class="row">
                         <div class="col-md-4">
@@ -3657,6 +2065,11 @@
                             <center><h6 style="color: #6b6b6b; font-size: 1.0rem"><strong>Otros</strong></h6></center>
                         </div>
 
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <hr>
+                        </div>
                     </div>
                     <br>
                     <div class="row">
@@ -4184,21 +2597,21 @@
                     <div class="row">
                         <div class="col-md-6">
                             <ul>
-                                <dd>CUIP:</dd>
-                                <dd>Adscripcion:</dd>
-                                <dd>Dependencia:</dd>
                                 <dd>Nombre(s):</dd>
                                 <dd>Apellido materno:</dd>
+                                <dd>Apellido paterno</dd>
                                 <dd>Sexo:</dd>
+                                <dd>Fecha de nacimiento:</dd>
+                                <dd>Edad:</dd>
                             </ul>
                         </div>
                         <div class="col-md-6">
                             <ul>
+                                <dd>CUIP:</dd>
+                                <dd>Adscripcion:</dd>
+                                <dd>Dependencia:</dd>
                                 <dd>Folio:</dd>
                                 <dd>Institución</dd>
-                                <dd>Apellido paterno</dd>
-                                <dd>Edad:</dd>
-                                <dd>Fecha de nacimiento:</dd>
                             </ul>
                         </div>
                     </div>
@@ -4400,13 +2813,13 @@
                             <table id="table" class="table display">
                                 <thead>
                                     <tr>
-                                        <td><center>Perfil izquierdo</center></td>
+                                        <td><center><span class="clr">*</span>Perfil izquierdo</center></td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <input type="file"> <br>
+                                            <input type="file" required> <br>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -4418,13 +2831,13 @@
                             <table id="table" class="table display">
                                 <thead>
                                     <tr>
-                                        <td><center>Frente</center></td>
+                                        <td><center><span class="clr">*</span>Frente</center></td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <input type="file"> <br>
+                                            <input type="file" required> <br>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -4436,13 +2849,13 @@
                             <table id="table" class="table display">
                                 <thead>
                                     <tr>
-                                        <td><center>Perfil derecho</center></td>
+                                        <td><center><span class="clr">*</span>Perfil derecho</center></td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <input type="file"> <br>
+                                            <input type="file" required> <br>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -4565,7 +2978,7 @@
                             </select>
                         </div>
                         <div class="col-md-4">
-                            Fecha documento
+                            Fecha de documento
                             <input type="date" class="form-control">
                         </div>
                     </div>
@@ -4604,7 +3017,7 @@
                                         <th>Id documento</th>
                                         <th>Categoría de documento</th>
                                         <th>Valor</th>
-                                        <th>Fecha documento</th>
+                                        <th>Fecha de documento</th>
                                         <th>Estatus</th>
                                 </thead>
                                 <tbody>

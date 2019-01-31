@@ -11,12 +11,7 @@
                    
                    <a href="<?php echo site_url('personaSolicitud/index');?>" ><i class="fa fa-envelope-o"  aria-hidden="true"></i><span> Solicitudes </span></a>
                </li>
-                <li class="submenu">
-                   
-                    <a href="<?php echo site_url('personaRegistro/index');?>" ><i class="fa fa-id-card-o"  aria-hidden="true"></i><span> Registro </span></a>
-                                 
-                   
-                </li>
+            
                                     
                 <li class="submenu">
                     <a href="<?php echo site_url('Usuarios/index');?>" ><i class="fa fa-user-o" aria-hidden="true"></i> <span> Usuarios </span></a>

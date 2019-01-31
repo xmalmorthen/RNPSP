@@ -27,7 +27,7 @@
                                         <th>Apellido materno</th>
                                         <th>Adscripción</th>
                                         <th>Jefe inmediato</th>
-                                        <th colspan="3">Acciones</th> <!-- Ver,Modificar,Dar de baja -->
+                                        <th colspan="4">Acciones</th> <!-- Ver,Modificar,Dar de baja -->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -38,7 +38,9 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-
+                                        <td>
+                                            <a href="<?php echo site_url("personaCedula/index") ?>"><i class="fa fa-print"></i></a>
+                                        </td>
                                         <td><a href="<?php echo site_url('Usuarios/Ver') ?>"><i class="fa fa-eye" aria-hidden="true"></i></a> </td>
                                         <td><a href="<?php echo site_url('Usuarios/Modificar')?>"><i class="fa fa-pencil-square-o"></i></a> </td>
                                         <td> <a href="<?php echo site_url('Usuarios/darBaja')?>"<i class="fa fa-trash-o" aria-hidden="true"></i></a> </td>
@@ -50,7 +52,8 @@
                         </div>
                         <div class="row">
                         <div class="col-md-4">
-                                <button class="btn btn-light" id="Nuevo">Nuevo</button>
+                                
+                                <button class="btn btn-light" id="Nuevo" >Nuevo</button>
                             </div>
                         </div>
                     </form>
@@ -77,7 +80,7 @@
     });
 
     $("#Nuevo").click(function(){
-        location.href="<?php echo site_url('Usuarios/nuevo')?>";
+        location.href="<?php echo site_url("personaCedula/index");?>";
     })
 </script>
 <!-- /JS -->
