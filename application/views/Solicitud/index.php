@@ -51,31 +51,10 @@
                             <a href="<?php echo site_url("personaCedula/index") ?>"><i class="fa fa-print"></i></a>
                         </td>
                         <td>
-                            <a href="<?php echo site_url("personaCedula/index") ?>"><i class="fa fa-eye"></i></a>
+                            <a href="<?php echo site_url("Solicitud/Ver") ?>"><i class="fa fa-eye"></i></a>
                         </td>
                         <td>
-                            <a href="<?php echo site_url("personaCedula/index") ?>"><i class="fa fa-pencil-square-o"></i></a>
-                        </td>
-                        <td>
-                            <a href="#"><i class="fa fa-trash"></i></a>
-                        </td>
-                        </tr>
-                        <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <a href="<?php echo site_url("personaCedula/index") ?>"><i class="fa fa-print"></i></a>
-                        </td>
-                        <td>
-                            <a href="<?php echo site_url("personaCedula/index") ?>"><i class="fa fa-eye"></i></a>
-                        </td>
-                        <td>
-                            <a href="<?php echo site_url("personaCedula/index") ?>"><i class="fa fa-pencil-square-o"></i></a>
+                            <a href="<?php echo site_url("Solicitud/Modificar") ?>"><i class="fa fa-pencil-square-o"></i></a>
                         </td>
                         <td>
                             <a href="#"><i class="fa fa-trash"></i></a>
@@ -93,10 +72,31 @@
                             <a href="<?php echo site_url("personaCedula/index") ?>"><i class="fa fa-print"></i></a>
                         </td>
                         <td>
-                            <a href="<?php echo site_url("personaCedula/index") ?>"><i class="fa fa-eye"></i></a>
+                            <a href="<?php echo site_url("Solicitud/Ver") ?>"><i class="fa fa-eye"></i></a>
                         </td>
                         <td>
-                            <a href="<?php echo site_url("personaCedula/index") ?>"><i class="fa fa-pencil-square-o"></i></a>
+                            <a href="<?php echo site_url("Solicitud/Modificar") ?>"><i class="fa fa-pencil-square-o"></i></a>
+                        </td>
+                        <td>
+                            <a href="#"><i class="fa fa-trash"></i></a>
+                        </td>
+                        </tr>
+                        <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <a href="<?php echo site_url("personaCedula/index") ?>"><i class="fa fa-print"></i></a>
+                        </td>
+                        <td>
+                            <a href="<?php echo site_url("Solicitud/Ver") ?>"><i class="fa fa-eye"></i></a>
+                        </td>
+                        <td>
+                            <a href="<?php echo site_url("Solicitud/Modificar") ?>"><i class="fa fa-pencil-square-o"></i></a>
                         </td>
                         <td>
                             <a href="#"><i class="fa fa-trash"></i></a>
@@ -131,7 +131,7 @@
 
     $("#Nuevo").on("click",function(e){
         e.preventDefault();
-        location.href="<?php echo site_url("personaCedula/index");?>";
+        location.href="<?php echo site_url("Solicitud/Alta");?>";
     })
 </script>
 <!-- /JS -->

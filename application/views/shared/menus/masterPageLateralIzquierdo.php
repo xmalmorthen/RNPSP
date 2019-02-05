@@ -9,7 +9,7 @@
 
                 <li class="submenu">
                    
-                   <a href="<?php echo site_url('personaSolicitud/index');?>" ><i class="fa fa-envelope-o"  aria-hidden="true"></i><span> Solicitudes </span></a>
+                   <a href="<?php echo site_url('Solicitud/index');?>" ><i class="fa fa-envelope-o"  aria-hidden="true"></i><span> Solicitudes </span></a>
                </li>
             
                                     

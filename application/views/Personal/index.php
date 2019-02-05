@@ -17,7 +17,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><a href="<?php echo site_url('personaRegistro/index') ?>"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                <td><a href="<?php echo site_url('Personal/Ver') ?>"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
                 <td><a href="<?php echo site_url('') ?>"><i class="fa fa-print" aria-hidden="true"></i></a></td>
              
             </tr>
@@ -28,7 +28,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><a href="<?php echo site_url('personaRegistro/index') ?>"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                <td><a href="<?php echo site_url('Personal/Ver') ?>"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
                 <td><a href="<?php echo site_url('') ?>"><i class="fa fa-print" aria-hidden="true"></i></a></td>
             </tr>
         </tbody>
