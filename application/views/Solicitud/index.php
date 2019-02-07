@@ -1,5 +1,4 @@
 <!-- CSS -->
-<link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/css/dise.css'); ?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/vendor/datatable/jquery.dataTables.min.css'); ?>">
 <link rel="stylesheet" href="<?php echo base_url("assets/vendor/datatable/dataTables.bootstrap.min.css"); ?>">
@@ -119,19 +118,18 @@
 <script src="<?php echo base_url("assets/vendor/datatable/jquery.dataTables.min.js"); ?>"></script>
 <script src="<?php echo base_url('assets/vendor/plugins/select2/js/select2.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/plugins/datetimepicker/js/daterangepicker.js') ?>"></script>
-<script src="<?php echo base_url('assets/js/views/ejemplosView.js') ?>"></script>
-<script src="<?php echo base_url('assets/js/utils/catalogs.js') ?>"></script>
-<script src="<?php echo base_url('assets/js/utils/serialized.js') ?>"></script>
-<script src="<?php echo base_url('assets/js/jquery.js');?>"></script>
-<script src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script>
 <script>
+    
   $(function() {
-        objView.init();
-    });
-
+        debugger;
+    
     $("#Nuevo").on("click",function(e){
         e.preventDefault();
         location.href="<?php echo site_url("Solicitud/Alta");?>";
     })
+    
+    });
+
+    
 </script>
 <!-- /JS -->
