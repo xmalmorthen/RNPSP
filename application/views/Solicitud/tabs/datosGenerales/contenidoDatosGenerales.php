@@ -26,6 +26,13 @@
                                                     <input type="text" id="pCURP" name="pCURP" class="form-control" max="20" required>
                                                 </div>
                                                 <div class="col-md-4">
+                                                    Tipo de movimiento
+                                                    <select name="" id="" class="form-control"></select>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                            <div class="col-md-4">
                                                     <span class="clr">*</span>Nombre
                                                     <input type="text" id="pNOMBRE" name="pNOMBRE" class="form-control" max="40" required>
                                                 </div>
@@ -33,13 +40,13 @@
                                                     <span class="clr">*</span>Apellido paterno
                                                     <input type="text" id="pPATERNO" name="pPATERNO" class="form-control" max="40" required>
                                                 </div>
-                                            </div>
-                                            <br>
-                                            <div class="row">
                                                 <div class="col-md-4">
                                                     Apellido materno
                                                     <input type="text" id="pMATERNO" name="pMATERNO" class="form-control" max="40" >
                                                 </div>
+                                            </div>
+                                            <br>
+                                            <div class="row">
                                                 <div class="col-md-4">
                                                     <span class="clr">*</span>Sexo
                                                     <select name="" id="" class="form-control" id="pSEXO" name="pSEXO" required></select>
@@ -87,7 +94,7 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <span class="clr">*</span>RFC
-                                                    <input type="text" id="pRFC" name="pRFC" class="form-control" max="13" required>
+                                                    <input type="text" id="pRFC" name="pRFC" class="form-control" min="10" max="13" required>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <span class="clr">*</span>Estado civil
@@ -352,7 +359,7 @@
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <span class="clr">*</span>RFC
-                                                    <input type="text" class="form-control" id="pRFC" name="pRFC" max="13" required>
+                                                    <input type="text" class="form-control" id="pRFC" name="pRFC" max="13" min="10" required>
                                                 </div>
                                             </div>
                                             <br>
