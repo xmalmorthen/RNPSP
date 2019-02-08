@@ -7,21 +7,21 @@
             $this->load->library('breadcrumbs');
         }
 
-
+	
         public function index(){
 
 			// BREADCRUMB
 			$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');
-			$this->breadcrumbs->push('[ Usuarios ] - Usuarios - Registro de usuarios - Alta', site_url('alta/cedula/datosPersonales'));
+			$this->breadcrumbs->push('[ Usuarios ] - Usuarios - Administración', site_url('alta/cedula/datosPersonales'));
 			// /BREADCRUMB
 
 			// TITLE BODY PAGE
-			$this->session->set_flashdata('titleBody','[ Usuarios ] - Usuarios - Registro de usuarios - Alta');
+			$this->session->set_flashdata('titleBody','[ Usuarios ] - Usuarios - Administración');
 			// /TITLE BODY PAGE
 
 			$this->load->view('Usuarios/index');
         }
-        public function Ver(){
+        public function Registro(){
 
 			// BREADCRUMB
 			$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');
@@ -39,42 +39,29 @@
 
 			// BREADCRUMB
 			$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');
-			$this->breadcrumbs->push('[ Usuarios ] - Usuarios - Registro de usuarios - Alta', site_url('alta/cedula/datosPersonales'));
+			$this->breadcrumbs->push('[ Usuarios ] - Usuarios - Modificación de usuarios - Modificar', site_url('alta/cedula/datosPersonales'));
 			// /BREADCRUMB
 
 			// TITLE BODY PAGE
-			$this->session->set_flashdata('titleBody','[ Usuarios ] - Usuarios - Registro de usuarios - Alta');
+			$this->session->set_flashdata('titleBody','[ Usuarios ] - Usuarios - Modificación de usuarios - Modificar');
 			// /TITLE BODY PAGE
 
-			$this->load->view('Usuarios/Registro');
+			$this->load->view('Usuarios/Modificar');
         }
 
-        public function darBaja(){
-
-			// BREADCRUMB
-			$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');
-			$this->breadcrumbs->push('[ Usuarios ] - Usuarios - Registro de usuarios - Alta', site_url('alta/cedula/datosPersonales'));
-			// /BREADCRUMB
-
-			// TITLE BODY PAGE
-			$this->session->set_flashdata('titleBody','[ Usuarios ] - Usuarios - Registro de usuarios - Alta');
-			// /TITLE BODY PAGE
-
-			$this->load->view('Usuarios/Registro');
-        }
-
-        public function nuevo(){
+   
+        public function Ver(){
 
             // BREADCRUMB
             $this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');
-            $this->breadcrumbs->push('[ Usuarios ] - Usuarios - Registro de usuarios - Alta', site_url('alta/cedula/datosPersonales'));
+            $this->breadcrumbs->push('[ Usuarios ] - Usuarios - Consulta de usuarios - Consulta', site_url('alta/cedula/datosPersonales'));
             // /BREADCRUMB
 
             // TITLE BODY PAGE
-            $this->session->set_flashdata('titleBody','[ Usuarios ] - Usuarios - Registro de usuarios - Alta');
+            $this->session->set_flashdata('titleBody','[ Usuarios ] - Usuarios - Consulta de usuarios - Consulta');
             // /TITLE BODY PAGE
 
-            $this->load->view('Usuarios/Registro');
+            $this->load->view('Usuarios/Ver');
         }
 
 

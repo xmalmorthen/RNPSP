@@ -1,11 +1,9 @@
 <!-- CSS -->
-<link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('assets/css/dise.css'); ?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/vendor/datatable/jquery.dataTables.min.css'); ?>">
 <link rel="stylesheet" href="<?php echo base_url("assets/vendor/datatable/dataTables.bootstrap.min.css"); ?>">
 <link rel="stylesheet" href="<?php echo base_url("assets/vendor/plugins/select2/css/select2.min.css"); ?>">
-<link rel="stylesheet" href="<?php echo base_url("assets/vendor/plugins/datetimepicker/css/daterangepicker.css"); ?>">
-<link rel="stylesheet" href="<?php echo base_url('assets/css/views/ejemplosView.css') ?>">
+<link rel="stylesheet" href="<?php echo base_url("assets/vendor/plugins/datetimepicker/css/daterangepicker.css"); ?>"> 
+
 <!-- /CSS -->
 <div class="container">
     <div class="row">
@@ -27,7 +25,7 @@
                                         <th>Apellido materno</th>
                                         <th>Adscripción</th>
                                         <th>Jefe inmediato</th>
-                                        <th colspan="3">Acciones</th> <!-- Ver,Modificar,Dar de baja -->
+                                        <th colspan="4">Acciones</th> <!-- Ver,Modificar,Dar de baja -->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -38,7 +36,9 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-
+                                        <td>
+                                            <a href="<?php echo site_url("personaCedula/index") ?>"><i class="fa fa-print"></i></a>
+                                        </td>
                                         <td><a href="<?php echo site_url('Usuarios/Ver') ?>"><i class="fa fa-eye" aria-hidden="true"></i></a> </td>
                                         <td><a href="<?php echo site_url('Usuarios/Modificar')?>"><i class="fa fa-pencil-square-o"></i></a> </td>
                                         <td> <a href="<?php echo site_url('Usuarios/darBaja')?>"<i class="fa fa-trash-o" aria-hidden="true"></i></a> </td>
@@ -50,7 +50,8 @@
                         </div>
                         <div class="row">
                         <div class="col-md-4">
-                                <button class="btn btn-light" id="Nuevo">Nuevo</button>
+                                
+                                <button class="btn btn-light" id="Nuevo" >Nuevo</button>
                             </div>
                         </div>
                     </form>
@@ -66,18 +67,15 @@
 <script src="<?php echo base_url("assets/vendor/datatable/jquery.dataTables.min.js"); ?>"></script>
 <script src="<?php echo base_url('assets/vendor/plugins/select2/js/select2.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/plugins/datetimepicker/js/daterangepicker.js') ?>"></script>
-<script src="<?php echo base_url('assets/js/views/ejemplosView.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/utils/catalogs.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/utils/serialized.js') ?>"></script>
-<script src="<?php echo base_url('assets/js/jquery.js');?>"></script>
-<script src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script>
 <script>
   $(function() {
         objView.init();
     });
 
     $("#Nuevo").click(function(){
-        location.href="<?php echo site_url('Usuarios/nuevo')?>";
+        location.href="<?php echo site_url("Usuarios/Registro");?>";
     })
 </script>
 <!-- /JS -->
