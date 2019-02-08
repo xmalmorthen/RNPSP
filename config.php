@@ -4,7 +4,7 @@
 ;Descripción: Archivo de configuraciones del sistema
 
 [general] ;Sección general
-proyect_name = "RNPSP" ;En caso de root se deja en blanco
+proyect_name = "SGP" ;En caso de root se deja en blanco
 title = "Sistema Integral de Seguridad Pública"
 environment = development ;Se define en development o production
 [databaseDefault] ;Configuración de base de datos
