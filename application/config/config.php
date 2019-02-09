@@ -27,12 +27,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $cnfg = (object)json_decode(CNFG);
 
 $config['server_protocol'] = isset($_SERVER['REQUEST_SCHEME']) ? $_SERVER['REQUEST_SCHEME'] : ( strpos(strtolower($_SERVER['SERVER_PROTOCOL']), 'https') === false ? 'http' : 'https');
-<<<<<<< HEAD
 $config['base_url'] = $config['base_url'] = $config['server_protocol']."://".$_SERVER['HTTP_HOST']."/SGP/";
 // $config['base_url'] = "http://carlos.zzhype.com/RNPSP/";
-=======
-$config['base_url'] = $config['base_url'] = $config['server_protocol']."://".$_SERVER['HTTP_HOST']."/".$cnfg->general->proyect_name."/";
->>>>>>> 57eaffd62b12ea1803c0bdfced217af22938b976
 $config['server_root'] = $_SERVER['DOCUMENT_ROOT'];
 
 /*
