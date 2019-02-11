@@ -121,8 +121,6 @@
 <script>
     
   $(function() {
-        debugger;
-    
     $("#Nuevo").on("click",function(e){
         e.preventDefault();
         location.href="<?php echo site_url("Solicitud/Alta");?>";
