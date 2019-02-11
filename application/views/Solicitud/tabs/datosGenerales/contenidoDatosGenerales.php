@@ -145,7 +145,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-4">
-                                                    <button class="btn btn-default" id="generarCIB"> Generar CIB</button>
+                                                    <button class="btn btn-default" id="generarCIB"> Guardar CIB</button>
                                                 </div>
                                                 <div class="col-md-4">
                                                 </div>

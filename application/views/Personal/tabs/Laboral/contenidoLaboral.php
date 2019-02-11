@@ -428,11 +428,11 @@
                     </div>
                     <br>
                     <div class="row">
-                        <div class="col-md-4" >
+                        <div class="col-md-4" style="margin-top: 42px;" >
                             ¿En qué tiempo desea ascender?
                             <input type="text" id="pTIEMPO_ASCENDER" name="pTIEMPO_ASCENDER" class="form-control" max="20">
                         </div>
-                        <div class="col-md-4" style="margin-top: 21px;">
+                        <div class="col-md-4" style="margin-top: 42px;">
                             ¿Conoce el reglamento de los reconocimientos? <!-- S/N = SI/NO -->
                             <select id="pCONOCE_REG_RECON" name="pCONOCE_REG_RECON" class="form-control"><option value="" id="">Seleccione</option></select>
                         </div>
