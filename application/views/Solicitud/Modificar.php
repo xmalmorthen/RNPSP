@@ -48,6 +48,8 @@
 
 
 <script type="text/javascript">
+
+$(function() {
 //DATOS GENERALES
 $("#datosGenerales-tab").click(function(){
     $("#submenu_datos_generales").css("display","block");
@@ -139,4 +141,6 @@ $("#Identificacion-tab").click(function(){
     $("#submenu_identificacion").css("display","block");
     $(".content_submenu_identificacion").css("display","block");
 })
+        
+    });
 </script>

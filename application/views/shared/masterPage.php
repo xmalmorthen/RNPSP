@@ -31,6 +31,7 @@
 		<link href="<?php echo base_url('assets/vendor/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet" type="text/css" />
 		<link href="<?php echo base_url('assets/vendor/css/style.css') ?>" rel="stylesheet" type="text/css" />
 		<link href="<?php echo base_url('assets/css/customStyles.css') ?>" rel="stylesheet" type="text/css" />		
+		<link rel="stylesheet" href="<?php echo base_url('assets/css/dise.css') ?>">
 		<!-- /CSS -->
 
 		<!-- JS -->
