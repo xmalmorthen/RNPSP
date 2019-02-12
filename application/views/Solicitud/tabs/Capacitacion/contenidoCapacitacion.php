@@ -1,4 +1,4 @@
-<div class="tab-content" id="myTabContent">
+
 
     <div class="tab-pane fade" id="Capacitacion_adicional" role="tabpanel" aria-labelledby="Capacitacion_adicional-tab">
         <div class="container">
@@ -510,5 +510,5 @@
         </div>
     </div>
 
-</div>
+
  

@@ -1,5 +1,5 @@
-<div class="tab-content" id="myTabContent">
-    
+
+
     <div class="tab-pane fade" id="mediafiliacion" role="tabpanel" aria-labelledby="mediaFiliacion-tab">
         <div class="container">
             <form action="#" id="mediafiliacion_form" name="mediafiliacion_form" autocomplete="off">
@@ -1365,5 +1365,5 @@
             </div>
         </div>
     </div>
-</div>
+
 

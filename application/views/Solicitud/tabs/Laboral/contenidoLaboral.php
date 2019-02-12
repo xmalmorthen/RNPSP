@@ -1,5 +1,4 @@
   
-<div class="tab-content" id="myTabContent">
 
     <div class="tab-pane fade" id="Empleos_diversos" role="tabpanel" aria-labelledby="Empleos_diversos-tab">
         <form action="#">
@@ -594,5 +593,5 @@
     </div>
 
 
-</div>
+
 
