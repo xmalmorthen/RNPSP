@@ -104,13 +104,73 @@
         </ul>
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="Tab1" role="tabpanel" aria-labelledby="Tab1-tab">
-                <div class="m-3">
+                <div class="m-3">                                        
                     <p>Contenido de TAB 1</p>
+                    <!-- TAB INTERIOR -->
+                    <ul class="nav nav-tabs" id="myTabInterior1" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="Tab1-tabInterior1" data-toggle="tab" href="#Tab1Interior1" role="tab" aria-controls="Tab1Interior1" aria-selected="true">Padre Tab1 - Tab1 Interior</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tabInterior1" data-toggle="tab" href="#Tab2Interior1" role="tab" aria-controls="Tab2Interior1" aria-selected="false">Padre Tab1 - Tab2 Interior</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="Tab3-tabInterior1" data-toggle="tab" href="#Tab3Interior1" role="tab" aria-controls="Tab3Interior1" aria-selected="false">Padre Tab1 - Tab3 Interior</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContentInterior1">
+                        <div class="tab-pane fade show active" id="Tab1Interior1" role="tabpanel" aria-labelledby="Tab1-tabInterior1">
+                            <div class="m-3">                                        
+                                <p>Contenido de TAB 1 Interior</p>                                
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="Tab2Interior1" role="tabpanel" aria-labelledby="profile-tabInterior1">
+                            <div class="m-3">
+                                <p>Contenido de TAB 2 Interior</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="Tab3Interior1" role="tabpanel" aria-labelledby="Tab3-tabInterior1">
+                            <div class="m-3">
+                                <p>Contenido de TAB 3 Interior</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FIN - TAB INTERIOR -->
                 </div>
             </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                 <div class="m-3">
                     <p>Contenido de TAB 2</p>
+                    <!-- TAB INTERIOR -->
+                    <ul class="nav nav-tabs" id="myTabInterior2" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="Tab1-tabInterior2" data-toggle="tab" href="#Tab1Interior2" role="tab" aria-controls="Tab1Interior2" aria-selected="true">Padre Tab2 - Tab1 Interior</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tabInterior2" data-toggle="tab" href="#Tab2Interior2" role="tab" aria-controls="Tab2Interior2" aria-selected="false">Padre Tab2 - Tab2 Interior</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="Tab3-tabInterior2" data-toggle="tab" href="#Tab3Interior2" role="tab" aria-controls="Tab3Interior2" aria-selected="false">Padre Tab2 - Tab3 Interior</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContentInterior2">
+                        <div class="tab-pane fade show active" id="Tab1Interior2" role="tabpanel" aria-labelledby="Tab1-tabInterior2">
+                            <div class="m-3">                                        
+                                <p>Contenido de TAB 1 Interior</p>                                
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="Tab2Interior2" role="tabpanel" aria-labelledby="profile-tabInterior2">
+                            <div class="m-3">
+                                <p>Contenido de TAB 2 Interior</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="Tab3Interior2" role="tabpanel" aria-labelledby="Tab3-tabInterior2">
+                            <div class="m-3">
+                                <p>Contenido de TAB 3 Interior</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FIN - TAB INTERIOR -->
                 </div>
             </div>
             <div class="tab-pane fade" id="Tab3" role="tabpanel" aria-labelledby="Tab3-tab">
