@@ -1,6 +1,6 @@
-<div class="row mt-4 " id="submenu_datos_generales">
+<div class="row mt-4" >
     <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item" id="Datos_personales-nav">
+        <li class="nav-item" >
             <a class="nav-link active" id="Datos_personales-tab" data-toggle="tab" href="#Datos_personales" role="tab" aria-controls="Datos_personales" aria-selected="true">Datos personales</a>
         </li>
         <li class="nav-item" id="Desarrollo-nav">
@@ -21,40 +21,6 @@
 </div>
 
 <script type="text/javascript">
-    $("#Datos_personales-nav").click(function(){
-        $("#Datos_personales-tab").css("color","#0ca4ca");
-        $("#Desarrollo-tab").css("color","rgb(73, 80, 87)");
-        $("#Domicilio-tab").css("color","rgb(73, 80, 87)");
-        $("#Referencias-tab").css("color","rgb(73, 80, 87)");
-        $("#Socioeconomicos-tab").css("color","rgb(73, 80, 87)");
-    })
-     $("#Desarrollo-nav").click(function(){
-        $("#Datos_personales-tab").css("color","rgb(73, 80, 87)");
-        $("#Desarrollo-tab").css("color","#0ca4ca");
-        $("#Domicilio-tab").css("color","rgb(73, 80, 87)");
-        $("#Referencias-tab").css("color","rgb(73, 80, 87)");
-        $("#Socioeconomicos-tab").css("color","rgb(73, 80, 87)");
-    })
-    $("#Domicilio-nav").click(function(){
-        $("#Datos_personales-tab").css("color","rgb(73, 80, 87)");
-        $("#Desarrollo-tab").css("color","rgb(73, 80, 87)");
-        $("#Domicilio-tab").css("color","#0ca4ca");
-        $("#Referencias-tab").css("color","rgb(73, 80, 87)");
-        $("#Socioeconomicos-tab").css("color","rgb(73, 80, 87)");
-    })
-    $("#Referencias-nav").click(function(){
-        $("#Datos_personales-tab").css("color","rgb(73, 80, 87)");
-        $("#Desarrollo-tab").css("color","rgb(73, 80, 87)");
-        $("#Domicilio-tab").css("color","rgb(73, 80, 87)");
-        $("#Referencias-tab").css("color","#0ca4ca");
-        $("#Socioeconomicos-tab").css("color","rgb(73, 80, 87)");
-    })
-        $("#Socioeconomicos-nav").click(function(){
-        $("#Datos_personales-tab").css("color","rgb(73, 80, 87)");
-        $("#Desarrollo-tab").css("color","rgb(73, 80, 87)");
-        $("#Domicilio-tab").css("color","rgb(73, 80, 87)");
-        $("#Referencias-tab").css("color","rgb(73, 80, 87)");
-        $("#Socioeconomicos-tab").css("color","#0ca4ca");
-    })
+   
 
 </script>

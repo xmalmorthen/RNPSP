@@ -1,4 +1,4 @@
-<div class="row mt-4" id="submenu_laboral" style="display: none">
+<div class="row mt-4" >
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" id="Adscripcion_actual-tab" data-toggle="tab" href="#Adscripcion_actual" role="tab" aria-controls="Adscripcion_actual" aria-selected="false" style="color:#02657C">Adscripción actual</a>

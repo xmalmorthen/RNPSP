@@ -443,7 +443,7 @@
                     </div>
                     <br>
                     <div class="row" style="margin-top: 21px;">
-                        <div class="col-md-4">
+                        <div class="col-md-4" style="margin-top: 21px;">
                             ¿Conoce la reglamentación de los ascensos? <!-- S/N = SI/NO -->
                             <select  class="form-control" id="pCONOCE_REG_ASCENSO" name="pCONOCE_REG_ASCENSO">
                                 <option value="">Seleccione</option>
@@ -453,7 +453,7 @@
                             ¿Razones por las que no ha obtenido un ascenso?
                             <input type="text" id="pRAZON_NO_RECON" name="pRAZON_NO_RECON" class="form-control" max="150">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4" style="margin-top: 21px;">
                             ¿Qué capacitación le gustaría recibir?
                             <input type="text" id="pCAPACITACION" name="pCAPACITACION" class="form-control" max="100">
                         </div>

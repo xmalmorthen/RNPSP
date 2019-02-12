@@ -1,4 +1,4 @@
- <div class="row mt-4" id="submenu_capacitacion" style="display: none">
+ <div class="row mt-4">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
          
             <li class="nav-item">

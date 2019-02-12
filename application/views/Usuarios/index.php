@@ -71,11 +71,11 @@
 <script src="<?php echo base_url('assets/js/utils/serialized.js') ?>"></script>
 <script>
   $(function() {
-        objView.init();
+     
+        $("#Nuevo").click(function(){
+            location.href="<?php echo site_url("Usuarios/Registro");?>";
+        })
     });
 
-    $("#Nuevo").click(function(){
-        location.href="<?php echo site_url("Usuarios/Registro");?>";
-    })
 </script>
 <!-- /JS -->
