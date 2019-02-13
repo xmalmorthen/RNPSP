@@ -224,15 +224,15 @@
                     <div class="row">
                         <div class="col-md-4">
                             <span class="clr">*</span>Número exterior
-                            <input type="text" class="form-control" required max="30" min="5"  required> 
+                            <input type="text" id="pNUM_EXTERIOR" name="pNUM_EXTERIOR" class="form-control" required max="30" min="5"  required> 
                         </div>
                         <div class="col-md-4">
                             Número interior
-                            <input type="text" class="form-control" max="30" min="4">
+                            <input type="text" id="pNUM_INTERIOR" name="pNUM_INTERIOR" class="form-control" max="30" min="4">
                         </div>
                         <div class="col-md-4">
                         <span class="clr">*</span>Número telefónico
-                            <input type="text" class="form-control" required min="10" max="13">
+                            <input type="text"  id="pTELEFONO" name="pTELEFONO"  class="form-control" required min="10" max="13">
                         </div>
 
 
@@ -279,15 +279,15 @@
                     <div class="row">
                         <div class="col-md-4">
                             Número de expediente
-                            <input type="text" class="form-control" max="20">
+                            <input id="pNUMERO_EXPEDIENTE" name="pNUMERO_EXPEDIENTE" type="text" class="form-control" max="20">
                         </div>
                         <div class="col-md-4">
                             Sueldo base (Mensual)
-                            <input type="text" class="form-control" max="10">
+                            <input id="pSUELDO_BASE" name="pSUELDO_BASE" type="text" class="form-control" max="10">
                         </div>
                         <div class="col-md-4">
                             Compensaciones (Mensuales)
-                            <input type="text" class="form-control" max="10">
+                            <input id="pCOMPENSACION" name="pCOMPENSACION" type="text" class="form-control" max="10">
                         </div>
                     </div>
                     <br>
