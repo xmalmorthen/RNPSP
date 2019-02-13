@@ -56,10 +56,15 @@ var objView = {
                     },
                     //event
                     function(){
-                        
-                        //TODO: IMPLEMENTAR
-
                         $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+                        //VALID FORM
+                        try {
+                            if (!objView.vars.datosGenerales.forms.Datos_personales_form.valid())
+                                throw "Invalid FORM";
+                        }catch(err) {
+                            $.LoadingOverlay("hide");
+                        }
 
                         var callUrl = base_url + 'Ejemplos/ajaxGetSample';
                         model = {

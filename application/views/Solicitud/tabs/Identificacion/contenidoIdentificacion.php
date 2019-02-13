@@ -1058,10 +1058,10 @@
                         <!-- SPACE -->
                     </div>
                     <div class="col-md-4">
-                        <center><audio id="audio" controls style="margin-left: -24px;">
+                        <!-- <center><audio id="audio" controls style="margin-left: -24px;">
                         <source src="ruta_de_audio">
                             Tu navegador no es compatible
-                    </audio></center>
+                    </audio></center> -->
                     </div>
                 </div>
                 <br>

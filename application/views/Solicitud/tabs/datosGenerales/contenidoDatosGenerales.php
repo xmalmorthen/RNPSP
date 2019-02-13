@@ -18,7 +18,8 @@
                     </div>
                     <div class="col-md-4">
                         Tipo de movimiento
-                        <select  class="form-control" name="" id=""></select>
+                        <select  class="form-control" name="" id="" data-error="#err_tipoMovimiento" required></select>
+                        <span id="err_tipoMovimiento"></span>
                     </div>
                 </div>
                 <br>
@@ -40,7 +41,8 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Sexo
-                        <select  class="form-control" id="pSEXO" name="pSEXO" required></select>
+                        <select  class="form-control" id="pSEXO" name="pSEXO" data-error="#err_pSEXO" required></select>
+                        <span id="err_pSEXO"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Fecha de nacimiento
@@ -51,30 +53,36 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>País de nacimiento
-                        <select  class="form-control" id="pID_PAIS_NAC" name="pID_PAIS_NAC" required><option value="">Seleccione</option></select>
+                        <select  class="form-control" id="pID_PAIS_NAC" name="pID_PAIS_NAC" data-error="#err_pID_PAIS_NAC" required><option value="">Seleccione</option></select>
+                        <span id="err_pID_PAIS_NAC"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estado de nacimiento
-                        <select  class="form-control" id="pID_ENTIDAD_NAC" name="pID_ENTIDAD_NAC" required></select>
+                        <select  class="form-control" id="pID_ENTIDAD_NAC" name="pID_ENTIDAD_NAC" data-error="#err_pID_ENTIDAD_NAC" required></select>
+                        <span id="err_pID_ENTIDAD_NAC"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Municipio de nacimiento
-                        <select  class="form-control" id="pID_MUNICIPIO_NAC" name="pID_MUNICIPIO_NAC" required></select>
+                        <select  class="form-control" id="pID_MUNICIPIO_NAC" name="pID_MUNICIPIO_NAC" data-error="#err_pID_MUNICIPIO_NAC" required></select>
+                        <span id="err_pID_MUNICIPIO_NAC"></span>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         Ciudad o población de nacimiento
-                        <select  class="form-control" id="pCIUDAD_NAC" name="pCIUDAD_NAC"></select>
+                        <select  class="form-control" id="pCIUDAD_NAC" name="pCIUDAD_NAC" data-error="#err_pCIUDAD_NAC"></select>
+                        <span id="err_pCIUDAD_NAC"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Nacionalidad
-                        <select  class="form-control" id="pID_NACIONALIDAD" name="pID_NACIONALIDAD" required></select>
+                        <select  class="form-control" id="pID_NACIONALIDAD" name="pID_NACIONALIDAD" data-error="#err_pID_NACIONALIDAD" required></select>
+                        <span id="err_pID_NACIONALIDAD"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Modo de nacionalidad
-                        <select  class="form-control" id="pMODO_NACIONALIDAD" name="pMODO_NACIONALIDAD" required></select>
+                        <select  class="form-control" id="pMODO_NACIONALIDAD" name="pMODO_NACIONALIDAD" data-error="#err_pMODO_NACIONALIDAD" required></select>
+                        <span id="err_pMODO_NACIONALIDAD"></span>
                     </div>
                 </div>
                 <br>
@@ -89,7 +97,8 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estado civil
-                        <select  class="form-control" id="pID_ESTADO_CIVIL" name="pID_ESTADO_CIVIL" required><option value="">Seleccione</option></select>
+                        <select  class="form-control" id="pID_ESTADO_CIVIL" name="pID_ESTADO_CIVIL" data-error="#err_pID_ESTADO_CIVIL" required></select>
+                        <span id="err_pID_ESTADO_CIVIL"></span>
                     </div>
                 </div>
                 <br>
@@ -184,7 +193,8 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Máxima escolaridad
-                        <select  class="form-control" id="pID_GRADO_ESCOLAR" name="pID_GRADO_ESCOLAR" required></select>
+                        <select  class="form-control" id="pID_GRADO_ESCOLAR" name="pID_GRADO_ESCOLAR" data-error="#err_pID_GRADO_ESCOLAR" required></select>
+                        <span id="err_pID_GRADO_ESCOLAR"></span>
                     </div>
                     <div class="col-md-4">
                         Escuela
@@ -295,11 +305,13 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estado
-                        <select  class="form-control" id="pID_ENTIDAD" name="pID_ENTIDAD" required></select>
+                        <select  class="form-control" id="pID_ENTIDAD" name="pID_ENTIDAD" data-error="#err_pID_ENTIDAD" required></select>
+                        <span id="err_pID_ENTIDAD"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Municipio
-                        <select  class="form-control" id="pID_MUNICIPIO" name="pID_MUNICIPIO" required></select>
+                        <select  class="form-control" id="pID_MUNICIPIO" name="pID_MUNICIPIO" data-error="#err_pID_MUNICIPIO" required></select>
+                        <span id="err_pID_MUNICIPIO"></span>
                     </div>
                 </div>
                 <br>
@@ -432,22 +444,26 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Sexo
-                        <select name="SEXO" id="SEXO" class="form-control" required></select>
+                        <select name="SEXO" id="SEXO" class="form-control" data-error="#err_SEXO" required></select>
+                        <span id="err_SEXO"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Ocupación
-                        <select name="OCUPACION" id="OCUPACION" class="form-control" required></select>
+                        <select name="OCUPACION" id="OCUPACION" class="form-control" data-error="#err_OCUPACION" required></select>
+                        <span id="err_OCUPACION"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Tipo de referencia
-                        <select name="" id="ID_TIPO_REFERENCIA" name="ID_TIPO_REFERENCIA" class="form-control" required></select>
+                        <select name="" id="ID_TIPO_REFERENCIA" name="ID_TIPO_REFERENCIA" class="form-control" data-error="#err_ID_TIPO_REFERENCIA" required></select>
+                        <span id="err_ID_TIPO_REFERENCIA"></span>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         Relación o parentesco
-                        <select name="ID_RELACION" id="ID_RELACION" class="form-control"></select>
+                        <select name="ID_RELACION" id="ID_RELACION" class="form-control" data-error="#err_ID_RELACION"></select>
+                        <span id="err_ID_RELACION"></span>
                     </div>
                 </div>
                 <br>
@@ -458,11 +474,13 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estado
-                        <select name="ID_ENTIDAD" id="ID_ENTIDAD"  class="form-control" required></select>
+                        <select name="ID_ENTIDAD" id="ID_ENTIDAD"  class="form-control" data-error="#err_ID_ENTIDAD" required></select>
+                        <span id="err_ID_ENTIDAD"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Municipio
-                        <select name="ID_MUNICIPIO" id="ID_MUNICIPIO" class="form-control" required></select>
+                        <select name="ID_MUNICIPIO" id="ID_MUNICIPIO" class="form-control" data-error="#err_ID_MUNICIPIO" required></select>
+                        <span id="err_ID_MUNICIPIO"></span>
                     </div>
                 </div>
                 <br>
@@ -564,7 +582,8 @@
                 <div class="row">
                     <div class="col-md-4">
                         ¿Vive con su familia?
-                        <select  class="form-control" id="VIVE_FAMILIA" name="VIVE_FAMILIA"></select>
+                        <select  class="form-control" id="VIVE_FAMILIA" name="VIVE_FAMILIA" data-error="#err_VIVE_FAMILIA"></select>
+                        <span id="err_VIVE_FAMILIA"></span>
                     </div>
                     <div class="col-md-4">
                         Ingreso familiar adicional (mensual)
@@ -572,7 +591,8 @@
                     </div>
                     <div class="col-md-4">
                         Su domicilio es
-                        <select name="ID_TIPO_DOMICILIO" id="ID_TIPO_DOMICILIO" class="form-control">
+                        <select name="ID_TIPO_DOMICILIO" id="ID_TIPO_DOMICILIO" class="form-control" data-error="#err_ID_TIPO_DOMICILIO">
+                        <span id="err_ID_TIPO_DOMICILIO"></span>
                         <option value="">Seleccione</option></select>
                     </div>
                 </div>
@@ -652,7 +672,8 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Sexo
-                        <select  class="form-control" id="SEXO" name="SEXO" required></select>
+                        <select  class="form-control" id="SEXO" name="SEXO" data-error="#err_SEXO" required></select>
+                        <span id="err_SEXO"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Fecha de nacimiento
@@ -660,7 +681,8 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Parentesco
-                        <select  class="form-control" id="" required></select>
+                        <select  class="form-control" id="" data-error="#err_Parentesco" required></select>
+                        <span id="err_Parentesco"></span>
                     </div>
                 </div>
                 <br>
