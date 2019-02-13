@@ -97,7 +97,7 @@
                     <br>
                     <div class="row">
                         <div class="col-md-4">
-                            <button class="btn btn-light" id="guardarEmpleo">Guardar empleo</button>
+                            <button class="btn btn-default" id="guardarEmpleo">Guardar empleo</button>
                         </div>
                         <div class="col-md-4">
 
@@ -330,7 +330,7 @@
                     <br>
                     <div class="row">
                         <div class="col-md-4">
-                            <button class="btn btn-light" id="guardarAdscripcion">Guardar adscripción</button>
+                            <button class="btn btn-default" id="guardarAdscripcion">Guardar adscripción</button>
                         </div>
                         <div class="col-md-4">
 
@@ -458,7 +458,7 @@
                 <br>
                 <div class="row">
                 <div class="col-md-4">
-                    <button class="btn btn-light" id="guardarActitud">Guardar actitud</button>
+                    <button class="btn btn-default" id="guardarActitud">Guardar actitud</button>
                 </div>
                 <div class="col-md-4">
 
@@ -535,7 +535,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <button class="btn btn-light" id="guardarComision">Guardar comisión</button>
+                        <button class="btn btn-default" id="guardarComision">Guardar comisión</button>
                     </div>
                 </div>
                 <br>

@@ -46,9 +46,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>
-                            <a href="<?php echo site_url("personaCedula/index") ?>"><i class="fa fa-print"></i></a>
-                        </td>
+                    
                         <td>
                             <a href="<?php echo site_url("Solicitud/Ver") ?>"><i class="fa fa-eye"></i></a>
                         </td>
@@ -57,6 +55,13 @@
                         </td>
                         <td>
                             <a href="#"><i class="fa fa-trash"></i></a>
+                        </td>
+                        <td>
+                            <div class="checkbox">
+                            
+                                <input type="checkbox"  name="Select" id="">
+                                
+                            </div>
                         </td>
                         </tr>
                         <tr>
@@ -67,9 +72,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>
-                            <a href="<?php echo site_url("personaCedula/index") ?>"><i class="fa fa-print"></i></a>
-                        </td>
+                     
                         <td>
                             <a href="<?php echo site_url("Solicitud/Ver") ?>"><i class="fa fa-eye"></i></a>
                         </td>
@@ -78,6 +81,13 @@
                         </td>
                         <td>
                             <a href="#"><i class="fa fa-trash"></i></a>
+                        </td>
+                         <td>
+                            <div class="checkbox">
+                            
+                                <input type="checkbox"  name="Select" id="">
+                                
+                            </div>
                         </td>
                         </tr>
                         <tr>
@@ -88,9 +98,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>
-                            <a href="<?php echo site_url("personaCedula/index") ?>"><i class="fa fa-print"></i></a>
-                        </td>
+                      
                         <td>
                             <a href="<?php echo site_url("Solicitud/Ver") ?>"><i class="fa fa-eye"></i></a>
                         </td>
@@ -99,6 +107,13 @@
                         </td>
                         <td>
                             <a href="#"><i class="fa fa-trash"></i></a>
+                        </td>
+                         <td>
+                            <div class="checkbox">
+                            
+                                <input type="checkbox"  name="Select" id="">
+                                
+                            </div>
                         </td>
                         </tr>
 
@@ -107,7 +122,28 @@
                 <!-- END TABLE -->
                 </div>
             </div>
-        <button class="btn btn-default" id="Nuevo">Nuevo</button>
+            <div class="row">
+                <div class="col-md-3">
+                
+                    <button class="btn btn-default" id="Nuevo">Nuevo</button>
+                
+                </div>
+
+                <div class="col-md-7">
+                
+                </div>
+                <div class="col-md-2">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button class="btn btn-default" id="Imprimir" disabled>Imprimir</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-default" id="Replicar" disabled>Replicar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </form>
         <div>
     </div>

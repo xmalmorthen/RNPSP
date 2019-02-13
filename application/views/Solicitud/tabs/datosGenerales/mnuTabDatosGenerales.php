@@ -16,7 +16,6 @@
         <li class="nav-item" id="Socioeconomicos-nav">
             <a class="nav-link" id="Socioeconomicos-tab" data-toggle="tab" href="#Socioeconomicos" role="tab" aria-controls="Socioeconomicos" aria-selected="false" style="color:#02657C">Socioeconómicos</a>
         </li>
-    
     </ul>
 </div>
 

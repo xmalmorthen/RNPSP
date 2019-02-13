@@ -844,7 +844,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <button class="btn btn-light" id="guardarSeña">
+                        <button class="btn btn-default" id="guardarSeña">
                             Guardar seña
                         </button>
                     </div>
@@ -948,7 +948,7 @@
                         <!-- SPACE -->
                     </div>
                     <div class="col-md-4">
-                        <button class="btn btn-light">
+                        <button class="btn btn-default">
                         Subir
                     </button>
                     </div>
@@ -956,7 +956,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <button class="btn btn-light">
+                        <button class="btn btn-default">
                             Guardar registro
                         </button>
                     </div>
@@ -1065,6 +1065,29 @@
                     </div>
                 </div>
                 <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-default">
+                            Guardar
+                        </button>
+                    </div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-default">
+                                    Validar
+                                </button>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-default">
+                                    Replicar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
             </form>
             <div class="row">
                     <div class="col-md-4"></div>
@@ -1141,7 +1164,7 @@
                             </tbody>
                         </table>
 
-                        <button class="btn btn-light">subir</button>
+                        <button class="btn btn-default">subir</button>
                     </div>
                     <div class="col-md-4">
                         <table id="table" class="table display">
@@ -1159,7 +1182,7 @@
                             </tbody>
                         </table>
 
-                        <button class="btn btn-light">subir</button>
+                        <button class="btn btn-default">subir</button>
                     </div>
                     <div class="col-md-4">
                         <table id="table" class="table display">
@@ -1177,7 +1200,7 @@
                             </tbody>
                         </table>
 
-                        <button class="btn btn-light">subir</button>
+                        <button class="btn btn-default">subir</button>
                     </div>
                 </div>
                 <br>
@@ -1201,7 +1224,7 @@
                             </tbody>
                         </table>
 
-                        <button class="btn btn-light">subir</button>
+                        <button class="btn btn-default">subir</button>
                     </div>
                     <div class="col-md-4">
                         <table id="table" class="table display">
@@ -1219,7 +1242,13 @@
                             </tbody>
                         </table>
 
-                        <button class="btn btn-light">subir</button>
+                        <button class="btn btn-default">subir</button>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-default">Guardar ficha</button>
                     </div>
                 </div>
                 <br>
@@ -1312,13 +1341,13 @@
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
-                        <button class="btn btn-light">Subir</button>
+                        <button class="btn btn-default">Subir</button>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <button class="btn btn-light" id="guardarDocumento">
+                        <button class="btn btn-default" id="guardarDocumento">
                             Guardar documento
                         </button>
                     </div>

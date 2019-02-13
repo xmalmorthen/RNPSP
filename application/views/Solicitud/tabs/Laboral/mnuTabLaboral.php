@@ -1,7 +1,7 @@
 <div class="row mt-4" >
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="Adscripcion_actual-tab" data-toggle="tab" href="#Adscripcion_actual" role="tab" aria-controls="Adscripcion_actual" aria-selected="false" style="color:#02657C">Adscripción actual</a>
+                <a class="nav-link" id="Adscripcion_actual-tab" data-toggle="tab" href="#Adscripcion_actual" role="tab" aria-controls="Adscripcion_actual" aria-selected="false" style="color:#02657C">Adscripción actual</a>
             </li>
        
             <li class="nav-item">

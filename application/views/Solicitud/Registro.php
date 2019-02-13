@@ -7,7 +7,6 @@
                 <li class="nav-item">
                     <a class="nav-link active" id="datosGenerales-tab" data-toggle="tab" href="#datosGenerales" role="tab" aria-controls="datosGenerales" aria-selected="true">Datos generales</a>
                 </li>
-            
                 <li class="nav-item">
                     <a class="nav-link" id="Laboral-tab" data-toggle="tab" href="#Laboral" role="tab" aria-controls="Laboral" aria-selected="false">Laboral</a>
                 </li>
@@ -22,7 +21,6 @@
         </div>
     </div>
     <!-- LISTA DE SUBMENUS -->
-
        <div class="tab-content" id="myTabs">
             <div class="tab-pane fade show active" id="datosGenerales" role="tabpanel" aria-labelledby="Tab1-tab">
                 

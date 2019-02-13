@@ -51,10 +51,10 @@
             <div class="col-md-4">
                 <div class="row">
                     <div class="col-md-6">
-                        <button class="btn btn-light">Guardar</button>
+                        <button class="btn btn-default">Guardar</button>
                     </div>
                     <div class="col-md-6">
-                        <button class="btn btn-light">Regresar</button>
+                        <button class="btn btn-default">Regresar</button>
                     </div>
                 </div>
             </div>
