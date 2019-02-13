@@ -1,6 +1,6 @@
 
 
-    <div class="tab-pane fade" id="mediafiliacion" role="tabpanel" aria-labelledby="mediaFiliacion-tab">
+    <div class="tab-pane fade show active" id="mediafiliacion" role="tabpanel" aria-labelledby="mediaFiliacion-tab">
         <div class="container">
             <form action="#" id="mediafiliacion_form" name="mediafiliacion_form" autocomplete="off">
                 <br>

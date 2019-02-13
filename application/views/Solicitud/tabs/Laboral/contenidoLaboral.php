@@ -1,6 +1,6 @@
   
 
-    <div class="tab-pane fade" id="Empleos_diversos" role="tabpanel" aria-labelledby="Empleos_diversos-tab">
+    <div class="tab-pane fade show active" id="Empleos_diversos" role="tabpanel" aria-labelledby="Empleos_diversos-tab">
         <form action="#">
             <div class="container">
             <br>
