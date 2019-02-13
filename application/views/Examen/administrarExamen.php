@@ -14,7 +14,7 @@
         <form id="Validar_examen_form" name="Validar_examen_form" action="#">
             <div class="row">
                 <div class="col-md-12">
-                    <table id="table" class="table display" style="width:100%">
+                    <table id="tableExamen" class="table display" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Nombre</th>

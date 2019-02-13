@@ -854,7 +854,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12">
-                            <table id="table" class="table display">
+                            <table id="tableSenasparticulares" class="table display">
                                 <thead>
                                         <th>Id seña</th>
                                         <th>Tipo de seña</th>
@@ -966,7 +966,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12">
-                        <table id="table" class="table display">
+                        <table id="tableRegistrodecadactilar" class="table display">
                             <thead>
                                     <th>Id registro dactilar</th>
                                     <th>Dependencia</th>
@@ -1149,7 +1149,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <table id="table" class="table display">
+                        <table id="tablePerfilizq" class="table display">
                             <thead>
                                 <tr>
                                     <td><center>Perfil izquierdo</center></td>
@@ -1167,7 +1167,7 @@
                         <button class="btn btn-default">subir</button>
                     </div>
                     <div class="col-md-4">
-                        <table id="table" class="table display">
+                        <table id="tableFrente" class="table display">
                             <thead>
                                 <tr>
                                     <td><center>Frente</center></td>
@@ -1185,7 +1185,7 @@
                         <button class="btn btn-default">subir</button>
                     </div>
                     <div class="col-md-4">
-                        <table id="table" class="table display">
+                        <table id="tablePerfilderecho" class="table display">
                             <thead>
                                 <tr>
                                     <td><center>Perfil derecho</center></td>
@@ -1209,7 +1209,7 @@
 
                     </div>
                         <div class="col-md-4">
-                        <table id="table" class="table display">
+                        <table id="tableFirmo" class="table display">
                             <thead>
                                 <tr>
                                     <td><center>Firma</center></td>
@@ -1227,7 +1227,7 @@
                         <button class="btn btn-default">subir</button>
                     </div>
                     <div class="col-md-4">
-                        <table id="table" class="table display">
+                        <table id="tableHuella" class="table display">
                             <thead>
                                 <tr>
                                     <td><center>Huella</center></td>
@@ -1254,7 +1254,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12">
-                        <table id="table" class="table display">
+                        <table id="tableFichafotografica" class="table display">
                             <thead>
                                     <th>Id evaluación</th>
                                     <th>Tipo de evaluación</th>
@@ -1357,7 +1357,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12">
-                        <table id="table" class="table display">
+                        <table id="tableDigitalizaciondoc" class="table display">
                             <thead>
                                     <th>Id documento</th>
                                     <th>Categoría de documento</th>

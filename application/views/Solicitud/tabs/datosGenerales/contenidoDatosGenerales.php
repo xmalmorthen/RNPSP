@@ -148,7 +148,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12">
-                        <table id="table" class="table display" style="width:100%">
+                        <table id="tableDatospersonales" class="table display" style="width:100%">
                             <thead>
                                 <th><center>CIB</center></th>
                                 <th><center>Motivo</center></th>
@@ -236,7 +236,7 @@
                 <br><hr><br>
                 <div class="row">
                     <div class="col-md-12">
-                        <table id="table" class="table display" style="width:100%">
+                        <table id="tableDesarrollo" class="table display" style="width:100%">
                             <thead>
                                 <th>Id nivel</th>
                                 <th>Máxima escolaridad</th>
@@ -361,7 +361,7 @@
                 <br>
                 <hr>
                 <br>
-                <table id="table" class="table display" style="width:100%">
+                <table id="tableDesarrollo" class="table display" style="width:100%">
                     <thead>
                         <th>Id domicilio</th>
                         <th>Código postal</th>
@@ -513,7 +513,7 @@
                 <br>
                 <hr>
                 <br>
-                <table id="table" class="table display" style="width:100%">
+                <table id="tableReferencias" class="table display" style="width:100%">
                     <thead>
                         <th>Id referencia</th>
                         <th>Nombre</th>
@@ -676,7 +676,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12">
-                        <table id="table" class="table display" style="width:100%">
+                        <table id="tableSocioeconomicos" class="table display" style="width:100%">
                             <thead>
                                 <th>Id dependiente</th>
                                 <th>Nombre</th>

@@ -72,7 +72,7 @@
                 <br>
                 <hr>
                 <br>
-                <table id="table" class="table display">
+                <table id="tableCapacitacionadicional" class="table display">
                     <thead>
                         <th>Id capacitación adicional</th>
                         <th>Institución o empresa</th>
@@ -197,7 +197,7 @@
                     <br>
                     <hr>
                     <br>
-                    <table id="table" class="table display">
+                    <table id="tableCapacitacionseguridapublica" class="table display">
                         <thead>
                             <th>Id capacitación</th>
                             <th>Dependencia responsable</th>
@@ -296,7 +296,7 @@
                 <br>
                 <hr>
                 <br>
-                <table id="table" class="table display">
+                <table id="tableIdiomas" class="table display">
                     <thead>
                         <th>Id idioma y/o dialecto</th>
                         <th>Idioma</th>
@@ -381,7 +381,7 @@
                 <br>
                 <hr>
                 <br>
-                <table id="table" class="table display">
+                <table id="tableHabilidades" class="table display">
                     <thead>
                         <th>Id habilidad y/o aptitud</th>
                         <th>Tipo de habilidad y/o aptitud</th>
@@ -468,7 +468,7 @@
                 <br>
                 <hr>
                 <br>
-                <table id="table" class="table display">
+                <table id="tableAfiliacionagrupaciones" class="table display">
                     <thead>
                         <th>Id agrupación</th>
                         <th>Nombre de la agrupación</th>
