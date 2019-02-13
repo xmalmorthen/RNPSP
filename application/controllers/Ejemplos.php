@@ -47,4 +47,15 @@ class Ejemplos extends CI_Controller {
 
 		$this->load->view('Ejemplos/ejemplo1View',$model);
 	}
+
+	public function ajaxGetSample(){		
+		if (! $this->input->is_ajax_request()) {
+			if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+        }
+
+		header('Content-type: application/json');
+        echo json_encode( [ 'results' => 'Prueba de respuesta ajax' ] );
+        exit;		
+		
+	}
 }
