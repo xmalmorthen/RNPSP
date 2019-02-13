@@ -70,8 +70,9 @@
 				guid : "<?php echo $this->config->item('GUID'); ?>",
 			}
 
-			var sess_time_to_update = " <?php echo $this->config->item('sess_time_to_update'); ?>";
-			
+			var sess_time_to_update = "<?php echo $this->config->item('sess_time_to_update'); ?>";
+			var sess_time_left_to_confirm = "<?php echo $this->config->item('sess_time_left_to_confirm'); ?>";	
+
 			var isSerializedFORM = "<?php echo $this->session->flashdata('isSerializedFORM') ? 'true' : 'false'; ?>";
 		</script>
 		<script src="<?php echo base_url('assets/js/utils/compatibilidad.js'); ?>"></script>
