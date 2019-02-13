@@ -81,7 +81,7 @@
                             <br>
                             <hr>
                             <br>
-                            <table id="table" class="table display">
+                            <table id="tableCapacitacionseguridadpublica" class="table display">
                                 <thead>
                                     <th>Id capacitación</th>
                                     <th>Dependencia responsable</th>

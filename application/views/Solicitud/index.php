@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-md-12">
                 <!-- BEGIN TABLE -->
-                <table id="table" class="table display" style="width:100%">
+                <table id="tableAdministrarsolicitud" class="table display" style="width:100%">
                     <thead>
                         <tr>
                             <th>Folio</th>

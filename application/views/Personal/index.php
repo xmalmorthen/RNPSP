@@ -1,5 +1,5 @@
 <div class="container">
-    <table id="table" class="table display">
+    <table id="tablePersonal" class="table display">
         <thead>
                 <th>Id persona</th>
                 <th>Nombre</th>
