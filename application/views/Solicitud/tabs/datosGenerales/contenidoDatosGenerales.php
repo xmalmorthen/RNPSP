@@ -133,13 +133,12 @@
                         <input type="text" class="form-control" max="250">
                     <br>
                     </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-default" id="generarCIB" style="margin-top: 16px;"> Guardar CIB</button>
+                    </div>
                 </div>
+                <br>
                 <div class="row">
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id="generarCIB"> Guardar CIB</button>
-                    </div>
-                    <div class="col-md-4">
-                    </div>
                     <div class="col-md-4">
                         <button class="btn btn-default" id="guardarDatosPersonales"> Guardar datos personales</button>
                     </div>
