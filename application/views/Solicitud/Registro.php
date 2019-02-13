@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="<?php echo base_url("assets/vendor/plugins/select2/css/select2.min.css"); ?>">
 
 <div class="container">
     <!-- LISTA DE TABS DEL MENU PRINCIPAL -->
@@ -74,11 +75,13 @@
   
 </div>
 
-
+<script src="<?php echo base_url('assets/vendor/plugins/select2/js/select2.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/utils/collectionGenerics.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/views/solicitud/solicitud.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/utils/catalogs.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/utils/serialized.js') ?>"></script>
 <script type="text/javascript">
-
-$(function() {
-       
-
+    $(function() {
+       objView.init();
     });
 </script>
