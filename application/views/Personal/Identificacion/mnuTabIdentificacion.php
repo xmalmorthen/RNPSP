@@ -1,4 +1,4 @@
-  <div class="row mt-4" id="submenu_identificacion" style="display: none">
+  <div class="row mt-4" >
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" id="mediafiliacion-tab" data-toggle="tab" href="#mediafiliacion" role="tab" aria-controls="mediafiliacion" aria-selected="false" style="color:#02657C">Media filiación</a>
