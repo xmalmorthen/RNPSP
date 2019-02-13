@@ -394,6 +394,7 @@ $config['sess_save_path'] = 'ci_sessions';
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 900;
 $config['sess_regenerate_destroy'] = TRUE;
+$config['sess_time_left_to_confirm'] = 120; //Tiempo en segundos para mostrar ventana de notificación antes de que el tiempo de sesión expire.
 
 /*
 |--------------------------------------------------------------------------

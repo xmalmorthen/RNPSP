@@ -3,7 +3,7 @@ var swalShow = false;
 
 if ( typeof sess_time_to_update !== 'undefined') {
     var timer = setInterval(function() { 
-        if (sess_time_to_update <= 120 && !swalShow ){
+        if (parseInt(sess_time_to_update) <= parseInt(sess_time_left_to_confirm) && !swalShow ){
             swalShow = true;
             Swal({
                 title: 'Sesión',
