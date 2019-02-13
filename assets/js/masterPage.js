@@ -1,10 +1,13 @@
 // SESSION COUNTDOWN
+var swalShow = false;
+
 if ( typeof sess_time_to_update !== 'undefined') {
     var timer = setInterval(function() { 
-        if (sess_time_to_update == 120 ){
+        if (sess_time_to_update <= 120 && !swalShow ){
+            swalShow = true;
             Swal({
                 title: 'Sesión',
-                html: "Está a punto de expirar la sesión por inactividad,<br> desea mantener la sesión activa?<br><br> Tiempo restante: <span class='swalSessionRemainTime'><strong></strong> segundos.</span>",
+                html: "Está a punto de expirar la sesión por inactividad,<br> desea mantener la sesión activa?<br><br> Tiempo restante: <span class='swalSessionRemainTime'><strong></strong></span>",
                 footer: "<div>Se perderá cualquier avance no guardado...</div>",
                 type: 'question',
                 allowOutsideClick : false,
@@ -15,12 +18,17 @@ if ( typeof sess_time_to_update !== 'undefined') {
                 onBeforeOpen: function() {
                     timerInterval = setInterval(function() {
                         var content = Swal.getContent();
+                        
                         if (content) {
+                            var timeLeft = (Swal.getTimerLeft() / 1000),
+                                mitnutesLeft = Math.trunc(timeLeft / 60),
+                                secondsLeft = Math.trunc(timeLeft % 60),
+                                msgLeft = mitnutesLeft >= 1 ? (  mitnutesLeft.toString() + " minuto" + (mitnutesLeft > 1 ? 's':'') + ' ' + secondsLeft.toString() + " segundo" + (secondsLeft != 1 ? 's':'') ) : (  secondsLeft.toString() + " segundo" + (secondsLeft > 1 ? 's':'') );
+
                             content.querySelector('strong')
-                            .textContent = (Swal.getTimerLeft() / 1000)
-                            .toFixed(0);
+                            .textContent = (msgLeft);
                         }
-                    }, 500);
+                    }, 1000);
                 },
                 onClose: () => {
                     // clearInterval(timerInterval)
@@ -28,8 +36,9 @@ if ( typeof sess_time_to_update !== 'undefined') {
             }).then(function(result){
                 if (result.value === true){
                     $.getJSON(site_url + 'UserSession/renovateSession/' + guid(), function(timeRemain) {
+                        swalShow = false;
                         sess_time_to_update = timeRemain;
-                    });
+                    });                    
                 } else if (result.dismiss === 'cancel') {
                     window.location.href = site_url + 'Sesion/Terminar';
                 }
