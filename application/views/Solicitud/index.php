@@ -59,7 +59,7 @@
                         <td>
                             <div class="checkbox">
                             
-                                <input type="checkbox"  name="Select" id="">
+                                <input type="checkbox"  name="Select" id="" class="checks">
                                 
                             </div>
                         </td>
@@ -85,7 +85,7 @@
                          <td>
                             <div class="checkbox">
                             
-                                <input type="checkbox"  name="Select" id="">
+                                <input type="checkbox"  name="Select" id="" class="checks">
                                 
                             </div>
                         </td>
@@ -111,7 +111,7 @@
                          <td>
                             <div class="checkbox">
                             
-                                <input type="checkbox"  name="Select" id="">
+                                <input type="checkbox"  name="Select" id="" class="checks">
                                 
                             </div>
                         </td>
@@ -157,10 +157,22 @@
 <script>
     
   $(function() {
+    $(".checks").on("click", function(e){
+        
+        console.log("hola");
+    
+        
+        $("#Imprimir").disabled= false;
+       
+    })
+
     $("#Nuevo").on("click",function(e){
         e.preventDefault();
         location.href="<?php echo site_url("Solicitud/Alta");?>";
     })
+
+
+
     
     });
 

@@ -18,8 +18,7 @@
                     </div>
                     <div class="col-md-4">
                         Tipo de movimiento
-                        <select  class="form-control" name="pTIPO_MOV" id="pTIPO_MOV" data-error="#err_tipoMovimiento_DATOS_PERSONALES" required></select>
-                        <span id="err_tipoMovimiento"></span>
+                        <select  class="form-control" name="" id=""></select>
                     </div>
                 </div>
                 <br>
@@ -30,59 +29,52 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Apellido paterno
-                        <input type="text" id="pPATERNO_DATOS_PERSONALES" name="pPATERNO_DATOS_PERSONALES" class="form-control" max="40" required>
+                        <input type="text" id="pPATERNO" name="pPATERNO" class="form-control" max="40" required>
                     </div>
                     <div class="col-md-4">
                         Apellido materno
-                        <input type="text" id="pMATERNO_DATOS_PERSONALES" name="pMATERNO_DATOS_PERSONALES" class="form-control" max="40" >
+                        <input type="text" id="pMATERNO" name="pMATERNO" class="form-control" max="40" >
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Sexo
-                        <select  class="form-control" id="pSEXO_DATOS_PERSONALES" name="pSEXO_DATOS_PERSONALES" data-error="#err_pSEXO_DATOS_PERSONALES" required></select>
-                        <span id="err_pSEXO_DATOS_PERSONALES"></span>
+                        <select  class="form-control" id="pSEXO_DATOS_PERSONALES" name="pSEXO_DATOS_PERSONALES" required></select>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Fecha de nacimiento
-                        <input type="date"  id="pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES" name="pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES" class="form-control" required>
+                        <input type="date"  id="pFECHA_NAC_DATOS_PERSONALES" name="pFECHA_NAC_DATOS_PERSONALES" class="form-control" required>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>País de nacimiento
-                        <select  class="form-control" id="pID_PAIS_NAC" name="pID_PAIS_NAC" data-error="#err_pID_PAIS_NAC" required><option value="">Seleccione</option></select>
-                        <span id="err_pID_PAIS_NAC"></span>
+                        <select  class="form-control" id="pID_PAIS_NAC" name="pID_PAIS_NAC" required><option value="">Seleccione</option></select>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estado de nacimiento
-                        <select  class="form-control" id="pID_ENTIDAD_NAC" name="pID_ENTIDAD_NAC" data-error="#err_pID_ENTIDAD_NAC" required></select>
-                        <span id="err_pID_ENTIDAD_NAC"></span>
+                        <select  class="form-control" id="pID_ENTIDAD_NAC" name="pID_ENTIDAD_NAC" required></select>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Municipio de nacimiento
-                        <select  class="form-control" id="pID_MUNICIPIO_NAC" name="pID_MUNICIPIO_NAC" data-error="#err_pID_MUNICIPIO_NAC" required></select>
-                        <span id="err_pID_MUNICIPIO_NAC"></span>
+                        <select  class="form-control" id="pID_MUNICIPIO_NAC" name="pID_MUNICIPIO_NAC" required></select>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         Ciudad o población de nacimiento
-                        <select  class="form-control" id="pCIUDAD_NAC_DATOS_PERSONALES" name="pCIUDAD_NAC_DATOS_PERSONALES" data-error="#err_pCIUDAD_NAC"></select>
-                        <span id="err_pCIUDAD_NAC"></span>
+                        <select  class="form-control" id="pCIUDAD_NAC" name="pCIUDAD_NAC"></select>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Nacionalidad
-                        <select  class="form-control" id="pID_NACIONALIDAD" name="pID_NACIONALIDAD" data-error="#err_pID_NACIONALIDAD" required></select>
-                        <span id="err_pID_NACIONALIDAD"></span>
+                        <select  class="form-control" id="pID_NACIONALIDAD" name="pID_NACIONALIDAD" required></select>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Modo de nacionalidad
-                        <select  class="form-control" id="pMODO_NACIONALIDAD" name="pMODO_NACIONALIDAD" data-error="#err_pMODO_NACIONALIDAD" required></select>
-                        <span id="err_pMODO_NACIONALIDAD"></span>
+                        <select  class="form-control" id="pMODO_NACIONALIDAD" name="pMODO_NACIONALIDAD" required></select>
                     </div>
                 </div>
                 <br>
@@ -97,8 +89,7 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estado civil
-                        <select  class="form-control" id="pID_ESTADO_CIVIL" name="pID_ESTADO_CIVIL" data-error="#err_pID_ESTADO_CIVIL" required></select>
-                        <span id="err_pID_ESTADO_CIVIL"></span>
+                        <select  class="form-control" id="pID_ESTADO_CIVIL" name="pID_ESTADO_CIVIL" required><option value="">Seleccione</option></select>
                     </div>
                 </div>
                 <br>
@@ -143,7 +134,7 @@
                     <br>
                     </div>
                     <div class="col-md-4">
-                        <button class="btn btn-default" id="GUARDAR_CIB" style="margin-top: 16px;"> Guardar CIB</button>
+                        <button class="btn btn-default" id="GUARDAR_CIB" name   GUARDAR_CIB style="margin-top: 16px;"> Guardar CIB</button>
                     </div>
                 </div>
                 <br>
@@ -171,7 +162,7 @@
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
-                    <center><button class="btn btn-default btnSiguienteAnterior"  id="siguienteDatosPersonales" data-nexttab="#Desarrollo-tab">Siguiente</button></center>
+                    <center><button class="btn btn-default"  id="siguienteDatosPersonales">Siguiente</button></center>
                 </div>
                 <div class="col-md-4"></div>
             </div>
@@ -193,8 +184,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Máxima escolaridad
-                        <select  class="form-control" id="pID_GRADO_ESCOLAR" name="pID_GRADO_ESCOLAR" data-error="#err_pID_GRADO_ESCOLAR" required></select>
-                        <span id="err_pID_GRADO_ESCOLAR"></span>
+                        <select  class="form-control" id="pID_GRADO_ESCOLAR" name="pID_GRADO_ESCOLAR" required></select>
                     </div>
                     <div class="col-md-4">
                         Escuela
@@ -202,7 +192,7 @@
                     </div>
                     <div class="col-md-4">
                         Especialidad o estudio
-                        <input type="text" class="form-control" id="pESPECIALIDAD_DESARROLLO" name="pESPECIALIDAD_DESARROLLO" max="100">
+                        <input type="text" class="form-control" id="pESPECIALIDAD" name="pESPECIALIDAD" max="100">
                     </div>
                 </div>
                 <br>
@@ -275,10 +265,10 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior" id="anteriorDesarrolloacademico" data-nexttab="#Datos_personales-tab"> Anterior</button>
+                            <button class="btn btn-default" id="anteriorDesarrolloacademico"> Anterior</button>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior" id="siguienteDesarrolloacademico" data-nexttab="#Domicilio-tab">Siguiente</button>
+                            <button class="btn btn-default" id="siguienteDesarrolloacademico">Siguiente</button>
                         </div>
                     </div>
                 </div>
@@ -301,65 +291,63 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Código postal
-                        <input type="text" class="form-control" id="pCODIGO_POSTAL_DOMICILIO" name="pCODIGO_POSTAL_DOMICILIO" max="10" required>
+                        <input type="text" class="form-control" id="pCODIGO_POSTAL" name="pCODIGO_POSTAL" max="10" required>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estado
-                        <select  class="form-control" id="pID_ENTIDAD_DOMICILIO" name="pID_ENTIDAD_DOMICILIO" data-error="#err_pID_ENTIDAD_DOMICILIO" required></select>
-                        <span id="err_pID_ENTIDAD_DOMICILIO"></span>
+                        <select  class="form-control" id="pID_ENTIDAD" name="pID_ENTIDAD" required></select>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Municipio
-                        <select  class="form-control" id="pID_MUNICIPIO_DOMICILIO" name="pID_MUNICIPIO_DOMICILIO" data-error="#err_pID_MUNICIPIO" required></select>
-                        <span id="err_pID_MUNICIPIO_DOMICILIO"></span>
+                        <select  class="form-control" id="pID_MUNICIPIO" name="pID_MUNICIPIO" required></select>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         Ciudad
-                        <input type="text" class="form-control" id="pCIUDAD_DOMICILIO" name="pCIUDAD_DOMICILIO" max="50"> 
+                        <input type="text" class="form-control" id="pCOLONIA" name="pCOLONIA" max="50"> 
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Colonia/Localidad
-                        <input type="text" class="form-control" id="pCOLONIA_DOMICILIO" name="pCOLONIA_DOMICILIO" max="60" required>
+                        <input type="text" class="form-control" id="pCIUDAD" name="pCIUDAD" max="60" required>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Calle
-                        <input type="text" class="form-control" id="pCALLE_DOMICILIO" name="pCALLE_DOMICILIO" max="60" required>
+                        <input type="text" class="form-control" id="pCALLE" name="pCALLE" max="60" required>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Número exterior
-                        <input type="text" class="form-control" id="pNUM_EXTERIOR_DOMICILIO" name="pNUM_EXTERIOR_DOMICILIO" max="30" min="5" required>
+                        <input type="text" class="form-control" id="pNUM_EXTERIOR" name="pNUM_EXTERIOR" max="30" min="5" required>
                     </div>
                     <div class="col-md-4">
                         Número interior
-                        <input type="text" class="form-control" id="pNUM_INTERIOR_DOMICILIO" name="pNUM_INTERIOR_DOMICILIO" max="30" min="4">
+                        <input type="text" class="form-control" id="pNUM_INTERIOR" name="pNUM_INTERIOR" max="30" min="4">
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Entre la calle de
-                        <input type="text" class="form-control" id="pENTRE_CALLE_DOMICILIO" name="pENTRE_CALLE_DOMICILIO" max="60" required>
+                        <input type="text" class="form-control" id="pENTRE_CALLE" name="pENTRE_CALLE" max="60" required>
                     </div>
                     <div class="col-md-4">
                         Y la calle de
-                        <input type="text" class="form-control" id="pY_CALLE_DOMICILIO" name="pY_CALLE_DOMICILIO" max="45">
+                        <input type="text" class="form-control" id="pY_CALLE" name="pY_CALLE" max="45">
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Número telefónico
-                        <input type="text" class="form-control" id="pTELEFONO_DOMICILIO" name="pTELEFONO_DOMICILIO" max="13" min="10" required>
+                        <input type="text" class="form-control" id="pTELEFONO" name="pTELEFONO" max="13" min="10" required>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>RFC
-                        <input type="text" class="form-control" id="pRFC_DOMICILIO" name="pRFC_DOMICILIO" max="13" min="10" required>
+                        <input type="text" class="form-control" id="pRFC" name="pRFC" max="13" min="10" required>
                     </div>
                 </div>
                 <br>
@@ -403,10 +391,10 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior" id="anteriorDomicilio" data-nexttab="#Desarrollo-tab"> Anterior</button>
+                            <button class="btn btn-default" id="anteriorDomicilio"> Anterior</button>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior" id="siguienteDomicilio" data-nexttab="#Referencias-tab">Siguiente</button>
+                            <button class="btn btn-default" id="siguienteDomicilio">Siguiente</button>
                         </div>
                     </div>
                 </div>
@@ -444,26 +432,22 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Sexo
-                        <select name="SEXO_REFERENCIAS" id="SEXO_REFERENCIAS" class="form-control" data-error="#err_SEXO_REFERENCIAS" required></select>
-                        <span id="err_SEXO_REFERENCIAS"></span>
+                        <select name="SEXO_REFERENCIAS" id="SEXO_REFERENCIAS" class="form-control" required></select>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Ocupación
-                        <select name="OCUPACION" id="OCUPACION" class="form-control" data-error="#err_OCUPACION" required></select>
-                        <span id="err_OCUPACION"></span>
+                        <select name="OCUPACION" id="OCUPACION" class="form-control" required></select>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Tipo de referencia
-                        <select name="" id="ID_TIPO_REFERENCIA" name="ID_TIPO_REFERENCIA" class="form-control" data-error="#err_ID_TIPO_REFERENCIA_REFERENCIAS" required></select>
-                        <span id="err_ID_TIPO_REFERENCIA"></span>
+                        <select name="" id="ID_TIPO_REFERENCIA" name="ID_TIPO_REFERENCIA" class="form-control" required></select>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         Relación o parentesco
-                        <select name="ID_RELACION_REFERENCIAS" id="ID_RELACION_REFERENCIAS" class="form-control" data-error="#err_ID_RELACION"></select>
-                        <span id="err_ID_RELACION"></span>
+                        <select name="ID_RELACION" id="ID_RELACION" class="form-control"></select>
                     </div>
                 </div>
                 <br>
@@ -474,13 +458,11 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estado
-                        <select name="ID_ENTIDAD_REFERENCIAS" id="ID_ENTIDAD_REFERENCIAS"_REFERENCIAS  class="form-control" data-error="#err_ID_ENTIDAD_REFERENCIAS" required></select>
-                        <span id="err_ID_ENTIDAD_REFERENCIAS"></span>
+                        <select name="ID_ENTIDAD_REFERENCIAS" id="ID_ENTIDAD_REFERENCIAS"  class="form-control" required></select>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Municipio
-                        <select name="ID_MUNICIPIO_REFERENCIAS" id="ID_MUNICIPIO_REFERENCIAS" class="form-control" data-error="#err_ID_MUNICIPIO_REFERENCIAS" required></select>
-                        <span id="err_ID_MUNICIPIO_REFERENCIAS"></span>
+                        <select name="ID_MUNICIPIO_REFERENCIAS" id="ID_MUNICIPIO_REFERENCIAS" class="form-control" required></select>
                     </div>
                 </div>
                 <br>
@@ -556,10 +538,10 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior" id="anteriorReferencia" data-nexttab="#Domicilio-tab"> Anterior</button>
+                            <button class="btn btn-default" id="anteriorReferencia"> Anterior</button>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior" id="siguienteReferencia" data-nexttab="#Socioeconomicos-tab">Siguiente</button>
+                            <button class="btn btn-default" id="siguienteReferencia ">Siguiente</button>
                         </div>
                     </div>
                 </div>
@@ -582,8 +564,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         ¿Vive con su familia?
-                        <select  class="form-control" id="VIVE_FAMILIA" name="VIVE_FAMILIA" data-error="#err_VIVE_FAMILIA"></select>
-                        <span id="err_VIVE_FAMILIA"></span>
+                        <select  class="form-control" id="VIVE_FAMILIA" name="VIVE_FAMILIA"></select>
                     </div>
                     <div class="col-md-4">
                         Ingreso familiar adicional (mensual)
@@ -591,8 +572,7 @@
                     </div>
                     <div class="col-md-4">
                         Su domicilio es
-                        <select name="ID_TIPO_DOMICILIO" id="ID_TIPO_DOMICILIO" class="form-control" data-error="#err_ID_TIPO_DOMICILIO">
-                        <span id="err_ID_TIPO_DOMICILIO"></span>
+                        <select name="ID_TIPO_DOMICILIO" id="ID_TIPO_DOMICILIO" class="form-control">
                         <option value="">Seleccione</option></select>
                     </div>
                 </div>
@@ -604,7 +584,7 @@
                     </div>
                     <div class="col-md-4">
                         Especificación de inmuebles y costos
-                        <input type="text" class="form-control" id="INMUEBLES" name="INMUEBLES" max="100">
+                        <input type="text" class="form-control" id="INMUEBLES_SOCIOECONOMICO" name="INMUEBLES_SOCIOECONOMICO" max="100">
                     </div>
                     <div class="col-md-4">
                         Inversión y monto aproximado
@@ -624,7 +604,7 @@
                     </div>
                     <div class="col-md-4">
                         Vicios
-                        <input type="text" class="form-control" id="VICIOS" name="VICIOS" max="100">
+                        <input type="text" class="form-control" id="VICIOS_SOCIOECONOMICO" name="VICIOS_SOCIOECONOMICO" max="100">
                     </div>
                 </div>
                 <br>
@@ -657,32 +637,30 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Nombre
-                        <input type="text" class="form-control" id="NOMBRE_SOCIOECONOMICOS" name="NOMBRE_SOCIOECONOMICOS" max="40" required>
+                        <input type="text" class="form-control" id="NOMBRE_SOCIOECONOMICO_DEPENDIENTES_ECONOMICOS" name="NOMBRE_SOCIOECONOMICO_DEPENDIENTES_ECONOMICOS" max="40" required>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Apellido paterno
-                        <input type="text" class="form-control" id="PATERNO_SOCIOECONOMICOS" name="PATERNO_SOCIOECONOMICOS" max="40" required>
+                        <input type="text" class="form-control" id="PATERNO_SOCIOECONOMICO_DEPENDIENTES_ECONOMICOS" name="PATERNO_SOCIOECONOMICO_DEPENDIENTES_ECONOMICOS" max="40" required>
                     </div>
                     <div class="col-md-4">
                         Apellido materno
-                        <input type="text" class="form-control" id="MATERNO_SOCIOECONOMICOS" name="MATERNO_SOCIOECONOMICOS" max="40">
+                        <input type="text" class="form-control" id="MATERNO_SOCIOECONOMICO_DEPENDIENTES_ECONOMICOS" name="MATERNO_SOCIOECONOMICO_DEPENDIENTES_ECONOMICOS" max="40">
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Sexo
-                        <select  class="form-control" id="SEXO_SOCIOECONOMICOS" name="SEXO_SOCIOECONOMICOS" data-error="#err_SEXO" required></select>
-                        <span id="err_SEXO"></span>
+                        <select  class="form-control" id="SEXO_SOCIOECONOMICO_DEPENDIENTES_ECONOMICOS" name="SEXO_SOCIOECONOMICO_DEPENDIENTES_ECONOMICOS" required></select>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Fecha de nacimiento
-                        <input type="date" class="form-control" id="FECHA_NAC_SOCIOECONOMICOS" name="FECHA_NAC_SOCIOECONOMICOS" required>
+                        <input type="date" class="form-control" id="FECHA_NAC_SOCIOECONOMICO_DEPENDIENTES_ECONOMICOS" name="FECHA_NAC_SOCIOECONOMICO_DEPENDIENTES_ECONOMICOS" required>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Parentesco
-                        <select  class="form-control" id="ID_RELACION" data-error="#err_ID_RELACION" required></select>
-                        <span id="err_ID_RELACION"></span>
+                        <select  class="form-control" id="pPARENTESCO_SOCIOECONOMICO_DEPENDIENTES_ECONOMICOS" name="pPARENTESCO_SOCIOECONOMICO_DEPENDIENTES_ECONOMICOS" required></select>
                     </div>
                 </div>
                 <br>
@@ -728,10 +706,10 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior" id="anteriorSocioeconomico" data-nexttab="#Referencias-tab"> Anterior</button>
+                            <button class="btn btn-default" id="anteriorSocioeconomico"> Anterior</button>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior" id="finalizarDatosGenerales">Finalizar</button>
+                            <button class="btn btn-default" id="finalizarDatosGenerales">Finalizar</button>
                         </div>
                     </div>
                 </div>
