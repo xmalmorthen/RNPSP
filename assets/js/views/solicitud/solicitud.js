@@ -157,12 +157,17 @@ var objView = {
                 var linkRef = $('#' + e.currentTarget.id);
                 if (!linkRef.hasClass('errorValidation')) {
                     linkRef.prepend('<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ');
-                    linkRef.addClass('text-danger errorValidation');
-                    form.prepend('<div class="alert alert-danger mt-4 mb-0" role="alert">Faltan datos requeridos!!!</div>');
-                    
-                }
-                e.preventDefault();
-                $("html, body").animate({ scrollTop: $('nav nav-tabs').offset().top }, 200);
+                    linkRef.addClass('text-danger errorValidation');                    
+                }                
+                form.setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : 'Formulario incompleto'
+                });
+
+                //e.preventDefault();
+                $("html, body").animate({ scrollTop: 0 }, 200);
             }
         }
     }
