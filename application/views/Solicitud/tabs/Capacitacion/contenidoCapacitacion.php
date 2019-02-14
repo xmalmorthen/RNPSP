@@ -20,7 +20,7 @@
                     </div>
                     <div class="col-md-4">
                         Estudio o curso
-                        <Input type="text" class="form-control" id="pCURSO" name="pCURSO" min="2" max="60">
+                        <Input type="text" class="form-control" id="pCURSO_CAPACITACION_ADICIONAL" name="pCURSO_CAPACITACION_ADICIONAL" min="2" max="60">
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Tipo de curso <!--Se llena del catalogo "TIPO_CURSO_ADIC" -->
@@ -39,13 +39,13 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Eficiencia terminal <!-- Se llena del catalogo "EFICIENCIA" -->
-                        <select  class="form-control" id="pID_EFICIENCIA" name="pID_EFICIENCIA" required>
+                        <select  class="form-control" id="pID_EFICIENCIA_CAPACITACION_ADICIONAL" name="pID_EFICIENCIA_CAPACITACION_ADICIONAL" required>
                             <option value=""></option>
                         </select>
                     </div>
                     <div class="col-md-4">
                         Fecha de inicio
-                        <input type="date"  class="form-control" id="pFECHA_INICIO" name=pFECHA_INICIO>
+                        <input type="date"  class="form-control" id="pFECHA_INICIO_CAPACITACION_ADICIONAL" name=pFECHA_INICIO_CAPACITACION_ADICIONAL>
                     </div>
                 </div>
                 <br>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="col-md-4">
                         Duración en horas
-                        <Input type="text" class="form-control" id="pDURACION" name="pDURACION" min="1" max="10">
+                        <Input type="text" class="form-control" id="pDURACION_CAPACITACION_ADICIONAL" name="pDURACION_CAPACITACION_ADICIONAL" min="1" max="10">
                     </div>
                 </div>
                 <br>
@@ -144,7 +144,7 @@
                     </div>
                     <div class="col-md-4">
                         Nombre del curso
-                        <Input type="text" class="form-control" id="pCURSO" name="pCURSO" min="2" max="150">
+                        <Input type="text" class="form-control" id="pCURSO_CAPACITACION_SEGURIDAD_PUBLICA" name="pCURSO_CAPACITACION_SEGURIDAD_PUBLICA" min="2" max="150">
                     </div>
                 </div>
                 <br>
@@ -163,7 +163,7 @@
                     </div>
                     <div class="col-md-4">
                         Eficiencia terminal <!-- Lo saca del catalogo de "EFICIENCIA" -->
-                        <select  class="form-control" id="pID_EFICIENCIA" name="pID_EFICIENCIA">
+                        <select  class="form-control" id="pID_EFICIENCIA_CAPACITACION_SEGURIDAD_PUBLICA" name="pID_EFICIENCIA_CAPACITACION_SEGURIDAD_PUBLICA">
                             <option value=""></option>
                         </select>
                     </div>
@@ -180,7 +180,7 @@
                     </div>
                     <div class="col-md-4">
                         Duración en horas
-                        <Input type="text" class="form-control" id="pDURACION" name="pDURACION" min="1" max="10">
+                        <Input type="text" class="form-control" id="pDURACION_CAPACITACION_SEGURIDAD_PUBLICA" name="pDURACION_CAPACITACION_SEGURIDAD_PUBLICA" min="1" max="10">
                     </div>
                 </div>
                 <br>
@@ -445,7 +445,7 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Fecha de inicio de afiliación
-                        <input type="date" class="form-control" id="pFECHA_INICIO" name="pFECHA_INICIO" required>
+                        <input type="date" class="form-control" id="pFECHA_INICIO_AFILIACION_AGRUPACIONES" name="pFECHA_INICIO_AFILIACION_AGRUPACIONES" required>
                     </div>
                 </div>
                 <br>
