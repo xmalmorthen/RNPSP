@@ -18,7 +18,7 @@
                     </div>
                     <div class="col-md-4">
                         Tipo de movimiento
-                        <select  class="form-control" name="" id="" data-error="#err_tipoMovimiento" required></select>
+                        <select  class="form-control" name="pTIPO_MOV" id="pTIPO_MOV" data-error="#err_tipoMovimiento_DATOS_PERSONALES" required></select>
                         <span id="err_tipoMovimiento"></span>
                     </div>
                 </div>
@@ -26,27 +26,27 @@
                 <div class="row">
                 <div class="col-md-4">
                         <span class="clr">*</span>Nombre
-                        <input type="text" id="pNOMBRE" name="pNOMBRE" class="form-control" max="40" required>
+                        <input type="text" id="pNOMBRE_DATOS_PERSONALES" name="pNOMBRE_DATOS_PERSONALES" class="form-control" max="40" required>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Apellido paterno
-                        <input type="text" id="pPATERNO" name="pPATERNO" class="form-control" max="40" required>
+                        <input type="text" id="pPATERNO_DATOS_PERSONALES" name="pPATERNO_DATOS_PERSONALES" class="form-control" max="40" required>
                     </div>
                     <div class="col-md-4">
                         Apellido materno
-                        <input type="text" id="pMATERNO" name="pMATERNO" class="form-control" max="40" >
+                        <input type="text" id="pMATERNO_DATOS_PERSONALES" name="pMATERNO_DATOS_PERSONALES" class="form-control" max="40" >
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Sexo
-                        <select  class="form-control" id="pSEXO" name="pSEXO" data-error="#err_pSEXO" required></select>
-                        <span id="err_pSEXO"></span>
+                        <select  class="form-control" id="pSEXO_DATOS_PERSONALES" name="pSEXO_DATOS_PERSONALES" data-error="#err_pSEXO_DATOS_PERSONALES" required></select>
+                        <span id="err_pSEXO_DATOS_PERSONALES"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Fecha de nacimiento
-                        <input type="date"  id="pFECHA_NAC" name="pFECHA_NAC" class="form-control" required>
+                        <input type="date"  id="pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES" name="pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES" class="form-control" required>
                     </div>
                 </div>
                 <br>
@@ -71,7 +71,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         Ciudad o población de nacimiento
-                        <select  class="form-control" id="pCIUDAD_NAC" name="pCIUDAD_NAC" data-error="#err_pCIUDAD_NAC"></select>
+                        <select  class="form-control" id="pCIUDAD_NAC_DATOS_PERSONALES" name="pCIUDAD_NAC_DATOS_PERSONALES" data-error="#err_pCIUDAD_NAC"></select>
                         <span id="err_pCIUDAD_NAC"></span>
                     </div>
                     <div class="col-md-4">
@@ -93,7 +93,7 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>RFC
-                        <input type="text" id="pRFC" name="pRFC" class="form-control" min="10" max="13" required>
+                        <input type="text" id="pRFC_DATOS_PERSONALES" name="pRFC_DATOS_PERSONALES" class="form-control" min="10" max="13" required>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estado civil
@@ -120,7 +120,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         Licencia de conducir
-                        <input type="text" id="pLICENCIA" name="pLICENCIA" class="form-control" min="20" max="20">
+                        <input type="text" id="pLICENCIA_DATOS_PERSONALES" name="pLICENCIA_DATOS_PERSONALES" class="form-control" min="20" max="20">
                     </div>
                     <div class="col-md-4">
                         Vigencia de licencia
@@ -143,7 +143,7 @@
                     <br>
                     </div>
                     <div class="col-md-4">
-                        <button class="btn btn-default" id="generarCIB" style="margin-top: 16px;"> Guardar CIB</button>
+                        <button class="btn btn-default" id="GUARDAR_CIB" style="margin-top: 16px;"> Guardar CIB</button>
                     </div>
                 </div>
                 <br>
@@ -202,7 +202,7 @@
                     </div>
                     <div class="col-md-4">
                         Especialidad o estudio
-                        <input type="text" class="form-control" id="pESPECIALIDAD" name="pESPECIALIDAD" max="100">
+                        <input type="text" class="form-control" id="pESPECIALIDAD_DESARROLLO" name="pESPECIALIDAD_DESARROLLO" max="100">
                     </div>
                 </div>
                 <br>
@@ -301,65 +301,65 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Código postal
-                        <input type="text" class="form-control" id="pCODIGO_POSTAL" name="pCODIGO_POSTAL" max="10" required>
+                        <input type="text" class="form-control" id="pCODIGO_POSTAL_DOMICILIO" name="pCODIGO_POSTAL_DOMICILIO" max="10" required>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estado
-                        <select  class="form-control" id="pID_ENTIDAD" name="pID_ENTIDAD" data-error="#err_pID_ENTIDAD" required></select>
-                        <span id="err_pID_ENTIDAD"></span>
+                        <select  class="form-control" id="pID_ENTIDAD_DOMICILIO" name="pID_ENTIDAD_DOMICILIO" data-error="#err_pID_ENTIDAD_DOMICILIO" required></select>
+                        <span id="err_pID_ENTIDAD_DOMICILIO"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Municipio
-                        <select  class="form-control" id="pID_MUNICIPIO" name="pID_MUNICIPIO" data-error="#err_pID_MUNICIPIO" required></select>
-                        <span id="err_pID_MUNICIPIO"></span>
+                        <select  class="form-control" id="pID_MUNICIPIO_DOMICILIO" name="pID_MUNICIPIO_DOMICILIO" data-error="#err_pID_MUNICIPIO" required></select>
+                        <span id="err_pID_MUNICIPIO_DOMICILIO"></span>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         Ciudad
-                        <input type="text" class="form-control" id="pCOLONIA" name="pCOLONIA" max="50"> 
+                        <input type="text" class="form-control" id="pCIUDAD_DOMICILIO" name="pCIUDAD_DOMICILIO" max="50"> 
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Colonia/Localidad
-                        <input type="text" class="form-control" id="pCIUDAD" name="pCIUDAD" max="60" required>
+                        <input type="text" class="form-control" id="pCOLONIA_DOMICILIO" name="pCOLONIA_DOMICILIO" max="60" required>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Calle
-                        <input type="text" class="form-control" id="pCALLE" name="pCALLE" max="60" required>
+                        <input type="text" class="form-control" id="pCALLE_DOMICILIO" name="pCALLE_DOMICILIO" max="60" required>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Número exterior
-                        <input type="text" class="form-control" id="pNUM_EXTERIOR" name="pNUM_EXTERIOR" max="30" min="5" required>
+                        <input type="text" class="form-control" id="pNUM_EXTERIOR_DOMICILIO" name="pNUM_EXTERIOR_DOMICILIO" max="30" min="5" required>
                     </div>
                     <div class="col-md-4">
                         Número interior
-                        <input type="text" class="form-control" id="pNUM_INTERIOR" name="pNUM_INTERIOR" max="30" min="4">
+                        <input type="text" class="form-control" id="pNUM_INTERIOR_DOMICILIO" name="pNUM_INTERIOR_DOMICILIO" max="30" min="4">
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Entre la calle de
-                        <input type="text" class="form-control" id="pENTRE_CALLE" name="pENTRE_CALLE" max="60" required>
+                        <input type="text" class="form-control" id="pENTRE_CALLE_DOMICILIO" name="pENTRE_CALLE_DOMICILIO" max="60" required>
                     </div>
                     <div class="col-md-4">
                         Y la calle de
-                        <input type="text" class="form-control" id="pY_CALLE" name="pY_CALLE" max="45">
+                        <input type="text" class="form-control" id="pY_CALLE_DOMICILIO" name="pY_CALLE_DOMICILIO" max="45">
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Número telefónico
-                        <input type="text" class="form-control" id="pTELEFONO" name="pTELEFONO" max="13" min="10" required>
+                        <input type="text" class="form-control" id="pTELEFONO_DOMICILIO" name="pTELEFONO_DOMICILIO" max="13" min="10" required>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>RFC
-                        <input type="text" class="form-control" id="pRFC" name="pRFC" max="13" min="10" required>
+                        <input type="text" class="form-control" id="pRFC_DOMICILIO" name="pRFC_DOMICILIO" max="13" min="10" required>
                     </div>
                 </div>
                 <br>
@@ -429,23 +429,23 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Nombre
-                        <input type="text" id="NOMBRE" name="NOMBRE" class="form-control" max="30" required>
+                        <input type="text" id="NOMBRE_REFERENCIAS" name="NOMBRE_REFERENCIAS" class="form-control" max="30" required>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Apellido paterno
-                        <input type="text" id="PATERNO" name="PATERNO" class="form-control" max="30" required>
+                        <input type="text" id="PATERNO_REFERENCIAS" name="PATERNO_REFERENCIAS" class="form-control" max="30" required>
                     </div>
                     <div class="col-md-4">
                         Apellido materno
-                        <input type="text" class="form-control" id="MATERNO" name="MATERNO" max="30">
+                        <input type="text" class="form-control" id="MATERNO_REFERENCIAS" name="MATERNO_REFERENCIAS" max="30">
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Sexo
-                        <select name="SEXO" id="SEXO" class="form-control" data-error="#err_SEXO" required></select>
-                        <span id="err_SEXO"></span>
+                        <select name="SEXO_REFERENCIAS" id="SEXO_REFERENCIAS" class="form-control" data-error="#err_SEXO_REFERENCIAS" required></select>
+                        <span id="err_SEXO_REFERENCIAS"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Ocupación
@@ -454,7 +454,7 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Tipo de referencia
-                        <select name="" id="ID_TIPO_REFERENCIA" name="ID_TIPO_REFERENCIA" class="form-control" data-error="#err_ID_TIPO_REFERENCIA" required></select>
+                        <select name="" id="ID_TIPO_REFERENCIA" name="ID_TIPO_REFERENCIA" class="form-control" data-error="#err_ID_TIPO_REFERENCIA_REFERENCIAS" required></select>
                         <span id="err_ID_TIPO_REFERENCIA"></span>
                     </div>
                 </div>
@@ -462,7 +462,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         Relación o parentesco
-                        <select name="ID_RELACION" id="ID_RELACION" class="form-control" data-error="#err_ID_RELACION"></select>
+                        <select name="ID_RELACION_REFERENCIAS" id="ID_RELACION_REFERENCIAS" class="form-control" data-error="#err_ID_RELACION"></select>
                         <span id="err_ID_RELACION"></span>
                     </div>
                 </div>
@@ -470,54 +470,54 @@
                 <div class="row">
                     <div class="col-md-4">
                         Código postal
-                        <input type="text" id="CODIGO_POSTAL" name="CODIGO_POSTAL" class="form-control" max="10">
+                        <input type="text" id="CODIGO_POSTAL_REFERENCIAS" name="CODIGO_POSTAL_REFERENCIAS" class="form-control" max="10">
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estado
-                        <select name="ID_ENTIDAD" id="ID_ENTIDAD"  class="form-control" data-error="#err_ID_ENTIDAD" required></select>
-                        <span id="err_ID_ENTIDAD"></span>
+                        <select name="ID_ENTIDAD_REFERENCIAS" id="ID_ENTIDAD_REFERENCIAS"_REFERENCIAS  class="form-control" data-error="#err_ID_ENTIDAD_REFERENCIAS" required></select>
+                        <span id="err_ID_ENTIDAD_REFERENCIAS"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Municipio
-                        <select name="ID_MUNICIPIO" id="ID_MUNICIPIO" class="form-control" data-error="#err_ID_MUNICIPIO" required></select>
-                        <span id="err_ID_MUNICIPIO"></span>
+                        <select name="ID_MUNICIPIO_REFERENCIAS" id="ID_MUNICIPIO_REFERENCIAS" class="form-control" data-error="#err_ID_MUNICIPIO_REFERENCIAS" required></select>
+                        <span id="err_ID_MUNICIPIO_REFERENCIAS"></span>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         Ciudad
-                        <input type="text" id="CIUDAD" name="CIUDAD" class="form-control" max="50" required>
+                        <input type="text" id="CIUDAD_REFERENCIAS" name="CIUDAD_REFERENCIAS" class="form-control" max="50" required>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Colonia/Localidad
-                        <input type="text"  id="COLONIA" name="COLONIA" class="form-control" max="60" required>
+                        <input type="text"  id="COLONIA_REFERENCIAS" name="COLONIA_REFERENCIAS" class="form-control" max="60" required>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Calle
-                        <input type="text" id="CALLE" name="CALLE" class="form-control" max="60" required>
+                        <input type="text" id="CALLE_REFERENCIAS" name="CALLE_REFERENCIAS" class="form-control" max="60" required>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Número exterior
-                        <input type="text" class="form-control" name="NUM_EXTERIOR" id="NUM_EXTERIOR" max="30" min="5" required>
+                        <input type="text" class="form-control" name="NUM_EXTERIOR_REFERENCIAS" id="NUM_EXTERIOR_REFERENCIAS" max="30" min="5" required>
                     </div>
                     <div class="col-md-4">
                         Número interior
-                        <input type="text" class="form-control" name="NUM_INTERIOR" id="NUM_INTERIOR" max="30" min="4">
+                        <input type="text" class="form-control" name="NUM_INTERIOR_REFERENCIAS" id="NUM_INTERIOR_REFERENCIAS" max="30" min="4">
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         Entre la calle de
-                        <input type="text" class="form-control" id="ENTRE_CALLE" name="ENTRE_CALLE" max="60">
+                        <input type="text" class="form-control" id="ENTRE_CALLE_REFERENCIAS" name="ENTRE_CALLE_REFERENCIAS" max="60">
                     </div>
                     <div class="col-md-4">
                         Y la calle de
-                        <input type="text" class="form-control" id="Y_CALLE" name="Y_CALLE" max="45">
+                        <input type="text" class="form-control" id="Y_CALLE_REFERENCIAS" name="Y_CALLE_REFERENCIAS" max="45">
                     </div>
                 </div>
                 <br>
@@ -657,32 +657,32 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Nombre
-                        <input type="text" class="form-control" id="NOMBRE" name="NOMBRE" max="40" required>
+                        <input type="text" class="form-control" id="NOMBRE_SOCIOECONOMICOS" name="NOMBRE_SOCIOECONOMICOS" max="40" required>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Apellido paterno
-                        <input type="text" class="form-control" id="PATERNO" name="PATERNO" max="40" required>
+                        <input type="text" class="form-control" id="PATERNO_SOCIOECONOMICOS" name="PATERNO_SOCIOECONOMICOS" max="40" required>
                     </div>
                     <div class="col-md-4">
                         Apellido materno
-                        <input type="text" class="form-control" id="MATERNO" name="MATERNO" max="40">
+                        <input type="text" class="form-control" id="MATERNO_SOCIOECONOMICOS" name="MATERNO_SOCIOECONOMICOS" max="40">
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Sexo
-                        <select  class="form-control" id="SEXO" name="SEXO" data-error="#err_SEXO" required></select>
+                        <select  class="form-control" id="SEXO_SOCIOECONOMICOS" name="SEXO_SOCIOECONOMICOS" data-error="#err_SEXO" required></select>
                         <span id="err_SEXO"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Fecha de nacimiento
-                        <input type="date" class="form-control" id="FECHA_NAC" name="FECHA_NAC" required>
+                        <input type="date" class="form-control" id="FECHA_NAC_SOCIOECONOMICOS" name="FECHA_NAC_SOCIOECONOMICOS" required>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Parentesco
-                        <select  class="form-control" id="" data-error="#err_Parentesco" required></select>
-                        <span id="err_Parentesco"></span>
+                        <select  class="form-control" id="ID_RELACION" data-error="#err_ID_RELACION" required></select>
+                        <span id="err_ID_RELACION"></span>
                     </div>
                 </div>
                 <br>
