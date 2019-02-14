@@ -1,6 +1,9 @@
 var objView = {
     vars : {
-        datosGenerales : { 
+        general : {
+            btnSiguienteAnterior : null
+        },
+        datosGenerales : {
             forms : {
                 Datos_personales_form : null,
                 Desarrollo_form : null,
@@ -10,8 +13,7 @@ var objView = {
             },
             btns : {
                 guardarDatosPersonales : null,
-                generarCIB : null,
-                siguienteDatosPersonales : null
+                generarCIB : null
             }
         }
     },
@@ -29,7 +31,8 @@ var objView = {
         // BUTTONS
         objView.vars.datosGenerales.btns.guardarDatosPersonales = $('#guardarDatosPersonales');        
         objView.vars.datosGenerales.btns.generarCIB = $('#generarCIB');        
-        objView.vars.datosGenerales.btns.siguienteDatosPersonales = $('#siguienteDatosPersonales');        
+        
+        objView.vars.general.btnSiguienteAnterior = $('.btnSiguienteAnterior');
 
         // INIT SELECTS
         $('select').select2();
@@ -43,16 +46,23 @@ var objView = {
         // CLICK EVENTS
         objView.vars.datosGenerales.btns.guardarDatosPersonales.on('click',objView.events.click.datosGenerales.guardarDatosPersonales);
         objView.vars.datosGenerales.btns.generarCIB.on('click',objView.events.click.datosGenerales.generarCIB);
-        objView.vars.datosGenerales.btns.siguienteDatosPersonales.on('click',objView.events.click.datosGenerales.siguienteDatosPersonales);
+        objView.vars.general.btnSiguienteAnterior.on('click',objView.events.click.general.btnSiguienteAnterior);
+        $('a[data-toggle="tab"]').on('hide.bs.tab',objView.actions.changeTab);
     },
     events : {
         click : {
+            general : {
+                btnSiguienteAnterior : function(e){
+                    e.preventDefault();
+                    var tab = $(this).data('nexttab'); 
+                    $(tab).tab('show');
+                }
+            },
             datosGenerales : {
                 guardarDatosPersonales : function(e){
                     generic.click(
                     {
-                        evt : e,
-                        showLoading : false
+                        evt : e
                     },
                     //event
                     function(){
@@ -95,7 +105,10 @@ var objView = {
                     });
                 },
                 generarCIB : function(e){
-                    generic.click(e,
+                    generic.click(
+                    {
+                        evt : e
+                    },
                     //event
                     function(){
                         //TODO: IMPLEMENTAR
@@ -112,7 +125,10 @@ var objView = {
                     });
                 },
                 siguienteDatosPersonales : function(e){
-                    generic.click(e,
+                    generic.click(
+                    {
+                        evt : e
+                    },
                     //event
                     function(){
                         //TODO: IMPLEMENTAR
@@ -128,6 +144,25 @@ var objView = {
                         swal({ type: 'error', title: 'Error', html: msg });
                     });
                 }
+            }
+        }
+    },
+    actions : {
+        changeTab : function(e){ 
+            var tabRefObj = $(e.currentTarget.hash),
+                form = tabRefObj.find('form');
+
+            //VALIDATE FORM
+            if (!form.valid()){                
+                var linkRef = $('#' + e.currentTarget.id);
+                if (!linkRef.hasClass('errorValidation')) {
+                    linkRef.prepend('<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ');
+                    linkRef.addClass('text-danger errorValidation');
+                    form.prepend('<div class="alert alert-danger mt-4 mb-0" role="alert">Faltan datos requeridos!!!</div>');
+                    
+                }
+                e.preventDefault();
+                $("html, body").animate({ scrollTop: $('nav nav-tabs').offset().top }, 200);
             }
         }
     }

@@ -1,8 +1,17 @@
 var generic = {
     click : function(options,fnc, success, error) {
-        options.evt.preventDefault();
+        var defaults = {
+            evt : null, 
+            showLoading : false
+        };
+        options = $.extend(defaults, options);
+
+        if (options.evt)
+            options.evt.preventDefault();
+        
         if (options.showLoading)
             $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+        
         try {
             var returnResponse = fnc();
             if (success) 
