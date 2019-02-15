@@ -26,27 +26,27 @@
                 <div class="row">
                 <div class="col-md-4">
                         <span class="clr">*</span>Nombre
-                        <input type="text" id="pNOMBRE_DATOS_PERSONALES" name="pNOMBRE_DATOS_PERSONALES" class="form-control" max="40" required>
+                        <input type="text" id="pNOMBRE_DATOS_PERSONALES" name="pNOMBRE_DATOS_PERSONALES" class="form-control consultaCURP" max="40" required>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Apellido paterno
-                        <input type="text" id="pPATERNO_DATOS_PERSONALES" name="pPATERNO_DATOS_PERSONALES" class="form-control" max="40" required>
+                        <input type="text" id="pPATERNO_DATOS_PERSONALES" name="pPATERNO_DATOS_PERSONALES" class="form-control consultaCURP" max="40" required>
                     </div>
                     <div class="col-md-4">
                         Apellido materno
-                        <input type="text" id="pMATERNO_DATOS_PERSONALES" name="pMATERNO_DATOS_PERSONALES" class="form-control" max="40" >
+                        <input type="text" id="pMATERNO_DATOS_PERSONALES" name="pMATERNO_DATOS_PERSONALES" class="form-control consultaCURP" max="40" >
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Sexo
-                        <select  class="form-control" id="pSEXO_DATOS_PERSONALES" name="pSEXO_DATOS_PERSONALES" data-error="#err_pSEXO_DATOS_PERSONALES" required></select>
+                        <select  class="form-control consultaCURP" id="pSEXO_DATOS_PERSONALES" name="pSEXO_DATOS_PERSONALES" data-error="#err_pSEXO_DATOS_PERSONALES" required></select>
                         <span id="err_pSEXO_DATOS_PERSONALES"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Fecha de nacimiento
-                        <input type="date"  id="pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES" name="pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES" class="form-control" required>
+                        <input type="date"  id="pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES" name="pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES" class="form-control consultaCURP" required>
                     </div>
                 </div>
                 <br>

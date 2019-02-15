@@ -14,6 +14,9 @@ var objView = {
             btns : {
                 guardarDatosPersonales : null,
                 generarCIB : null
+            },
+            objs : {
+                pCURP : null
             }
         }
     },
@@ -31,8 +34,9 @@ var objView = {
         // BUTTONS
         objView.vars.datosGenerales.btns.guardarDatosPersonales = $('#guardarDatosPersonales');        
         objView.vars.datosGenerales.btns.generarCIB = $('#generarCIB');        
-        
         objView.vars.general.btnSiguienteAnterior = $('.btnSiguienteAnterior');
+        // OBJS
+        objView.vars.datosGenerales.objs.pCURP = $('#pCURP');
 
         // INIT SELECTS
         $('select').select2();
@@ -47,6 +51,9 @@ var objView = {
         objView.vars.datosGenerales.btns.guardarDatosPersonales.on('click',objView.events.click.datosGenerales.guardarDatosPersonales);
         objView.vars.datosGenerales.btns.generarCIB.on('click',objView.events.click.datosGenerales.generarCIB);
         objView.vars.general.btnSiguienteAnterior.on('click',objView.events.click.general.btnSiguienteAnterior);
+
+        objView.vars.datosGenerales.objs.pCURP.on('focusout',objView.events.focus.out.pCURP);
+
         $('a[data-toggle="tab"]').on('hide.bs.tab',objView.actions.changeTab);
     },
     events : {
@@ -138,11 +145,56 @@ var objView = {
                     function (successResponse){
                     }, 
                     //error
-                    function(){
+                    function(err){
                         $.LoadingOverlay("hide");
                         var msg = err.status + ' - ' + err.statusText;
                         swal({ type: 'error', title: 'Error', html: msg });
                     });
+                }
+            }
+        },
+        focus : {
+            out : {
+                pCURP : function(){
+                    $this = $(this);
+
+                    var value = $(this).val();
+
+                    if ( value.length < 18 || value.length > 20 )
+                        return null;
+
+                    $this.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+                    var callUrl = base_url + 'ajaxAPIs/curp',
+                        model = {CURP : value};
+
+                    //desactivar controles involucrados en la consulta CURP
+                    $('.consultaCURP').readOnly();
+
+                    generic.ajax.get(
+                        callUrl,
+                        model,
+                        //success
+                        function(data){
+                            $('#pNOMBRE_DATOS_PERSONALES').val(data[0].nombres);
+                            $('#pPATERNO_DATOS_PERSONALES').val(data[0].apellido1);
+                            $('#pMATERNO_DATOS_PERSONALES').val(data[0].apellido2);
+                            var dateParts = data[0].fechNac.split("/");
+                            var dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]); 
+                            date = moment( dateObject ).format('YYYY-MM-DD');
+                            $('#pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES').val(date);
+                        }, 
+                        //error
+                        function(err){
+                            var msg = err.status + ' - ' + err.statusText;
+                            swal({ type: 'error', title: 'Error', html: msg });                            
+                        },
+                        //always
+                        function(){
+                            $('.consultaCURP').resetReadOnly();
+                            $this.LoadingOverlay("hide");
+                        }
+                    );
                 }
             }
         }

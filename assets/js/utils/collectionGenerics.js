@@ -58,7 +58,7 @@ var generic = {
                 });
             }
         },
-        get : function(callUrl,model,success,error){
+        get : function(callUrl,model,success,error,always){
             if (!model) {
                 $.get(callUrl,
                     function (data) {
@@ -70,7 +70,11 @@ var generic = {
                                 if ($.isFunction( error ))
                                     error(err);
                     }).always(function () {                    
-                });                
+                        if (always) 
+                                if ($.isFunction( always ))
+                                    always();
+                    }
+                );
             } else {
                 $.get(callUrl,{
                         model : model                    
@@ -83,8 +87,12 @@ var generic = {
                         if (error) 
                                 if ($.isFunction( error ))
                                     error(err);
-                    }).always(function () {                    
-                    });
+                    }).always(function () {
+                        if (always) 
+                                if ($.isFunction( always ))
+                                    always();                    
+                        }
+                    );
             }
         }
     }
