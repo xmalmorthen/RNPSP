@@ -49,10 +49,10 @@
 		<script src="<?php echo base_url('assets/vendor/plugins/LoadingOverlay/v2.1.5/loadingOverlay.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/vendor/plugins/jquery-validation/dist/jquery.validate.min.js'); ?>"></script>
 		<script src="<?php echo base_url("assets/vendor/plugins/jquery-validation/dist/messages_es.js"); ?>"></script>
+		<script src="<?php echo base_url("assets/vendor/plugins/cookie/v3.14.1/js.cookie.min.js"); ?>"></script>
+		<script src="<?php echo base_url("assets/js/utils/cookie.js"); ?>"></script>
 		<!-- /JS -->
 		<!-- /VENDOR -->
-
-		
 
 		<!-- JS -->
 		<script src="<?php echo base_url('assets/js/utils/guid.js'); ?>"></script>
@@ -70,7 +70,8 @@
 				guid : "<?php echo $this->config->item('GUID'); ?>",
 			}
 
-			var sess_time_to_update = "<?php echo $this->config->item('sess_time_to_update'); ?>";
+			var sess_base_time = "<?php echo $this->config->item('sess_time_to_update'); ?>";
+			var sess_time_to_update = sess_base_time;
 			var sess_time_left_to_confirm = "<?php echo $this->config->item('sess_time_left_to_confirm'); ?>";	
 
 			var isSerializedFORM = "<?php echo $this->session->flashdata('isSerializedFORM') ? 'true' : 'false'; ?>";

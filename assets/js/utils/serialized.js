@@ -8,7 +8,9 @@ var serialized = {
             callback(data);            
         }).fail(function (err) {
             error(err);            
-        }).always(function () {});
+        }).always(function () {
+            MyCookie.session.reset();
+        });
     },
     get : function(callback,error){
         var callUrl = base_url + 'ajaxSerealize/ajaxGetProgress';
@@ -19,7 +21,9 @@ var serialized = {
             callback(data);            
         }).fail(function (err) {
             error(err);
-        }).always(function () {});
+        }).always(function () {
+            MyCookie.session.reset();
+        });
     },
     delete : function(){
         

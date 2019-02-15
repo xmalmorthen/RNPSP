@@ -41,7 +41,9 @@ var generic = {
                             if ($.isFunction( error ))
                                 error(err);
                     }).always(function () {
-                });
+                        MyCookie.session.reset();
+                    }
+                );
             } else {
                 $.post(callUrl,{
                         model: model
@@ -55,7 +57,9 @@ var generic = {
                             if ($.isFunction( error ))
                                 error(err);
                     }).always(function () {
-                });
+                        MyCookie.session.reset();
+                    }
+                );
             }
         },
         get : function(callUrl,model,success,error,always){
@@ -69,7 +73,9 @@ var generic = {
                         if (error) 
                                 if ($.isFunction( error ))
                                     error(err);
-                    }).always(function () {                    
+                    }).always(function () { 
+                        MyCookie.session.reset();
+
                         if (always) 
                                 if ($.isFunction( always ))
                                     always();
@@ -88,6 +94,8 @@ var generic = {
                                 if ($.isFunction( error ))
                                     error(err);
                     }).always(function () {
+                        MyCookie.session.reset();
+
                         if (always) 
                                 if ($.isFunction( always ))
                                     always();                    

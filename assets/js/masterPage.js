@@ -1,10 +1,25 @@
+if ( MyCookie.singleWindow.get() === undefined) {
+    MyCookie.singleWindow.save();
+    $(window).unload(MyCookie.singleWindow.remove);
+} else {
+    $(function () { 
+        $('body').html('<div class="error">' + 
+            '<h1>Sorry!</h1>' + 
+            '<p>You can only have one instance of this web page open at a time.</p>' + 
+            '</div>');
+    });
+}
+
 // SESSION COUNTDOWN
 var swalShow = false;
 
 if ( typeof sess_time_to_update !== 'undefined') {
     var timer = setInterval(function() { 
         if (parseInt(sess_time_to_update) <= parseInt(sess_time_left_to_confirm) && !swalShow ){
+            MyCookie.session.save();
+
             swalShow = true;
+            timerInterval = null;
             Swal({
                 title: 'Sesión',
                 html: "Está a punto de expirar la sesión por inactividad,<br> desea mantener la sesión activa?<br><br> Tiempo restante: <span class='swalSessionRemainTime'><strong></strong></span>",
@@ -17,6 +32,13 @@ if ( typeof sess_time_to_update !== 'undefined') {
                 timer: sess_time_to_update * 1000,
                 onBeforeOpen: function() {
                     timerInterval = setInterval(function() {
+
+                        var sessionObj = MyCookie.session.get();
+                        if (parseInt(sessionObj.sess_time_to_update) > parseInt(sessionObj.sess_time_left_to_confirm)){
+                            Swal.close();
+                            return null;
+                        }
+
                         var content = Swal.getContent();
                         
                         if (content) {
@@ -31,12 +53,13 @@ if ( typeof sess_time_to_update !== 'undefined') {
                     }, 1000);
                 },
                 onClose: () => {
-                    // clearInterval(timerInterval)
+                    clearInterval(timerInterval)
                 }
             }).then(function(result){
                 if (result.value === true){
                     $.getJSON(site_url + 'UserSession/renovateSession/' + guid(), function(timeRemain) {
                         swalShow = false;
+                        sess_base_time = timeRemain;
                         sess_time_to_update = timeRemain;
                     });                    
                 } else if (result.dismiss === 'cancel') {
@@ -52,10 +75,15 @@ if ( typeof sess_time_to_update !== 'undefined') {
 }
 
 
-$(document).ready(function () {
+$(document).ready(function () { 
     moment.locale('es');
     
     $.LoadingOverlaySetup({image:"",fontawesome : "fa fa-gear fa-spin",maxSize:150,minSize:20});
+    
+    if (typeof MyCookie !== 'undefined') {
+        MyCookie.session.save();
+        MyCookie.session.get();
+    }
 
     window.addEventListener("beforeunload", function (e) {
         $.LoadingOverlay("show");
