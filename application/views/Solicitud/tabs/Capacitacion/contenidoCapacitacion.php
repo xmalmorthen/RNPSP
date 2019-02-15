@@ -92,10 +92,10 @@
                         </tr>
                     </tbody>
                 </table>
-                <input type="number" id="pID_ALTERNA" name="pID_ALTERNA" hidden>
-                <input type="number" id="pID_ESTADO_EMISOR" name="pID_ESTADO_EMISOR" hidden>
-                <input type="number" id="pID_EMISOR" name="pID_EMISOR" hidden>
-                <input type="number" id="pID_CAP_ADICIONAL_EXT" name="pID_CAP_ADICIONAL_EXT" hidden>
+                <input type="hidden" id="pID_ALTERNA" name="pID_ALTERNA" value="" >
+                <input type="hidden" id="pID_ESTADO_EMISOR" name="pID_ESTADO_EMISOR" value="" >
+                <input type="hidden" id="pID_EMISOR" name="pID_EMISOR" value="">
+                <input type="hidden" id="pID_CAP_ADICIONAL_EXT" name="pID_CAP_ADICIONAL_EXT" value="" >
             </form>
             <div class="row">
                 <div class="col-md-4"></div>
@@ -220,10 +220,10 @@
                         </tbody>
                     </table>
                 </div>
-                <input type="number" id="pID_ALTERNA" name="pID_ALTERNA" hidden>
-                <input type="number" id="pID_ESTADO_EMISOR" name="pID_ESTADO_EMISOR" hidden>
-                <input type="number" id="pID_EMISOR" name="pID_EMISOR" hidden>
-                <input type="number" id="pID_CAPACITACION_EXT" name="pID_CAPACITACION_EXT" hidden>
+                <input type="hidden" id="pID_ALTERNA" name="pID_ALTERNA" value="" >
+                <input type="hidden" id="pID_ESTADO_EMISOR" name="pID_ESTADO_EMISOR" value="" >
+                <input type="hidden" id="pID_EMISOR" name="pID_EMISOR" value="" >
+                <input type="hidden" id="pID_CAPACITACION_EXT" name="pID_CAPACITACION_EXT" value="" >
             </form>
             <div class="row">
                 <div class="col-md-4">
@@ -314,10 +314,10 @@
                         </tr>
                     </tbody>
                 </table>
-                <input type="number" id="pID_ALTERNA" name="pID_ALTERNA" hidden>
-                <input type="number" id="pID_ESTADO_EMISOR" name="pID_ESTADO_EMISOR" hidden>
-                <input type="number" id="pID_EMISOR" name="pID_EMISOR" hidden>
-                <input type="number" id="pID_IDIOMA_HABLADO_EXT" name="pID_IDIOMA_HABLADO_EXT" hidden>
+                <input type="hidden" id="pID_ALTERNA" name="pID_ALTERNA" value="" >
+                <input type="hidden" id="pID_ESTADO_EMISOR" name="pID_ESTADO_EMISOR" value="" >
+                <input type="hidden" id="pID_EMISOR" name="pID_EMISOR" value="" >
+                <input type="hidden" id="pID_IDIOMA_HABLADO_EXT" name="pID_IDIOMA_HABLADO_EXT" value="" >
             </form>
             <div class="row">
                 <div class="col-md-4"></div>
@@ -397,10 +397,10 @@
                         </tr>
                     </tbody>
                 </table>
-                <input type="number" id="pID_ALTERNA" name="pID_ALTERNA" hidden>
-                <input type="number" id="pID_ESTADO_EMISOR" name="pID_ESTADO_EMISOR" hidden>
-                <input type="number" id="pID_EMISOR" name="pID_EMISOR" hidden>
-                <input type="number" id="pID_HABILIDAD_APTIT_EXT" name="pID_HABILIDAD_APTIT_EXT" hidden>
+                <input type="hidden" id="pID_ALTERNA" name="pID_ALTERNA" value="">
+                <input type="hidden" id="pID_ESTADO_EMISOR" name="pID_ESTADO_EMISOR" value="">
+                <input type="hidden" id="pID_EMISOR" name="pID_EMISOR" value="">
+                <input type="hidden" id="pID_HABILIDAD_APTIT_EXT" name="pID_HABILIDAD_APTIT_EXT" value="">
             </form>
             <div class="row">
                 <div class="col-md-4"></div>
@@ -486,10 +486,10 @@
                         </tr>
                     </tbody>
                 </table>
-                <input type="number" id="pID_ALTERNA" name="pID_ALTERNA" hidden>
-                <input type="number" id="pID_ESTADO_EMISOR" name="pID_ESTADO_EMISOR" hidden>
-                <input type="number" id="pID_EMISOR" name="pID_EMISOR" hidden>
-                <input type="number" id="pID_AGRUPACION_EXT" name="pID_AGRUPACION_EXT" hidden>
+                <input type="hidden" id="pID_ALTERNA" name="pID_ALTERNA" value="" >
+                <input type="hidden" id="pID_ESTADO_EMISOR" name="pID_ESTADO_EMISOR" value="" >
+                <input type="hidden" id="pID_EMISOR" name="pID_EMISOR" value="" >
+                <input type="hidden" id="pID_AGRUPACION_EXT" name="pID_AGRUPACION_EXT" value="" >
             </form>
             <div class="row">
                 <div class="col-md-4"></div>
