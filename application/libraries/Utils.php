@@ -24,10 +24,13 @@ class Utils {
 		return $CI->encrypt->decode(base64_decode($cad));
     }
 
-	public static function pre($array){
+	public static function pre($array,$exit = true){
         echo '<pre>';
         print_r($array);
-        exit();
+        echo '</pre>';
+        if($exit){
+            exit();
+        }
     }
     
 }
