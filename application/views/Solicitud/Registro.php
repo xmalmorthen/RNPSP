@@ -4,7 +4,7 @@
     <!-- LISTA DE TABS DEL MENU PRINCIPAL -->
     <div class="row">
         <div class="col-md-12">
-            <ul class="nav nav-tabs" id="myMaintab" role="tablist">
+            <ul class="nav nav-tabs" id="mainContainerTab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="datosGenerales-tab" data-toggle="tab" href="#datosGenerales" role="tab" aria-controls="datosGenerales" aria-selected="true">Datos generales</a>
                 </li>
@@ -78,6 +78,7 @@
 <script src="<?php echo base_url('assets/vendor/plugins/select2/js/select2.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/utils/collectionGenerics.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/utils/dom.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/utils/populateFormsCatalogs.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/utils/alerts.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/views/solicitud/solicitud.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/utils/catalogs.js') ?>"></script>

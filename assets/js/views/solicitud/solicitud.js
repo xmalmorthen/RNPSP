@@ -40,21 +40,19 @@ var objView = {
 
         // INIT SELECTS
         $('select').select2();
-
-        // INIT DATEPICKER
-        // $('.singledatepicker').daterangepicker({
-        //     singleDatePicker: true,
-        //     showDropdowns: true,
-        // });
-
+        
         // CLICK EVENTS
         objView.vars.datosGenerales.btns.guardarDatosPersonales.on('click',objView.events.click.datosGenerales.guardarDatosPersonales);
         objView.vars.datosGenerales.btns.generarCIB.on('click',objView.events.click.datosGenerales.generarCIB);
         objView.vars.general.btnSiguienteAnterior.on('click',objView.events.click.general.btnSiguienteAnterior);
+        //FOCUSOUT
+        objView.vars.datosGenerales.objs.pCURP.on('focusout',objView.events.focus.out.pCURP);      
 
-        objView.vars.datosGenerales.objs.pCURP.on('focusout',objView.events.focus.out.pCURP);
-
+        //CAMBIO DE TABS
         $('a[data-toggle="tab"]').on('hide.bs.tab',objView.actions.changeTab);
+        $('a[data-toggle="tab"]').on('show.bs.tab',objView.actions.showTab);
+
+        populate.form($('#Datos_personales_form')); //popular selects del primer tab NOTA: cambiar programación al tab actual si se obtiene por cookie
     },
     events : {
         click : {
@@ -130,27 +128,7 @@ var objView = {
                         var msg = err.status + ' - ' + err.statusText;
                         swal({ type: 'error', title: 'Error', html: msg });
                     });
-                },
-                siguienteDatosPersonales : function(e){
-                    generic.click(
-                    {
-                        evt : e
-                    },
-                    //event
-                    function(){
-                        //TODO: IMPLEMENTAR
-                        alert('Implementar siguienteDatosPersonales');
-                    }, 
-                    //success
-                    function (successResponse){
-                    }, 
-                    //error
-                    function(err){
-                        $.LoadingOverlay("hide");
-                        var msg = err.status + ' - ' + err.statusText;
-                        swal({ type: 'error', title: 'Error', html: msg });
-                    });
-                }
+                }                
             }
         },
         focus : {
@@ -197,6 +175,8 @@ var objView = {
                     );
                 }
             }
+        },
+        change : {            
         }
     },
     actions : {
@@ -221,6 +201,12 @@ var objView = {
                 //e.preventDefault();
                 $("html, body").animate({ scrollTop: 0 }, 200);
             }
+        },
+        showTab : function(e){ 
+            var tabRefObj = $(e.currentTarget.hash),
+                form = tabRefObj.find('form');
+            
+            populate.form(form);
         }
     }
 }

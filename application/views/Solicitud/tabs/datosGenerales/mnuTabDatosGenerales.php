@@ -1,5 +1,5 @@
 <div class="row mt-4" >
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <ul class="nav nav-tabs" id="datosGeneralesContainerTab" role="tablist">
         <li class="nav-item" >
             <a class="nav-link active" id="Datos_personales-tab" data-toggle="tab" href="#Datos_personales" role="tab" aria-controls="Datos_personales" aria-selected="true">Datos personales</a>
         </li>

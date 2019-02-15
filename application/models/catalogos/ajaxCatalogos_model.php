@@ -20,6 +20,7 @@ class ajaxCatalogos_model extends CI_Model {
                 }
                 catch (Exception $e) {
                         log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+                        throw $e;
                 }
 
                 return $returnResponse;
