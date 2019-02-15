@@ -19,6 +19,7 @@
                 <li class="submenu">
                     <a href="<?php echo site_url('Personal/index');?>" ><i class="fa fa-briefcase" aria-hidden="true"></i> <span> Personal </span></a>
                 </li>
+             
             </ul>
             <div class="clearfix"></div>
         </div>

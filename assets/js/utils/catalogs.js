@@ -13,6 +13,10 @@ $.fn.getCatalog = function(options) {
         var callUrl = base_url + "ajaxCatalogos/index";
         var obj = $(this);
 
+        if (obj.data('populated') == true)
+            if (obj.data('force-refresh') != true || obj.data('cascade') != true) 
+                return null;
+
         var typeOfObj = obj[0].tagName.toLowerCase();
         switch (typeOfObj) {
             case 'select':
@@ -38,15 +42,18 @@ $.fn.getCatalog = function(options) {
                             });
                         }
                     }
+                    obj.data('populated',true);
                     obj.prop("disabled", false);
                     options.success(data);
-                }).fail(function (err) {
+                }).fail(function (err) {                    
                     obj.find("option").remove();
                     obj.setError('ERROR al actualizar');
                     options.error(err);
                 }).always(function () {
                     obj.LoadingOverlay("hide");
                     options.always();
+                                        
+                    MyCookie.session.reset();
                 });
                 break;
             default:
@@ -58,7 +65,8 @@ $.fn.getCatalog = function(options) {
                     options.success(data);
                 }).fail(function (err) {                    
                     options.error(err);
-                }).always(function () {                    
+                }).always(function () {   
+                    MyCookie.session.reset();                 
                     options.always();
                 });
                 break;

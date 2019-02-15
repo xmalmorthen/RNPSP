@@ -1,7 +1,7 @@
   <div class="row mt-4" >
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link" id="mediafiliacion-tab" data-toggle="tab" href="#mediafiliacion" role="tab" aria-controls="mediafiliacion" aria-selected="false" style="color:#02657C">Media filiación</a>
+                <a class="nav-link active" id="mediafiliacion-tab" data-toggle="tab" href="#mediafiliacion" role="tab" aria-controls="mediafiliacion" aria-selected="false" style="color:#02657C">Media filiación</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="Datos-tab" data-toggle="tab" href="#Datos" role="tab" aria-controls="Datos" aria-selected="false" style="color:#02657C">Datos</a>
