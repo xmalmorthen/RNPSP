@@ -22,5 +22,15 @@ class Utils {
         $CI = & get_instance();
         $CI->load->library('encrypt');
 		return $CI->encrypt->decode(base64_decode($cad));
-	}
+    }
+
+	public static function pre($array,$exit = true){
+        echo '<pre>';
+        print_r($array);
+        echo '</pre>';
+        if($exit){
+            exit();
+        }
+    }
+    
 }

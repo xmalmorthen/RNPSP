@@ -52,6 +52,8 @@ $.fn.getCatalog = function(options) {
                 }).always(function () {
                     obj.LoadingOverlay("hide");
                     options.always();
+                                        
+                    MyCookie.session.reset();
                 });
                 break;
             default:
@@ -63,7 +65,8 @@ $.fn.getCatalog = function(options) {
                     options.success(data);
                 }).fail(function (err) {                    
                     options.error(err);
-                }).always(function () {                    
+                }).always(function () {   
+                    MyCookie.session.reset();                 
                     options.always();
                 });
                 break;
