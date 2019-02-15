@@ -199,17 +199,17 @@
                     </div>
 
                     <!-- INPUTS OCULTOS -->
-                    <input type="number" id="pID_ALTERNA" name="pID_ESTADO_EMISOR" autocomplete="off" hidden>
-                    <input type="number" id="pID_ESTADO_EMISOR" name="pID_ALTERNA" autocomplete="off" hidden>
-                    <input type="number" id="pID_EMISOR" name="pID_EMISOR" autocomplete="off" hidden>
-                    <input type="number" id="pID_DOC_BAJA" name="pID_DOC_BAJA" autocomplete="off" hidden>
-                    <input type="number" id="pID_DOC_BAJA" name="pID_DOC_BAJA" autocomplete="off" hidden>
-                    <input type="number" id="pID_TIPO_CONTRATO" name="pID_TIPO_CONTRATO" autocomplete="off" hidden>
-                    <input type="number" id="pID_TIPO_CONTRATO" name="pID_TIPO_CONTRATO" autocomplete="off" hidden>
-                    <input type="text" id="pNUMERO_EXPEDIENTE" name="pNUMERO_EXPEDIENTE" autocomplete="off" hidden>
-                    <input type="number" id="pID_CATEGORIA_PUEST" name="pID_CATEGORIA_PUEST" autocomplete="off" hidden>
-                    <input type="number" id="pID_JERARQUIA_PUEST" name="pID_JERARQUIA_PUEST" autocomplete="off" hidden>
-                    <input type="number" id="pID_AMBITO_PUESTO" name="pID_AMBITO_PUESTO" autocomplete="off" hidden>
+                    <input type="hidden" id="pID_ALTERNA" name="pID_ESTADO_EMISOR" value="" >
+                    <input type="hidden" id="pID_ESTADO_EMISOR" name="pID_ALTERNA" value="" >
+                    <input type="hidden" id="pID_EMISOR" name="pID_EMISOR" value="" >
+                    <input type="hidden" id="pID_DOC_BAJA" name="pID_DOC_BAJA" value="" >
+                    <input type="hidden" id="pID_DOC_BAJA" name="pID_DOC_BAJA" value="" >
+                    <input type="hidden" id="pID_TIPO_CONTRATO" name="pID_TIPO_CONTRATO" value="" >
+                    <input type="hidden" id="pID_TIPO_CONTRATO" name="pID_TIPO_CONTRATO" value="" >
+                    <input type="hidden" id="pNUMERO_EXPEDIENTE" name="pNUMERO_EXPEDIENTE" value="" >
+                    <input type="hidden" id="pID_CATEGORIA_PUEST" name="pID_CATEGORIA_PUEST" value="" >
+                    <input type="hidden" id="pID_JERARQUIA_PUEST" name="pID_JERARQUIA_PUEST" value="" >
+                    <input type="hidden" id="pID_AMBITO_PUESTO" name="pID_AMBITO_PUESTO" value="" >
                 </form>
                 <div class="row">
                     <div class="col-md-4"></div>
@@ -229,7 +229,6 @@
                 </div>
         </div>
     </div>
-
 
     <div class="tab-pane fade" id="Empleos_diversos" role="tabpanel" aria-labelledby="Empleos_diversos-tab">
         <form action="#">
@@ -355,9 +354,9 @@
                         </div>
                     </div>
                         <!-- HIDDEN INPUTS -->
-                    <input type="number" id="pID_ALTERNA" name="pID_ALTERNA" autocomplete="off" hidden>
-                    <input type="number" id="pID_ESTADO_EMISOR" name="pID_ESTADO_EMISOR" autocomplete="off" hidden>
-                    <input type="number" id="pID_EMISOR" name="pID_EMISOR" autocomplete="off" hidden>
+                    <input type="hidden" id="pID_ALTERNA" name="pID_ALTERNA"  value="">
+                    <input type="hidden" id="pID_ESTADO_EMISOR" name="pID_ESTADO_EMISOR"  value="">
+                    <input type="hidden" id="pID_EMISOR" name="pID_EMISOR"  value="">
 
                     <div class="row">
                         <div class="col-md-4"></div>
@@ -383,8 +382,6 @@
         </form>
     </div>
  
-
-
     <div class="tab-pane fade" id="Actitudes_hacia_el_empleo" role="tabpanel" aria-labelledby="Actitudes_hacia_el_empleo">
         <div class="container">
             <form action="#" autocomplete="off">
@@ -460,9 +457,9 @@
                 <br>
 
                 <!-- HIDDEN INPUTS -->
-                <input type="number" id="pID_ALTERNA" name="pID_ESTADO_EMISOR" autocomplete="off" hidden>
-                <input type="number" id="pID_ESTADO_EMISOR" name="pID_ALTERNA" autocomplete="off" hidden>
-                <input type="number" id="pID_EMISOR" name="pID_EMISOR" autocomplete="off" hidden>
+                <input type="hidden" id="pID_ALTERNA" name="pID_ESTADO_EMISOR" value="" >
+                <input type="hidden" id="pID_ESTADO_EMISOR" name="pID_ALTERNA" value="" >
+                <input type="hidden" id="pID_EMISOR" name="pID_EMISOR" value="" >
             </form>
             <div class="row">
                 <div class="col-md-4"></div>
@@ -560,9 +557,9 @@
                 </div>
 
                 <!-- HIDDEN INPUTS -->
-                <input type="number" id="pID_ALTERNA" name="pID_ESTADO_EMISOR" autocomplete="off" hidden>
-                <input type="number" id="pID_ESTADO_EMISOR" name="pID_ALTERNA" autocomplete="off" hidden>
-                <input type="number" id="pID_EMISOR" name="pID_EMISOR" autocomplete="off" hidden>
+                <input type="hidden" id="pID_ALTERNA" name="pID_ESTADO_EMISOR" value="" >
+                <input type="hidden" id="pID_ESTADO_EMISOR" name="pID_ALTERNA" value="" >
+                <input type="hidden" id="pID_EMISOR" name="pID_EMISOR" value="" >
             </form>
             <div class="row">
                 <div class="col-md-4"></div>

@@ -380,6 +380,9 @@
                         <select class="form-control" name="pCAT_PESO" id="pCAT_PESO" required minlength="1" maxlength="10"></select>
                     </div>
                 </div>
+            <input type="hidden" id="pID_ALTERNA_Media_filiacion" name="pID_ALTERNA_Media_filiacion" value="" >
+            <input type="hidden" id="pID_ESTADO_EMISOR_Media_filiacion" name="pID_ESTADO_EMISOR_Media_filiacion" value="" >
+            <input type="hidden" id="pID_EMISOR_Media_filiacion" name="pID_EMISOR_Media_filiacion" value="" >
             </form>
             <br>
             <div class="row">
@@ -778,6 +781,9 @@
 
                 </div>
                 <br>
+                <input type="hidden" id="pID_ALTERNA_Datos" name="pID_ALTERNA_Datos" value="" >
+                <input type="hidden" id="pID_ESTADO_EMISOR_Datos" name="pID_ESTADO_EMISOR_Datos" value="" >
+                <input type="hidden" id="pID_EMISOR_Datos" name="pID_EMISOR_Datos" value="" >
                 
             </form>
                 <div class="row">
