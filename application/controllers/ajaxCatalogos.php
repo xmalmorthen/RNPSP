@@ -68,7 +68,7 @@ class ajaxCatalogos extends CI_Controller {
 		if (!$cad) 
 			show_error("Petición erronea [ {$this->config->item('GUID')} ]", 400, 'Ocurrió un error');
 	
-		$deCrypt = $this->_deCrypt($cad);
+		$deCrypt = Utils::deCrypt($cad);
 
 		header('Content-type: application/json');
 		echo json_encode( [ $cad => $deCrypt ]);

@@ -38,6 +38,7 @@ var serialized = {
                         case 'date':
                         case 'email':
                         case 'hidden':
+                        case 'numeric':
                             $obj.val(val);
                         break;
                         case 'checkbox': 

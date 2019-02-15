@@ -4,26 +4,26 @@
         <div class="row">
             <div class="col-md-4">
                 <span class="clr">*</span> CURP
-                <input type="text" class="form-control" id="pCURP" name="pCURP" required min="18" max="20">
+                <input type="text" class="form-control" id="pCURP" name="pCURP" required minlength="18" maxlength="20">
             </div>
             <div class="col-md-4">
                 <span class="clr">*</span>Nombre
-                <input type="text" class="form-control" id="pNOMBRE" name="pNOMBRE"required min="2" max="30">
+                <input type="text" class="form-control" id="pNOMBRE" name="pNOMBRE"required minlength="2" maxlength="30">
             </div>
             <div class="col-md-4">
                 <span class="clr">*</span>Apellido paterno
-                <input type="text" class="form-control" id="pPATERNO" name="pPATERNO"required min="1" max="30">
+                <input type="text" class="form-control" id="pPATERNO" name="pPATERNO"required minlength="1" maxlength="30">
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col-md-4">
                 <span class="clr">*</span>Apellido materno
-                <input type="text" class="form-control" id="pMATERNO" name="pMATERNO"required min="1" max="30">
+                <input type="text" class="form-control" id="pMATERNO" name="pMATERNO"required minlength="1" maxlength="30">
             </div>
             <div class="col-md-4">
                 <span class="clr">*</span>Adscripción
-                <input type="text" class="form-control" id="pID_ADSCRIPCION" name="pID_ADSCRIPCION"required min="1" max="10">
+                <input type="text" class="form-control" id="pID_ADSCRIPCION" name="pID_ADSCRIPCION"required minlength="1" maxlength="10">
             </div>
             <div class="col-md-4">
                 <span class="clr">*</span>Contraseña
