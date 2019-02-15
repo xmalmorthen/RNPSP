@@ -19,6 +19,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
      'filepath' => 'hooks',
      // Aqui va el array con los nombres de controlador que NO necesita verificacion de acceso.
      'params'   => array(
+       'Sesion/Iniciar',
+       'Sesion/Terminar'
      )
  );
 
