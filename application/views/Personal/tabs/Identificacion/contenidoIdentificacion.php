@@ -374,11 +374,11 @@
                         </div>
                         <div class="col-md-4">
                             <span class="clr">*</span>Estatura (cm)
-                            <input type="text" class="form-control" id="pCAT_ESTATURA" name="pCAT_ESTATURA" required min="1" max="5">
+                            <input type="text" class="form-control" id="pCAT_ESTATURA" name="pCAT_ESTATURA" required minlength="1" maxlength="5">
                         </div>
                         <div class="col-md-4">
                             <span class="clr">*</span>Peso (kg)
-                            <select class="form-control" name="pCAT_PESO" id="pCAT_PESO" required min="1" max="10"></select>
+                            <select class="form-control" name="pCAT_PESO" id="pCAT_PESO" required minlength="1" maxlength="10"></select>
                         </div>
                     </div>
                 </form>
@@ -833,11 +833,11 @@
                         </div>
                         <div class="col-md-4">
                             <span class="clr">*</span>Cantidad
-                            <input type="text" class="form-control" required min="1" max="5">
+                            <input type="text" class="form-control" required minlength="1" maxlength="5">
                         </div>
                         <div class="col-md-4">
                             Descripción
-                            <input type="text" class="form-control" min="1" max="30">
+                            <input type="text" class="form-control" minlength="1" maxlength="30">
                         </div>
                     </div>
                     <br>

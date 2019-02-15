@@ -13,11 +13,11 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Institución o empresa
-                        <Input type="text" class="form-control" id="pEMPRESA" name="pEMPRESA" required min="2" max="100">
+                        <Input type="text" class="form-control" id="pEMPRESA" name="pEMPRESA" required minlength="2" maxlength="100">
                     </div>
                     <div class="col-md-4">
                         Estudio o curso
-                        <Input type="text" class="form-control" id="pCURSO_CAPACITACION_ADICIONAL" name="pCURSO_CAPACITACION_ADICIONAL" min="2" max="60">
+                        <Input type="text" class="form-control" id="pCURSO_CAPACITACION_ADICIONAL" name="pCURSO_CAPACITACION_ADICIONAL" minlength="2" maxlength="60">
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Tipo de curso <!--Se llena del catalogo "TIPO_CURSO_ADIC" -->
@@ -53,7 +53,7 @@
                     </div>
                     <div class="col-md-4">
                         Duración en horas
-                        <Input type="text" class="form-control" id="pDURACION_CAPACITACION_ADICIONAL" name="pDURACION_CAPACITACION_ADICIONAL" min="1" max="10">
+                        <Input type="text" class="form-control" id="pDURACION_CAPACITACION_ADICIONAL" name="pDURACION_CAPACITACION_ADICIONAL" minlength="1" maxlength="10">
                     </div>
                 </div>
                 <br>
@@ -141,7 +141,7 @@
                     </div>
                     <div class="col-md-4">
                         Nombre del curso
-                        <Input type="text" class="form-control" id="pCURSO_CAPACITACION_SEGURIDAD_PUBLICA" name="pCURSO_CAPACITACION_SEGURIDAD_PUBLICA" min="2" max="150">
+                        <Input type="text" class="form-control" id="pCURSO_CAPACITACION_SEGURIDAD_PUBLICA" name="pCURSO_CAPACITACION_SEGURIDAD_PUBLICA" minlength="2" maxlength="150">
                     </div>
                 </div>
                 <br>
@@ -177,7 +177,7 @@
                     </div>
                     <div class="col-md-4">
                         Duración en horas
-                        <Input type="text" class="form-control" id="pDURACION_CAPACITACION_SEGURIDAD_PUBLICA" name="pDURACION_CAPACITACION_SEGURIDAD_PUBLICA" min="1" max="10">
+                        <Input type="text" class="form-control" id="pDURACION_CAPACITACION_SEGURIDAD_PUBLICA" name="pDURACION_CAPACITACION_SEGURIDAD_PUBLICA" minlength="1" maxlength="10">
                     </div>
                 </div>
                 <br>
@@ -256,7 +256,7 @@
                         Lectura
                         <div class="row">
                             <div class="col-md-10">
-                                <Input type="text" class="form-control" class="form-control" id="pGRADO_LECTURA" name="pGRADO_LECTURA" min="1" max="10">
+                                <Input type="text" class="form-control" class="form-control" id="pGRADO_LECTURA" name="pGRADO_LECTURA" minlength="1" maxlength="10">
                             </div>
                             <div class="col-md-1" style="margin-left: -12px;margin-top: 7px;" >%</div>
                         </div>
@@ -265,7 +265,7 @@
                         Escritura
                         <div class="row">
                             <div class="col-md-10">
-                                <Input type="text" class="form-control" class="form-control" id="pGRADO_ESCRITURA" name="pGRADO_ESCRITURA" min="1" max="10">
+                                <Input type="text" class="form-control" class="form-control" id="pGRADO_ESCRITURA" name="pGRADO_ESCRITURA" minlength="1" maxlength="10">
                             </div>
                             <div class="col-md-1" style="margin-left: -12px;margin-top: 7px;" >%</div>
                         </div>
@@ -274,7 +274,7 @@
                         Conversación
                         <div class="row">
                             <div class="col-md-10">
-                                <Input type="text" class="form-control" class="form-control" id="pGRADO_CONVERSACION" name="pGRADO_CONVERSACION" min="1" max="10">
+                                <Input type="text" class="form-control" class="form-control" id="pGRADO_CONVERSACION" name="pGRADO_CONVERSACION" minlength="1" maxlength="10">
                             </div>
                             <div class="col-md-1" style="margin-left: -12px;margin-top: 7px;" >%</div>
                         </div>
@@ -357,7 +357,7 @@
                     </div>
                     <div class="col-md-4">
                         Descripción
-                        <input type="text" class="form-control" id="ESPECIFIQUE" name="ESPECIFIQUE" min="0" max="100">
+                        <input type="text" class="form-control" id="ESPECIFIQUE" name="ESPECIFIQUE" minlength="0" maxlength="100">
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Grado de aptitud o dominio <!-- Se rellena con el catalogo "GRADO_APTITUD_HAB" depende del select "TIPO_ACTITUD" -->
@@ -433,7 +433,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Nombre
-                        <Input type="text" class="form-control" id="pNOMBRE_AGRUPACION" name="pNOMBRE_AGRUPACION" required min="2" max="90">
+                        <Input type="text" class="form-control" id="pNOMBRE_AGRUPACION" name="pNOMBRE_AGRUPACION" required minlength="2" maxlength="90">
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Fecha de tipo de agrupación<!-- Se llena con el catalogo "TIPO_AGRUPACION" -->
