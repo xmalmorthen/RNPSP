@@ -1,5 +1,5 @@
 
-<div class="left main-sidebar" style="margin-top: 50px;">
+<div class="left main-sidebar">
     <div class="sidebar-inner leftscroll">
         <div id="sidebar-menu">
             <ul>

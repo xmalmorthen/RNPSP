@@ -45,3 +45,10 @@ var MyCookie = {
         }
     }
 }
+
+if ( MyCookie.singleWindow.get() === undefined) {
+    MyCookie.singleWindow.save();
+    $(window).unload(MyCookie.singleWindow.remove);
+} else {
+    window.location.href = base_url + 'Error/singleWindow';    
+}

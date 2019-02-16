@@ -34,6 +34,16 @@
 		<link rel="stylesheet" href="<?php echo base_url('assets/css/dise.css') ?>">
 		<!-- /CSS -->
 
+		<script>
+			var base_url = '<?php echo base_url(); ?>',
+				site_url = '<?php echo site_url(); ?>',
+				uri = {
+					uri_string : JSON.parse('<?php echo json_encode($this->uri->uri_string);  ?>'),
+					segments : JSON.parse('<?php echo json_encode($this->uri->segments);  ?>'),
+					rsegments : JSON.parse('<?php echo json_encode($this->uri->rsegments);  ?>')
+				};
+		</script>
+
 		<!-- JS -->
 		<script src="<?php echo base_url('assets/vendor/js/modernizr.min.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/vendor/js/jquery.min.js'); ?>"></script>
@@ -57,14 +67,6 @@
 		<!-- JS -->
 		<script src="<?php echo base_url('assets/js/utils/guid.js'); ?>"></script>
 		<script>
-			var base_url = '<?php echo base_url(); ?>',
-				site_url = '<?php echo site_url(); ?>',
-				uri = {
-					uri_string : JSON.parse('<?php echo json_encode($this->uri->uri_string);  ?>'),
-					segments : JSON.parse('<?php echo json_encode($this->uri->segments);  ?>'),
-					rsegments : JSON.parse('<?php echo json_encode($this->uri->rsegments);  ?>')
-				};
-
 			var outputError = {
 				errorMgs : "<?php echo $this->session->flashdata('outputError'); ?>",
 				guid : "<?php echo $this->config->item('GUID'); ?>",
@@ -101,7 +103,7 @@
 						<div class="row">
 							<div class="col-xl-12">
 					
-								<div class="breadcrumb-holder fixed-top" style="margin-top: 91px;">
+								<div class="breadcrumb-holder">
 									<h1 class="main-title float-left" hidden><?php echo $this->session->flashdata('titleBody'); ?></h1>													
 									<?php echo isset($this->breadcrumbs) ? $this->breadcrumbs->show() : ''; ?>
 							
@@ -110,7 +112,6 @@
 							</div>
 						</div>
 						<div>
-						<br><br><br><br>
 							<!-- BODY -->
 							<?php echo isset($body) ? $body : '' ?>
 							<!-- BODY -->

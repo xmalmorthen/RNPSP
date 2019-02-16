@@ -1,16 +1,3 @@
-if ( MyCookie.singleWindow.get() === undefined) {
-    MyCookie.singleWindow.save();
-    $(window).unload(MyCookie.singleWindow.remove);
-} else {
-    $(function () { 
-        $('body').html('<div class="error">' + 
-            '<h1>Sorry!</h1>' + 
-            '<p>You can only have one instance of this web page open at a time.</p>' + 
-            '</div>');
-    });
-}
-
-SESSION COUNTDOWN
 var swalShow = false;
 
 if ( typeof sess_time_to_update !== 'undefined') {
@@ -33,11 +20,11 @@ if ( typeof sess_time_to_update !== 'undefined') {
                 onBeforeOpen: function() {
                     timerInterval = setInterval(function() {
 
-                        var sessionObj = MyCookie.session.get();
-                        if (parseInt(sessionObj.sess_time_to_update) > parseInt(sessionObj.sess_time_left_to_confirm)){
-                            Swal.close();
-                            return null;
-                        }
+                        // var sessionObj = MyCookie.session.get();
+                        // if (parseInt(sessionObj.sess_time_to_update) > parseInt(sessionObj.sess_time_left_to_confirm)){
+                        //     Swal.close();
+                        //     return null;
+                        // }
 
                         var content = Swal.getContent();
                         

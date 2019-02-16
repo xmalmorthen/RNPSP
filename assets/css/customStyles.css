@@ -2,6 +2,9 @@ body {
     background-color: #ffffff;
     font-family: "Open Sans", Arial, sans-serif;
 }
+.headerbar {
+    position: absolute;
+}
 .headerbar .headerbar-left {
     background: #f1f1f1;
     padding-top: 4px;
@@ -51,6 +54,10 @@ body.adminbody .main-sidebar.left {
 .main-sidebar {
     padding-top: 41px;
     background: #f1f1f1;
+    width: 200px;
+}
+.content-page{
+    margin-left: 200px;
 }
 .content-page .content {
     margin-top: 91px;

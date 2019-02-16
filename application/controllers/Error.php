@@ -68,16 +68,8 @@ class Error extends CI_Controller {
 
 	public function singleWindow()
     {
-		// BREADCRUMB
-		$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');
-		$this->breadcrumbs->push('[ Error ] - Privilegios', "Error/noPrivilegio");		
-		// /BREADCRUMB
-
-        // TITLE BODY PAGE
-		$this->session->set_flashdata('titleBody','Error');
-		// /TITLE BODY PAGE
-
-        show_error('Privilegios insuficientes!', 403, 'Privilegios');       
+		echo $this->load->view('errors/template/error_singleWindow', NULL, TRUE);        
+		exit(403);
     }
 
     public function noImplementado(){

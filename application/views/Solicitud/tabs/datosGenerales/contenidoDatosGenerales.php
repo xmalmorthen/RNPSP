@@ -18,7 +18,7 @@
                     </div>
                     <div class="col-md-4">
                         Tipo de movimiento <!-- Se llena de la tabla CAT_TIPO_OPERACION  -->
-                        <select  class="form-control" name="pTIPO_MOV" id="pTIPO_MOV" data-error="#err_tipoMovimiento_DATOS_PERSONALES" data-query='SWEzUERZSnROTDZFY29PTUdDQWk0NzE3SDB0MDJXaXkxR0ZVTkFvSlJ4d05kUGNFTGkzMFZRSVUyUk9STlR5d284ZENQT3d4a3lNNG5LM0pnUXdjRDhnVk4yWXI0czVUYjNyaGJTdERrZk5VaVVYRm1JblYwQ09POUxtdytQcUVtRTZhaVZuOXJuL1ZXU1ZrYXZ3cGF2RXpud3hHYlJLRmhaNUFOOURFMjFFPQ==' required></select>
+                        <select  class="form-control" name="pTIPO_MOV" id="pTIPO_MOV" data-error="#err_tipoMovimiento_DATOS_PERSONALES" data-query='WEh6TEJUUFROWVFUNWdLYVVqOSt0eE5rRFBwL3NLWFhyY1RBYXNhUlQvMXJkaFN5bVhWNFUwRWJKdG1YQWFtWWl3VTVlQWtQVnp3NmVNOGdZT1hMWmFDczlzZnBNQVhWaGxhS1BibktwdklnckgxNmplYXkvblpVSWhIMWtoNlNIM041THFhTEdvMlQybDA4N1FiSndSWjVlMmRLQndqRTkvTHJrbS9jUkRvPQ==' required></select>
                         <span id="err_tipoMovimiento"></span>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Nacionalidad <!-- Se llena de CAT_NACIONALIDAD -->
-                        <select  class="form-control" id="pID_NACIONALIDAD" name="pID_NACIONALIDAD" data-error="#err_pID_NACIONALIDAD" data-query='' required></select>
+                        <select  class="form-control" id="pID_NACIONALIDAD" name="pID_NACIONALIDAD" data-error="#err_pID_NACIONALIDAD" data-query='cXlBMWI5djl3TXFIaFo2akFJUEN5QXVjbnhoa29iMHhtSENyNkJLUmc0VTVOM2N6QW5SYmZFZVE0SUJSNWtkdzBZaHhRUDNGbVdGVFBGU0NwWFpKUURRY0xMQWNNbkZxK05uWFQ0WTI2ZU53L1N1SEhyaWhzck5pTitzcTBETytGbk5rMzNoaHlmckpRQnA1S3ZtYms5SWpSZzNhdXNPWTFha3pkT1RkY1FBPQ==' required></select>
                         <span id="err_pID_NACIONALIDAD"></span>
                     </div>
                     <div class="col-md-4">
@@ -96,7 +96,7 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estado civil <!-- Se llena del catálogo CAT_ESTADO_CIVIL -->
-                        <select  class="form-control" id="pID_ESTADO_CIVIL" name="pID_ESTADO_CIVIL" data-error="#err_pID_ESTADO_CIVIL" data-query='bGFIV203MGhHaDhPYmlGR2NHZ0kvakdpUjBWUHMxRzNXZzZZNDQwM0dWUyt2eGYxV05ubkU2dktoTFhOaDFJcnlaV2dFbkY5a0VjWEZlVzF3MEMyY3MxdG40RVRzU2I5Rm56L3o3d2d0UCtvOFFPVHJDUUZEdEkrZEdTZHo2dmEreWtFQlNzMURzN0M3VDJZdDJtRVFtbUlzRHE1VEZUUVk0cS9WbWF6Mno4PQ==' required></select>
+                        <select  class="form-control" id="pID_ESTADO_CIVIL" name="pID_ESTADO_CIVIL" data-error="#err_pID_ESTADO_CIVIL" data-query='ZXdxV1A3eEYrWDRZeVJ0dVhkeEdNNDNoOWZPY2o3d21HempWZml4Ukg1ZDdzWDNKWkpuWmNjS01VVHJDUFZtZjZ4NDBCRitGdzNlTktaUTl6STYxV2pmY0dtbk5qWnRDakUyZmVSMW5yREVubVlxNW5GdVFqOGNlY3oxd0JGNTlZUWZSeGZwcmk1VVgzWVBGVFBnWnpzS29ycEQrRHdGUkh1REd1NTBuSTNJPQ==' required></select>
                         <span id="err_pID_ESTADO_CIVIL"></span>
                     </div>
                 </div>
@@ -197,7 +197,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Máxima escolaridad <!-- CAT_GRADO_ESCOLAR -->
-                        <select  class="form-control" id="pID_GRADO_ESCOLAR" name="pID_GRADO_ESCOLAR" data-error="#err_pID_GRADO_ESCOLAR" data-query='' required></select>
+                        <select  class="form-control" id="pID_GRADO_ESCOLAR" name="pID_GRADO_ESCOLAR" data-error="#err_pID_GRADO_ESCOLAR" data-query='SzRVaytUUWZjNUhCUko5cjlsMS92YkZaMTQ0RzN3eG45VmljYTFqc2xDVHFabWxmd2xIenF1VmFyT1J6b1ZpS3k4bEluRlMwQnRiT3lnUmZDVTUxMVVQRXZUOHIyR1BOWE5yZGt4cHVlbjd5eU1JcXdWSkYwdnFQQ0pOUW8yWDRXdmdud3o2YVV5cXpzOGF1NmdYTG1kcDNYWElyM3FnY2tYRG5qZUhubEE4PQ==' required></select>
                         <span id="err_pID_GRADO_ESCOLAR"></span>
                     </div>
                     <div class="col-md-4">
@@ -455,17 +455,17 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Sexo <!-- Se llena del catálogo CAT_SEXO -->
-                        <select name="SEXO_REFERENCIAS" id="SEXO_REFERENCIAS" class="form-control" data-error="#err_SEXO_REFERENCIAS" data-query='' required></select>
+                        <select name="SEXO_REFERENCIAS" id="SEXO_REFERENCIAS" class="form-control" data-error="#err_SEXO_REFERENCIAS" data-query='cmw2WmwzeW03a1lsakNJd1dEWWt0WmRmOU95OFFzS0ZESENTMmpyYkNySis1VlhVOFEza205bHF1Z0trTWVLVW4zV081M284cjNPc0pObExOZ2dKcGhnTE9KZU83SlM0bkZIaWhBdm4rV2ZjOGRZRmpnMkI3N1ZaZWVoZnk4R0g=' required></select>
                         <span id="err_SEXO_REFERENCIAS"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Ocupación <!-- Se llena del catálogo CAT_OCUPACION -->
-                        <select name="OCUPACION" id="OCUPACION" class="form-control" data-error="#err_OCUPACION" data-query='' required></select>
+                        <select name="OCUPACION" id="OCUPACION" class="form-control" data-error="#err_OCUPACION" data-query='cjB0dGsrdDFKdDJNRVR4RVRUQmlVZTRES2tSTmhFZXRxUktaZm5UTjFTM1F6T0VMbHkyMTQ1L3JkaHZ2d1AwZkRWVlpIMlVOMnpNam1pUnFSUWRZM2xBMXJncWl0d3hEYTQrTnh6WStWcUsrUWRwTnNGc2lUVUNndEp4YUFRNVY=' required></select>
                         <span id="err_OCUPACION"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Tipo de referencia <!-- Se llena del catálogo CAT_REFERENCIA -->
-                        <select name="" id="ID_TIPO_REFERENCIA" name="ID_TIPO_REFERENCIA" class="form-control" data-error="#err_ID_TIPO_REFERENCIA_REFERENCIAS" data-query='' required></select>
+                        <select name="" id="ID_TIPO_REFERENCIA" name="ID_TIPO_REFERENCIA" class="form-control" data-error="#err_ID_TIPO_REFERENCIA_REFERENCIAS" data-query='d1lEQ2dSOSsrZUtnU2wwVjJWRHBCSE12STBKUElSU2l5bHA4OTRJbzlXc01BVFNvYms3V0lYYm1QWkVPellLdlNsZmNicy83akdkaEVTZDAxTDVGNVRzdnZtK3k5KzRzZFJxYXZCNERJRmhwOCtFb0ZFS0hjNEhaZTd4cWw1U2Y=' required></select>
                         <span id="err_ID_TIPO_REFERENCIA"></span>
                     </div>
                 </div>
@@ -473,7 +473,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         Relación o parentesco <!-- Se llena del catálogo CAT_RELACION -->
-                        <select name="ID_RELACION_REFERENCIAS" id="ID_RELACION_REFERENCIAS" class="form-control" data-error="#err_ID_RELACION" data-query=''></select>
+                        <select name="ID_RELACION_REFERENCIAS" id="ID_RELACION_REFERENCIAS" class="form-control" data-error="#err_ID_RELACION" data-query='WGJqek5KZDlveE96NE4rQ3grdWlnU01adGw1clZVQ3dhUmlrN3N1VjNxd2ZBZ2pZTXRGWnhEeTFRWmFwTllUUU5TTnpra0wra05SQTVXRUxXQUovdk1LaVRndXlwNHVKcUdVMjErdVZhR0hWRFp3TTNiNEgvWksrbjkxUFlFb0U='></select>
                         <span id="err_ID_RELACION"></span>
                     </div>
                 </div>
@@ -485,12 +485,12 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estado <!-- Se llena del catálog CAT_ENTIDAD -->
-                        <select name="ID_ENTIDAD_REFERENCIAS" id="ID_ENTIDAD_REFERENCIAS"_REFERENCIAS  class="form-control" data-error="#err_ID_ENTIDAD_REFERENCIAS" data-query='' required></select>
+                        <select name="ID_ENTIDAD_REFERENCIAS" id="ID_ENTIDAD_REFERENCIAS"_REFERENCIAS  class="form-control" data-error="#err_ID_ENTIDAD_REFERENCIAS" data-query='RG51N2cyVWNFVVp5Rlc5WDYydU0wcm0wbys4dElkSU1uaHBpTTJHMEJqOGVqdmRkUXJRUzB0TVZIa2Y0UldSWGpiMS9xQXhOWE5oVndVN0QzSFpHWHI4NEVzWTRIRU5RTmxjS09EK243V002bi9RV1ZUTU0waGRHdWlHSzFaT04=' required></select>
                         <span id="err_ID_ENTIDAD_REFERENCIAS"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Municipio <!-- Se llena del catálogo CAT_MUNICIPIO -->
-                        <select name="ID_MUNICIPIO_REFERENCIAS" id="ID_MUNICIPIO_REFERENCIAS" class="form-control" data-error="#err_ID_MUNICIPIO_REFERENCIAS" data-query='' required></select>
+                        <select name="ID_MUNICIPIO_REFERENCIAS" id="ID_MUNICIPIO_REFERENCIAS" class="form-control" data-error="#err_ID_MUNICIPIO_REFERENCIAS" data-query='c244RWRmblByTDlCWExpTHc0ZnQ3NGUzbWMza1Y5MnZCck9rQmpCQ1hTdlA3dzJyRVNMRjhXTll4WmNmYkplM1BKM1BWckJ3RFdieG55eUNldGZ3N1dyS2taNXhWd2RWczkzT0lsVTk1anZPcVJFclZBN05mTUtwbjJuazJqa0tSaXVENkI2WVErcmUxNlFoVUFNamttMjB1S3RxK0ZjUFA3cEFhM0Fvak53PQ==' data-cascade='true' data-force-refresh='true' data-cascade-id-ref='ID_ENTIDAD_REFERENCIAS' data-params='ID_ENTIDAD={0}' required></select>
                         <span id="err_ID_MUNICIPIO_REFERENCIAS"></span>
                     </div>
                 </div>
@@ -596,7 +596,11 @@
                 <div class="row">
                     <div class="col-md-4">
                         ¿Vive con su familia?<!-- S/N = SI/NO -->
-                        <select  class="form-control" id="VIVE_FAMILIA" name="VIVE_FAMILIA" data-error="#err_VIVE_FAMILIA" data-query=''></select>
+                        <select  class="form-control" id="VIVE_FAMILIA" name="VIVE_FAMILIA" data-error="#err_VIVE_FAMILIA" data-query=''>
+                            <option disabled selected value>Seleccione una opción</option>
+                            <option value="S">SI</option>
+                            <option value="N">NO</option>
+                        </select>
                         <span id="err_VIVE_FAMILIA"></span>
                     </div>
                     <div class="col-md-4">
@@ -605,7 +609,7 @@
                     </div>
                     <div class="col-md-4">
                         Su domicilio es <!-- Se llena del catálogo CAT_TIPO_DOMICILIO -->
-                        <select name="ID_TIPO_DOMICILIO" id="ID_TIPO_DOMICILIO" class="form-control" data-error="#err_ID_TIPO_DOMICILIO" data-query=''>
+                        <select name="ID_TIPO_DOMICILIO" id="ID_TIPO_DOMICILIO" class="form-control" data-error="#err_ID_TIPO_DOMICILIO" data-query='Y3ZMRjVwQ3hJdU1nVy95Yk15enNSWmpyaXBYbHFmQVdMOHUxTkVlY3RSZ3ZWTElpRVRkZ2V6alpURTQ5WC9ONm9oVnBsTEpSNzdPMDFUUTFUcVBZQzFFL2d2LytMZVFWR1dWS1FKSmt0c2JYWDBOWTd1dW85TTFENjVVYnJadlJuNG5za3kyRkhHMitISmIxTTZlQ2JZaGtqQTdaeHplRE5LNzVrWHp1cW53PQ=='>
                         <span id="err_ID_TIPO_DOMICILIO"></span>
                         <option value="">Seleccione</option></select>
                     </div>
@@ -686,7 +690,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Sexo <!-- Se llena del catálogo CAT_SEXO -->
-                        <select  class="form-control" id="SEXO_SOCIOECONOMICOS" name="SEXO_SOCIOECONOMICOS" data-error="#err_SEXO" data-query='' required></select>
+                        <select  class="form-control" id="SEXO_SOCIOECONOMICOS" name="SEXO_SOCIOECONOMICOS" data-error="#err_SEXO" data-query='cmw2WmwzeW03a1lsakNJd1dEWWt0WmRmOU95OFFzS0ZESENTMmpyYkNySis1VlhVOFEza205bHF1Z0trTWVLVW4zV081M284cjNPc0pObExOZ2dKcGhnTE9KZU83SlM0bkZIaWhBdm4rV2ZjOGRZRmpnMkI3N1ZaZWVoZnk4R0g=' required></select>
                         <span id="err_SEXO"></span>
                     </div>
                     <div class="col-md-4">
@@ -695,7 +699,7 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Parentesco <!-- Se llena del catálogo CAT_RELACION -->
-                        <select  class="form-control" id="ID_RELACION" data-error="#err_ID_RELACION" data-query='' required></select>
+                        <select  class="form-control" id="ID_RELACION" data-error="#err_ID_RELACION" data-query='NXMrSFhUSXFSNWxoNmJ4Ri9TTUNjRGROSzBpY01FSmxaSndnN3ZXdHlKU2hFWjRUZGF4M0JkSGUzMHE2Z0dFT1k0T3I2UmsveUU0L2JpUjJRL3Q3YjA5ZXBUZkVXNFFiaFIxYXdOTnNkQXg0RTNySEpseDJUam1wSWRnWjNvZ3c=' required></select>
                         <span id="err_ID_RELACION"></span>
                     </div>
                 </div>

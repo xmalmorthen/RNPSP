@@ -143,6 +143,8 @@ var objView = {
 
                     $this.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
+                    //TODO: XMAL - Verificar si exite registro en BD
+
                     var callUrl = base_url + 'ajaxAPIs/curp',
                         model = {CURP : value};
 
