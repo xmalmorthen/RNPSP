@@ -167,6 +167,11 @@
                         </table>
                     </div>
                 </div>
+                <input type="hidden" id="ID_ALTERNA_Datos_personales" name="ID_ALTERNA_Datos_personales" value="" >
+                <input type="hidden" id="pID_ESTADO_EMISOR_Datos_personales" name="pID_ESTADO_EMISOR_Datos_personales" value="" >
+                <input type="hidden" id="pID_EMISOR_Datos_personales" name="pID_EMISOR_Datos_personales" value="" >
+
+
             </form>
             <div class="row">
                 <div class="col-md-4"></div>
@@ -268,6 +273,10 @@
                         </table>
                     </div>
                 </div>
+                <input type="hidden" id="ID_ALTERNA_Desarrollo" name="ID_ALTERNA_Desarrollo" value="" >
+                <input type="hidden" id="pID_ESTADO_EMISOR_Desarrollo" name="pID_ESTADO_EMISOR_Desarrollo" value="" >
+                <input type="hidden" id="pID_EMISOR_Desarrollo" name="pID_EMISOR_Desarrollo" value="" >
+
             </form>
             <br>
             <div class="row">
@@ -396,6 +405,9 @@
                         </tr>
                     </tbody>
                 </table>
+                <input type="hidden" id="ID_ALTERNA_Domicilio" name="ID_ALTERNA_Domicilio" value="" >
+                <input type="hidden" id="pID_ESTADO_EMISOR_Domicilio" name="pID_ESTADO_EMISOR_Domicilio" value="" >
+                <input type="hidden" id="pID_EMISOR_Domicilio" name="pID_EMISOR_Domicilio" value="" >
             </form>
             <br>
             <div class="row">
