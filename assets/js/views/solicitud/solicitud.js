@@ -41,13 +41,23 @@ var objView = {
         // INIT SELECTS
         $('select').select2();
         
-        // CLICK EVENTS
+        //EVENTS
+        // CLICK
         objView.vars.datosGenerales.btns.guardarDatosPersonales.on('click',objView.events.click.datosGenerales.guardarDatosPersonales);
         objView.vars.datosGenerales.btns.generarCIB.on('click',objView.events.click.datosGenerales.generarCIB);
         objView.vars.general.btnSiguienteAnterior.on('click',objView.events.click.general.btnSiguienteAnterior);
         //FOCUSOUT
         objView.vars.datosGenerales.objs.pCURP.on('focusout',objView.events.focus.out.pCURP);      
+        //CHANGE
 
+        //Rutina para verificar si se hace algún cambio en cualquier forulario
+        $.each(objView.vars.datosGenerales.forms, function( index, value ) {
+            var form = value;
+            form.find('input, select').change(function() {
+                form.data('hasChanged',true);
+            });
+        });
+        
         //CAMBIO DE TABS
         $('a[data-toggle="tab"]').on('hide.bs.tab',objView.actions.changeTab);
         $('a[data-toggle="tab"]').on('show.bs.tab',objView.actions.showTab);
@@ -65,6 +75,8 @@ var objView = {
             },
             datosGenerales : {
                 guardarDatosPersonales : function(e){
+                    var $this = $(this);
+
                     generic.click(
                     {
                         evt : e
@@ -74,12 +86,12 @@ var objView = {
                         $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
                         //VALID FORM
-                        try {
-                            if (!objView.vars.datosGenerales.forms.Datos_personales_form.valid())
-                                throw "Invalid FORM";
-                        }catch(err) {
-                            $.LoadingOverlay("hide");
-                        }
+                        // try {
+                        //     if (!objView.vars.datosGenerales.forms.Datos_personales_form.valid())
+                        //         throw "Invalid FORM";
+                        // }catch(err) {
+                        //     $.LoadingOverlay("hide");
+                        // }
 
                         var callUrl = base_url + 'Ejemplos/ajaxGetSample';
                         model = {
@@ -92,6 +104,15 @@ var objView = {
                             //success
                             function(data){
                                 console.log(data);
+
+                                debugger;
+                                var form = $this.parents('form:first'),
+                                    btnSiguienteTab = form.find('.siguienteTab');
+
+                                form.removeData('hasChanged');
+                                form.data('hasSaved',true);
+                                btnSiguienteTab.trigger('click');
+
                                 $.LoadingOverlay("hide");
                             },
                             //error
@@ -186,29 +207,61 @@ var objView = {
             var tabRefObj = $(e.currentTarget.hash),
                 form = tabRefObj.find('form');
 
-            //VALIDATE FORM
-            if (!form.valid()){                
-                var linkRef = $('#' + e.currentTarget.id);
-                if (!linkRef.hasClass('errorValidation')) {
-                    linkRef.prepend('<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ');
-                    linkRef.addClass('text-danger errorValidation');                    
-                }                
-                form.setAlert({
-                    alertType :  'alert-danger',
-                    dismissible : true,
-                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
-                    msg : 'Formulario incompleto'
-                });
+            if (form.data('hasSaved') == true) 
+                return null;
 
-                //e.preventDefault();
-                $("html, body").animate({ scrollTop: 0 }, 200);
-            }
+            //VALIDATE FORM
+            
+            //TODO: XMAL - Quitar comentarios despues de implementar lo del guardado antes de cambiar de tab
+
+            // if (!form.valid()){                
+            //     var linkRef = $('#' + e.currentTarget.id);
+            //     if (!linkRef.hasClass('errorValidation')) {
+            //         linkRef.prepend('<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ');
+            //         linkRef.addClass('text-danger errorValidation');                    
+            //     }                
+            //     form.setAlert({
+            //         alertType :  'alert-danger',
+            //         dismissible : true,
+            //         header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+            //         msg : 'Formulario incompleto'
+            //     });
+
+            //     e.preventDefault();
+            //     $("html, body").animate({ scrollTop: 0 }, 200);
+            // } else {
+                if (form.data('hasChanged') == true){
+
+                    Swal({
+                        title: 'Aviso',
+                        html: "Para continuar, debe guardar los cambios",
+                        footer: "<div><button class='btn btn-default discartChanges'>Descartar cambios</button></div>",
+                        type: 'warning',                        
+                        allowOutsideClick : false,
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33'
+                    }).then(function(result){
+                        if (result.value === true){
+                            form.find('.btnGuardarSection').trigger('click');
+                        }
+                    });
+                    e.preventDefault();
+                    $('.discartChanges').on('click',objView.actions.discartChanges);
+                }
+            // }
         },
         showTab : function(e){ 
             var tabRefObj = $(e.currentTarget.hash),
                 form = tabRefObj.find('form');
             
             populate.form(form);
+        },
+        discartChanges : function(e){            
+            alert('discard');
+            //TODO: XMAL - Implementar el descartar cambios
+            // - quitar el data 'hasChanged' del form
+            // - hacer pruebas sobre como resetear el formulario para descartar cambios
         }
     }
 }

@@ -148,7 +148,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <button class="btn btn-default" id="guardarDatosPersonales"> Guardar datos personales</button>
+                        <button class="btn btn-default btnGuardarSection" id="guardarDatosPersonales"> Guardar datos personales</button>
                     </div>
                 </div>
                 <br>
@@ -170,15 +170,14 @@
                 <input type="hidden" id="pID_ESTADO_EMISOR_Datos_personales" name="pID_ESTADO_EMISOR_Datos_personales" value="" >
                 <input type="hidden" id="pID_EMISOR_Datos_personales" name="pID_EMISOR_Datos_personales" value="" >
 
-
-            </form>
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <center><button class="btn btn-default btnSiguienteAnterior"  id="siguienteDatosPersonales" data-nexttab="#Desarrollo-tab">Siguiente</button></center>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <center><button class="btn btn-default btnSiguienteAnterior siguienteTab"  id="siguienteDatosPersonales" data-nexttab="#Desarrollo-tab">Siguiente</button></center>
+                    </div>
+                    <div class="col-md-4"></div>
                 </div>
-                <div class="col-md-4"></div>
-            </div>
+            </form>            
         </div>
     </div>
     
@@ -276,22 +275,24 @@
                 <input type="hidden" id="pID_ESTADO_EMISOR_Desarrollo" name="pID_ESTADO_EMISOR_Desarrollo" value="" >
                 <input type="hidden" id="pID_EMISOR_Desarrollo" name="pID_EMISOR_Desarrollo" value="" >
 
-            </form>
-            <br>
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior" id="anteriorDesarrolloacademico" data-nexttab="#Datos_personales-tab"> Anterior</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior" id="siguienteDesarrolloacademico" data-nexttab="#Domicilio-tab">Siguiente</button>
+                <br>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorDesarrolloacademico" data-nexttab="#Datos_personales-tab"> Anterior</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteDesarrolloacademico" data-nexttab="#Domicilio-tab">Siguiente</button>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-md-4"></div>
                 </div>
-                <div class="col-md-4"></div>
-            </div>
+            </form>
+            
+            
         </div>
     </div>
 
@@ -407,22 +408,23 @@
                 <input type="hidden" id="ID_ALTERNA_Domicilio" name="ID_ALTERNA_Domicilio" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Domicilio" name="pID_ESTADO_EMISOR_Domicilio" value="" >
                 <input type="hidden" id="pID_EMISOR_Domicilio" name="pID_EMISOR_Domicilio" value="" >
-            </form>
-            <br>
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior" id="anteriorDomicilio" data-nexttab="#Desarrollo-tab"> Anterior</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior" id="siguienteDomicilio" data-nexttab="#Referencias-tab">Siguiente</button>
+
+                <br>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorDomicilio" data-nexttab="#Desarrollo-tab"> Anterior</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteDomicilio" data-nexttab="#Referencias-tab">Siguiente</button>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-md-4"></div>
                 </div>
-                <div class="col-md-4"></div>
-            </div>
+            </form>            
         </div>
     </div> 
 
@@ -564,21 +566,22 @@
                  <input type="hidden" id="ID_ALTERNA_Referencias" name="ID_ALTERNA_Referencias" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Referencias" name="pID_ESTADO_EMISOR_Referencias" value="" >
                 <input type="hidden" id="pID_EMISOR_Referencias" name="pID_EMISOR_Referencias" value="" >
-            </form>
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior" id="anteriorReferencia" data-nexttab="#Domicilio-tab"> Anterior</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior" id="siguienteReferencia" data-nexttab="#Socioeconomicos-tab">Siguiente</button>
+
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorReferencia" data-nexttab="#Domicilio-tab"> Anterior</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteReferencia" data-nexttab="#Socioeconomicos-tab">Siguiente</button>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-md-4"></div>
                 </div>
-                <div class="col-md-4"></div>
-            </div>
+            </form>            
         </div>
     </div> 
 
@@ -743,21 +746,23 @@
                  <input type="hidden" id="ID_ALTERNA_Socioeconomico" name="ID_ALTERNA_Socioeconomico" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Socioeconomico" name="pID_ESTADO_EMISOR_Socioeconomico" value="" >
                 <input type="hidden" id="pID_EMISOR_Socioeconomico" name="pID_EMISOR_Socioeconomico" value="" >
-            </form>
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior" id="anteriorSocioeconomico" data-nexttab="#Referencias-tab"> Anterior</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior" id="finalizarDatosGenerales">Finalizar</button>
+                
+                <br>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorSocioeconomico" data-nexttab="#Referencias-tab"> Anterior</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-default btnSiguienteAnterior siguienteTab endTab" id="finalizarDatosGenerales">Finalizar</button>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-md-4"></div>
                 </div>
-                <div class="col-md-4"></div>
-            </div>
+            </form>
         </div>
     </div>
 
