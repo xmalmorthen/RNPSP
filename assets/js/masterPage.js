@@ -10,7 +10,7 @@ if ( MyCookie.singleWindow.get() === undefined) {
     });
 }
 
-// SESSION COUNTDOWN
+SESSION COUNTDOWN
 var swalShow = false;
 
 if ( typeof sess_time_to_update !== 'undefined') {
