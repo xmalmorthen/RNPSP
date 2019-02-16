@@ -1,6 +1,6 @@
   
     <div class="tab-pane fade show active" id="Adscripcion_actual" role="tabpanel" aria-labelledby="Adscripcion_actual-tab">
-        <div class="container">
+        <div class="_container">
             <form action="#" autocomplete="off">
 
                     <br>
@@ -230,7 +230,7 @@
 
     <div class="tab-pane fade" id="Empleos_diversos" role="tabpanel" aria-labelledby="Empleos_diversos-tab">
         <form action="#">
-            <div class="container">
+            <div class="_container">
             <br>
                     <div class="row">
                         <div class="col-md-4">
@@ -381,7 +381,7 @@
     </div>
  
     <div class="tab-pane fade" id="Actitudes_hacia_el_empleo" role="tabpanel" aria-labelledby="Actitudes_hacia_el_empleo">
-        <div class="container">
+        <div class="_container">
             <form action="#" autocomplete="off">
                 <br>
                 <div class="row">
@@ -478,7 +478,7 @@
     </div>
 
     <div class="tab-pane fade" id="Comisiones" role="tabpanel" aria-labelledby="Comisiones-tab">
-        <div class="container">
+        <div class="_container">
             <form action="#" autocomplete="off">
                 <br>
                 <div class="row">

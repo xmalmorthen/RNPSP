@@ -1,7 +1,7 @@
 
 
     <div class="tab-pane fade show active" id="Datos_personales" role="tab-panel" aria-labelledby="Datos_personales-tab">
-        <div class="container">
+        <div class="_container">
             <form action="#" id="Datos_personales_form" name="Datos_personales_form" autocomplete="off">
                 <br>
                 <div class="row">
@@ -183,7 +183,7 @@
     </div>
     
     <div class="tab-pane fade" id="Desarrollo" role="tabpanel" aria-labelledby="Desarrollo-tab">
-        <div class="container">
+        <div class="_container">
             <form action="#" id="Desarrollo_form" name="Desarrollo_form" autocomplete="off">
                 <br>
                 <div class="row">
@@ -296,7 +296,7 @@
     </div>
 
     <div class="tab-pane fade" id="Domicilio" role="tabpanel" aria-labelledby="Domicilio-tab">
-        <div class="container">
+        <div class="_container">
             <form action="#" id="Domicilio_form" name="Domicilio_form" autocomplete="off">
                 <br>
                 <div class="row">
@@ -427,7 +427,7 @@
     </div> 
 
     <div class="tab-pane fade" id="Referencias" role="tabpanel" aria-labelledby="Referencias-tab">
-        <div class="container">
+        <div class="_container">
             <form action="#" id="Referencias_form" name="Referencias_form" autocomplete="off">
                 <br>
                 <div class="row">
@@ -583,7 +583,7 @@
     </div> 
 
     <div class="tab-pane fade" id="Socioeconomicos" role="tabpanel" arialabelledby="Socioeconomicos-tab" >
-        <div class="container">
+        <div class="_container">
             <form action="#" id="Socioeconomicos_form" name="Socioeconomicos_form" autocomplete="off">
                 <br>
                 <div class="row">

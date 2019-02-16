@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="<?php echo base_url("assets/vendor/plugins/select2/css/select2.min.css"); ?>">
 
-<div class="container">
+<div class="_container">
     <!-- LISTA DE TABS DEL MENU PRINCIPAL -->
     <div class="row">
         <div class="col-md-12">

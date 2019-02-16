@@ -1,7 +1,7 @@
 
 
     <div class="tab-pane fade show active" id="Capacitacion_adicional" role="tabpanel" aria-labelledby="Capacitacion_adicional-tab">
-        <div class="container">
+        <div class="_container">
             <form action="#" id="Capacitacion_adicional_form" name="Capacitacion_adicional_form" autocomplete="off">
                 <br>
                 <div class="row">
@@ -117,7 +117,7 @@
     </div>
 
     <div class="tab-pane fade" id="Capacitacion_seguridad_publica" role="tabpanel" aria-labelledby="Capacitacion_seguridad_publica-tab">
-        <div class="container">
+        <div class="_container">
             <form action="#" id="Capacitacion_seguridad_publica_form" name="Capacitacion_seguridad_publica" autocomplete="off">
                 <br>
                 <div class="row">
@@ -236,7 +236,7 @@
     </div> <!-- PENDIENTE ESTO NO APARECE EN LAS VIEWS -->
 
      <div class="tab-pane fade" id="Idiomas_dialectos" role="tabpanel" aria-labelledby="Idiomas_dialectos-tab">
-        <div class="container">
+        <div class="_container">
             <form action="#" name="Idiomas_dialectos_form" id="Idiomas_dialectos_form"autocomplete="off">
                 <br>
                 <div class="row">
@@ -339,7 +339,7 @@
     </div>
 
      <div class="tab-pane fade" id="Habilidades_aptitudes" role="tabpanel" aria-labelledby="Habilidades_aptitudes-tab">
-        <div class="container">
+        <div class="_container">
             <form action="#" id="Habilidades_aptitudes_form" name="Habilidades_aptitudes_form"autocomplete="off">
                 <br>
                 <div class="row">
@@ -422,7 +422,7 @@
     </div>
 
     <div class="tab-pane fade" id="Afiliacion_agrupaciones" role="tabpanel" aria-labelledby="Afiliacion_agrupaciones-tab">
-        <div class="container">
+        <div class="_container">
             <form action="#" id="Afiliacion_agrupaciones_form" name="Afiliacion_agrupaciones_form" autocomplete="off">
                 <br>
                 <div class="row">

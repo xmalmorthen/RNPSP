@@ -1,7 +1,7 @@
 
 
     <div class="tab-pane fade show active" id="mediafiliacion" role="tabpanel" aria-labelledby="mediaFiliacion-tab">
-        <div class="container">
+        <div class="_container">
             <form action="#" id="mediafiliacion_form" name="mediafiliacion_form" autocomplete="off">
                 <br>
                 <div class="row">
@@ -401,7 +401,7 @@
     </div>
     
     <div class="tab-pane fade" id="Datos" role="tabpanel" aria.labelledby="Datos-tab">
-        <div class="container">
+        <div class="_container">
             <form action="#" id="Datos_form" name="Datos_form" autocomplete="off">
                 <br>
                 <div class="row">
@@ -805,7 +805,7 @@
     </div>
 
     <div class="tab-pane fade" id="Senas_particulares" role="tabpanel" aria-labelledby="Senas_particulares-tab">
-        <div class="container">
+        <div class="_container">
             <form action="#" id="Senas_particulares_form" name="Senas_particulares_form" autocomplete="off">
                 <br>
                 <div class="row">
@@ -907,7 +907,7 @@
     </div>
 
     <div class="tab-pane fade" id="Registro_decadactilar" role="tabpanel" aria-labelledby="Registro_decadactilar-tab">
-        <div class="container">
+        <div class="_container">
             <form action="#" id="Registro_decadactilar_form" name="Registro_decadactilar_form" autocomplete="off">
                 <br>
                 <div class="row">
@@ -1017,7 +1017,7 @@
     </div>
 
     <div class="tab-pane fade " id="Identificacion_de_voz" role="tabpanel" aria-labelledby="Identificacion_de_voz-tab">
-        <div class="container">
+        <div class="_container">
             <form action="#" id="Identificacion_de_voz_form" name="Identificacion_de_voz_form" autocomplete="off">
                     <br>
                 <div class="row">
@@ -1127,7 +1127,7 @@
     </div>
 
     <div class="tab-pane fade" id="Ficha_fotografica" role="tabpanel" aria-labelledby="Ficha_fotografica-tab">
-        <div class="container">
+        <div class="_container">
             <form action="#" id="Ficha_fotografica_form" name="Ficha_fotografica_form" autocomplete="off">
                 <br>
                 <div class="row">

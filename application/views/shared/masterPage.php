@@ -104,7 +104,7 @@
 							<div class="col-xl-12">
 					
 								<div class="breadcrumb-holder">
-									<h1 class="main-title float-left" hidden><?php echo $this->session->flashdata('titleBody'); ?></h1>													
+									<h1 class="main-title float-left"><?php echo $this->session->flashdata('titleBody'); ?></h1>													
 									<?php echo isset($this->breadcrumbs) ? $this->breadcrumbs->show() : ''; ?>
 							
 									<div class="clearfix"></div>													

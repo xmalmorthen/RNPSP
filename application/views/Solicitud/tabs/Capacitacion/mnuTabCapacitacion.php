@@ -1,4 +1,5 @@
  <div class="row mt-4">
+    <div class="col-md-12">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
          
             <li class="nav-item">
@@ -10,3 +11,4 @@
            
         </ul>
     </div>
+</div>

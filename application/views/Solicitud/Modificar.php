@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="_container">
     <!-- LISTA DE TABS DEL MENU PRINCIPAL -->
     <div class="row">
         <div class="col-md-12">
