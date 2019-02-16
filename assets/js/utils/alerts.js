@@ -4,7 +4,8 @@ $.fn.setAlert = function(options) {
         dismissible : false,            //Si va a ser alert con boton de cerrar
         header : '',                    //Cabecera del alert
         msg : '',                       //mensaje
-        closeOtherAlert : true          //Si va a cerrar otros alert del mismo tipo
+        closeOtherAlert : true,          //Si va a cerrar otros alert del mismo tipo
+        callback : null
     };
     options = $.extend(defaults, options);
 
@@ -15,12 +16,23 @@ $.fn.setAlert = function(options) {
         if (options.closeOtherAlert)
             $(this).closeAlert({alertType : options.alertType});
 
-        var template = '<div class="alert ' + options.alertType + ' ' + (options.dismissible ? 'alert-dismissible show' : '') + ' m-3 errorForm" role="alert">' +
+        var guid = Guid.generate();
+        var template = '<div id="' + guid + '" class="alert ' + options.alertType + ' ' + (options.dismissible ? 'alert-dismissible show' : '') + ' m-3 errorForm" role="alert">' +
                         ( options.header.length != 0 ? '<h4 class="alert-heading">' + options.header + '</h4>' : '') +                        
                         options.msg +
                         (options.dismissible ? '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' : '') +
                        '</div>';
-        $(this).prepend(template);
+        $(this).prepend(template);        
+
+        $('html, body').animate({
+            scrollTop: $('#' + guid).offset().top - 10
+        }, 100);
+
+        if (options.callback){
+            if ($.isFunction( options.callback )){
+                options.callback();
+            }
+        }
     });
 };
 

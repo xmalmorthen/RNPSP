@@ -63,17 +63,11 @@ var generic = {
             }
         },
         get : function(callUrl,model,success,error,always){
+            var ajaxCall = null;
+
             if (!model) {
-                $.get(callUrl,
-                    function (data) {
-                        if (success) 
-                                if ($.isFunction( success ))
-                                    success(data);
-                    }).fail(function (err) {
-                        if (error) 
-                                if ($.isFunction( error ))
-                                    error(err);
-                    }).always(function () { 
+                ajaxCall = $.get(callUrl)
+                    .always(function () { 
                         MyCookie.session.reset();
 
                         if (always) 
@@ -82,18 +76,8 @@ var generic = {
                     }
                 );
             } else {
-                $.get(callUrl,{
-                        model : model                    
-                    },
-                    function (data) {
-                        if (success) 
-                                if ($.isFunction( success ))
-                                    success(data);
-                    }).fail(function (err) {
-                        if (error) 
-                                if ($.isFunction( error ))
-                                    error(err);
-                    }).always(function () {
+                ajaxCall = $.get(callUrl,{model : model})
+                    .always(function () {
                         MyCookie.session.reset();
 
                         if (always) 
@@ -102,6 +86,21 @@ var generic = {
                         }
                     );
             }
+
+            $.when(ajaxCall).then( 
+                //sussecc
+                function(data, textStatus, jqXHR){
+                    if (success) 
+                        if ($.isFunction( success ))
+                                success(data);                    
+                },
+                //error
+                function(data, textStatus, jqXHR){
+                    if (error) 
+                        if ($.isFunction( error ))
+                            error(data);
+                } 
+            );
         }
     }
 }

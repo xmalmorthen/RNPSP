@@ -4,7 +4,7 @@ var MyCookie = {
     },
     session : {
         reset : function(){
-            // sess_time_to_update = sess_base_time;
+            sess_time_to_update = sess_base_time;
             // MyCookie.objs.coockieObj.remove('sessionCookie',{ path: ''});
             // sessionStorage.removeItem('sessionCookie');
             // MyCookie.session.save();
@@ -44,7 +44,7 @@ var MyCookie = {
             return singleWindow;
         }
     }
-}
+};
 
 if ( MyCookie.singleWindow.get() === undefined) {
     MyCookie.singleWindow.save();

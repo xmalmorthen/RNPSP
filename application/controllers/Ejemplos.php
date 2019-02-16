@@ -53,6 +53,7 @@ class Ejemplos extends CI_Controller {
 			if (ENVIRONMENT == 'production') redirect('Error/e404','location');
         }
 
+		//header("HTTP/1.0 400 Bad Request");
 		header('Content-type: application/json');
         echo json_encode( [ 'results' => 'Prueba de respuesta ajax' ] );
         exit;		

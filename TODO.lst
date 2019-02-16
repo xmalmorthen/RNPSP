@@ -1,4 +1,4 @@
 //TODO: XMAL - Quitar comentarios despues de implementar lo del guardado antes de cambiar de tab [ assets/js/views/solicitud/solicitud.js ]
-//TODO: XMAL - Implementar el descartar cambios [ assets/js/views/solicitud/solicitud.js ]
 //TODO: XMAL - Verificar si exite registro en BD [ assets/js/views/solicitud/solicitud.js ]
 //TODO: IMPLEMENTAR [ assets/js/views/solicitud/solicitud.js ]
+//TODO: Implementar el cambio de tab cuando se hace click en un tab [ seguir la idea de utilizar eventos ajax sincronos ]

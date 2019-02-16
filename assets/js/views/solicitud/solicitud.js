@@ -54,15 +54,18 @@ var objView = {
         $.each(objView.vars.datosGenerales.forms, function( index, value ) {
             var form = value;
             form.find('input, select').change(function() {
+                form.removeData('hasSaved');
+                form.removeData('hasDiscardChanges');
                 form.data('hasChanged',true);
             });
         });
         
         //CAMBIO DE TABS
-        $('a[data-toggle="tab"]').on('hide.bs.tab',objView.actions.changeTab);
-        $('a[data-toggle="tab"]').on('show.bs.tab',objView.actions.showTab);
+        $('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objView.actions.discartChanges}, e); } );
+        $('a[data-toggle="tab"]').on('show.bs.tab',dynTabs.showTab);
 
         populate.form($('#Datos_personales_form')); //popular selects del primer tab NOTA: cambiar programación al tab actual si se obtiene por cookie
+        dynTabs.setCurrentTab($('#myTabContent'));
     },
     events : {
         click : {
@@ -75,7 +78,10 @@ var objView = {
             },
             datosGenerales : {
                 guardarDatosPersonales : function(e){
-                    var $this = $(this);
+                    e.preventDefault();
+
+                    var $this = $(this),
+                        form = $this.parents('form:first');
 
                     generic.click(
                     {
@@ -104,14 +110,11 @@ var objView = {
                             //success
                             function(data){
                                 console.log(data);
-
-                                debugger;
-                                var form = $this.parents('form:first'),
-                                    btnSiguienteTab = form.find('.siguienteTab');
-
+                                
                                 form.removeData('hasChanged');
                                 form.data('hasSaved',true);
-                                btnSiguienteTab.trigger('click');
+
+                                dynTabs.markTab( ( dynTabs.tabs.prebTab.linkRef ? dynTabs.tabs.prebTab.linkRef : dynTabs.tabs.currentTab.linkRef),  '<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true"></i></span>');
 
                                 $.LoadingOverlay("hide");
                             },
@@ -119,12 +122,22 @@ var objView = {
                             function(err){
                                 $.LoadingOverlay("hide");
                                 var msg = err.status + ' - ' + err.statusText;
-                                swal({ type: 'error', title: 'Error', html: msg });
+                                                                
+                                form.setAlert({
+                                    alertType :  'alert-danger',
+                                    dismissible : true,
+                                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error al guardar',
+                                    msg : msg,
+                                    callback : function(){
+                                        //swal({ type: 'error', title: 'Error', html: msg }); //se comenta porque al mostrar el modal no respeta el scroll top al bloque del alert.
+                                    }
+                                });
                             }
                         );                        
                     }, 
                     //success
-                    function (successResponse){                        
+                    function (successResponse){ 
+                        debugger;                       
                     }, 
                     //error
                     function(){
@@ -202,66 +215,14 @@ var objView = {
         change : {            
         }
     },
-    actions : {
-        changeTab : function(e){ 
-            var tabRefObj = $(e.currentTarget.hash),
-                form = tabRefObj.find('form');
-
-            if (form.data('hasSaved') == true) 
-                return null;
-
-            //VALIDATE FORM
-            
-            //TODO: XMAL - Quitar comentarios despues de implementar lo del guardado antes de cambiar de tab
-
-            // if (!form.valid()){                
-            //     var linkRef = $('#' + e.currentTarget.id);
-            //     if (!linkRef.hasClass('errorValidation')) {
-            //         linkRef.prepend('<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ');
-            //         linkRef.addClass('text-danger errorValidation');                    
-            //     }                
-            //     form.setAlert({
-            //         alertType :  'alert-danger',
-            //         dismissible : true,
-            //         header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
-            //         msg : 'Formulario incompleto'
-            //     });
-
-            //     e.preventDefault();
-            //     $("html, body").animate({ scrollTop: 0 }, 200);
-            // } else {
-                if (form.data('hasChanged') == true){
-
-                    Swal({
-                        title: 'Aviso',
-                        html: "Para continuar, debe guardar los cambios",
-                        footer: "<div><button class='btn btn-default discartChanges'>Descartar cambios</button></div>",
-                        type: 'warning',                        
-                        allowOutsideClick : false,
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33'
-                    }).then(function(result){
-                        if (result.value === true){
-                            form.find('.btnGuardarSection').trigger('click');
-                        }
-                    });
-                    e.preventDefault();
-                    $('.discartChanges').on('click',objView.actions.discartChanges);
-                }
-            // }
-        },
-        showTab : function(e){ 
-            var tabRefObj = $(e.currentTarget.hash),
-                form = tabRefObj.find('form');
-            
-            populate.form(form);
-        },
-        discartChanges : function(e){            
-            alert('discard');
-            //TODO: XMAL - Implementar el descartar cambios
-            // - quitar el data 'hasChanged' del form
-            // - hacer pruebas sobre como resetear el formulario para descartar cambios
+    actions : {        
+        discartChanges : function(e){   
+            dynTabs.markTab(dynTabs.tabs.prebTab.linkRef,'<span class="text-warning tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true"></i></span>');
+            Swal.close();
+                
+            dynTabs.tabs.prebTab.tabForm.removeData('hasChanged');
+            dynTabs.tabs.prebTab.tabForm.data('hasDiscardChanges',true);
+            dynTabs.tabs.prebTab.tabForm.find('.btnSiguienteAnterior.siguienteTab').trigger('click');            
         }
     }
 }

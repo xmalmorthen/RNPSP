@@ -6,3 +6,9 @@ function guid() {
     }
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
 }
+
+var Guid = {
+    generate : function(){
+        return guid();
+    }
+}
