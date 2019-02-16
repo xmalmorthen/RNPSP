@@ -199,17 +199,15 @@
                     </div>
 
                     <!-- INPUTS OCULTOS -->
-                    <input type="hidden" id="pID_ALTERNA" name="pID_ESTADO_EMISOR" value="" >
-                    <input type="hidden" id="pID_ESTADO_EMISOR" name="pID_ALTERNA" value="" >
-                    <input type="hidden" id="pID_EMISOR" name="pID_EMISOR" value="" >
-                    <input type="hidden" id="pID_DOC_BAJA" name="pID_DOC_BAJA" value="" >
-                    <input type="hidden" id="pID_DOC_BAJA" name="pID_DOC_BAJA" value="" >
-                    <input type="hidden" id="pID_TIPO_CONTRATO" name="pID_TIPO_CONTRATO" value="" >
-                    <input type="hidden" id="pID_TIPO_CONTRATO" name="pID_TIPO_CONTRATO" value="" >
-                    <input type="hidden" id="pNUMERO_EXPEDIENTE" name="pNUMERO_EXPEDIENTE" value="" >
-                    <input type="hidden" id="pID_CATEGORIA_PUEST" name="pID_CATEGORIA_PUEST" value="" >
-                    <input type="hidden" id="pID_JERARQUIA_PUEST" name="pID_JERARQUIA_PUEST" value="" >
-                    <input type="hidden" id="pID_AMBITO_PUESTO" name="pID_AMBITO_PUESTO" value="" >
+                    <input type="hidden" id="pID_ALTERNA_Adscripcion_actual" name="pID_ESTADO_EMISOR_Adscripcion_actual" value="" >
+                    <input type="hidden" id="pID_ESTADO_EMISOR_Adscripcion_actual" name="pID_ALTERNA_Adscripcion_actual" value="" >
+                    <input type="hidden" id="pID_EMISOR_Adscripcion_actual" name="pID_EMISOR_Adscripcion_actual" value="" >
+                    <input type="hidden" id="pID_DOC_BAJA_Adscripcion_actual" name="pID_DOC_BAJA_Adscripcion_actual" value="" >
+                    <input type="hidden" id="pID_TIPO_CONTRATO_Adscripcion_actual" name="pID_TIPO_CONTRATO_Adscripcion_actual" value="" >
+                    <input type="hidden" id="pNUMERO_EXPEDIENTE_Adscripcion_actual" name="pNUMERO_EXPEDIENTE_Adscripcion_actual" value="" >
+                    <input type="hidden" id="pID_CATEGORIA_PUEST_Adscripcion_actual" name="pID_CATEGORIA_PUEST_Adscripcion_actual" value="" >
+                    <input type="hidden" id="pID_JERARQUIA_PUEST_Adscripcion_actual" name="pID_JERARQUIA_PUEST_Adscripcion_actual" value="" >
+                    <input type="hidden" id="pID_AMBITO_PUESTO_Adscripcion_actual" name="pID_AMBITO_PUESTO_Adscripcion_actual" value="" >
                 </form>
                 <div class="row">
                     <div class="col-md-4"></div>
@@ -354,9 +352,9 @@
                         </div>
                     </div>
                         <!-- HIDDEN INPUTS -->
-                    <input type="hidden" id="pID_ALTERNA" name="pID_ALTERNA"  value="">
-                    <input type="hidden" id="pID_ESTADO_EMISOR" name="pID_ESTADO_EMISOR"  value="">
-                    <input type="hidden" id="pID_EMISOR" name="pID_EMISOR"  value="">
+                    <input type="hidden" id="pID_ALTERNA_Empleos_diversos" name="pID_ALTERNA_Empleos_diversos"  value="">
+                    <input type="hidden" id="pID_ESTADO_EMISOR_Empleos_diversos" name="pID_ESTADO_EMISOR_Empleos_diversos"  value="">
+                    <input type="hidden" id="pID_EMISOR_Empleos_diversos" name="pID_EMISOR_Empleos_diversos"  value="">
 
                     <div class="row">
                         <div class="col-md-4"></div>
@@ -457,9 +455,9 @@
                 <br>
 
                 <!-- HIDDEN INPUTS -->
-                <input type="hidden" id="pID_ALTERNA" name="pID_ESTADO_EMISOR" value="" >
-                <input type="hidden" id="pID_ESTADO_EMISOR" name="pID_ALTERNA" value="" >
-                <input type="hidden" id="pID_EMISOR" name="pID_EMISOR" value="" >
+                <input type="hidden" id="pID_ALTERNA_Actitudes" name="pID_ESTADO_EMISOR_Actitudes" value="" >
+                <input type="hidden" id="pID_ESTADO_EMISOR_Actitudes" name="pID_ALTERNA_Actitudes" value="" >
+                <input type="hidden" id="pID_EMISOR_Actitudes" name="pID_EMISOR_Actitudes" value="" >
             </form>
             <div class="row">
                 <div class="col-md-4"></div>
@@ -557,9 +555,9 @@
                 </div>
 
                 <!-- HIDDEN INPUTS -->
-                <input type="hidden" id="pID_ALTERNA" name="pID_ESTADO_EMISOR" value="" >
-                <input type="hidden" id="pID_ESTADO_EMISOR" name="pID_ALTERNA" value="" >
-                <input type="hidden" id="pID_EMISOR" name="pID_EMISOR" value="" >
+                <input type="hidden" id="pID_ALTERNA_Comisiones" name="pID_ESTADO_EMISOR_Comisiones" value="" >
+                <input type="hidden" id="pID_ESTADO_EMISOR_Comisiones" name="pID_ALTERNA_Comisiones" value="" >
+                <input type="hidden" id="pID_EMISOR_Comisiones" name="pID_EMISOR_Comisiones" value="" >
             </form>
             <div class="row">
                 <div class="col-md-4"></div>
