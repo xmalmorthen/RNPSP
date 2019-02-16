@@ -562,6 +562,9 @@
                         </tr>
                     </tbody>
                 </table>
+                 <input type="hidden" id="ID_ALTERNA_Referencias" name="ID_ALTERNA_Referencias" value="" >
+                <input type="hidden" id="pID_ESTADO_EMISOR_Referencias" name="pID_ESTADO_EMISOR_Referencias" value="" >
+                <input type="hidden" id="pID_EMISOR_Referencias" name="pID_EMISOR_Referencias" value="" >
             </form>
             <div class="row">
                 <div class="col-md-4"></div>
@@ -734,6 +737,9 @@
                         </table>
                     </div>
                 </div>
+                 <input type="hidden" id="ID_ALTERNA_Socioeconomico" name="ID_ALTERNA_Socioeconomico" value="" >
+                <input type="hidden" id="pID_ESTADO_EMISOR_Socioeconomico" name="pID_ESTADO_EMISOR_Socioeconomico" value="" >
+                <input type="hidden" id="pID_EMISOR_Socioeconomico" name="pID_EMISOR_Socioeconomico" value="" >
             </form>
             <div class="row">
                 <div class="col-md-4"></div>

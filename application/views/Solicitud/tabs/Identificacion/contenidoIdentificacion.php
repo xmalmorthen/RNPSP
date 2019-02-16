@@ -884,6 +884,10 @@
                             </table>
                         </div>
                 </div>
+                 <input type="hidden" id="pID_ALTERNA_Senas" name="pID_ALTERNA_Senas" value="" >
+                <input type="hidden" id="pID_ESTADO_EMISOR_Senas" name="pID_ESTADO_EMISOR_Senas" value="" >
+                <input type="hidden" id="pID_EMISOR_Senas" name="pID_EMISOR_Senas" value="" >
+                
             </form>
             <div class="row">
                 <div class="col-md-4"></div>
@@ -990,6 +994,10 @@
                         </table>
                     </div>
                 </div>
+                 <input type="hidden" id="pID_ALTERNA_Datos" name="pID_ALTERNA_Datos" value="" >
+                <input type="hidden" id="pID_ESTADO_EMISOR_Datos" name="pID_ESTADO_EMISOR_Datos" value="" >
+                <input type="hidden" id="pID_EMISOR_Datos" name="pID_EMISOR_Datos" value="" >
+                
             </form>
             <div class="row">
                 <div class="col-md-4"></div>
@@ -1094,6 +1102,10 @@
                     </div>
                 </div>
                 <br>
+                 <input type="hidden" id="pID_ALTERNA_Voz" name="pID_ALTERNA_Voz" value="" >
+                <input type="hidden" id="pID_ESTADO_EMISOR_Voz" name="pID_ESTADO_EMISOR_Voz" value="" >
+                <input type="hidden" id="pID_EMISOR_Voz" name="pID_EMISOR_Voz" value="" >
+                
             </form>
             <div class="row">
                     <div class="col-md-4"></div>
@@ -1282,6 +1294,10 @@
                         </table>
                     </div>
                 </div>
+                 <input type="hidden" id="pID_ALTERNA_Fotografica" name="pID_ALTERNA_Fotografica" value="" >
+                <input type="hidden" id="pID_ESTADO_EMISOR_Fotografica" name="pID_ESTADO_EMISOR_Fotografica" value="" >
+                <input type="hidden" id="pID_EMISOR_Fotografica" name="pID_EMISOR_Fotografica" value="" >
+                
             </form>
             <div class="row">
                     <div class="col-md-4"></div>
@@ -1383,6 +1399,10 @@
                         </table>
                     </div>
                 </div>
+                 <input type="hidden" id="pID_ALTERNA_Documento" name="pID_ALTERNA_Documento" value="" >
+                <input type="hidden" id="pID_ESTADO_EMISOR_Documento" name="pID_ESTADO_EMISOR_Documento" value="" >
+                <input type="hidden" id="pID_EMISOR_Documento" name="pID_EMISOR_Documento" value="" >
+                
             </form>
             <div class="row">
                 <div class="col-md-4"></div>
