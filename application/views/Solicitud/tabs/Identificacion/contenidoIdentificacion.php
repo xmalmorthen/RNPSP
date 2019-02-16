@@ -18,15 +18,15 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        Complexión
+                        Complexión <!-- Se llena del catálogo CAT_COMPLEXION -->
                         <select name="pCAT_COMPLEXION" id="pCAT_COMPLEXION" class="form-control"></select>
                     </div>
                     <div class="col-md-4">
-                        Color de piel
+                        Color de piel <!-- Se llena del catálogo CAT_COLORPIEL -->
                         <select name="pCAT_COLOR_PIEL" id="pCAT_COLOR_PIEL" class="form-control"></select>
                     </div>
                     <div class="col-md-4">
-                        Cara
+                        Cara <!-- Se llena del catálogo CAT_CARA -->
                         <select name="pCAT_CARA" id="pCAT_CARA" class="form-control"></select>
                     </div>
                 </div>
@@ -45,26 +45,26 @@
                 <br>
                 <div class="row">
                     <div class="col-md-3">
-                        Cantidad
+                        Cantidad <!-- Se llena del catálogo CAT_CANTIDADCABELLO -->
                         <select name="pCaT_CABELLO_CANTIDAD" id="pCAT_CABELLO_CANTIDAD" class="form-control"></select>
                     </div>
                     <div class="col-md-3">
-                        Color
+                        Color <!-- Se llena del catálogo CAT_COLORCABELLO -->
                         <select name="pCAT_CABELLO_COLOR" id="pCAT_CABELLO_COLOR" class="form-control"></select>
                     </div>
                     <div class="col-md-3">
-                        Forma
+                        Forma <!-- Se llena del catálogo CAT_FORMACABELLO -->
                         <select name="pCAT_CABELLO_FORMA" id="pCAT_CABELLO_FORMA" class="form-control"></select>
                     </div>
                     <div class="col-md-3">
-                        Calvicie
+                        Calvicie <!-- Se llena del catálogo CAT_CALVICIECABELLO -->
                         <select name="pCAT_CABELLO_CALVICIE" id="pCAT_CABELLO_CALVICIE" class="form-control"></select>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-3">
-                        Implantación
+                        Implantación <!-- Se llena del catálogo CAT_IMPLANTACIONCABELLO -->
                         <select name="pCAT_CABELLO_IMPLANTAC" id="pCAT_CABELLO_IMPLANTAC" class="form-control"></select>
                     </div>
                 </div>
@@ -78,15 +78,15 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        Altura
+                        Altura <!-- Se llena del catálogo CAT_ALTURAFRENTE -->
                         <select name="pCAT_FRENTE_ALTURA" id="pCAT_FRENTE_ALTURA" class="form-control"></select>
                     </div>
                     <div class="col-md-4">
-                        Inclinación
+                        Inclinación <!-- Se llena del catálogo CAT_INCLINACIONFRENTE -->
                         <select name="pCAT_FRENTE_INCLINACION" id="pCAT_FRENTE_INCLINACION" class="form-control"></select>
                     </div>
                     <div class="col-md-4">
-                        Ancho
+                        Ancho <!-- Se llena del catálogo CAT_ANCHOFRENTE -->
                         <select name="pCAT_FRENTE_ANCHO" id="pCAT_FRENTE_ANCHO" class="form-control"></select>
                     </div>
                 </div>
@@ -105,19 +105,19 @@
                 <br>
                 <div class="row">
                     <div class="col-md-3">
-                        Dirección
+                        Dirección <!-- Se llena del catálogo CAT_DIRECCIONCEJAS -->
                         <select name="pCAT_CEJAS_DIRECCION" id="pCAT_CEJAS_DIRECCION" class="form-control"></select>
                     </div>
                     <div class="col-md-3">
-                        Implantación
+                        Implantación <!-- Se llena del catálogo CAT_IMPLANTACIONCEJAS -->
                         <select name="pCAT_CEJAS_IMPLANTAC" id="pCAT_CEJAS_IMPLANTAC" class="form-control"></select>
                     </div>
                     <div class="col-md-3">
-                        Forma
+                        Forma <!-- Se llena del catálogo CAT_FORMACEJAS -->
                         <select name="pCAT_CEJAS_FORMA" id="pCAT_CEJAS_FORMA" class="form-control"></select>
                     </div>
                     <div class="col-md-3">
-                        Tamaño
+                        Tamaño <!-- Se llena del catálogo CAT_TAMANOCEJAS -->
                         <select name="pCAT_CEJAS_TAMANO" id="pCAT_CEJAS_TAMANO" class="form-control"></select>
                     </div>
                 </div>
@@ -136,15 +136,15 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        Color
+                        Color <!-- Se llena del catálogo CAT_COLOROJOS -->
                         <select name="pCAT_OJOS_COLOR" id="pCAT_OJOS_COLOR" class="form-control"></select>
                     </div>
                     <div class="col-md-4">
-                        Forma
+                        Forma <!-- Se llena del catálogo CAT_FORMAOJOS -->
                         <select name="pCAT_OJOS_FORMA" id="pCAT_OJOS_FORMA" class="form-control"></select>
                     </div>
                     <div class="col-md-4">
-                    Tamaño
+                    Tamaño <!-- Se llena del catálogo CAT_TAMANOOJOS -->
                     <select name="pCAT_OJOS_TAMANO" id="pCAT_OJOS_TAMANO" class="form-control"></select>
                     </div>
                 </div>
@@ -163,26 +163,26 @@
                 <br>
                 <div class="row">
                     <div class="col-md-3">
-                        Raíz
+                        Raíz <!-- Se llena del catálogo CAT_RAIZNARIZ -->
                         <select name="pCAT_NARIZ_RAIZ" id="pCAT_NARIZ_RAIZ" class="form-control"></select>
                     </div>
                     <div class="col-md-3">
-                        Dorso
+                        Dorso <!-- Se llena del catálogo CAT_DORSONARIZ -->
                         <select name="pCAT_NARIZ_DORSO" id="pCAT_NARIZ_DORSO" class="form-control"></select>
                     </div>
                     <div class="col-md-3">
-                        Ancho
+                        Ancho <!-- Se llena del catálogo CAT_ANCHONARIZ -->
                         <select name="pCAT_NARIZ_ANCHO" id="pCAT_NARIZ_ANCHO" class="form-control"></select>
                     </div>
                     <div class="col-md-3">
-                        Base
+                        Base <!-- Se llena del catálogo CAT_BASENARIZ -->
                         <select name="pCAT_NARIZ_BASE" id="pCAT_NARIZ_BASE" class="form-control"></select>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-3">
-                        Altura
+                        Altura <!-- Se llena del catálogo CAT_ALTURANARIZ -->
                         <select name="pCAT_NARIZ_ALTURA" id="pCAT_NARIZ_ALTURA" class="form-control"></select>
                     </div>
                 </div>
@@ -201,11 +201,11 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        Tamaño
+                        Tamaño <!-- Se llena del catálogo CAT_TAMANOBOCA -->
                         <select name="pCAT_BOCA_TAMANO" id="pCAT_BOCA_TAMANO" class="form-control"></select>
                     </div>
                     <div class="col-md-4">
-                        Comisuras
+                        Comisuras <!-- Se llena del catálogo CAT_COMISURASBOCA -->
                         <select name="pCAT_BOCA_COMISURAS" id="pCAT_BOCA_COMISURAS" class="form-control"></select>
                     </div>
                 </div>
@@ -224,15 +224,15 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        Espesor
+                        Espesor <!-- Se llena del catálogo CAT_ESPESORLABIOS -->
                         <select name="pCAT_LABIOS_ESPESOR" id="pCAT_LABIOS_ESPESOR" class="form-control"></select>
                     </div>
                     <div class="col-md-4">
-                        Altura naso-labial
+                        Altura naso-labial <!-- Se llena del catálogo CAT_ALTURALABIOS -->
                         <select name="pCAT_LABIOS_ALTURA" id="pCAT_LABIOS_ALTURA" class="form-control"></select>
                     </div>
                     <div class="col-md-4">
-                        Prominencia
+                        Prominencia <!-- Se llena del catálogo CAT_PROMINENCIALABIOS -->
                         <select name="pCAT_LABIOS_PROMINENCIA" id="pCAT_LABIOS_PROMINENCIA" class="form-control"></select>
                     </div>
                 </div>
@@ -251,15 +251,15 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        Tipo
+                        Tipo <!-- PENDIENTE -->
                         <select name="pCAT_MENTON_TIPO" id="pCAT_MENTON_TIPO" class="form-control"></select>
                     </div>
                     <div class="col-md-4">
-                        Forma
+                        Forma <!-- Se llena del catálogo CAT_FORMAMENTON -->
                         <select name="pCAT_MENTON_FORMA" id="pCAT_MENTON_FORMA" class="form-control"></select>
                     </div>
                     <div class="col-md-4">
-                        Inclinación
+                        Inclinación <!-- Se llena del catálogo CAT_INCLINACIONMENTON -->
                         <select name="pCAT_MENTON_INCLINACION" id="pCAT_MENTON_INCLINACION" class="form-control"></select>
                     </div>
                 </div>
@@ -278,11 +278,11 @@
                 <br>
                 <div class="row">
                 <div class="col-md-4">
-                        Forma
+                        Forma <!-- Se llena del catálogo CAT_FORMAOREJA -->
                         <select name="pCAT_OREJA_FORMA" id="pCAT_OREJA_FORMA" class="form-control"></select>
                     </div>
                     <div class="col-md-4">
-                        Original
+                        Original <!-- PENDIENTE -->
                         <select name="pCAT_OREJA_ORIGINAL" id="pCAT_OREJA_ORIGINAL" class="form-control"></select>
                     </div>
                 </div>
@@ -297,19 +297,19 @@
                 <br>
                 <div class="row">
                     <div class="col-md-3">
-                        Superior
+                        Superior <!-- Se llena del catálogo CAT_OREJAHELSUP -->
                         <select name="pCAT_OREJA_HEL_SUP" id="pCAT_OREJA_HEL_SUP" class="form-control"></select>
                     </div>
                     <div class="col-md-3">
-                        Posterior
+                        Posterior <!-- Se llena del catálogo CAT_OREJAHELPOST -->
                         <select name="pCAT_OREJA_HEL_POST" id="pCAT_OREJA_HEL_POST" class="form-control"></select>
                     </div>
                     <div class="col-md-3">
-                        Adherencia
+                        Adherencia <!-- Se llena del catálogo CAT_OREJAHELADHEREN -->
                         <select name="pCAT_OREJA_HEL_ADHEREN" id="pCAT_OREJA_HEL_ADHEREN" class="form-control"></select>
                     </div>
                     <div class="col-md-3">
-                        Contorno
+                        Contorno <!-- Se llena del catálogo CAT_OREJAHELCONTORNO -->
                         <select name="pCAT_OREJA_HEL_CONTORNO" id="pCAT_OREJA_HEL_CONTORNO" class="form-control"></select>
                     </div>
                 </div>
@@ -323,15 +323,15 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3">
-                            Adherencia
+                            Adherencia <!-- Se llena del catálogo CAT_OREJALOBADHEREN -->
                             <select name="pCAT_OREJA_LOB_ADHEREN" id="pCAT_OREJA_LOB_ADHEREN" class="form-control"></select>
                         </div>
                         <div class="col-md-3">
-                            Particularidad
+                            Particularidad <!-- Se llena del catálogo CAT_OREJALOBPARTIC -->
                             <select name="pCAT_OREJA_LOB_PARTIC" id="pCAT_OREJA_LOB_PARTIC" class="form-control"></select>
                         </div>
                         <div class="col-md-3">
-                            Dimensión
+                            Dimensión <!-- Se llena del catálogo CAT_OREJALOBDIMEN -->
                             <select name="pCAT_OREJA_LOB_DIMEN" id="pCAT_OREJA_LOB_DIMEN" class="form-control"></select>
                         </div>
 
@@ -348,11 +348,11 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        Tipo
+                        Tipo <!-- Se llena del catálogo CAT_TIPODESANGRE -->
                         <select class="form-control" name="pCAT_SANGRE" id="pCAT_SANGRE"></select>
                     </div>
                     <div class="col-md-4">
-                        Factor RH
+                        Factor RH <!-- PENDIENTE -->
                         <select class="form-control" name="pCAT_FACTOR_RH" id="pCAT_FACTOR_RH"></select>
 
                     </div>
@@ -368,7 +368,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <span class="clr">*</span>¿Usa anteojos?
+                        <span class="clr">*</span>¿Usa anteojos? <!-- S/N = SI/NO -->
                         <select class="form-control" name="pCAT_LENTES" id="pCAT_LENTES" required></select>
                     </div>
                     <div class="col-md-4">
@@ -820,22 +820,22 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <span class="clr">*</span>Tipo de seña
+                        <span class="clr">*</span>Tipo de seña <!-- Se llena del catálogo CAT_SENAS -->
                         <select name="" id="" class="form-control" required></select>
                     </div>
                     <div class="col-md-4">
-                        <span class="clr">*</span>Lado
+                        <span class="clr">*</span>Lado <!-- PENDIENTE -->
                         <select name="" id="" class="form-control" required></select>
                     </div>
                     <div class="col-md-4">
-                        <span class="clr">*</span>Región
+                        <span class="clr">*</span>Región <!-- Se llena del catálogo CAT_REGION -->
                         <select name="" id="" class="form-control" required></select>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <span class="clr">*</span>Vista
+                        <span class="clr">*</span>Vista <!-- PENDIENTE -->
                         <select name="" id="" class="form-control" required></select>
                     </div>
                     <div class="col-md-4">
@@ -1317,13 +1317,13 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        Tipo de documento
+                        Tipo de documento <!-- PENDIENTE -->
                         <select name="" id="" class="form-control">
                             <option value="">Seleccione</option>
                         </select>
                     </div>
                     <div class="col-md-4">
-                        Categoría de documento
+                        Categoría de documento <!-- PENDIENTE -->
                         <select name="" id="" class="form-control">
                             <option value="">Seleccione</option>
                         </select>

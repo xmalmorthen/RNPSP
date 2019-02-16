@@ -23,7 +23,7 @@
                         <Input type="text" class="form-control" id="pCURSO_CAPACITACION_ADICIONAL" name="pCURSO_CAPACITACION_ADICIONAL" minlength="2" maxlength="60">
                     </div>
                     <div class="col-md-4">
-                        <span class="clr">*</span>Tipo de curso <!--Se llena del catalogo "TIPO_CURSO_ADIC" -->
+                        <span class="clr">*</span>Tipo de curso <!--Se llena del catalogo "CAT_TIPO_CURSO_ADIC" -->
                         <select  class="form-control" id="pID_TIPO_CURSO" name="pID_TIPO_CURSO" required>
                             <option value=""></option>
                         </select>
@@ -32,13 +32,13 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <span class="clr">*</span>El curso fué <!-- Se llena del catalogo "MODALIDAD_CURSO"<-->
+                        <span class="clr">*</span>El curso fué <!-- Se llena del catalogo "CAT_MODALIDAD_CURSO"<-->
                         <select class="form-control" id="pID_MODALIDAD_CURSO" name="pID_MODALIDAD_CURSO" required>
                             <option value=""></option>
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <span class="clr">*</span>Eficiencia terminal <!-- Se llena del catalogo "EFICIENCIA" -->
+                        <span class="clr">*</span>Eficiencia terminal <!-- Se llena del catalogo "CAT_EFICIENCIA" -->
                         <select  class="form-control" id="pID_EFICIENCIA_CAPACITACION_ADICIONAL" name="pID_EFICIENCIA_CAPACITACION_ADICIONAL" required>
                             <option value=""></option>
                         </select>
@@ -233,7 +233,7 @@
                     <center><input type="button" name="next" class="btn btn-default" style="height:40px;" value="Siguiente"/></center>
                 </div>
             </div>
-    </div>
+    </div> <!-- PENDIENTE ESTO NO APARECE EN LAS VIEWS -->
 
      <div class="tab-pane fade" id="Idiomas_dialectos" role="tabpanel" aria-labelledby="Idiomas_dialectos-tab">
         <div class="container">
@@ -250,7 +250,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <span class="clr">*</span>Idioma y/o dialecto  <!-- Se llena del catalogo "IDIOMA" -->
+                        <span class="clr">*</span>Idioma y/o dialecto  <!-- Se llena del catalogo "CAT_IDIOMA" -->
                         <select  class="form-control" id="pID_IDIOMA" name="pID_IDIOMA" required>
                             <option value=""></option>
                         </select>
@@ -353,7 +353,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <span class="clr">*</span>Tipo de habilidad y/o aptitud<!-- Se llena con el catalogo "TIPO_APTITUD" -->
+                        <span class="clr">*</span>Tipo de habilidad y/o aptitud<!-- Se llena con el catalogo "CAT_TIPO_APTITUD" -->
                         <select class="form-control" id="ID_TIPO_APTITUD" name="ID_TIPO_APTITUD" required>
                             <option value=""></option>
                         </select>
@@ -363,7 +363,7 @@
                         <input type="text" class="form-control" id="ESPECIFIQUE" name="ESPECIFIQUE" minlength="0" maxlength="100">
                     </div>
                     <div class="col-md-4">
-                        <span class="clr">*</span>Grado de aptitud o dominio <!-- Se rellena con el catalogo "GRADO_APTITUD_HAB" depende del select "TIPO_ACTITUD" -->
+                        <span class="clr">*</span>Grado de aptitud o dominio <!-- Se rellena con el catalogo "CAT_GRADO_APTITUD_HAB" depende del select "TIPO_ACTITUD" -->
                         <select class="form-control" id="ID_GRADO_APT_HAB" name="ID_GRADO_APT_HAB" required>
                         </select>
                     </div>
@@ -509,6 +509,6 @@
             </div>
         </div>
     </div>
-
+<!-- PENDIENTE ESTO YA SE HABIA ELIMINADO, NO APARECE EN LAS VISTAS -->
 
  

@@ -15,13 +15,13 @@
                     <br>
                     <div class="row">
                         <div class="col-md-6">
-                            <span class="clr">*</span>Dependencia <!-- Se llena del catalogo "DEPENDENCIA" -->
+                            <span class="clr">*</span>Dependencia <!-- Se llena del catalogo "CAT_DEPENDENCIA" -->
                             <select  class="form-control" required>
                                 <option value="">Seleccione</option>
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <span class="clr">*</span>Corporación <!-- Se llena del catalogo "INSTITUCION" -->
+                            <span class="clr">*</span>Corporación <!-- Se llena del catalogo "CAT_INSTITUCION" -->
                             <select  class="form-control" id="pINSTITUCION" name="pINSTITUCION" required>
                                 <option value="">Seleccione</option>
                             </select>
@@ -43,11 +43,11 @@
                             <input type="text"  id="pCP_EMP_ADSCRIPCION_ACTUAL" name="pCP_EMP_ADSCRIPCION_ACTUAL" class="form-control" class="form-control" required maxlength="5">
                         </div>
                         <div class="col-md-4">
-                            <span class="clr">*</span>Estado <!-- Se llena del catalogo "ENTIDAD" -->
+                            <span class="clr">*</span>Estado <!-- Se llena del catalogo "CAT_ENTIDAD" -->
                             <select  class="form-control" id="pID_ENTIDAD" name="pID_ENTIDAD" maxlength="10" required></select>
                         </div>
                         <div class="col-md-4">
-                            <span class="clr">*</span>Municipio <!-- Se llena del catalogo "MUNICIPIO" dependiendo del catalogo de "ENTIDAD" -->
+                            <span class="clr">*</span>Municipio <!-- Se llena del catalogo "CAT_MUNICIPIO" dependiendo del catalogo de "ENTIDAD" -->
                             <select  class="form-control" id="pID_MUNICIPIO" name="pID_MUNICIPIO" maxlength="10" required></select>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                             <input type="date" id="pFECHA_INGRESO" name="pFECHA_INGRESO" required class="form-control">
                         </div>
                         <div class="col-md-4">
-                            <span class="clr">*</span>Puesto <!-- Se llena del catalogo "PUESTO" -->
+                            <span class="clr">*</span>Puesto <!-- pendiente -->
                             <select  class="form-control" id="pPUESTO_ADSCRIPCION_ACTUAL" name="pPUESTO_ADSCRIPCION_ACTUAL" required>
                                 <option value="">Seleccione</option>
                             </select>
@@ -112,7 +112,7 @@
                         <input type="text" id="pRANGO" name="pRANGO" class="form-control" maxlength="30">
                         </div>
                         <div class="col-md-4">
-                            Nivel de mando <!-- Se llena del catalogo "NIVEL_MANDO" -->
+                            Nivel de mando <!-- Se llena del catalogo "CAT_NIVEL_MANDO" -->
                             <select  class="form-control" id="pID_NIVEL_MANDO" name="pID_NIVEL_MANDO">
                                 <option value="">Seleccione</option>
                             </select>
@@ -140,7 +140,7 @@
                     <br>
                     <div class="row">
                         <div class="col-md-4">
-                            Área o departamento <!-- Se llena del catalogo "AREA" -->
+                            Área o departamento <!-- Se llena del catalogo "CAT_AREA" -->
                         <select  class="form-control" id="pID_AREA" name="pID_AREA"></select>
                         </div>
                         <div class="col-md-4">
@@ -254,7 +254,7 @@
                             <input type="text" id="pCP_EMP_EMPLEOS_DIVERSOS" name="pCP_EMP_EMPLEOS_DIVERSOS" required  class="form-control"  maxlength="5">
                         </div>
                         <div class="col-md-4">
-                            <span class="clr">*</span>Estado <!-- Se llena del catalogo "ENTIDAD" -->
+                            <span class="clr">*</span>Estado <!-- Se llena del catalogo "CAT_ENTIDAD" -->
                             <select  class="form-control" required>
                                 <option value="">Seleccione</option>
                             </select>
@@ -263,7 +263,7 @@
                     <br>
                     <div class="row">
                         <div class="col-md-4">
-                        <span class="clr">*</span>Municipio <!-- Se llena del catalogo "MUNICIPIO" dependiendo del catalogo "ENTIDAD" -->
+                        <span class="clr">*</span>Municipio <!-- Se llena del catalogo "CAT_MUNICIPIO" dependiendo del catalogo "ENTIDAD" -->
                             <select  class="form-control" id="pID_MUNICIPIO_EMPLEOS_DIVERSOS" name="pID_MUNICIPIO_EMPLEOS_DIVERSOS" required></select>
                         </div>
                         <div class="col-md-4">
@@ -282,7 +282,7 @@
                             <input type="text" id="pNUM_TELEFONICO" name="pNUM_TELEFONICO"  class="form-control" maxlength="20">
                         </div>
                         <div class="col-md-4">
-                            <span class="clr">*</span>Área o departamento
+                            <span class="clr">*</span>Área o departamento 
                             <input type="text" id="pDESCRIP_AREA" name="pDESCRIP_AREA" required  class="form-control" maxlength="50">
                         </div>
                         <div class="col-md-4">
@@ -308,14 +308,14 @@
                     <br>
                     <div class="row">
                         <div class="col-md-4">
-                            <span class="clr">*</span>Motivo de separación <!-- Se llena del catalogo "MOTIVO_LAB" -->
-                            <select  class="form-control" id="pID_MOTIVO_MOV_LAB" name="pID_MOTIVO_MOV_LAB" required >
+                            <span class="clr">*</span>Motivo de separación <!-- Se llena del catalogo "TIPO_MOV_LABORAL" -->
+                            <select  class="form-control" id="pID_TIPO_MOV_LAB" name="pID_TIPO_MOV_LAB" required >
                                 <option value="">Seleccione</option>
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <span class="clr">*</span>Tipo de separación <!-- Se llena del catalogo "TIPO_MOV_LAB" -->
-                            <select  class="form-control" id="ID_TIPO_MOV_LAB" name="ID_TIPO_MOV_LAB" required>
+                            <span class="clr">*</span>Tipo de separación <!-- Se llena del catalogo "MOTIVO_MOV_LAB" -->
+                            <select  class="form-control" id="ID_MOTIVO_MOV_LAB" name="ID_MOTIVO_MOV_LAB" required>
                                 <option value="">Seleccione</option>
                             </select>
                         </div>
@@ -505,14 +505,14 @@
                         <input type="date"  id="pFECHA_TERMINO_COMISIONES" name="pFECHA_TERMINO_COMISIONES" class="form-control" required>
                     </div>
                     <div class="col-md-4">
-                        <span class="clr">*</span>Tipo de comisión<!-- Se llena del catalogo "TIPO_COMISION" -->
+                        <span class="clr">*</span>Tipo de comisión<!-- Se llena del catalogo "CAT_TIPO_COMISION" -->
                         <select  class="form-control" id="ID_TIPO_COMISION" name="ID_TIPO_COMISION" required><option value="">Seleccione</option></select>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <span class="clr">*</span>Motivo <!-- Se llena del catalogo "MOTIVO" -->
+                        <span class="clr">*</span>Motivo <!-- Se llena del catalogo "CAT_MOTIVO" -->
                         <select  class="form-control" id="pID_MOTIVO" name="pID_MOTIVO" required><option value="">Seleccione</option></select>
                     </div>
                     <div class="col-md-4">
