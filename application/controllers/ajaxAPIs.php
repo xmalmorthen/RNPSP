@@ -47,10 +47,10 @@ class ajaxAPIs extends CI_Controller {
 			if ($this->curl->error_string){
 				throw new processException($this->curl->error_string,$this->rest->status());
 			} else if (!$wsResponse) {
-				throw new processException("El servicio respondió con un estatus [{$this->rest->status()}], no fue posible obtener la información",$this->rest->status());
+				throw new processException("El servicio respondió con un estatus [{$this->rest->status()}], no fue posible obtener la información", $this->rest->status());
 			} else {
 				if ($wsResponse->RESTService->StatusCode === '0')
-					throw new processException($wsResponse->RESTService->Message,$this->rest->status());
+					throw new processException($wsResponse->RESTService->Message,400);
 			}
 
 			$responseModel = $wsResponse->Response;

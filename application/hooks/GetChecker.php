@@ -42,7 +42,7 @@ class GetChecker {
                 $securityMethod = $securityAccessArray[$directory][$controller]['all'];
             }
         }
-        
+
         switch ($securityMethod) {  
             case securityMethods::anonymous :
 

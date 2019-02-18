@@ -40,8 +40,13 @@ var objView = {
 
         // INIT SELECTS
         $('select').select2();
-        
+
         //EVENTS
+        //SUBMIT
+        $("form").attr('novalidate', 'novalidate');
+        $('form').submit(function(e){
+            e.preventDefault();
+        });
         // CLICK
         objView.vars.datosGenerales.btns.guardarDatosPersonales.on('click',objView.events.click.datosGenerales.guardarDatosPersonales);
         objView.vars.datosGenerales.btns.generarCIB.on('click',objView.events.click.datosGenerales.generarCIB);
@@ -53,10 +58,13 @@ var objView = {
         //Rutina para verificar si se hace algún cambio en cualquier forulario
         $.each(objView.vars.datosGenerales.forms, function( index, value ) {
             var form = value;
-            form.find('input, select').change(function() {
+            form.find('input, select').change(function(e) {
                 form.removeData('hasSaved');
                 form.removeData('hasDiscardChanges');
                 form.data('hasChanged',true);
+
+                console.log(e);
+                $(e.target).removeError();
             });
         });
         
@@ -77,49 +85,49 @@ var objView = {
                 }
             },
             datosGenerales : {
-                guardarDatosPersonales : function(e){
+                guardarDatosPersonales : function(e, from){
                     e.preventDefault();
 
                     var $this = $(this),
                         form = $this.parents('form:first');
+                    
+                    form.closeAlert({alertType : 'alert-danger'});
 
-                    generic.click(
-                    {
-                        evt : e
-                    },
-                    //event
-                    function(){
+                    //VALID FORM
+                    try {
+                        if (!objView.vars.datosGenerales.forms.Datos_personales_form.valid())
+                            throw "Invalid FORM";
+
                         $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
-
-                        //VALID FORM
-                        // try {
-                        //     if (!objView.vars.datosGenerales.forms.Datos_personales_form.valid())
-                        //         throw "Invalid FORM";
-                        // }catch(err) {
-                        //     $.LoadingOverlay("hide");
-                        // }
 
                         var callUrl = base_url + 'Ejemplos/ajaxGetSample';
                         model = {
                             var1 : 'val1',
                             var2 : 'val2'
                         };
-                        generic.ajax.get(
-                            callUrl,
-                            model,
+
+                        $.when(
+                            $.get(callUrl,{model : model})
+                            .always(function () {
+                                MyCookie.session.reset();
+                            })
+                        ).then( 
                             //success
-                            function(data){
+                            function(data, textStatus, jqXHR){
                                 console.log(data);
-                                
                                 form.removeData('hasChanged');
                                 form.data('hasSaved',true);
 
-                                dynTabs.markTab( ( dynTabs.tabs.prebTab.linkRef ? dynTabs.tabs.prebTab.linkRef : dynTabs.tabs.currentTab.linkRef),  '<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true"></i></span>');
+                                dynTabs.markTab( ( dynTabs.tabs.prebTab.linkRef ? dynTabs.tabs.prebTab.linkRef : dynTabs.tabs.currentTab.linkRef),  '<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
 
                                 $.LoadingOverlay("hide");
+
+                                if (from)
+                                    if(from == 'tab')
+                                        dynTabs.tabs.prebTab.tabForm.find('.btnSiguienteAnterior.siguienteTab').trigger('click');
                             },
                             //error
-                            function(err){
+                            function(err, textStatus, jqXHR){
                                 $.LoadingOverlay("hide");
                                 var msg = err.status + ' - ' + err.statusText;
                                                                 
@@ -132,18 +140,23 @@ var objView = {
                                         //swal({ type: 'error', title: 'Error', html: msg }); //se comenta porque al mostrar el modal no respeta el scroll top al bloque del alert.
                                     }
                                 });
-                            }
-                        );                        
-                    }, 
-                    //success
-                    function (successResponse){ 
-                        debugger;                       
-                    }, 
-                    //error
-                    function(){
-                    });
+
+                                dynTabs.markTab( ( dynTabs.tabs.prebTab.linkRef ? dynTabs.tabs.prebTab.linkRef : dynTabs.tabs.currentTab.linkRef),  '<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
+                            } 
+                        );
+                    }catch(err) {
+                        dynTabs.markTab( ( dynTabs.tabs.prebTab.linkRef ? dynTabs.tabs.prebTab.linkRef : dynTabs.tabs.currentTab.linkRef),  '<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
+                        form.setAlert({
+                            alertType :  'alert-danger',
+                            dismissible : true,
+                            header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                            msg : 'Formulario incompleto'
+                        });
+                    }
                 },
                 generarCIB : function(e){
+                    e.preventDefault();
+
                     generic.click(
                     {
                         evt : e
@@ -172,8 +185,15 @@ var objView = {
 
                     var value = $(this).val();
 
-                    if ( value.length < 18 || value.length > 20 )
+                    if ($this.data('find') == value)
                         return null;
+
+                    $this.removeError();
+                    if (value == 0) return null;
+                    if ( value.length < 18 || value.length > 20 ) {
+                        $this.setError('Formato de CURP incorrecto');
+                        return null;
+                    }
 
                     $this.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
@@ -185,27 +205,42 @@ var objView = {
                     //desactivar controles involucrados en la consulta CURP
                     $('.consultaCURP').readOnly();
 
-                    generic.ajax.get(
+                    generic.ajax.async.get(
                         callUrl,
                         model,
                         //success
                         function(data){
+                            $this.data('find',value);
+
                             $('#pNOMBRE_DATOS_PERSONALES').val(data[0].nombres);
                             $('#pPATERNO_DATOS_PERSONALES').val(data[0].apellido1);
                             $('#pMATERNO_DATOS_PERSONALES').val(data[0].apellido2);
+                            $('#pSEXO_DATOS_PERSONALES').val(data[0].sexo);
+                            $('#pSEXO_DATOS_PERSONALES').select2(); //ACTUALIZAR SELECT PARA QUE SE MUESTRE LA SELECCIÓN
+
                             var dateParts = data[0].fechNac.split("/");
                             var dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]); 
                             date = moment( dateObject ).format('YYYY-MM-DD');
                             $('#pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES').val(date);
+
+                            $('#pNOMBRE_DATOS_PERSONALES').removeError();
+                            $('#pPATERNO_DATOS_PERSONALES').removeError();
+                            $('#pMATERNO_DATOS_PERSONALES').removeError();
+                            $('#pSEXO_DATOS_PERSONALES').removeError();
+                            $('#pSEXO_DATOS_PERSONALES').removeError();
+                            $('#pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES').removeError();
+
                         }, 
                         //error
                         function(err){
                             var msg = err.status + ' - ' + err.statusText;
-                            swal({ type: 'error', title: 'Error', html: msg });                            
+                            swal({ type: 'error', title: 'Error', html: msg }); 
+                            $this.setError(err.statusText);
+                            $('.consultaCURP').resetReadOnly();
                         },
                         //always
                         function(){
-                            $('.consultaCURP').resetReadOnly();
+                            //
                             $this.LoadingOverlay("hide");
                         }
                     );
@@ -222,7 +257,7 @@ var objView = {
                 
             dynTabs.tabs.prebTab.tabForm.removeData('hasChanged');
             dynTabs.tabs.prebTab.tabForm.data('hasDiscardChanges',true);
-            dynTabs.tabs.prebTab.tabForm.find('.btnSiguienteAnterior.siguienteTab').trigger('click');            
+            dynTabs.tabs.prebTab.tabForm.find('.btnSiguienteAnterior.siguienteTab').trigger('click');
         }
     }
 }

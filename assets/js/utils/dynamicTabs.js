@@ -31,22 +31,21 @@ var dynTabs = {
             
             //TODO: XMAL - Quitar comentarios despues de implementar lo del guardado antes de cambiar de tab
 
-            // if (!form.valid()){                
-            //     var linkRef = $('#' + e.currentTarget.id);
-            //     if (!linkRef.hasClass('errorValidation')) {
-            //         linkRef.prepend('<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ');
-            //         linkRef.addClass('text-danger errorValidation');                    
-            //     }                
-            //     form.setAlert({
-            //         alertType :  'alert-danger',
-            //         dismissible : true,
-            //         header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
-            //         msg : 'Formulario incompleto'
-            //     });
+            if (!form.valid()){                
+                var linkRef = $('#' + e.currentTarget.id);
+                
+                if (!linkRef.hasClass('errorValidation')) {
+                    dynTabs.markTab( linkRef,'<span class="text-danger tabMark errorValidation mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i></span>');    
+                }                
+                form.setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : 'Formulario incompleto'
+                });
 
-            //     e.preventDefault();
-            //     $("html, body").animate({ scrollTop: 0 }, 200);
-            // } else {
+                e.preventDefault();
+            } else {
                 if (form.data('hasChanged') == true){
 
                     Swal({
@@ -60,7 +59,7 @@ var dynTabs = {
                         cancelButtonColor: '#d33'
                     }).then(function(result){
                         if (result.value === true){
-                            form.find('.btnGuardarSection').trigger('click');
+                            form.find('.btnGuardarSection').trigger('click',['tab']);
                         }
                     });
                     e.preventDefault();
@@ -70,7 +69,7 @@ var dynTabs = {
                         }
                     }                    
                 }
-            // }
+            }
     },
     showTab : function(e){
         var tabRefObj = $(e.currentTarget.hash),
@@ -90,5 +89,15 @@ var dynTabs = {
     markTab : function(linkRef,content){        
         linkRef.find('span.tabMark').remove();
         linkRef.prepend(content);
+
+        var date = moment( new Date() ).format('DD/MM/YYYY'),
+            time = moment( new Date() ).format('h:mm:ss a'),
+            titleMsg = 'Acción realizada [ ' + time + ' - ' + date + ' ]';
+
+        linkRef.find('span.tabMark').data('toggle','tooltip').prop('title',titleMsg);
+        $('[data-toggle="tooltip"]').tooltip();
+    },
+    unMarkTab : function(linkRef){
+        linkRef.find('span.tabMark').remove();
     }
 }

@@ -48,12 +48,12 @@ class Ejemplos extends CI_Controller {
 		$this->load->view('Ejemplos/ejemplo1View',$model);
 	}
 
-	public function ajaxGetSample(){		
+	public function ajaxGetSample(){
 		if (! $this->input->is_ajax_request()) {
 			if (ENVIRONMENT == 'production') redirect('Error/e404','location');
         }
 
-		//header("HTTP/1.0 400 Bad Request");
+		// header("HTTP/1.0 400 Bad Request");
 		header('Content-type: application/json');
         echo json_encode( [ 'results' => 'Prueba de respuesta ajax' ] );
         exit;		

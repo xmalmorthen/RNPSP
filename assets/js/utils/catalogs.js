@@ -74,7 +74,18 @@ $.fn.getCatalog = function(options) {
     });
 };
 
+
 $.fn.setError = function(msg){
     var content = '<label class="text-danger"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ' + msg + '</label>';
     $(this).parent().append(content);    
 };
+$.fn.removeError = function(){
+    var errores = $(this).parent().find("label.text-danger:visible");
+    $(this).removeClass("text-danger");
+    errores.remove();
+};
+$.fn.withError = function(){
+    var status = $(this).parent().find(".text-danger:visible").length > 0 ? true : false;
+    return status;
+};
+
