@@ -1,6 +1,7 @@
 var objViewDatosGenerales = {
     vars : {
         general : {
+            init : false,
             datosGeneralesContentTab : null,
             btnSiguienteAnterior : null
         },
@@ -22,6 +23,11 @@ var objViewDatosGenerales = {
         }
     },
     init : function(){
+        if (objViewDatosGenerales.vars.general.init)
+            return false;
+
+        $('#myTabContent').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
         objViewDatosGenerales.vars.general.mainContentTab = $('#datosGenerales');
         
         // INIT DATATABLE
@@ -73,10 +79,16 @@ var objViewDatosGenerales = {
         
         //CAMBIO DE TABS
         objViewDatosGenerales.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewDatosGenerales.actions.discartChanges}, e); } );
-        objViewDatosGenerales.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('show.bs.tab',dynTabs.showTab);
-
+        objViewDatosGenerales.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('show.bs.tab',dynTabs.showTab);        
+        
         populate.form($('#Datos_personales_form')); //popular selects del primer tab NOTA: cambiar programación al tab actual si se obtiene por cookie
         dynTabs.setCurrentTab($('#myTabContent'));
+
+        mainTabMenu.actions.changeTab();
+
+        objViewDatosGenerales.vars.general.init = true;
+
+        $('#myTabContent').LoadingOverlay("hide");
     },
     events : {
         click : {

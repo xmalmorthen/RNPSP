@@ -1,6 +1,7 @@
 var objViewLaboral = {
     vars : {
         general : {
+            init : false,
             datosGeneralesContentTab : null,
             btnSiguienteAnterior : null
         },
@@ -20,6 +21,11 @@ var objViewLaboral = {
         }
     },
     init : function(){
+        if (objViewLaboral.vars.general.init)
+            return false;
+
+        $('#myTabContent').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+        
         objViewLaboral.vars.general.mainContentTab = $('#Laboral');
         
         // INIT DATATABLE
@@ -76,6 +82,12 @@ var objViewLaboral = {
 
         populate.form($('#Adscripcion_actual_form')); //popular selects del primer tab NOTA: cambiar programación al tab actual si se obtiene por cookie
         dynTabs.setCurrentTab($('#myTabContent'));
+
+        mainTabMenu.actions.changeTab();
+
+        objViewLaboral.vars.general.init = true;
+
+        $('#myTabContent').LoadingOverlay("hide");
     },
     events : {
         click : {

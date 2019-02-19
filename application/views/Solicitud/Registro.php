@@ -64,25 +64,58 @@
     $(function() {
         //CAMBIO DE TABS
         $('#mainContainerTab a[data-toggle="tab"]').on('show.bs.tab',mainTabMenu.tab.change);
+
+        var linkRefHash = MyCookie.tabRef.get('mainTab');
+        if (!linkRefHash){
+            linkRefHash = $('#mainContainerTab .nav-item a.nav-link.active')[0].id;
+            MyCookie.tabRef.save('mainTab',linkRefHash);
+        }
+        var linkRef = $('#' + linkRefHash);
+
+        mainTabMenu.actions.init(
+            linkRef.attr('aria-controls'),
+            function(){
+                linkRef.trigger('click');
+            }
+        );
     });
 
     var mainTabMenu = {
-            tab : {
-                change : function(e){
-                    switch ($(e.currentTarget).attr('aria-controls')) {
-                        case 'datosGenerales':
-                            objViewDatosGenerales.init();
-                        break;
-                        case 'Laboral':
-                            objViewLaboral.init();
-                        break;
-                        case 'Capacitacion':
-                        break;
-                        case 'Identificacion':
-                        break;
-                    }
-                }
+        tab : {
+            change : function(e){
+                var tabRef = $(e.currentTarget);
+                mainTabMenu.actions.init(tabRef.attr('aria-controls'));
+                MyCookie.tabRef.save('mainTab',tabRef.attr('id'));
             }
+        },
+        actions : {
+            init : function(tabRef, callback){
+                switch (tabRef) {
+                    case 'datosGenerales':
+                        objViewDatosGenerales.init();
+                    break;
+                    case 'Laboral':
+                        objViewLaboral.init();
+                    break;
+                    case 'Capacitacion':
+                    break;
+                    case 'Identificacion':
+                    break;
+                }
+                if (callback)
+                    if ($.isFunction( callback ))
+                        callback();
+            },
+            changeTab : function(){
+                var linkRefHash = MyCookie.tabRef.get('childTab');
+                if (!linkRefHash){
+                    linkRefHash = $('#myTabContent .nav-item a.nav-link.active')[0].id;
+                    MyCookie.tabRef.save('childTab',linkRefHash);
+                }
+                var linkRef = $('#' + linkRefHash);
+                linkRef.trigger('click');
+            }
+        }
     }
 
 

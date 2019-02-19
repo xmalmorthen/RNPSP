@@ -78,7 +78,9 @@ var dynTabs = {
         dynTabs.tabs.currentTab.tabForm = form;
         dynTabs.tabs.currentTab.linkRef = $('#' + e.currentTarget.id);
 
-        populate.form(dynTabs.tabs.currentTab.tabForm);        
+        populate.form(dynTabs.tabs.currentTab.tabForm); 
+
+        MyCookie.tabRef.save('childTab',e.currentTarget.id);       
     },
     setCurrentTab : function(tabContent){
         dynTabs.tabs.currentTab.linkRef = tabContent.find('.tab-pane.active.show').find('.nav.nav-tabs').find('a.nav-link.active');
