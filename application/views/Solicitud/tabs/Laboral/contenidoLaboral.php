@@ -517,7 +517,8 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Motivo <!-- Se llena del catalogo "CAT_MOTIVO" -->
-                        <select  class="form-control" id="pID_MOTIVO" name="pID_MOTIVO" required><option value="">Seleccione</option></select>
+                        <select  class="form-control" id="pID_MOTIVO" name="pID_MOTIVO" data-error="#err_pID_MOTIVO" data-query='MUFyelc2MFUySW84eUc1UVdFanljc0pHY0Q0UlFrQkFNY3RBVExQOVMrTVJTUkdHQWh0ekNrSVFUQkZJbmZlY1hNQ1VqcjhsV3lrOG1aenlTYmFjL0dnZEhROW9Mb0tDNEwxRXMvOWxkUVp1UlpEWklvVXFvZmRXMTMxMHBUKys=' required></select>
+                        <span id="err_pID_MOTIVO"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Destino
