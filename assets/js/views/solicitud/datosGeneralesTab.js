@@ -42,7 +42,7 @@ var objViewDatosGenerales = {
         objViewDatosGenerales.vars.datosGenerales.objs.pCURP = $('#pCURP');
 
         // INIT SELECTS
-        objViewDatosGenerales.vars.general.mainContentTab.find('select').select2();
+        objViewDatosGenerales.vars.general.mainContentTab.find('select').select2({width : '100%'});
 
         //EVENTS
         //SUBMIT

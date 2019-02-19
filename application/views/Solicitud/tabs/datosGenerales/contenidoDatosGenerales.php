@@ -195,7 +195,7 @@
                     <div class="col-md-4">
                         <span class="clr">*</span>Máxima escolaridad <!-- CAT_GRADO_ESCOLAR -->
                         <br>
-                        <select style="width:356px;" class="form-control" id="pID_GRADO_ESCOLAR" name="pID_GRADO_ESCOLAR" data-error="#err_pID_GRADO_ESCOLAR" data-query='SzRVaytUUWZjNUhCUko5cjlsMS92YkZaMTQ0RzN3eG45VmljYTFqc2xDVHFabWxmd2xIenF1VmFyT1J6b1ZpS3k4bEluRlMwQnRiT3lnUmZDVTUxMVVQRXZUOHIyR1BOWE5yZGt4cHVlbjd5eU1JcXdWSkYwdnFQQ0pOUW8yWDRXdmdud3o2YVV5cXpzOGF1NmdYTG1kcDNYWElyM3FnY2tYRG5qZUhubEE4PQ==' required></select>
+                        <select class="form-control w-100" id="pID_GRADO_ESCOLAR" name="pID_GRADO_ESCOLAR" data-error="#err_pID_GRADO_ESCOLAR" data-query='SzRVaytUUWZjNUhCUko5cjlsMS92YkZaMTQ0RzN3eG45VmljYTFqc2xDVHFabWxmd2xIenF1VmFyT1J6b1ZpS3k4bEluRlMwQnRiT3lnUmZDVTUxMVVQRXZUOHIyR1BOWE5yZGt4cHVlbjd5eU1JcXdWSkYwdnFQQ0pOUW8yWDRXdmdud3o2YVV5cXpzOGF1NmdYTG1kcDNYWElyM3FnY2tYRG5qZUhubEE4PQ==' required></select>
                         <span id="err_pID_GRADO_ESCOLAR"></span>
                     </div>
                     <div class="col-md-4">

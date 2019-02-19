@@ -35,7 +35,7 @@ var objViewLaboral = {
         objViewLaboral.vars.laboral.objs.pCURP = $('#pCURP');
 
         // INIT SELECTS
-        objViewLaboral.vars.general.mainContentTab.find('select').select2();
+        objViewLaboral.vars.general.mainContentTab.find('select').select2({width : '100%'});
 
         //EVENTS
         //SUBMIT
