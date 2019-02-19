@@ -966,7 +966,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <button class="btn btn-default">
+                        <button class="btn btn-default" id="guardarRegistrodecadactilar">
                             Guardar registro
                         </button>
                     </div>
@@ -1081,7 +1081,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <button class="btn btn-default">
+                        <button class="btn btn-default" id="guardarVoz">
                             Guardar
                         </button>
                     </div>
@@ -1089,12 +1089,12 @@
                     <div class="col-md-4">
                         <div class="row">
                             <div class="col-md-6">
-                                <button class="btn btn-default">
+                                <button class="btn btn-default" id="validarVoz">
                                     Validar
                                 </button>
                             </div>
                             <div class="col-md-6">
-                                <button class="btn btn-default">
+                                <button class="btn btn-default" id="validarReplicar">
                                     Replicar
                                 </button>
                             </div>
@@ -1182,7 +1182,7 @@
                             </tbody>
                         </table>
 
-                        <button class="btn btn-default">subir</button>
+                        <button class="btn btn-default" id="subirFotografica">subir</button>
                     </div>
                     <div class="col-md-4">
                         <table id="tableFrente" class="table display">
@@ -1200,7 +1200,7 @@
                             </tbody>
                         </table>
 
-                        <button class="btn btn-default">subir</button>
+                        <button class="btn btn-default" id="subirFotografica">subir</button>
                     </div>
                     <div class="col-md-4">
                         <table id="tablePerfilderecho" class="table display">
@@ -1218,7 +1218,7 @@
                             </tbody>
                         </table>
 
-                        <button class="btn btn-default">subir</button>
+                        <button class="btn btn-default" id="subirFotografica">subir</button>
                     </div>
                 </div>
                 <br>

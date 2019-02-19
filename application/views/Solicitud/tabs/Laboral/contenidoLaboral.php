@@ -40,11 +40,11 @@
                         </div>
                         <div class="col-md-4">
                             <span class="clr">*</span>Estado <!-- Se llena del catalogo "CAT_ENTIDAD" -->
-                            <select  class="form-control" id="pID_ENTIDAD" name="pID_ENTIDAD" maxlength="10" required></select>
+                            <select  class="form-control" id="pID_ENTIDAD_ADSCRIPCION_ACTUAL" name="pID_ENTIDAD_ADSCRIPCION_ACTUAL" maxlength="10" required></select>
                         </div>
                         <div class="col-md-4">
                             <span class="clr">*</span>Municipio <!-- Se llena del catalogo "CAT_MUNICIPIO" dependiendo del catalogo de "ENTIDAD" -->
-                            <select  class="form-control" id="pID_MUNICIPIO" name="pID_MUNICIPIO" maxlength="10" required></select>
+                            <select  class="form-control" id="pID_MUNICIPIO_ADSCRIPCION_ACTUAL" name="pID_MUNICIPIO_ADSCRIPCION_ACTUAL" maxlength="10" required></select>
                         </div>
                     </div>
                     <br>
@@ -55,11 +55,11 @@
                         </div>
                         <div class="col-md-4">
                             <span class="clr">*</span>Colonia/Localidad
-                            <input type="text" class="form-control" class="form-control" required maxlength="60">
+                            <input type="text" id="Colonia_Adscripcion_actual" name="Colonia_Adscripcion_actual" class="form-control" class="form-control" required maxlength="60">
                         </div>
                         <div class="col-md-4">
                             <span class="clr">*</span>Calle
-                            <input type="text" class="form-control" required maxlength="50">
+                            <input type="text" id="Calle" name="Calle" class="form-control" required maxlength="50">
                         </div>
 
                     </div>
@@ -249,7 +249,7 @@
                         </div>
                         <div class="col-md-4">
                             <span class="clr">*</span>Estado <!-- Se llena del catalogo "CAT_ENTIDAD" -->
-                            <select  class="form-control" required>
+                            <select id="pID_ENTIDAD_EMPLEOS_DIVERSOS" name="pID_ENTIDAD_EMPLEOS_DIVERSOS" class="form-control" required>
                                 <option value="">Seleccione</option>
                             </select>
                         </div>
@@ -262,11 +262,11 @@
                         </div>
                         <div class="col-md-4">
                             Colonia/Localidad
-                            <input type="text" id="pCOLONIA_EMP" name="pCOLONIA_EMP" required  class="form-control"  maxlength="60">
+                            <input type="text" id="pCOLONIA_EMPLEOS_DIVERSOS" name="pCOLONIA_EMPLEOS_DIVERSOS" required  class="form-control"  maxlength="60">
                         </div>
                         <div class="col-md-4">
                             Calle y número
-                            <input type="text" id="pCALLE_Y_NUM_EMP" name="pCALLE_Y_NUM_EMP" required  class="form-control"  maxlength="60">
+                            <input type="text" id="pCALLE_Y_NUM_EMPLEOS_DIVERSOS" name="pCALLE_Y_NUM_EMPLEOS_DIVERSOS" required  class="form-control"  maxlength="60">
                         </div>
                     </div>
                     <br>
