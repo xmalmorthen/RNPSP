@@ -1,6 +1,6 @@
     <div class="tab-pane fade show active" id="Adscripcion_actual" role="tabpanel" aria-labelledby="Adscripcion_actual-tab">
         <div class="_container">
-            <form action="#" id="Laboral_form" name="Laboral_form" autocomplete="off">
+            <form action="#" id="Adscripcion_actual_form" name="Adscripcion_actual_form" autocomplete="off">
                     <br>
                     <div class="row">
                         <div class="col-md-4">
@@ -40,11 +40,11 @@
                         </div>
                         <div class="col-md-4">
                             <span class="clr">*</span>Estado <!-- Se llena del catalogo "CAT_ENTIDAD" -->
-                            <select  class="form-control" id="pID_ENTIDAD" name="pID_ENTIDAD" maxlength="10" required></select>
+                            <select  class="form-control" id="pID_ENTIDAD_ADSCRIPCION_ACTUAL" name="pID_ENTIDAD_ADSCRIPCION_ACTUAL" maxlength="10" required></select>
                         </div>
                         <div class="col-md-4">
                             <span class="clr">*</span>Municipio <!-- Se llena del catalogo "CAT_MUNICIPIO" dependiendo del catalogo de "ENTIDAD" -->
-                            <select  class="form-control" id="pID_MUNICIPIO" name="pID_MUNICIPIO" maxlength="10" required></select>
+                            <select  class="form-control" id="pID_MUNICIPIO_ADSCRIPCION_ACTUAL" name="pID_MUNICIPIO_ADSCRIPCION_ACTUAL" maxlength="10" required></select>
                         </div>
                     </div>
                     <br>
@@ -55,11 +55,11 @@
                         </div>
                         <div class="col-md-4">
                             <span class="clr">*</span>Colonia/Localidad
-                            <input type="text" class="form-control" class="form-control" required maxlength="60">
+                            <input type="text" id="Colonia_Adscripcion_actual" name="Colonia_Adscripcion_actual" class="form-control" class="form-control" required maxlength="60">
                         </div>
                         <div class="col-md-4">
                             <span class="clr">*</span>Calle
-                            <input type="text" class="form-control" required maxlength="50">
+                            <input type="text" id="Calle" name="Calle" class="form-control" required maxlength="50">
                         </div>
 
                     </div>
@@ -209,11 +209,11 @@
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <button class="btn btn-default" id="anteriorAdscripcion"> Anterior</button>
                             </div>
-                            <div class="col-md-6">
-                                <button class="btn btn-default" id="siguienteAdscripcion">Siguiente</button>
+                            <div class="col-md-4">
+                                <center><button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteAdscripcion">Siguiente</button></centar>
                             </div>
                         </div>
 
@@ -225,7 +225,7 @@
     </div>
 
     <div class="tab-pane fade" id="Empleos_diversos" role="tabpanel" aria-labelledby="Empleos_diversos-tab">
-        <form action="#">
+        <form name="Empleos_diversos_form" id="Empleos_diversos_form" action="#">
             <div class="_container">
             <br>
                     <div class="row">
@@ -249,7 +249,7 @@
                         </div>
                         <div class="col-md-4">
                             <span class="clr">*</span>Estado <!-- Se llena del catalogo "CAT_ENTIDAD" -->
-                            <select  class="form-control" required>
+                            <select id="pID_ENTIDAD_EMPLEOS_DIVERSOS" name="pID_ENTIDAD_EMPLEOS_DIVERSOS" class="form-control" required>
                                 <option value="">Seleccione</option>
                             </select>
                         </div>
@@ -262,11 +262,11 @@
                         </div>
                         <div class="col-md-4">
                             Colonia/Localidad
-                            <input type="text" id="pCOLONIA_EMP" name="pCOLONIA_EMP" required  class="form-control"  maxlength="60">
+                            <input type="text" id="pCOLONIA_EMPLEOS_DIVERSOS" name="pCOLONIA_EMPLEOS_DIVERSOS" required  class="form-control"  maxlength="60">
                         </div>
                         <div class="col-md-4">
                             Calle y número
-                            <input type="text" id="pCALLE_Y_NUM_EMP" name="pCALLE_Y_NUM_EMP" required  class="form-control"  maxlength="60">
+                            <input type="text" id="pCALLE_Y_NUM_EMPLEOS_DIVERSOS" name="pCALLE_Y_NUM_EMPLEOS_DIVERSOS" required  class="form-control"  maxlength="60">
                         </div>
                     </div>
                     <br>
@@ -378,7 +378,7 @@
  
     <div class="tab-pane fade" id="Actitudes_hacia_el_empleo" role="tabpanel" aria-labelledby="Actitudes_hacia_el_empleo">
         <div class="_container">
-            <form action="#" autocomplete="off">
+            <form name="Actitudes_hacia_el_empleo_form" id="Actitudes_hacia_el_empleo_form" action="#" autocomplete="off">
                 <br>
                 <div class="row">
                     <div class="col-md-4">
@@ -475,7 +475,7 @@
 
     <div class="tab-pane fade" id="Comisiones" role="tabpanel" aria-labelledby="Comisiones-tab">
         <div class="_container">
-            <form action="#" autocomplete="off">
+            <form id="Comisiones_form" name="Comisiones_form" action="#" autocomplete="off">
                 <br>
                 <div class="row">
                     <div class="col-md-4">

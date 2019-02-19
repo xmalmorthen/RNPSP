@@ -1,6 +1,7 @@
 var objViewDatosGenerales = {
     vars : {
         general : {
+            datosGeneralesContentTab : null,
             btnSiguienteAnterior : null
         },
         datosGenerales : {
@@ -21,6 +22,8 @@ var objViewDatosGenerales = {
         }
     },
     init : function(){
+        objViewDatosGenerales.vars.general.mainContentTab = $('#datosGenerales');
+        
         // INIT DATATABLE
         // objViewDatosGenerales.vars.table = $('#table').DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"columnDefs": [{ "orderable": false, "targets": [2] }]});
 
@@ -39,12 +42,12 @@ var objViewDatosGenerales = {
         objViewDatosGenerales.vars.datosGenerales.objs.pCURP = $('#pCURP');
 
         // INIT SELECTS
-        $('select').select2();
+        objViewDatosGenerales.vars.general.mainContentTab.find('select').select2();
 
         //EVENTS
         //SUBMIT
-        $("form").attr('novalidate', 'novalidate');
-        $('form').submit(function(e){
+        objViewDatosGenerales.vars.general.mainContentTab.find("form").attr('novalidate', 'novalidate');
+        objViewDatosGenerales.vars.general.mainContentTab.find('form').submit(function(e){
             e.preventDefault();
         });
         // CLICK
@@ -69,8 +72,8 @@ var objViewDatosGenerales = {
         });
         
         //CAMBIO DE TABS
-        $('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewDatosGenerales.actions.discartChanges}, e); } );
-        $('a[data-toggle="tab"]').on('show.bs.tab',dynTabs.showTab);
+        objViewDatosGenerales.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewDatosGenerales.actions.discartChanges}, e); } );
+        objViewDatosGenerales.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('show.bs.tab',dynTabs.showTab);
 
         populate.form($('#Datos_personales_form')); //popular selects del primer tab NOTA: cambiar programación al tab actual si se obtiene por cookie
         dynTabs.setCurrentTab($('#myTabContent'));

@@ -62,6 +62,6 @@
 <script type="text/javascript">
     $(function() {
         objViewDatosGenerales.init();
-        // objViewLaboral.init();
+        //objViewLaboral.init();
     });
 </script>

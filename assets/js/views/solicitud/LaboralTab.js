@@ -1,62 +1,58 @@
 var objViewLaboral = {
     vars : {
         general : {
+            datosGeneralesContentTab : null,
             btnSiguienteAnterior : null
         },
-        datosGenerales : {
+        laboral : {
             forms : {
-                Datos_personales_form : null,
-                Desarrollo_form : null,
-                Domicilio_form : null,
-                Referencias_form : null,
-                Socioeconomicos_form : null
+                Adscripcion_actual_form : null,
+                Empleos_diversos_form : null,
+                Actitudes_hacia_el_empleo_form : null,
+                Comisiones_form : null
             },
             btns : {
-                guardarDatosPersonales : null,
-                generarCIB : null
-            },
-            objs : {
-                pCURP : null
+                guardarAdscripcion : null
             }
         }
     },
     init : function(){
+        objViewLaboral.vars.general.mainContentTab = $('#Laboral');
+        
         // INIT DATATABLE
         // objViewLaboral.vars.table = $('#table').DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"columnDefs": [{ "orderable": false, "targets": [2] }]});
 
         // INIT ELEMENTS
         // FORMS
-        objViewLaboral.vars.datosGenerales.forms.Datos_personales_form = $('#Datos_personales_form');
-        objViewLaboral.vars.datosGenerales.forms.Desarrollo_form = $('#Desarrollo_form');
-        objViewLaboral.vars.datosGenerales.forms.Domicilio_form = $('#Domicilio_form');
-        objViewLaboral.vars.datosGenerales.forms.Referencias_form = $('#Referencias_form');
-        objViewLaboral.vars.datosGenerales.forms.Socioeconomicos_form = $('#Socioeconomicos_form');
+        objViewLaboral.vars.laboral.forms.Adscripcion_actual_form = $('#Adscripcion_actual_form');
+        objViewLaboral.vars.laboral.forms.Empleos_diversos_form = $('#Empleos_diversos_form');
+        objViewLaboral.vars.laboral.forms.Actitudes_hacia_el_empleo_form = $('#Actitudes_hacia_el_empleo_form');
+        objViewLaboral.vars.laboral.forms.Comisiones_form = $('#Comisiones_form');
         // BUTTONS
-        objViewLaboral.vars.datosGenerales.btns.guardarDatosPersonales = $('#guardarDatosPersonales');        
-        objViewLaboral.vars.datosGenerales.btns.generarCIB = $('#generarCIB');        
+        objViewLaboral.vars.laboral.btns.guardarAdscripcion = $('#guardarDatosPersonales');        
         objViewLaboral.vars.general.btnSiguienteAnterior = $('.btnSiguienteAnterior');
         // OBJS
-        objViewLaboral.vars.datosGenerales.objs.pCURP = $('#pCURP');
+        objViewLaboral.vars.laboral.objs.pCURP = $('#pCURP');
 
         // INIT SELECTS
-        $('select').select2();
+        objViewLaboral.vars.general.mainContentTab.find('select').select2();
 
         //EVENTS
         //SUBMIT
-        $("form").attr('novalidate', 'novalidate');
-        $('form').submit(function(e){
+        objViewLaboral.vars.general.mainContentTab.find("form").attr('novalidate', 'novalidate');
+        objViewLaboral.vars.general.mainContentTab.find('form').submit(function(e){
             e.preventDefault();
         });
         // CLICK
-        objViewLaboral.vars.datosGenerales.btns.guardarDatosPersonales.on('click',objViewLaboral.events.click.datosGenerales.guardarDatosPersonales);
-        objViewLaboral.vars.datosGenerales.btns.generarCIB.on('click',objViewLaboral.events.click.datosGenerales.generarCIB);
+        objViewLaboral.vars.laboral.btns.guardarDatosPersonales.on('click',objViewLaboral.events.click.laboral.guardarDatosPersonales);
+        objViewLaboral.vars.laboral.btns.generarCIB.on('click',objViewLaboral.events.click.laboral.generarCIB);
         objViewLaboral.vars.general.btnSiguienteAnterior.on('click',objViewLaboral.events.click.general.btnSiguienteAnterior);
         //FOCUSOUT
-        objViewLaboral.vars.datosGenerales.objs.pCURP.on('focusout',objViewLaboral.events.focus.out.pCURP);      
+        objViewLaboral.vars.laboral.objs.pCURP.on('focusout',objViewLaboral.events.focus.out.pCURP);      
         //CHANGE
 
         //Rutina para verificar si se hace algún cambio en cualquier forulario
-        $.each(objViewLaboral.vars.datosGenerales.forms, function( index, value ) {
+        $.each(objViewLaboral.vars.laboral.forms, function( index, value ) {
             var form = value;
             form.find('input, select').change(function(e) {
                 form.removeData('hasSaved');
@@ -69,8 +65,8 @@ var objViewLaboral = {
         });
         
         //CAMBIO DE TABS
-        $('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewLaboral.actions.discartChanges}, e); } );
-        $('a[data-toggle="tab"]').on('show.bs.tab',dynTabs.showTab);
+        objViewLaboral.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewLaboral.actions.discartChanges}, e); } );
+        objViewLaboral.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('show.bs.tab',dynTabs.showTab);
 
         populate.form($('#Datos_personales_form')); //popular selects del primer tab NOTA: cambiar programación al tab actual si se obtiene por cookie
         dynTabs.setCurrentTab($('#myTabContent'));
@@ -84,7 +80,7 @@ var objViewLaboral = {
                     $(tab).tab('show');
                 }
             },
-            datosGenerales : {
+            laboral : {
                 guardarDatosPersonales : function(e, from){
                     e.preventDefault();
 
@@ -95,7 +91,7 @@ var objViewLaboral = {
 
                     //VALID FORM
                     try {
-                        if (!objViewLaboral.vars.datosGenerales.forms.Datos_personales_form.valid())
+                        if (!objViewLaboral.vars.laboral.forms.Datos_personales_form.valid())
                             //throw "Invalid FORM"; //TODO: Xmal - Quitar comentario al implementar
 
                         $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
