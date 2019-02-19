@@ -60,6 +60,8 @@
 <script src="<?php echo base_url('assets/js/views/solicitud/datosGeneralesTab.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/views/solicitud/laboralTab.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/views/solicitud/capacitacionTab.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/views/solicitud/identificacionTab.js') ?>"></script>
+
 
 <script type="text/javascript">
     $(function() {
@@ -102,6 +104,7 @@
                         objViewCapacitacion.init();
                     break;
                     case 'Identificacion':
+                        objViewIdentificacion.init();
                     break;
                 }
                 if (callback)

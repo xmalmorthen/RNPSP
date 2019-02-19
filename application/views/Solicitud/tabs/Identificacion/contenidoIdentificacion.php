@@ -1,5 +1,3 @@
-
-
     <div class="tab-pane fade show active" id="mediafiliacion" role="tabpanel" aria-labelledby="mediaFiliacion-tab">
         <div class="_container">
             <form action="#" id="mediafiliacion_form" name="mediafiliacion_form" autocomplete="off">
@@ -394,7 +392,7 @@
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
-                    <center><input type="button" name="next" id="siguienteMediafiliacion" class="btn btn-default" style="height:40px;" value="Siguiente"/></center>
+                    <center><input type="button" name="next" id="siguienteMediafiliacion" class="btn btn-default btnSiguienteAnterior siguienteTab" style="height:40px;" data-nexttab="#Datos-tab" value="Siguiente"/></center>
                 </div>
             </div>
         </div>
@@ -791,10 +789,10 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-6">
-                            <button class="btn btn-default"id="anteriorConsultamediafiliacion"> Anterior</button>
+                            <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorConsultamediafiliacion" data-nexttab="#mediafiliacion-tab"> Anterior</button>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-default" id="siguienteConsultamediafiliacion">Siguiente</button>
+                            <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteConsultamediafiliacion" data-nexttab="#Senas_particulares-tab">Siguiente</button>
                         </div>
                     </div>
                 </div>
@@ -850,7 +848,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <button class="btn btn-default" id="guardarSeña">
+                        <button class="btn btn-default" id="guardarSenia">
                             Guardar seña
                         </button>
                     </div>
@@ -894,10 +892,10 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-6">
-                            <button class="btn btn-default" id="anteriorSeña"> Anterior</button>
+                            <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorSeña" data-nexttab="#Datos-tab"> Anterior</button>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-default" id="SiguienteSeña">Siguiente</button>
+                            <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="SiguienteSeña" data-nexttab="#Ficha_fotografica-tab">Siguiente</button>
                         </div>
                     </div>
                 </div>
@@ -1004,10 +1002,10 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-6">
-                            <button class="btn btn-default" id="anteriorDecadacticar"> Anterior</button>
+                            <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorDecadacticar" data-nexttab="#Ficha_fotografica-tab"> Anterior</button>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-default" id="siguienteDecadactilar">Siguiente</button>
+                            <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteDecadactilar" data-nexttab="#Digitalizacion_de_documento-tab">Siguiente</button>
                         </div>
                     </div>
                 </div>
@@ -1112,10 +1110,10 @@
                     <div class="col-md-4">
                         <div class="row">
                             <div class="col-md-6">
-                                <button class="btn btn-default" id="anteriorVoz"> Anterior</button>
+                                <button class="btn btn-default" id="anteriorVoz" data-nexttab="#Digitalizacion_de_documento-tab"> Anterior</button>
                             </div>
                             <div class="col-md-6">
-                                <button class="btn btn-default" id="finalizarVoz">Finalizar</button>
+                                <button class="btn btn-default btnSiguienteAnterior siguienteTab endTab" id="finalizarVoz">Finalizar</button>
                             </div>
                         </div>
 
@@ -1266,7 +1264,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <button class="btn btn-default">Guardar ficha</button>
+                        <button class="btn btn-default" id='guardarFicha'>Guardar ficha</button>
                     </div>
                 </div>
                 <br>
@@ -1304,10 +1302,10 @@
                     <div class="col-md-4">
                         <div class="row">
                             <div class="col-md-6">
-                                <button class="btn btn-default" id="anteriorFotografica"> Anterior</button>
+                                <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorFotografica" data-nexttab="#Senas_particulares-tab"> Anterior</button>
                             </div>
                             <div class="col-md-6">
-                                <button class="btn btn-default" id="siguienteFotografica">Siguiente</button>
+                                <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteFotografica" data-nexttab="#Registro_decadactilar-tab">Siguiente</button>
                             </div>
                         </div>
 
@@ -1403,10 +1401,10 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-6">
-                            <button class="btn btn-default" id="anteriorDocumento"> Anterior</button>
+                            <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorDocumento" data-nexttab="#Registro_decadactilar-tab"> Anterior</button>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-default" id="siguienteDocumento">Siguiente</button>
+                            <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteDocumento" data-nexttab="#Identificacion_de_voz-tab">Siguiente</button>
                         </div>
                     </div>
                 </div>
