@@ -62,3 +62,46 @@
         <br>
     </form>
 </div>
+
+<script>
+    $.validator.setDefaults({
+        ignore: [':disabled'],
+        errorClass: "text-danger",
+        debug: true
+    });
+
+    $(function() {
+        $('.submit').on('click',function(e){					
+            e.preventDefault();
+
+            try {
+                if (!$('form').valid()){
+                    throw "Invalid FORM";
+                }
+
+                $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+                
+                var callUrl = base_url + "Usuarios/guardar",
+                $.post(callUrl,{ $('form').serialize() },
+                function (data) {					
+                    if (data.status == true){
+                        console.log(data);
+                    } else {
+                        $.LoadingOverlay("hide");
+                        swal({ type: 'error', title: 'Error', html: data.message });
+                    }
+                }).fail(function (err) {
+                    $.LoadingOverlay("hide");
+                    var msg = err.responseText;
+                    swal({ type: 'error', title: 'Error', html: msg });
+                }).always(function () {
+
+                });
+                
+            }					
+            catch(err) {
+                $.LoadingOverlay("hide");
+            }
+        });
+    }); 	
+</script>

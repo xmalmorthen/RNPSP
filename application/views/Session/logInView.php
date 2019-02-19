@@ -100,11 +100,11 @@
 										<input type="hidden" id="toGo" name="toGo" value="<?php echo isset($toGo) ? $toGo : ''; ?> ">
 										<div class="form-group">
 											<label for="userName">Nombre de usuario</label>
-											<input type="text" id="nombreUsuario" name="nombreUsuario" class="form-control" data-parsley-trigger="change" autofocus required value="XmalMorthen">
+											<input type="text" id="nombreUsuario" name="nombreUsuario" class="form-control" data-parsley-trigger="change" autofocus required value="admin@admin.com">
 										</div>
 										<div class="form-group">
 											<label for="emailAddress">Contraseña</label>
-											<input type="password" id="pwd" name="pwd" class="form-control" data-parsley-trigger="change" required value="123">
+											<input type="password" id="pwd" name="pwd" class="form-control" data-parsley-trigger="change" required value="password">
 										</div>
 										<div class="form-group text-right m-b-0">
 											<button class="btn btn-default submit">

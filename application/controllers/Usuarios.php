@@ -33,7 +33,41 @@
 			// /TITLE BODY PAGE
 
 			$this->load->view('Usuarios/Registro');
-        }
+		}
+		public function guardar(){
+			$response = array('status' => false, 'message' => array('No especificado'));
+			if ($this->input->server('REQUEST_METHOD') != 'POST') {
+				$response['message'] = 'method get not allowed';
+			} else {
+				
+				$this->load->library('form_validation');
+				$this->form_validation->set_rules('nombreUsuario', 'Nombre de usuario', 'required');
+				$this->form_validation->set_rules('nombreUsuario', 'Nombre de usuario', 'required');
+				$this->form_validation->set_rules('password', 'Contraseña', 'required');
+	
+				if ($this->form_validation->run() === true) {
+					if ($this->ion_auth->login($nombreUsuario, $password)) {
+						$response['status'] = true;
+						$response['message'] = array(trim($this->ion_auth->messages()));
+						$user = $this->ion_auth->user()->row();
+						$this->session->set_userdata(SESSIONVAR,array(
+							'IdUsuario' => $user->id,
+							'Usuario' => $user->username
+						));
+					} else {
+						$response['message'] = array($this->ion_auth->errors());
+					}
+				} else {
+					$response['message'] = $this->form_validation->error_array();
+				}
+			}
+			$this->output
+				->set_status_header(200)
+				->set_content_type('application/json', 'utf-8')
+				->set_output(json_encode($response))
+				->_display();
+			exit;
+		}
 
         public function Modificar(){
 
