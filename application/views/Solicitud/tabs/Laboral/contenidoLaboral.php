@@ -430,9 +430,12 @@
                 <div class="row" style="margin-top: 21px;">
                     <div class="col-md-4" style="margin-top: 21px;">
                         ¿Conoce la reglamentación de los ascensos? <!-- S/N = SI/NO -->
-                        <select  class="form-control" id="pCONOCE_REG_ASCENSO" name="pCONOCE_REG_ASCENSO">
-                            <option value="">Seleccione</option>
+                        <select class="form-control" id="pCONOCE_REG_ASCENSO" name="pCONOCE_REG_ASCENSO" data-error="#err_pCONOCE_REG_ASCENSO" data-query=''>
+                            <option disabled selected value>Seleccione una opción</option>
+                            <option value="S">SI</option>
+                            <option value="N">NO</option>
                         </select>
+                        <span id="err_pCONOCE_REG_ASCENSO"></span>
                     </div>
                     <div class="col-md-4">
                         ¿Razones por las que no ha obtenido un ascenso?
