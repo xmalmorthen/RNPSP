@@ -28,24 +28,7 @@ var dynTabs = {
                 return null;
 
             //VALIDATE FORM
-            
-            //TODO: XMAL - Quitar comentarios despues de implementar lo del guardado antes de cambiar de tab
-
-            if (!form.valid()){                
-                var linkRef = $('#' + e.currentTarget.id);
-                
-                if (!linkRef.hasClass('errorValidation')) {
-                    dynTabs.markTab( linkRef,'<span class="text-danger tabMark errorValidation mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i></span>');    
-                }                
-                form.setAlert({
-                    alertType :  'alert-danger',
-                    dismissible : true,
-                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
-                    msg : 'Formulario incompleto'
-                });
-
-                e.preventDefault();
-            } else {
+            if (form.valid()){                
                 if (form.data('hasChanged') == true){
 
                     Swal({
@@ -69,7 +52,23 @@ var dynTabs = {
                         }
                     }                    
                 }
-            }
+            } 
+            //TODO: Xmal - Descomentar al implementar
+            // else {
+            //     var linkRef = $('#' + e.currentTarget.id);
+                
+            //     if (!linkRef.hasClass('errorValidation')) {
+            //         dynTabs.markTab( linkRef,'<span class="text-danger tabMark errorValidation mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i></span>');    
+            //     }                
+            //     form.setAlert({
+            //         alertType :  'alert-danger',
+            //         dismissible : true,
+            //         header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+            //         msg : 'Formulario incompleto'
+            //     });
+
+            //     e.preventDefault();
+            // }
     },
     showTab : function(e){
         var tabRefObj = $(e.currentTarget.hash),

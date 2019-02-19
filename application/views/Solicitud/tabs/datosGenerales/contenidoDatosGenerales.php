@@ -1,5 +1,3 @@
-
-
     <div class="tab-pane fade show active" id="Datos_personales" role="tab-panel" aria-labelledby="Datos_personales-tab">
         <div class="_container">
             <form action="#" id="Datos_personales_form" name="Datos_personales_form" autocomplete="off">
@@ -75,12 +73,12 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Nacionalidad <!-- Se llena de CAT_PAIS -->
-                        <select  class="form-control" id="pID_NACIONALIDAD" name="pID_NACIONALIDAD" data-error="#err_pID_NACIONALIDAD" data-query='cXlBMWI5djl3TXFIaFo2akFJUEN5QXVjbnhoa29iMHhtSENyNkJLUmc0VTVOM2N6QW5SYmZFZVE0SUJSNWtkdzBZaHhRUDNGbVdGVFBGU0NwWFpKUURRY0xMQWNNbkZxK05uWFQ0WTI2ZU53L1N1SEhyaWhzck5pTitzcTBETytGbk5rMzNoaHlmckpRQnA1S3ZtYms5SWpSZzNhdXNPWTFha3pkT1RkY1FBPQ==' required></select>
+                        <select  class="form-control" id="pID_NACIONALIDAD" name="pID_NACIONALIDAD" data-error="#err_pID_NACIONALIDAD" data-query='Vng1R1BwYXMzcnpkdHJEcjUxbG13VFhkcStKTTRvTW5idXdHa1F3TVBNcGhnS1JpQmtZMW5RR0ZKdEEvdUJiVVd6enhqNFdTNEhsaTNlVmI0Uzcxb1ZkSFVlQ3l4cnhKMVQwdWpvY2ZPRm8zckszc1JzNjlDbFhXTGFqZFlPd2s=' required></select>
                         <span id="err_pID_NACIONALIDAD"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Modo de nacionalidad <!-- se llena con CAT_NACIONALIDAD  -->
-                        <select  class="form-control" id="pMODO_NACIONALIDAD" name="pMODO_NACIONALIDAD" data-error="#err_pMODO_NACIONALIDAD" data-query='' required></select>
+                        <select  class="form-control" id="pMODO_NACIONALIDAD" name="pMODO_NACIONALIDAD" data-error="#err_pMODO_NACIONALIDAD" data-query='cXlBMWI5djl3TXFIaFo2akFJUEN5QXVjbnhoa29iMHhtSENyNkJLUmc0VTVOM2N6QW5SYmZFZVE0SUJSNWtkdzBZaHhRUDNGbVdGVFBGU0NwWFpKUURRY0xMQWNNbkZxK05uWFQ0WTI2ZU53L1N1SEhyaWhzck5pTitzcTBETytGbk5rMzNoaHlmckpRQnA1S3ZtYms5SWpSZzNhdXNPWTFha3pkT1RkY1FBPQ==' required></select>
                         <span id="err_pMODO_NACIONALIDAD"></span>
                     </div>
                 </div>
@@ -133,12 +131,12 @@
                 <br><hr><br>
                 <div class="row">
                     <div class="col-md-4">
-                        CIB
-                        <input type="text" class="form-control" maxlength="30">
+                        CIB                        
+                        <input type="text" class="form-control" maxlength="30"> <!-- FALTA ID Y NAME -->
                     </div>
                     <div class="col-md-4">
                         Motivo de cambio de CIB 
-                        <input type="text" class="form-control" maxlength="250">
+                        <input type="text" class="form-control" maxlength="250"> <!-- FALTA ID Y NAME -->
                     <br>
                     </div>
                     <div class="col-md-4">
@@ -467,7 +465,7 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Tipo de referencia <!-- Se llena del catálogo CAT_REFERENCIA -->
-                        <select name="" id="ID_TIPO_REFERENCIA" name="ID_TIPO_REFERENCIA" class="form-control" data-error="#err_ID_TIPO_REFERENCIA_REFERENCIAS" data-query='d1lEQ2dSOSsrZUtnU2wwVjJWRHBCSE12STBKUElSU2l5bHA4OTRJbzlXc01BVFNvYms3V0lYYm1QWkVPellLdlNsZmNicy83akdkaEVTZDAxTDVGNVRzdnZtK3k5KzRzZFJxYXZCNERJRmhwOCtFb0ZFS0hjNEhaZTd4cWw1U2Y=' required></select>
+                        <select id="ID_TIPO_REFERENCIA" name="ID_TIPO_REFERENCIA" class="form-control" data-error="#err_ID_TIPO_REFERENCIA_REFERENCIAS" data-query='d1lEQ2dSOSsrZUtnU2wwVjJWRHBCSE12STBKUElSU2l5bHA4OTRJbzlXc01BVFNvYms3V0lYYm1QWkVPellLdlNsZmNicy83akdkaEVTZDAxTDVGNVRzdnZtK3k5KzRzZFJxYXZCNERJRmhwOCtFb0ZFS0hjNEhaZTd4cWw1U2Y=' required></select>
                         <span id="err_ID_TIPO_REFERENCIA"></span>
                     </div>
                 </div>

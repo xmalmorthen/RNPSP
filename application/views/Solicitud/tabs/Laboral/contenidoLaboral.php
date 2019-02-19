@@ -1,8 +1,6 @@
-  
     <div class="tab-pane fade show active" id="Adscripcion_actual" role="tabpanel" aria-labelledby="Adscripcion_actual-tab">
         <div class="_container">
-            <form action="#" autocomplete="off">
-
+            <form action="#" id="Laboral_form" name="Laboral_form" autocomplete="off">
                     <br>
                     <div class="row">
                         <div class="col-md-4">
@@ -16,15 +14,13 @@
                     <div class="row">
                         <div class="col-md-6">
                             <span class="clr">*</span>Dependencia <!-- Se llena del catalogo "CAT_DEPENDENCIA" -->
-                            <select  class="form-control" required>
-                                <option value="">Seleccione</option>
-                            </select>
+                            <select id="_dependenciaAdscripcionActual" name="_dependenciaAdscripcionActual"  class="form-control" data-error="#err__dependenciaAdscripcionActual" data-query='KzF1aFlFL3JFNDJyUzRxUUVFeGM5d3A4SEp0YXZjYnltR0NvMUFRbytnVi9JbVhtOW1XTnl6MW5qMzdOZ3dUZVI4enMyMElxcDVrZWlDTXVPcXdFUG9sT2s3TkZyUnlqQkdiY0pUNStPbTU5dVFlOGJhMzVvaXNNWEU1dmo5NWlHNmx3YzdCbzNueUsvWngwa2RFeEYvdnNsTUNVdlNTR3ZoOWsrRVVaY2NvPQ==' required></select> <!-- FALTA ID Y NAME -->
+                            <span id="err__dependenciaAdscripcionActual"></span>
                         </div>
                         <div class="col-md-6">
                             <span class="clr">*</span>Corporación <!-- Se llena del catalogo "CAT_INSTITUCION" -->
-                            <select  class="form-control" id="pINSTITUCION" name="pINSTITUCION" required>
-                                <option value="">Seleccione</option>
-                            </select>
+                            <select  class="form-control" id="pINSTITUCION" name="pINSTITUCION" data-error="#err_pINSTITUCION" data-query='Q1B0ZnNNbzI4bEFpTG5sSGdqVHVMNU4xMXlKVXBCUXpFbUt5Ynh2ZzFneTM0eUdiSmRubTJUdE5HYjBTY2FSV2hUUkE4ZVUzSGhjZVlEWWdxQ2krNnBpaVlQazk5MTgwV1pybktnN0NQOW0vQXlBZnVEZnJpWmk4b0x3V1VRSTBaM0U1LzBERjcvcmVWMjBQWXNKMlNNMFVkWTlDNFVrSythaU43bHhia3BVPQ==' data-cascade='true' data-force-refresh='true' data-cascade-id-ref='_dependenciaAdscripcionActual' data-params='ID_DEPENDENCIA={0}' required></select>
+                            <span id="err_pINSTITUCION"></span>
                         </div>
                     </div>
                     <br>
