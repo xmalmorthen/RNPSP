@@ -114,7 +114,7 @@
 
             </div>
         </div>
-    </div>
+    </div> <!-- PENDIENTE ESTO NO APARECE EN LAS VIEWS -->
 
     <div class="tab-pane fade" id="Capacitacion_seguridad_publica" role="tabpanel" aria-labelledby="Capacitacion_seguridad_publica-tab">
         <div class="_container">
@@ -508,7 +508,4 @@
 
             </div>
         </div>
-    </div>
-<!-- PENDIENTE ESTO YA SE HABIA ELIMINADO, NO APARECE EN LAS VISTAS -->
-
- 
+    </div><!-- PENDIENTE ESTO YA SE HABIA ELIMINADO, NO APARECE EN LAS VISTAS -->

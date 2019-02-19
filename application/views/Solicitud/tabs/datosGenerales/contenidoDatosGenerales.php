@@ -74,12 +74,12 @@
                         <input type="text" class="form-control" id="pCIUDAD_NAC_DATOS_PERSONALES" name="pCIUDAD_NAC_DATOS_PERSONALES" max="50">
                     </div>
                     <div class="col-md-4">
-                        <span class="clr">*</span>Nacionalidad <!-- Se llena de CAT_NACIONALIDAD -->
+                        <span class="clr">*</span>Nacionalidad <!-- Se llena de CAT_PAIS -->
                         <select  class="form-control" id="pID_NACIONALIDAD" name="pID_NACIONALIDAD" data-error="#err_pID_NACIONALIDAD" data-query='cXlBMWI5djl3TXFIaFo2akFJUEN5QXVjbnhoa29iMHhtSENyNkJLUmc0VTVOM2N6QW5SYmZFZVE0SUJSNWtkdzBZaHhRUDNGbVdGVFBGU0NwWFpKUURRY0xMQWNNbkZxK05uWFQ0WTI2ZU53L1N1SEhyaWhzck5pTitzcTBETytGbk5rMzNoaHlmckpRQnA1S3ZtYms5SWpSZzNhdXNPWTFha3pkT1RkY1FBPQ==' required></select>
                         <span id="err_pID_NACIONALIDAD"></span>
                     </div>
                     <div class="col-md-4">
-                        <span class="clr">*</span>Modo de nacionalidad
+                        <span class="clr">*</span>Modo de nacionalidad <!-- se llena con CAT_NACIONALIDAD  -->
                         <select  class="form-control" id="pMODO_NACIONALIDAD" name="pMODO_NACIONALIDAD" data-error="#err_pMODO_NACIONALIDAD" data-query='' required></select>
                         <span id="err_pMODO_NACIONALIDAD"></span>
                     </div>

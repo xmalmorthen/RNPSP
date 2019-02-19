@@ -251,7 +251,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        Tipo <!-- PENDIENTE -->
+                        Tipo <!--   se llena del catalogo CAT_TIPOMENTON -->
                         <select name="pCAT_MENTON_TIPO" id="pCAT_MENTON_TIPO" class="form-control"></select>
                     </div>
                     <div class="col-md-4">
@@ -282,7 +282,7 @@
                         <select name="pCAT_OREJA_FORMA" id="pCAT_OREJA_FORMA" class="form-control"></select>
                     </div>
                     <div class="col-md-4">
-                        Original <!-- PENDIENTE -->
+                        Original <!-- Se llena del catálogo CAT_OREJALOBDIMEN -->
                         <select name="pCAT_OREJA_ORIGINAL" id="pCAT_OREJA_ORIGINAL" class="form-control"></select>
                     </div>
                 </div>
@@ -352,7 +352,7 @@
                         <select class="form-control" name="pCAT_SANGRE" id="pCAT_SANGRE"></select>
                     </div>
                     <div class="col-md-4">
-                        Factor RH <!-- PENDIENTE -->
+                        Factor RH <!-- se llen CAT_FACTORRH -->
                         <select class="form-control" name="pCAT_FACTOR_RH" id="pCAT_FACTOR_RH"></select>
 
                     </div>
@@ -821,30 +821,30 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Tipo de seña <!-- Se llena del catálogo CAT_SENAS -->
-                        <select name="" id="" class="form-control" required></select>
+                        <select name="pID_TIPO_SENAS" id="pID_TIPO_SENAS" class="form-control" required></select>
                     </div>
                     <div class="col-md-4">
-                        <span class="clr">*</span>Lado <!-- PENDIENTE -->
-                        <select name="" id="" class="form-control" required></select>
+                        <span class="clr">*</span>Lado <!-- Se llena del catalogo CAT_LADO   -->
+                        <select name="pLADO" id="pLADO" class="form-control" required></select>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Región <!-- Se llena del catálogo CAT_REGION -->
-                        <select name="" id="" class="form-control" required></select>
+                        <select name="pID_REGION" id="pID_REGION" class="form-control" required></select>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <span class="clr">*</span>Vista <!-- PENDIENTE -->
-                        <select name="" id="" class="form-control" required></select>
+                        <span class="clr">*</span>Vista <!-- Se llenda del catalogo  CAT_FRONTALDORSAL -->
+                        <select name="pVISTA" id="pVISTA" class="form-control" required></select>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Cantidad
-                        <input type="text" class="form-control" required minlength="1" maxlength="5">
+                        <input type="text" id="pCANTIDAD" name="pCANTIDAD" class="form-control" id="pCANTIDAD" required minlength="1" maxlength="5">
                     </div>
                     <div class="col-md-4">
                         Descripción
-                        <input type="text" class="form-control" minlength="1" maxlength="30">
+                        <input type="text" id="pDESCRIPCION" name="pDESCRIPCION" class="form-control" minlength="1" maxlength="30">
                     </div>
                 </div>
                 <br>
@@ -949,7 +949,7 @@
                     </div>
                     <div class="col-md-4">
                         Seleccione un documento
-                        <input type="file">
+                        <input type="file" id="pIMAGEN" name="pIMAGEN">
                     </div>
                 </div>
                 <br>
@@ -958,7 +958,7 @@
                         <!-- SPACE -->
                     </div>
                     <div class="col-md-4">
-                        <button class="btn btn-default">
+                        <button class="btn btn-default" id="Subir_Imagen">
                         Subir
                     </button>
                     </div>
@@ -1176,7 +1176,7 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <input type="file"> <br>
+                                        <input type="file" id="pIMAGEN_IZQUIERDO" name="pIMAGEN_IZQUIERDO"> <br>
                                     </td>
                                 </tr>
                             </tbody>
@@ -1194,7 +1194,7 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <input type="file"> <br>
+                                        <input type="file" id="pIMAGEN_FRENTE" name="pIMAGEN_FRENTE"> <br>
                                     </td>
                                 </tr>
                             </tbody>
@@ -1212,7 +1212,7 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <input type="file"> <br>
+                                        <input type="file" id="pIMAGEN_DERECHO" name="pIMAGEN_DERECHO"> <br>
                                     </td>
                                 </tr>
                             </tbody>
@@ -1236,7 +1236,7 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <input type="file"> <br>
+                                        <input type="file" id="pIMAGEN_FIRMA" name="pIMAGEN_FIRMA"> <br>
                                     </td>
                                 </tr>
                             </tbody>
@@ -1254,7 +1254,7 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <input type="file"> <br>
+                                        <input type="file" id="pIMAGEN_HUELLA" name="pIMAGEN_HUELLA"> <br>
                                     </td>
                                 </tr>
                             </tbody>
@@ -1333,13 +1333,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        Tipo de documento <!-- PENDIENTE -->
-                        <select name="" id="" class="form-control">
-                            <option value="">Seleccione</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        Categoría de documento <!-- PENDIENTE -->
+                        Categoría de documento <!-- CAT_CATEGORIA_DOC -->
                         <select name="" id="" class="form-control">
                             <option value="">Seleccione</option>
                         </select>
