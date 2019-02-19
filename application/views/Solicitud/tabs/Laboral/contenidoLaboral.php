@@ -304,15 +304,13 @@
                     <div class="row">
                         <div class="col-md-4">
                             <span class="clr">*</span>Motivo de separación <!-- Se llena del catalogo "MOTIVO_MOB_LAB" -->
-                            <select  class="form-control" id="ID_MOTIVO_MOV_LAB" name="ID_MOTIVO_MOV_LAB" required >
-                                <option value="">Seleccione</option>
-                            </select>
+                            <select  class="form-control" id="ID_MOTIVO_MOV_LAB" name="ID_MOTIVO_MOV_LAB" data-error="#err_ID_MOTIVO_MOV_LAB" data-query='a21xb0NlTDlQZFE3a0x6a3lDMkl3UTBBSElpeUJxNFU5L1grQjVMSUt0a1ZjNzQvQVgrN2ZwUFlFQkVkS3VkMVgzaGhoT1RyUys2KzRiOEdJTjU3b0swdDlCQnN3SzNPSlZaazUvUmR1Q2dUUlNrdm42cVhnY2lnZDVVaGExdm83S0p2N0JHUE1MaFdmQXl2cXlrYktKZVJ3NzVFdFp4Q2ZNY3JiWEhUQ3hzPQ==' required></select>
+                            <span id="err_ID_MOTIVO_MOV_LAB"></span>
                         </div>
                         <div class="col-md-4">
                             <span class="clr">*</span>Tipo de separación <!-- Se llena del catalogo "TIPO_MOB_LAB" -->
-                            <select  class="form-control" id="pID_TIPO_MOV_LAB" name="pID_TIPO_MOV_LAB" required>
-                                <option value="">Seleccione</option>
-                            </select>
+                            <select  class="form-control" id="pID_TIPO_MOV_LAB" name="pID_TIPO_MOV_LAB" data-error="#err_pID_TIPO_MOV_LAB" data-query='MUxYVVB0QlhEQXE4b3AyVi9KUGtDbjk4TEd2S0RGOFRvQnQxR1A2ZFc0NVNUUFd1Smw3SHZ2VWlkbzBJcko3NWxNNGF1Y3RxdFVkRG96NEhVdE11dHJTNVpWQ09IdVNjTU83eVNub3lncGIrUDRGVEdKalFvMDRYa08rbG9CRWYvWXppSGM1YnJrZXAwYmt3MDBnMmlWUDM1U2J0TU9BS2xrcFJDSStUN3dFPQ==' data-cascade='true' data-force-refresh='true' data-cascade-id-ref='ID_MOTIVO_MOV_LAB' data-params='ID_MOTIVO_MOV_LAB={0}' required></select>
+                            <span id="err_pID_TIPO_MOV_LAB"></span>
                         </div>
                         <div class="col-md-4">
                             Descripción
