@@ -304,13 +304,13 @@
                     <div class="row">
                         <div class="col-md-4">
                             <span class="clr">*</span>Motivo de separación <!-- Se llena del catalogo "TIPO_MOV_LABORAL" -->
-                            <select  class="form-control" id="pID_TIPO_MOV_LAB" name="pID_TIPO_MOV_LAB" required >
+                            <select  class="form-control" id="ID_MOTIVO_MOV_LAB" name="ID_MOTIVO_MOV_LAB" required >
                                 <option value="">Seleccione</option>
                             </select>
                         </div>
                         <div class="col-md-4">
                             <span class="clr">*</span>Tipo de separación <!-- Se llena del catalogo "MOTIVO_MOV_LAB" -->
-                            <select  class="form-control" id="ID_MOTIVO_MOV_LAB" name="ID_MOTIVO_MOV_LAB" required>
+                            <select  class="form-control" id="pID_TIPO_MOV_LAB" name="pID_TIPO_MOV_LAB" required>
                                 <option value="">Seleccione</option>
                             </select>
                         </div>
