@@ -430,9 +430,12 @@
                 <div class="row" style="margin-top: 21px;">
                     <div class="col-md-4" style="margin-top: 21px;">
                         ¿Conoce la reglamentación de los ascensos? <!-- S/N = SI/NO -->
-                        <select  class="form-control" id="pCONOCE_REG_ASCENSO" name="pCONOCE_REG_ASCENSO">
-                            <option value="">Seleccione</option>
+                        <select class="form-control" id="pCONOCE_REG_ASCENSO" name="pCONOCE_REG_ASCENSO" data-error="#err_pCONOCE_REG_ASCENSO" data-query=''>
+                            <option disabled selected value>Seleccione una opción</option>
+                            <option value="S">SI</option>
+                            <option value="N">NO</option>
                         </select>
+                        <span id="err_pCONOCE_REG_ASCENSO"></span>
                     </div>
                     <div class="col-md-4">
                         ¿Razones por las que no ha obtenido un ascenso?
@@ -506,14 +509,16 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Tipo de comisión<!-- Se llena del catalogo "CAT_TIPO_COMISION" -->
-                        <select  class="form-control" id="ID_TIPO_COMISION" name="ID_TIPO_COMISION" required><option value="">Seleccione</option></select>
+                        <select  class="form-control" id="ID_TIPO_COMISION" name="ID_TIPO_COMISION" data-error="#err_ID_TIPO_COMISION" data-query='MG1mbjRTR3IxRXQxUm5wNXJaNWxLRkJXK2wyQWNnZzVhL0J6UTVValFsamp0aXVuaEozMGJOOHo3anZMcGVsMW10R0o2WXBoQzNsaTkrZzBRVXMwWkZRRUVxTDNUN0dwUXI4Zmk3cDlUZSt1U2x0d3BjdjlRUzlEcWhveFZ3anNqSU8yaFNBZ1A1dmRYam1ZQ0p4cFdoSkVNRkZkZVJ6Q1UxNjhXbXdsVnpjPQ==' required></select>
+                        <span id="err_ID_TIPO_COMISION"></span>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Motivo <!-- Se llena del catalogo "CAT_MOTIVO" -->
-                        <select  class="form-control" id="pID_MOTIVO" name="pID_MOTIVO" required><option value="">Seleccione</option></select>
+                        <select  class="form-control" id="pID_MOTIVO" name="pID_MOTIVO" data-error="#err_pID_MOTIVO" data-query='MUFyelc2MFUySW84eUc1UVdFanljc0pHY0Q0UlFrQkFNY3RBVExQOVMrTVJTUkdHQWh0ekNrSVFUQkZJbmZlY1hNQ1VqcjhsV3lrOG1aenlTYmFjL0dnZEhROW9Mb0tDNEwxRXMvOWxkUVp1UlpEWklvVXFvZmRXMTMxMHBUKys=' required></select>
+                        <span id="err_pID_MOTIVO"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Destino
