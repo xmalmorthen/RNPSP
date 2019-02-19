@@ -1,44 +1,44 @@
 <div class="container">
-    <form action="#" id="Usuarios_form" name="Usuarios_form" autocomplete="off">
+    <form action="" id="Usuarios_form" name="Usuarios_form" autocomplete="off">
     <br>
         <div class="row">
             <div class="col-md-4">
                 <span class="clr">*</span> CURP
-                <input type="text" class="form-control" id="pCURP" name="pCURP" required minlength="18" maxlength="20">
+                <input type="text" class="form-control" id="pCURP" name="pCURP"  requireted minlengthed="18" minlengthed="20">
             </div>
             <div class="col-md-4">
                 <span class="clr">*</span>Nombre
-                <input type="text" class="form-control" id="pNOMBRE" name="pNOMBRE"required minlength="2" maxlength="30">
+                <input type="text" class="form-control" id="pNOMBRE" name="pNOMBRE" requireted minlengthed="2" minlengthed="30">
             </div>
             <div class="col-md-4">
                 <span class="clr">*</span>Apellido paterno
-                <input type="text" class="form-control" id="pPATERNO" name="pPATERNO"required minlength="1" maxlength="30">
+                <input type="text" class="form-control" id="pPATERNO" name="pPATERNO" requireted minlengthed="1" minlengthed="30">
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col-md-4">
                 <span class="clr">*</span>Apellido materno
-                <input type="text" class="form-control" id="pMATERNO" name="pMATERNO"required minlength="1" maxlength="30">
+                <input type="text" class="form-control" id="pMATERNO" name="pMATERNO" requireted minlengthed="1" minlengthed="30">
             </div>
             <div class="col-md-4">
                 <span class="clr">*</span>Adscripción
-                <input type="text" class="form-control" id="pID_ADSCRIPCION" name="pID_ADSCRIPCION"required minlength="1" maxlength="10">
+                <input type="text" class="form-control" id="pID_ADSCRIPCION" name="pID_ADSCRIPCION" requireted minlengthed="1" minlengthed="10">
             </div>
             <div class="col-md-4">
                 <span class="clr">*</span>Contraseña
-                <input type="text" class="form-control" id="pCONTRASENA" name="pCONTRASENA"required>
+                <input type="text" class="form-control" id="pCONTRASENA" name="pCONTRASENA" requireted>
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col-md-4">
                 <span class="clr">*</span>Tipo de usuario
-                <select id="pTIPO_USUARIO" name="pTIPO_USUARIO" class="form-control"required></select>
+                <select id="pTIPO_USUARIO" name="pTIPO_USUARIO" class="form-control" requireted></select>
             </div>
             <div class="col-md-4">
                 <span class="clr">*</span>Correo electrónico
-                <input type="email" id="pCORREO" name="pCORREO" class="form-control"required>
+                <input type="email" id="pCORREO" name="pCORREO" class="form-control" requireted>
             </div>
             <div class="col-md-4">
                 Jefe inmediato
@@ -64,25 +64,15 @@
 </div>
 
 <script>
-    $.validator.setDefaults({
-        ignore: [':disabled'],
-        errorClass: "text-danger",
-        debug: true
-    });
-
+    
     $(function() {
-        $('.submit').on('click',function(e){					
+        $("form#Usuarios_form").submit(function(e){				
             e.preventDefault();
-
+            alert('holi');
             try {
-                if (!$('form').valid()){
-                    throw "Invalid FORM";
-                }
-
                 $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
-                
-                var callUrl = base_url + "Usuarios/guardar",
-                $.post(callUrl,{ $('form').serialize() },
+                var data_send = $('form').serialize();
+                $.post(base_url+"Usuarios/guardar",data_send,
                 function (data) {					
                     if (data.status == true){
                         console.log(data);
@@ -94,8 +84,6 @@
                     $.LoadingOverlay("hide");
                     var msg = err.responseText;
                     swal({ type: 'error', title: 'Error', html: msg });
-                }).always(function () {
-
                 });
                 
             }					

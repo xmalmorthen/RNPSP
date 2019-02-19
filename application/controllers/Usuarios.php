@@ -39,24 +39,40 @@
 			if ($this->input->server('REQUEST_METHOD') != 'POST') {
 				$response['message'] = 'method get not allowed';
 			} else {
-				
 				$this->load->library('form_validation');
-				$this->form_validation->set_rules('nombreUsuario', 'Nombre de usuario', 'required');
-				$this->form_validation->set_rules('nombreUsuario', 'Nombre de usuario', 'required');
-				$this->form_validation->set_rules('password', 'Contraseña', 'required');
+				$this->form_validation->set_rules('pCURP', 'CURP', 'required');
+				$this->form_validation->set_rules('pNOMBRE', 'Nombre', 'required');
+				$this->form_validation->set_rules('pPATERNO', 'Apellido paterno', 'required');
+				$this->form_validation->set_rules('pMATERNO', 'Apellido materno', 'required');
+				$this->form_validation->set_rules('pID_ADSCRIPCION', 'Adscripción', 'required');
+				$this->form_validation->set_rules('pCONTRASENA', 'Contraseña', 'required|min_length['.$this->config->item('min_password_length', 'ion_auth').']');
+				$this->form_validation->set_rules('pTIPO_USUARIO', 'Correo electrónico', 'required');
+				$this->form_validation->set_rules('pCORREO', 'Correo electrónico', 'required');
+				$this->form_validation->set_rules('pID_JEFE', 'Jefe inmediato', 'required');
 	
 				if ($this->form_validation->run() === true) {
-					if ($this->ion_auth->login($nombreUsuario, $password)) {
+					$email = strtolower($this->input->post('pCORREO'));
+					$identity = $this->input->post('pCURP');
+					$password = $this->input->post('pCONTRASENA');
+					$additional_data = [
+						'CURP' => $this->input->post('pCURP'),
+						'NOMBRE' => $this->input->post('pNOMBRE'),
+						'PATERNO' => $this->input->post('pPATERNO'),
+						'MATERNO' => $this->input->post('pMATERNO'),
+						'ID_ADSCRIPCION' => $this->input->post('pID_ADSCRIPCION'),
+						'ID_JEFE' => $this->input->post('pID_JEFE')
+					];
+
+					if($this->ion_auth->register($identity, $password, $email, $additional_data)){
 						$response['status'] = true;
-						$response['message'] = array(trim($this->ion_auth->messages()));
-						$user = $this->ion_auth->user()->row();
-						$this->session->set_userdata(SESSIONVAR,array(
-							'IdUsuario' => $user->id,
-							'Usuario' => $user->username
-						));
-					} else {
-						$response['message'] = array($this->ion_auth->errors());
+						$response['message'] = $this->ion_auth->messages();
+					}else{
+						$response['message'] = $this->ion_auth->errors();
 					}
+
+					Utils::pre($response);
+
+				
 				} else {
 					$response['message'] = $this->form_validation->error_array();
 				}
