@@ -17,10 +17,13 @@ var objViewLaboral = {
                 guardarEmpleo : null,
                 guardarActitud : null,
                 guardarComision : null
+            },
+            cmbs : {
+                pINSTITUCION : null,
             }
         }
     },
-    init : function(){
+    init : function(){        
         if (objViewLaboral.vars.general.init)
             return false;
 
@@ -44,7 +47,9 @@ var objViewLaboral = {
         objViewLaboral.vars.laboral.btns.guardarComision = $('#guardarComision');
 
         objViewLaboral.vars.general.btnSiguienteAnterior = $('.btnSiguienteAnterior');
-        
+        // SELECTS
+        objViewLaboral.vars.laboral.cmbs.pINSTITUCION = $('#pINSTITUCION');
+
         // INIT SELECTS
         objViewLaboral.vars.general.mainContentTab.find('select').select2({width : '100%'});
 
@@ -59,10 +64,12 @@ var objViewLaboral = {
         objViewLaboral.vars.laboral.btns.guardarEmpleo.on('click',objViewLaboral.events.click.laboral.guardarEmpleo);
         objViewLaboral.vars.laboral.btns.guardarActitud.on('click',objViewLaboral.events.click.general.guardarActitud);
         objViewLaboral.vars.laboral.btns.guardarComision.on('click',objViewLaboral.events.click.general.guardarComision);
-        objViewLaboral.vars.general.btnSiguienteAnterior.on('click',objViewDatosGenerales.events.click.general.btnSiguienteAnterior);
+        objViewLaboral.vars.general.btnSiguienteAnterior.on('click',objViewLaboral.events.click.general.btnSiguienteAnterior);
         //FOCUSOUT
         
         //CHANGE
+        objViewLaboral.vars.laboral.cmbs.pINSTITUCION.on('select2:select',objViewLaboral.events.change.pINSTITUCION);
+
 
         //Rutina para verificar si se hace algún cambio en cualquier forulario
         $.each(objViewLaboral.vars.laboral.forms, function( index, value ) {
@@ -170,6 +177,40 @@ var objViewLaboral = {
                 guardarEmpleo : function(e, from){},
                 guardarActitud : function(e, from){},
                 guardarComision : function(e, from){}
+            }
+        },
+        change : {
+            pINSTITUCION : function(e){
+
+                var $this = $(this),
+                    valInstitucion = $this.val(),
+                    valDependencia = $('#_dependenciaAdscripcionActual').val();
+
+                $('#pID_ENTIDAD_ADSCRIPCION_ACTUAL').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+                var callUrl = base_url + 'ajaxCatalogos';
+                $.get(callUrl,
+                    {
+                        qry : 'bTgxZG9aN21oYUhOaDZ6RUxFQ2dJNGo0QmczOXgxNGlodVpVbnJYY0ljNk5yeU5NT3k0NzdvWHVYdm5QR2tNeDNyWGRBQzg3TmpZZGFqV1BQMitOUmZTZnl5OEYrdTNYcmw2R1Q2SHEvUmF3cXBaSjNKZkEwcmRUN0FERzh5a0U=',
+                        params : 'ID_INSTITUCION=' + valInstitucion
+                    },
+                    function (data) {
+                        if (!data)
+                            return null;
+
+                        var id = data.results[0].ID_ENTIDAD;
+                        if (id) 
+                            $('#pID_ENTIDAD_ADSCRIPCION_ACTUAL').val(id).trigger('change.select2');
+                    }).fail(function (err) {})
+                    .always(function () {
+                        $('#pID_ENTIDAD_ADSCRIPCION_ACTUAL').LoadingOverlay("hide");
+                    });
+
+                $('#pID_AREA').getCatalog({
+                    query : 'dlIwdE11aDdRNlltQitFQjRFVWd6UXZGbUFDS2xxeFJpNDA2b1pkUi9GMUtabi9ncDZERVVDTnlMLzBEakEwTzAybnVNa0RUUGdlek92bjNmZWozNkVCbU12UG5MdUZZVExjdnZvczdwbm43c0lONnAyeHFSUU96SWlkd3NDZVQ=',
+                    params :  '[ID_DEPENDENCIA]=' + valDependencia + ' and [ID_INSTITUCION]=' + valInstitucion,
+                    emptyOption : true
+                });
             }
         }
     },
