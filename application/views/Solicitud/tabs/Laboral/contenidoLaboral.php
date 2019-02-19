@@ -209,11 +209,11 @@
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <button class="btn btn-default" id="anteriorAdscripcion"> Anterior</button>
                             </div>
-                            <div class="col-md-6">
-                                <button class="btn btn-default" id="siguienteAdscripcion">Siguiente</button>
+                            <div class="col-md-4">
+                                <center><button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteAdscripcion">Siguiente</button></centar>
                             </div>
                         </div>
 
