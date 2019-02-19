@@ -1,58 +1,88 @@
-var objViewCapacitacion = {
+var objViewIdentificacion = {
     vars : {
         general : {
             init : false,
             btnSiguienteAnterior : null
         },
-        capacitacion : {
+        identificacion : {
             forms : {
-                Idiomas_dialectos_form : null,
-                Habilidades_aptitudes_form : null
+                mediafiliacion_form : null,
+                Datos_form : null,
+                Senas_particulares_form : null,
+                Ficha_fotografica_form : null,
+                Registro_decadactilar_form : null,
+                Digitalizacion_de_documento_form: null,
+                Identificacion_de_voz_form: null
             },
             btns : {
-                guardarIdioma : null,
-                guardarHabilidad : null
+                guardarmediafiliación : null,
+                guardarSenia : null,                
+                guardarFicha : null,
+                guardarRegistrodecadactilar : null,
+                guardarDocumento : null,
+                guardarVoz : null,
+                validarVoz : null,
+                validarReplicar : null
             }
         }
     },
     init : function(){        
-        if (objViewCapacitacion.vars.general.init)
+        if (objViewIdentificacion.vars.general.init)
             return false;
 
         $('#myTabContent').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
         
-        objViewCapacitacion.vars.general.mainContentTab = $('#Capacitacion');
+        objViewIdentificacion.vars.general.mainContentTab = $('#Identificacion');
         
         // INIT DATATABLE
-        // objViewCapacitacion.vars.table = $('#table').DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"columnDefs": [{ "orderable": false, "targets": [2] }]});
+        // objViewIdentificacion.vars.table = $('#table').DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"columnDefs": [{ "orderable": false, "targets": [2] }]});
 
         // INIT ELEMENTS
         // FORMS
-        objViewCapacitacion.vars.capacitacion.forms.Idiomas_dialectos_form = $('#Idiomas_dialectos_form');
-        objViewCapacitacion.vars.capacitacion.forms.Habilidades_aptitudes_form = $('#Habilidades_aptitudes_form');
-        // BUTTONS
-        objViewCapacitacion.vars.capacitacion.btns.guardarIdioma = $('#guardarIdioma');
-        objViewCapacitacion.vars.capacitacion.btns.guardarHabilidad = $('#guardarHabilidad');
+        objViewIdentificacion.vars.identificacion.forms.mediafiliacion_form = $('#mediafiliacion_form');
+        objViewIdentificacion.vars.identificacion.forms.Datos_form = $('#Datos_form');
+        objViewIdentificacion.vars.identificacion.forms.Senas_particulares_form = $('#Senas_particulares_form');
+        objViewIdentificacion.vars.identificacion.forms.Ficha_fotografica_form = $('#Ficha_fotografica_form');
+        objViewIdentificacion.vars.identificacion.forms.Registro_decadactilar_form = $('#Registro_decadactilar_form');
+        objViewIdentificacion.vars.identificacion.forms.Digitalizacion_de_documento_form = $('#Digitalizacion_de_documento_form');
+        objViewIdentificacion.vars.identificacion.forms.Identificacion_de_voz_form = $('#Identificacion_de_voz_form');
 
-        objViewCapacitacion.vars.general.btnSiguienteAnterior = $('.btnSiguienteAnterior');
-        
+        // BUTTONS
+        objViewIdentificacion.vars.identificacion.btns.guardarmediafiliación = $('#guardarmediafiliación');
+        objViewIdentificacion.vars.identificacion.btns.guardarSenia = $('#guardarSenia');
+        objViewIdentificacion.vars.identificacion.btns.guardarFicha = $('#guardarFicha');
+        objViewIdentificacion.vars.identificacion.btns.guardarRegistrodecadactilar = $('#guardarRegistrodecadactilar');
+        objViewIdentificacion.vars.identificacion.btns.guardarDocumento = $('#guardarDocumento');
+        objViewIdentificacion.vars.identificacion.btns.guardarVoz = $('#guardarVoz');
+        objViewIdentificacion.vars.identificacion.btns.validarVoz = $('#validarVoz');
+        objViewIdentificacion.vars.identificacion.btns.validarReplicar = $('#validarReplicar');
+
+        objViewIdentificacion.vars.general.btnSiguienteAnterior = $('.btnSiguienteAnterior');
+
         // INIT SELECTS
-        objViewCapacitacion.vars.general.mainContentTab.find('select').select2({width : '100%'});
+        objViewIdentificacion.vars.general.mainContentTab.find('select').select2({width : '100%'});
 
         //EVENTS
         //SUBMIT
-        objViewCapacitacion.vars.general.mainContentTab.find("form").attr('novalidate', 'novalidate');
-        objViewCapacitacion.vars.general.mainContentTab.find('form').submit(function(e){
+        objViewIdentificacion.vars.general.mainContentTab.find("form").attr('novalidate', 'novalidate');
+        objViewIdentificacion.vars.general.mainContentTab.find('form').submit(function(e){
             e.preventDefault();
         });
         // CLICK
-        objViewCapacitacion.vars.capacitacion.btns.guardarIdioma.on('click',objViewCapacitacion.events.click.capacitacion.guardarIdioma);
-        objViewCapacitacion.vars.capacitacion.btns.guardarHabilidad.on('click',objViewCapacitacion.events.click.capacitacion.guardarHabilidad);
-        objViewCapacitacion.vars.general.btnSiguienteAnterior.on('click',objViewCapacitacion.events.click.general.btnSiguienteAnterior);
-        //FOCUSOUT
+        objViewIdentificacion.vars.identificacion.btns.guardarmediafiliación.on('click',objViewIdentificacion.events.click.identificacion.guardarmediafiliación);
+        objViewIdentificacion.vars.identificacion.btns.guardarSenia.on('click',objViewIdentificacion.events.click.identificacion.guardarSenia);
+        objViewIdentificacion.vars.identificacion.btns.guardarFicha.on('click',objViewIdentificacion.events.click.identificacion.guardarFicha);
+        objViewIdentificacion.vars.identificacion.btns.guardarRegistrodecadactilar.on('click',objViewIdentificacion.events.click.identificacion.guardarRegistrodecadactilar);
+        objViewIdentificacion.vars.identificacion.btns.guardarDocumento.on('click',objViewIdentificacion.events.click.identificacion.guardarDocumento);
+        objViewIdentificacion.vars.identificacion.btns.guardarVoz.on('click',objViewIdentificacion.events.click.identificacion.guardarVoz);
+        objViewIdentificacion.vars.identificacion.btns.validarVoz.on('click',objViewIdentificacion.events.click.identificacion.validarVoz);
+        objViewIdentificacion.vars.identificacion.btns.validarReplicar.on('click',objViewIdentificacion.events.click.identificacion.validarReplicar);
         
+        objViewIdentificacion.vars.general.btnSiguienteAnterior.on('click',objViewIdentificacion.events.click.general.btnSiguienteAnterior);
+        //FOCUSOUT
+
         //Rutina para verificar si se hace algún cambio en cualquier forulario
-        $.each(objViewCapacitacion.vars.capacitacion.forms, function( index, value ) {
+        $.each(objViewIdentificacion.vars.identificacion.forms, function( index, value ) {
             var form = value;
             form.find('input, select').change(function(e) {
                 form.removeData('hasSaved');
@@ -64,15 +94,15 @@ var objViewCapacitacion = {
         });
         
         //CAMBIO DE TABS
-        objViewCapacitacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewCapacitacion.actions.discartChanges}, e); } );
-        objViewCapacitacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('show.bs.tab',dynTabs.showTab);
+        objViewIdentificacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewIdentificacion.actions.discartChanges}, e); } );
+        objViewIdentificacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('show.bs.tab',dynTabs.showTab);
 
-        populate.form($('#Idiomas_dialectos_form')); //popular selects del primer tab NOTA: cambiar programación al tab actual si se obtiene por cookie
+        populate.form($('#mediafiliacion_form')); //popular selects del primer tab NOTA: cambiar programación al tab actual si se obtiene por cookie
         dynTabs.setCurrentTab($('#myTabContent'));
 
         mainTabMenu.actions.changeTab();
 
-        objViewCapacitacion.vars.general.init = true;
+        objViewIdentificacion.vars.general.init = true;
 
         $('#myTabContent').LoadingOverlay("hide");
     },
@@ -85,8 +115,8 @@ var objViewCapacitacion = {
                     $(tab).tab('show');
                 }
             },
-            capacitacion : {
-                guardarIdioma : function(e, from){
+            identificacion : {
+                guardarmediafiliación : function(e, from){
                     e.preventDefault();
 
                     var $this = $(this),
@@ -96,7 +126,7 @@ var objViewCapacitacion = {
 
                     //VALID FORM
                     try {
-                        if (!objViewCapacitacion.vars.capacitacion.forms.Adscripcion_actual_form.valid())
+                        if (!objViewIdentificacion.vars.identificacion.forms.Adscripcion_actual_form.valid())
                             //throw "Invalid FORM"; //TODO: Xmal - Quitar comentario al implementar
 
                         $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
@@ -154,7 +184,13 @@ var objViewCapacitacion = {
                         });
                     }
                 },
-                guardarHabilidad : function(e, from){}                
+                guardarSenia : function(e, from){},                
+                guardarFicha : function(e, from){},
+                guardarRegistrodecadactilar : function(e, from){},
+                guardarDocumento : function(e, from){},
+                guardarVoz : function(e, from){},
+                validarVoz : function(e, from){},
+                validarReplicar : function(e, from){}
             }
         }
     },
