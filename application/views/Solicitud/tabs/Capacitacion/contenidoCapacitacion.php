@@ -98,7 +98,7 @@
                     <div class="row">
                         <div class="col-md-4"></div>
                         <div class="col-md-4">
-                            <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteCapacitacion">Siguiente</button>
+                            <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteCapacitacion" data-nexttab="#Habilidades_aptitudes-tab">Siguiente</button>
                         </div>
                     </div>
 
@@ -397,7 +397,7 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorHabilidad"> Anterior</button>
+                            <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorHabilidad" data-nexttab="#Idiomas_dialectos-tab"> Anterior</button>
                         </div>
                         <div class="col-md-6">
                             <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="SiguienteHabilidad">Siguiente</button>
