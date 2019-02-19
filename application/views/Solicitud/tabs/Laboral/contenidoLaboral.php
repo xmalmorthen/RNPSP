@@ -40,11 +40,13 @@
                         </div>
                         <div class="col-md-4">
                             <span class="clr">*</span>Estado <!-- Se llena del catalogo "CAT_ENTIDAD" -->
-                            <select  class="form-control" id="pID_ENTIDAD_ADSCRIPCION_ACTUAL" name="pID_ENTIDAD_ADSCRIPCION_ACTUAL" maxlength="10" required></select>
+                            <select  class="form-control" id="pID_ENTIDAD_ADSCRIPCION_ACTUAL" name="pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-error="#err_pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-query='RG51N2cyVWNFVVp5Rlc5WDYydU0wcm0wbys4dElkSU1uaHBpTTJHMEJqOGVqdmRkUXJRUzB0TVZIa2Y0UldSWGpiMS9xQXhOWE5oVndVN0QzSFpHWHI4NEVzWTRIRU5RTmxjS09EK243V002bi9RV1ZUTU0waGRHdWlHSzFaT04=' required></select>
+                            <span id="err_pID_ENTIDAD_ADSCRIPCION_ACTUAL"></span>
                         </div>
                         <div class="col-md-4">
                             <span class="clr">*</span>Municipio <!-- Se llena del catalogo "CAT_MUNICIPIO" dependiendo del catalogo de "ENTIDAD" -->
-                            <select  class="form-control" id="pID_MUNICIPIO_ADSCRIPCION_ACTUAL" name="pID_MUNICIPIO_ADSCRIPCION_ACTUAL" maxlength="10" required></select>
+                            <select  class="form-control" id="pID_MUNICIPIO_ADSCRIPCION_ACTUAL" name="pID_MUNICIPIO_ADSCRIPCION_ACTUAL" data-error="#err_pID_MUNICIPIO_ADSCRIPCION_ACTUAL" data-query='c244RWRmblByTDlCWExpTHc0ZnQ3NGUzbWMza1Y5MnZCck9rQmpCQ1hTdlA3dzJyRVNMRjhXTll4WmNmYkplM1BKM1BWckJ3RFdieG55eUNldGZ3N1dyS2taNXhWd2RWczkzT0lsVTk1anZPcVJFclZBN05mTUtwbjJuazJqa0tSaXVENkI2WVErcmUxNlFoVUFNamttMjB1S3RxK0ZjUFA3cEFhM0Fvak53PQ==' data-cascade='true' data-force-refresh='true' data-cascade-id-ref='pID_ENTIDAD_ADSCRIPCION_ACTUAL' data-params='ID_ENTIDAD={0}' required></select>
+                            <span id="err_pID_MUNICIPIO_ADSCRIPCION_ACTUAL"></span>
                         </div>
                     </div>
                     <br>
@@ -109,9 +111,8 @@
                         </div>
                         <div class="col-md-4">
                             Nivel de mando <!-- Se llena del catalogo "CAT_NIVEL_MANDO" -->
-                            <select  class="form-control" id="pID_NIVEL_MANDO" name="pID_NIVEL_MANDO">
-                                <option value="">Seleccione</option>
-                            </select>
+                            <select  class="form-control" id="pID_NIVEL_MANDO" name="pID_NIVEL_MANDO" data-error="#err_pID_NIVEL_MANDO" data-query='ZTNHS0t4VzB5TTVIWFRSOTJyTk1EaklOUWNzYm9RZ0FqN1lFQUFuSWpZVWQ4c3FMMEtjNU12TUlxWFJXR2p0R3g4TWx3Q1FBVEI5Q2dLcnVnZldsT1dqaWRIWjZURGFLVGI1S3ZpV2NlZEVMMklJZTM5VmFWNGdjbmFhdit5bkd5ZFE5UkYyRkNuU0kzanNxaGxXM2NnMFlKU0pGaHZFZTkvMTZvVFZwdFNvPQ=='></select>
+                            <span id="err_pID_NIVEL_MANDO"></span>
                         </div>
                         <div class="col-md-4">
                             Número de placa
@@ -137,7 +138,8 @@
                     <div class="row">
                         <div class="col-md-4">
                             Área o departamento <!-- Se llena del catalogo "CAT_AREA" -->
-                        <select  class="form-control" id="pID_AREA" name="pID_AREA"></select>
+                            <select  class="form-control" id="pID_AREA" name="pID_AREA" data-error="#err_pID_AREA"></select>
+                            <span id="err_pID_AREA"></span>
                         </div>
                         <div class="col-md-4">
                             División
@@ -209,9 +211,7 @@
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
                         <div class="row">
-                            <div class="col-md-4">
-                                <button class="btn btn-default" id="anteriorAdscripcion"> Anterior</button>
-                            </div>
+                            <div class="col-md-4"></div>
                             <div class="col-md-4">
                                 <center><button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteAdscripcion">Siguiente</button></centar>
                             </div>
@@ -248,18 +248,19 @@
                             <input type="text" id="pCP_EMP_EMPLEOS_DIVERSOS" name="pCP_EMP_EMPLEOS_DIVERSOS" required  class="form-control"  maxlength="5">
                         </div>
                         <div class="col-md-4">
-                            <span class="clr">*</span>Estado <!-- Se llena del catalogo "CAT_ENTIDAD" -->
-                            <select id="pID_ENTIDAD_EMPLEOS_DIVERSOS" name="pID_ENTIDAD_EMPLEOS_DIVERSOS" class="form-control" required>
-                                <option value="">Seleccione</option>
-                            </select>
+                            <span class="clr">*</span>Estado <!-- Se llena del catalogo "CAT_ENTIDAD" -->                            
+                            <select  class="form-control" id="pID_ENTIDAD_EMPLEOS_DIVERSOS" name="pID_ENTIDAD_EMPLEOS_DIVERSOS" data-error="#err_pID_ENTIDAD_EMPLEOS_DIVERSOS" data-query='RG51N2cyVWNFVVp5Rlc5WDYydU0wcm0wbys4dElkSU1uaHBpTTJHMEJqOGVqdmRkUXJRUzB0TVZIa2Y0UldSWGpiMS9xQXhOWE5oVndVN0QzSFpHWHI4NEVzWTRIRU5RTmxjS09EK243V002bi9RV1ZUTU0waGRHdWlHSzFaT04=' required></select>
+                            <span id="err_pID_ENTIDAD_EMPLEOS_DIVERSOS"></span>
                         </div>
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-md-4">
                         <span class="clr">*</span>Municipio <!-- Se llena del catalogo "CAT_MUNICIPIO" dependiendo del catalogo "ENTIDAD" -->
-                            <select  class="form-control" id="pID_MUNICIPIO_EMPLEOS_DIVERSOS" name="pID_MUNICIPIO_EMPLEOS_DIVERSOS" required></select>
+                            <select  class="form-control" id="pID_MUNICIPIO_EMPLEOS_DIVERSOS" name="pID_MUNICIPIO_EMPLEOS_DIVERSOS" data-error="#err_pID_MUNICIPIO_EMPLEOS_DIVERSOS" data-query='c244RWRmblByTDlCWExpTHc0ZnQ3NGUzbWMza1Y5MnZCck9rQmpCQ1hTdlA3dzJyRVNMRjhXTll4WmNmYkplM1BKM1BWckJ3RFdieG55eUNldGZ3N1dyS2taNXhWd2RWczkzT0lsVTk1anZPcVJFclZBN05mTUtwbjJuazJqa0tSaXVENkI2WVErcmUxNlFoVUFNamttMjB1S3RxK0ZjUFA3cEFhM0Fvak53PQ==' data-cascade='true' data-force-refresh='true' data-cascade-id-ref='pID_ENTIDAD_EMPLEOS_DIVERSOS' data-params='ID_ENTIDAD={0}' required></select>
+                            <span id="err_pID_MUNICIPIO_EMPLEOS_DIVERSOS"></span>
                         </div>
+
                         <div class="col-md-4">
                             Colonia/Localidad
                             <input type="text" id="pCOLONIA_EMPLEOS_DIVERSOS" name="pCOLONIA_EMPLEOS_DIVERSOS" required  class="form-control"  maxlength="60">
@@ -306,6 +307,9 @@
                             <select  class="form-control" id="pID_TIPO_MOV_LAB" name="pID_TIPO_MOV_LAB" required >
                                 <option value="">Seleccione</option>
                             </select>
+
+                            <select  class="form-control" id="pID_TIPO_MOV_LAB" name="pID_TIPO_MOV_LAB" data-error="#err_pID_TIPO_MOV_LAB" data-query='RG51N2cyVWNFVVp5Rlc5WDYydU0wcm0wbys4dElkSU1uaHBpTTJHMEJqOGVqdmRkUXJRUzB0TVZIa2Y0UldSWGpiMS9xQXhOWE5oVndVN0QzSFpHWHI4NEVzWTRIRU5RTmxjS09EK243V002bi9RV1ZUTU0waGRHdWlHSzFaT04=' required></select>
+                            <span id="err_pID_TIPO_MOV_LAB"></span>
                         </div>
                         <div class="col-md-4">
                             <span class="clr">*</span>Tipo de separación <!-- Se llena del catalogo "MOTIVO_MOV_LAB" -->
@@ -357,10 +361,10 @@
                         <div class="col-md-4">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <button class="btn btn-default" id="anteriorEmpleo"> Anterior</button>
+                                    <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorEmpleo"> Anterior</button>
                                 </div>
                                 <div class="col-md-6">
-                                    <button class="btn btn-default" id="siguienteEmpleo">Siguiente</button>
+                                    <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteEmpleo">Siguiente</button>
                                 </div>
                             </div>
 
@@ -460,10 +464,10 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-6">
-                            <button class="btn btn-default" id="anteriorActitud"> Anterior</button>
+                            <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorActitud"> Anterior</button>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-default" id="siguienteActitud">Siguiente</button>
+                            <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteActitud">Siguiente</button>
                         </div>
                     </div>
 
@@ -560,10 +564,10 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-6">
-                            <button class="btn btn-default" id="anteriorComision"> Anterior</button>
+                            <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorComision"> Anterior</button>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-default" id="FinalizarLaboral">Finalizar</button>
+                            <button class="btn btn-default btnSiguienteAnterior siguienteTab endTab" id="FinalizarLaboral">Finalizar</button>
                         </div>
                     </div>
 

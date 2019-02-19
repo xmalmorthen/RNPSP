@@ -56,12 +56,34 @@
 <script src="<?php echo base_url('assets/js/utils/dynamicTabs.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/utils/catalogs.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/utils/serialized.js') ?>"></script>
-<script src="<?php echo base_url('assets/js/views/solicitud/datosGeneralesTab.js') ?>"></script>
 
+<script src="<?php echo base_url('assets/js/views/solicitud/datosGeneralesTab.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/views/solicitud/laboralTab.js') ?>"></script>
 
 <script type="text/javascript">
     $(function() {
-        objViewDatosGenerales.init();
-        //objViewLaboral.init();
+        //CAMBIO DE TABS
+        $('#mainContainerTab a[data-toggle="tab"]').on('show.bs.tab',mainTabMenu.tab.change);
     });
+
+    var mainTabMenu = {
+            tab : {
+                change : function(e){
+                    switch ($(e.currentTarget).attr('aria-controls')) {
+                        case 'datosGenerales':
+                            objViewDatosGenerales.init();
+                        break;
+                        case 'Laboral':
+                            objViewLaboral.init();
+                        break;
+                        case 'Capacitacion':
+                        break;
+                        case 'Identificacion':
+                        break;
+                    }
+                }
+            }
+    }
+
+
 </script>

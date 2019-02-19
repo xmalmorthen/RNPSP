@@ -132,11 +132,11 @@
                 <div class="row">
                     <div class="col-md-4">
                         CIB                        
-                        <input type="text" id="CIB" name="CIB" class="form-control" maxlength="30"> <!-- FALTA ID Y NAME -->
+                        <input type="text" id="CIB" name="CIB" class="form-control" maxlength="30">
                     </div>
                     <div class="col-md-4">
                         Motivo de cambio de CIB 
-                        <input type="text" id="motivoCIB" name="motivoCIB" class="form-control" maxlength="250"> <!-- FALTA ID Y NAME -->
+                        <input type="text" id="motivoCIB" name="motivoCIB" class="form-control" maxlength="250">
                     <br>
                     </div>
                     <div class="col-md-4">
