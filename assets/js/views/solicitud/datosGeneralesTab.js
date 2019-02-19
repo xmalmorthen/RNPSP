@@ -1,4 +1,4 @@
-var objView = {
+var objViewDatosGenerales = {
     vars : {
         general : {
             btnSiguienteAnterior : null
@@ -22,21 +22,21 @@ var objView = {
     },
     init : function(){
         // INIT DATATABLE
-        // objView.vars.table = $('#table').DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"columnDefs": [{ "orderable": false, "targets": [2] }]});
+        // objViewDatosGenerales.vars.table = $('#table').DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"columnDefs": [{ "orderable": false, "targets": [2] }]});
 
         // INIT ELEMENTS
         // FORMS
-        objView.vars.datosGenerales.forms.Datos_personales_form = $('#Datos_personales_form');
-        objView.vars.datosGenerales.forms.Desarrollo_form = $('#Desarrollo_form');
-        objView.vars.datosGenerales.forms.Domicilio_form = $('#Domicilio_form');
-        objView.vars.datosGenerales.forms.Referencias_form = $('#Referencias_form');
-        objView.vars.datosGenerales.forms.Socioeconomicos_form = $('#Socioeconomicos_form');
+        objViewDatosGenerales.vars.datosGenerales.forms.Datos_personales_form = $('#Datos_personales_form');
+        objViewDatosGenerales.vars.datosGenerales.forms.Desarrollo_form = $('#Desarrollo_form');
+        objViewDatosGenerales.vars.datosGenerales.forms.Domicilio_form = $('#Domicilio_form');
+        objViewDatosGenerales.vars.datosGenerales.forms.Referencias_form = $('#Referencias_form');
+        objViewDatosGenerales.vars.datosGenerales.forms.Socioeconomicos_form = $('#Socioeconomicos_form');
         // BUTTONS
-        objView.vars.datosGenerales.btns.guardarDatosPersonales = $('#guardarDatosPersonales');        
-        objView.vars.datosGenerales.btns.generarCIB = $('#generarCIB');        
-        objView.vars.general.btnSiguienteAnterior = $('.btnSiguienteAnterior');
+        objViewDatosGenerales.vars.datosGenerales.btns.guardarDatosPersonales = $('#guardarDatosPersonales');        
+        objViewDatosGenerales.vars.datosGenerales.btns.generarCIB = $('#generarCIB');        
+        objViewDatosGenerales.vars.general.btnSiguienteAnterior = $('.btnSiguienteAnterior');
         // OBJS
-        objView.vars.datosGenerales.objs.pCURP = $('#pCURP');
+        objViewDatosGenerales.vars.datosGenerales.objs.pCURP = $('#pCURP');
 
         // INIT SELECTS
         $('select').select2();
@@ -48,15 +48,15 @@ var objView = {
             e.preventDefault();
         });
         // CLICK
-        objView.vars.datosGenerales.btns.guardarDatosPersonales.on('click',objView.events.click.datosGenerales.guardarDatosPersonales);
-        objView.vars.datosGenerales.btns.generarCIB.on('click',objView.events.click.datosGenerales.generarCIB);
-        objView.vars.general.btnSiguienteAnterior.on('click',objView.events.click.general.btnSiguienteAnterior);
+        objViewDatosGenerales.vars.datosGenerales.btns.guardarDatosPersonales.on('click',objViewDatosGenerales.events.click.datosGenerales.guardarDatosPersonales);
+        objViewDatosGenerales.vars.datosGenerales.btns.generarCIB.on('click',objViewDatosGenerales.events.click.datosGenerales.generarCIB);
+        objViewDatosGenerales.vars.general.btnSiguienteAnterior.on('click',objViewDatosGenerales.events.click.general.btnSiguienteAnterior);
         //FOCUSOUT
-        objView.vars.datosGenerales.objs.pCURP.on('focusout',objView.events.focus.out.pCURP);      
+        objViewDatosGenerales.vars.datosGenerales.objs.pCURP.on('focusout',objViewDatosGenerales.events.focus.out.pCURP);      
         //CHANGE
 
         //Rutina para verificar si se hace algún cambio en cualquier forulario
-        $.each(objView.vars.datosGenerales.forms, function( index, value ) {
+        $.each(objViewDatosGenerales.vars.datosGenerales.forms, function( index, value ) {
             var form = value;
             form.find('input, select').change(function(e) {
                 form.removeData('hasSaved');
@@ -69,7 +69,7 @@ var objView = {
         });
         
         //CAMBIO DE TABS
-        $('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objView.actions.discartChanges}, e); } );
+        $('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewDatosGenerales.actions.discartChanges}, e); } );
         $('a[data-toggle="tab"]').on('show.bs.tab',dynTabs.showTab);
 
         populate.form($('#Datos_personales_form')); //popular selects del primer tab NOTA: cambiar programación al tab actual si se obtiene por cookie
@@ -95,8 +95,8 @@ var objView = {
 
                     //VALID FORM
                     try {
-                        if (!objView.vars.datosGenerales.forms.Datos_personales_form.valid())
-                            throw "Invalid FORM";
+                        if (!objViewDatosGenerales.vars.datosGenerales.forms.Datos_personales_form.valid())
+                            //throw "Invalid FORM"; //TODO: Xmal - Quitar comentario al implementar
 
                         $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
