@@ -1,77 +1,58 @@
-var objViewLaboral = {
+var objViewCapacitacion = {
     vars : {
         general : {
             init : false,
             btnSiguienteAnterior : null
         },
-        laboral : {
+        capacitacion : {
             forms : {
-                Adscripcion_actual_form : null,
-                Empleos_diversos_form : null,
-                Actitudes_hacia_el_empleo_form : null,
-                Comisiones_form : null
+                Idiomas_dialectos_form : null,
+                Habilidades_aptitudes_form : null
             },
             btns : {
-                guardarAdscripcion : null,
-                guardarEmpleo : null,
-                guardarActitud : null,
-                guardarComision : null
-            },
-            cmbs : {
-                pINSTITUCION : null,
+                guardarIdioma : null,
+                guardarHabilidad : null
             }
         }
     },
     init : function(){        
-        if (objViewLaboral.vars.general.init)
+        if (objViewCapacitacion.vars.general.init)
             return false;
 
         $('#myTabContent').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
         
-        objViewLaboral.vars.general.mainContentTab = $('#Laboral');
+        objViewCapacitacion.vars.general.mainContentTab = $('#Capacitacion');
         
         // INIT DATATABLE
-        // objViewLaboral.vars.table = $('#table').DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"columnDefs": [{ "orderable": false, "targets": [2] }]});
+        // objViewCapacitacion.vars.table = $('#table').DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"columnDefs": [{ "orderable": false, "targets": [2] }]});
 
         // INIT ELEMENTS
         // FORMS
-        objViewLaboral.vars.laboral.forms.Adscripcion_actual_form = $('#Adscripcion_actual_form');
-        objViewLaboral.vars.laboral.forms.Empleos_diversos_form = $('#Empleos_diversos_form');
-        objViewLaboral.vars.laboral.forms.Actitudes_hacia_el_empleo_form = $('#Actitudes_hacia_el_empleo_form');
-        objViewLaboral.vars.laboral.forms.Comisiones_form = $('#Comisiones_form');
+        objViewCapacitacion.vars.capacitacion.forms.Idiomas_dialectos_form = $('#Idiomas_dialectos_form');
+        objViewCapacitacion.vars.capacitacion.forms.Habilidades_aptitudes_form = $('#Habilidades_aptitudes_form');
         // BUTTONS
-        objViewLaboral.vars.laboral.btns.guardarAdscripcion = $('#guardarAdscripcion');
-        objViewLaboral.vars.laboral.btns.guardarEmpleo = $('#guardarEmpleo');
-        objViewLaboral.vars.laboral.btns.guardarActitud = $('#guardarActitud');
-        objViewLaboral.vars.laboral.btns.guardarComision = $('#guardarComision');
+        objViewCapacitacion.vars.capacitacion.btns.guardarIdioma = $('#guardarIdioma');
+        objViewCapacitacion.vars.capacitacion.btns.guardarHabilidad = $('#guardarHabilidad');
 
-        objViewLaboral.vars.general.btnSiguienteAnterior = $('.btnSiguienteAnterior');
-        // SELECTS
-        objViewLaboral.vars.laboral.cmbs.pINSTITUCION = $('#pINSTITUCION');
-
+        objViewCapacitacion.vars.general.btnSiguienteAnterior = $('.btnSiguienteAnterior');
+        
         // INIT SELECTS
-        objViewLaboral.vars.general.mainContentTab.find('select').select2({width : '100%'});
+        objViewCapacitacion.vars.general.mainContentTab.find('select').select2({width : '100%'});
 
         //EVENTS
         //SUBMIT
-        objViewLaboral.vars.general.mainContentTab.find("form").attr('novalidate', 'novalidate');
-        objViewLaboral.vars.general.mainContentTab.find('form').submit(function(e){
+        objViewCapacitacion.vars.general.mainContentTab.find("form").attr('novalidate', 'novalidate');
+        objViewCapacitacion.vars.general.mainContentTab.find('form').submit(function(e){
             e.preventDefault();
         });
         // CLICK
-        objViewLaboral.vars.laboral.btns.guardarAdscripcion.on('click',objViewLaboral.events.click.laboral.guardarAdscripcion);
-        objViewLaboral.vars.laboral.btns.guardarEmpleo.on('click',objViewLaboral.events.click.laboral.guardarEmpleo);
-        objViewLaboral.vars.laboral.btns.guardarActitud.on('click',objViewLaboral.events.click.general.guardarActitud);
-        objViewLaboral.vars.laboral.btns.guardarComision.on('click',objViewLaboral.events.click.general.guardarComision);
-        objViewLaboral.vars.general.btnSiguienteAnterior.on('click',objViewLaboral.events.click.general.btnSiguienteAnterior);
+        objViewCapacitacion.vars.capacitacion.btns.guardarIdioma.on('click',objViewCapacitacion.events.click.capacitacion.guardarIdioma);
+        objViewCapacitacion.vars.capacitacion.btns.guardarHabilidad.on('click',objViewCapacitacion.events.click.capacitacion.guardarHabilidad);
+        objViewCapacitacion.vars.general.btnSiguienteAnterior.on('click',objViewCapacitacion.events.click.general.btnSiguienteAnterior);
         //FOCUSOUT
         
-        //CHANGE
-        objViewLaboral.vars.laboral.cmbs.pINSTITUCION.on('select2:select',objViewLaboral.events.change.pINSTITUCION);
-
-
         //Rutina para verificar si se hace algún cambio en cualquier forulario
-        $.each(objViewLaboral.vars.laboral.forms, function( index, value ) {
+        $.each(objViewCapacitacion.vars.capacitacion.forms, function( index, value ) {
             var form = value;
             form.find('input, select').change(function(e) {
                 form.removeData('hasSaved');
@@ -83,15 +64,15 @@ var objViewLaboral = {
         });
         
         //CAMBIO DE TABS
-        objViewLaboral.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewLaboral.actions.discartChanges}, e); } );
-        objViewLaboral.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('show.bs.tab',dynTabs.showTab);
+        objViewCapacitacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewCapacitacion.actions.discartChanges}, e); } );
+        objViewCapacitacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('show.bs.tab',dynTabs.showTab);
 
         populate.form($('#Adscripcion_actual_form')); //popular selects del primer tab NOTA: cambiar programación al tab actual si se obtiene por cookie
         dynTabs.setCurrentTab($('#myTabContent'));
 
         mainTabMenu.actions.changeTab();
 
-        objViewLaboral.vars.general.init = true;
+        objViewCapacitacion.vars.general.init = true;
 
         $('#myTabContent').LoadingOverlay("hide");
     },
@@ -104,8 +85,8 @@ var objViewLaboral = {
                     $(tab).tab('show');
                 }
             },
-            laboral : {
-                guardarAdscripcion : function(e, from){
+            capacitacion : {
+                guardarIdioma : function(e, from){
                     e.preventDefault();
 
                     var $this = $(this),
@@ -115,7 +96,7 @@ var objViewLaboral = {
 
                     //VALID FORM
                     try {
-                        if (!objViewLaboral.vars.laboral.forms.Adscripcion_actual_form.valid())
+                        if (!objViewCapacitacion.vars.capacitacion.forms.Adscripcion_actual_form.valid())
                             //throw "Invalid FORM"; //TODO: Xmal - Quitar comentario al implementar
 
                         $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
@@ -173,43 +154,7 @@ var objViewLaboral = {
                         });
                     }
                 },
-                guardarEmpleo : function(e, from){},
-                guardarActitud : function(e, from){},
-                guardarComision : function(e, from){}
-            }
-        },
-        change : {
-            pINSTITUCION : function(e){
-
-                var $this = $(this),
-                    valInstitucion = $this.val(),
-                    valDependencia = $('#_dependenciaAdscripcionActual').val();
-
-                $('#pID_ENTIDAD_ADSCRIPCION_ACTUAL').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
-
-                var callUrl = base_url + 'ajaxCatalogos';
-                $.get(callUrl,
-                    {
-                        qry : 'bTgxZG9aN21oYUhOaDZ6RUxFQ2dJNGo0QmczOXgxNGlodVpVbnJYY0ljNk5yeU5NT3k0NzdvWHVYdm5QR2tNeDNyWGRBQzg3TmpZZGFqV1BQMitOUmZTZnl5OEYrdTNYcmw2R1Q2SHEvUmF3cXBaSjNKZkEwcmRUN0FERzh5a0U=',
-                        params : 'ID_INSTITUCION=' + valInstitucion
-                    },
-                    function (data) {
-                        if (!data)
-                            return null;
-
-                        var id = data.results[0].ID_ENTIDAD;
-                        if (id) 
-                            $('#pID_ENTIDAD_ADSCRIPCION_ACTUAL').val(id).trigger('change.select2');
-                    }).fail(function (err) {})
-                    .always(function () {
-                        $('#pID_ENTIDAD_ADSCRIPCION_ACTUAL').LoadingOverlay("hide");
-                    });
-
-                $('#pID_AREA').getCatalog({
-                    query : 'dlIwdE11aDdRNlltQitFQjRFVWd6UXZGbUFDS2xxeFJpNDA2b1pkUi9GMUtabi9ncDZERVVDTnlMLzBEakEwTzAybnVNa0RUUGdlek92bjNmZWozNkVCbU12UG5MdUZZVExjdnZvczdwbm43c0lONnAyeHFSUU96SWlkd3NDZVQ=',
-                    params :  '[ID_DEPENDENCIA]=' + valDependencia + ' and [ID_INSTITUCION]=' + valInstitucion,
-                    emptyOption : true
-                });
+                guardarHabilidad : function(e, from){}                
             }
         }
     },

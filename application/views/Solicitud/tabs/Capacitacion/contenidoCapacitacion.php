@@ -1,5 +1,3 @@
-
-
     <div class="tab-pane fade show active" id="Capacitacion_adicional" role="tabpanel" aria-labelledby="Capacitacion_adicional-tab">
         <div class="_container">
             <form action="#" id="Capacitacion_adicional_form" name="Capacitacion_adicional_form" autocomplete="off">
@@ -24,24 +22,21 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Tipo de curso <!--Se llena del catalogo "CAT_TIPO_CURSO_ADIC" -->
-                        <select  class="form-control" id="pID_TIPO_CURSO" name="pID_TIPO_CURSO" required>
-                            <option value=""></option>
-                        </select>
+                        <select  class="form-control" id="pID_TIPO_CURSO" name="pID_TIPO_CURSO" data-error="#err_pID_TIPO_CURSO" data-query='YW5CNVZmdW1LakVHeTdSVlIxaXNwRzQ5NjRvVFY2NlFtQ2N1eHlOSTZIUWU4WE5MWDQ1SE5FNVloc1BrQlVSU3hWQVVwclQyUE15R2pJcHgxRXlDZ3Z0NWRMcnlwMDFzdzFKSjcvbjNyOFk4MjJNd0tmRFNLemFIMGtML1BmU3I5Q2wzbE1qWmViK1BvNVpRcEZqcEI0ZkNzY244RFNzN0Rkc3RuT1ljNk1vPQ==' required></select>
+                        <span id="err_pID_TIPO_CURSO"></span>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>El curso fué <!-- Se llena del catalogo "CAT_MODALIDAD_CURSO"<-->
-                        <select class="form-control" id="pID_MODALIDAD_CURSO" name="pID_MODALIDAD_CURSO" required>
-                            <option value=""></option>
-                        </select>
+                        <select  class="form-control" id="pID_MODALIDAD_CURSO" name="pID_MODALIDAD_CURSO" data-error="#err_pID_MODALIDAD_CURSO" data-query='Tkprd1BMS3pFUVVZUkZDUk5Zd0F6MHFyc25uVTZydGlSbHFRekZEaEpvcStzZ2ZIaHB5dWNHNzc5QUF0bVBnV28vSHVIekFCaUpHT2R0Z3pJKytpWTJXNm1MUC8ySVl0djFYN2x3d0hjUktwUUVVd004dWx6czhSQjJQa0prK05IZllaYzhVZU9rTUQwS0p5bDkyYlEwQUJudUw1bkVJOC9XaGM3eHQyZHY0PQ==' required></select>
+                        <span id="err_pID_MODALIDAD_CURSO"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Eficiencia terminal <!-- Se llena del catalogo "CAT_EFICIENCIA" -->
-                        <select  class="form-control" id="pID_EFICIENCIA_CAPACITACION_ADICIONAL" name="pID_EFICIENCIA_CAPACITACION_ADICIONAL" required>
-                            <option value=""></option>
-                        </select>
+                        <select  class="form-control" id="pID_EFICIENCIA_CAPACITACION_ADICIONAL" name="pID_EFICIENCIA_CAPACITACION_ADICIONAL" data-error="#err_pID_EFICIENCIA_CAPACITACION_ADICIONAL" data-query='MitSODNDdk1WR3o0MnZ6akNOTFRzVFRRNkt5ajNpdWNaYXlVRWJ2RzlnZW5QVE15ZTZMZkpzWGhpTHZLYVpsODJhR3JGSkVNSFZVb0c3VXMrdXRCSmNmNndjV1EzcVh0M2RNMmZSalFONlYxdThtWml4akJIWXVvSDVhSHBPZW4=' required></select>
+                        <span id="err_pID_EFICIENCIA_CAPACITACION_ADICIONAL"></span>
                     </div>
                     <div class="col-md-4">
                         Fecha de inicio
@@ -101,11 +96,9 @@
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
                     <div class="row">
-                        <div class="col-md-6">
-                            <button class="btn btn-default" id="anteriorCapacitacion"> Anterior</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-default" id="siguienteCapacitacion">Siguiente</button>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteCapacitacion">Siguiente</button>
                         </div>
                     </div>
 
@@ -243,7 +236,6 @@
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
                         <center><strong class="titulo">Idiomas y/o dialectos</strong></center>
-
                     </div>
                 </div>
                 <br>
@@ -251,9 +243,8 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Idioma y/o dialecto  <!-- Se llena del catalogo "CAT_IDIOMA" -->
-                        <select  class="form-control" id="pID_IDIOMA" name="pID_IDIOMA" required>
-                            <option value=""></option>
-                        </select>
+                        <select  class="form-control" id="pID_IDIOMA" name="pID_IDIOMA" data-error="#err_pID_IDIOMA" data-query='aG50TjNGbGpMZDNwM1lqVnlmQVBwaWRodzFUL0ZJSy9HNERwYk5nSXorekhySlNyOFZpWnNqUHZvQjY1MGhXeitYVUcxV0kzUGtHRHlFV3gxNkZhS2llRVQzWUt6Z0lsTGJDVlRLT2lvM2NSelNmRGVXR2ZlSExzaGJjUHpqOTA=' required></select>
+                        <span id="err_pID_IDIOMA"></span>
                     </div>
                     <div class="col-md-2">
                         Lectura
@@ -324,10 +315,10 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-6">
-                            <button class="btn btn-default" id="anteriorIdioma"> Anterior</button>
+                            <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorIdioma"> Anterior</button>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-default" id="siguienteIdioma">Siguiente</button>
+                            <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteIdioma">Siguiente</button>
                         </div>
                     </div>
 
@@ -354,9 +345,8 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Tipo de habilidad y/o aptitud<!-- Se llena con el catalogo "CAT_TIPO_APTITUD" -->
-                        <select class="form-control" id="ID_TIPO_APTITUD" name="ID_TIPO_APTITUD" required>
-                            <option value=""></option>
-                        </select>
+                        <select  class="form-control" id="ID_TIPO_APTITUD" name="ID_TIPO_APTITUD" data-error="#err_ID_TIPO_APTITUD" data-query='VXRtRTZNWVIrVUphUzQ4MFNkQzZRcytBbFZDMzQ3c01vR21jTXIyNmZPT2FPdnRua2N3MlRYT0ZKczc5SFRSN00vQjBML2l3dXJwVVliTG5paHNzQ3ZKR0hvaHRKUUdSSW9xdzI4TUpLL2VmTVNObVRzaFpVSHBpZnJuTWtrODdCcG8wc0VOSlZXUTJUNkIwSEVRM2JSQnFzaitKUFJwUDdCTXZqNXFsOHJzPQ==' required></select>
+                        <span id="err_ID_TIPO_APTITUD"></span>
                     </div>
                     <div class="col-md-4">
                         Descripción
@@ -364,8 +354,8 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Grado de aptitud o dominio <!-- Se rellena con el catalogo "CAT_GRADO_APTITUD_HAB" depende del select "TIPO_ACTITUD" -->
-                        <select class="form-control" id="ID_GRADO_APT_HAB" name="ID_GRADO_APT_HAB" required>
-                        </select>
+                        <select  class="form-control" id="ID_GRADO_APT_HAB" name="ID_GRADO_APT_HAB" data-error="#err_ID_GRADO_APT_HAB" data-query='Qks2NHVpUW94OUlNMmxDU3ZpcXdsYUFXKzZtUm13a1l0enMxY0dsY2c1Q2I1VndmSlA4N3kxRmlFMjlldkt0UkpOcy9xS253Z1JaWUx3N3FiTE5rR0hGbGRUZzgzV0RxMlRHa1U5MDFST1VXUFpyQjliSTRqRkZKSzhmUFBvK3V1cFhjUnZXY0F1MEV6dHlvQUlEZnE1cnNxeSs2VTBKWEVZdWp1TFBqTFdnPQ==' required></select>
+                        <span id="err_ID_GRADO_APT_HAB"></span>
                     </div>
                 </div>
                 <br>
@@ -407,10 +397,10 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-6">
-                            <button class="btn btn-default" id="anteriorHabilidad"> Anterior</button>
+                            <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorHabilidad"> Anterior</button>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-default" id="SiguienteHabilidad">Siguiente</button>
+                            <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="SiguienteHabilidad">Siguiente</button>
                         </div>
                     </div>
 
@@ -496,10 +486,10 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-6">
-                            <button class="btn btn-default" id="anteriorAfiliacion"> Anterior</button>
+                            <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorAfiliacion"> Anterior</button>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-default" id="finalizarCapacitacion">Finalizar</button>
+                            <button class="btn btn-default btnSiguienteAnterior siguienteTab endTab" id="finalizarCapacitacion">Finalizar</button>
                         </div>
                     </div>
 
