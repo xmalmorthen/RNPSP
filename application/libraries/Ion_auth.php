@@ -331,7 +331,7 @@ class Ion_auth
 
 		$identity = $this->config->item('identity', 'ion_auth');
 
-		$this->session->unset_userdata([$identity, 'id', 'user_id']);
+		$this->session->local_unset_userdata([$identity, 'id', 'user_id']);
 
 		// delete the remember me cookies if they exist
 		delete_cookie($this->config->item('remember_cookie_name', 'ion_auth'));
@@ -341,11 +341,11 @@ class Ion_auth
 		$this->ion_auth_model->clear_remember_code($identity);
 
 		// Destroy the session
-		$this->session->sess_destroy();
+		$this->session->local_sess_destroy();
 
 		// Recreate the session
 		session_start();
-		$this->session->sess_regenerate(TRUE);
+		$this->session->local_sess_regenerate(TRUE);
 
 		$this->set_message('logout_successful');
 		return TRUE;
@@ -377,7 +377,7 @@ class Ion_auth
 	 **/
 	public function get_user_id()
 	{
-		$user_id = $this->session->userdata('user_id');
+		$user_id = $this->session->local_userdata('user_id');
 		if (!empty($user_id))
 		{
 			return $user_id;

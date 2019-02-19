@@ -967,7 +967,7 @@ class Ion_auth_model extends CI_Model
 				$this->rehash_password_if_needed($user->password, $identity, $password);
 
 				// Regenerate the session (for security purpose: to avoid session fixation)
-				$this->session->sess_regenerate(FALSE);
+				$this->session->local_sess_regenerate(FALSE);
 
 				$this->trigger_events(['post_login', 'post_login_successful']);
 				$this->set_message('login_successful');
@@ -998,12 +998,12 @@ class Ion_auth_model extends CI_Model
 
 		if ($recheck !== 0)
 		{
-			$last_login = $this->session->userdata('last_check');
+			$last_login = $this->session->local_userdata('last_check');
 			if ($last_login + $recheck < time())
 			{
 				$query = $this->db->select('id')
 								  ->where([
-									  $this->identity_column => $this->session->userdata('identity'),
+									  $this->identity_column => $this->session->local_userdata('identity'),
 									  'active' => '1'
 								  ])
 								  ->limit(1)
@@ -1011,7 +1011,7 @@ class Ion_auth_model extends CI_Model
 								  ->get($this->tables['users']);
 				if ($query->num_rows() === 1)
 				{
-					$this->session->set_userdata('last_check', time());
+					$this->session->local_set_userdata('last_check', time());
 				}
 				else
 				{
@@ -1019,14 +1019,14 @@ class Ion_auth_model extends CI_Model
 
 					$identity = $this->config->item('identity', 'ion_auth');
 
-					$this->session->unset_userdata([$identity, 'id', 'user_id']);
+					$this->session->local_unset_userdata([$identity, 'id', 'user_id']);
 
 					return FALSE;
 				}
 			}
 		}
 
-		return (bool)$this->session->userdata('identity');
+		return (bool)$this->session->local_userdata('identity');
 	}
 
 	/**
@@ -1504,7 +1504,7 @@ class Ion_auth_model extends CI_Model
 		$this->trigger_events('user');
 
 		// if no id was passed use the current users id
-		$id = isset($id) ? $id : $this->session->userdata('user_id');
+		$id = isset($id) ? $id : $this->session->local_userdata('user_id');
 
 		$this->limit(1);
 		$this->order_by($this->tables['users'].'.id', 'desc');
@@ -1528,7 +1528,7 @@ class Ion_auth_model extends CI_Model
 		$this->trigger_events('get_users_group');
 
 		// if no id was passed use the current users id
-		$id || $id = $this->session->userdata('user_id');
+		$id || $id = $this->session->local_userdata('user_id');
 
 		return $this->db->select($this->tables['users_groups'].'.'.$this->join['groups'].' as id, '.$this->tables['groups'].'.name, '.$this->tables['groups'].'.description')
 		                ->where($this->tables['users_groups'].'.'.$this->join['users'], $id)
@@ -1548,7 +1548,7 @@ class Ion_auth_model extends CI_Model
 	{
 		$this->trigger_events('in_group');
 
-		$id || $id = $this->session->userdata('user_id');
+		$id || $id = $this->session->local_userdata('user_id');
 
 		if (!is_array($check_group))
 		{
@@ -1608,7 +1608,7 @@ class Ion_auth_model extends CI_Model
 		$this->trigger_events('add_to_group');
 
 		// if no id was passed use the current users id
-		$user_id || $user_id = $this->session->userdata('user_id');
+		$user_id || $user_id = $this->session->local_userdata('user_id');
 
 		if(!is_array($group_ids))
 		{
@@ -1950,7 +1950,7 @@ class Ion_auth_model extends CI_Model
 		    'last_check'           => time(),
 		];
 
-		$this->session->set_userdata($session_data);
+		$this->session->local_set_userdata($session_data);
 
 		$this->trigger_events('post_set_session');
 
@@ -2068,7 +2068,7 @@ class Ion_auth_model extends CI_Model
 				}
 
 				// Regenerate the session (for security purpose: to avoid session fixation)
-				$this->session->sess_regenerate(FALSE);
+				$this->session->local_sess_regenerate(FALSE);
 
 				$this->trigger_events(['post_login_remembered_user', 'post_login_remembered_user_successful']);
 				return TRUE;

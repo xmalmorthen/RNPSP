@@ -14,7 +14,7 @@ if ( ! function_exists('renderMenu'))
             
             $response = $query->result();
             foreach ($response as $key => $value) {
-                $value = getMenu($value)
+                $value = getMenu($value);
             }
 
         } else {
@@ -32,7 +32,7 @@ if ( ! function_exists('renderMenu'))
         $mnu = $response;
 
         foreach ($response as $key => $value) {
-            $value = getMenu($value->idMnu)
+            $value = getMenu($value->idMnu);
         }
 
 
@@ -42,7 +42,7 @@ if ( ! function_exists('renderMenu'))
         $CI->db->where('id',$idMnu);
 
         if ($mnu->idSumMnu) {
-            getMenu()
+            getMenu();
         }
 
 
@@ -71,7 +71,7 @@ if ( ! function_exists('renderMenu'))
                 $mnu = $response;
 
                 foreach ($mnu as $key => $value) {
-                    $value = getMenu($value->idMnu)
+                    $value = getMenu($value->idMnu);
                 }
             }
             catch (Exception $e) {

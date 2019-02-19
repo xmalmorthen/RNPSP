@@ -1,0 +1,95 @@
+<div class="portlet light ">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="icon-settings font-red"></i>
+            <span class="caption-subject font-red sbold uppercase">Autorizadores</span>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="table-scrollable">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th> # </th>
+                        <th> Descripcion </th>
+                        <th> URL </th>
+                        <th> Tipo </th>
+                        <th> Paramentros Entrada </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr> 
+                        <td> 1 </td>
+                        <td> Obtiene el <b>listado de autorizadores</b> por idDireccionArea </td>
+                        <td> 
+                            <b>URL completo:</b><br/>
+                            <?php echo site_url('/api/catalogos/autorizadores'); ?>
+                            <hr/>
+                            <b>URL sin path:</b><br/>
+                            api/catalogos/autorizadores
+                            <hr/>
+                            <b>Llamar desde controlador:</b><br/>
+                            $this->load->model('api/DeAutorizadores_model');<br/>
+                            $dependencias = $this->DeAutorizadores_model->getUsuarios_idDireccionArea( {idDireccionArea} );
+                                 
+                        </td>
+                        <td> GET </td>
+                        <td>
+                            <ul>
+                                <li>id( {idDireccionArea} )</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr> 
+                        <td> 2 </td>
+                        <td> <b>Agrega</b> un autorizador </td>
+                        <td> 
+                            <b>URL completo:</b><br/>
+                            <?php echo site_url('/api/catalogos/autorizador'); ?>
+                            <hr/>
+                            <b>URL sin path:</b><br/>
+                            api/catalogos/autorizador
+                            <hr/>
+                            <b>Llamar desde controlador:</b><br/>
+                            $this->load->model('api/DeAutorizadores_model');<br/>
+                            $dependencias = $this->DeAutorizadores_model->set_Autorizador({idUsuario},{idDireccionArea});
+                                 
+                        </td>
+                        <td> POST </td>
+                        <td>
+                            <ul>
+                                <li>idUsuario</li>
+                                <li>idDireccionArea</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr> 
+                        <td> 3 </td>
+                        <td> <b>Elimina</b> un autorizador </td>
+                        <td> 
+                            <b>URL completo:</b><br/>
+                            <?php echo site_url('/api/catalogos/autorizador'); ?>
+                            <hr/>
+                            <b>URL sin path:</b><br/>
+                            api/catalogos/autorizador
+                            <hr/>
+                            <b>Llamar desde controlador:</b><br/>
+                            $this->load->model('api/DeAutorizadores_model');<br/>
+                            $dependencias = $this->DeAutorizadores_model->delete_Autorizador({idUsuario},{idDireccionArea});
+                                 
+                        </td>
+                        <td> DELETE </td>
+                        <td>
+                            <ul>
+                                <li>idUsuario</li>
+                                <li>idDireccionArea</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+   </div>
+</div>

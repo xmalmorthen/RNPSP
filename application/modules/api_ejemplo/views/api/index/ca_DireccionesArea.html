@@ -1,0 +1,47 @@
+<div class="portlet light ">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="icon-settings font-red"></i>
+            <span class="caption-subject font-red sbold uppercase">Catalogo de Direcciones de Area</span>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="table-scrollable">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th> # </th>
+                        <th> Descripcion </th>
+                        <th> URL </th>
+                        <th> Tipo </th>
+                        <th> Paramentros Entrada </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr> 
+                        <td> 1 </td>
+                        <td> Obtiene el <b>listado completo</b> de tipo de articulos </td>
+                        <td> 
+                            <b>URL completo:</b><br/>
+                            <?php echo site_url('/api/catalogos/direccionesArea'); ?>
+                            <hr/>
+                            <b>URL sin path:</b><br/>
+                            api/catalogos/direccionesArea
+                            <hr/>
+                            <b>Llamar desde controlador:</b><br/>
+                            $this->load->model('api/CaDireccionesArea_model');<br/>
+                            $dependencias = $this->CaDireccionesArea_model->get_idDireccionGeneral({id_DireccionGeneral},true);
+                        </td>
+                        <td> GET </td>
+                        <td>
+                            <ul>
+                                <li>id(id_DireccionGeneral)</li>
+                                <li>activo <b>(opcional)</b> (1: trae todos los activos)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+   </div>
+</div>

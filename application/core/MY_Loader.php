@@ -23,7 +23,11 @@
  * @category	Loader
  * @link		http://codeigniter.com/user_guide/libraries/loader.html
  */
-class MY_Loader extends CI_Loader
+
+/* load the MX_Loader class */
+require APPPATH."third_party/MX/Loader.php";
+
+class MY_Loader extends MX_Loader
 {
     /**
      * Keep track of which sparks are loaded. This will come in handy for being
@@ -49,10 +53,6 @@ class MY_Loader extends CI_Loader
         {
             define('SPARKPATH', 'sparks/');
         }
-        if(!defined('EXT'))
-        {
-            define('EXT', '.php');
-        }
 
         $this->_is_lt_210 = (is_callable(array('CI_Loader', 'ci_autoloader'))
                                || is_callable(array('CI_Loader', '_ci_autoloader')));
@@ -66,7 +66,7 @@ class MY_Loader extends CI_Loader
      *  can avoid the awkward version-specific logic.
      * @return Loader
      */
-    function initialize()
+    function initialize($controller = NULL)
     {
         parent::initialize();
 
@@ -154,7 +154,7 @@ class MY_Loader extends CI_Loader
 	 * @return void
 	 */
 	function _ci_autoloader($basepath = NULL)
-	{        
+	{
 		$this->ci_autoloader($basepath);
 	}
 
