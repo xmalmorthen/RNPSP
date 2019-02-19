@@ -307,9 +307,6 @@
                             <select  class="form-control" id="pID_TIPO_MOV_LAB" name="pID_TIPO_MOV_LAB" required >
                                 <option value="">Seleccione</option>
                             </select>
-
-                            <select  class="form-control" id="pID_TIPO_MOV_LAB" name="pID_TIPO_MOV_LAB" data-error="#err_pID_TIPO_MOV_LAB" data-query='RG51N2cyVWNFVVp5Rlc5WDYydU0wcm0wbys4dElkSU1uaHBpTTJHMEJqOGVqdmRkUXJRUzB0TVZIa2Y0UldSWGpiMS9xQXhOWE5oVndVN0QzSFpHWHI4NEVzWTRIRU5RTmxjS09EK243V002bi9RV1ZUTU0waGRHdWlHSzFaT04=' required></select>
-                            <span id="err_pID_TIPO_MOV_LAB"></span>
                         </div>
                         <div class="col-md-4">
                             <span class="clr">*</span>Tipo de separación <!-- Se llena del catalogo "MOTIVO_MOV_LAB" -->
@@ -417,7 +414,12 @@
                     </div>
                     <div class="col-md-4" style="margin-top: 42px;">
                         ¿Conoce el reglamento de los reconocimientos? <!-- S/N = SI/NO -->
-                        <select id="pCONOCE_REG_RECON" name="pCONOCE_REG_RECON" class="form-control"><option value="" id="">Seleccione</option></select>
+                        <select class="form-control" id="pCONOCE_REG_RECON" name="pCONOCE_REG_RECON" data-error="#err_pCONOCE_REG_RECON" data-query=''>
+                            <option disabled selected value>Seleccione una opción</option>
+                            <option value="S">SI</option>
+                            <option value="N">NO</option>
+                        </select>
+                        <span id="err_pCONOCE_REG_RECON"></span>
                     </div>
                     <div class="col-md-4" style="margin-top: 21px;">
                         ¿Razones por las que no ha obtenido un reconocimiento?
