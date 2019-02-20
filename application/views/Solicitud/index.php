@@ -2,180 +2,65 @@
 <link rel="stylesheet" href="<?php echo base_url('assets/css/dise.css'); ?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/vendor/datatable/jquery.dataTables.min.css'); ?>">
 <link rel="stylesheet" href="<?php echo base_url("assets/vendor/datatable/dataTables.bootstrap.min.css"); ?>">
-<link rel="stylesheet" href="<?php echo base_url("assets/vendor/plugins/select2/css/select2.min.css"); ?>">
-<link rel="stylesheet" href="<?php echo base_url("assets/vendor/plugins/datetimepicker/css/daterangepicker.css"); ?>">
-<link rel="stylesheet" href="<?php echo base_url('assets/css/views/ejemplosView.css') ?>">
 <!-- /CSS -->
 
-
-    <div class="_container">
-
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" id="Administracion-tab" data-toggle="tab" href="#Administracion" role="tab" aria-controls="Administracion" aria-selected="true">Administración</a>
-            </li>
-    </ul>
-
-    <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="Capacitacion_seguridad_publica" role="tabpanel" aria-labelledby="Capacitacion_seguridad_publica-tab">
-        <form action="#" autocomplete="off">
-
-            <br>
-            <div class="row">
-                <div class="col-md-12">
-                <!-- BEGIN TABLE -->
-                <table id="tableAdministrarsolicitud" class="table display" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>Folio</th>
-                            <th>Nombre</th>
-                            <th>Apellido paterno</th>
-                            <th>Apellido materno</th>
-                            <th>Fecha de registro</th>
-                            <th>Tipo de solicitud</th>
-                            <th>Estatus</th>
-                            <th colspan="4" style="text-align: center">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    
-                        <td>
-                            <a href="<?php echo site_url("Solicitud/Ver") ?>"><i class="fa fa-eye"></i></a>
-                        </td>
-                        <td>
-                            <a href="<?php echo site_url("Solicitud/Modificar") ?>"><i class="fa fa-pencil-square-o"></i></a>
-                        </td>
-                        <td>
-                            <a href="#"><i class="fa fa-trash"></i></a>
-                        </td>
-                        <td>
-                            <div class="checkbox">
-                            
-                                <input type="checkbox"  name="Select" id="" class="checks">
-                                
-                            </div>
-                        </td>
-                        </tr>
-                        <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                     
-                        <td>
-                            <a href="<?php echo site_url("Solicitud/Ver") ?>"><i class="fa fa-eye"></i></a>
-                        </td>
-                        <td>
-                            <a href="<?php echo site_url("Solicitud/Modificar") ?>"><i class="fa fa-pencil-square-o"></i></a>
-                        </td>
-                        <td>
-                            <a href="#"><i class="fa fa-trash"></i></a>
-                        </td>
-                         <td>
-                            <div class="checkbox">
-                            
-                                <input type="checkbox"  name="Select" id="" class="checks">
-                                
-                            </div>
-                        </td>
-                        </tr>
-                        <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      
-                        <td>
-                            <a href="<?php echo site_url("Solicitud/Ver") ?>"><i class="fa fa-eye"></i></a>
-                        </td>
-                        <td>
-                            <a href="<?php echo site_url("Solicitud/Modificar") ?>"><i class="fa fa-pencil-square-o"></i></a>
-                        </td>
-                        <td>
-                            <a href="#"><i class="fa fa-trash"></i></a>
-                        </td>
-                         <td>
-                            <div class="checkbox">
-                            
-                                <input type="checkbox"  name="Select" id="" class="checks">
-                                
-                            </div>
-                        </td>
-                        </tr>
-
-                    </tbody>
-                </table>
-                <!-- END TABLE -->
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                
-                    <button class="btn btn-default" id="Nuevo">Nuevo</button>
-                
-                </div>
-
-                <div class="col-md-7">
-                
-                </div>
-                <div class="col-md-2">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button class="btn btn-default" id="Imprimir" disabled>Imprimir</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-default" id="Replicar" disabled>Replicar</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </form>
-        <div>
+<div class="row bodyVew">
+    <div class="col-md-12 mb-3">
+        <button class="btn btn-default" id="Nuevo"> Nuevo </button>
     </div>
-        <br>
+    <div class="col-md-12">
+        <!-- BEGIN TABLE -->
+        <table id="tableAdministrarsolicitud" class="d-none" style="width:100%">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" name='checkAll' id='checkAll' class='checkAll'></th>
+                    <th>Folio</th>
+                    <th>Nombre</th>
+                    <th>Apellido paterno</th>
+                    <th>Apellido materno</th>
+                    <th>Fecha de registro</th>
+                    <th>Tipo de solicitud</th>
+                    <th>Estatus</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($items as $key => $value) { ?>
+                    <tr>
+                        <td>
+                            <div class="checkbox">
+                                <input type="checkbox" class="checkItem" data-idReg="<?php echo $value['options']['id']; ?>">
+                            </div>
+                        </td>
+                <?php foreach ($value as $item => $valueItem) {
+                    if (!is_array($valueItem)) {?>
+                        <td><?php echo $valueItem ? $valueItem : ''; ?></td>
+                <?php }} ?>
+                        <td>
+                            <a class='m-2' href="<?php echo site_url("Solicitud/Ver/{$value['options']['id']}") ?>" title='Ver'><i class="fa fa-eye fa-2x"></i></a>
+                            <a class='m-2' href="<?php echo site_url("Solicitud/Modificar/{$value['options']['id']}") ?>" title='Modificar'><i class="fa fa-pencil-square-o fa-2x"></i></a>
+                            <a class='m-2' href="<?php echo site_url("Solicitud/Eliminar/{$value['options']['id']}") ?>" title='Eliminar'><i class="fa fa-trash fa-2x"></i></a>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+        <!-- END TABLE -->
     </div>
+</div>
+<div class="row pull-right">
+    <div class="col-md-12">
+        <button class="btn btn-default m-1" id="Imprimir">Imprimir</button>
+        <button class="btn btn-default m-1" id="Replicar">Replicar</button>
+    </div>
+</div>
 
 <!-- JS -->
 <script src="<?php echo base_url("assets/vendor/datatable/jquery.dataTables.min.js"); ?>"></script>
-<script src="<?php echo base_url('assets/vendor/plugins/select2/js/select2.min.js') ?>"></script>
-<script src="<?php echo base_url('assets/vendor/plugins/datetimepicker/js/daterangepicker.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/views/solicitud/index.js') ?>"></script>
 <script>
-    
-  $(function() {
-    $(".checks").on("click", function(e){
-        
-        console.log("hola");
-    
-        
-        $("#Imprimir").disabled= false;
-       
-    })
-
-    $("#Nuevo").on("click",function(e){
-        e.preventDefault();
-        location.href="<?php echo site_url("Solicitud/Alta");?>";
-    })
-
-
-
-    
+    $(function() {
+        objViewIndex.init();    
     });
-
-    
 </script>
 <!-- /JS -->
