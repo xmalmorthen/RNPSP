@@ -18,8 +18,13 @@
 			// TITLE BODY PAGE
 			$this->session->set_flashdata('titleBody','[ Usuarios ] - Usuarios - Administración');
 			// /TITLE BODY PAGE
+			$this->db->select('id,NOMBRE,PATERNO,MATERNO,ID_ADSCRIPCION,ID_JEFE')
+				->from('usuarios');
+			$query =  $this->db->get();
+			$data['usuarios'] = $query->result_array();
 
-			$this->load->view('Usuarios/index');
+			$this->load->library('parser');
+			$this->parser->parse('Usuarios/index',$data);
         }
         public function Registro(){
 

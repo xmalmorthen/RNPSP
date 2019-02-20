@@ -93,6 +93,9 @@ var _app = Backbone.View.extend({
 			}
 		});
 	},
+	regresar: function(){
+		window.location.replace(base_url + 'Usuarios');
+	},
 	render: function () {
 		return this;
 	}

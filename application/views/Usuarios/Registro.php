@@ -59,10 +59,10 @@
 			<div class="col-md-4">
 				<div class="row">
 					<div class="col-md-6">
-						<button type="button" onclick="app.guardar();" class="btn btn-default">Guardar</button>
+						<button type="button" onclick="app.guardar();" class="btn btn-defaul">Guardar</button>
 					</div>
 					<div class="col-md-6">
-						<button class="btn btn-default">Regresar</button>
+						<button type="button" onclick="app.regresar();" class="btn btn-default">Regresar</button>
 					</div>
 				</div>
 			</div>

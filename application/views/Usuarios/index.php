@@ -29,13 +29,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                {usuarios}
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                    <td></td>
+                                        <td>{NOMBRE}</td>
+                                        <td>{PATERNO}</td>
+                                        <td>{MATERNO}</td>
+                                        <td>{ID_ADSCRIPCION}</td>
+                                        <td>{ID_JEFE}</td>
+                                        
                                         <td>
                                             <a href="<?php echo site_url("personaCedula/index") ?>"><i class="fa fa-print"></i></a>
                                         </td>
@@ -43,6 +45,7 @@
                                         <td><a href="<?php echo site_url('Usuarios/Modificar')?>"><i class="fa fa-pencil-square-o"></i></a> </td>
                                         <td> <a href="<?php echo site_url('Usuarios/darBaja')?>"<i class="fa fa-trash-o" aria-hidden="true"></i></a> </td>
                                     </tr>
+                                    {/usuarios}
                                 </tbody>
                             </table>
                             <!-- END TABLE -->
