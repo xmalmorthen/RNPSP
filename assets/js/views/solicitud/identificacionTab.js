@@ -127,7 +127,7 @@ var objViewIdentificacion = {
                     //VALID FORM
                     try {
                         if (!objViewIdentificacion.vars.identificacion.forms.Adscripcion_actual_form.valid())
-                            //throw "Invalid FORM"; //TODO: Xmal - Quitar comentario al implementar
+                            throw "Invalid FORM";
 
                         $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
@@ -195,7 +195,7 @@ var objViewIdentificacion = {
         }
     },
     actions : {        
-        discartChanges : function(e){   
+        discartChanges : function(e){ 
             dynTabs.markTab(dynTabs.tabs.prebTab.linkRef,'<span class="text-warning tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true"></i></span>');
             Swal.close();
                 

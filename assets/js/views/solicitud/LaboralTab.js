@@ -116,7 +116,7 @@ var objViewLaboral = {
                     //VALID FORM
                     try {
                         if (!objViewLaboral.vars.laboral.forms.Adscripcion_actual_form.valid())
-                            //throw "Invalid FORM"; //TODO: Xmal - Quitar comentario al implementar
+                            throw "Invalid FORM";
 
                         $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
@@ -217,7 +217,6 @@ var objViewLaboral = {
         discartChanges : function(e){   
             dynTabs.markTab(dynTabs.tabs.prebTab.linkRef,'<span class="text-warning tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true"></i></span>');
             Swal.close();
-                
             dynTabs.tabs.prebTab.tabForm.removeData('hasChanged');
             dynTabs.tabs.prebTab.tabForm.data('hasDiscardChanges',true);
             dynTabs.tabs.prebTab.tabForm.find('.btnSiguienteAnterior.siguienteTab').trigger('click');

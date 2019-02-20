@@ -1,4 +1,5 @@
 var dynTabs = {
+    mode : '',
     tabs : {
         currentTab : {
             tabPanel : null,
@@ -52,23 +53,22 @@ var dynTabs = {
                         }
                     }                    
                 }
-            } 
-            //TODO: Xmal - Descomentar al implementar
-            // else {
-            //     var linkRef = $('#' + e.currentTarget.id);
+            }             
+            else {
+                var linkRef = $('#' + e.currentTarget.id);
                 
-            //     if (!linkRef.hasClass('errorValidation')) {
-            //         dynTabs.markTab( linkRef,'<span class="text-danger tabMark errorValidation mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i></span>');    
-            //     }                
-            //     form.setAlert({
-            //         alertType :  'alert-danger',
-            //         dismissible : true,
-            //         header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
-            //         msg : 'Formulario incompleto'
-            //     });
+                if (!linkRef.hasClass('errorValidation')) {
+                    dynTabs.markTab( linkRef,'<span class="text-danger tabMark errorValidation mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i></span>');    
+                }                
+                form.setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : 'Formulario incompleto'
+                });
 
-            //     e.preventDefault();
-            // }
+                e.preventDefault();
+            }
     },
     showTab : function(e){
         var tabRefObj = $(e.currentTarget.hash),
@@ -80,7 +80,7 @@ var dynTabs = {
 
         populate.form(dynTabs.tabs.currentTab.tabForm); 
 
-        MyCookie.tabRef.save('childTab',e.currentTarget.id);       
+        MyCookie.tabRef.save(dynTabs.mode +'ChildTab',e.currentTarget.id);       
     },
     setCurrentTab : function(tabContent){
         dynTabs.tabs.currentTab.linkRef = tabContent.find('.tab-pane.active.show').find('.nav.nav-tabs').find('a.nav-link.active');
