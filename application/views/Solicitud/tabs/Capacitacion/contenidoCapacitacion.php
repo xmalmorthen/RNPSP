@@ -1,6 +1,6 @@
-     <div class="tab-pane fade" id="Idiomas_dialectos" role="tabpanel" aria-labelledby="Idiomas_dialectos-tab">
+     <div class="tab-pane fade show active" id="Idiomas_dialectos" role="tabpanel" aria-labelledby="Idiomas_dialectos-tab">
         <div class="_container">
-            <form action="#" name="Idiomas_dialectos_form" id="Idiomas_dialectos_form"autocomplete="off">
+            <form action="#" name="Idiomas_dialectos_form" id="Idiomas_dialectos_form" autocomplete="off">
                 <br>
                 <div class="row">
                     <div class="col-md-4"></div>
