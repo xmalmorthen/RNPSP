@@ -416,7 +416,7 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estatura (cm)
-                        <input type="text" class="form-control" id="pCAT_ESTATURA" name="pCAT_ESTATURA" required minlength="1" maxlength="5">
+                        <input type="number" class="form-control" id="pCAT_ESTATURA" name="pCAT_ESTATURA" required min="1" max="999">
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Peso (kg)
@@ -426,7 +426,6 @@
             <input type="hidden" id="pID_ALTERNA_Media_filiacion" name="pID_ALTERNA_Media_filiacion" value="" >
             <input type="hidden" id="pID_ESTADO_EMISOR_Media_filiacion" name="pID_ESTADO_EMISOR_Media_filiacion" value="" >
             <input type="hidden" id="pID_EMISOR_Media_filiacion" name="pID_EMISOR_Media_filiacion" value="" >
-            </form>
             <br>
             <div class="row">
                 <div class="col-md-4">
@@ -440,6 +439,7 @@
                     <center><input type="button" name="next" id="siguienteMediafiliacion" class="btn btn-default btnSiguienteAnterior siguienteTab" style="height:40px;" data-nexttab="#Datos-tab" value="Siguiente"/></center>
                 </div>
             </div>
+            </form>
         </div>
     </div>
     
@@ -828,7 +828,7 @@
                 <input type="hidden" id="pID_ESTADO_EMISOR_Datos" name="pID_ESTADO_EMISOR_Datos" value="" >
                 <input type="hidden" id="pID_EMISOR_Datos" name="pID_EMISOR_Datos" value="" >
                 
-            </form>
+            
                 <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
@@ -841,9 +841,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4"></div>
-            </div>
-
+                    <div class="col-md-4"></div>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -934,22 +934,21 @@
                  <input type="hidden" id="pID_ALTERNA_Senas" name="pID_ALTERNA_Senas" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Senas" name="pID_ESTADO_EMISOR_Senas" value="" >
                 <input type="hidden" id="pID_EMISOR_Senas" name="pID_EMISOR_Senas" value="" >
-                
-            </form>
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorSeña" data-nexttab="#Datos-tab"> Anterior</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="SiguienteSeña" data-nexttab="#Ficha_fotografica-tab">Siguiente</button>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorSeña" data-nexttab="#Datos-tab"> Anterior</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="SiguienteSeña" data-nexttab="#Ficha_fotografica-tab">Siguiente</button>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-md-4"></div>
                 </div>
-                <div class="col-md-4"></div>
-            </div>
+            </form>
         </div>
     </div>
 
@@ -1044,22 +1043,21 @@
                  <input type="hidden" id="pID_ALTERNA_Datos" name="pID_ALTERNA_Datos" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Datos" name="pID_ESTADO_EMISOR_Datos" value="" >
                 <input type="hidden" id="pID_EMISOR_Datos" name="pID_EMISOR_Datos" value="" >
-                
-            </form>
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorDecadacticar" data-nexttab="#Ficha_fotografica-tab"> Anterior</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteDecadactilar" data-nexttab="#Digitalizacion_de_documento-tab">Siguiente</button>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorDecadacticar" data-nexttab="#Ficha_fotografica-tab"> Anterior</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteDecadactilar" data-nexttab="#Digitalizacion_de_documento-tab">Siguiente</button>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-md-4"></div>
                 </div>
-                <div class="col-md-4"></div>
-            </div>
+            </form>
         </div>
     </div>
 
@@ -1152,24 +1150,23 @@
                  <input type="hidden" id="pID_ALTERNA_Voz" name="pID_ALTERNA_Voz" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Voz" name="pID_ESTADO_EMISOR_Voz" value="" >
                 <input type="hidden" id="pID_EMISOR_Voz" name="pID_EMISOR_Voz" value="" >
-                
-            </form>
-            <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <button class="btn btn-default" id="anteriorVoz" data-nexttab="#Digitalizacion_de_documento-tab"> Anterior</button>
+                <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button class="btn btn-default" id="anteriorVoz" data-nexttab="#Digitalizacion_de_documento-tab"> Anterior</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="btn btn-default btnSiguienteAnterior siguienteTab endTab" id="finalizarVoz">Finalizar</button>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior siguienteTab endTab" id="finalizarVoz">Finalizar</button>
-                            </div>
-                        </div>
 
-                    </div>
-                    <div class="col-md-4"></div>
+                        </div>
+                        <div class="col-md-4"></div>
 
                 </div>
+            </form>
         </div>
     </div>
 
@@ -1344,24 +1341,22 @@
                  <input type="hidden" id="pID_ALTERNA_Fotografica" name="pID_ALTERNA_Fotografica" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Fotografica" name="pID_ESTADO_EMISOR_Fotografica" value="" >
                 <input type="hidden" id="pID_EMISOR_Fotografica" name="pID_EMISOR_Fotografica" value="" >
-                
-            </form>
-            <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorFotografica" data-nexttab="#Senas_particulares-tab"> Anterior</button>
+                <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorFotografica" data-nexttab="#Senas_particulares-tab"> Anterior</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteFotografica" data-nexttab="#Registro_decadactilar-tab">Siguiente</button>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteFotografica" data-nexttab="#Registro_decadactilar-tab">Siguiente</button>
-                            </div>
+
                         </div>
-
-                    </div>
-                    <div class="col-md-4"></div>
-
+                        <div class="col-md-4"></div>
                 </div>
+            </form>
         </div>
     </div>
 
@@ -1442,22 +1437,21 @@
                  <input type="hidden" id="pID_ALTERNA_Documento" name="pID_ALTERNA_Documento" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Documento" name="pID_ESTADO_EMISOR_Documento" value="" >
                 <input type="hidden" id="pID_EMISOR_Documento" name="pID_EMISOR_Documento" value="" >
-                
-            </form>
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorDocumento" data-nexttab="#Registro_decadactilar-tab"> Anterior</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteDocumento" data-nexttab="#Identificacion_de_voz-tab">Siguiente</button>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorDocumento" data-nexttab="#Registro_decadactilar-tab"> Anterior</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteDocumento" data-nexttab="#Identificacion_de_voz-tab">Siguiente</button>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-md-4"></div>
                 </div>
-                <div class="col-md-4"></div>
-            </div>
+            </form>
         </div>
     </div>
 

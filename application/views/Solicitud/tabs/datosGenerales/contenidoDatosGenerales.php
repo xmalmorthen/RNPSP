@@ -1,3 +1,7 @@
+<?php 
+    $sessionUser = $this->session->userdata(SESSIONVAR);    
+?>
+
     <div class="tab-pane fade show active" id="Datos_personales" role="tab-panel" aria-labelledby="Datos_personales-tab">
         <div class="_container">
             <form action="#" id="Datos_personales_form" name="Datos_personales_form" autocomplete="off">
@@ -129,7 +133,10 @@
                     </div>
                 </div>
                 <br><hr><br>
-                <div class="row">
+                
+                <!-- TODO: Xmal - Implementar en class del elemento abajo para mostrar u ocultar sección -->
+                <?php //echo ($sessionUser[{perfil}] != { usuario de c4 }) ? 'd-none' : ''; ?>                
+                <div class="row ">
                     <div class="col-md-4">
                         CIB                        
                         <input type="text" id="CIB" name="CIB" class="form-control" maxlength="30">

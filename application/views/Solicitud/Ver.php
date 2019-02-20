@@ -1,4 +1,3 @@
-
 <div class="_container">
     <!-- LISTA DE TABS DEL MENU PRINCIPAL -->
     <div class="row">
@@ -66,19 +65,4 @@
                 </div>
             </div>
         </div>
-
-
-    
-
-
-  
 </div>
-
-
-<script type="text/javascript">
-
-$(function() {
-       
-
-    });
-</script>

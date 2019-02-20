@@ -129,7 +129,7 @@ var objViewDatosGenerales = {
                     //VALID FORM
                     try {
                         if (!objViewDatosGenerales.vars.datosGenerales.forms.Datos_personales_form.valid())
-                            //throw "Invalid FORM"; //TODO: Xmal - Quitar comentario al implementar
+                            throw "Invalid FORM";
 
                         $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
@@ -268,7 +268,7 @@ var objViewDatosGenerales = {
         }
     },
     actions : {        
-        discartChanges : function(e){   
+        discartChanges : function(e){
             dynTabs.markTab(dynTabs.tabs.prebTab.linkRef,'<span class="text-warning tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true"></i></span>');
             Swal.close();
                 
