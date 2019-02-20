@@ -1,109 +1,114 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class UserSession extends CI_Controller {
+class UserSession extends CI_Controller
+{
 
-	public function index(){
-		// TITLE BODY PAGE
-		$this->session->set_flashdata('titleBody','Iniciar sesión');
-		// /TITLE BODY PAGE
+  public function index()
+  {
+    // TITLE BODY PAGE
+    $this->session->set_flashdata('titleBody', 'Iniciar sesión');
+    // /TITLE BODY PAGE
 
-		// CONFIGURATIONS
-		$this->session->set_flashdata('noLayout',TRUE);
-		// /CONFIGURATIONS
+    // CONFIGURATIONS
+    $this->session->set_flashdata('noLayout', true);
+    // /CONFIGURATIONS
 
-		$model['toGo'] = $this->input->get('toGo');
+    $model['toGo'] = $this->input->get('toGo');
 
-		$this->load->view('Session/logInView',$model);
-	}
+    $this->load->view('Session/logInView', $model);
+  }
 
-	public function ajaxLogIn(){
-		$response = array('status' => false, 'message' => array('No especificado'));
+  public function ajaxLogIn()
+  {
+    $response = array('status' => false, 'message' => array('No especificado'));
 
-		if (! $this->input->is_ajax_request()) {
-			redirect('Error/e404','location');
+    if (!$this->input->is_ajax_request()) {
+      redirect('Error/e404', 'location');
+    }
+
+    $responseModel = array(
+      'status' => false,
+      'message' => 'No especificado'
+    );
+
+    $model = array();
+    parse_str($_POST["model"], $model);
+    $_POST['nombreUsuario'] = $model['nombreUsuario'];
+    $_POST['password'] = $model['pwd'];
+
+
+    if ($this->input->server('REQUEST_METHOD') != 'POST') {
+      $response['message'] = 'method get not allowed';
+    } else {
+      $model = array();
+      parse_str($_POST["model"], $model);
+      $nombreUsuario = $this->input->post('nombreUsuario', true); //'admin@admin.com';
+      $password = $this->input->post('password', true); //'password';
+
+      $this->load->library('form_validation');
+      $this->form_validation->set_rules('nombreUsuario', 'Nombre de usuario', 'required');
+      $this->form_validation->set_rules('password', 'Contraseña', 'required');
+
+      if ($this->form_validation->run() === true) {
+        if ($this->ion_auth->login($nombreUsuario, $password)) {
+          $response['status'] = true;
+          $response['message'] = array(trim($this->ion_auth->messages()));
+
+          $session = $this->session->local_userdata();
+          $this->load->model('Usuarios_model');
+          $user = $this->Usuarios_model->SessionById($session['user_id']);
+          $this->session->local_set_userdata(array_merge($session, $user));
+        } else {
+          $response['message'] = array($this->ion_auth->errors());
         }
-		
-        $responseModel = array ( 
-            'status' => false,
-            'message' => 'No especificado'
-		);
+      } else {
+        $response['message'] = $this->form_validation->error_array();
+      }
+    }
+    $response['message'] = count($response['message']) > 1 ? ul($response['message']) : current($response['message']);
+    $response['toGo'] = strlen($model['toGo']) > 0 ? base64_decode($model['toGo']) : '';
 
-		$model = array();
-		parse_str($_POST["model"], $model);
-		$_POST['nombreUsuario'] = $model['nombreUsuario'];
-		$_POST['password'] = $model['pwd'];
+    $this->output
+      ->set_status_header(200)
+      ->set_content_type('application/json', 'utf-8')
+      ->set_output(json_encode($response))
+      ->_display();
+    exit;
+  }
 
-		
-		if ($this->input->server('REQUEST_METHOD') != 'POST') {
-			$response['message'] = 'method get not allowed';
-		} else {
-			$model = array();
-			parse_str($_POST["model"], $model);
-			$nombreUsuario = $this->input->post('nombreUsuario', true);//'admin@admin.com';
-			$password = $this->input->post('password', true);//'password';
-			
-			$this->load->library('form_validation');
-			$this->form_validation->set_rules('nombreUsuario', 'Nombre de usuario', 'required');
-			$this->form_validation->set_rules('password', 'Contraseña', 'required');
+  public function logOut()
+  {
+    $responseModel = array(
+      'status' => false,
+      'message' => 'No especificado'
+    );
 
-			if ($this->form_validation->run() === true) {
-				if ($this->ion_auth->login($nombreUsuario, $password)) {
-					$response['status'] = true;
-					$response['message'] = array(trim($this->ion_auth->messages()));
+    try {
+      $this->session->unset_userdata(SESSIONVAR);
+      $this->session->sess_destroy();
 
-					$session = $this->session->local_userdata();
-					$user = $this->ion_auth->select('id,username,email,CURP,NOMBRE,PATERNO,MATERNO')->user()->row_array();
-					$this->session->local_set_userdata(array_merge($session,$user));
-				} else {
-					$response['message'] = array($this->ion_auth->errors());
-				}
-			} else {
-				$response['message'] = $this->form_validation->error_array();
-			}
-		}
-		$response['message'] = count($response['message'])> 1? ul($response['message']) : current($response['message']);
-		$response['toGo'] = strlen($model['toGo']) > 0 ? base64_decode($model['toGo']) : '';
+      $responseModel['status'] = true;
+    } catch (Exception $e) {
+      $responseModel['message'] = $e->getMessage();
+    }
 
-		$this->output
-			->set_status_header(200)
-			->set_content_type('application/json', 'utf-8')
-			->set_output(json_encode($response))
-			->_display();
-		exit;
-	}
+    if (!$this->input->is_ajax_request()) {
+      if ($responseModel['status'] === true) {
+        redirect('/');
+      } else {
+        show_error($responseModel['message'], 500);
+      }
+    }
 
-	public function logOut(){		
-		$responseModel = array ( 
-			'status' => FALSE,
-			'message' => 'No especificado'
-		);
+    header('Content-type: application/json');
+    echo json_encode($responseModel);
+    exit;
+  }
 
-		try {
-			$this->session->unset_userdata(SESSIONVAR);
-        	$this->session->sess_destroy(); 
-			
-			$responseModel['status'] = TRUE;
-
-		} catch (Exception $e) {
-			$responseModel['message'] = $e->getMessage();
-		}
-
-		if (! $this->input->is_ajax_request()) {
-			if ($responseModel['status'] === TRUE) {
-				redirect('/');
-			} else {
-				show_error($responseModel['message'],500);
-			}
-		}
-		
-		header('Content-type: application/json');
-        echo json_encode( $responseModel );
-        exit;
-	}
-
-	public function renovateSession($GUID){
-        header('Content-type: application/json');
-        echo json_encode( $this->config->item('sess_time_to_update') );
-        exit;
-	}
+  public function renovateSession($GUID)
+  {
+    header('Content-type: application/json');
+    echo json_encode($this->config->item('sess_time_to_update'));
+    exit;
+  }
 }
