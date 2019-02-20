@@ -406,10 +406,13 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>¿Usa anteojos? <!-- S/N = SI/NO -->
-                        <select class="form-control" name="pCAT_LENTES" id="pCAT_LENTES" required></select>
+                        <select  class="form-control" id="pCAT_LENTES" name="pCAT_LENTES" data-error="#err_pCAT_LENTES" data-query='' required>
+                            <option disabled selected value>Seleccione una opción</option>
+                            <option value="S">SI</option>
+                            <option value="N">NO</option>
+                        </select>
 
-                        <select  class="form-control" id="pID_ENTIDAD_ADSCRIPCION_ACTUAL" name="pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-error="#err_pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-query=''></select>
-						<span id="err_pID_ENTIDAD_ADSCRIPCION_ACTUAL"></span>
+						<span id="err_pCAT_LENTES"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estatura (cm)
@@ -417,10 +420,7 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Peso (kg)
-                        <select class="form-control" name="pCAT_PESO" id="pCAT_PESO" required minlength="1" maxlength="10"></select>
-
-                        <select  class="form-control" id="pID_ENTIDAD_ADSCRIPCION_ACTUAL" name="pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-error="#err_pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-query=''></select>
-						<span id="err_pID_ENTIDAD_ADSCRIPCION_ACTUAL"></span>
+                        <input type="number" class="form-control" id="pCAT_PESO" name="pCAT_PESO" required min="1" max="999">                        
                     </div>
                 </div>
             <input type="hidden" id="pID_ALTERNA_Media_filiacion" name="pID_ALTERNA_Media_filiacion" value="" >
@@ -864,34 +864,26 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Tipo de seña <!-- Se llena del catálogo CAT_SENAS -->
-                        <select name="pID_TIPO_SENAS" id="pID_TIPO_SENAS" class="form-control" required></select>
-
-                        <select  class="form-control" id="pID_ENTIDAD_ADSCRIPCION_ACTUAL" name="pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-error="#err_pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-query='' required></select>
-						<span id="err_pID_ENTIDAD_ADSCRIPCION_ACTUAL"></span>
+                        <select  class="form-control" id="pID_TIPO_SENAS" name="pID_TIPO_SENAS" data-error="#err_pID_TIPO_SENAS" data-query='Rnd1cmhoK1NjUExNSms2RHpNV3NpczlncHlPWXp0YUtGUDBZa3RyTVJBZkZvOHVBTGoxWTBMR2VoTkFodEVxK21nd1hGcHI2OGkyS0tIaXpDYWhLY1ZvVTF3QXlnMW9hT0lpTm5Sb013SGE5VndkZjBPOFhaNGVxOG9KbEIvcUs=' required></select>
+						<span id="err_pID_TIPO_SENAS"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Lado <!-- Se llena del catalogo CAT_LADO   -->
-                        <select name="pLADO" id="pLADO" class="form-control" required></select>
-
-                        <select  class="form-control" id="pID_ENTIDAD_ADSCRIPCION_ACTUAL" name="pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-error="#err_pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-query='' required></select>
-						<span id="err_pID_ENTIDAD_ADSCRIPCION_ACTUAL"></span>
+                        <select  class="form-control" id="pLADO" name="pLADO" data-error="#err_pLADO" data-query='WkxPVGxTN3NGZEpvUnNSOFdYZWZJRTl3VGRsalFrelpQMnErU1VVWDdzZjRpMzVDSzliWngxSkhNZWg0SEVob1VCaUFPL1UzVG1pMmtyZmNZcnZVNDBtaFZPNlFRZGQwYlIvU3lJbFJyS3V3VlhxNGpWWHI4UHRLZG9FblRkVzA=' required></select>
+						<span id="err_pLADO"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Región <!-- Se llena del catálogo CAT_REGION -->
-                        <select name="pID_REGION" id="pID_REGION" class="form-control" required></select>
-
-                        <select  class="form-control" id="pID_ENTIDAD_ADSCRIPCION_ACTUAL" name="pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-error="#err_pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-query='' required></select>
-						<span id="err_pID_ENTIDAD_ADSCRIPCION_ACTUAL"></span>
+                        <select  class="form-control" id="pID_REGION" name="pID_REGION" data-error="#err_pID_REGION" data-query='d2NuNVhtRnE3UUQ1LzNTYUtFWXd0UmhSNlRNOGJFTlQvRm82ZGZUTlFaUVIzRERiQ1BKNlI1NExybUlOTStPcTAwNDNkaGVpN2lPMEhiZkhHcEUvWTU1SmQ2WDJ1aTVMd1pDek5LbXJsb05GWWtERHRPdXJJRC9wZzFONHFtQ0M=' required></select>
+						<span id="err_pID_REGION"></span>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Vista <!-- Se llenda del catalogo  CAT_FRONTALDORSAL -->
-                        <select name="pVISTA" id="pVISTA" class="form-control" required></select>
-
-                        <select  class="form-control" id="pID_ENTIDAD_ADSCRIPCION_ACTUAL" name="pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-error="#err_pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-query='' required></select>
-						<span id="err_pID_ENTIDAD_ADSCRIPCION_ACTUAL"></span>
+                        <select  class="form-control" id="pVISTA" name="pVISTA" data-error="#err_pVISTA" data-query='WWp1bXIxVk9VbEd1OWlRZTRZVmNMV0k0N0dzT0lWVElOMFU5RCtZUVpwQzF4QXpUalpudldSR1RRR2c2cXovWDJ4a2ZmOHM0c0xUOHJsNHJsMDNoaTVtZ3llcFRUeXh5SzdlT3VkUzlYeWE1M3JVUFMySEs1bmVIT2VDS29GVjVLZjdnQ2hNWU82SjlROTl0eWxreWp0djY4bDlXN2RVd2x0dVhWejdIeVQ0PQ==' required></select>
+						<span id="err_pVISTA"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Cantidad
@@ -1389,16 +1381,12 @@
                 <div class="row">
                     <div class="col-md-4">
                         Categoría de documento <!-- CAT_CATEGORIA_DOC -->
-                        <select name="" id="" class="form-control">
-                            <option value="">Seleccione</option>
-                        </select>
-
-                        <select  class="form-control" id="pID_ENTIDAD_ADSCRIPCION_ACTUAL" name="pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-error="#err_pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-query=''></select>
-						<span id="err_pID_ENTIDAD_ADSCRIPCION_ACTUAL"></span>
+                        <select  class="form-control" id="_categoriaDocumento" name="_categoriaDocumento" data-error="#err__categoriaDocumento" data-query='ZmV5OURhR3BURlJwc1NYRkVHMXNoV1kvOVBqdzgwZHB2Z0JueVR4QjZBS1hOYzdHQzB5QTc2V3NhK1VyM1V1N3hRTUhTWW9DWHlweTFCRzcrb1hhYnVreFpIeW9vTDIycUtIbkFuUlA0OW5WS0JQUG85cGE2ejk0WHUwRlJpWE16R0VEMnpZUzVCRUJqdDFqUi94V1ZYaEZ3RVBhNE9SVDZON2FGVjlkSjBVPQ==' required></select>
+						<span id="err__categoriaDocumento"></span>
                     </div>
                     <div class="col-md-4">
                         Fecha documento
-                        <input type="date" class="form-control">
+                        <input type="date" id="FECHA_DOCUMENTO" name="FECHA_DOCUMENTO" class="form-control">
                     </div>
                 </div>
                 <br>
@@ -1408,7 +1396,7 @@
                     </div>
                     <div class="col-md-4">
                         Seleccione un documento
-                        <input type="file">
+                        <input type="file" id="IMAGEN" name="IMAGEN">
                     </div>
                 </div>
                 <br>

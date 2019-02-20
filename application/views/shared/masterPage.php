@@ -63,6 +63,9 @@
 		<script src="<?php echo base_url("assets/js/utils/cookie.js"); ?>"></script>
 		<!-- /JS -->
 		<!-- /VENDOR -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.4.0/backbone-min.js"></script>
+		
 
 		<!-- JS -->
 		<script src="<?php echo base_url('assets/js/utils/guid.js'); ?>"></script>
@@ -101,12 +104,10 @@
 				<div class="content">
 					<div class="container-fluid">
 						<div class="row">
-							<div class="col-xl-12">
-					
+							<div class="col-xl-12">					
 								<div class="breadcrumb-holder">
 									<h1 class="main-title float-left"><?php echo $this->session->flashdata('titleBody'); ?></h1>													
-									<?php echo isset($this->breadcrumbs) ? $this->breadcrumbs->show() : ''; ?>
-							
+									<?php echo @$this->breadcrumbs->show(); ?>
 									<div class="clearfix"></div>													
 								</div>
 							</div>

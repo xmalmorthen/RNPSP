@@ -15,7 +15,12 @@ var objViewDatosGenerales = {
             },
             btns : {
                 guardarDatosPersonales : null,
-                generarCIB : null
+                generarCIB : null,
+                guardarDesarrolloacademico : null,
+                guardarDomicilio : null,
+                guardarReferencia : null,
+                guardarSocioeconomico : null,
+                guardarDependiente: null
             },
             objs : {
                 pCURP : null
@@ -42,7 +47,13 @@ var objViewDatosGenerales = {
         objViewDatosGenerales.vars.datosGenerales.forms.Socioeconomicos_form = $('#Socioeconomicos_form');
         // BUTTONS
         objViewDatosGenerales.vars.datosGenerales.btns.guardarDatosPersonales = $('#guardarDatosPersonales');        
-        objViewDatosGenerales.vars.datosGenerales.btns.generarCIB = $('#generarCIB');        
+        objViewDatosGenerales.vars.datosGenerales.btns.generarCIB = $('#generarCIB');  
+        objViewDatosGenerales.vars.datosGenerales.btns.guardarDesarrolloacademico = $('#guardarDesarrolloacademico');        
+        objViewDatosGenerales.vars.datosGenerales.btns.guardarDomicilio = $('#guardarDomicilio');  
+        objViewDatosGenerales.vars.datosGenerales.btns.guardarReferencia = $('#guardarReferencia');        
+        objViewDatosGenerales.vars.datosGenerales.btns.guardarSocioeconomico = $('#guardarSocioeconomico');  
+        objViewDatosGenerales.vars.datosGenerales.btns.guardarDependiente = $('#guardarDependiente');        
+
         objViewDatosGenerales.vars.general.btnSiguienteAnterior = $('.btnSiguienteAnterior');
         // OBJS
         objViewDatosGenerales.vars.datosGenerales.objs.pCURP = $('#pCURP');
@@ -59,6 +70,13 @@ var objViewDatosGenerales = {
         // CLICK
         objViewDatosGenerales.vars.datosGenerales.btns.guardarDatosPersonales.on('click',objViewDatosGenerales.events.click.datosGenerales.guardarDatosPersonales);
         objViewDatosGenerales.vars.datosGenerales.btns.generarCIB.on('click',objViewDatosGenerales.events.click.datosGenerales.generarCIB);
+
+        objViewDatosGenerales.vars.datosGenerales.btns.guardarDesarrolloacademico.on('click',objViewDatosGenerales.events.click.datosGenerales.guardarDesarrolloacademico);
+        objViewDatosGenerales.vars.datosGenerales.btns.guardarDomicilio.on('click',objViewDatosGenerales.events.click.datosGenerales.guardarDomicilio);
+        objViewDatosGenerales.vars.datosGenerales.btns.guardarReferencia.on('click',objViewDatosGenerales.events.click.datosGenerales.guardarReferencia);
+        objViewDatosGenerales.vars.datosGenerales.btns.guardarSocioeconomico.on('click',objViewDatosGenerales.events.click.datosGenerales.guardarSocioeconomico);
+        objViewDatosGenerales.vars.datosGenerales.btns.guardarDependiente.on('click',objViewDatosGenerales.events.click.datosGenerales.guardarDependiente);
+
         objViewDatosGenerales.vars.general.btnSiguienteAnterior.on('click',objViewDatosGenerales.events.click.general.btnSiguienteAnterior);
         //FOCUSOUT
         objViewDatosGenerales.vars.datosGenerales.objs.pCURP.on('focusout',objViewDatosGenerales.events.focus.out.pCURP);      
@@ -169,28 +187,12 @@ var objViewDatosGenerales = {
                         });
                     }
                 },
-                generarCIB : function(e){
-                    e.preventDefault();
-
-                    generic.click(
-                    {
-                        evt : e
-                    },
-                    //event
-                    function(){
-                        //TODO: IMPLEMENTAR
-                        alert('Implementar generarCIB');
-                    }, 
-                    //success
-                    function (successResponse){                        
-                    }, 
-                    //error
-                    function(){
-                        $.LoadingOverlay("hide");
-                        var msg = err.status + ' - ' + err.statusText;
-                        swal({ type: 'error', title: 'Error', html: msg });
-                    });
-                }                
+                generarCIB : function(e){},
+                guardarDesarrolloacademico : function(e){},
+                guardarDomicilio : function(e){},
+                guardarReferencia : function(e){},
+                guardarSocioeconomico : function(e){},
+                guardarDependiente : function(e){}
             }
         },
         focus : {

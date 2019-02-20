@@ -53,7 +53,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             Ciudad
-                            <input type="text" class="form-control" class="form-control" maxlength="50">
+                            <input type="text" id="pCIUDAD" name="pCIUDAD" class="form-control" class="form-control" maxlength="50">
                         </div>
                         <div class="col-md-4">
                             <span class="clr">*</span>Colonia/Localidad
@@ -158,7 +158,7 @@
                         </div>
                         <div class="col-md-4">
                             Nombre del jefe inmediato
-                            <input type="text" class="form-control" maxlength="50" >
+                            <input type="text" id="pNOMBREJEFEINMEDIATO" name="pNOMBREJEFEINMEDIATO" class="form-control" maxlength="50" >
                         </div>
                     </div>
                     <br>

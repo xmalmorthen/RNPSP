@@ -35,9 +35,6 @@
 			$this->load->view('Solicitud/Registro');
         }
         
-        
-       
-         
         public function Ver(){
 
 			// BREADCRUMB
