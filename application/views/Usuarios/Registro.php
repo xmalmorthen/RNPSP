@@ -25,8 +25,11 @@
 			</div>
 			<div class="col-md-4">
 				<span class="clr">*</span>Adscripción
-				<input type="text" class="form-control" id="pID_ADSCRIPCION" name="pID_ADSCRIPCION"  minlength="1"
-				 minlength="10">
+				<select class="form-control" id="pID_ADSCRIPCION" name="pID_ADSCRIPCION"  >
+				 {adscripcion}
+				 	<option value="{ID_DEPENDENCIA}">{DESCRIPCION}</option>
+				 {/adscripcion}
+				 </select>
 			</div>
 			<div class="col-md-4">
 				<span class="clr">*</span>Contraseña
