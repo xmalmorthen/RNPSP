@@ -21,12 +21,12 @@ class MY_Session extends CI_Session
     return $this->sess_regenerate($param);
   }
 
-  public function local_userdata($param){
+  public function local_userdata($param = false){
     $session = $this->userdata(SESSIONVAR);
-    if(is_array($session) && array_key_exists($param,$session) ){
+    if($param != false && is_array($session) && array_key_exists($param,$session) ){
       return $session[$param];
     }else{
-      return false;
+      return $session;
     }
   }
 
