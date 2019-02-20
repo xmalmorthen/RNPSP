@@ -1386,7 +1386,7 @@
                     </div>
                     <div class="col-md-4">
                         Fecha documento
-                        <input type="date" class="form-control">
+                        <input type="date" id="FECHA_DOCUMENTO" name="FECHA_DOCUMENTO" class="form-control">
                     </div>
                 </div>
                 <br>
@@ -1396,7 +1396,7 @@
                     </div>
                     <div class="col-md-4">
                         Seleccione un documento
-                        <input type="file">
+                        <input type="file" id="IMAGEN" name="IMAGEN">
                     </div>
                 </div>
                 <br>
