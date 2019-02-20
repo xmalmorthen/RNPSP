@@ -50,11 +50,10 @@ class UserSession extends CI_Controller {
 				if ($this->ion_auth->login($nombreUsuario, $password)) {
 					$response['status'] = true;
 					$response['message'] = array(trim($this->ion_auth->messages()));
-					$user = $this->ion_auth->user()->row();
-					$this->session->set_userdata(SESSIONVAR,array(
-						'IdUsuario' => $user->id,
-						'Usuario' => $user->username
-					));
+
+					$session = $this->session->local_userdata();
+					$user = $this->ion_auth->select('id,username,email,CURP,NOMBRE,PATERNO,MATERNO')->user()->row_array();
+					$this->session->local_set_userdata(array_merge($session,$user));
 				} else {
 					$response['message'] = array($this->ion_auth->errors());
 				}
