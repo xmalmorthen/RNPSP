@@ -12,6 +12,16 @@ var objViewCapacitacion = {
             btns : {
                 guardarIdioma : null,
                 guardarHabilidad : null
+            },
+            tables : {
+                tableIdiomas : {
+                    obj : null,
+                    dom : null
+                },
+                tableHabilidades  : {
+                    obj : null,
+                    dom : null
+                }
             }
         }
     },
@@ -24,7 +34,10 @@ var objViewCapacitacion = {
         objViewCapacitacion.vars.general.mainContentTab = $('#Capacitacion');
         
         // INIT DATATABLE
-        // objViewCapacitacion.vars.table = $('#table').DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"columnDefs": [{ "orderable": false, "targets": [2] }]});
+        objViewCapacitacion.vars.capacitacion.tables.tableIdiomas.dom = $('#tableIdiomas');
+        objViewCapacitacion.vars.capacitacion.tables.tableIdiomas.obj = objViewCapacitacion.vars.capacitacion.tables.tableIdiomas.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});
+        objViewCapacitacion.vars.capacitacion.tables.tableHabilidades.dom = $('#tableHabilidades');
+        objViewCapacitacion.vars.capacitacion.tables.tableHabilidades.obj = objViewCapacitacion.vars.capacitacion.tables.tableHabilidades.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});
 
         // INIT ELEMENTS
         // FORMS

@@ -3,11 +3,10 @@
             <form action="#" name="Idiomas_dialectos_form" id="Idiomas_dialectos_form" autocomplete="off">
                 <br>
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Idiomas y/o dialectos</strong></center>
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Idiomas y/o dialectos</h3>
                     </div>
-                </div>
+                </div>                
                 <br>
                 <br>
                 <div class="row">
@@ -65,14 +64,7 @@
                         <th>Porcentaje de escritura</th>
                         <th>Porcentaje de conversación</th>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                    <tbody>                        
                     </tbody>
                 </table>
                 <input type="hidden" id="pID_ALTERNA_Idioma" name="pID_ALTERNA_Idioma" value="" >
@@ -81,19 +73,9 @@
                 <input type="hidden" id="pID_IDIOMA_HABLADO_EXT" name="pID_IDIOMA_HABLADO_EXT" value="" >
             
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorIdioma"> Anterior</button>
-                            </div>
-                            <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteIdioma">Siguiente</button>
-                            </div>
-                        </div>
-
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteIdioma" data-nexttab="#Habilidades_aptitudes-tab">Siguiente Ficha</button>
                     </div>
-                    <div class="col-md-4"></div>
                 </div>
             </form>
         </div>
@@ -104,13 +86,10 @@
             <form action="#" id="Habilidades_aptitudes_form" name="Habilidades_aptitudes_form"autocomplete="off">
                 <br>
                 <div class="row">
-                    <div class="col-md-4">
-
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Habilidades y/o aptitudes</h3>
                     </div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Habilidades y/o aptitudes</strong></center>
-                    </div>
-                </div>
+                </div>                
                 <br>
                 <div class="row">
                     <div class="col-md-4">
@@ -148,13 +127,6 @@
                         <th>Grado</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-
-                        </tr>
                     </tbody>
                 </table>
                 <input type="hidden" id="pID_ALTERNA_Habilidades" name="pID_ALTERNA_Habilidades" value="">
@@ -162,20 +134,11 @@
                 <input type="hidden" id="pID_EMISOR_Habilidades" name="pID_EMISOR_Habilidades" value="">
                 <input type="hidden" id="pID_HABILIDAD_APTIT_EXT" name="pID_HABILIDAD_APTIT_EXT" value="">
             
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorHabilidad" data-nexttab="#Idiomas_dialectos-tab"> Anterior</button>
-                            </div>
-                            <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="SiguienteHabilidad">Siguiente</button>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-md-4"></div>
+                <div class="row">                    
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorHabilidad" data-nexttab="#Idiomas_dialectos-tab">Anterior Ficha</button>
+                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab endTab" id="SiguienteHabilidad">Finalizar</button>
+                    </div>                            
                 </div>
             </form>
         </div>

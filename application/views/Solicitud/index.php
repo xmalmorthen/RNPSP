@@ -5,8 +5,8 @@
 <!-- /CSS -->
 
 <div class="row bodyVew">
-    <div class="col-md-12 mb-3">
-        <button class="btn btn-default" id="Nuevo"> Nuevo </button>
+    <div class="col-md-12 mb-4">
+        <button class="btn btn-default btn-lg" id="Nuevo"> Nuevo </button>
     </div>
     <div class="col-md-12">
         <!-- BEGIN TABLE -->
@@ -48,7 +48,7 @@
         <!-- END TABLE -->
     </div>
 </div>
-<div class="row pull-right">
+<div class="row pull-right mt-2">
     <div class="col-md-12">
         <button class="btn btn-default m-1" id="Imprimir">Imprimir</button>
         <button class="btn btn-default m-1" id="Replicar">Replicar</button>

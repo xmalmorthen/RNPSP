@@ -3,16 +3,10 @@
             <form action="#" id="mediafiliacion_form" name="mediafiliacion_form" autocomplete="off">
                 <br>
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                    <center><strong >Media filiación</strong></center>
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Media filiación</h3>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
+                </div>  
                 <br>
                 <div class="row">
                     <div class="col-md-4">
@@ -31,19 +25,9 @@
                         <span id="err_pCAT_CARA"></span>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Cabello</strong></center>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
+                <br><br>
+                <h6 class="titulo">Cabello</h6>
+                <hr>                
                 <div class="row">
                     <div class="col-md-3">
                         Cantidad <!-- Se llena del catálogo CAT_CANTIDADCABELLO -->
@@ -74,14 +58,9 @@
 						<span id="err_pCAT_CABELLO_IMPLANTAC"></span>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Frente</strong></center>
-                    </div>
-                </div>
-                <br>
+                <br><br>
+                <h6 class="titulo">Frente</h6>
+                <hr>
                 <div class="row">
                     <div class="col-md-4">
                         Altura <!-- Se llena del catálogo CAT_ALTURAFRENTE -->
@@ -99,19 +78,9 @@
 						<span id="err_pCAT_FRENTE_ANCHO"></span>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Cejas</strong></center>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
+                <br><br>
+                <h6 class="titulo">Cejas</h6>
+                <hr>
                 <div class="row">
                     <div class="col-md-3">
                         Dirección <!-- Se llena del catálogo CAT_DIRECCIONCEJAS -->
@@ -135,17 +104,9 @@
                     </div>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Ojos</strong></center>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
+                <br><br>
+                <h6 class="titulo">Ojos</h6>
+                <hr>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
@@ -165,18 +126,9 @@
                     </div>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Nariz</strong></center>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
+                <br><br>
+                <h6 class="titulo">Nariz</h6>
+                <hr>
                 <div class="row">
                     <div class="col-md-3">
                         Raíz <!-- Se llena del catálogo CAT_RAIZNARIZ -->
@@ -207,19 +159,9 @@
 						<span id="err_pCAT_NARIZ_ALTURA"></span>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Boca</strong></center>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
+                <br><br>
+                <h6 class="titulo">Bova</h6>
+                <hr>
                 <div class="row">
                     <div class="col-md-4">
                         Tamaño <!-- Se llena del catálogo CAT_TAMANOBOCA -->
@@ -232,19 +174,9 @@
 						<span id="err_pCAT_BOCA_COMISURAS"></span>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Labios</strong></center>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
+                <br><br>
+                <h6 class="titulo">Labios</h6>
+                <hr>
                 <div class="row">
                     <div class="col-md-4">
                         Espesor <!-- Se llena del catálogo CAT_ESPESORLABIOS -->
@@ -262,19 +194,9 @@
 						<span id="err_pCAT_LABIOS_PROMINENCIA"></span>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Mentón</strong></center>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
+                <br><br>
+                <h6 class="titulo">Mentón</h6>
+                <hr>
                 <div class="row">
                     <div class="col-md-4">
                         Tipo <!--   se llena del catalogo CAT_TIPOMENTON -->
@@ -292,19 +214,9 @@
 						<span id="err_pCAT_MENTON_INCLINACION"></span>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Oreja derecha</strong>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
+                <br><br>
+                <h6 class="titulo">Oreja derecha</h6>
+                <hr>
                 <div class="row">
                 <div class="col-md-4">
                         Forma <!-- Se llena del catálogo CAT_FORMAOREJA -->
@@ -317,15 +229,9 @@
 						<span id="err_pCAT_OREJA_ORIGINAL"></span>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                    </div>
-                    <div class="col-md-4">
-                        <center><h6 style="color: #6b6b6b; font-size: 1.0rem"><strong>Helix</strong></h6></center>
-                    </div>
-                </div>
-                <br>
+                <br><br>
+                <h6 class="titulo">Helix</h6>
+                <hr>
                 <div class="row">
                     <div class="col-md-3">
                         Superior <!-- Se llena del catálogo CAT_OREJAHELSUP -->
@@ -348,14 +254,9 @@
 						<span id="err_pCAT_OREJA_HEL_CONTORNO"></span>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                    </div>
-                    <div class="col-md-4">
-                        <center><h6 style="color: #6b6b6b; font-size: 1.0rem"><strong>Lóbulo</strong></h6></center>
-                    </div>
-                </div>
+                <br><br>
+                <h6 class="titulo">Lóbulo</h6>
+                <hr>
                 <div class="row">
                     <div class="col-md-3">
                             Adherencia <!-- Se llena del catálogo CAT_OREJALOBADHEREN -->
@@ -373,15 +274,9 @@
 						    <span id="err_pCAT_OREJA_LOB_DIMEN"></span>
                         </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><h6 style="color: #6b6b6b; font-size: 1.0rem"><strong>Sangre</strong></h6></center>
-                    </div>
-
-                </div>
-                <br>
+                <br><br>
+                <h6 class="titulo">Sangre</h6>
+                <hr>
                 <div class="row">
                     <div class="col-md-4">
                         Tipo <!-- Se llena del catálogo CAT_TIPODESANGRE -->
@@ -394,15 +289,9 @@
 						<span id="err_pCAT_FACTOR_RH"></span>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><h6 style="color: #6b6b6b; font-size: 1.0rem"><strong>Otros</strong></h6></center>
-                    </div>
-
-                </div>
-                <br>
+                <br><br>
+                <h6 class="titulo">Otros</h6>
+                <hr>
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>¿Usa anteojos? <!-- S/N = SI/NO -->
@@ -433,10 +322,9 @@
                 </div>
             
             </div>
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <center><input type="button" name="next" id="siguienteMediafiliacion" class="btn btn-default btnSiguienteAnterior siguienteTab" style="height:40px;" data-nexttab="#Datos-tab" value="Siguiente"/></center>
+            <div class="row">                
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="siguienteMediafiliacion" data-nexttab="#Datos-tab">Siguiente Ficha</button>
                 </div>
             </div>
             </form>
@@ -448,14 +336,8 @@
             <form action="#" id="Datos_form" name="Datos_form" autocomplete="off">
                 <br>
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                    <center><strong >Media filiación</strong></center>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Media filiación</h3>
                     </div>
                 </div>
                 <br>
@@ -476,7 +358,7 @@
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
-                        <center><strong class="titulo">Cabello</strong></center>
+                        <strong class="titulo">Cabello</strong>
                     </div>
                 </div>
                 <div class="row">
@@ -514,7 +396,7 @@
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
-                        <center><strong class="titulo">Frente</strong></center>
+                        <strong class="titulo">Frente</strong>
                     </div>
                 </div>
                 <br>
@@ -536,7 +418,7 @@
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
-                        <center><strong class="titulo">Cejas</strong></center>
+                        <strong class="titulo">Cejas</strong>
                     </div>
                 </div>
                 <div class="row">
@@ -567,7 +449,7 @@
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
-                        <center><strong class="titulo">Ojos</strong></center>
+                        <strong class="titulo">Ojos</strong>
                     </div>
                 </div>
                 <div class="row">
@@ -594,7 +476,7 @@
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
-                        <center><strong class="titulo">Nariz</strong></center>
+                        <strong class="titulo">Nariz</strong>
                     </div>
                 </div>
                 <div class="row">
@@ -632,7 +514,7 @@
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
-                        <center><strong class="titulo">Boca</strong></center>
+                        <strong class="titulo">Boca</strong>
                     </div>
                 </div>
                 <div class="row">
@@ -655,7 +537,7 @@
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
-                        <center><strong class="titulo">Labios</strong></center>
+                        <strong class="titulo">Labios</strong>
                     </div>
                 </div>
                 <div class="row">
@@ -682,7 +564,7 @@
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
-                        <center><strong class="titulo">Mentón</strong></center>
+                        <strong class="titulo">Mentón</strong>
                     </div>
                 </div>
                 <div class="row">
@@ -709,7 +591,7 @@
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
-                        <center><strong class="titulo">Oreja derecha</strong>
+                        <strong class="titulo">Oreja derecha</strong>
                     </div>
                 </div>
                 <div class="row">
@@ -733,7 +615,7 @@
                     <div class="col-md-4">
                     </div>
                     <div class="col-md-4">
-                        <center><h6 style="color: #6b6b6b; font-size: 1.0rem"><strong>Helix</strong></h6></center>
+                        <h6 style="color: #6b6b6b; font-size: 1.0rem"><strong>Helix</strong></h6>
                     </div>
                 </div>
                 <br>
@@ -760,7 +642,7 @@
                     <div class="col-md-4">
                     </div>
                     <div class="col-md-4">
-                        <center><h6 style="color: #6b6b6b; font-size: 1.0rem"><strong>Lóbulo</strong></h6></center>
+                        <h6 style="color: #6b6b6b; font-size: 1.0rem"><strong>Lóbulo</strong></h6>
                     </div>
                 </div>
                 <div class="row">
@@ -783,7 +665,7 @@
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
-                        <center><h6 style="color: #6b6b6b; font-size: 1.0rem"><strong>Sangre</strong></h6></center>
+                        <h6 style="color: #6b6b6b; font-size: 1.0rem"><strong>Sangre</strong></h6>
                     </div>
 
                 </div>
@@ -803,7 +685,7 @@
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
-                        <center><h6 style="color: #6b6b6b; font-size: 1.0rem"><strong>Otros</strong></h6></center>
+                        <h6 style="color: #6b6b6b; font-size: 1.0rem"><strong>Otros</strong></h6>
                     </div>
 
                 </div>
@@ -830,18 +712,10 @@
                 
             
                 <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorConsultamediafiliacion" data-nexttab="#mediafiliacion-tab"> Anterior</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteConsultamediafiliacion" data-nexttab="#Senas_particulares-tab">Siguiente</button>
-                        </div>
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorConsultamediafiliacion" data-nexttab="#mediafiliacion-tab"> Anterior Ficha</button>
+                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteConsultamediafiliacion" data-nexttab="#Senas_particulares-tab">Siguiente Ficha</button>
                     </div>
-                </div>
-                    <div class="col-md-4"></div>
                 </div>
             </form>
         </div>
@@ -852,13 +726,10 @@
             <form action="#" id="Senas_particulares_form" name="Senas_particulares_form" autocomplete="off">
                 <br>
                 <div class="row">
-                    <div class="col-md-4">
-                        <!-- SPACE -->
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Señas particulares</h3>
                     </div>
-                    <div class="col-md-4">
-                        <center><strong >Señas particulares</strong></center>
-                    </div>
-                </div>
+                </div>                
                 <br>
                 <br>
                 <div class="row">
@@ -917,16 +788,7 @@
                                         <th>Cantidad</th>
                                         <th>Descripción</th>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
+                                <tbody>                                    
                                 </tbody>
                             </table>
                         </div>
@@ -935,18 +797,10 @@
                 <input type="hidden" id="pID_ESTADO_EMISOR_Senas" name="pID_ESTADO_EMISOR_Senas" value="" >
                 <input type="hidden" id="pID_EMISOR_Senas" name="pID_EMISOR_Senas" value="" >
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorSeña" data-nexttab="#Datos-tab"> Anterior</button>
-                            </div>
-                            <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="SiguienteSeña" data-nexttab="#Ficha_fotografica-tab">Siguiente</button>
-                            </div>
-                        </div>
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorSeña" data-nexttab="#Datos-tab">Anterior Ficha</button>
+                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="SiguienteSeña" data-nexttab="#Ficha_fotografica-tab">Siguiente Ficha</button>
                     </div>
-                    <div class="col-md-4"></div>
                 </div>
             </form>
         </div>
@@ -957,13 +811,10 @@
             <form action="#" id="Registro_decadactilar_form" name="Registro_decadactilar_form" autocomplete="off">
                 <br>
                 <div class="row">
-                    <div class="col-md-4">
-                        <!-- SPACE -->
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Registro dactilar</h3>
                     </div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Registro decadactilar</strong></center>
-                    </div>
-                </div>
+                </div>                
                 <br>
                 <br>
                 <div class="row">
@@ -1029,13 +880,7 @@
                                     <th>Institución</th>
                                     <th>Fecha de registro</th>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                            <tbody>                                
                             </tbody>
                         </table>
                     </div>
@@ -1044,18 +889,10 @@
                 <input type="hidden" id="pID_ESTADO_EMISOR_Datos" name="pID_ESTADO_EMISOR_Datos" value="" >
                 <input type="hidden" id="pID_EMISOR_Datos" name="pID_EMISOR_Datos" value="" >
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorDecadacticar" data-nexttab="#Ficha_fotografica-tab"> Anterior</button>
-                            </div>
-                            <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteDecadactilar" data-nexttab="#Digitalizacion_de_documento-tab">Siguiente</button>
-                            </div>
-                        </div>
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorDecadacticar" data-nexttab="#Ficha_fotografica-tab">Anterior Ficha</button>
+                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteDecadactilar" data-nexttab="#Digitalizacion_de_documento-tab">Siguiente Ficha</button>
                     </div>
-                    <div class="col-md-4"></div>
                 </div>
             </form>
         </div>
@@ -1064,20 +901,18 @@
     <div class="tab-pane fade " id="Identificacion_de_voz" role="tabpanel" aria-labelledby="Identificacion_de_voz-tab">
         <div class="_container">
             <form action="#" id="Identificacion_de_voz_form" name="Identificacion_de_voz_form" autocomplete="off">
-                    <br>
+                <br>
                 <div class="row">
-                    <div class="col-md-4">
-                    </div>
-                    <div class="col-md-4">
-                        <strong class="titulo"><center>Identificación de voz</center></strong>
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Identificación de voz</h3>
                     </div>
                 </div>
-                    <br>
+                <br>
                 <div class="row">
                     <div class="col-md-2">
                     </div>
                     <div class="col-md-8">
-                        <strong><center>Especificaciones para el archivo de identificación de voz</center></strong>
+                        <strong>Especificaciones para el archivo de identificación de voz</strong>
                     </div>
                 </div>
                 <br>
@@ -1097,7 +932,7 @@
 
                     </div>
                     <div class="col-md-8">
-                        <center><strong>Información de identificación de voz</strong></center>
+                        <strong>Información de identificación de voz</strong>
                     </div>
                 </div>
                 <br>
@@ -1117,10 +952,10 @@
                         <!-- SPACE -->
                     </div>
                     <div class="col-md-4">
-                        <!-- <center><audio id="audio" controls style="margin-left: -24px;">
+                        <!-- <audio id="audio" controls style="margin-left: -24px;">
                         <source src="ruta_de_audio">
                             Tu navegador no es compatible
-                    </audio></center> -->
+                    </audio> -->
                     </div>
                 </div>
                 <br>
@@ -1151,20 +986,10 @@
                 <input type="hidden" id="pID_ESTADO_EMISOR_Voz" name="pID_ESTADO_EMISOR_Voz" value="" >
                 <input type="hidden" id="pID_EMISOR_Voz" name="pID_EMISOR_Voz" value="" >
                 <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <button class="btn btn-default" id="anteriorVoz" data-nexttab="#Digitalizacion_de_documento-tab"> Anterior</button>
-                                </div>
-                                <div class="col-md-6">
-                                    <button class="btn btn-default btnSiguienteAnterior siguienteTab endTab" id="finalizarVoz">Finalizar</button>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-md-4"></div>
-
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior" id="anteriorVoz" data-nexttab="#Digitalizacion_de_documento-tab">Anterior Ficha</button>
+                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab endTab" id="finalizarVoz">Finalizar</button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -1175,21 +1000,17 @@
             <form action="#" id="Ficha_fotografica_form" name="Ficha_fotografica_form" autocomplete="off">
                 <br>
                 <div class="row">
-                    <div class="col-md-4">
-                        <!-- SPACE -->
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Ficha fotográfica</h3>
                     </div>
-                    <div class="col-md-4">
-                        <strong class="titulo"><center>Ficha fotográfica</center></strong>
-                    </div>
-                </div>
+                </div>                
                 <br>
-
                     <div class="row">
                     <div class="col-md-4">
 
                     </div>
                     <div class="col-md-4">
-                        <strong><center>Parámetros</center></strong>
+                        <strong>Parámetros</strong>
                     </div>
                 </div>
                 <br>
@@ -1214,7 +1035,7 @@
                         <table id="tablePerfilizq" class="table display">
                             <thead>
                                 <tr>
-                                    <td><center>Perfil izquierdo</center></td>
+                                    <td>Perfil izquierdo</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1232,7 +1053,7 @@
                         <table id="tableFrente" class="table display">
                             <thead>
                                 <tr>
-                                    <td><center>Frente</center></td>
+                                    <td>Frente</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1250,7 +1071,7 @@
                         <table id="tablePerfilderecho" class="table display">
                             <thead>
                                 <tr>
-                                    <td><center>Perfil derecho</center></td>
+                                    <td>Perfil derecho</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1274,7 +1095,7 @@
                         <table id="tableFirmo" class="table display">
                             <thead>
                                 <tr>
-                                    <td><center>Firma</center></td>
+                                    <td>Firma</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1292,7 +1113,7 @@
                         <table id="tableHuella" class="table display">
                             <thead>
                                 <tr>
-                                    <td><center>Huella</center></td>
+                                    <td>Huella</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1325,15 +1146,7 @@
                                     <th>Fecha de programación</th>
                                     <th>Fecha de resultado</th>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                            <tbody>                               
                             </tbody>
                         </table>
                     </div>
@@ -1342,19 +1155,10 @@
                 <input type="hidden" id="pID_ESTADO_EMISOR_Fotografica" name="pID_ESTADO_EMISOR_Fotografica" value="" >
                 <input type="hidden" id="pID_EMISOR_Fotografica" name="pID_EMISOR_Fotografica" value="" >
                 <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorFotografica" data-nexttab="#Senas_particulares-tab"> Anterior</button>
-                                </div>
-                                <div class="col-md-6">
-                                    <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteFotografica" data-nexttab="#Registro_decadactilar-tab">Siguiente</button>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-md-4"></div>
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorFotografica" data-nexttab="#Senas_particulares-tab">Anterior Ficha</button>
+                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteFotografica" data-nexttab="#Registro_decadactilar-tab">Siguiente Ficha</button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -1364,13 +1168,10 @@
             <form action="#" id="Digitalizacion_de_documento_form" name="Digitalizacion_de_documento_form" autocomplete="off">
                 <br>
                 <div class="row">
-                    <div class="col-md-2">
-                        <!-- SPACE -->
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Digitalización de documento</h3>
                     </div>
-                    <div class="col-md-8">
-                        <strong class="titulo"><center>Digitalización de documento</center></strong>
-                    </div>
-                </div>
+                </div>                
                 <br>
                 <br>
                 <div class="row">
@@ -1422,14 +1223,7 @@
                                     <th>Fecha documento</th>
                                     <th>Estatus</th>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                            <tbody>                                
                             </tbody>
                         </table>
                     </div>
@@ -1438,18 +1232,10 @@
                 <input type="hidden" id="pID_ESTADO_EMISOR_Documento" name="pID_ESTADO_EMISOR_Documento" value="" >
                 <input type="hidden" id="pID_EMISOR_Documento" name="pID_EMISOR_Documento" value="" >
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorDocumento" data-nexttab="#Registro_decadactilar-tab"> Anterior</button>
-                            </div>
-                            <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteDocumento" data-nexttab="#Identificacion_de_voz-tab">Siguiente</button>
-                            </div>
-                        </div>
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorDocumento" data-nexttab="#Registro_decadactilar-tab">Anterior Ficha</button>
+                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteDocumento" data-nexttab="#Identificacion_de_voz-tab">Siguiente Ficha</button>
                     </div>
-                    <div class="col-md-4"></div>
                 </div>
             </form>
         </div>

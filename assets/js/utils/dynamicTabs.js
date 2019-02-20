@@ -31,7 +31,6 @@ var dynTabs = {
             //VALIDATE FORM
             if (form.valid()){                
                 if (form.data('hasChanged') == true){
-
                     Swal({
                         title: 'Aviso',
                         html: "Para continuar, debe guardar los cambios",
@@ -67,7 +66,7 @@ var dynTabs = {
                     msg : 'Formulario incompleto'
                 });
 
-                e.preventDefault();
+                //e.preventDefault();
             }
     },
     showTab : function(e){

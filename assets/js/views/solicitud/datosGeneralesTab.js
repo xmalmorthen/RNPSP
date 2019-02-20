@@ -24,6 +24,28 @@ var objViewDatosGenerales = {
             },
             objs : {
                 pCURP : null
+            },
+            tables : {
+                tableDatospersonales : {
+                    obj : null,
+                    dom : null
+                },
+                tableDesarrollo  : {
+                    obj : null,
+                    dom : null
+                },
+                tableDomicilio  : {
+                    obj : null,
+                    dom : null
+                },
+                tableReferencias : {
+                    obj : null,
+                    dom : null
+                },
+                tableSocioeconomicos: {
+                    obj : null,
+                    dom : null
+                }
             }
         }
     },
@@ -36,7 +58,18 @@ var objViewDatosGenerales = {
         objViewDatosGenerales.vars.general.mainContentTab = $('#datosGenerales');
         
         // INIT DATATABLE
-        // objViewDatosGenerales.vars.table = $('#table').DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"columnDefs": [{ "orderable": false, "targets": [2] }]});
+        objViewDatosGenerales.vars.datosGenerales.tables.tableDatospersonales.dom = $('#tableDatospersonales');
+        objViewDatosGenerales.vars.datosGenerales.tables.tableDatospersonales.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableDatospersonales.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});
+        objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.dom = $('#tableDesarrollo');
+        objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});
+        objViewDatosGenerales.vars.datosGenerales.tables.tableDomicilio.dom = $('#tableDomicilio');
+        objViewDatosGenerales.vars.datosGenerales.tables.tableDomicilio.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableDomicilio.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});
+        objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.dom = $('#tableReferencias');
+        objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});        
+        objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.dom = $('#tableSocioeconomicos');
+        objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});        
+        
+
 
         // INIT ELEMENTS
         // FORMS

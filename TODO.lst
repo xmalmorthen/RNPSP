@@ -1,6 +1,6 @@
 //TODO: XMAL - Verificar si exite registro en BD [ assets/js/views/solicitud/datosGeneralesTab.js ]
 //TODO: Xmal - Sigue pendiente programar combo de puesto [ tab - Laboral/Adscripción actual ]
-<!-- TODO: Xmal - Implementar en class para mostrar u ocultar sección --> [application\views\Solicitud\tabs\datosGenerales\contenidoDatosGenerales.php]
+<!-- TODO: Xmal - Implementar para mostrar u ocultar sección --> [application\views\Solicitud\tabs\datosGenerales\contenidoDatosGenerales.php]
 [application\views\Solicitud\Registro.php]
     <!-- TODO: Xmal - Implementar para mostrar u ocultar sección --> Linea 17
     <!-- TODO: Xmal - Implementar para mostrar u ocultar sección --> Linea 46

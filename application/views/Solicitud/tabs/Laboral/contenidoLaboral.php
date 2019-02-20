@@ -3,11 +3,8 @@
             <form action="#" id="Adscripcion_actual_form" name="Adscripcion_actual_form" autocomplete="off">
                     <br>
                     <div class="row">
-                        <div class="col-md-4">
-
-                        </div>
-                        <div class="col-md-4">
-                            <center><strong>Adscripción de la persona</strong></center>
+                        <div class="col-md-12 text-center">
+                            <h3 class="titulo">Adscripción de la persona</h3>
                         </div>
                     </div>
                     <br>
@@ -29,7 +26,7 @@
 
                         </div>
                         <div class="col-md-4">
-                            <center><strong>Domicilio de la corporación</strong></center>
+                            <strong>Domicilio de la corporación</strong>
                         </div>
                     </div>
                     <br>
@@ -188,8 +185,7 @@
                                         <th>Municipio</th>
                                     </tr>
                                     </thead>
-                                <tbody>
-                                    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                <tbody>                                    
                                 </tbody>
                         </table>
                         <!-- END TABLE -->
@@ -210,10 +206,9 @@
                     <div class="row">
                         <div class="col-md-4"></div>
                         <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-md-4"></div>
-                                <div class="col-md-4">
-                                    <center><button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteAdscripcion" data-nexttab="#Empleos_diversos-tab">Siguiente</button></centar>
+                            <div class="row">                                
+                                <div class="col-md-12 text-center">
+                                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteAdscripcion" data-nexttab="#Empleos_diversos-tab">Siguiente Ficha</button>
                                 </div>
                             </div>
 
@@ -230,13 +225,10 @@
             <div class="_container">
             <br>
                     <div class="row">
-                        <div class="col-md-4">
-
+                        <div class="col-md-12 text-center">
+                            <h3 class="titulo">Empleos diversos</h3>
                         </div>
-                        <div class="col-md-4">
-                            <center><strong class="titulo">Empleos diversos</strong></center>
-                        </div>
-                    </div>
+                    </div>                    
                     <br>
                     <br>
                     <div class="row">
@@ -353,20 +345,10 @@
                     <input type="hidden" id="pID_EMISOR_Empleos_diversos" name="pID_EMISOR_Empleos_diversos"  value="">
 
                     <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorEmpleo" data-nexttab="#Adscripcion_actual-tab"> Anterior</button>
-                                </div>
-                                <div class="col-md-6">
-                                    <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteEmpleo" data-nexttab="#Actitudes_hacia_el_empleo-tab">Siguiente</button>
-                                </div>
-                            </div>
-
+                        <div class="col-md-12 text-center">
+                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorEmpleo" data-nexttab="#Adscripcion_actual-tab">Anterior Ficha</button>                                
+                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteEmpleo" data-nexttab="#Actitudes_hacia_el_empleo-tab">Siguiente Ficha</button>
                         </div>
-                        <div class="col-md-4"></div>
-
                     </div>
             </div>
         </form>
@@ -377,14 +359,10 @@
             <form name="Actitudes_hacia_el_empleo_form" id="Actitudes_hacia_el_empleo_form" action="#" autocomplete="off">
                 <br>
                 <div class="row">
-                    <div class="col-md-4">
-
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Actitudes hacia el empleo</h3>
                     </div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Actitudes hacia el empleo</strong></center>
-
-                    </div>
-                </div>
+                </div>                
                 <br>
                 <br>
                 <div class="row">
@@ -459,20 +437,11 @@
                 <input type="hidden" id="pID_ESTADO_EMISOR_Actitudes" name="pID_ALTERNA_Actitudes" value="" >
                 <input type="hidden" id="pID_EMISOR_Actitudes" name="pID_EMISOR_Actitudes" value="" >
             
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorActitud" data-nexttab="#Empleos_diversos-tab"> Anterior</button>
-                            </div>
-                            <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteActitud" data-nexttab="#Comisiones-tab">Siguiente</button>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-md-4"></div>
+                <div class="row">                    
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorActitud" data-nexttab="#Empleos_diversos-tab">Anterior Ficha</button>                            
+                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteActitud" data-nexttab="#Comisiones-tab">Siguiente Ficha</button>
+                    </div>                        
                 </div>
             </form>
         </div>
@@ -483,15 +452,10 @@
             <form id="Comisiones_form" name="Comisiones_form" action="#" autocomplete="off">
                 <br>
                 <div class="row">
-                    <div class="col-md-4">
-
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Comisiones</h3>
                     </div>
-                    <div class="col-md-4">
-
-                        <center><strong class="titulo">Comisiones</strong></center>
-
-                    </div>
-                </div>
+                </div>                
                 <br>
                 <br>
                 <div class="row">
@@ -544,14 +508,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -563,19 +519,10 @@
                 <input type="hidden" id="pID_EMISOR_Comisiones" name="pID_EMISOR_Comisiones" value="" >
             
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorComision" data-nexttab="#Actitudes_hacia_el_empleo-tab"> Anterior</button>
-                            </div>
-                            <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior siguienteTab endTab" id="FinalizarLaboral">Finalizar</button>
-                            </div>
-                        </div>
-
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorComision" data-nexttab="#Actitudes_hacia_el_empleo-tab">Anterior Ficha</button>
+                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab endTab" id="FinalizarLaboral">Finalizar</button>
                     </div>
-                    <div class="col-md-4"></div>
                 </div>
             </form>
         </div>

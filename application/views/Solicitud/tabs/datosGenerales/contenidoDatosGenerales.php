@@ -7,9 +7,8 @@
             <form action="#" id="Datos_personales_form" name="Datos_personales_form" autocomplete="off">
                 <br>
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Datos personales</strong></center>
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Datos personales</h3>
                     </div>
                 </div>
                 <br>
@@ -134,8 +133,8 @@
                 </div>
                 <br><hr><br>
                 
-                <!-- TODO: Xmal - Implementar en class del elemento abajo para mostrar u ocultar sección -->
-                <?php //echo ($sessionUser[{perfil}] != { usuario de c4 }) ? 'd-none' : ''; ?>                
+                <!-- TODO: Xmal - Implementar para mostrar u ocultar sección -->
+                <?php //if ($sessionUser[{perfil}] == { usuario de c4 }) { ?>
                 <div class="row ">
                     <div class="col-md-4">
                         CIB                        
@@ -150,6 +149,7 @@
                         <button class="btn btn-default" id="GUARDAR_CIB" style="margin-top: 16px;"> Guardar CIB</button>
                     </div>
                 </div>
+                <?php //}?>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
@@ -163,8 +163,8 @@
                     <div class="col-md-12">
                         <table id="tableDatospersonales" class="table display" style="width:100%">
                             <thead>
-                                <th><center>CIB</center></th>
-                                <th><center>Motivo</center></th>
+                                <th>CIB</th>
+                                <th>Motivo</th>
                             </thead>
                             <tbody>
                             </tbody>
@@ -176,11 +176,9 @@
                 <input type="hidden" id="pID_EMISOR_Datos_personales" name="pID_EMISOR_Datos_personales" value="" >
 
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><button class="btn btn-default btnSiguienteAnterior siguienteTab"  id="siguienteDatosPersonales" data-nexttab="#Desarrollo-tab">Siguiente</button></center>
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab"  id="siguienteDatosPersonales" data-nexttab="#Desarrollo-tab">Siguiente Ficha</button>
                     </div>
-                    <div class="col-md-4"></div>
                 </div>
             </form>            
         </div>
@@ -191,10 +189,8 @@
             <form action="#" id="Desarrollo_form" name="Desarrollo_form" autocomplete="off">
                 <br>
                 <div class="row">
-                    <div class="col-md-4">
-                    </div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Desarrollo académico</strong></center>
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Desarrollo académico</h3>
                     </div>
                 </div>
                 <br>
@@ -265,14 +261,6 @@
                                 <th>Promedio</th>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -286,11 +274,9 @@
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
                         <div class="row">
-                            <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorDesarrolloacademico" data-nexttab="#Datos_personales-tab"> Anterior</button>
-                            </div>
-                            <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteDesarrolloacademico" data-nexttab="#Domicilio-tab">Siguiente</button>
+                            <div class="col-md-12 text-center">
+                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorDesarrolloacademico" data-nexttab="#Datos_personales-tab">Anterior Ficha</button>
+                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteDesarrolloacademico" data-nexttab="#Domicilio-tab">Siguiente Ficha</button>
                             </div>
                         </div>
                     </div>
@@ -307,9 +293,8 @@
             <form action="#" id="Domicilio_form" name="Domicilio_form" autocomplete="off">
                 <br>
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Domicilio</strong></center>
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Domicilio</h3>
                     </div>
                 </div>
                 <br>
@@ -388,7 +373,7 @@
                 <br>
                 <hr>
                 <br>
-                <table id="tableDesarrollo" class="table display" style="width:100%">
+                <table id="tableDomicilio" class="table display" style="width:100%">
                     <thead>
                         <th>Id domicilio</th>
                         <th>Código postal</th>
@@ -399,17 +384,7 @@
                         <th>Número interior</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
+,                    </tbody>
                 </table>
                 <input type="hidden" id="ID_ALTERNA_Domicilio" name="ID_ALTERNA_Domicilio" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Domicilio" name="pID_ESTADO_EMISOR_Domicilio" value="" >
@@ -421,10 +396,10 @@
                     <div class="col-md-4">
                         <div class="row">
                             <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorDomicilio" data-nexttab="#Desarrollo-tab"> Anterior</button>
+                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorDomicilio" data-nexttab="#Desarrollo-tab"> Anterior Ficha</button>
                             </div>
                             <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteDomicilio" data-nexttab="#Referencias-tab">Siguiente</button>
+                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteDomicilio" data-nexttab="#Referencias-tab">Siguiente Ficha</button>
                             </div>
                         </div>
                     </div>
@@ -439,9 +414,8 @@
             <form action="#" id="Referencias_form" name="Referencias_form" autocomplete="off">
                 <br>
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Referencias</strong></center>
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Referencias</h3>
                     </div>
                 </div>
                 <br>
@@ -560,13 +534,6 @@
                         <th>Domicilio</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
                     </tbody>
                 </table>
                  <input type="hidden" id="ID_ALTERNA_Referencias" name="ID_ALTERNA_Referencias" value="" >
@@ -578,10 +545,10 @@
                     <div class="col-md-4">
                         <div class="row">
                             <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorReferencia" data-nexttab="#Domicilio-tab"> Anterior</button>
+                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorReferencia" data-nexttab="#Domicilio-tab"> Anterior Ficha</button>
                             </div>
                             <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteReferencia" data-nexttab="#Socioeconomicos-tab">Siguiente</button>
+                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteReferencia" data-nexttab="#Socioeconomicos-tab">Siguiente Ficha</button>
                             </div>
                         </div>
                     </div>
@@ -596,11 +563,10 @@
             <form action="#" id="Socioeconomicos_form" name="Socioeconomicos_form" autocomplete="off">
                 <br>
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Socioeconómicos</strong></center>
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Socioeconómicos</h3>
                     </div>
-                </div>
+                </div>                
                 <br>
                 <div class="row">
                     <div class="col-md-4">
@@ -677,7 +643,7 @@
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
-                        <center><strong>Dependientes económicos</strong></center>
+                        <strong>Dependientes económicos</strong>
                     </div>
                 </div>
                 <br>
@@ -736,15 +702,6 @@
                                 <th>Parentesco</th>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -759,10 +716,10 @@
                     <div class="col-md-4">
                         <div class="row">
                             <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorSocioeconomico" data-nexttab="#Referencias-tab"> Anterior</button>
+                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorSocioeconomico" data-nexttab="#Referencias-tab"> Anterior Ficha</button>
                             </div>
                             <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior siguienteTab endTab" id="finalizarDatosGenerales">Finalizar</button>
+                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab endTab" id="finalizarDatosGenerales">Finalizar</button>
                             </div>
                         </div>
                     </div>

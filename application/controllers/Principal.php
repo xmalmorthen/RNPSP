@@ -10,7 +10,7 @@ class Principal extends CI_Controller {
 	
 	public function index()
 	{
-		//die(var_dump($this->session->userdata()));
+		//die(var_dump($this->session->userdata(SESSIONVAR)));
 
 		// BREADCRUMB
 		$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');
