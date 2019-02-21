@@ -879,7 +879,7 @@
                     </div>
                     <div class="col-md-4 text-center">
                         <div class="custom-file">
-                            <input type="file" id="pIMAGEN" name="pIMAGEN" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN' accept="application/pdf|image/*">
+                            <input type="file" id="pIMAGEN" name="pIMAGEN" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN' accept="application/pdf,image/*">
                             <label class="custom-file-label" for="inputGroupFile01">Seleccionar documento</label>
                         </div>
                     </div>
@@ -985,6 +985,7 @@
                     </div>
                 </div>
                 <br>
+                <hr>
                 <div class="row">                    
                     <div class="col-md-4">
                         Audio
@@ -993,11 +994,8 @@
                             <label class="custom-file-label" for="inputGroupFile01">Seleccionar archivo</label>
                         </div>
                     </div>
-                    <div class="col-md-8">
-                        <audio id="audio" class='ml-5' controls width='100%'>
-                            <source src="ruta_de_audio">
-                                Tu navegador no es compatible
-                        </audio>
+                    <div class="col-md-8 text-center">
+                        <audio id="audio" class='ml-5' style='width=90%!Important;' controls><source src="ruta_de_audio">Navegador no compatible con reproductor de audio</audio>
                     </div>
                 </div>
                 <br>
@@ -1220,7 +1218,7 @@
                     <div class="col-md-4">
                         Documento
                         <div class="custom-file">
-                            <input type="file" id="pIMAGEN" name="pIMAGEN" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN' accept="application/pdf|image/*">
+                            <input type="file" id="pIMAGEN" name="pIMAGEN" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN' accept="application/pdf,image/*">
                             <label class="custom-file-label" for="inputGroupFile01">Seleccionar documento</label>
                         </div>
                     </div>
