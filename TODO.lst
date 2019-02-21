@@ -8,4 +8,4 @@
 //TODO: Xmal -  Implementar la impresión [ assets\js\views\solicitud\index.js ]
 //TODO: Xmal -  Implementar la replicación [ assets\js\views\solicitud\index.js ]
 
-//TODO: Xmal - Implementar lo del llenado de combo en edición para los que son delegados de otros
+//TODO: Xmal - revisar porque no lanza el trigger change del control id=pINSTITUCION en edición
