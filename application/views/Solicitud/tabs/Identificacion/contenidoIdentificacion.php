@@ -407,7 +407,7 @@
                 <input type="hidden" id="pID_EMISOR_Senas" name="pID_EMISOR_Senas" value="" >
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorSeña" data-nexttab="#Datos-tab">Anterior Ficha</button>
+                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorSeña" data-nexttab="#Senas_particulares">Anterior Ficha</button>
                         <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="SiguienteSeña" data-nexttab="#Ficha_fotografica-tab">Siguiente Ficha</button>
                     </div>
                 </div>
