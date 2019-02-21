@@ -219,3 +219,14 @@ input:focus, select:focus, .select2-selection:focus {
 }
 .tabMark{    
 }
+
+.borderButtom {
+    border-bottom: 1px solid #cacaca!Important;
+}
+.thumbnailPreview{
+    width: 250px;
+    height: 250px;
+}
+.custom-file-label::after {
+    content: "Abrir"!important;
+}

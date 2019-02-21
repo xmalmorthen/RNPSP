@@ -44,6 +44,14 @@ $.fn.getCatalog = function(options) {
                     }
                     obj.data('populated',true);
                     obj.prop("disabled", false);
+                    
+                    //SI SE ASIGNA UN VALOR Y AUN NO ESTA POPULADO
+                    //LO OBTIENE DEL DATA [INSERT]
+                    if ( obj.data('insert') ) {
+                        obj.val(obj.data('insert')).trigger('change.select2');
+                        obj.removeData('insert');
+                    }
+
                     options.success(data);
                 }).fail(function (err) {                    
                     obj.find("option").remove();

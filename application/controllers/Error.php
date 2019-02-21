@@ -23,6 +23,24 @@ class Error extends CI_Controller {
 		show_error('Error no controlado', 500, 'Ocurrió un error');
 	}
 
+	public function setError($err = null)
+	{
+		if (!$err)
+			$err = $this->input->get('err') ? $this->input->get('err') : 'Error no especificado';
+
+		
+		// BREADCRUMB
+		$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');
+		$this->breadcrumbs->push('[ Error ] - 500', "Error");
+		// /BREADCRUMB
+
+		// TITLE BODY PAGE
+		$this->session->set_flashdata('titleBody','Error');
+		// /TITLE BODY PAGE
+
+		show_error($err, 500, 'Ocurrió un error');
+	}
+
 	public function e404()
 	{
         // BREADCRUMB

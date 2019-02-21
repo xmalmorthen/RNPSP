@@ -49,7 +49,7 @@ var objViewDatosGenerales = {
             }
         }
     },
-    init : function(){
+    init : function(callback){
         if (objViewDatosGenerales.vars.general.init)
             return false;
 
@@ -69,8 +69,6 @@ var objViewDatosGenerales = {
         objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.dom = $('#tableSocioeconomicos');
         objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});        
         
-
-
         // INIT ELEMENTS
         // FORMS
         objViewDatosGenerales.vars.datosGenerales.forms.Datos_personales_form = $('#Datos_personales_form');
@@ -140,6 +138,12 @@ var objViewDatosGenerales = {
         objViewDatosGenerales.vars.general.init = true;
 
         $('#myTabContent').LoadingOverlay("hide");
+
+        if (callback){
+            if ($.isFunction( callback )){
+                callback();
+            }
+        }
     },
     events : {
         click : {
@@ -301,13 +305,16 @@ var objViewDatosGenerales = {
         }
     },
     actions : {        
-        discartChanges : function(e){
+        discartChanges : function(e,relatedTarget){
+
             dynTabs.markTab(dynTabs.tabs.prebTab.linkRef,'<span class="text-warning tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true"></i></span>');
             Swal.close();
                 
             dynTabs.tabs.prebTab.tabForm.removeData('hasChanged');
             dynTabs.tabs.prebTab.tabForm.data('hasDiscardChanges',true);
-            dynTabs.tabs.prebTab.tabForm.find('.btnSiguienteAnterior.siguienteTab').trigger('click');
+
+            $("#" + relatedTarget.id).trigger('click');
+            // dynTabs.tabs.prebTab.tabForm.find('.btnSiguienteAnterior.siguienteTab').trigger('click');
         }
     }
 }

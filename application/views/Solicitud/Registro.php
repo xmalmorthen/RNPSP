@@ -81,8 +81,13 @@
 <?php //} ?>
 
 <script type="text/javascript">
+    var formMode = "<?php echo $this->session->flashdata('formMode'); ?>";
+     
     $(function() {
-        dynTabs.mode = 'new';
+        if (formMode.length == 0)
+            window.location.href = base_url + 'Error/setError?err=No se especificó el modo del formulario!!!';
+
+        dynTabs.mode = formMode;
         //CAMBIO DE TABS
         $('#mainContainerTab a[data-toggle="tab"]').on('show.bs.tab',mainTabMenu.tab.change);
 
@@ -99,6 +104,12 @@
                 linkRef.trigger('click');
             }
         );
+
+        switch (formMode) {
+            case 'edit':
+                mainFormActions.populateData("<?php echo isset($id) ? $id : ''; ?>");
+            break;
+        }
     });
 
     var mainTabMenu = {
@@ -111,18 +122,21 @@
         },
         actions : {
             init : function(tabRef, callback){
+                
+                dynTabs.validForm = formMode != 'edit' ? true : false;
+
                 switch (tabRef) {
                     case 'datosGenerales':
-                        objViewDatosGenerales.init();
+                        objViewDatosGenerales.init(function(){ dynTabs.validForm = true; });
                     break;
                     case 'Laboral':
-                        objViewLaboral.init();
+                        objViewLaboral.init(function(){ dynTabs.validForm = true; });
                     break;
                     case 'Capacitacion':
-                        objViewCapacitacion.init();
+                        objViewCapacitacion.init(function(){ dynTabs.validForm = true; });
                     break;
                     case 'Identificacion':
-                        objViewIdentificacion.init();
+                        objViewIdentificacion.init(function(){ dynTabs.validForm = true; });
                     break;
                 }
                 if (callback)
@@ -138,6 +152,15 @@
                 var linkRef = $('#' + linkRefHash);
                 linkRef.trigger('click');
             }
+        }
+    }
+
+    var mainFormActions = {
+        populateData : function(idRef){
+            objViewDatosGenerales.vars.datosGenerales.objs.pCURP.val('RUAM811123HCMDGG05');
+            objViewDatosGenerales.vars.datosGenerales.objs.pCURP.trigger('focusout');
+            
+            $('#pTIPO_MOV').val('BE').data('insert','BE');
         }
     }
 </script>

@@ -41,7 +41,6 @@
         }
 
         public function Alta(){
-
 			// BREADCRUMB
 			$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');		
 			$this->breadcrumbs->push('[ Solicitudes ] - Solicitudes - Persona - Alta', site_url('alta/cedula/datosPersonales'));
@@ -50,10 +49,32 @@
 			// TITLE BODY PAGE
 			$this->session->set_flashdata('titleBody','[ Solicitudes ] - Solicitudes - Persona - Alta');
 			// /TITLE BODY PAGE
-		
+			
+			// FORM MODE
+			$this->session->set_flashdata('formMode','add'); //MODO EDICIÓN
+
 			$this->load->view('Solicitud/Registro');
         }
-        
+		
+		public function Modificar($id = null){
+			if (!$id)
+				show_error('Parámetros incorrecto', 403, 'Error en la petición');
+
+			// BREADCRUMB
+			$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');		
+			$this->breadcrumbs->push('[ Solicitudes ] - Solicitudes - Modificar', site_url('alta/cedula/datosPersonales'));
+			// /BREADCRUMB
+		
+			// TITLE BODY PAGE
+			$this->session->set_flashdata('titleBody','[ Solicitudes ] - Solicitudes - Modificar');
+			// /TITLE BODY PAGE
+		
+			// FORM MODE
+			$this->session->set_flashdata('formMode','edit'); //MODO EDICIÓN
+
+			$this->load->view('Solicitud/Registro',array('id' => $id));
+		}
+		
         public function Ver(){
 
 			// BREADCRUMB
@@ -68,19 +89,7 @@
 			$this->load->view('Solicitud/Ver');
         }
         
-        public function Modificar(){
-
-			// BREADCRUMB
-			$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');		
-			$this->breadcrumbs->push('[ Solicitudes ] - Solicitudes - Modificar', site_url('alta/cedula/datosPersonales'));
-			// /BREADCRUMB
-		
-			// TITLE BODY PAGE
-			$this->session->set_flashdata('titleBody','[ Solicitudes ] - Solicitudes - Modificar');
-			// /TITLE BODY PAGE
-		
-			$this->load->view('Solicitud/Modificar');
-        }
+        
         
       
     }

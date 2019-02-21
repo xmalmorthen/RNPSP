@@ -41,10 +41,13 @@ var objViewIdentificacion = {
                     obj : null,
                     dom : null
                 }
+            },
+            files : {
+                inputFile : null
             }
         }
     },
-    init : function(){        
+    init : function(callback){        
         if (objViewIdentificacion.vars.general.init)
             return false;
 
@@ -61,6 +64,9 @@ var objViewIdentificacion = {
         objViewIdentificacion.vars.identificacion.tables.tableRegistrodecadactilar.obj = objViewIdentificacion.vars.identificacion.tables.tableRegistrodecadactilar.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});
         objViewIdentificacion.vars.identificacion.tables.tableDigitalizaciondoc.dom = $('#tableDigitalizaciondoc');
         objViewIdentificacion.vars.identificacion.tables.tableDigitalizaciondoc.obj = objViewIdentificacion.vars.identificacion.tables.tableDigitalizaciondoc.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});        
+
+        //INIT TYPE FILES
+        objViewIdentificacion.vars.identificacion.files.inputFile = $('.inputFile');
 
         // INIT ELEMENTS
         // FORMS
@@ -104,7 +110,9 @@ var objViewIdentificacion = {
         objViewIdentificacion.vars.identificacion.btns.validarReplicar.on('click',objViewIdentificacion.events.click.identificacion.validarReplicar);
         
         objViewIdentificacion.vars.general.btnSiguienteAnterior.on('click',objViewIdentificacion.events.click.general.btnSiguienteAnterior);
-        //FOCUSOUT
+        
+        // INIT TYPE FILES
+        objViewIdentificacion.vars.identificacion.files.inputFile.on('change',objViewIdentificacion.events.change.inputFile);
 
         //Rutina para verificar si se hace algún cambio en cualquier forulario
         $.each(objViewIdentificacion.vars.identificacion.forms, function( index, value ) {
@@ -130,6 +138,12 @@ var objViewIdentificacion = {
         objViewIdentificacion.vars.general.init = true;
 
         $('#myTabContent').LoadingOverlay("hide");
+
+        if (callback){
+            if ($.isFunction( callback )){
+                callback();
+            }
+        }
     },
     events : {
         click : {
@@ -217,16 +231,44 @@ var objViewIdentificacion = {
                 validarVoz : function(e, from){},
                 validarReplicar : function(e, from){}
             }
+        },
+        change : {
+            inputFile : function(e){
+
+                var $this = this,
+                    labelNameFile = $( $this ).closest( ".custom-file" ).find('label.custom-file-label');
+                    
+                if ($this.files && $this.files[0]) {   
+                    var reader = new FileReader();
+                    var filename = $($this).val();
+                    filename = filename.substring(filename.lastIndexOf('\\')+1);
+                    reader.onload = function(e) {
+                        var renderTarjet = $('#' + $($this).data('renderin'));
+
+                        renderTarjet.attr('src', e.target.result);
+                        renderTarjet.hide();
+                        renderTarjet.fadeIn(500);
+
+                        labelNameFile.text(filename);
+                    };
+                    reader.readAsDataURL($this.files[0]);
+                } else {
+                    labelNameFile.text('');
+                }
+            } 
         }
     },
     actions : {        
-        discartChanges : function(e){ 
+        discartChanges : function(e,relatedTarget){ 
+            
             dynTabs.markTab(dynTabs.tabs.prebTab.linkRef,'<span class="text-warning tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true"></i></span>');
             Swal.close();
                 
             dynTabs.tabs.prebTab.tabForm.removeData('hasChanged');
             dynTabs.tabs.prebTab.tabForm.data('hasDiscardChanges',true);
-            dynTabs.tabs.prebTab.tabForm.find('.btnSiguienteAnterior.siguienteTab').trigger('click');
+
+            $("#" + relatedTarget.id).trigger('click');
+            //dynTabs.tabs.prebTab.tabForm.find('.btnSiguienteAnterior.siguienteTab').trigger('click');
         }
     }
 }

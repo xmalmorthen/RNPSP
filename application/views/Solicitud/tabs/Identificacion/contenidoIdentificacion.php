@@ -329,398 +329,7 @@
             </div>
             </form>
         </div>
-    </div>
-    
-    <div class="tab-pane fade" id="Datos" role="tabpanel" aria.labelledby="Datos-tab">
-        <div class="_container">
-            <form action="#" id="Datos_form" name="Datos_form" autocomplete="off">
-                <br>
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <h3 class="titulo">Media filiación</h3>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        Complexión: <p>Delgada</p>
-
-                    </div>
-                    <div class="col-md-4">
-                        Color de piel: <p>Blanca</p>
-
-                    </div>
-                    <div class="col-md-4">
-                        Cara: <p>Ovalada</p>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <strong class="titulo">Cabello</strong>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-3">
-                        Cantidad: <p>Escaso</p>
-
-                    </div>
-                    <div class="col-md-3">
-                        Color: <p>Castaño oscuro</p>
-
-                    </div>
-                    <div class="col-md-3">
-                        Forma: <p>Ondulado</p>
-
-                    </div>
-                    <div class="col-md-3">
-                        Calvicie: <p>Calvicie</p>
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-3">
-                        Implantación: <p>Circular</p>
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <strong class="titulo">Frente</strong>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        Altura: <p>Grande</p>
-
-                    </div>
-                    <div class="col-md-4">
-                        Inclinación: <p>Intermedia</p>
-
-                    </div>
-                    <div class="col-md-4">
-                        Ancho: <p>Grande</p>
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <strong class="titulo">Cejas</strong>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-3">
-                        Dirección: <p>Horizonal</p>
-
-                    </div>
-                    <div class="col-md-3">
-                        Implantación: <p>Altas</p>
-
-                    </div>
-                    <div class="col-md-3">
-                        Forma: <p>Arqueadas</p>
-
-                    </div>
-                    <div class="col-md-3">
-                        Tamaño: <p>Delgadas</p>
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <strong class="titulo">Ojos</strong>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        Color: <p>Café oscuro</p>
-
-                    </div>
-                    <div class="col-md-4">
-                        Forma: <p>Ovales</p>
-
-                    </div>
-                    <div class="col-md-4">
-                    Tamaño: <p>Regulares</p>
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <strong class="titulo">Nariz</strong>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-3">
-                        Raiz: <p>Pequeña</p>
-
-                    </div>
-                    <div class="col-md-3">
-                        Dorso: <p>Recto</p>
-
-                    </div>
-                    <div class="col-md-3">
-                        Ancho: <p>Mediana</p>
-
-                    </div>
-                    <div class="col-md-3">
-                        Base: <p>Horizontal</p>
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-3">
-                        Altura: <p>Pequeña</p>
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <strong class="titulo">Boca</strong>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        Tamaño: <p>Mediana</p>
-
-                    </div>
-                    <div class="col-md-4">
-                        Comisuras: <p>Comisuras</p>
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <strong class="titulo">Labios</strong>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        Espesor: <p>Delgados</p>
-
-                    </div>
-                    <div class="col-md-4">
-                        Altura naso-labial: <p>Mediana</p>
-
-                    </div>
-                    <div class="col-md-4">
-                        Prominencia: <p>Ninguno</p>
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <strong class="titulo">Mentón</strong>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        Tipo: <p>Ninguno</p>
-
-                    </div>
-                    <div class="col-md-4">
-                        Forma: <p>Oval</p>
-
-                    </div>
-                    <div class="col-md-4">
-                        Inclinación: <p>Vertical</p>
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <strong class="titulo">Oreja derecha</strong>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                <div class="col-md-4">
-                        Forma: <p>Ovalada</p>
-
-                    </div>
-                    <div class="col-md-4">
-                        Original: <p>Pequeño</p>
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                    </div>
-                    <div class="col-md-4">
-                        <h6 style="color: #6b6b6b; font-size: 1.0rem"><strong>Helix</strong></h6>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-3">
-                        Superior: <p>Mediano</p>
-
-                    </div>
-                    <div class="col-md-3">
-                        Posterior: <p>Mediano</p>
-
-                    </div>
-                    <div class="col-md-3">
-                        Adherencia: <p>Muy separado</p>
-
-                    </div>
-                    <div class="col-md-3">
-                        Contorno: <p>En golfo</p>
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                    </div>
-                    <div class="col-md-4">
-                        <h6 style="color: #6b6b6b; font-size: 1.0rem"><strong>Lóbulo</strong></h6>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                            Adherencia: <p>Separado</p>
-
-                        </div>
-                        <div class="col-md-3">
-                            Particularidad: <p>Islote</p>
-
-                        </div>
-                        <div class="col-md-3">
-                            Dimensión: <p>Mediano</p>
-
-                        </div>
-
-
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <h6 style="color: #6b6b6b; font-size: 1.0rem"><strong>Sangre</strong></h6>
-                    </div>
-
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        Tipo: <p>A</p>
-
-                    </div>
-                    <div class="col-md-4">
-                        Factor RH: <p>+</p>
-
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <h6 style="color: #6b6b6b; font-size: 1.0rem"><strong>Otros</strong></h6>
-                    </div>
-
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <span class="clr">*</span>¿Usa anteojos?: <p>Si</p>
-
-                    </div>
-                    <div class="col-md-4">
-                        <span class="clr">*</span>Estatura (Cm): <p>1.80Cm</p>
-
-                    </div>
-                    <div class="col-md-4">
-                        <span class="clr">*</span>Peso(KG): <p>81 Kg</p>
-
-                    </div>
-
-                </div>
-                <br>
-                <input type="hidden" id="pID_ALTERNA_Datos" name="pID_ALTERNA_Datos" value="" >
-                <input type="hidden" id="pID_ESTADO_EMISOR_Datos" name="pID_ESTADO_EMISOR_Datos" value="" >
-                <input type="hidden" id="pID_EMISOR_Datos" name="pID_EMISOR_Datos" value="" >
-                
-            
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorConsultamediafiliacion" data-nexttab="#mediafiliacion-tab"> Anterior Ficha</button>
-                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteConsultamediafiliacion" data-nexttab="#Senas_particulares-tab">Siguiente Ficha</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
+    </div>    
     <div class="tab-pane fade" id="Senas_particulares" role="tabpanel" aria-labelledby="Senas_particulares-tab">
         <div class="_container">
             <form action="#" id="Senas_particulares_form" name="Senas_particulares_form" autocomplete="off">
@@ -798,7 +407,7 @@
                 <input type="hidden" id="pID_EMISOR_Senas" name="pID_EMISOR_Senas" value="" >
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorSeña" data-nexttab="#Datos-tab">Anterior Ficha</button>
+                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorSeña" data-nexttab="#Senas_particulares">Anterior Ficha</button>
                         <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="SiguienteSeña" data-nexttab="#Ficha_fotografica-tab">Siguiente Ficha</button>
                     </div>
                 </div>
@@ -812,13 +421,46 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <h3 class="titulo">Registro dactilar</h3>
+                        <h3 class="titulo">Registro decadactilar</h3>
                     </div>
                 </div>                
                 <br>
-                <br>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">CUIP</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Folio</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Adscripcion</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Institución</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Dependencia</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Apellido paterno</h6>
+                        <p></p>
+                    </div>
+
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Fecha de nacimiento</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Sexo</h6>
+                        <p></p>
+                    </div>
+
+                    <!-- <div class="col-md-6">
                         <ul>
                             <dd>CUIP:</dd>
                             <dd>Adscripcion:</dd>
@@ -836,7 +478,7 @@
                             <dd>Edad:</dd>
                             <dd>Fecha de nacimiento:</dd>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
                 <hr>
                 <br>
@@ -844,15 +486,16 @@
                     <div class="col-md-4">
                         <!-- SPACE -->
                     </div>
-                    <div class="col-md-4">
-                        Seleccione un documento
-                        <input type="file" id="pIMAGEN" name="pIMAGEN">
+                    <div class="col-md-4 text-center">
+                        <div class="custom-file">
+                            <input type="file" id="pIMAGEN" name="pIMAGEN" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN' accept="application/pdf,image/*">
+                            <label class="custom-file-label" for="inputGroupFile01">Seleccionar documento</label>
+                        </div>
                     </div>
                 </div>
                 <br>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-4">
-                        <!-- SPACE -->
                     </div>
                     <div class="col-md-4">
                         <button class="btn btn-default" id="Subir_Imagen">
@@ -860,7 +503,7 @@
                     </button>
                     </div>
                 </div>
-                <br>
+                <br> -->
                 <div class="row">
                     <div class="col-md-4">
                         <button class="btn btn-default" id="guardarRegistrodecadactilar">
@@ -908,54 +551,60 @@
                     </div>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="col-md-2">
-                    </div>
-                    <div class="col-md-8">
-                        <strong>Especificaciones para el archivo de identificación de voz</strong>
+                <div class="row">                    
+                    <div class="col-md-12">
+                        <h5>Especificaciones para el archivo de identificación de voz</h5>
                     </div>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-6">
-                        <ul>
-                            <dd>Formato: WAV PCM</dd>
-                            <dd>Sonido: Monoaural</dd>
-                            <dd>Duración del sonido: 2 minutos</dd>
-                            <dd>Frecuencia de muestreo: 8000HZ-11025HZ</dd>
-                        </ul>
+                    <div class="col-md-3">
+                        <h6 class="borderButtom">Formato</h6>
+                        <p>WAV PCM</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="borderButtom">Sonido</h6>
+                        <p>Monoaural</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="borderButtom">Duración del sonido</h6>
+                        <p>2 minutos</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="borderButtom">Frecuencia de muestreo</h6>
+                        <p>8000HZ-11025HZ</p>
                     </div>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-2">
-
-                    </div>
-                    <div class="col-md-8">
-                        <strong>Información de identificación de voz</strong>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-6">
-                        <ul>
-                            <dd>Adscripción:</dd>
-                            <dd>Dependencia</dd>
-                            <dd>Institución</dd>
-                        </ul>
-                    </div>
-                </div>
-                <br>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <!-- SPACE -->
+                    <div class="col-md-12">
+                        <h5>Información de identificación de voz</h5>
                     </div>
                     <div class="col-md-4">
-                        <!-- <audio id="audio" controls style="margin-left: -24px;">
-                        <source src="ruta_de_audio">
-                            Tu navegador no es compatible
-                    </audio> -->
+                        <h6 class="borderButtom">Adscripción</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Dependencia</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Institución</h6>
+                        <p></p>
+                    </div>
+                </div>
+                <br>
+                <hr>
+                <div class="row">                    
+                    <div class="col-md-4">
+                        Audio
+                        <div class="custom-file">
+                            <input type="file" id="vozFile" name="vozFile" class='custom-file-input inputFile' data-renderin='thumb_vozFile' accept="audio/*">
+                            <label class="custom-file-label" for="inputGroupFile01">Seleccionar archivo</label>
+                        </div>
+                    </div>
+                    <div class="col-md-8 text-center">
+                        <audio id="audio" class='ml-5' style='width=90%!Important;' controls><source src="ruta_de_audio">Navegador no compatible con reproductor de audio</audio>
                     </div>
                 </div>
                 <br>
@@ -1005,127 +654,118 @@
                     </div>
                 </div>                
                 <br>
-                    <div class="row">
-                    <div class="col-md-4">
-
-                    </div>
-                    <div class="col-md-4">
-                        <strong>Parámetros</strong>
-                    </div>
-                </div>
-                <br>
                 <div class="row">
-                    <div class="col-md-6">
-                        <ul>
-                            <dd>CUIP:</dd>
-                            <dd>Nombre(s):</dd>
-                            <dd>Apellido paterno:</dd>
-                            <dd>Apellido materno</dd>
-                            <dd>Fecha de nacimiento:</dd>
-                            <dd>Adscripción:</dd>
-                            <dd>Dependencia:</dd>
-                            <dd>Institución</dd>
-                        </ul>
+                    <div class="col-md-12 text-center">
+                        <h4>Parámetros</h4>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">CUIP</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Nombre(s)</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Apellido paterno</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Apellido materno</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Fecha de nacimiento</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Adscripción</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Dependencia</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Institución</h6>
+                        <p></p>
                     </div>
                 </div>
                 <hr>
-                <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <table id="tablePerfilizq" class="table display">
-                            <thead>
-                                <tr>
-                                    <td>Perfil izquierdo</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <input type="file" id="pIMAGEN_IZQUIERDO" name="pIMAGEN_IZQUIERDO"> <br>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <button class="btn btn-default" id="subirFotografica">subir</button>
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <h6>Perfil izquierdo</h6>
+                                <img id="thumb_pIMAGEN_IZQUIERDO" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
+                                <div class="custom-file">
+                                    <input type="file" id="pIMAGEN_IZQUIERDO" name="pIMAGEN_IZQUIERDO" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_IZQUIERDO' accept="image/*">
+                                    <label class="custom-file-label" for="inputGroupFile01">Seleccionar imágen</label>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <!-- <button class="btn btn-default mt-5" id="subirFotografica">subir</button> -->
                     </div>
                     <div class="col-md-4">
-                        <table id="tableFrente" class="table display">
-                            <thead>
-                                <tr>
-                                    <td>Frente</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <input type="file" id="pIMAGEN_FRENTE" name="pIMAGEN_FRENTE"> <br>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <button class="btn btn-default" id="subirFotografica">subir</button>
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <h6>Frente</h6>
+                                <img id="thumb_pIMAGEN_FRENTE" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
+                                <div class="custom-file">
+                                    <input type="file" id="pIMAGEN_FRENTE" name="pIMAGEN_FRENTE" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_FRENTE' accept="image/*">
+                                    <label class="custom-file-label" for="inputGroupFile01">Seleccionar imágen</label>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <!-- <button class="btn btn-default mt-5" id="subirFotografica">subir</button> -->
                     </div>
                     <div class="col-md-4">
-                        <table id="tablePerfilderecho" class="table display">
-                            <thead>
-                                <tr>
-                                    <td>Perfil derecho</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <input type="file" id="pIMAGEN_DERECHO" name="pIMAGEN_DERECHO"> <br>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <button class="btn btn-default" id="subirFotografica">subir</button>
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <h6>Perfil derecho</h6>
+                                <img id="thumb_pIMAGEN_DERECHO" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
+                                <div class="custom-file">
+                                    <input type="file" id="pIMAGEN_DERECHO" name="pIMAGEN_DERECHO" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_DERECHO' accept="image/*">
+                                    <label class="custom-file-label" for="inputGroupFile01">Seleccionar imágen</label>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <!-- <button class="btn btn-default mt-5" id="subirFotografica">subir</button> -->
                     </div>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-2">
-
-                    </div>
-                        <div class="col-md-4">
-                        <table id="tableFirmo" class="table display">
-                            <thead>
-                                <tr>
-                                    <td>Firma</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <input type="file" id="pIMAGEN_FIRMA" name="pIMAGEN_FIRMA"> <br>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <button class="btn btn-default">subir</button>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <h6>Firma</h6>
+                                <img id="thumb_pIMAGEN_FIRMA" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
+                                <div class="custom-file">
+                                    <input type="file" id="pIMAGEN_FIRMA" name="pIMAGEN_FIRMA" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_FIRMA' accept="image/*">
+                                    <label class="custom-file-label" for="inputGroupFile01">Seleccionar imágen</label>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <!-- <button class="btn btn-default mt-5">subir</button> -->
                     </div>
                     <div class="col-md-4">
-                        <table id="tableHuella" class="table display">
-                            <thead>
-                                <tr>
-                                    <td>Huella</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <input type="file" id="pIMAGEN_HUELLA" name="pIMAGEN_HUELLA"> <br>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <button class="btn btn-default">subir</button>
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <h6>Huella</h6>
+                                <img id="thumb_pIMAGEN_HUELLA" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
+                                <div class="custom-file">
+                                    <input type="file" id="pIMAGEN_HUELLA" name="pIMAGEN_HUELLA" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_HUELLA' accept="image/*">
+                                    <label class="custom-file-label" for="inputGroupFile01">Seleccionar imágen</label>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <!-- <button class="btn btn-default mt-5">subir</button> -->
                     </div>
                 </div>
                 <br>
@@ -1151,7 +791,7 @@
                         </table>
                     </div>
                 </div>
-                 <input type="hidden" id="pID_ALTERNA_Fotografica" name="pID_ALTERNA_Fotografica" value="" >
+                <input type="hidden" id="pID_ALTERNA_Fotografica" name="pID_ALTERNA_Fotografica" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Fotografica" name="pID_ESTADO_EMISOR_Fotografica" value="" >
                 <input type="hidden" id="pID_EMISOR_Fotografica" name="pID_EMISOR_Fotografica" value="" >
                 <div class="row">
@@ -1184,24 +824,21 @@
                         Fecha documento
                         <input type="date" id="FECHA_DOCUMENTO" name="FECHA_DOCUMENTO" class="form-control">
                     </div>
-                </div>
-                <br>
-                <div class="row">
                     <div class="col-md-4">
-
+                        Documento
+                        <div class="custom-file">
+                            <input type="file" id="pIMAGEN" name="pIMAGEN" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN' accept="application/pdf,image/*">
+                            <label class="custom-file-label" for="inputGroupFile01">Seleccionar documento</label>
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        Seleccione un documento
-                        <input type="file" id="IMAGEN" name="IMAGEN">
-                    </div>
-                </div>
-                <br>
+                </div>                
+                <!-- <br>
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
                         <button class="btn btn-default">Subir</button>
                     </div>
-                </div>
+                </div> -->
                 <br>
                 <div class="row">
                     <div class="col-md-4">
