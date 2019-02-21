@@ -232,14 +232,15 @@ var objViewIdentificacion = {
                 if ($this.files && $this.files[0]) {   
                     var reader = new FileReader();
                     var filename = $($this).val();
-                    //filename = filename.substring(filename.lastIndexOf('\\')+1);
+                    filename = filename.substring(filename.lastIndexOf('\\')+1);
                     reader.onload = function(e) {
                         var renderTarjet = $('#' + $($this).data('renderin'));
 
                         renderTarjet.attr('src', e.target.result);
                         renderTarjet.hide();
-                        renderTarjet.fadeIn(300);
-                        // $('.custom-file-label').text(filename);             
+                        renderTarjet.fadeIn(500);
+
+                        $( $this ).closest( ".custom-file" ).find('label.custom-file-label').text(filename);
                     };
                     reader.readAsDataURL($this.files[0]);
                 }

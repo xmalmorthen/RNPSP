@@ -816,9 +816,42 @@
                     </div>
                 </div>                
                 <br>
-                <br>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">CUIP</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Folio</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Adscripcion</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Institución</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Dependencia</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Apellido paterno</h6>
+                        <p></p>
+                    </div>
+
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Fecha de nacimiento</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Sexo</h6>
+                        <p></p>
+                    </div>
+
+                    <!-- <div class="col-md-6">
                         <ul>
                             <dd>CUIP:</dd>
                             <dd>Adscripcion:</dd>
@@ -836,7 +869,7 @@
                             <dd>Edad:</dd>
                             <dd>Fecha de nacimiento:</dd>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
                 <hr>
                 <br>
@@ -844,15 +877,16 @@
                     <div class="col-md-4">
                         <!-- SPACE -->
                     </div>
-                    <div class="col-md-4">
-                        Seleccione un documento
-                        <input type="file" id="pIMAGEN" name="pIMAGEN">
+                    <div class="col-md-4 text-center">
+                        <div class="custom-file">
+                            <input type="file" id="pIMAGEN" name="pIMAGEN" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN' accept="application/pdf">
+                            <label class="custom-file-label" for="inputGroupFile01">Seleccionar documento</label>
+                        </div>
                     </div>
                 </div>
                 <br>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-4">
-                        <!-- SPACE -->
                     </div>
                     <div class="col-md-4">
                         <button class="btn btn-default" id="Subir_Imagen">
@@ -860,7 +894,7 @@
                     </button>
                     </div>
                 </div>
-                <br>
+                <br> -->
                 <div class="row">
                     <div class="col-md-4">
                         <button class="btn btn-default" id="guardarRegistrodecadactilar">
@@ -1051,7 +1085,7 @@
                                 <img id="thumb_pIMAGEN_IZQUIERDO" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
                                 <div class="custom-file">
                                     <input type="file" id="pIMAGEN_IZQUIERDO" name="pIMAGEN_IZQUIERDO" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_IZQUIERDO' accept="image/*">
-                                    <label class="custom-file-label" for="inputGroupFile01">Seleccionar archivo</label>
+                                    <label class="custom-file-label" for="inputGroupFile01">Seleccionar imágen</label>
                                 </div>
                             </div>
                         </div>
@@ -1065,7 +1099,7 @@
                                 <img id="thumb_pIMAGEN_FRENTE" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
                                 <div class="custom-file">
                                     <input type="file" id="pIMAGEN_FRENTE" name="pIMAGEN_FRENTE" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_FRENTE' accept="image/*">
-                                    <label class="custom-file-label" for="inputGroupFile01">Seleccionar archivo</label>
+                                    <label class="custom-file-label" for="inputGroupFile01">Seleccionar imágen</label>
                                 </div>
                             </div>
                         </div>
@@ -1079,7 +1113,7 @@
                                 <img id="thumb_pIMAGEN_DERECHO" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
                                 <div class="custom-file">
                                     <input type="file" id="pIMAGEN_DERECHO" name="pIMAGEN_DERECHO" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_DERECHO' accept="image/*">
-                                    <label class="custom-file-label" for="inputGroupFile01">Seleccionar archivo</label>
+                                    <label class="custom-file-label" for="inputGroupFile01">Seleccionar imágen</label>
                                 </div>
                             </div>
                         </div>
@@ -1097,7 +1131,7 @@
                                 <img id="thumb_pIMAGEN_FIRMA" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
                                 <div class="custom-file">
                                     <input type="file" id="pIMAGEN_FIRMA" name="pIMAGEN_FIRMA" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_FIRMA' accept="image/*">
-                                    <label class="custom-file-label" for="inputGroupFile01">Seleccionar archivo</label>
+                                    <label class="custom-file-label" for="inputGroupFile01">Seleccionar imágen</label>
                                 </div>
                             </div>
                         </div>
@@ -1111,7 +1145,7 @@
                                 <img id="thumb_pIMAGEN_HUELLA" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
                                 <div class="custom-file">
                                     <input type="file" id="pIMAGEN_HUELLA" name="pIMAGEN_HUELLA" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_HUELLA' accept="image/*">
-                                    <label class="custom-file-label" for="inputGroupFile01">Seleccionar archivo</label>
+                                    <label class="custom-file-label" for="inputGroupFile01">Seleccionar imágen</label>
                                 </div>
                             </div>
                         </div>
@@ -1175,24 +1209,21 @@
                         Fecha documento
                         <input type="date" id="FECHA_DOCUMENTO" name="FECHA_DOCUMENTO" class="form-control">
                     </div>
-                </div>
-                <br>
-                <div class="row">
                     <div class="col-md-4">
-
+                        Documento
+                        <div class="custom-file">
+                            <input type="file" id="pIMAGEN" name="pIMAGEN" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN' accept="application/pdf">
+                            <label class="custom-file-label" for="inputGroupFile01">Seleccionar documento</label>
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        Seleccione un documento
-                        <input type="file" id="IMAGEN" name="IMAGEN">
-                    </div>
-                </div>
-                <br>
+                </div>                
+                <!-- <br>
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
                         <button class="btn btn-default">Subir</button>
                     </div>
-                </div>
+                </div> -->
                 <br>
                 <div class="row">
                     <div class="col-md-4">
