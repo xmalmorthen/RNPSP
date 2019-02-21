@@ -143,6 +143,11 @@
                         </div>
                     </div>
                     <br>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <button class="btn btn-default" id="modificarAdscripcionActual">Modificar</button>
+                        </div>
+                    </div>
                    
                     <br>
                     <hr>
@@ -271,6 +276,12 @@
                         </div>
                     </div>
                     <br>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <button class="btn btn-default" id="modificarEmpleos_diversos">Modificar</button>
+                        </div>
+                    </div>
+                    <br>
                     <hr>
                     <br>
                         <!-- HIDDEN INPUTS -->
@@ -364,6 +375,12 @@
                     </div>
                 </div>
                 <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-default" id="modificarActitudes">Modificar</button>
+                    </div>
+                </div>
+                <br>
                 <hr>
                 <br>
 
@@ -431,6 +448,12 @@
                     <div class="col-md-4">
                         <h6 class="borderButtom"><span class="clr">*</span>Destino</h6>
                         <p></p>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-default" id="modificarDesarrollo">Modificar</button>
                     </div>
                 </div>
                 <br>
