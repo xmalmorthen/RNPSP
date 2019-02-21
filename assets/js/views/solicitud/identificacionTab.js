@@ -41,6 +41,9 @@ var objViewIdentificacion = {
                     obj : null,
                     dom : null
                 }
+            },
+            files : {
+                inputFile : null
             }
         }
     },
@@ -61,6 +64,9 @@ var objViewIdentificacion = {
         objViewIdentificacion.vars.identificacion.tables.tableRegistrodecadactilar.obj = objViewIdentificacion.vars.identificacion.tables.tableRegistrodecadactilar.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});
         objViewIdentificacion.vars.identificacion.tables.tableDigitalizaciondoc.dom = $('#tableDigitalizaciondoc');
         objViewIdentificacion.vars.identificacion.tables.tableDigitalizaciondoc.obj = objViewIdentificacion.vars.identificacion.tables.tableDigitalizaciondoc.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});        
+
+        //INIT TYPE FILES
+        objViewIdentificacion.vars.identificacion.files.inputFile = $('.inputFile');
 
         // INIT ELEMENTS
         // FORMS
@@ -104,7 +110,9 @@ var objViewIdentificacion = {
         objViewIdentificacion.vars.identificacion.btns.validarReplicar.on('click',objViewIdentificacion.events.click.identificacion.validarReplicar);
         
         objViewIdentificacion.vars.general.btnSiguienteAnterior.on('click',objViewIdentificacion.events.click.general.btnSiguienteAnterior);
-        //FOCUSOUT
+        
+        // INIT TYPE FILES
+        objViewIdentificacion.vars.identificacion.files.inputFile.on('change',objViewIdentificacion.events.change.inputFile);
 
         //Rutina para verificar si se hace algún cambio en cualquier forulario
         $.each(objViewIdentificacion.vars.identificacion.forms, function( index, value ) {
@@ -217,6 +225,25 @@ var objViewIdentificacion = {
                 validarVoz : function(e, from){},
                 validarReplicar : function(e, from){}
             }
+        },
+        change : {
+            inputFile : function(e){
+                var $this = this;
+                if ($this.files && $this.files[0]) {   
+                    var reader = new FileReader();
+                    var filename = $($this).val();
+                    //filename = filename.substring(filename.lastIndexOf('\\')+1);
+                    reader.onload = function(e) {
+                        var renderTarjet = $('#' + $($this).data('renderin'));
+
+                        renderTarjet.attr('src', e.target.result);
+                        renderTarjet.hide();
+                        renderTarjet.fadeIn(300);
+                        // $('.custom-file-label').text(filename);             
+                    };
+                    reader.readAsDataURL($this.files[0]);
+                }
+            } 
         }
     },
     actions : {        
