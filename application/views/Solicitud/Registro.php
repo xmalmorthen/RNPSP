@@ -121,27 +121,37 @@
             }
         },
         actions : {
+            inited : false,
             init : function(tabRef, callback){
-                
+                mainTabMenu.actions.inited = false;
+
                 dynTabs.validForm = formMode != 'edit' ? true : false;
 
                 switch (tabRef) {
                     case 'datosGenerales':
-                        objViewDatosGenerales.init(function(){ dynTabs.validForm = true; });
+                        objViewDatosGenerales.init(function(){ dynTabs.validForm = true; mainTabMenu.actions.inited = true; });
                     break;
                     case 'Laboral':
-                        objViewLaboral.init(function(){ dynTabs.validForm = true; });
+                        objViewLaboral.init(function(){ dynTabs.validForm = true; mainTabMenu.actions.inited = true;});
                     break;
                     case 'Capacitacion':
-                        objViewCapacitacion.init(function(){ dynTabs.validForm = true; });
+                        objViewCapacitacion.init(function(){ dynTabs.validForm = true; mainTabMenu.actions.inited = true;});
                     break;
                     case 'Identificacion':
-                        objViewIdentificacion.init(function(){ dynTabs.validForm = true; });
+                        objViewIdentificacion.init(function(){ dynTabs.validForm = true; mainTabMenu.actions.inited = true;});
                     break;
                 }
-                if (callback)
-                    if ($.isFunction( callback ))
+                if (callback) {
+                    if ($.isFunction( callback )) {
                         callback();
+                        var initInterval = setInterval(function(){
+                            if (mainTabMenu.actions.inited) {
+                                clearInterval(initInterval);
+                                callback();
+                            }
+                        }, 100);
+                    }
+                }
             },
             changeTab : function(){
                 var linkRefHash = MyCookie.tabRef.get(dynTabs.mode + 'ChildTab');
@@ -157,10 +167,21 @@
 
     var mainFormActions = {
         populateData : function(idRef){
-            objViewDatosGenerales.vars.datosGenerales.objs.pCURP.val('RUAM811123HCMDGG05');
-            objViewDatosGenerales.vars.datosGenerales.objs.pCURP.trigger('focusout');
             
-            $('#pTIPO_MOV').val('BE').data('insert','BE');
+            // objViewDatosGenerales.vars.datosGenerales.objs.pCURP.val('RUAM811123HCMDGG05');
+            // objViewDatosGenerales.vars.datosGenerales.objs.pCURP.trigger('focusout');
+            
+            mainFormActions.insertValueInSelect($('#pTIPO_MOV'),'BE');
+            mainFormActions.insertValueInSelect($('#pID_ENTIDAD_NAC'),'6');
+            mainFormActions.insertValueInSelect($('#pID_MUNICIPIO_NAC'),'2');
+            
+            mainFormActions.insertValueInSelect($('#_dependenciaAdscripcionActual'),'2');
+            mainFormActions.insertValueInSelect($('#pINSTITUCION'),'5342');
+            mainFormActions.insertValueInSelect($('#pID_AREA'),'247782');
+        },
+        insertValueInSelect : function(ref,value){
+            if (ref)
+                ref.val(value).data('insert',value);
         }
     }
 </script>

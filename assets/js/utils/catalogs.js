@@ -49,8 +49,11 @@ $.fn.getCatalog = function(options) {
                     //LO OBTIENE DEL DATA [INSERT]
                     if ( obj.data('insert') ) {
                         obj.val(obj.data('insert')).trigger('change.select2');
+                        obj.trigger('change');
+
                         obj.removeData('insert');
                     }
+                    
 
                     options.success(data);
                 }).fail(function (err) {                    

@@ -205,6 +205,7 @@ var objViewLaboral = {
         },
         change : {
             pINSTITUCION : function(e){
+debugger;
 
                 var $this = $(this),
                     valInstitucion = $this.val(),

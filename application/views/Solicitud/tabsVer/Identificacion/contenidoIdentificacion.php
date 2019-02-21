@@ -420,6 +420,12 @@
                        <p></p>
                     </div>
                 </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-default" id="modificarMediafiliacion">Modificar</button>
+                    </div>
+                </div>
             <input type="hidden" id="pID_ALTERNA_Media_filiacion" name="pID_ALTERNA_Media_filiacion" value="" >
             <input type="hidden" id="pID_ESTADO_EMISOR_Media_filiacion" name="pID_ESTADO_EMISOR_Media_filiacion" value="" >
             <input type="hidden" id="pID_EMISOR_Media_filiacion" name="pID_EMISOR_Media_filiacion" value="" >
@@ -433,410 +439,7 @@
             </div>
         </div>
     </div>
-    
-    <div class="tab-pane fade" id="Datos" role="tabpanel" aria.labelledby="Datos-tab">
-        <div class="_container">
-            <form action="#" id="Datos_form" name="Datos_form" autocomplete="off">
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                    <center><strong >Media filiación</strong></center>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        Complexión: <p>Delgada</p>
 
-                    </div>
-                    <div class="col-md-4">
-                        Color de piel: <p>Blanca</p>
-
-                    </div>
-                    <div class="col-md-4">
-                        Cara: <p>Ovalada</p>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Cabello</strong></center>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-3">
-                        Cantidad: <p>Escaso</p>
-
-                    </div>
-                    <div class="col-md-3">
-                        Color: <p>Castaño oscuro</p>
-
-                    </div>
-                    <div class="col-md-3">
-                        Forma: <p>Ondulado</p>
-
-                    </div>
-                    <div class="col-md-3">
-                        Calvicie: <p>Calvicie</p>
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-3">
-                        Implantación: <p>Circular</p>
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Frente</strong></center>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        Altura: <p>Grande</p>
-
-                    </div>
-                    <div class="col-md-4">
-                        Inclinación: <p>Intermedia</p>
-
-                    </div>
-                    <div class="col-md-4">
-                        Ancho: <p>Grande</p>
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Cejas</strong></center>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-3">
-                        Dirección: <p>Horizonal</p>
-
-                    </div>
-                    <div class="col-md-3">
-                        Implantación: <p>Altas</p>
-
-                    </div>
-                    <div class="col-md-3">
-                        Forma: <p>Arqueadas</p>
-
-                    </div>
-                    <div class="col-md-3">
-                        Tamaño: <p>Delgadas</p>
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Ojos</strong></center>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        Color: <p>Café oscuro</p>
-
-                    </div>
-                    <div class="col-md-4">
-                        Forma: <p>Ovales</p>
-
-                    </div>
-                    <div class="col-md-4">
-                    Tamaño: <p>Regulares</p>
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Nariz</strong></center>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-3">
-                        Raiz: <p>Pequeña</p>
-
-                    </div>
-                    <div class="col-md-3">
-                        Dorso: <p>Recto</p>
-
-                    </div>
-                    <div class="col-md-3">
-                        Ancho: <p>Mediana</p>
-
-                    </div>
-                    <div class="col-md-3">
-                        Base: <p>Horizontal</p>
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-3">
-                        Altura: <p>Pequeña</p>
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Boca</strong></center>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        Tamaño: <p>Mediana</p>
-
-                    </div>
-                    <div class="col-md-4">
-                        Comisuras: <p>Comisuras</p>
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Labios</strong></center>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        Espesor: <p>Delgados</p>
-
-                    </div>
-                    <div class="col-md-4">
-                        Altura naso-labial: <p>Mediana</p>
-
-                    </div>
-                    <div class="col-md-4">
-                        Prominencia: <p>Ninguno</p>
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Mentón</strong></center>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        Tipo: <p>Ninguno</p>
-
-                    </div>
-                    <div class="col-md-4">
-                        Forma: <p>Oval</p>
-
-                    </div>
-                    <div class="col-md-4">
-                        Inclinación: <p>Vertical</p>
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Oreja derecha</strong>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                <div class="col-md-4">
-                        Forma: <p>Ovalada</p>
-
-                    </div>
-                    <div class="col-md-4">
-                        Original: <p>Pequeño</p>
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                    </div>
-                    <div class="col-md-4">
-                        <center><h6 style="color: #6b6b6b; font-size: 1.0rem"><strong>Helix</strong></h6></center>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-3">
-                        Superior: <p>Mediano</p>
-
-                    </div>
-                    <div class="col-md-3">
-                        Posterior: <p>Mediano</p>
-
-                    </div>
-                    <div class="col-md-3">
-                        Adherencia: <p>Muy separado</p>
-
-                    </div>
-                    <div class="col-md-3">
-                        Contorno: <p>En golfo</p>
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                    </div>
-                    <div class="col-md-4">
-                        <center><h6 style="color: #6b6b6b; font-size: 1.0rem"><strong>Lóbulo</strong></h6></center>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                            Adherencia: <p>Separado</p>
-
-                        </div>
-                        <div class="col-md-3">
-                            Particularidad: <p>Islote</p>
-
-                        </div>
-                        <div class="col-md-3">
-                            Dimensión: <p>Mediano</p>
-
-                        </div>
-
-
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><h6 style="color: #6b6b6b; font-size: 1.0rem"><strong>Sangre</strong></h6></center>
-                    </div>
-
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        Tipo: <p>A</p>
-
-                    </div>
-                    <div class="col-md-4">
-                        Factor RH: <p>+</p>
-
-
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><h6 style="color: #6b6b6b; font-size: 1.0rem"><strong>Otros</strong></h6></center>
-                    </div>
-
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <span class="clr">*</span>¿Usa anteojos?: <p>Si</p>
-
-                    </div>
-                    <div class="col-md-4">
-                        <span class="clr">*</span>Estatura (Cm): <p>1.80Cm</p>
-
-                    </div>
-                    <div class="col-md-4">
-                        <span class="clr">*</span>Peso(KG): <p>81 Kg</p>
-
-                    </div>
-
-                </div>
-                <br>
-                <input type="hidden" id="pID_ALTERNA_Datos" name="pID_ALTERNA_Datos" value="" >
-                <input type="hidden" id="pID_ESTADO_EMISOR_Datos" name="pID_ESTADO_EMISOR_Datos" value="" >
-                <input type="hidden" id="pID_EMISOR_Datos" name="pID_EMISOR_Datos" value="" >
-                
-            </form>
-                <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorConsultamediafiliacion" data-nexttab="#mediafiliacion-tab"> Anterior</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteConsultamediafiliacion" data-nexttab="#Senas_particulares-tab">Siguiente</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4"></div>
-            </div>
-
-        </div>
-    </div>
 
     <div class="tab-pane fade" id="Senas_particulares" role="tabpanel" aria-labelledby="Senas_particulares-tab">
         <div class="_container">
@@ -883,6 +486,12 @@
                     <div class="col-md-4">
                         <h6 class="borderButtom">Descripción</h6>
                         <p></p>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-default" id="modificarDesarrollo">Modificar</button>
                     </div>
                 </div>
                 <br>
@@ -959,16 +568,20 @@
                     </div>
                 </div>
                 <br>
-            
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-default" id="modificarDecadactilar">Modificar</button>
+                    </div>
+                </div>
                 <br>
             
                 <br>
                 <hr>
                 <br>
         
-                 <input type="hidden" id="pID_ALTERNA_Datos" name="pID_ALTERNA_Datos" value="" >
-                <input type="hidden" id="pID_ESTADO_EMISOR_Datos" name="pID_ESTADO_EMISOR_Datos" value="" >
-                <input type="hidden" id="pID_EMISOR_Datos" name="pID_EMISOR_Datos" value="" >
+                 <input type="hidden" id="pID_ALTERNA_Datos" name="pID_ALTERNADecadactilar" value="" >
+                <input type="hidden" id="pID_ESTADO_EMISORDecadactilar" name="pID_ESTADO_EMISORDecadactilar" value="" >
+                <input type="hidden" id="pID_EMISORDecadactilar" name="pID_EMISORDecadactilar" value="" >
                 
             </form>
             <div class="row">
@@ -1052,20 +665,8 @@
                 </div>
                 <br>
                 <div class="row">
-            
                     <div class="col-md-4">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <button class="btn btn-default" id="validarVoz">
-                                    Validar
-                                </button>
-                            </div>
-                            <div class="col-md-6">
-                                <button class="btn btn-default" id="validarReplicar">
-                                    Replicar
-                                </button>
-                            </div>
-                        </div>
+                        <button class="btn btn-default" id="modificarDesarrollo">Modificar</button>
                     </div>
                 </div>
                 <br>
@@ -1230,6 +831,11 @@
                         
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-default" id="modificarFotografica">Modificar</button>
+                    </div>
+                </div>
                 <br>
                 <br>
           
@@ -1289,6 +895,11 @@
                     <div class="col-md-4">
                         <h6 class="borderButtom">Seleccione un documento</h6>
                         <p></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-default" id="modificarDocumento">Modificar</button>
                     </div>
                 </div>
                 <br>
