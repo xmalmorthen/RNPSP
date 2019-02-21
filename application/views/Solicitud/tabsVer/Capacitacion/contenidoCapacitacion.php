@@ -45,6 +45,12 @@
                     </div>
                 </div>
                 <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-default" id="modificarDesarrollo">Modificar</button>
+                    </div>
+                </div>
+                <br>
                 <br>
                 <hr>
                 <br>
@@ -99,6 +105,12 @@
                          <h6 class="borderButtom"><span class="clr">*</span>Grado de aptitud o dominio </h6><!-- Se rellena con el catalogo "CAT_GRADO_APTITUD_HAB" depende del select "TIPO_ACTITUD" -->
                         <p></p>
                         <span id="err_ID_GRADO_APT_HAB"></span>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-default" id="modificarDesarrollo">Modificar</button>
                     </div>
                 </div>
                 <br>

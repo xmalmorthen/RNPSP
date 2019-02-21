@@ -120,6 +120,12 @@
                         <p></p>
                     </div>
                 </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-default" id="modificarDatos_personales">Modificar</button>
+                    </div>
+                </div>
                 <br><hr>
             
               
@@ -195,7 +201,13 @@
                         <p></p>
                     </div>
                 </div>
-                <br><hr><br>
+                <br>
+                     <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-default" id="modificarDesarrollo">Modificar</button>
+                    </div>
+                </div>
+                <br><hr>
              
                 <input type="hidden" id="ID_ALTERNA_Desarrollo" name="ID_ALTERNA_Desarrollo" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Desarrollo" name="pID_ESTADO_EMISOR_Desarrollo" value="" >
@@ -295,6 +307,13 @@
                         <p></p>
                     </div>
                 </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-default" id="modificarDomicilio">Modificar</button>
+                    </div>
+                </div>
+                
                 <br>
                 <hr>
                 <div class="row">
@@ -414,6 +433,12 @@
                     <div class="col-md-4">
                         <h6 class="borderButtom">Y la calle de</h6>
                         <p></p>
+                    </div>
+                </div>
+                <br>
+                    <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-default" id="modificarReferencias">Modificar</button>
                     </div>
                 </div>
                 <br>
@@ -550,6 +575,11 @@
                         <h6 class="borderButtom"><span class="clr">*</span>Parentesco</h6> <br><!-- Se llena del catálogo CAT_RELACION -->
                         <p></p>
                         <span id="err_ID_RELACION"></span>
+                    </div>
+                </div>
+                    <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-default" id="modificarSocioeconomico">Modificar</button>
                     </div>
                 </div>
                 <br>

@@ -27,13 +27,13 @@
 				<span class="clr">*</span>Adscripción
 				<select class="form-control" id="pID_ADSCRIPCION" name="pID_ADSCRIPCION"  >
 				 {adscripcion}
-				 	<option value="{ID_DEPENDENCIA}">{DESCRIPCION}</option>
+				 	<option value="{ID_ADSCRIPCION}">{ADSCRIPCION}</option>
 				 {/adscripcion}
 				 </select>
 			</div>
 			<div class="col-md-4">
 				<span class="clr">*</span>Contraseña
-				<input readly type="text" class="form-control" id="pCONTRASENA" readonly disabled="disabled" />
+				<input readly type="text" class="form-control" id="pCONTRASENA" readonly />
 				<input type="hidden" name="pCONTRASENA" />
 			</div>
 		</div>
