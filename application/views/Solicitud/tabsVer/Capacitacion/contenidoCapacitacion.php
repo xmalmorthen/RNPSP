@@ -45,36 +45,9 @@
                     </div>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id="guardarIdioma">Guardar idioma y/o dialecto</button>
-                    </div>
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-
-                    </div>
-                </div>
                 <br>
                 <hr>
                 <br>
-                <table id="tableIdiomas" class="table display">
-                    <thead>
-                        <th>Id idioma y/o dialecto</th>
-                        <th>Idioma</th>
-                        <th>Porcentaje de lectura</th>
-                        <th>Porcentaje de escritura</th>
-                        <th>Porcentaje de conversación</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
                 <input type="hidden" id="pID_ALTERNA_Idioma" name="pID_ALTERNA_Idioma" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Idioma" name="pID_ESTADO_EMISOR_Idioma" value="" >
                 <input type="hidden" id="pID_EMISOR_Idioma" name="pID_EMISOR_Idioma" value="" >
@@ -129,34 +102,9 @@
                     </div>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id="guardarHabilidad">Guardar habilidad y/o aptitud</button>
-                    </div>
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-
-                    </div>
-                </div>
                 <br>
                 <hr>
                 <br>
-                <table id="tableHabilidades" class="table display">
-                    <thead>
-                        <th>Id habilidad y/o aptitud</th>
-                        <th>Tipo de habilidad y/o aptitud</th>
-                        <th>Grado</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-
-                        </tr>
-                    </tbody>
-                </table>
                 <input type="hidden" id="pID_ALTERNA_Habilidades" name="pID_ALTERNA_Habilidades" value="">
                 <input type="hidden" id="pID_ESTADO_EMISOR_Habilidades" name="pID_ESTADO_EMISOR_Habilidades" value="">
                 <input type="hidden" id="pID_EMISOR_Habilidades" name="pID_EMISOR_Habilidades" value="">

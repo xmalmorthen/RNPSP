@@ -120,42 +120,9 @@
                         <p></p>
                     </div>
                 </div>
-                <br><hr><br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <h6 class="borderButtom">CIB </h6>                       
-                        <p></p>
-                    </div>
-                    <div class="col-md-4">
-                        <h6 class="borderButtom">Motivo de cambio de CIB </h6>
-                        <p></p>
-                    <br>
-                    </div>
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id="GUARDAR_CIB" style="margin-top: 16px;"> Guardar CIB</button>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <button class="btn btn-default btnGuardarSection" id="guardarDatosPersonales"> Guardar datos personales</button>
-                    </div>
-                </div>
-                <br>
-                <hr>
-                <br>
-                <div class="row">
-                    <div class="col-md-12">
-                        <table id="tableDatospersonales" class="table display" style="width:100%">
-                            <thead>
-                                <th><center>CIB</center></th>
-                                <th><center>Motivo</center></th>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                <br><hr>
+            
+              
                 <input type="hidden" id="ID_ALTERNA_Datos_personales" name="ID_ALTERNA_Datos_personales" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Datos_personales" name="pID_ESTADO_EMISOR_Datos_personales" value="" >
                 <input type="hidden" id="pID_EMISOR_Datos_personales" name="pID_EMISOR_Datos_personales" value="" >
@@ -228,39 +195,8 @@
                         <p></p>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id="guardarDesarrolloacademico">Guardar desarrollo académico</button>
-                    </div>
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4"></div>
-                </div>
                 <br><hr><br>
-                <div class="row">
-                    <div class="col-md-12">
-                        <table id="tableDesarrollo" class="table display" style="width:100%">
-                            <thead>
-                                <th>Id nivel</th>
-                                <th>Máxima escolaridad</th>
-                                <th>Especialidad</th>
-                                <th>Fecha de inicio</th>
-                                <th>Fecha de término</th>
-                                <th>Promedio</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+             
                 <input type="hidden" id="ID_ALTERNA_Desarrollo" name="ID_ALTERNA_Desarrollo" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Desarrollo" name="pID_ESTADO_EMISOR_Desarrollo" value="" >
                 <input type="hidden" id="pID_EMISOR_Desarrollo" name="pID_EMISOR_Desarrollo" value="" >
@@ -360,44 +296,7 @@
                     </div>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id="guardarDomicilio">Guardar domicilio</button>
-                    </div>
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4"></div>
-                </div>
-                <br>
                 <hr>
-                <br>
-                <table id="tableDesarrollo" class="table display" style="width:100%">
-                    <thead>
-                        <th>Id domicilio</th>
-                        <th>Código postal</th>
-                        <th>Estado</th>
-                        <th>Colonia/Localidad</th>
-                        <th>Calle </th>
-                        <th>Número exterior</th>
-                        <th>Número interior</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <input type="hidden" id="ID_ALTERNA_Domicilio" name="ID_ALTERNA_Domicilio" value="" >
-                <input type="hidden" id="pID_ESTADO_EMISOR_Domicilio" name="pID_ESTADO_EMISOR_Domicilio" value="" >
-                <input type="hidden" id="pID_EMISOR_Domicilio" name="pID_EMISOR_Domicilio" value="" >
-
-                <br>
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
@@ -436,6 +335,7 @@
                     <div class="col-md-4">
                         <h6 class="borderButtom"><span class="clr">*</span>Apellido paterno</h6>
                         <p></p>
+                    
                     <div class="col-md-4">
                         <h6 class="borderButtom">Apellido materno</h6>
                        <p></p>
@@ -517,35 +417,9 @@
                     </div>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id="guardarReferencia">Guardar referencia</button>
-                    </div>
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4"></div>
-                </div>
-                <br>
                 <hr>
                 <br>
-                <table id="tableReferencias" class="table display" style="width:100%">
-                    <thead>
-                        <th>Id referencia</th>
-                        <th>Nombre</th>
-                        <th>Apellido paterno</th>
-                        <th>Apellido materno</th>
-                        <th>Tipo de referencia</th>
-                        <th>Domicilio</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
+              
                  <input type="hidden" id="ID_ALTERNA_Referencias" name="ID_ALTERNA_Referencias" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Referencias" name="pID_ESTADO_EMISOR_Referencias" value="" >
                 <input type="hidden" id="pID_EMISOR_Referencias" name="pID_EMISOR_Referencias" value="" >
@@ -592,8 +466,7 @@
                     <div class="col-md-4">
                         <h6 class="borderButtom">Su domicilio es</h6> <br> <!-- Se llena del catálogo CAT_TIPO_DOMICILIO -->
                         <p></p>
-                         <h6 class="borderButtom"><span id="err_ID_TIPO_DOMICILIO"></span></h6>
-                        <p></p>
+                      
                     </div>
                 </div>
                 <br>
@@ -637,13 +510,7 @@
                         <h6 class="borderButtom">Comportamiento social</h6>
                         <p></p>
                     </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id="guardarSocioeconomico">Guardar socioeconómico</button>
-                    </div>
-                </div>
+                </div>             
                 <br>
                 <hr>
                 <br>
@@ -686,42 +553,9 @@
                     </div>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id="guardarDependiente">Guardar dependiente</button>
-                    </div>
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4"></div>
-                </div>
-                <br>
                 <hr>
                 <br>
-                <div class="row">
-                    <div class="col-md-12">
-                        <table id="tableSocioeconomicos" class="table display" style="width:100%">
-                            <thead>
-                                <th>Id dependiente</th>
-                                <th>Nombre</th>
-                                <th>Apellido paterno</th>
-                                <th>Apellido materno</th>
-                                <th>Sexo</th>
-                                <th>Fecha de nacimiento</th>
-                                <th>Parentesco</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+           
                  <input type="hidden" id="ID_ALTERNA_Socioeconomico" name="ID_ALTERNA_Socioeconomico" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Socioeconomico" name="pID_ESTADO_EMISOR_Socioeconomico" value="" >
                 <input type="hidden" id="pID_EMISOR_Socioeconomico" name="pID_EMISOR_Socioeconomico" value="" >

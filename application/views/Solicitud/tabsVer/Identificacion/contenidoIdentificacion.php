@@ -387,7 +387,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <h6 class="borderButtom">Tipo</h6> <!-- Se llena del catálogo CAT_TIPODESANGRE -->
-                        <select  class="form-control" id="pCAT_SANGRE" name="pCAT_SANGRE" data-error="#err_pCAT_SANGRE" data-query='OEhBMzZsSU5HcVlzaHRWQmVHb0lZUjBnbEN6UWR5YlZESU90OENxY2Z2WkRMMmRtQ2NmSHplV2pLdkVnMURxRnhkOG5RTmR4YXJxYi9RdGtYN3ZkQ3RwTGh6dkZPN0UwZnA2eVE0NU9UTjhCYTd6ZmVuYkxOSjhQZXEzdWdXV1ZwMk8xcm5iaW1Jb0tNQ1F4WlptL0tKbllYcEhObVpsTTlUWlNOU0wvLzQwPQ=='></select>
+                        <p></p>
 						<span id="err_pCAT_SANGRE"></span>
                     </div>
                     <div class="col-md-4">
@@ -407,9 +407,8 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <h6 class="borderButtom"><span class="clr">*</span>¿Usa anteojos?<h6 class="borderButtom"> <!-- S/N = SI/NO -->
+                        <h6 class="borderButtom"><span class="clr">*</span>¿Usa anteojos?</h6> <!-- S/N = SI/NO -->
                         <p></p>
-
 						<span id="err_pCAT_LENTES"></span>
                     </div>
                     <div class="col-md-4">
@@ -426,12 +425,6 @@
             <input type="hidden" id="pID_EMISOR_Media_filiacion" name="pID_EMISOR_Media_filiacion" value="" >
             </form>
             <br>
-            <div class="row">
-                <div class="col-md-4">
-                    <input type="button" id="guardarmediafiliación" class="btn btn-default" value="Guardar media filiación">
-                </div>
-            
-            </div>
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
@@ -893,42 +886,10 @@
                     </div>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id="guardarSenia">
-                            Guardar seña
-                        </button>
-                    </div>
-                </div>
                 <br>
                 <hr>
                 <br>
-                <div class="row">
-                    <div class="col-md-12">
-                            <table id="tableSenasparticulares" class="table display">
-                                <thead>
-                                        <th>Id seña</th>
-                                        <th>Tipo de seña</th>
-                                        <th>Lado</th>
-                                        <th>Región</th>
-                                        <th>Vista</th>
-                                        <th>Cantidad</th>
-                                        <th>Descripción</th>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                </div>
+            
                  <input type="hidden" id="pID_ALTERNA_Senas" name="pID_ALTERNA_Senas" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Senas" name="pID_ESTADO_EMISOR_Senas" value="" >
                 <input type="hidden" id="pID_EMISOR_Senas" name="pID_EMISOR_Senas" value="" >
@@ -998,47 +959,13 @@
                     </div>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <!-- SPACE -->
-                    </div>
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id="Subir_Imagen">
-                        Subir
-                    </button>
-                    </div>
-                </div>
+            
                 <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id="guardarRegistrodecadactilar">
-                            Guardar registro
-                        </button>
-                    </div>
-                </div>
+            
                 <br>
                 <hr>
                 <br>
-                <div class="row">
-                    <div class="col-md-12">
-                        <table id="tableRegistrodecadactilar" class="table display">
-                            <thead>
-                                    <th>Id registro dactilar</th>
-                                    <th>Dependencia</th>
-                                    <th>Institución</th>
-                                    <th>Fecha de registro</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+        
                  <input type="hidden" id="pID_ALTERNA_Datos" name="pID_ALTERNA_Datos" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Datos" name="pID_ESTADO_EMISOR_Datos" value="" >
                 <input type="hidden" id="pID_EMISOR_Datos" name="pID_EMISOR_Datos" value="" >
@@ -1125,12 +1052,7 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id="guardarVoz">
-                            Guardar
-                        </button>
-                    </div>
-                    <div class="col-md-4"></div>
+            
                     <div class="col-md-4">
                         <div class="row">
                             <div class="col-md-6">
@@ -1227,7 +1149,7 @@
                             </tbody>
                         </table>
 
-                        <button class="btn btn-default" id="subirFotografica">subir</button>
+                        
                     </div>
                     <div class="col-md-4">
                         <table id="tableFrente" class="table display">
@@ -1245,7 +1167,7 @@
                             </tbody>
                         </table>
 
-                        <button class="btn btn-default" id="subirFotografica">subir</button>
+                        
                     </div>
                     <div class="col-md-4">
                         <table id="tablePerfilderecho" class="table display">
@@ -1263,7 +1185,7 @@
                             </tbody>
                         </table>
 
-                        <button class="btn btn-default" id="subirFotografica">subir</button>
+                        
                     </div>
                 </div>
                 <br>
@@ -1287,7 +1209,7 @@
                             </tbody>
                         </table>
 
-                        <button class="btn btn-default">subir</button>
+                        
                     </div>
                     <div class="col-md-4">
                         <table id="tableHuella" class="table display">
@@ -1305,40 +1227,12 @@
                             </tbody>
                         </table>
 
-                        <button class="btn btn-default">subir</button>
+                        
                     </div>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id='guardarFicha'>Guardar ficha</button>
-                    </div>
-                </div>
                 <br>
-                <div class="row">
-                    <div class="col-md-12">
-                        <table id="tableFichafotografica" class="table display">
-                            <thead>
-                                    <th>Id evaluación</th>
-                                    <th>Tipo de evaluación</th>
-                                    <th>Examen</th>
-                                    <th>Lugar de aplicación</th>
-                                    <th>Fecha de programación</th>
-                                    <th>Fecha de resultado</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+          
                  <input type="hidden" id="pID_ALTERNA_Fotografica" name="pID_ALTERNA_Fotografica" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Fotografica" name="pID_ESTADO_EMISOR_Fotografica" value="" >
                 <input type="hidden" id="pID_EMISOR_Fotografica" name="pID_EMISOR_Fotografica" value="" >
@@ -1398,45 +1292,9 @@
                     </div>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <button class="btn btn-default">Subir</button>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id="guardarDocumento">
-                            Guardar documento
-                        </button>
-                    </div>
-                </div>
-                <br>
                 <hr>
                 <br>
-                <div class="row">
-                    <div class="col-md-12">
-                        <table id="tableDigitalizaciondoc" class="table display">
-                            <thead>
-                                    <th>Id documento</th>
-                                    <th>Categoría de documento</th>
-                                    <th>Valor</th>
-                                    <th>Fecha documento</th>
-                                    <th>Estatus</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+    
                  <input type="hidden" id="pID_ALTERNA_Documento" name="pID_ALTERNA_Documento" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Documento" name="pID_ESTADO_EMISOR_Documento" value="" >
                 <input type="hidden" id="pID_EMISOR_Documento" name="pID_EMISOR_Documento" value="" >

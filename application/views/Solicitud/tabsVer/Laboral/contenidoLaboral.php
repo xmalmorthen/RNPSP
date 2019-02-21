@@ -143,39 +143,11 @@
                         </div>
                     </div>
                     <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <button class="btn btn-default" id="guardarAdscripcion">Guardar adscripción</button>
-                        </div>
-                        <div class="col-md-4">
-
-                        </div>
-                    </div>
+                   
                     <br>
                     <hr>
                     <br>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <!-- BEGIN TABLE -->
-                            <table id="tableAdscripcionactual" class="table display" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>Id adscripción</th>
-                                        <th>Dependencia</th>
-                                        <th>Corporación</th>
-                                        <th>Área o departamento</th>
-                                        <th>Puesto</th>
-                                        <th>Estado</th>
-                                        <th>Municipio</th>
-                                    </tr>
-                                    </thead>
-                                <tbody>
-                                    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                                </tbody>
-                        </table>
-                        <!-- END TABLE -->
-                        </div>
-                    </div>
+                
 
                     <!-- INPUTS OCULTOS -->
                     <input type="hidden" id="pID_ALTERNA_Adscripcion_actual" name="pID_ESTADO_EMISOR_Adscripcion_actual" value="" >
@@ -255,78 +227,52 @@
                     <div class="row">
                         <div class="col-md-4">
                                 <h6 class="borderButtom"> Número telefónico</h6>
-                           		<p</p>
+                           		<p></p>
                         </div>
                         <div class="col-md-4">
                              <h6 class="borderButtom"><span class="clr">*</span>Área o departamento </h6>
-                            <p</p>
+                            <p></p>
                         </div>
                         <div class="col-md-4">
                              <h6 class="borderButtom">Funciones</h6>
-                            <p</p>
+                            <p></p>
                         </div>
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-md-4">
                             <h6 class="borderButtom"> Ingreso neto (mensual)</h6>
-                            <p</p>
+                            <p></p>
                         </div>
                         <div class="col-md-4">
                             <h6 class="borderButtom"><span class="clr">*</span>Fecha de ingreso
-                            <p</p>
+                            <p></p>
                         </div>
                         <div class="col-md-4">
                             <h6 class="borderButtom"><span class="clr">*</span>Fecha de separación
-                            <p</p>
+                            <p></p>
                         </div>
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-md-4">
                             <h6 class="borderButtom"><span class="clr">*</span>Motivo de separación <!-- Se llena del catalogo "MOTIVO_MOB_LAB" -->
-                            <p</p>
+                            <p></p>
                             <span id="err_ID_MOTIVO_MOV_LAB"></span>
                         </div>
                         <div class="col-md-4">
                            <h6 class="borderButtom"> <span class="clr">*</span>Tipo de separación <!-- Se llena del catalogo "TIPO_MOB_LAB" -->
-                            <p</p>
-                           <h6 class="borderButtom"> <span id="err_pID_TIPO_MOV_LAB"></span>
+                            <p></p>
+                          
                         </div>
                         <div class="col-md-4">
                             <h6 class="borderButtom">Descripción
-                            <p</p>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <button class="btn btn-default" id="guardarEmpleo">Guardar empleo</button>
-                        </div>
-                        <div class="col-md-4">
-
+                            <p></p>
                         </div>
                     </div>
                     <br>
                     <hr>
                     <br>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <table id="tableEmpleosdiversos" class="table display">
-                                <thead>
-                                    <tr>
-                                        <th>Id empleo adicional</th>
-                                        <th>Empresa</th>
-                                        <th>Número telefónico</th>
-                                        <th>Área o departamento</th>
-                                        <th>Ingreso neto mensual</th>
-                                        <th>Fecha de ingreso</th>
-                                        <th>Fecha de separación</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
-                    </div>
                         <!-- HIDDEN INPUTS -->
                     <input type="hidden" id="pID_ALTERNA_Empleos_diversos" name="pID_ALTERNA_Empleos_diversos"  value="">
                     <input type="hidden" id="pID_ESTADO_EMISOR_Empleos_diversos" name="pID_ESTADO_EMISOR_Empleos_diversos"  value="">
@@ -418,15 +364,6 @@
                     </div>
                 </div>
                 <br>
-                <div class="row">
-                <div class="col-md-4">
-                    <button class="btn btn-default" id="guardarActitud">Guardar actitud</button>
-                </div>
-                <div class="col-md-4">
-
-                </div>
-                </div>
-                <br>
                 <hr>
                 <br>
 
@@ -497,40 +434,9 @@
                     </div>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id="guardarComision">Guardar comisión</button>
-                    </div>
-                </div>
-                <br>
                 <hr>
                 <br>
-                <div class="row">
-                    <div class="col-md-12">
-                        <table id="tableComisiones" class="table display">
-                            <thead>
-                                <tr>
-                                    <th>Id comisión</th>
-                                    <th>Fecha de inicio</th>
-                                    <th>Fecha de término</th>
-                                    <th>Tipo de comisión</th>
-                                    <th>Motivo</th>
-                                    <th>Destino</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+          
 
                 <!-- HIDDEN INPUTS -->
                 <input type="hidden" id="pID_ALTERNA_Comisiones" name="pID_ESTADO_EMISOR_Comisiones" value="" >
