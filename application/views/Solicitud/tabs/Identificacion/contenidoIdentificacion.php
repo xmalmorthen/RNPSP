@@ -330,7 +330,7 @@
             </form>
         </div>
     </div>
-    
+
     <div class="tab-pane fade" id="Datos" role="tabpanel" aria.labelledby="Datos-tab">
         <div class="_container">
             <form action="#" id="Datos_form" name="Datos_form" autocomplete="off">
@@ -720,7 +720,7 @@
             </form>
         </div>
     </div>
-
+    
     <div class="tab-pane fade" id="Senas_particulares" role="tabpanel" aria-labelledby="Senas_particulares-tab">
         <div class="_container">
             <form action="#" id="Senas_particulares_form" name="Senas_particulares_form" autocomplete="off">
