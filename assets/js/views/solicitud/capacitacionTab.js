@@ -25,7 +25,7 @@ var objViewCapacitacion = {
             }
         }
     },
-    init : function(){        
+    init : function(callback){        
         if (objViewCapacitacion.vars.general.init)
             return false;
 
@@ -88,6 +88,12 @@ var objViewCapacitacion = {
         objViewCapacitacion.vars.general.init = true;
 
         $('#myTabContent').LoadingOverlay("hide");
+
+        if (callback){
+            if ($.isFunction( callback )){
+                callback();
+            }
+        }
     },
     events : {
         click : {

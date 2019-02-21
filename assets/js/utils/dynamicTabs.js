@@ -1,5 +1,6 @@
 var dynTabs = {
     mode : '',
+    validForm : true,
     tabs : {
         currentTab : {
             tabPanel : null,
@@ -28,45 +29,47 @@ var dynTabs = {
             if (form.data('hasSaved') == true || form.data('hasDiscardChanges') == true) 
                 return null;
 
-            //VALIDATE FORM
-            if (form.valid()){                
-                if (form.data('hasChanged') == true){
-                    Swal({
-                        title: 'Aviso',
-                        html: "Para continuar, debe guardar los cambios",
-                        footer: "<div><button class='btn btn-warning discartChanges'>Continuar sin guardar</button></div>",
-                        type: 'warning',                        
-                        allowOutsideClick : false,
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33'
-                    }).then(function(result){
-                        if (result.value === true){
-                            form.find('.btnGuardarSection').trigger('click',['tab']);
-                        }
-                    });
-                    e.preventDefault();
-                    if (options.discardFunction){
-                        if ($.isFunction( options.discardFunction )){
-                            $('.discartChanges').on('click',function(evnt) { options.discardFunction(evnt,e.relatedTarget); });
-                        }
-                    }                    
+            //VALIDATE FORM 
+            if (dynTabs.validForm) {
+                if (form.valid()){
+                    if (form.data('hasChanged') == true){
+                        Swal({
+                            title: 'Aviso',
+                            html: "Para continuar, debe guardar los cambios",
+                            footer: "<div><button class='btn btn-warning discartChanges'>Continuar sin guardar</button></div>",
+                            type: 'warning',                        
+                            allowOutsideClick : false,
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33'
+                        }).then(function(result){
+                            if (result.value === true){
+                                form.find('.btnGuardarSection').trigger('click',['tab']);
+                            }
+                        });
+                        e.preventDefault();
+                        if (options.discardFunction){
+                            if ($.isFunction( options.discardFunction )){
+                                $('.discartChanges').on('click',function(evnt) { options.discardFunction(evnt,e.relatedTarget); });
+                            }
+                        }                    
+                    }
                 }
-            }             
-            else {
-                var linkRef = $('#' + e.currentTarget.id);
-                
-                if (!linkRef.hasClass('errorValidation')) {
-                    dynTabs.markTab( linkRef,'<span class="text-danger tabMark errorValidation mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i></span>');    
-                }                
-                form.setAlert({
-                    alertType :  'alert-danger',
-                    dismissible : true,
-                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
-                    msg : 'Formulario incompleto'
-                });
+                else {
+                    var linkRef = $('#' + e.currentTarget.id);
+                    
+                    if (!linkRef.hasClass('errorValidation')) {
+                        dynTabs.markTab( linkRef,'<span class="text-danger tabMark errorValidation mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i></span>');    
+                    }                
+                    form.setAlert({
+                        alertType :  'alert-danger',
+                        dismissible : true,
+                        header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                        msg : 'Formulario incompleto'
+                    });
 
-                //e.preventDefault();
+                    //e.preventDefault();
+                }
             }
     },
     showTab : function(e){

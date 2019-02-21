@@ -122,18 +122,21 @@
         },
         actions : {
             init : function(tabRef, callback){
+                
+                dynTabs.validForm = formMode != 'edit' ? true : false;
+
                 switch (tabRef) {
                     case 'datosGenerales':
-                        objViewDatosGenerales.init();
+                        objViewDatosGenerales.init(function(){ dynTabs.validForm = true; });
                     break;
                     case 'Laboral':
-                        objViewLaboral.init();
+                        objViewLaboral.init(function(){ dynTabs.validForm = true; });
                     break;
                     case 'Capacitacion':
-                        objViewCapacitacion.init();
+                        objViewCapacitacion.init(function(){ dynTabs.validForm = true; });
                     break;
                     case 'Identificacion':
-                        objViewIdentificacion.init();
+                        objViewIdentificacion.init(function(){ dynTabs.validForm = true; });
                     break;
                 }
                 if (callback)

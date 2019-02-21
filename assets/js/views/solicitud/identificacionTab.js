@@ -47,7 +47,7 @@ var objViewIdentificacion = {
             }
         }
     },
-    init : function(){        
+    init : function(callback){        
         if (objViewIdentificacion.vars.general.init)
             return false;
 
@@ -138,6 +138,12 @@ var objViewIdentificacion = {
         objViewIdentificacion.vars.general.init = true;
 
         $('#myTabContent').LoadingOverlay("hide");
+
+        if (callback){
+            if ($.isFunction( callback )){
+                callback();
+            }
+        }
     },
     events : {
         click : {

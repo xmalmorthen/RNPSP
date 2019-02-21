@@ -36,7 +36,7 @@ var objViewLaboral = {
             }
         }
     },
-    init : function(){        
+    init : function(callback){        
         if (objViewLaboral.vars.general.init)
             return false;
 
@@ -113,6 +113,12 @@ var objViewLaboral = {
         objViewLaboral.vars.general.init = true;
 
         $('#myTabContent').LoadingOverlay("hide");
+
+        if (callback){
+            if ($.isFunction( callback )){
+                callback();
+            }
+        }
     },
     events : {
         click : {

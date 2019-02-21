@@ -49,7 +49,7 @@ var objViewDatosGenerales = {
             }
         }
     },
-    init : function(){
+    init : function(callback){
         if (objViewDatosGenerales.vars.general.init)
             return false;
 
@@ -138,6 +138,12 @@ var objViewDatosGenerales = {
         objViewDatosGenerales.vars.general.init = true;
 
         $('#myTabContent').LoadingOverlay("hide");
+
+        if (callback){
+            if ($.isFunction( callback )){
+                callback();
+            }
+        }
     },
     events : {
         click : {
