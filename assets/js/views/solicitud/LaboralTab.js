@@ -233,11 +233,13 @@ var objViewLaboral = {
         }
     },
     actions : {        
-        discartChanges : function(e){   
+        discartChanges : function(e,relatedTarget){   
             dynTabs.markTab(dynTabs.tabs.prebTab.linkRef,'<span class="text-warning tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true"></i></span>');
             Swal.close();
             dynTabs.tabs.prebTab.tabForm.removeData('hasChanged');
             dynTabs.tabs.prebTab.tabForm.data('hasDiscardChanges',true);
+
+            $("#" + relatedTarget.id).trigger('click');
             dynTabs.tabs.prebTab.tabForm.find('.btnSiguienteAnterior.siguienteTab').trigger('click');
         }
     }
