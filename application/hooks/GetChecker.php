@@ -23,6 +23,9 @@ class GetChecker {
         $controller = strtolower($RTR->class);
         $directory = strtolower($RTR->directory ? $RTR->directory : '/');
 
+        define('_CONTROLLER',$controller);
+        define('_METHOD',$action);
+
         if (in_array($controller, $params) || strpos($controller, 'assets') !== false) {  
             return;
         }
