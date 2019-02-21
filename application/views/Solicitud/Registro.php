@@ -107,7 +107,7 @@
 
         switch (formMode) {
             case 'edit':
-                mainFormActions.populateData("<?php echo $id; ?>");
+                mainFormActions.populateData("<?php echo isset($id) ? $id : ''; ?>");
             break;
         }
     });
