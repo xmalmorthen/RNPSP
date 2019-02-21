@@ -812,7 +812,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <h3 class="titulo">Registro dactilar</h3>
+                        <h3 class="titulo">Registro decadactilar</h3>
                     </div>
                 </div>                
                 <br>
@@ -879,7 +879,7 @@
                     </div>
                     <div class="col-md-4 text-center">
                         <div class="custom-file">
-                            <input type="file" id="pIMAGEN" name="pIMAGEN" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN' accept="application/pdf">
+                            <input type="file" id="pIMAGEN" name="pIMAGEN" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN' accept="application/pdf,image/*">
                             <label class="custom-file-label" for="inputGroupFile01">Seleccionar documento</label>
                         </div>
                     </div>
@@ -942,54 +942,60 @@
                     </div>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="col-md-2">
-                    </div>
-                    <div class="col-md-8">
-                        <strong>Especificaciones para el archivo de identificación de voz</strong>
+                <div class="row">                    
+                    <div class="col-md-12">
+                        <h5>Especificaciones para el archivo de identificación de voz</h5>
                     </div>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-6">
-                        <ul>
-                            <dd>Formato: WAV PCM</dd>
-                            <dd>Sonido: Monoaural</dd>
-                            <dd>Duración del sonido: 2 minutos</dd>
-                            <dd>Frecuencia de muestreo: 8000HZ-11025HZ</dd>
-                        </ul>
+                    <div class="col-md-3">
+                        <h6 class="borderButtom">Formato</h6>
+                        <p>WAV PCM</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="borderButtom">Sonido</h6>
+                        <p>Monoaural</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="borderButtom">Duración del sonido</h6>
+                        <p>2 minutos</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="borderButtom">Frecuencia de muestreo</h6>
+                        <p>8000HZ-11025HZ</p>
                     </div>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-2">
-
-                    </div>
-                    <div class="col-md-8">
-                        <strong>Información de identificación de voz</strong>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-6">
-                        <ul>
-                            <dd>Adscripción:</dd>
-                            <dd>Dependencia</dd>
-                            <dd>Institución</dd>
-                        </ul>
-                    </div>
-                </div>
-                <br>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <!-- SPACE -->
+                    <div class="col-md-12">
+                        <h5>Información de identificación de voz</h5>
                     </div>
                     <div class="col-md-4">
-                        <!-- <audio id="audio" controls style="margin-left: -24px;">
-                        <source src="ruta_de_audio">
-                            Tu navegador no es compatible
-                    </audio> -->
+                        <h6 class="borderButtom">Adscripción</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Dependencia</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Institución</h6>
+                        <p></p>
+                    </div>
+                </div>
+                <br>
+                <hr>
+                <div class="row">                    
+                    <div class="col-md-4">
+                        Audio
+                        <div class="custom-file">
+                            <input type="file" id="vozFile" name="vozFile" class='custom-file-input inputFile' data-renderin='thumb_vozFile' accept="audio/*">
+                            <label class="custom-file-label" for="inputGroupFile01">Seleccionar archivo</label>
+                        </div>
+                    </div>
+                    <div class="col-md-8 text-center">
+                        <audio id="audio" class='ml-5' style='width=90%!Important;' controls><source src="ruta_de_audio">Navegador no compatible con reproductor de audio</audio>
                     </div>
                 </div>
                 <br>
@@ -1212,7 +1218,7 @@
                     <div class="col-md-4">
                         Documento
                         <div class="custom-file">
-                            <input type="file" id="pIMAGEN" name="pIMAGEN" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN' accept="application/pdf">
+                            <input type="file" id="pIMAGEN" name="pIMAGEN" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN' accept="application/pdf,image/*">
                             <label class="custom-file-label" for="inputGroupFile01">Seleccionar documento</label>
                         </div>
                     </div>

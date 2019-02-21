@@ -228,7 +228,10 @@ var objViewIdentificacion = {
         },
         change : {
             inputFile : function(e){
-                var $this = this;
+
+                var $this = this,
+                    labelNameFile = $( $this ).closest( ".custom-file" ).find('label.custom-file-label');
+                    
                 if ($this.files && $this.files[0]) {   
                     var reader = new FileReader();
                     var filename = $($this).val();
@@ -240,21 +243,26 @@ var objViewIdentificacion = {
                         renderTarjet.hide();
                         renderTarjet.fadeIn(500);
 
-                        $( $this ).closest( ".custom-file" ).find('label.custom-file-label').text(filename);
+                        labelNameFile.text(filename);
                     };
                     reader.readAsDataURL($this.files[0]);
+                } else {
+                    labelNameFile.text('');
                 }
             } 
         }
     },
     actions : {        
-        discartChanges : function(e){ 
+        discartChanges : function(e,relatedTarget){ 
+            
             dynTabs.markTab(dynTabs.tabs.prebTab.linkRef,'<span class="text-warning tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true"></i></span>');
             Swal.close();
                 
             dynTabs.tabs.prebTab.tabForm.removeData('hasChanged');
             dynTabs.tabs.prebTab.tabForm.data('hasDiscardChanges',true);
-            dynTabs.tabs.prebTab.tabForm.find('.btnSiguienteAnterior.siguienteTab').trigger('click');
+
+            $("#" + relatedTarget.id).trigger('click');
+            //dynTabs.tabs.prebTab.tabForm.find('.btnSiguienteAnterior.siguienteTab').trigger('click');
         }
     }
 }
