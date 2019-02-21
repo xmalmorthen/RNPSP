@@ -3,10 +3,7 @@
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" id="mediafiliacion-tab" data-toggle="tab" href="#mediafiliacion" role="tab" aria-controls="mediafiliacion" aria-selected="false" style="color:#02657C">Media filiación</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="Datos-tab" data-toggle="tab" href="#Datos" role="tab" aria-controls="Datos" aria-selected="false" style="color:#02657C">Datos</a>
-            </li>
+            </li>            
             <li class="nav-item">
                 <a class="nav-link" id="Senas_particulares-tab" data-toggle="tab" href="#Senas_particulares" role="tab" aria-controls="Senas_particulares" aria-selected="false" style="color:#02657C">Señas particulares</a>
             </li>
