@@ -38,9 +38,9 @@ $config['database_group_name'] = '';
 | -------------------------------------------------------------------------
 | Database table names.
 */
-$config['tables']['users']           = 'usuarios';
-$config['tables']['groups']          = 'grupos';
-$config['tables']['users_groups']    = 'usuarios_grupos';
+$config['tables']['users']           = 'cat_Usuarios';
+$config['tables']['groups']          = 'cat_TiposUsuario';
+$config['tables']['users_groups']    = 'cat_Usuarios_cat_TiposUsuario';
 $config['tables']['login_attempts']  = 'intentosAcceso';
 
 /*
@@ -49,8 +49,8 @@ $config['tables']['login_attempts']  = 'intentosAcceso';
  | Joins from users.id
  | Joins from groups.id
  */
-$config['join']['users']  = 'id_usuario';
-$config['join']['groups'] = 'id_grupo';
+$config['join']['users']  = 'id_Usuario';
+$config['join']['groups'] = 'id_TipoUsuario';
 
 /*
  | -------------------------------------------------------------------------
@@ -138,7 +138,7 @@ $config['identity']                   = 'email';             /* You can use any 
 															    The values in this column, alongside password, will be used for login purposes
 															    IMPORTANT: If you are changing it from the default (email),
 															    		   update the UNIQUE constraint in your DB */
-$config['min_password_length']        = 8;                   // Minimum Required Length of Password (not enforced by lib - see note above)
+$config['min_password_length']        = 6;                   // Minimum Required Length of Password (not enforced by lib - see note above)
 $config['email_activation']           = FALSE;               // Email Activation for registration
 $config['manual_activation']          = FALSE;               // Manual Activation for registration
 $config['remember_users']             = FALSE;                // Allow users to be remembered and enable auto-login

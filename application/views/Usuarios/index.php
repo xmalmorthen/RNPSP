@@ -28,7 +28,7 @@
                                 <tbody>
                                 {usuarios}
                                     <tr>
-                                    <td></td>
+                                    <td>{EstatusUsuario}</td>
                                         <td>{NOMBRE}</td>
                                         <td>{PATERNO}</td>
                                         <td>{MATERNO}</td>
