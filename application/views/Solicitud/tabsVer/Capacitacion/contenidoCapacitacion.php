@@ -12,12 +12,12 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                         <h6 class="borderButton"><span class="clr">*</span>Idioma y/o dialecto</h6>  <!-- Se llena del catalogo "CAT_IDIOMA" -->
+                         <h6 class="borderButtom"><span class="clr">*</span>Idioma y/o dialecto</h6>  <!-- Se llena del catalogo "CAT_IDIOMA" -->
                         <p></p>
                         <span id="err_pID_IDIOMA"></span>
                     </div>
                     <div class="col-md-2">
-                         <h6 class="borderButton">Lectura</h6>
+                         <h6 class="borderButtom">Lectura</h6>
                         <div class="row">
                             <div class="col-md-10">
                                 <p></p>
@@ -26,7 +26,7 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                         <h6 class="borderButton">Escritura</h6>
+                         <h6 class="borderButtom">Escritura</h6>
                         <div class="row">
                             <div class="col-md-10">
                                 <p></p>
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                         <h6 class="borderButton">Conversación</h6>
+                         <h6 class="borderButtom">Conversación</h6>
                         <div class="row">
                             <div class="col-md-10">
                                 <p></p>
@@ -114,16 +114,16 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                         <h6 class="borderButton"><span class="clr">*</span>Tipo de habilidad y/o aptitud</h6><!-- Se llena con el catalogo "CAT_TIPO_APTITUD" -->
+                         <h6 class="borderButtom"><span class="clr">*</span>Tipo de habilidad y/o aptitud</h6><!-- Se llena con el catalogo "CAT_TIPO_APTITUD" -->
                         <p></p>
                         <span id="err_ID_TIPO_APTITUD"></span>
                     </div>
                     <div class="col-md-4">
-                         <h6 class="borderButton">Descripción</h6>
+                         <h6 class="borderButtom">Descripción</h6>
                         <p></p>
                     </div>
                     <div class="col-md-4">
-                         <h6 class="borderButton"><span class="clr">*</span>Grado de aptitud o dominio </h6><!-- Se rellena con el catalogo "CAT_GRADO_APTITUD_HAB" depende del select "TIPO_ACTITUD" -->
+                         <h6 class="borderButtom"><span class="clr">*</span>Grado de aptitud o dominio </h6><!-- Se rellena con el catalogo "CAT_GRADO_APTITUD_HAB" depende del select "TIPO_ACTITUD" -->
                         <p></p>
                         <span id="err_ID_GRADO_APT_HAB"></span>
                     </div>

@@ -219,3 +219,7 @@ input:focus, select:focus, .select2-selection:focus {
 }
 .tabMark{    
 }
+
+.borderButtom {
+    border-bottom: 1px solid #cacaca!Important;
+}
