@@ -68,7 +68,7 @@ var dynTabs = {
                         msg : 'Formulario incompleto'
                     });
 
-                    //e.preventDefault();
+                    e.preventDefault();
                 }
             }
     },

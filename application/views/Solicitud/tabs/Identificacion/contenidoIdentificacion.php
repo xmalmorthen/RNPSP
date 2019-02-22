@@ -604,7 +604,7 @@
                         </div>
                     </div>
                     <div class="col-md-8 text-center">
-                        <audio id="audio" class='ml-5' style='width=90%!Important;' controls><source src="ruta_de_audio">Navegador no compatible con reproductor de audio</audio>
+                        <!-- <audio id="audio" class='ml-5' style='width=90%!Important;' controls><source src="ruta_de_audio">Navegador no compatible con reproductor de audio</audio> -->
                     </div>
                 </div>
                 <br>

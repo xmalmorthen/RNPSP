@@ -89,11 +89,34 @@
 			$this->load->view('Solicitud/Ver');
         }
         
-        
-        
-      
+        public function ajaxGetSolicitudByCURP($CURP = NULL){
+			if (!$CURP)
+				$CURP = $this->input->get('CURP');
+		
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}		
+
+			$responseModel = NULL;
+			try {
+				if(!$CURP){
+					throw new Exception('Parámetros incorrectos');
+				}
+				
+				//TODO: Xmal - Implementar la consulta para obtener datos de registro				
+				// $this->load->model("catalogos/ajaxCatalogos_model",'catalogo');
+				// $responseModel = $this->catalogo->get($fullQry);
+				
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 Bad Request");
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
     }
-
-
-
-?>

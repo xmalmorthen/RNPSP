@@ -178,6 +178,36 @@ var generic = {
                         );
                 }
             }
+        },
+        certified : function(value,success,error,always){
+            var callUrl = base_url + 'ajaxAPIs/curp',
+                model = {CURP : value};
+
+            //desactivar controles involucrados en la consulta CURP
+            $('.consultaCURP').readOnly();
+
+            generic.ajax.async.get(
+                callUrl,
+                model,
+                //success
+                function(data){
+                    if (success) 
+                        if ($.isFunction( success ))
+                            success(data); 
+                }, 
+                //error
+                function(err){
+                    if (error) 
+                        if ($.isFunction( error ))
+                            error(err);
+                },
+                //always
+                function(){
+                    if (always) 
+                        if ($.isFunction( always ))
+                            always(err);
+                }
+            );
         }
     }
 }

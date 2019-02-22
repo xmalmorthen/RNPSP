@@ -168,7 +168,7 @@
         },
         mainInit : function(){
             Swal.fire({
-                title: 'Introduzca la clave CURP',
+                title: 'Clave CURP',
                 input: 'text',
                 inputAttributes: {
                     autocapitalize: 'off'
@@ -180,22 +180,60 @@
                     try {
                         if (CURP.length < 18 || CURP.length > 20)
                             throw new Error('Formato de CURP incorrecto');
-                        return true;
+
+                        var callUrl = base_url + `Solicitud/ajaxGetSolicitudByCURP/${CURP}`;
+                        return fetch(callUrl)
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error(response.statusText);
+                                }
+                                return response.json();
+                            })
+                            .then(response => {
+                                if (!response.results) {
+                                    callUrl = base_url + `ajaxAPIs/curp?CURP=${CURP}`;
+                                    return fetch(callUrl)
+                                        .then(response => {
+                                            if (!response.ok) {
+                                                throw new Error(response.statusText);
+                                            }
+                                            return response.json();
+                                        })
+                                        .then(response => {
+                                            return response[0];
+                                        })
+                                        .catch((error) => {
+                                            Swal.showValidationMessage(error);
+                                        });
+                                } else {
+                                    return response;
+                                }
+                            })
+                            .catch(error => {
+                                Swal.showValidationMessage(error);
+                            });
                     } catch (error) {
                         Swal.showValidationMessage(error);
                     }
                 },
-                allowOutsideClick: false
+                allowOutsideClick: false,
+                onBeforeOpen: () => {  
+                    $('.swal2-container').css('z-index','2000');
+                }
             }).then((result) => {
                 if (result.dismiss == "cancel")
                     window.location.href = base_url + 'Solicitud';
-                else
-                    alert('lanzar consulta curp');
+                else {
+                    mainFormActions.populateCURPFields(result.value);
+                }
             });
         }
     }
 
     var mainFormActions = {
+        populateCURPFields : function (data) {
+            objViewDatosGenerales.actions.populateCURPData(data);
+        },
         populateData : function(idRef){
             
             // objViewDatosGenerales.vars.datosGenerales.objs.pCURP.val('RUAM811123HCMDGG05');
