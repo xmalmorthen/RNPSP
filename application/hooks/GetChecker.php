@@ -78,6 +78,7 @@ class GetChecker {
     */
     private function _requiresession(){        
         $this->_checkPrivilege();
+        
     }
 
     /*
@@ -107,6 +108,18 @@ class GetChecker {
             }
             exit();
         }
+
+        $CI =& get_instance();
+        $CI->load->model('Usuarios_model');
+        $tieneTabs = $CI->Usuarios_model->PermisosTieneTabs();
+        if($tieneTabs == 1){
+            $permisos = $CI->Usuarios_model->PermisosByUsuarioTab();
+        }else{
+            $permisos = $CI->Usuarios_model->PermisosByUsuario();
+        }
+        $_SESSION[SESSIONVAR]['permisos'] = $permisos;
+        $_SESSION[SESSIONVAR]['permisosTab'] = $tieneTabs;
+        
         $this->_checkPrivilege();
     }
 

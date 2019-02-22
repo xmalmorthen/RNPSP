@@ -14,15 +14,6 @@ class Principal extends CI_Controller {
 		$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');
 		$this->session->set_flashdata('titleBody','Página principal');
 
-
-		// $this->load->model('Usuarios_model');
-		// $idUser = $this->Usuarios_model->currentUser();
-
-		// $data = $this->Usuarios_model->permisosUsuario($idUser,_CONTROLLER,_METHOD);
-		// Utils::pre($data);
-
-		
-
 		$this->load->view('Principal/principalView');
 	}	
 }

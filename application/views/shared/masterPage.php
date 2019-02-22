@@ -116,9 +116,12 @@
 							<!-- BODY -->
 							<?php echo isset($body) ? $body : '' ?>
 							<!-- BODY -->
+							
 						</div>						
 					</div>
+					<?php print $permisos; ?>
 				</div>
+				
 			</div>
 		</div>
 		<script src="<?php echo base_url('assets/vendor/js/pikeadmin.js'); ?>"></script>		

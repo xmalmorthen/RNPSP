@@ -46,24 +46,65 @@ class Usuarios_model extends MY_Model
     return $this->ion_auth->get_users_groups($idUsuario)->row_array();
   }
 
-  public function permisosUsuario($usuario,$controlador,$metodo){
-    $this->db
-			->select('1')
-      ->from('cat_TiposUsuarioPermisos')
-      ->join('cat_TiposUsuario','cat_TiposUsuarioPermisos.id_TipoUsuario = cat_TiposUsuario.id')
-      ->join('cat_Usuarios_cat_TiposUsuario','cat_Usuarios_cat_TiposUsuario.id_TipoUsuario = cat_TiposUsuario.id')
-			->where('cat_TiposUsuarioPermisos.id_PermisoMetodo = cat_PermisosMetodo.id_PermisoMetodo')
-			->where('cat_Usuarios_cat_TiposUsuario.id_Usuario',$usuario);
-    $subQuery = $this->db->get_compiled_select();
-    Utils::pre($subQuery);
+  public function PermisosTieneTabs($controlador = false,$metodo = false){
+    $_controlador = ($controlador == false)? _CONTROLLER : $controlador;
+    $_metodo = ($metodo == false)? _METHOD : $metodo;
 
+    $this->db->select('cat_Metodos.TieneTabs')
+      ->from('cat_Metodos')
+      ->join('cat_Controladores','cat_Metodos.id_Controllador = cat_Controladores.id_Controllador')
+      ->where('cat_Controladores.Nombre',$_controlador)
+      ->where('cat_Metodos.Nombre',$_metodo);
+      $response = $this->response_row();
+    return (is_array($response) && count($response)>0 )? current($response) : $response;
+  }
+
+  public function PermisosByUsuario($usuario = FALSE,$controlador = false,$metodo = false){
+    $_usuario = ($usuario == false)? $this->currentUser() : $controlador;
+    $_controlador = ($controlador == false)? _CONTROLLER : $controlador;
+    $_metodo = ($metodo == false)? _METHOD : $metodo;
+
+    $this->db->select('CASE when zzhpregpersc4.fn_verificaAdscripcionUsuario('.$_usuario.',cat_PermisosMetodo.id_PermisoMetodo) = 1 THEN 1 WHEN zzhpregpersc4.fn_verificaExistePermiso('.$_usuario.',cat_PermisosMetodo.id_PermisoMetodo) = 1 THEN 1 ELSE 0 END',false);
+    $subQuery = $this->db->get_compiled_select();
 		$this->db
-			->select('cat_Controladores.id_Controllador,cat_Controladores.Nombre AS Controlador,cat_Metodos.id_Metodo,cat_Metodos.Nombre AS Metodo,cat_PermisosMetodo.id_PermisoMetodo,cat_PermisosMetodo.Permiso,('.$subQuery.') as acceso')
+			->select('cat_PermisosMetodo.id_PermisoMetodo as id_Permiso,cat_PermisosMetodo.Permiso,('.$subQuery.') as acceso')
 			->from('cat_Controladores')
 			->join('cat_Metodos','cat_Metodos.id_Controllador = cat_Controladores.id_Controllador')
-			->join('cat_PermisosMetodo','cat_PermisosMetodo.id_Metodo = cat_Metodos.id_Metodo');
-		$query = $this->db->get_compiled_select();
-		Utils::pre($query);
+      ->join('cat_PermisosMetodo','cat_PermisosMetodo.id_Metodo = cat_Metodos.id_Metodo')
+      ->where('cat_Controladores.Nombre',$_controlador)
+      ->where('cat_Metodos.Nombre',$_metodo);
+    $response = $this->response_list();
+    $resp = array();
+    if(count($response)>0){
+      foreach ($response as $value) {
+        $resp[$value['id_Permiso']] = $value;
+      }
+    }
+    return $resp;
+  }
+  public function PermisosByUsuarioTab($usuario = FALSE,$controlador = false,$metodo = false){
+    $_usuario = ($usuario == false)? $this->currentUser() : $controlador;
+    $_controlador = ($controlador == false)? _CONTROLLER : $controlador;
+    $_metodo = ($metodo == false)? _METHOD : $metodo;
+
+    $this->db->select('CASE when zzhpregpersc4.fn_verificaAdscripcionUsuario('.$_usuario.',cat_PermisosMetodo.id_PermisoMetodo) = 1 THEN 1 WHEN zzhpregpersc4.fn_verificaExistePermiso('.$_usuario.',cat_PermisosMetodo.id_PermisoMetodo) = 1 THEN 1 ELSE 0 END',false);
+    $subQuery = $this->db->get_compiled_select();
+    $this->db
+			->select('cat_Controladores.id_Controllador,cat_Controladores.Nombre AS Controlador,cat_Metodos.TieneTabs,cat_Metodos.id_Metodo,cat_Metodos.Nombre AS Metodo,cat_TabsMetodo.id_tabMetodo as id_Tab,cat_TabsMetodo.Nombre as Tab,cat_PermisosMetodo.id_PermisoMetodo as id_Permiso,cat_PermisosMetodo.Permiso,('.$subQuery.') as acceso')
+			->from('cat_Controladores')
+			->join('cat_Metodos','cat_Metodos.id_Controllador = cat_Controladores.id_Controllador')
+      ->join('cat_PermisosMetodo','cat_PermisosMetodo.id_Metodo = cat_Metodos.id_Metodo')
+      ->join('cat_TabsMetodo','cat_PermisosMetodo.id_tabMetodo = cat_TabsMetodo.id_tabMetodo','left')
+      ->where('cat_Controladores.Nombre',$_controlador)
+      ->where('cat_Metodos.Nombre',$_metodo);
+      $response = $this->response_list();
+      $resp = array();
+      if(count($response)>0){
+        foreach ($response as $value) {
+          $resp[$value['id_Permiso']] = $value;
+        }
+      }
+      return $resp;
   }
 
   // public function byId($idUsuario)
@@ -78,23 +119,4 @@ class Usuarios_model extends MY_Model
   //   }
   //   return $returnResponse;
   // }
-
-
-
-  public function PermisosByUsuario($idUsuario){
-    $this->db
-			->select('1')
-			->from('cat_GrupoPermisos')
-			->where('cat_GrupoPermisos.id_PermisoMetodo = cat_PermisosMetodo.id_PermisoMetodo')
-			->where('cat_GrupoPermisos.id_Grupo',1);
-		$subQuery = $this->db->get_compiled_select();
-
-		$this->db
-			->select('cat_Controladores.id_Controllador,cat_Controladores.Nombre AS Controlador,cat_Metodos.id_Metodo,cat_Metodos.Nombre AS Metodo,cat_PermisosMetodo.id_PermisoMetodo,cat_PermisosMetodo.Permiso,('.$subQuery.') as acceso')
-			->from('cat_Controladores')
-			->join('cat_Metodos','cat_Metodos.id_Controllador = cat_Controladores.id_Controllador')
-			->join('cat_PermisosMetodo','cat_PermisosMetodo.id_Metodo = cat_Metodos.id_Metodo');
-		$query = $this->db->get_compiled_select();
-		Utils::pre($query);
-  }
 }
