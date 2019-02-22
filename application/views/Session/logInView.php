@@ -153,12 +153,12 @@
 								}
 							} else {
 								$.LoadingOverlay("hide");
-								swal({ type: 'error', title: 'Error', html: data.message });
+								Swal.fire({ type: 'error', title: 'Error', html: data.message });
 							}
 						}).fail(function (err) {
 							$.LoadingOverlay("hide");
 							var msg = err.responseText;
-							swal({ type: 'error', title: 'Error', html: msg });
+							Swal.fire({ type: 'error', title: 'Error', html: msg });
 						}).always(function () {
 
 						});

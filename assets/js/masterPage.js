@@ -7,7 +7,7 @@ if ( typeof sess_time_to_update !== 'undefined') {
 
             swalShow = true;
             timerInterval = null;
-            Swal({
+            Swal.fire({
                 title: 'Sesión',
                 html: "Está a punto de expirar la sesión por inactividad,<br> desea mantener la sesión activa?<br><br> Tiempo restante: <span class='swalSessionRemainTime'><strong></strong></span>",
                 footer: "<div>Se perderá cualquier avance no guardado...</div>",
@@ -85,7 +85,7 @@ $(document).ready(function () {
     
     if (typeof outputError !== 'undefined') {
         if (outputError.errorMgs.length > 0){
-            Swal({
+            Swal.fire({
                 position: 'top-end',
                 type: 'error',
                 title: 'Error',
