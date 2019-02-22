@@ -89,17 +89,18 @@ class Usuarios extends CI_Controller
 
   public function Modificar()
   {
-
-    // BREADCRUMB
     $this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');
     $this->breadcrumbs->push('[ Usuarios ] - Usuarios - Modificación de usuarios - Modificar', site_url('alta/cedula/datosPersonales'));
-    // /BREADCRUMB
-
-    // TITLE BODY PAGE
     $this->session->set_flashdata('titleBody', '[ Usuarios ] - Usuarios - Modificación de usuarios - Modificar');
-    // /TITLE BODY PAGE
 
-    $this->load->view('Usuarios/Modificar');
+    $this->load->model('catalogos/CAT_TIPOSUSUARIO_model');
+    $data['tiposUsuario'] = $this->CAT_TIPOSUSUARIO_model->get();
+
+    $this->load->model('catalogos/CAT_ADSCRIPCIONES_model');
+    $data['adscripcion'] = $this->CAT_ADSCRIPCIONES_model->get();
+
+    $this->load->library('parser');
+    $this->parser->parse('Usuarios/Modificar', $data);
   }
 
 
