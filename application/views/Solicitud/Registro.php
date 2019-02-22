@@ -176,8 +176,9 @@
             mainFormActions.insertValueInSelect($('#pID_MUNICIPIO_NAC'),'2');
             
             mainFormActions.insertValueInSelect($('#_dependenciaAdscripcionActual'),'2');
-            mainFormActions.insertValueInSelect($('#pINSTITUCION'),'5342');
-            mainFormActions.insertValueInSelect($('#pID_AREA'),'247782');
+            mainFormActions.insertValueInSelect($('#pINSTITUCION'),'1');
+            mainFormActions.insertValueInSelect($('#pID_AREA'),'1656');
+            
         },
         insertValueInSelect : function(ref,value){
             if (ref)
