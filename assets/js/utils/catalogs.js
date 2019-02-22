@@ -13,9 +13,12 @@ $.fn.getCatalog = function(options) {
         var callUrl = base_url + "ajaxCatalogos/index";
         var obj = $(this);
 
-        if (obj.data('populated') == true)
-            if (obj.data('force-refresh') != true || obj.data('cascade') != true) 
+        var doJob = false;
+        if (obj.data('populated') == true) {
+            doJob = obj.data('force-refresh') != true || obj.data('cascade') != true
+            if (!doJob)
                 return null;
+        }
 
         var typeOfObj = obj[0].tagName.toLowerCase();
         switch (typeOfObj) {

@@ -207,7 +207,7 @@ var objViewDatosGenerales = {
                                     header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error al guardar',
                                     msg : msg,
                                     callback : function(){
-                                        //swal({ type: 'error', title: 'Error', html: msg }); //se comenta porque al mostrar el modal no respeta el scroll top al bloque del alert.
+                                        //Swal.fire({ type: 'error', title: 'Error', html: msg }); //se comenta porque al mostrar el modal no respeta el scroll top al bloque del alert.
                                     }
                                 });
 
@@ -288,7 +288,7 @@ var objViewDatosGenerales = {
                         //error
                         function(err){
                             var msg = err.status + ' - ' + err.statusText;
-                            swal({ type: 'error', title: 'Error', html: msg }); 
+                            Swal.fire({ type: 'error', title: 'Error', html: msg }); 
                             $this.setError(err.statusText);
                             $('.consultaCURP').resetReadOnly();
                         },

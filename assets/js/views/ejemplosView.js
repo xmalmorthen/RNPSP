@@ -38,7 +38,7 @@ var objView = {
 
         // VERIFICAR SI EXISTE SERIALIZACIÓN DEL FORMULARIO
         if (isSerializedFORM === 'true'){
-            Swal({
+            Swal.fire({
                 title: 'Guardado',
                 html: "Se encontró información guardada, desea recuperarla?",
                 type: 'question',
@@ -54,7 +54,7 @@ var objView = {
                     objView.vars.form.prepend('<div class="form-row"><div class="form-group col align-self-end"><button class="btn btn-outline-secondary pull-right btnRecoverProgress">Recuperar avance</button></div></div>');
                     $('.btnRecoverProgress').on('click', function(e){
                         e.preventDefault();
-                        Swal({
+                        Swal.fire({
                             title: 'Recuperación',
                             html: "Se recuperará la última información guardada, cualquier cambio realizado será omitido...",
                             type: 'info',
@@ -87,14 +87,14 @@ var objView = {
 
                 serialized.save(model,function(data){
                     if (data.status == true){
-                        swal({ type: 'success', title: 'Guardado', html: 'Avance guardado correctamente'});
+                        Swal.fire({ type: 'success', title: 'Guardado', html: 'Avance guardado correctamente'});
                     } else {
                         throw data.message;
                     }
                     $.LoadingOverlay("hide");
                 }, function(err){
                     $.LoadingOverlay("hide");
-                    swal({ type: 'error', title: 'Error', html: err.status + ' - ' + err.statusText });
+                    Swal.fire({ type: 'error', title: 'Error', html: err.status + ' - ' + err.statusText });
                 });
             },
             submit : function(e){
@@ -110,7 +110,7 @@ var objView = {
                     model = objView.vars.form.serialize();
 
                     $.LoadingOverlay("hide");
-                    swal({ type: 'success', title: 'Post Form', html: 'Formulario enviado [ ' + model + ' ]' });
+                    Swal.fire({ type: 'success', title: 'Post Form', html: 'Formulario enviado [ ' + model + ' ]' });
 
                     /*$.post(callUrl,{
                         model: model
@@ -124,12 +124,12 @@ var objView = {
                             }
                         } else {
                             $.LoadingOverlay("hide");
-                            swal({ type: 'error', title: 'Error', html: data.message });
+                            Swal.fire({ type: 'error', title: 'Error', html: data.message });
                         }
                     }).fail(function (err) {
                         $.LoadingOverlay("hide");
                         var msg = err.status + ' - ' + err.statusText;
-                        swal({ type: 'error', title: 'Error', html: msg });
+                        Swal.fire({ type: 'error', title: 'Error', html: msg });
                     }).always(function () {
                     });*/
                 }
@@ -146,7 +146,7 @@ var objView = {
                 if (data.status == true){
                     serialized.unserialize(objView.vars.form,data,function(){
                         $('.select2').select2();
-                        swal({ type: 'success', title: 'Formulario', html: 'Información recuperada'});
+                        Swal.fire({ type: 'success', title: 'Formulario', html: 'Información recuperada'});
                     });
                 } else {
                     throw data.message;
@@ -155,7 +155,7 @@ var objView = {
                 callback(true);
             }, function(err){
                 $.LoadingOverlay("hide");
-                swal({ type: 'error', title: 'Error', html: err.status + ' - ' + err.statusText });
+                Swal.fire({ type: 'error', title: 'Error', html: err.status + ' - ' + err.statusText });
                 callback(false);
             });            
         }

@@ -88,6 +88,9 @@
             window.location.href = base_url + 'Error/setError?err=No se especificó el modo del formulario!!!';
 
         dynTabs.mode = formMode;
+
+        mainTabMenu.mainInit();
+
         //CAMBIO DE TABS
         $('#mainContainerTab a[data-toggle="tab"]').on('show.bs.tab',mainTabMenu.tab.change);
 
@@ -162,6 +165,33 @@
                 var linkRef = $('#' + linkRefHash);
                 linkRef.trigger('click');
             }
+        },
+        mainInit : function(){
+            Swal.fire({
+                title: 'Introduzca la clave CURP',
+                input: 'text',
+                inputAttributes: {
+                    autocapitalize: 'off'
+                },
+                showCancelButton: true,
+                confirmButtonText: 'Aceptar',
+                showLoaderOnConfirm: true,
+                preConfirm: (CURP) => {
+                    try {
+                        if (CURP.length < 18 || CURP.length > 20)
+                            throw new Error('Formato de CURP incorrecto');
+                        return true;
+                    } catch (error) {
+                        Swal.showValidationMessage(error);
+                    }
+                },
+                allowOutsideClick: false
+            }).then((result) => {
+                if (result.dismiss == "cancel")
+                    window.location.href = base_url + 'Solicitud';
+                else
+                    alert('lanzar consulta curp');
+            });
         }
     }
 
@@ -176,8 +206,9 @@
             mainFormActions.insertValueInSelect($('#pID_MUNICIPIO_NAC'),'2');
             
             mainFormActions.insertValueInSelect($('#_dependenciaAdscripcionActual'),'2');
-            mainFormActions.insertValueInSelect($('#pINSTITUCION'),'5342');
-            mainFormActions.insertValueInSelect($('#pID_AREA'),'247782');
+            mainFormActions.insertValueInSelect($('#pINSTITUCION'),'1');
+            mainFormActions.insertValueInSelect($('#pID_AREA'),'1656');
+            
         },
         insertValueInSelect : function(ref,value){
             if (ref)

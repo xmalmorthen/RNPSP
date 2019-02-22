@@ -55,7 +55,7 @@
 		<script src="<?php echo base_url('assets/vendor/js/fastclick.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/vendor/js/jquery.blockUI.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/vendor/js/jquery.nicescroll.js'); ?>"></script>
-		<script src="<?php echo base_url('assets/vendor/plugins/sweetAlert2/sweetalert2.all.min.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/vendor/plugins/sweetAlert2/v8/sweetalert2@8.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/vendor/plugins/LoadingOverlay/v2.1.5/loadingOverlay.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/vendor/plugins/jquery-validation/dist/jquery.validate.min.js'); ?>"></script>
 		<script src="<?php echo base_url("assets/vendor/plugins/jquery-validation/dist/messages_es.js"); ?>"></script>

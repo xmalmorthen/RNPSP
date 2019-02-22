@@ -114,7 +114,7 @@ var objViewIndex = {
                     throw '';
                 returnResponse = true;
             } catch (error) {
-                swal({ type: 'error', title: 'Error', html: 'Debe seleccionar al menos un registro' });
+                Swal.fire({ type: 'error', title: 'Error', html: 'Debe seleccionar al menos un registro' });
             }
             return returnResponse;
         }

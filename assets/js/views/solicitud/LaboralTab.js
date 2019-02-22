@@ -86,8 +86,8 @@ var objViewLaboral = {
         //FOCUSOUT
         
         //CHANGE
-        objViewLaboral.vars.laboral.cmbs.pINSTITUCION.on('select2:select',objViewLaboral.events.change.pINSTITUCION);
-
+        //objViewLaboral.vars.laboral.cmbs.pINSTITUCION.on('select2:select',objViewLaboral.events.change.pINSTITUCION);
+        objViewLaboral.vars.laboral.cmbs.pINSTITUCION.on('change',objViewLaboral.events.change.pINSTITUCION);
 
         //Rutina para verificar si se hace algún cambio en cualquier forulario
         $.each(objViewLaboral.vars.laboral.forms, function( index, value ) {
@@ -181,7 +181,7 @@ var objViewLaboral = {
                                     header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error al guardar',
                                     msg : msg,
                                     callback : function(){
-                                        //swal({ type: 'error', title: 'Error', html: msg }); //se comenta porque al mostrar el modal no respeta el scroll top al bloque del alert.
+                                        //Swal.fire({ type: 'error', title: 'Error', html: msg }); //se comenta porque al mostrar el modal no respeta el scroll top al bloque del alert.
                                     }
                                 });
 
@@ -205,8 +205,6 @@ var objViewLaboral = {
         },
         change : {
             pINSTITUCION : function(e){
-debugger;
-
                 var $this = $(this),
                     valInstitucion = $this.val(),
                     valDependencia = $('#_dependenciaAdscripcionActual').val();

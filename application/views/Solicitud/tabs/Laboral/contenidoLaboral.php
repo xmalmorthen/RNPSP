@@ -135,7 +135,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             Área o departamento <!-- Se llena del catalogo "CAT_AREA" -->
-                            <select  class="form-control" id="pID_AREA" name="pID_AREA" data-error="#err_pID_AREA"></select>
+                            <select  class="form-control" id="pID_AREA" name="pID_AREA" data-error="#err_pID_AREA" data-force-refresh ='true'></select>
                             <span id="err_pID_AREA"></span>
                         </div>
                         <div class="col-md-4">

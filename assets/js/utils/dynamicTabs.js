@@ -33,7 +33,7 @@ var dynTabs = {
             if (dynTabs.validForm) {
                 if (form.valid()){
                     if (form.data('hasChanged') == true){
-                        Swal({
+                        Swal.fire({
                             title: 'Aviso',
                             html: "Para continuar, debe guardar los cambios",
                             footer: "<div><button class='btn btn-warning discartChanges'>Continuar sin guardar</button></div>",
