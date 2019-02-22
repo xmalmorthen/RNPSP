@@ -110,7 +110,8 @@ var objViewDatosGenerales = {
 
         objViewDatosGenerales.vars.general.btnSiguienteAnterior.on('click',objViewDatosGenerales.events.click.general.btnSiguienteAnterior);
         //FOCUSOUT
-        objViewDatosGenerales.vars.datosGenerales.objs.pCURP.on('focusout',objViewDatosGenerales.events.focus.out.pCURP);      
+        // objViewDatosGenerales.vars.datosGenerales.objs.pCURP.on('focusout',objViewDatosGenerales.events.focus.out.pCURP);      
+
         //CHANGE
 
         //Rutina para verificar si se hace algún cambio en cualquier forulario
@@ -120,8 +121,6 @@ var objViewDatosGenerales = {
                 form.removeData('hasSaved');
                 form.removeData('hasDiscardChanges');
                 form.data('hasChanged',true);
-
-                console.log(e);
                 $(e.target).removeError();
             });
         });
@@ -184,7 +183,6 @@ var objViewDatosGenerales = {
                         ).then( 
                             //success
                             function(data, textStatus, jqXHR){
-                                console.log(data);
                                 form.removeData('hasChanged');
                                 form.data('hasSaved',true);
 
@@ -304,7 +302,30 @@ var objViewDatosGenerales = {
         change : {            
         }
     },
-    actions : {        
+    actions : { 
+        populateCURPData : function(data){
+            $('.consultaCURP').readOnly();
+
+            objViewDatosGenerales.vars.datosGenerales.objs.pCURP.val(data.CURP);
+            $('#pNOMBRE_DATOS_PERSONALES').val(data.nombres);
+            $('#pPATERNO_DATOS_PERSONALES').val(data.apellido1);
+            $('#pMATERNO_DATOS_PERSONALES').val(data.apellido2);
+            $('#pSEXO_DATOS_PERSONALES').val(data.sexo);
+            $('#pSEXO_DATOS_PERSONALES').select2(); //ACTUALIZAR SELECT PARA QUE SE MUESTRE LA SELECCIÓN
+
+            var dateParts = data.fechNac.split("/");
+            var dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]); 
+            date = moment( dateObject ).format('YYYY-MM-DD');
+            $('#pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES').val(date);
+
+            objViewDatosGenerales.vars.datosGenerales.objs.pCURP.removeError();
+            $('#pNOMBRE_DATOS_PERSONALES').removeError();
+            $('#pPATERNO_DATOS_PERSONALES').removeError();
+            $('#pMATERNO_DATOS_PERSONALES').removeError();
+            $('#pSEXO_DATOS_PERSONALES').removeError();
+            $('#pSEXO_DATOS_PERSONALES').removeError();
+            $('#pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES').removeError();
+        },    
         discartChanges : function(e,relatedTarget){
 
             dynTabs.markTab(dynTabs.tabs.prebTab.linkRef,'<span class="text-warning tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true"></i></span>');

@@ -209,6 +209,8 @@ var objViewLaboral = {
                     valInstitucion = $this.val(),
                     valDependencia = $('#_dependenciaAdscripcionActual').val();
 
+                if (!valInstitucion) return null;
+
                 $('#pID_ENTIDAD_ADSCRIPCION_ACTUAL').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
                 var callUrl = base_url + 'ajaxCatalogos';

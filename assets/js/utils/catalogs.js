@@ -57,7 +57,6 @@ $.fn.getCatalog = function(options) {
                         obj.removeData('insert');
                     }
                     
-
                     options.success(data);
                 }).fail(function (err) {                    
                     obj.find("option").remove();

@@ -10,6 +10,10 @@ class ajaxAPIs extends CI_Controller {
 	public function CURP(){
 		$model = $this->input->get('model');
 		$curp = $model['CURP'];
+		if (!$curp) 
+			$curp = $this->input->get('CURP');
+
+		$get = $this->input->get();
 
 		if (! $this->input->is_ajax_request()) {
 			if (ENVIRONMENT == 'production') redirect('Error/e404','location');

@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>CURP
-                        <input type="text" id="pCURP" name="pCURP" class="form-control" minlength="18" maxlength="20" required>
+                        <input type="text" id="pCURP" name="pCURP" class="form-control consultaCURP " minlength="18" maxlength="20" required>
                     </div>
                     <div class="col-md-4">
                         Tipo de movimiento <!-- Se llena de la tabla CAT_TIPO_OPERACION  -->

@@ -65,7 +65,7 @@ if ( typeof sess_time_to_update !== 'undefined') {
 $(document).ready(function () { 
     moment.locale('es');
     
-    $.LoadingOverlaySetup({image:"",fontawesome : "fa fa-gear fa-spin",maxSize:150,minSize:20});
+    $.LoadingOverlaySetup({image:"",fontawesome : "fa fa-gear fa-spin",maxSize:150,minSize:20,zIndex : 1000});
     
     if (typeof MyCookie !== 'undefined') {
         MyCookie.session.save();
