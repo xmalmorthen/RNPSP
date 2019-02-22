@@ -97,6 +97,11 @@ var _app = Backbone.View.extend({
 		window.location.replace(base_url + 'Usuarios');
 	},
 	render: function () {
+		$('form#Usuarios_form select').each(function( index ) {
+			var selector = $(this).attr('selector');
+			$(this).find('option').filter('[value='+selector+']').prop("selected", true);
+			$(this).select2();
+		});
 		return this;
 	}
 });

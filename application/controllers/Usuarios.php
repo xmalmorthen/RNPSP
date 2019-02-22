@@ -16,7 +16,15 @@ class Usuarios extends CI_Controller
     $this->session->set_flashdata('titleBody', '[ Usuarios ] - Usuarios - Administración');
 
     $this->load->model('Usuarios_model');
-    $data['usuarios'] = $this->Usuarios_model->get();
+
+    if(verificaPermiso(1) == 1){  #Ver todas las dependencias
+      $data['usuarios'] = $this->Usuarios_model->get();
+    } else if(verificaPermiso(2) == 1){ #Ver solo de su dependencia	
+      $this->load->model('Usuarios_model');
+      $usuario = $this->Usuarios_model->user();
+      $this->Usuarios_model->where('cat_Usuarios.ID_ADSCRIPCION',$usuario['ID_ADSCRIPCION']);
+      $data['usuarios'] = $this->Usuarios_model->get();
+    }
 
     $this->load->library('parser');
     $this->parser->parse('Usuarios/index', $data);
@@ -28,12 +36,25 @@ class Usuarios extends CI_Controller
     $this->breadcrumbs->push('[ Usuarios ] - Usuarios - Registro de usuarios - Alta', site_url('alta/cedula/datosPersonales'));
     $this->session->set_flashdata('titleBody', '[ Usuarios ] - Usuarios - Registro de usuarios - Alta');
 
-		$this->load->model('catalogos/CAT_TIPOSUSUARIO_model');
-    $data['tiposUsuario'] = $this->CAT_TIPOSUSUARIO_model->get();
+    $this->load->model('catalogos/CAT_TIPOSUSUARIO_model');
+    if(verificaPermiso(3) == 1){ # Puede dar de alta de todos los tipos de usuario
+      $data['tiposUsuario'] = $this->CAT_TIPOSUSUARIO_model->get();
+    } else if(verificaPermiso(4) == 1){ # Pueden dar de alta usuarios capturistas, consulta
+      $this->CAT_TIPOSUSUARIO_model->where_in('id',array(3,4));
+      $data['tiposUsuario'] = $this->CAT_TIPOSUSUARIO_model->get();
+    }
 
     $this->load->model('catalogos/CAT_ADSCRIPCIONES_model');
-    $data['adscripcion'] = $this->CAT_ADSCRIPCIONES_model->get();
 
+    if(verificaPermiso(23) == 1){  #Ver todas las dependencias
+      $data['adscripcion'] = $this->CAT_ADSCRIPCIONES_model->get();
+    } else if(verificaPermiso(24) == 1){ #Ver solo de su dependencia	
+      $this->load->model('Usuarios_model');
+      $usuario = $this->Usuarios_model->user();
+      $this->CAT_ADSCRIPCIONES_model->where('CAT_ADSCRIPCION_TEMP.ID_ADSCRIPCION',$usuario['ID_ADSCRIPCION']);
+      $data['adscripcion'] = $this->CAT_ADSCRIPCIONES_model->get();
+    }
+    
     $this->load->library('parser');
     $this->parser->parse('Usuarios/Registro', $data);
   }
@@ -79,6 +100,7 @@ class Usuarios extends CI_Controller
         $response['message'] = $this->form_validation->error_array();
       }
     }
+
     $this->output
       ->set_status_header(200)
       ->set_content_type('application/json', 'utf-8')
@@ -93,12 +115,28 @@ class Usuarios extends CI_Controller
     $this->breadcrumbs->push('[ Usuarios ] - Usuarios - Modificación de usuarios - Modificar', site_url('alta/cedula/datosPersonales'));
     $this->session->set_flashdata('titleBody', '[ Usuarios ] - Usuarios - Modificación de usuarios - Modificar');
 
+    $data = array();
     $this->load->model('catalogos/CAT_TIPOSUSUARIO_model');
-    $data['tiposUsuario'] = $this->CAT_TIPOSUSUARIO_model->get();
+    if(verificaPermiso(25) == 1){ # Puede editar de todos los tipos de usuario
+      $data['tiposUsuario'] = $this->CAT_TIPOSUSUARIO_model->get();
+    } else if(verificaPermiso(26) == 1){ # Puede editar usuarios capturistas, consulta
+      $this->CAT_TIPOSUSUARIO_model->where_in('id',array(3,4));
+      $data['tiposUsuario'] = $this->CAT_TIPOSUSUARIO_model->get();
+    }
 
     $this->load->model('catalogos/CAT_ADSCRIPCIONES_model');
-    $data['adscripcion'] = $this->CAT_ADSCRIPCIONES_model->get();
-
+    $this->load->model('Usuarios_model');
+    $usuario = $this->Usuarios_model->user();
+    if(verificaPermiso(6) == 1){  #Editar usuarios de todas las dependencias	
+      $data['adscripcion'] = $this->CAT_ADSCRIPCIONES_model->get();
+    } else if(verificaPermiso(7) == 1){ #Editar solo usuarios de su dependencia		
+      $this->CAT_ADSCRIPCIONES_model->where('CAT_ADSCRIPCION_TEMP.ID_ADSCRIPCION',$usuario['ID_ADSCRIPCION']);
+      $data['adscripcion'] = $this->CAT_ADSCRIPCIONES_model->get();
+      
+      $user_id = $this->input->get('id');
+      $data['usuario'] = $this->Usuarios_model->byId($user_id);
+      $data['idPermiso'] = $this->CAT_TIPOSUSUARIO_model->ID_TipoUsuario_byId($user_id);
+    }
     $this->load->library('parser');
     $this->parser->parse('Usuarios/Modificar', $data);
   }
@@ -119,7 +157,3 @@ class Usuarios extends CI_Controller
     $this->load->view('Usuarios/Ver');
   }
 }
-
-
-
- 

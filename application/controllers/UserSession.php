@@ -111,4 +111,12 @@ class UserSession extends CI_Controller
     echo json_encode($this->config->item('sess_time_to_update'));
     exit;
   }
+
+  public function Qpass_gen(){
+    $pass = $this->ion_auth->reset_password('Consultas','123456');
+    Utils::pre($pass,false);
+    Utils::pre($this->ion_auth->errors(),false);
+    Utils::pre($this->ion_auth->messages());
+    
+  }
 }

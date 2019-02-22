@@ -25,16 +25,18 @@ class Override {
             $CI->table->set_template(array(
                 'table_open' => '<table border="1" cellpadding="2" cellspacing="1" class="mytable">'
             ));
-            $permisos = $_SESSION[SESSIONVAR]['permisos'];
-            if($_SESSION[SESSIONVAR]['permisosTab'] == 1){
-                $CI->table->set_heading(array('ID','TAB','Descripcion', 'Permiso'));
-                foreach ($permisos as $key => $value) {
-                    $CI->table->add_row(array($value['id_Permiso'],$value['Tab'], $value['Permiso'], $value['acceso']));    
-                }
-            }else{
-                $CI->table->set_heading(array('ID','Descripcion', 'Permiso'));
-                foreach ($permisos as $key => $value) {
-                    $CI->table->add_row(array($value['id_Permiso'], $value['Permiso'], $value['acceso']));    
+            $permisos = $CI->session->local_userdata('permisos');
+            if($permisos != false){
+                if($CI->session->local_userdata('permisosTab') == 1){
+                    $CI->table->set_heading(array('ID','TAB','Descripcion', 'Permiso'));
+                    foreach ($permisos as $key => $value) {
+                        $CI->table->add_row(array($value['id_Permiso'],$value['Tab'], $value['Permiso'], $value['acceso']));    
+                    }
+                }else{
+                    $CI->table->set_heading(array('ID','Descripcion', 'Permiso'));
+                    foreach ($permisos as $key => $value) {
+                        $CI->table->add_row(array($value['id_Permiso'], $value['Permiso'], $value['acceso']));    
+                    }
                 }
             }
             $superMainModel['permisos'] = $CI->table->generate();

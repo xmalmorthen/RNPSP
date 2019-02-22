@@ -57,6 +57,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['Sesion/Iniciar'] = 'UserSession/index';
 $route['Sesion/Terminar'] = 'UserSession/logOut';
+$route['Sesion/Qpass_gen'] = 'UserSession/Qpass_gen';
 
 $route['alta/cedula'] = 'Cedula';
 $route['alta/cedula/(:any)'] = 'Cedula/$1';

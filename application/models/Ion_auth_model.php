@@ -556,6 +556,7 @@ class Ion_auth_model extends CI_Model
 		$this->trigger_events('pre_change_password');
 
 		if (!$this->identity_check($identity)) {
+			Utils::pre('holis');
 			$this->trigger_events(['post_change_password', 'post_change_password_unsuccessful']);
 			return FALSE;
 		}

@@ -151,6 +151,10 @@ class MY_Model extends CI_Model
   {
     $this->db->where($column, $value);
   }
+  public function where_in($column, $value)
+  {
+    $this->db->where_in($column, $value);
+  }
 
   public function response_list()
   {
