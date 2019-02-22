@@ -121,8 +121,6 @@ var objViewDatosGenerales = {
                 form.removeData('hasSaved');
                 form.removeData('hasDiscardChanges');
                 form.data('hasChanged',true);
-
-                console.log(e);
                 $(e.target).removeError();
             });
         });
@@ -185,7 +183,6 @@ var objViewDatosGenerales = {
                         ).then( 
                             //success
                             function(data, textStatus, jqXHR){
-                                console.log(data);
                                 form.removeData('hasChanged');
                                 form.data('hasSaved',true);
 

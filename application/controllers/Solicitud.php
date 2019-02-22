@@ -100,13 +100,39 @@
 			$responseModel = NULL;
 			try {
 				if(!$CURP){
-					throw new Exception('Parámetros incorrectos');
+					throw new rulesException('Parámetros incorrectos');
 				}
 				
-				//TODO: Xmal - Implementar la consulta para obtener datos de registro				
-				// $this->load->model("catalogos/ajaxCatalogos_model",'catalogo');
-				// $responseModel = $this->catalogo->get($fullQry);
+				//TODO: Tamata - Implementar la consulta para obtener datos de registro
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 Bad Request");
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+
+		public function ajaxGetSolicitudById($Id = NULL){
+			if (!$Id)
+				$Id = $this->input->get('Id');
+		
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}		
+
+			$responseModel = NULL;
+			try {
+				if(!$Id){
+					throw new rulesException('Parámetros incorrectos');
+				}
 				
+				$responseModel = true;
+				//TODO: Tamata - Implementar la consulta para obtener datos de registro
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 Bad Request");

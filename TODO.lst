@@ -6,4 +6,8 @@
     <!-- TODO: Xmal - Implementar para mostrar u ocultar sección --> Linea 68
 //TODO: Xmal -  Implementar la impresión [ assets\js\views\solicitud\index.js ]
 //TODO: Xmal -  Implementar la replicación [ assets\js\views\solicitud\index.js ]
-//TODO: Xmal - Implementar la consulta para obtener datos de registro [ application\controllers\Solicitud.php ]
+[ application\controllers\Solicitud.php ]
+    //TODO: Tamata - Implementar la consulta para obtener datos de registro 
+    //TODO: Tamata - Implementar la consulta para obtener datos de registro
+
+//TODO: Xmal - Programar la manera en como se irán llenando los combos por ceja y populando cuando haya información.

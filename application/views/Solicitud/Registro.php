@@ -89,8 +89,6 @@
 
         dynTabs.mode = formMode;
 
-        mainTabMenu.mainInit();
-
         //CAMBIO DE TABS
         $('#mainContainerTab a[data-toggle="tab"]').on('show.bs.tab',mainTabMenu.tab.change);
 
@@ -111,6 +109,9 @@
         switch (formMode) {
             case 'edit':
                 mainFormActions.populateData("<?php echo isset($id) ? $id : ''; ?>");
+            break;
+            case 'add' : 
+                mainTabMenu.mainInit();
             break;
         }
     });
@@ -235,22 +236,57 @@
             objViewDatosGenerales.actions.populateCURPData(data);
         },
         populateData : function(idRef){
-            
-            // objViewDatosGenerales.vars.datosGenerales.objs.pCURP.val('RUAM811123HCMDGG05');
-            // objViewDatosGenerales.vars.datosGenerales.objs.pCURP.trigger('focusout');
-            
-            mainFormActions.insertValueInSelect($('#pTIPO_MOV'),'BE');
-            mainFormActions.insertValueInSelect($('#pID_ENTIDAD_NAC'),'6');
-            mainFormActions.insertValueInSelect($('#pID_MUNICIPIO_NAC'),'2');
-            
-            mainFormActions.insertValueInSelect($('#_dependenciaAdscripcionActual'),'2');
-            mainFormActions.insertValueInSelect($('#pINSTITUCION'),'1');
-            mainFormActions.insertValueInSelect($('#pID_AREA'),'1656');
-            
+            $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+            objViewDatosGenerales.init(function(){ dynTabs.validForm = true; mainTabMenu.actions.inited = true; });
+            objViewLaboral.init(function(){ dynTabs.validForm = true; mainTabMenu.actions.inited = true;});
+            objViewCapacitacion.init(function(){ dynTabs.validForm = true; mainTabMenu.actions.inited = true;});
+            objViewIdentificacion.init(function(){ dynTabs.validForm = true; mainTabMenu.actions.inited = true;});
+
+            var callUrl = base_url + `Solicitud/ajaxGetSolicitudById/${idRef}`;
+            fetch(callUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(response => {
+                    if (!response.results) {
+                        throw new Error('No se encontró información');
+                    } else {
+                        fncPopulate(response.results);
+                    }
+                })
+                .catch(error => {
+                    Swal.fire({ type: 'error', title: 'Error', html: error.message });
+                    window.location.href = base_url + 'Solicitud';
+                });            
+
+
+            var fncPopulate = function(data){
+                $('.consultaCURP').readOnly();
+
+                objViewDatosGenerales.vars.datosGenerales.objs.pCURP.val('RUAM811123HCMDGG05');
+                mainFormActions.insertValueInSelect($('#pTIPO_MOV'),'BE');
+                mainFormActions.insertValueInSelect($('#pID_ENTIDAD_NAC'),'6');
+                mainFormActions.insertValueInSelect($('#pID_MUNICIPIO_NAC'),'2');
+                
+                mainFormActions.insertValueInSelect($('#_dependenciaAdscripcionActual'),'2');
+                mainFormActions.insertValueInSelect($('#pINSTITUCION'),'1');
+                mainFormActions.insertValueInSelect($('#pID_AREA'),'1656');
+
+                $.LoadingOverlay("hide");
+            }
         },
         insertValueInSelect : function(ref,value){
-            if (ref)
-                ref.val(value).data('insert',value);
+            if (ref){
+                if (ref.find('option').size() == 0)
+                    ref.data('insert', value);
+                else
+                    ref.val(value).trigger('change');
+                //ref.val(value).data('insert',value).trigger('change').trigger('change.select2');
+            }
         }
     }
 </script>
