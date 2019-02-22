@@ -9,6 +9,7 @@
 			<div class="col-md-4">
 				<span class="clr">*</span> CURP
 				<input type="text" class="form-control" id="pCURP" name="pCURP"  minlength="18" maxlength="20" value="<?php echo $usuario['CURP']; ?>" />
+				<input type="hidden" name="user_id" value="<?php echo $user_id; ?>" />
 			</div>
 			<div class="col-md-4">
 				<span class="clr">*</span>Nombre
@@ -64,7 +65,7 @@
 			<div class="col-md-4">
 				<div class="row">
 					<div class="col-md-6">
-						<button type="button" onclick="app.guardar();" class="btn btn-defaul">Guardar</button>
+						<button type="button" onclick="app.confirmar();" class="btn btn-defaul">Guardar</button>
 					</div>
 					<div class="col-md-6">
 						<button type="button" onclick="app.regresar();" class="btn btn-default">Regresar</button>

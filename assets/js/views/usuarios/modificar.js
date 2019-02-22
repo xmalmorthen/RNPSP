@@ -49,29 +49,46 @@ var _app = Backbone.View.extend({
 			if ($('input[name=' + index + ']').length > 0) {
 				$('input[name=' + index + ']').attr('error', true);
 				$('input[name=' + index + ']').setError(value);
-			}else{
-				error += '<small>'+value+'</small><br/>';
+			} else {
+				error += '<small>' + value + '</small><br/>';
 			}
 		});
-		if(error.length > 0){
+		if (error.length > 0) {
 			Swal.fire({
 				type: 'error',
-				html: '<p>'+error+'</p>',
+				html: '<p>' + error + '</p>',
 			});
 		}
 	},
-	generatePassword: function(){
+	generatePassword: function () {
 		var pwd = this.generarContrasena(9);
 		$('input#pCONTRASENA').val(pwd);
 		$('input[name=pCONTRASENA]').val(pwd);
 	},
+
+	confirmar: function () {
+		that = this;
+		Swal.fire({
+			type: 'question',
+			title: 'Desea Guardar los cambios',
+			showConfirmButton: true,
+			confirmButtonText: 'Si',
+			showCancelButton: true,
+			cancelButtonText: 'No'
+		}).then((result) => {
+			if (result.value) {
+				that.guardar();
+			}
+		});
+	},
+
 	guardar: function () {
 		var that = this;
 		that.hideError();
 		Backbone.ajax({
 			dataType: "json",
 			method: 'POST',
-			url: base_url + 'Usuarios/guardar',
+			url: base_url + 'Usuarios/guardarModificar',
 			data: $('form#Usuarios_form').serialize(),
 			beforeSend: function () {
 				that.starLoader();
@@ -83,6 +100,14 @@ var _app = Backbone.View.extend({
 					Swal.fire({
 						type: 'success',
 						title: response.message
+					}).then((result) => {
+
+						Swal.fire(
+							'Deleted!',
+							'Your file has been deleted.',
+							'success'
+						);
+
 					})
 				} else {
 					that.showError(response.message);
@@ -93,13 +118,13 @@ var _app = Backbone.View.extend({
 			}
 		});
 	},
-	regresar: function(){
+	regresar: function () {
 		window.location.replace(base_url + 'Usuarios');
 	},
 	render: function () {
-		$('form#Usuarios_form select').each(function( index ) {
+		$('form#Usuarios_form select').each(function (index) {
 			var selector = $(this).attr('selector');
-			$(this).find('option').filter('[value='+selector+']').prop("selected", true);
+			$(this).find('option').filter('[value=' + selector + ']').prop("selected", true);
 			$(this).select2();
 		});
 		return this;
