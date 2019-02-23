@@ -13,7 +13,7 @@ class Usuarios_model extends MY_Model
   {
     $returnResponse = array();
     try {
-      $this->select('cat_Usuarios.id,cat_Usuarios.NOMBRE,cat_Usuarios.PATERNO,cat_Usuarios.MATERNO,cat_EstatusUsuario.Nombre as EstatusUsuario,CAT_ADSCRIPCION_TEMP.ADSCRIPCION', false);
+      $this->select('cat_Usuarios.id,cat_Usuarios.NOMBRE,cat_Usuarios.CURP,cat_Usuarios.PATERNO,cat_Usuarios.MATERNO,cat_EstatusUsuario.Nombre as EstatusUsuario,CAT_ADSCRIPCION_TEMP.ADSCRIPCION', false);
       $this->join('cat_EstatusUsuario', 'cat_Usuarios.id_EstatusUsuario = cat_EstatusUsuario.id_EstatusUsuario');
       $this->join('CAT_ADSCRIPCION_TEMP', 'cat_Usuarios.ID_ADSCRIPCION = CAT_ADSCRIPCION_TEMP.ID_ADSCRIPCION');
       $returnResponse = $this->response_list();
@@ -61,6 +61,14 @@ class Usuarios_model extends MY_Model
   public function user()
   {
     return $this->ion_auth->user()->row_array();
+  }
+
+  public function getIdUsuarioByCurp($curp){
+    $this->db->select('cat_Usuarios.id')
+      ->from('cat_Usuarios')
+      ->where('CURP', trim($curp));
+    $response = $this->response_row();
+    return (is_array($response) && count($response) > 0) ? current($response) : $response;
   }
 
   public function tipoUsuarioByUsuario($usuario = false)

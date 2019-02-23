@@ -111,21 +111,38 @@ class Usuarios extends CI_Controller
 
   public function Modificar()
   {
+    $this->load->model('Usuarios_model');
+    $curp = $this->input->get('curp');
+
+    $this->load->model('Usuarios_model');
+
+    $user_id = false;
+    if(verificaPermiso(6) == 1){ #Editar usuarios de todas las dependencias	
+      $usuario = $this->Usuarios_model->user();
+      $this->Usuarios_model->where('ID_ADSCRIPCION',$usuario['ID_ADSCRIPCION']);
+      $user_id = $this->Usuarios_model->getIdUsuarioByCurp($curp);
+    }elseif(verificaPermiso(7) == 1){ #Editar solo usuarios de su dependencia	
+      
+      $user_id = $this->Usuarios_model->getIdUsuarioByCurp($curp);
+    }
+    
     $this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');
     $this->breadcrumbs->push('[ Usuarios ] - Usuarios - Modificación de usuarios - Modificar', site_url('alta/cedula/datosPersonales'));
     $this->session->set_flashdata('titleBody', '[ Usuarios ] - Usuarios - Modificación de usuarios - Modificar');
 
     $data = array();
+    $data['user_id'] = $user_id;
     $this->load->model('catalogos/CAT_ADSCRIPCIONES_model');
-    $this->load->model('Usuarios_model');
     
-    $user_id = $this->input->get('id');
+    if($user_id != false){
     $data['user_id'] = $user_id;
     $data['usuario'] = $this->Usuarios_model->byId($user_id);
     $data['adscripcion'] = $this->CAT_ADSCRIPCIONES_model->byId($data['usuario']['ID_ADSCRIPCION']);
+    }
 
     $this->load->model('catalogos/CAT_ESTATUSUSUARIO_model');
     $data['estatus'] = $this->CAT_ESTATUSUSUARIO_model->get();
+    
     $this->load->library('parser');
     $this->parser->parse('Usuarios/Modificar', $data);
   }

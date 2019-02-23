@@ -36,8 +36,8 @@
                                         <td>{JEFE}</td>
                                         <td>
                                             <a href="<?php echo site_url('personaCedula/index?id='); ?>{id}"><i class="fa fa-print"></i></a>
-                                            <a href="<?php echo site_url('Usuarios/Ver?id='); ?>{id}"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                            <a href="<?php echo site_url('Usuarios/Modificar?id=')?>{id}"><i class="fa fa-pencil-square-o"></i></a>
+                                            <a href="<?php echo site_url('Usuarios/Ver?curp='); ?>{CURP}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                            <a href="<?php echo site_url('Usuarios/Modificar?curp=')?>{CURP}"><i class="fa fa-pencil-square-o"></i></a>
                                             <a href="<?php echo site_url('Usuarios/darBaja?id=')?>{id}"<i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>

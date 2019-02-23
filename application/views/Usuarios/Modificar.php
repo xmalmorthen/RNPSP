@@ -2,34 +2,38 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script src="<?php echo base_url('assets/js/utils/catalogs.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/views/usuarios/modificar.js'); ?>"></script>
+<script>
+	var id_Usuario = "<?php echo $user_id;?>";
+	var id_UsuarioMSG = "<?php echo $this->lang->line('MSJ11');?>";
+</script>
 <div class="container">
 	<form action="" id="Usuarios_form" name="Usuarios_form" autocomplete="off">
 		<br>
 		<div class="row">
 			<div class="col-md-4">
 				<span class="clr">*</span> CURP
-				<input type="text" class="form-control" value="<?php echo $usuario['CURP']; ?>" readonly />
+				<input type="text" class="form-control" value="<?php echo (isset($usuario))? $usuario['CURP'] : ''; ?>" readonly />
 				<input type="hidden" name="user_id" value="<?php echo $user_id; ?>" />
-				<input type="hidden" name="curp" value="<?php echo $usuario['CURP']; ?>" />
+				<input type="hidden" name="curp" value="<?php echo (isset($usuario))? $usuario['CURP'] : ''; ?>" />
 			</div>
 			<div class="col-md-4">
 				<span class="clr">*</span>Nombre
-				<input type="text" class="form-control" value="<?php echo $usuario['NOMBRE']; ?>" readonly />
+				<input type="text" class="form-control" value="<?php echo (isset($usuario))? $usuario['NOMBRE'] : ''; ?>" readonly />
 			</div>
 			<div class="col-md-4">
 				<span class="clr">*</span>Apellido paterno
-				<input type="text" class="form-control" value="<?php echo $usuario['PATERNO']; ?>" readonly />
+				<input type="text" class="form-control" value="<?php echo (isset($usuario))? $usuario['PATERNO'] : ''; ?>" readonly />
 			</div>
 		</div>
 		<br>
 		<div class="row">
 			<div class="col-md-4">
 				<span class="clr">*</span>Apellido materno
-				<input type="text" class="form-control" value="<?php echo $usuario['MATERNO']; ?>" readonly />
+				<input type="text" class="form-control" value="<?php echo (isset($usuario))? $usuario['MATERNO'] : ''; ?>" readonly />
 			</div>
 			<div class="col-md-4">
 				<span class="clr">*</span>Adscripción
-				<input type="text" class="form-control"  value="<?php echo $adscripcion['ADSCRIPCION']; ?>" readonly />
+				<input type="text" class="form-control"  value="<?php echo (isset($adscripcion))? $adscripcion['ADSCRIPCION'] : ''; ?>" readonly />
 			</div>
 			<div class="col-md-4">
 				<span class="clr">*</span>Contraseña
@@ -46,22 +50,22 @@
 		<div class="row">
 			<div class="col-md-4">
 				<span class="clr">*</span>Estatus
-				<select id="pID_ESTATUS" onchange="app.mostarMotivo(this.value);" name="pID_ESTATUS" class="form-control" selector="<?php echo $usuario['id_EstatusUsuario']; ?>" />
+				<select id="pID_ESTATUS" onchange="app.mostarMotivo(this.value);" name="pID_ESTATUS" class="form-control" selector="<?php echo isset($usuario)? $usuario['id_EstatusUsuario'] : ''; ?>" />
 					{estatus}
 					<option value="{id_EstatusUsuario}">{Nombre}</option>
 					{/estatus}
 				</select>
-				<div id="MotivoInactivo" style="display:<?php echo ($usuario['id_EstatusUsuario'] == 2)? 'block':'none'; ?>">
+				<div id="MotivoInactivo" style="display:<?php echo (isset($usuario) && $usuario['id_EstatusUsuario'] == 2)? 'block':'none'; ?>">
 					<hr/>
 					<div class="form-group">
 						<label for="comment"><span class="clr">*</span>Motivo de cambio estatus a Inactivo:</label>
-						<textarea name="MotivoInactivo" class="form-control" rows="5" id="comment"><?php echo trim($usuario['MotivoInactivo']); ?></textarea>
+						<textarea name="MotivoInactivo" class="form-control" rows="5" id="comment"><?php echo isset($usuario)? trim($usuario['MotivoInactivo']) : ''; ?></textarea>
 					</div> 
 				</div>
 			</div>
 			<div class="col-md-4">
 				<span class="clr">*</span>Correo electrónico
-				<input type="email" id="pCORREO" name="pCORREO" class="form-control" value="<?php echo $usuario['email']; ?>" >
+				<input type="email" id="pCORREO" name="pCORREO" class="form-control" value="<?php echo isset($usuario)? $usuario['email'] : ''; ?>" >
 			</div>
 			<!-- <div class="col-md-4">
 				Jefe inmediato

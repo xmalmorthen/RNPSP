@@ -1,5 +1,11 @@
 var _app = Backbone.View.extend({
 	initialize: function () {
+		if(id_Usuario == false){
+			Swal.fire({
+				type: 'error',
+				title: id_UsuarioMSG,
+			});
+		}
 	},
 	generarContrasena: function (length, type) {
 		switch (type) {
@@ -131,7 +137,9 @@ var _app = Backbone.View.extend({
 	render: function () {
 		$('form#Usuarios_form select').each(function (index) {
 			var selector = $(this).attr('selector');
-			$(this).find('option').filter('[value=' + selector + ']').prop("selected", true);
+			if(selector != ''){
+				$(this).find('option').filter('[value=' + selector + ']').prop("selected", true);
+			}
 			$(this).select2();
 		});
 		return this;
