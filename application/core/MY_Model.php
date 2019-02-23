@@ -143,8 +143,13 @@ class MY_Model extends CI_Model
     $this->db->from($this->nombreCatalogo);
   }
 
-  public function join($table,$join){
-    $this->db->join($table,$join);
+  public function join($table,$join,$inner = false){
+    if($inner == false){
+      $this->db->join($table,$join);
+    }else{
+      $this->db->join($table,$join,$inner);
+    }
+    
   }
 
   public function where($column, $value)

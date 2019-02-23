@@ -28,9 +28,9 @@ class Usuarios_model extends MY_Model
     $idUsuario = ($usuario != false) ? $usuario : $this->currentUser();
     $returnResponse = array();
     try {
-      $this->select('cat_Usuarios.id,cat_Usuarios.CURP,cat_Usuarios.email,cat_Usuarios.NOMBRE,cat_Usuarios.PATERNO,cat_Usuarios.MATERNO,cat_EstatusUsuario.Nombre as EstatusUsuario,CAT_ADSCRIPCION_TEMP.ADSCRIPCION,CAT_ADSCRIPCION_TEMP.ID_ADSCRIPCION', false);
-      $this->join('cat_EstatusUsuario', 'cat_Usuarios.id_EstatusUsuario = cat_EstatusUsuario.id_EstatusUsuario');
-      $this->join('CAT_ADSCRIPCION_TEMP', 'cat_Usuarios.ID_ADSCRIPCION = CAT_ADSCRIPCION_TEMP.ID_ADSCRIPCION');
+      $this->select('cat_Usuarios.id,cat_Usuarios.id_EstatusUsuario,cat_Usuarios.MotivoInactivo,cat_Usuarios.CURP,cat_Usuarios.email,cat_Usuarios.NOMBRE,cat_Usuarios.PATERNO,cat_Usuarios.MATERNO,cat_EstatusUsuario.Nombre as EstatusUsuario,CAT_ADSCRIPCION_TEMP.ADSCRIPCION,CAT_ADSCRIPCION_TEMP.ID_ADSCRIPCION', false);
+      $this->join('cat_EstatusUsuario', 'cat_Usuarios.id_EstatusUsuario = cat_EstatusUsuario.id_EstatusUsuario','left');
+      $this->join('CAT_ADSCRIPCION_TEMP', 'cat_Usuarios.ID_ADSCRIPCION = CAT_ADSCRIPCION_TEMP.ID_ADSCRIPCION','left');
       $this->where('cat_Usuarios.id', $idUsuario);
       $returnResponse = $this->response_row();
     } catch (Exception $e) {

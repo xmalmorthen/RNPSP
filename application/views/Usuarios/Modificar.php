@@ -8,56 +8,65 @@
 		<div class="row">
 			<div class="col-md-4">
 				<span class="clr">*</span> CURP
-				<input type="text" class="form-control" id="pCURP" name="pCURP"  minlength="18" maxlength="20" value="<?php echo $usuario['CURP']; ?>" />
+				<input type="text" class="form-control" value="<?php echo $usuario['CURP']; ?>" readonly />
 				<input type="hidden" name="user_id" value="<?php echo $user_id; ?>" />
+				<input type="hidden" name="curp" value="<?php echo $usuario['CURP']; ?>" />
 			</div>
 			<div class="col-md-4">
 				<span class="clr">*</span>Nombre
-				<input type="text" class="form-control" id="pNOMBRE" name="pNOMBRE"  minlength="2" maxlength="30" value="<?php echo $usuario['NOMBRE']; ?>" />
+				<input type="text" class="form-control" value="<?php echo $usuario['NOMBRE']; ?>" readonly />
 			</div>
 			<div class="col-md-4">
 				<span class="clr">*</span>Apellido paterno
-				<input type="text" class="form-control" id="pPATERNO" name="pPATERNO"  minlength="1" maxlength="30" value="<?php echo $usuario['PATERNO']; ?>" />
+				<input type="text" class="form-control" value="<?php echo $usuario['PATERNO']; ?>" readonly />
 			</div>
 		</div>
 		<br>
 		<div class="row">
 			<div class="col-md-4">
 				<span class="clr">*</span>Apellido materno
-				<input type="text" class="form-control" id="pMATERNO" name="pMATERNO"  minlength="1" maxlength="30" value="<?php echo $usuario['MATERNO']; ?>" />
+				<input type="text" class="form-control" value="<?php echo $usuario['MATERNO']; ?>" readonly />
 			</div>
 			<div class="col-md-4">
 				<span class="clr">*</span>Adscripción
-				<select class="form-control" id="pID_ADSCRIPCION" name="pID_ADSCRIPCION" selector="<?php echo $usuario['ID_ADSCRIPCION']; ?>"  >
-				 {adscripcion}
-				 	<option value="{ID_ADSCRIPCION}">{ADSCRIPCION}</option>
-				 {/adscripcion}
-				 </select>
+				<input type="text" class="form-control"  value="<?php echo $adscripcion['ADSCRIPCION']; ?>" readonly />
 			</div>
 			<div class="col-md-4">
 				<span class="clr">*</span>Contraseña
-				<input readly type="text" class="form-control" id="pCONTRASENA" readonly />
-				<input type="hidden" name="pCONTRASENA" />
+				<div class="input-group mb-3">
+					<input readly type="text" class="form-control" id="pCONTRASENA" readonly value="" />
+					<input type="hidden" name="pCONTRASENA" />
+					<div class="input-group-append">
+						<button onclick="app.generatePassword();" class="btn btn-outline-secondary" type="button">Regenerar contraseña</button>
+					</div>
+				</div>
 			</div>
 		</div>
 		<br>
 		<div class="row">
 			<div class="col-md-4">
-				<span class="clr">*</span>Tipo de usuario
-				<select id="pTIPO_USUARIO" name="pTIPO_USUARIO" class="form-control" selector="<?php echo $idPermiso; ?>" />
-					{tiposUsuario}
-					<option value="{id}">{description}</option>
-					{/tiposUsuario}
+				<span class="clr">*</span>Estatus
+				<select id="pID_ESTATUS" onchange="app.mostarMotivo(this.value);" name="pID_ESTATUS" class="form-control" selector="<?php echo $usuario['id_EstatusUsuario']; ?>" />
+					{estatus}
+					<option value="{id_EstatusUsuario}">{Nombre}</option>
+					{/estatus}
 				</select>
+				<div id="MotivoInactivo" style="display:<?php echo ($usuario['id_EstatusUsuario'] == 2)? 'block':'none'; ?>">
+					<hr/>
+					<div class="form-group">
+						<label for="comment"><span class="clr">*</span>Motivo de cambio estatus a Inactivo:</label>
+						<textarea name="MotivoInactivo" class="form-control" rows="5" id="comment"><?php echo trim($usuario['MotivoInactivo']); ?></textarea>
+					</div> 
+				</div>
 			</div>
 			<div class="col-md-4">
 				<span class="clr">*</span>Correo electrónico
 				<input type="email" id="pCORREO" name="pCORREO" class="form-control" value="<?php echo $usuario['email']; ?>" >
 			</div>
-			<div class="col-md-4">
+			<!-- <div class="col-md-4">
 				Jefe inmediato
 				<input type="text" class="form-control" id="pID_JEFE" name="pID_JEFE">
-			</div>
+			</div> -->
 		</div>
 		<br>
 		<div class="row">

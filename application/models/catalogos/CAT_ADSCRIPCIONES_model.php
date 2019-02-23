@@ -31,6 +31,5 @@ class CAT_ADSCRIPCIONES_model extends MY_Model
       Msg_reporting::error_log($e);
     }
     return $returnResponse;
-  }
-  
+  } 
 }

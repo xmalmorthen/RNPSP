@@ -1,6 +1,5 @@
 var _app = Backbone.View.extend({
 	initialize: function () {
-		this.generatePassword();
 	},
 	generarContrasena: function (length, type) {
 		switch (type) {
@@ -46,9 +45,9 @@ var _app = Backbone.View.extend({
 	showError: function (message) {
 		var error = '';
 		$.each(message, function (index, value) {
-			if ($('input[name=' + index + ']').length > 0) {
-				$('input[name=' + index + ']').attr('error', true);
-				$('input[name=' + index + ']').setError(value);
+			if ($('[name=' + index + ']').length > 0) {
+				$('[name=' + index + ']').attr('error', true);
+				$('[name=' + index + ']').setError(value);
 			} else {
 				error += '<small>' + value + '</small><br/>';
 			}
@@ -66,20 +65,35 @@ var _app = Backbone.View.extend({
 		$('input[name=pCONTRASENA]').val(pwd);
 	},
 
+	mostarMotivo: function(idEstatus){
+		if(idEstatus == 2){
+			$('div#MotivoInactivo').show();
+		}else{
+			$('div#MotivoInactivo').hide();
+		}
+	},
+
 	confirmar: function () {
-		that = this;
-		Swal.fire({
-			type: 'question',
-			title: 'Desea Guardar los cambios',
-			showConfirmButton: true,
-			confirmButtonText: 'Si',
-			showCancelButton: true,
-			cancelButtonText: 'No'
-		}).then((result) => {
-			if (result.value) {
-				that.guardar();
-			}
-		});
+		var status_new = $('select#pID_ESTATUS option:selected').val();
+		var status_old = $('select#pID_ESTATUS').attr('selector');
+		var that = this;
+
+		if(status_old != status_new){
+			Swal.fire({
+				type: 'question',
+				title: 'Desea Guardar los cambios',
+				showConfirmButton: true,
+				confirmButtonText: 'Si',
+				showCancelButton: true,
+				cancelButtonText: 'No'
+			}).then((result) => {
+				if (result.value) {
+					that.guardar();
+				}
+			});
+		}else{
+			that.guardar();
+		}
 	},
 
 	guardar: function () {
@@ -96,18 +110,11 @@ var _app = Backbone.View.extend({
 			success: function (response) {
 				if (response.status == true) {
 					$('form').trigger("reset");
-					that.generatePassword();
 					Swal.fire({
 						type: 'success',
 						title: response.message
 					}).then((result) => {
-
-						Swal.fire(
-							'Deleted!',
-							'Your file has been deleted.',
-							'success'
-						);
-
+						window.location.href = base_url+'Usuarios/Ver?curp='+$.trim($('input[name=curp]').val());
 					})
 				} else {
 					that.showError(response.message);
