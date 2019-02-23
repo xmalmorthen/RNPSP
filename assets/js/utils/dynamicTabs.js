@@ -59,7 +59,10 @@ var dynTabs = {
                     var linkRef = $('#' + e.currentTarget.id);
                     
                     if (!linkRef.hasClass('errorValidation')) {
-                        dynTabs.markTab( linkRef,'<span class="text-danger tabMark errorValidation mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i></span>');    
+                        dynTabs.markTab( linkRef,'<span class="text-danger tabMark errorValidation mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i></span>');
+                        
+                        var mainTab = $('#mainContainerTab.nav .nav-item a.nav-link.active');
+                        dynTabs.markTab( mainTab,'<span class="text-danger tabMark errorValidation mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i></span>');
                     }                
                     form.setAlert({
                         alertType :  'alert-danger',

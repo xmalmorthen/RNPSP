@@ -90,6 +90,7 @@
         dynTabs.mode = formMode;
 
         //CAMBIO DE TABS
+        //MAIN TAB
         $('#mainContainerTab a[data-toggle="tab"]').on('show.bs.tab',mainTabMenu.tab.change);
 
         var linkRefHash = MyCookie.tabRef.get(dynTabs.mode + 'MainTab');

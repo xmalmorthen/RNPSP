@@ -46,14 +46,14 @@ var MyCookie = {
     },
     tabRef : {
         save : function(COOKIE_NAME,linkRefHash){           
-            MyCookie.objs.coockieObj.set(COOKIE_NAME,linkRefHash,{ path : '/' });            
+            //MyCookie.objs.coockieObj.set(COOKIE_NAME,linkRefHash,{ path : '/' });            
         },
         remove : function(COOKIE_NAME){
-            MyCookie.objs.coockieObj.remove(COOKIE_NAME, { path: '/' });
+            //MyCookie.objs.coockieObj.remove(COOKIE_NAME, { path: '/' });
         },
         get : function(COOKIE_NAME){
-            var linkRefHash = MyCookie.objs.coockieObj.get(COOKIE_NAME,{ path : '/' });
-            return linkRefHash;
+            // var linkRefHash = MyCookie.objs.coockieObj.get(COOKIE_NAME,{ path : '/' });
+            // return linkRefHash;
         }
     }
 };
