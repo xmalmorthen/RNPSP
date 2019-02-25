@@ -239,11 +239,6 @@
         populateData : function(idRef){
             $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
-            objViewDatosGenerales.init(function(){ dynTabs.validForm = true; mainTabMenu.actions.inited = true; });
-            objViewLaboral.init(function(){ dynTabs.validForm = true; mainTabMenu.actions.inited = true;});
-            objViewCapacitacion.init(function(){ dynTabs.validForm = true; mainTabMenu.actions.inited = true;});
-            objViewIdentificacion.init(function(){ dynTabs.validForm = true; mainTabMenu.actions.inited = true;});
-
             var callUrl = base_url + `Solicitud/ajaxGetSolicitudById/${idRef}`;
             fetch(callUrl)
                 .then(response => {
@@ -282,10 +277,12 @@
         },
         insertValueInSelect : function(ref,value){
             if (ref){
-                if (ref.find('option').size() == 0)
+                if (ref.find('option:enabled').size() == 0)
                     ref.data('insert', value);
-                else
-                    ref.val(value).trigger('change');
+                else {                
+                    ref.val(value);
+                    ref.trigger('change.select2').trigger('change');
+                }
                 //ref.val(value).data('insert',value).trigger('change').trigger('change.select2');
             }
         }

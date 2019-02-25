@@ -14,8 +14,12 @@ $.fn.getCatalog = function(options) {
         var obj = $(this);
 
         var doJob = false;
-        if (obj.data('populated') == true) {
-            doJob = obj.data('force-refresh') != true || obj.data('cascade') != true
+        if (obj.data('populated') == true) {            
+            if (typeof obj.data('force-refresh') !== "undefined") {
+                doJob = obj.data('force-refresh');
+            } else if (typeof obj.data('cascade') !== "undefined") {
+                doJob = obj.data('cascade');
+            }
             if (!doJob)
                 return null;
         }

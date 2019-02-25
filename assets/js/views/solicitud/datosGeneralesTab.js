@@ -222,12 +222,12 @@ var objViewDatosGenerales = {
                         });
                     }
                 },
-                generarCIB : function(e){},
-                guardarDesarrolloacademico : function(e){},
-                guardarDomicilio : function(e){},
-                guardarReferencia : function(e){},
-                guardarSocioeconomico : function(e){},
-                guardarDependiente : function(e){}
+                generarCIB : function(e){Swal.fire({ type: 'warning', title: 'Implementar', html: 'Omplementar método' });},
+                guardarDesarrolloacademico : function(e){Swal.fire({ type: 'warning', title: 'Implementar', html: 'Omplementar método' });},
+                guardarDomicilio : function(e){Swal.fire({ type: 'warning', title: 'Implementar', html: 'Omplementar método' });},
+                guardarReferencia : function(e){Swal.fire({ type: 'warning', title: 'Implementar', html: 'Omplementar método' });},
+                guardarSocioeconomico : function(e){Swal.fire({ type: 'warning', title: 'Implementar', html: 'Omplementar método' });},
+                guardarDependiente : function(e){Swal.fire({ type: 'warning', title: 'Implementar', html: 'Omplementar método' });}
             }
         },
         focus : {

@@ -124,11 +124,11 @@
                     </div>
                     <div class="col-md-4">
                         Vigencia de licencia
-                        <input type="date" id="pLICENCIA_VIG" name="pLICENCIA_VIG" class="form-control" required>
+                        <input type="date" id="pLICENCIA_VIG" name="pLICENCIA_VIG" class="form-control">
                     </div>
                     <div class="col-md-4">
                         CUIP
-                        <input type="text" id="pCUIP" name="pCUIP" class="form-control" maxlength="40" required>
+                        <input type="text" id="pCUIP" name="pCUIP" class="form-control" maxlength="40">
                     </div>
                 </div>
                 <br><hr><br>
@@ -243,7 +243,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <button class="btn btn-default" id="guardarDesarrolloacademico">Guardar desarrollo académico</button>
+                        <button class="btn btn-default btnGuardarSection" id="guardarDesarrolloacademico">Guardar desarrollo académico</button>
                     </div>
                     <div class="col-md-4"></div>
                     <div class="col-md-4"></div>
@@ -365,7 +365,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <button class="btn btn-default" id="guardarDomicilio">Guardar domicilio</button>
+                        <button class="btn btn-default btnGuardarSection" id="guardarDomicilio">Guardar domicilio</button>
                     </div>
                     <div class="col-md-4"></div>
                     <div class="col-md-4"></div>
@@ -516,7 +516,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <button class="btn btn-default" id="guardarReferencia">Guardar referencia</button>
+                        <button class="btn btn-default btnGuardarSection" id="guardarReferencia">Guardar referencia</button>
                     </div>
                     <div class="col-md-4"></div>
                     <div class="col-md-4"></div>
@@ -634,7 +634,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <button class="btn btn-default" id="guardarSocioeconomico">Guardar socioeconómico</button>
+                        <button class="btn btn-default btnGuardarSection" id="guardarSocioeconomico">Guardar socioeconómico</button>
                     </div>
                 </div>
                 <br>
