@@ -15,9 +15,9 @@ class ajaxAPIs extends CI_Controller {
 
 		$get = $this->input->get();
 
-		if (! $this->input->is_ajax_request()) {
-			if (ENVIRONMENT == 'production') redirect('Error/e404','location');
-        }		
+		// if (! $this->input->is_ajax_request()) {
+		// 	if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+        // }		
 		
 		$responseModel = null;
 		try {

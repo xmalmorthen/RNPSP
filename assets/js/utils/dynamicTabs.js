@@ -31,31 +31,7 @@ var dynTabs = {
 
             //VALIDATE FORM 
             if (dynTabs.validForm) {
-                if (form.valid()){
-                    if (form.data('hasChanged') == true){
-                        Swal.fire({
-                            title: 'Aviso',
-                            html: "Para continuar, debe guardar los cambios",
-                            footer: "<div><button class='btn btn-warning discartChanges'>Continuar sin guardar</button></div>",
-                            type: 'warning',                        
-                            allowOutsideClick : false,
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33'
-                        }).then(function(result){
-                            if (result.value === true){
-                                form.find('.btnGuardarSection').trigger('click',['tab']);
-                            }
-                        });
-                        e.preventDefault();
-                        if (options.discardFunction){
-                            if ($.isFunction( options.discardFunction )){
-                                $('.discartChanges').on('click',function(evnt) { options.discardFunction(evnt,e); });
-                            }
-                        }                    
-                    }
-                }
-                else {
+                if (!form.valid()){
                     var linkRef = $('#' + e.currentTarget.id);
                     
                     if (!linkRef.hasClass('errorValidation')) {
@@ -71,7 +47,30 @@ var dynTabs = {
                         msg : 'Formulario incompleto'
                     });
 
-                    //e.preventDefault();
+                    // e.preventDefault();
+                    // return null;
+                }
+                if (form.data('hasChanged') == true){
+                    Swal.fire({
+                        title: 'Aviso',
+                        html: "Para continuar, debe guardar los cambios",
+                        footer: "<div><button class='btn btn-warning discartChanges'>Continuar sin guardar</button></div>",
+                        type: 'warning',                        
+                        allowOutsideClick : false,
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33'
+                    }).then(function(result){
+                        if (result.value === true){
+                            form.find('.btnGuardarSection').trigger('click',['tab']);
+                        }
+                    });
+                    e.preventDefault();
+                    if (options.discardFunction){
+                        if ($.isFunction( options.discardFunction )){
+                            $('.discartChanges').on('click',function(evnt) { options.discardFunction(evnt,e); });
+                        }
+                    }                    
                 }
             }
     },

@@ -119,7 +119,7 @@
 							
 						</div>						
 					</div>
-					<?php print $permisos; ?>
+					<?php //print $permisos; ?>
 				</div>
 				
 			</div>

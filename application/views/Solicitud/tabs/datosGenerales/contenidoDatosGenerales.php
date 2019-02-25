@@ -156,6 +156,7 @@
                 </div>
                 <br>
                 <hr>
+                <?php if (verificaPermiso(14) == true) { ?>
                 <br>
                 <div class="row">
                     <div class="col-md-12">
@@ -169,6 +170,7 @@
                         </table>
                     </div>
                 </div>
+                <?php } ?>
                 <input type="hidden" id="ID_ALTERNA_Datos_personales" name="ID_ALTERNA_Datos_personales" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Datos_personales" name="pID_ESTADO_EMISOR_Datos_personales" value="" >
                 <input type="hidden" id="pID_EMISOR_Datos_personales" name="pID_EMISOR_Datos_personales" value="" >

@@ -93,9 +93,9 @@
 			if (!$CURP)
 				$CURP = $this->input->get('CURP');
 		
-			if (! $this->input->is_ajax_request()) {
-				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
-			}		
+			// if (! $this->input->is_ajax_request()) {
+			// 	if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			// }		
 
 			$responseModel = NULL;
 			try {
@@ -121,9 +121,9 @@
 			if (!$Id)
 				$Id = $this->input->get('Id');
 		
-			if (! $this->input->is_ajax_request()) {
-				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
-			}		
+			// if (! $this->input->is_ajax_request()) {
+			// 	if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			// }		
 
 			$responseModel = NULL;
 			try {
