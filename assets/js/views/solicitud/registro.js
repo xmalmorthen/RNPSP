@@ -120,13 +120,13 @@ var mainTabMenu = {
                                         return response.json();
                                     })
                                     .then(response => {
-                                        return response[0];
+                                        return {from:'query', data: response[0]};
                                     })
                                     .catch((error) => {
                                         Swal.showValidationMessage(error);
                                     });
                             } else {
-                                return response;
+                                return {from:'bd', data: response};
                             }
                         })
                         .catch(error => {
@@ -141,10 +141,13 @@ var mainTabMenu = {
                 $('.swal2-container').css('z-index','2000');
             }
         }).then((result) => {
-            if (result.dismiss == "cancel")
+            if ( typeof result.dismiss !== 'undefined') {
                 window.location.href = base_url + 'Solicitud';
-            else {
-                mainFormActions.populateCURPFields(result.value);
+            }else {
+                if (result.value.from == 'query')
+                    mainFormActions.populateCURPFields(result.value.data);
+                else
+                    mainFormActions.fillData(results.value.data);
             }
         });
     }
@@ -169,29 +172,28 @@ var mainFormActions = {
                 if (!response.results) {
                     throw new Error('No se encontró información');
                 } else {
-                    fncPopulate(response.results);
+                    mainFormActions.fillData(response.results);
                 }
             })
             .catch(error => {
                 Swal.fire({ type: 'error', title: 'Error', html: error.message });
                 window.location.href = base_url + 'Solicitud';
-            });            
+            });
+    },
+    fillData : function(data){
+        debugger;
+        $('.consultaCURP').readOnly();
 
+        objViewDatosGenerales.vars.datosGenerales.objs.pCURP.val('RUAM811123HCMDGG05');
+        mainFormActions.insertValueInSelect($('#pTIPO_MOV'),'BE');
+        mainFormActions.insertValueInSelect($('#pID_ENTIDAD_NAC'),'6');
+        mainFormActions.insertValueInSelect($('#pID_MUNICIPIO_NAC'),'2');
+        
+        mainFormActions.insertValueInSelect($('#_dependenciaAdscripcionActual'),'2');
+        mainFormActions.insertValueInSelect($('#pINSTITUCION'),'1');
+        mainFormActions.insertValueInSelect($('#pID_AREA'),'1656');
 
-        var fncPopulate = function(data){
-            $('.consultaCURP').readOnly();
-
-            objViewDatosGenerales.vars.datosGenerales.objs.pCURP.val('RUAM811123HCMDGG05');
-            // mainFormActions.insertValueInSelect($('#pTIPO_MOV'),'BE');
-            // mainFormActions.insertValueInSelect($('#pID_ENTIDAD_NAC'),'6');
-            // mainFormActions.insertValueInSelect($('#pID_MUNICIPIO_NAC'),'2');
-            
-            mainFormActions.insertValueInSelect($('#_dependenciaAdscripcionActual'),'2');
-            mainFormActions.insertValueInSelect($('#pINSTITUCION'),'1');
-            mainFormActions.insertValueInSelect($('#pID_AREA'),'1656');
-
-            $.LoadingOverlay("hide");
-        }
+        $.LoadingOverlay("hide");
     },
     insertValueInSelect : function(ref,value){
         if (ref){

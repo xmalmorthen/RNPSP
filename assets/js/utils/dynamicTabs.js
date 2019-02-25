@@ -50,7 +50,7 @@ var dynTabs = {
                         e.preventDefault();
                         if (options.discardFunction){
                             if ($.isFunction( options.discardFunction )){
-                                $('.discartChanges').on('click',function(evnt) { options.discardFunction(evnt,e.relatedTarget); });
+                                $('.discartChanges').on('click',function(evnt) { options.discardFunction(evnt,e); });
                             }
                         }                    
                     }
@@ -71,7 +71,7 @@ var dynTabs = {
                         msg : 'Formulario incompleto'
                     });
 
-                    //e.preventDefault();
+                    e.preventDefault();
                 }
             }
     },

@@ -183,16 +183,19 @@ var objViewDatosGenerales = {
                         ).then( 
                             //success
                             function(data, textStatus, jqXHR){
-                                form.removeData('hasChanged');
+                                form.removeData('hasChanged').removeData('hasDiscardChanges');                                
                                 form.data('hasSaved',true);
-
-                                dynTabs.markTab( ( dynTabs.tabs.prebTab.linkRef ? dynTabs.tabs.prebTab.linkRef : dynTabs.tabs.currentTab.linkRef),  '<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
 
                                 $.LoadingOverlay("hide");
 
-                                if (from)
-                                    if(from == 'tab')
+                                if (from) {
+                                    if(from == 'tab') {
                                         dynTabs.tabs.prebTab.tabForm.find('.btnSiguienteAnterior.siguienteTab').trigger('click');
+                                        dynTabs.markTab( ( dynTabs.tabs.prebTab.linkRef ? dynTabs.tabs.prebTab.linkRef : dynTabs.tabs.currentTab.linkRef),  '<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');                                        
+                                        return null;
+                                    }
+                                }
+                                dynTabs.markTab( dynTabs.tabs.currentTab.linkRef,'<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
                             },
                             //error
                             function(err, textStatus, jqXHR){
@@ -326,7 +329,9 @@ var objViewDatosGenerales = {
             $('#pSEXO_DATOS_PERSONALES').removeError();
             $('#pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES').removeError();
         },    
-        discartChanges : function(e,relatedTarget){
+        discartChanges : function(e,eTab){        
+            var form = $('#' + $(eTab.currentTarget).attr('aria-controls')).find('form');
+            form.closeAlert({alertType : 'alert-danger'});
 
             dynTabs.markTab(dynTabs.tabs.prebTab.linkRef,'<span class="text-warning tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true"></i></span>');
             Swal.close();
@@ -334,7 +339,7 @@ var objViewDatosGenerales = {
             dynTabs.tabs.prebTab.tabForm.removeData('hasChanged');
             dynTabs.tabs.prebTab.tabForm.data('hasDiscardChanges',true);
 
-            $("#" + relatedTarget.id).trigger('click');
+            $("#" + eTab.relatedTarget.id).trigger('click');
             // dynTabs.tabs.prebTab.tabForm.find('.btnSiguienteAnterior.siguienteTab').trigger('click');
         }
     }
