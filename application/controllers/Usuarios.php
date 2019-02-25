@@ -118,11 +118,10 @@ class Usuarios extends CI_Controller
 
     $user_id = false;
     if(verificaPermiso(6) == 1){ #Editar usuarios de todas las dependencias	
-      $usuario = $this->Usuarios_model->user();
-      $this->Usuarios_model->where('ID_ADSCRIPCION',$usuario['ID_ADSCRIPCION']);
       $user_id = $this->Usuarios_model->getIdUsuarioByCurp($curp);
     }elseif(verificaPermiso(7) == 1){ #Editar solo usuarios de su dependencia	
-      
+      $usuario = $this->Usuarios_model->user();
+      $this->Usuarios_model->where('ID_ADSCRIPCION',$usuario['ID_ADSCRIPCION']);
       $user_id = $this->Usuarios_model->getIdUsuarioByCurp($curp);
     }
     
@@ -149,6 +148,20 @@ class Usuarios extends CI_Controller
 
   public function guardarModificar()
   {
+    $this->load->model('Usuarios_model');
+    $curp = $this->input->get('curp');
+
+    $this->load->model('Usuarios_model');
+
+    $user_id = false;
+    if(verificaPermiso(10) == 1){ #Editar usuarios de todas las dependencias	
+      $user_id = $this->Usuarios_model->getIdUsuarioByCurp($curp);
+    }elseif(verificaPermiso(11) == 1){ #Editar solo usuarios de su dependencia	
+      $usuario = $this->Usuarios_model->user();
+      $this->Usuarios_model->where('ID_ADSCRIPCION',$usuario['ID_ADSCRIPCION']);
+      $user_id = $this->Usuarios_model->getIdUsuarioByCurp($curp); 
+    }
+
     $response = array('status' => false, 'message' => array('No especificado'));
     if ($this->input->server('REQUEST_METHOD') != 'POST') {
       $response['message'] = 'method get not allowed';
@@ -209,16 +222,33 @@ class Usuarios extends CI_Controller
 
   public function Ver()
   {
-
-    // BREADCRUMB
     $this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');
     $this->breadcrumbs->push('[ Usuarios ] - Usuarios - Consulta de usuarios - Consulta', site_url('alta/cedula/datosPersonales'));
-    // /BREADCRUMB
-
-    // TITLE BODY PAGE
     $this->session->set_flashdata('titleBody', '[ Usuarios ] - Usuarios - Consulta de usuarios - Consulta');
-    // /TITLE BODY PAGE
 
-    $this->load->view('Usuarios/Ver');
+    $this->load->model('Usuarios_model');
+    $curp = $this->input->get('curp');
+
+    $this->load->model('Usuarios_model');
+
+    $user_id = false;
+    if(verificaPermiso(10) == 1){ #Editar usuarios de todas las dependencias	
+      $user_id = $this->Usuarios_model->getIdUsuarioByCurp($curp);
+    }elseif(verificaPermiso(11) == 1){ #Editar solo usuarios de su dependencia	
+      $usuario = $this->Usuarios_model->user();
+      $this->Usuarios_model->where('ID_ADSCRIPCION',$usuario['ID_ADSCRIPCION']);
+      $user_id = $this->Usuarios_model->getIdUsuarioByCurp($curp); 
+    }
+
+    $data = array();
+    $data['user_id'] = $user_id;
+    $this->load->model('catalogos/CAT_ADSCRIPCIONES_model');
+    
+    if($user_id != false){
+    $data['user_id'] = $user_id;
+    $data['usuario'] = $this->Usuarios_model->byId($user_id);
+    }
+    // Utils::pre($data);
+    $this->load->view('Usuarios/Ver',$data);
   }
 }

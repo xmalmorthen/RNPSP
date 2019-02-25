@@ -12,7 +12,12 @@
 		<div class="row">
 			<div class="col-md-4">
 				<span class="clr">*</span> CURP
-				<input type="text" class="form-control" value="<?php echo (isset($usuario))? $usuario['CURP'] : ''; ?>" readonly />
+				<div class="input-group mb-3">
+					<input type="text" class="form-control" name="pCURP" value="<?php echo (isset($usuario))? $usuario['CURP'] : ''; ?>" />
+					<div class="input-group-append">
+						<button onclick="app.buscarCurp();" class="btn btn-outline-secondary" type="button">Buscar</button>
+					</div>
+				</div>
 				<input type="hidden" name="user_id" value="<?php echo $user_id; ?>" />
 				<input type="hidden" name="curp" value="<?php echo (isset($usuario))? $usuario['CURP'] : ''; ?>" />
 			</div>
@@ -78,7 +83,10 @@
 			<div class="col-md-4">
 				<div class="row">
 					<div class="col-md-6">
+					<?php if($user_id != false){ ?>
 						<button type="button" onclick="app.confirmar();" class="btn btn-defaul">Guardar</button>
+					<?php } ?>
+
 					</div>
 					<div class="col-md-6">
 						<button type="button" onclick="app.regresar();" class="btn btn-default">Regresar</button>
