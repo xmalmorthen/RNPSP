@@ -7,6 +7,8 @@ $(function() {
     //CAMBIO DE TABS
     //MAIN TAB
     $('#mainContainerTab a[data-toggle="tab"]').on('show.bs.tab',mainTabMenu.tab.change);
+    $('#mainContainerTab a[data-toggle="tab"]').on('shown.bs.tab',dynTabs.loaderTab);
+    
 
     var linkRefHash = MyCookie.tabRef.get(dynTabs.mode + 'MainTab');
     if (!linkRefHash){
@@ -79,7 +81,7 @@ var mainTabMenu = {
         changeTab : function(){
             var linkRefHash = MyCookie.tabRef.get(dynTabs.mode + 'ChildTab');
             if (!linkRefHash){
-                linkRefHash = $('#myTabContent .nav-item a.nav-link.active')[0].id;
+                linkRefHash = $('#myTabContent .tab-pane.active .nav-item a.nav-link.active')[0].id;
                 MyCookie.tabRef.save(dynTabs.mode + 'ChildTab',linkRefHash);
             }
             var linkRef = $('#' + linkRefHash);
@@ -159,7 +161,6 @@ var mainFormActions = {
     },
     populateData : function(idRef){
         $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
-
         var callUrl = base_url + `Solicitud/ajaxGetSolicitudById/${idRef}`;
         fetch(callUrl)
             .then(response => {
@@ -181,7 +182,6 @@ var mainFormActions = {
             });
     },
     fillData : function(data){
-        debugger;
         $('.consultaCURP').readOnly();
 
         objViewDatosGenerales.vars.datosGenerales.objs.pCURP.val('RUAM811123HCMDGG05');
@@ -192,8 +192,8 @@ var mainFormActions = {
         mainFormActions.insertValueInSelect($('#_dependenciaAdscripcionActual'),'2');
         mainFormActions.insertValueInSelect($('#pINSTITUCION'),'1');
         mainFormActions.insertValueInSelect($('#pID_AREA'),'1656');
-
-        $.LoadingOverlay("hide");
+        
+        dynTabs.loaderTab();
     },
     insertValueInSelect : function(ref,value){
         if (ref){

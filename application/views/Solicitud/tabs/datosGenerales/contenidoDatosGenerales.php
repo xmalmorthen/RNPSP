@@ -132,9 +132,7 @@
                     </div>
                 </div>
                 <br><hr><br>
-                
-                <!-- TODO: Xmal - Implementar para mostrar u ocultar sección -->
-                <?php //if ($sessionUser[{perfil}] == { usuario de c4 }) { ?>
+                <?php if (verificaPermiso(14) == true) { ?>
                 <div class="row ">
                     <div class="col-md-4">
                         CIB                        
@@ -149,7 +147,7 @@
                         <button class="btn btn-default" id="GUARDAR_CIB" style="margin-top: 16px;"> Guardar CIB</button>
                     </div>
                 </div>
-                <?php //}?>
+                <?php }?>
                 <br>
                 <div class="row">
                     <div class="col-md-4">

@@ -108,7 +108,7 @@ var objViewLaboral = {
         populate.form($('#Adscripcion_actual_form')); //popular selects del primer tab NOTA: cambiar programación al tab actual si se obtiene por cookie
         dynTabs.setCurrentTab($('#myTabContent'));
 
-        mainTabMenu.actions.changeTab();
+        mainTabMenu.actions.changeTab();        
 
         objViewLaboral.vars.general.init = true;
 

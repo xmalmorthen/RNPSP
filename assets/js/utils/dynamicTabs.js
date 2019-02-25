@@ -71,7 +71,7 @@ var dynTabs = {
                         msg : 'Formulario incompleto'
                     });
 
-                    e.preventDefault();
+                    //e.preventDefault();
                 }
             }
     },
@@ -85,7 +85,9 @@ var dynTabs = {
 
         populate.form(dynTabs.tabs.currentTab.tabForm); 
 
-        MyCookie.tabRef.save(dynTabs.mode +'ChildTab',e.currentTarget.id);       
+        MyCookie.tabRef.save(dynTabs.mode +'ChildTab',e.currentTarget.id);  
+        
+        dynTabs.loaderTab();
     },
     setCurrentTab : function(tabContent){
         dynTabs.tabs.currentTab.linkRef = tabContent.find('.tab-pane.active.show').find('.nav.nav-tabs').find('a.nav-link.active');
@@ -105,5 +107,29 @@ var dynTabs = {
     },
     unMarkTab : function(linkRef){
         linkRef.find('span.tabMark').remove();
+    },
+    loaderTab : function(e){        
+        var form = $('#myTabContent .tab-pane.active .nav-item a.nav-link.active'),
+            loaderShow = false;
+            
+            var initInterval = setInterval(function(){
+                objsToInsert = 0;
+                $.each( $('#' + form.attr('aria-controls')).find('form').find('select'), function( key, value ) {
+                    if ($(this).data('insert') !== undefined) 
+                        objsToInsert ++;
+                });
+                
+                console.log(objsToInsert);
+
+                if (objsToInsert == 0) {
+                    $.LoadingOverlay("hide",true);
+                    clearInterval(initInterval);                    
+                } else {
+                    if (!loaderShow) {
+                        loaderShow = true;
+                        $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+                    }
+                }
+            }, 500);
     }
 }
