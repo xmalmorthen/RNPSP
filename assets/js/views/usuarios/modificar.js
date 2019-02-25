@@ -7,6 +7,9 @@ var _app = Backbone.View.extend({
 			});
 		}
 	},
+	buscarCurp: function(){
+		window.location.href = base_url+'Usuarios/Ver?curp='+$.trim($('input[name=pCURP]').val());
+	},
 	generarContrasena: function (length, type) {
 		switch (type) {
 			case 'num':
