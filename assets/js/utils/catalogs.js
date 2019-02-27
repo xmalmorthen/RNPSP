@@ -32,7 +32,7 @@ $.fn.getCatalog = function(options) {
                 obj.find("option").remove();                
                 
                 //POPULATE FROM INDEXDB
-                return db.tables.forEach(function (table) {
+                return iDB.vars.db.tables.forEach(function (table) {
                     if (table.name == obj[0].id){
                         return table.count().then(function(count){
                             if (count > 0){
