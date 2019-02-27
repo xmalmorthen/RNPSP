@@ -103,37 +103,39 @@ var mainTabMenu = {
                     if (CURP.length < 18 || CURP.length > 20)
                         throw new Error('Formato de CURP incorrecto');
 
-                    var callUrl = base_url + `Solicitud/ajaxGetSolicitudByCURP/${CURP}`;
-                    return fetch(callUrl)
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error(response.statusText);
-                            }
-                            return response.json();
-                        })
-                        .then(response => {
-                            if (!response.results) {
-                                callUrl = base_url + `ajaxAPIs/curp?CURP=${CURP}`;
-                                return fetch(callUrl)
-                                    .then(response => {
-                                        if (!response.ok) {
-                                            throw new Error(response.statusText);
-                                        }
-                                        return response.json();
-                                    })
-                                    .then(response => {
-                                        return {from:'query', data: response[0]};
-                                    })
-                                    .catch((error) => {
-                                        Swal.showValidationMessage(error);
-                                    });
-                            } else {
-                                return {from:'bd', data: response};
-                            }
-                        })
-                        .catch(error => {
-                            Swal.showValidationMessage(error);
+                    var callUrl = base_url + `Solicitud/ajaxGetSolicitudByCURP`;
+
+                    return new Promise(function (resolve, reject) {
+                        $.get(callUrl,{
+                            CURP : CURP
+                        },
+                        function (data) {
+                            resolve(data);
+                        }).fail(function (err) {                    
+                            reject(err);
                         });
+                    }).then(function (data) {
+                        if (!data.results) {
+                            return new Promise(function (resolve,reject){
+                                callUrl = base_url + `ajaxAPIs/curp`;
+                                $.get(callUrl,{
+                                    model : {CURP : CURP }
+                                },
+                                function (data) {
+                                    resolve(data);
+                                }).fail(function (err) {                    
+                                    reject(err);
+                                });
+                                
+                            }).then(function(data){
+                                return {from:'query', data: data[0]};
+                            });
+
+                        } else
+                            return {from:'bd', data: data[0]};
+                    }).catch(function(err){
+                        Swal.showValidationMessage(err.statusText);
+                    });
                 } catch (error) {
                     Swal.showValidationMessage(error);
                 }

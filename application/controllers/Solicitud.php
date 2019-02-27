@@ -93,9 +93,10 @@
 			if (!$CURP)
 				$CURP = $this->input->get('CURP');
 		
-			// if (! $this->input->is_ajax_request()) {
-			// 	if (ENVIRONMENT == 'production') redirect('Error/e404','location');
-			// }		
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}		
+
 
 			$responseModel = NULL;
 			try {

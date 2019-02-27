@@ -13,11 +13,9 @@ class ajaxAPIs extends CI_Controller {
 		if (!$curp) 
 			$curp = $this->input->get('CURP');
 
-		$get = $this->input->get();
-
-		// if (! $this->input->is_ajax_request()) {
-		// 	if (ENVIRONMENT == 'production') redirect('Error/e404','location');
-        // }		
+		if (! $this->input->is_ajax_request()) {
+			if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+        }		
 		
 		$responseModel = null;
 		try {
@@ -58,6 +56,34 @@ class ajaxAPIs extends CI_Controller {
 			}
 
 			$responseModel = $wsResponse->Response;
+		} 
+		catch (rulesException $e){	
+			header("HTTP/1.0 400 Bad Request");
+		}
+		catch (processException $e){	
+			header("HTTP/1.0 " . $e->getCode() . " " . utf8_decode($e->getMessage()));
+		}
+		catch (Exception $e) {
+			header("HTTP/1.0 500 Internal Server Error");
+			$responseModel = [];
+		}
+		
+		header('Content-type: application/json');
+
+        echo json_encode( $responseModel );
+        exit;
+	}
+
+	public function vwGetAllCatNames(){
+		if (! $this->input->is_ajax_request()) {
+			if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+        }
+		
+		$responseModel = null;
+		try {
+			$this->load->model('ajaxAPIs_model');
+			$responseModel = $this->ajaxAPIs_model->vwGetAllCatNames();
+			
 		} 
 		catch (rulesException $e){	
 			header("HTTP/1.0 400 Bad Request");
