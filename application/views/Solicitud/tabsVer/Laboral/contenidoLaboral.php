@@ -1,16 +1,13 @@
     <div class="tab-pane fade show active" id="Adscripcion_actual" role="tabpanel" aria-labelledby="Adscripcion_actual-tab">
         <div class="_container">
             <form action="#" id="Adscripcion_actual_form" name="Adscripcion_actual_form" autocomplete="off">
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-
-                        </div>
-                        <div class="col-md-4">
-                            <center><strong>Adscripción de la persona</strong></center>
-                        </div>
+                     <br>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Adscripción de la persona</h3>
                     </div>
-                    <br>
+                </div>
+                <br>
                     <div class="row">
                         <div class="col-md-6">
                             <h6 class="borderButtom"><span class="clr">*</span>Dependencia</h6> <!-- Se llena del catalogo "CAT_DEPENDENCIA" -->
@@ -185,17 +182,13 @@
     <div class="tab-pane fade" id="Empleos_diversos" role="tabpanel" aria-labelledby="Empleos_diversos-tab">
         <form name="Empleos_diversos_form" id="Empleos_diversos_form" action="#">
             <div class="_container">
-            <br>
-                    <div class="row">
-                        <div class="col-md-4">
-
-                        </div>
-                        <div class="col-md-4">
-                            <center><strong class="titulo">Empleos diversos</strong></center>
-                        </div>
+             <br>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Empleos diversos</h3>
                     </div>
-                    <br>
-                    <br>
+                </div>
+                <br>
                     <div class="row">
                         <div class="col-md-4">
                              <h6 class="borderButtom"><span class="clr">*</span>Empresa</h6>
@@ -318,15 +311,10 @@
             <form name="Actitudes_hacia_el_empleo_form" id="Actitudes_hacia_el_empleo_form" action="#" autocomplete="off">
                 <br>
                 <div class="row">
-                    <div class="col-md-4">
-
-                    </div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Actitudes hacia el empleo</strong></center>
-
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Actitudes hacia el empleo</h3>
                     </div>
                 </div>
-                <br>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
@@ -412,16 +400,10 @@
             <form id="Comisiones_form" name="Comisiones_form" action="#" autocomplete="off">
                 <br>
                 <div class="row">
-                    <div class="col-md-4">
-
-                    </div>
-                    <div class="col-md-4">
-
-                        <center><strong class="titulo">Comisiones</strong></center>
-
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Comisiones</h3>
                     </div>
                 </div>
-                <br>
                 <br>
                 <div class="row">
                     <div class="col-md-4">

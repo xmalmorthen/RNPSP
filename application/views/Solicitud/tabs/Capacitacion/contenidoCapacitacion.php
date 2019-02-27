@@ -1,13 +1,12 @@
      <div class="tab-pane fade show active" id="Idiomas_dialectos" role="tabpanel" aria-labelledby="Idiomas_dialectos-tab">
         <div class="_container">
             <form action="#" name="Idiomas_dialectos_form" id="Idiomas_dialectos_form" autocomplete="off">
-                <br>
+                 <br>
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <h3 class="titulo">Idiomas y/o dialectos</h3>
                     </div>
-                </div>                
-                <br>
+                </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
@@ -87,9 +86,9 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <h3 class="titulo">Habilidades y/o aptitudes</h3>
+                        <h3 class="titulo">Habilidades y/o actitudes</h3>
                     </div>
-                </div>                
+                </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
