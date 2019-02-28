@@ -17,6 +17,7 @@ class ajaxAPIs extends CI_Controller {
 			if (ENVIRONMENT == 'production') redirect('Error/e404','location');
         }		
 		
+
 		$responseModel = null;
 		try {
 			if(!$curp){
@@ -26,36 +27,40 @@ class ajaxAPIs extends CI_Controller {
 			if (strlen($curp) < 18 || strlen($curp) > 20)
 				throw new rulesException('Formato de CURP inválido',400);
 
-			$this->load->spark('restclient/2.1.0');
-			$this->load->library('rest');
+			$this->load->model('PERSONA_model');
+			$responseModel = $this->PERSONA_model->getPersona($curp);
+			if($responseModel == false){
+				$this->load->spark('restclient/2.1.0');
+				$this->load->library('rest');
 
-			$cnfg = (object)json_decode(CNFG);
+				$cnfg = (object)json_decode(CNFG);
 
-			$config = array(
-				'server' 			=> $cnfg->apis->wsCURPServer,
-				'ssl_verify_peer' 	=> FALSE,
-				'http_auth' 		=> 'basic',
-				'http_user' 		=> $cnfg->apis->wsCURPUser,
-				'http_pass' 		=> $cnfg->apis->wsCURPPwd
-			);
+				$config = array(
+					'server' 			=> $cnfg->apis->wsCURPServer,
+					'ssl_verify_peer' 	=> FALSE,
+					'http_auth' 		=> 'basic',
+					'http_user' 		=> $cnfg->apis->wsCURPUser,
+					'http_pass' 		=> $cnfg->apis->wsCURPPwd
+				);
 
-			$parameters = array(
-				'curp' => strtoupper($curp)
-			);
+				$parameters = array(
+					'curp' => strtoupper($curp)
+				);
 
-			$this->rest->initialize($config);
-			$wsResponse = $this->rest->get($cnfg->apis->wsCURPApiVersion . $cnfg->apis->wsCURPGetbyCURPMethod, $parameters, 'json');
+				$this->rest->initialize($config);
+				$wsResponse = $this->rest->get($cnfg->apis->wsCURPApiVersion . $cnfg->apis->wsCURPGetbyCURPMethod, $parameters, 'json');
 
-			if ($this->curl->error_string){
-				throw new processException($this->curl->error_string,$this->rest->status());
-			} else if (!$wsResponse) {
-				throw new processException("El servicio respondió con un estatus [{$this->rest->status()}], no fue posible obtener la información", $this->rest->status());
-			} else {
-				if ($wsResponse->RESTService->StatusCode === '0')
-					throw new processException($wsResponse->RESTService->Message,400);
+				if ($this->curl->error_string){
+					throw new processException($this->curl->error_string,$this->rest->status());
+				} else if (!$wsResponse) {
+					throw new processException("El servicio respondió con un estatus [{$this->rest->status()}], no fue posible obtener la información", $this->rest->status());
+				} else {
+					if ($wsResponse->RESTService->StatusCode === '0')
+						throw new processException($wsResponse->RESTService->Message,400);
+				}
+
+				$responseModel = $wsResponse->Response;
 			}
-
-			$responseModel = $wsResponse->Response;
 		} 
 		catch (rulesException $e){	
 			header("HTTP/1.0 400 Bad Request");

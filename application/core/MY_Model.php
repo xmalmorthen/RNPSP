@@ -192,4 +192,18 @@ class MY_Model extends CI_Model
     }
     return $result;
   }
+
+  public function query_row($query)
+  {
+    try {
+      if ($query == false) {
+        throw new Exception('Error query_row');
+      }
+      $result = $query->row_array();
+      $query->free_result();
+    } catch (Exception $e) {
+      Msg_reporting::error_log($e);
+    }
+    return $result;
+  }
 }
