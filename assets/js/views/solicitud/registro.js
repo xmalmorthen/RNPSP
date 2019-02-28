@@ -1,40 +1,50 @@
 $(function() {
-    if (formMode.length == 0)
-        window.location.href = base_url + 'Error/setError?err=No se especificó el modo del formulario!!!';
+    var statusIDBInterval = setInterval(function(){
+        if (iDB.status) {
+            clearInterval(statusIDBInterval);
+            statusIDBInterval = null;
+            mainTabMenu.fireInit();
 
-    dynTabs.mode = formMode;
-
-    //CAMBIO DE TABS
-    //MAIN TAB
-    $('#mainContainerTab a[data-toggle="tab"]').on('show.bs.tab',mainTabMenu.tab.change);
-    $('#mainContainerTab a[data-toggle="tab"]').on('shown.bs.tab',dynTabs.loaderTab);
-    
-
-    var linkRefHash = MyCookie.tabRef.get(dynTabs.mode + 'MainTab');
-    if (!linkRefHash){
-        linkRefHash = $('#mainContainerTab .nav-item a.nav-link.active')[0].id;
-        MyCookie.tabRef.save(dynTabs.mode + 'MainTab',linkRefHash);
-    }
-    var linkRef = $('#' + linkRefHash);
-
-    mainTabMenu.actions.init(
-        linkRef.attr('aria-controls'),
-        function(){
-            linkRef.trigger('click');
         }
-    );
-
-    switch (formMode) {
-        case 'edit':
-            mainFormActions.populateData(id);
-        break;
-        case 'add' : 
-            mainTabMenu.mainInit();
-        break;
-    }
+    }, 1000);
 });
 
 var mainTabMenu = {
+    fireInit : function(){
+        if (formMode.length == 0)
+            window.location.href = base_url + 'Error/setError?err=No se especificó el modo del formulario!!!';
+
+        dynTabs.mode = formMode;
+
+        //CAMBIO DE TABS
+        //MAIN TAB
+        $('#mainContainerTab a[data-toggle="tab"]').on('show.bs.tab',mainTabMenu.tab.change);
+        $('#mainContainerTab a[data-toggle="tab"]').on('shown.bs.tab',dynTabs.loaderTab);
+        
+
+        var linkRefHash = MyCookie.tabRef.get(dynTabs.mode + 'MainTab');
+        if (!linkRefHash){
+            linkRefHash = $('#mainContainerTab .nav-item a.nav-link.active')[0].id;
+            MyCookie.tabRef.save(dynTabs.mode + 'MainTab',linkRefHash);
+        }
+        var linkRef = $('#' + linkRefHash);
+
+        mainTabMenu.actions.init(
+            linkRef.attr('aria-controls'),
+            function(){
+                linkRef.trigger('click');
+            }
+        );
+
+        switch (formMode) {
+            case 'edit':
+                mainFormActions.populateData(id);
+            break;
+            case 'add' : 
+                mainTabMenu.mainInit();
+            break;
+        }
+    },
     tab : {
         change : function(e){
             var tabRef = $(e.currentTarget);

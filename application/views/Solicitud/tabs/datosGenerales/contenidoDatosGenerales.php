@@ -91,10 +91,10 @@
                         Fecha de nacionalidad
                         <input type="date" id="pFECHA_NACIONALIDAD" name="pFECHA_NACIONALIDAD" class="form-control">
                     </div>
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                         <span class="clr">*</span>RFC
                         <input type="text" id="pRFC_DATOS_PERSONALES" name="pRFC_DATOS_PERSONALES" class="form-control" minlength="10" maxlength="13" required>
-                    </div>
+                    </div> -->
                     <div class="col-md-4">
                         <span class="clr">*</span>Estado civil <!-- Se llena del catálogo CAT_ESTADO_CIVIL -->
                         <select  class="form-control" id="pID_ESTADO_CIVIL" name="pID_ESTADO_CIVIL" data-error="#err_pID_ESTADO_CIVIL" data-query='ZXdxV1A3eEYrWDRZeVJ0dVhkeEdNNDNoOWZPY2o3d21HempWZml4Ukg1ZDdzWDNKWkpuWmNjS01VVHJDUFZtZjZ4NDBCRitGdzNlTktaUTl6STYxV2pmY0dtbk5qWnRDakUyZmVSMW5yREVubVlxNW5GdVFqOGNlY3oxd0JGNTlZUWZSeGZwcmk1VVgzWVBGVFBnWnpzS29ycEQrRHdGUkh1REd1NTBuSTNJPQ==' required></select>

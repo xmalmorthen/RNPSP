@@ -65,9 +65,9 @@
 <script src="<?php echo base_url('assets/js/utils/populateFormsCatalogs.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/utils/alerts.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/utils/dynamicTabs.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/utils/indexDB.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/utils/catalogs.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/utils/serialized.js') ?>"></script>
-<script src="<?php echo base_url('assets/js/utils/indexDB.js') ?>"></script>
 
 <script src="<?php echo base_url('assets/js/views/solicitud/datosGeneralesTab.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/views/solicitud/laboralTab.js') ?>"></script>
