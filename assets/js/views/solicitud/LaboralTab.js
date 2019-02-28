@@ -70,6 +70,11 @@ var objViewLaboral = {
 
         // INIT SELECTS
         objViewLaboral.vars.general.mainContentTab.find('select').select2({width : '100%'});
+        $(document).on('focus', '.select2.select2-container', function (e) {
+            if (e.originalEvent) {
+                $(this).siblings('select').select2('open');
+            }
+        });
 
         //EVENTS
         //SUBMIT
@@ -80,8 +85,8 @@ var objViewLaboral = {
         // CLICK
         objViewLaboral.vars.laboral.btns.guardarAdscripcion.on('click',objViewLaboral.events.click.laboral.guardarAdscripcion);
         objViewLaboral.vars.laboral.btns.guardarEmpleo.on('click',objViewLaboral.events.click.laboral.guardarEmpleo);
-        objViewLaboral.vars.laboral.btns.guardarActitud.on('click',objViewLaboral.events.click.general.guardarActitud);
-        objViewLaboral.vars.laboral.btns.guardarComision.on('click',objViewLaboral.events.click.general.guardarComision);
+        objViewLaboral.vars.laboral.btns.guardarActitud.on('click',objViewLaboral.events.click.laboral.guardarActitud);
+        objViewLaboral.vars.laboral.btns.guardarComision.on('click',objViewLaboral.events.click.laboral.guardarComision);
         objViewLaboral.vars.general.btnSiguienteAnterior.on('click',objViewLaboral.events.click.general.btnSiguienteAnterior);
         //FOCUSOUT
         
@@ -130,77 +135,38 @@ var objViewLaboral = {
                 }
             },
             laboral : {
-                guardarAdscripcion : function(e, from){
+                guardarAdscripcion : function(e, from, tabRef){
                     e.preventDefault();
-
-                    var $this = $(this),
-                        form = $this.parents('form:first');
-                    
-                    form.closeAlert({alertType : 'alert-danger'});
-
-                    //VALID FORM
-                    try {
-                        if (!objViewLaboral.vars.laboral.forms.Adscripcion_actual_form.valid())
-                            throw "Invalid FORM";
-
-                        $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
-
-                        var callUrl = base_url + 'Ejemplos/ajaxGetSample';
-                        model = {
-                            var1 : 'val1',
-                            var2 : 'val2'
-                        };
-
-                        $.when(
-                            $.get(callUrl,{model : model})
-                            .always(function () {
-                                MyCookie.session.reset();
-                            })
-                        ).then( 
-                            //success
-                            function(data, textStatus, jqXHR){
-                                form.removeData('hasChanged');
-                                form.data('hasSaved',true);
-
-                                dynTabs.markTab( ( dynTabs.tabs.prebTab.linkRef ? dynTabs.tabs.prebTab.linkRef : dynTabs.tabs.currentTab.linkRef),  '<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
-
-                                $.LoadingOverlay("hide");
-
-                                if (from)
-                                    if(from == 'tab')
-                                        dynTabs.tabs.prebTab.tabForm.find('.btnSiguienteAnterior.siguienteTab').trigger('click');
-                            },
-                            //error
-                            function(err, textStatus, jqXHR){
-                                $.LoadingOverlay("hide");
-                                var msg = err.status + ' - ' + err.statusText;
-                                                                
-                                form.setAlert({
-                                    alertType :  'alert-danger',
-                                    dismissible : true,
-                                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error al guardar',
-                                    msg : msg,
-                                    callback : function(){
-                                        //Swal.fire({ type: 'error', title: 'Error', html: msg }); //se comenta porque al mostrar el modal no respeta el scroll top al bloque del alert.
-                                    }
-                                });
-
-                                dynTabs.markTab( ( dynTabs.tabs.prebTab.linkRef ? dynTabs.tabs.prebTab.linkRef : dynTabs.tabs.currentTab.linkRef),  '<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
-                            } 
-                        );
-                    }catch(err) {
-                        dynTabs.markTab( ( dynTabs.tabs.prebTab.linkRef ? dynTabs.tabs.prebTab.linkRef : dynTabs.tabs.currentTab.linkRef),  '<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
-                        form.setAlert({
-                            alertType :  'alert-danger',
-                            dismissible : true,
-                            header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
-                            msg : 'Formulario incompleto'
-                        });
-                    }
+                    objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralAdscripcion',from, tabRef, function(data){
+                        console.log(data);
+                        //TODO: Xmal - Actualizar variable [ mainTabMenu.var.pID_ALTERNA ] cuando se haga el guardado de la primer ficha y regrese el pID_ALTERNA;
+                        debugger;
+                    });
                 },
-                guardarEmpleo : function(e, from){},
-                guardarActitud : function(e, from){},
-                guardarComision : function(e, from){}
+                guardarEmpleo : function(e, from, tabRef){
+                    e.preventDefault();
+                    objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralEmpleo',from, tabRef, function(data){
+                        console.log(data);
+                        //TODO: Xmal - Actualizar variable [ mainTabMenu.var.pID_ALTERNA ] cuando se haga el guardado de la primer ficha y regrese el pID_ALTERNA;
+                        debugger;
+                    });
+                },
+                guardarActitud : function(e, from, tabRef){
+                    e.preventDefault();
+                    objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralActitud',from, tabRef, function(data){
+                        console.log(data);
+                        //TODO: Xmal - Actualizar variable [ mainTabMenu.var.pID_ALTERNA ] cuando se haga el guardado de la primer ficha y regrese el pID_ALTERNA;
+                        debugger;
+                    });
+                },
+                guardarComision : function(e, from, tabRef){
+                    e.preventDefault();
+                    objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralComision',from, tabRef, function(data){
+                        console.log(data);
+                        //TODO: Xmal - Actualizar variable [ mainTabMenu.var.pID_ALTERNA ] cuando se haga el guardado de la primer ficha y regrese el pID_ALTERNA;
+                        debugger;
+                    });
+                }
             }
         },
         change : {
@@ -240,14 +206,96 @@ var objViewLaboral = {
         }
     },
     actions : {        
-        discartChanges : function(e,relatedTarget){   
+        discartChanges : function(e,eTab){
+            var form = $('#' + $(eTab.currentTarget).attr('aria-controls')).find('form');
+            form.closeAlert({alertType : 'alert-danger'});
+
             dynTabs.markTab(dynTabs.tabs.prebTab.linkRef,'<span class="text-warning tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true"></i></span>');
             Swal.close();
+                
             dynTabs.tabs.prebTab.tabForm.removeData('hasChanged');
             dynTabs.tabs.prebTab.tabForm.data('hasDiscardChanges',true);
 
-            $("#" + relatedTarget.id).trigger('click');
-            dynTabs.tabs.prebTab.tabForm.find('.btnSiguienteAnterior.siguienteTab').trigger('click');
+            $("#" + eTab.relatedTarget.id).trigger('click');
+        },
+        ajax : {
+            callResponseValidations : function(form, data, from, tabRef, callback){
+                try{
+                    if (!data) 
+                        throw new Error('Respuesta inesperada, favor de intentarlo de nuevo.');
+                    if (!data.results)
+                        throw new Error('Respuesta inesperada, favor de intentarlo de nuevo.');
+                    if (typeof data.results.status === "undefined")
+                        throw new Error('Estatus desconocido, favor de contactar a soporte.');
+                    if (!data.results.status)
+                        throw new Error(data.results.message ? data.results.message : 'Error desconocido.' );
+                    
+                    form.removeData('hasChanged').removeData('hasDiscardChanges');
+                    form.data('hasSaved',true);
+
+                    if (from) {
+                        if(from == 'tab') {
+                            $(tabRef.relatedTarget).trigger('click');
+                            dynTabs.markTab( $(tabRef.currentTarget),  '<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
+                            return null;
+                        }
+                    }
+                    dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef ,'<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
+
+                    if (callback) 
+                        if ($.isFunction( callback ))
+                            callback(data); 
+
+                }catch(err) {
+                    objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);
+                }
+            },
+            throwError: function(err,form,from,tabRef){
+                $.LoadingOverlay("hide");
+                
+                form.setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.message ? err.message : err.statusText
+                });
+
+                if (from) {
+                    if(from == 'tab') {
+                        dynTabs.markTab( $(tabRef.currentTarget),  '<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
+                        return null;
+                    }
+                }
+                dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef,'<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
+            },
+            generateRequest: function($this,callUrl,from, callback){
+                var form = $this.parents('form:first');
+                form.closeAlert({alertType : 'alert-danger'});
+                
+                try {
+                    //VALID FORM
+                    if (!form.valid())
+                        throw new Error("Formulario incompleto");
+
+                    $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+                    
+                    var model = form.serialize();
+                    
+                    $.post(callUrl,{
+                        model : model
+                    },
+                    function (data) {  
+                        objViewDatosGenerales.actions.ajax.callResponseValidations(form,data, from,callback);
+                    }).fail(function (err) {
+                        objViewDatosGenerales.actions.ajax.throwError(err,form,from);                            
+                    }).always(function () {
+                        $.LoadingOverlay("hide");
+                    });
+
+                }catch(err) {
+                    objViewDatosGenerales.actions.ajax.throwError(err,form,from);                        
+                }
+            }
         }
     }
 }

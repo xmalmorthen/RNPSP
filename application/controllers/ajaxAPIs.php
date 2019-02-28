@@ -24,7 +24,7 @@ class ajaxAPIs extends CI_Controller {
 			}
 
 			if (strlen($curp) < 18 || strlen($curp) > 20)
-				throw new rulesException('Formato de CURP inválido');
+				throw new rulesException('Formato de CURP inválido',400);
 
 			$this->load->spark('restclient/2.1.0');
 			$this->load->library('rest');

@@ -1,7 +1,3 @@
-<?php 
-    $sessionUser = $this->session->userdata(SESSIONVAR);    
-?>
-
     <div class="tab-pane fade show active" id="Datos_personales" role="tab-panel" aria-labelledby="Datos_personales-tab">
         <div class="_container">
             <form action="#" id="Datos_personales_form" name="Datos_personales_form" autocomplete="off">
@@ -283,8 +279,6 @@
                     <div class="col-md-4"></div>
                 </div>
             </form>
-            
-            
         </div>
     </div>
 
@@ -333,11 +327,11 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Número exterior
-                        <input type="text" class="form-control" id="pNUM_EXTERIOR_DOMICILIO" name="pNUM_EXTERIOR_DOMICILIO" maxlength="30" minlength="5" required>
+                        <input type="text" class="form-control" id="pNUM_EXTERIOR_DOMICILIO" name="pNUM_EXTERIOR_DOMICILIO" required>
                     </div>
                     <div class="col-md-4">
                         Número interior
-                        <input type="text" class="form-control" id="pNUM_INTERIOR_DOMICILIO" name="pNUM_INTERIOR_DOMICILIO" maxlength="30" minlength="4">
+                        <input type="text" class="form-control" id="pNUM_INTERIOR_DOMICILIO" name="pNUM_INTERIOR_DOMICILIO" >
                     </div>
                 </div>
                 <br>
@@ -384,7 +378,7 @@
                         <th>Número interior</th>
                     </thead>
                     <tbody>
-,                    </tbody>
+                    </tbody>
                 </table>
                 <input type="hidden" id="ID_ALTERNA_Domicilio" name="ID_ALTERNA_Domicilio" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Domicilio" name="pID_ESTADO_EMISOR_Domicilio" value="" >

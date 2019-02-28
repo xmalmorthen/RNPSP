@@ -92,6 +92,11 @@ var objViewIdentificacion = {
 
         // INIT SELECTS
         objViewIdentificacion.vars.general.mainContentTab.find('select').select2({width : '100%'});
+        $(document).on('focus', '.select2.select2-container', function (e) {
+            if (e.originalEvent) {
+                $(this).siblings('select').select2('open');
+            }
+        });
 
         //EVENTS
         //SUBMIT

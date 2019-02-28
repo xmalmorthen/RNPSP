@@ -54,7 +54,7 @@ var dynTabs = {
                     Swal.fire({
                         title: 'Aviso',
                         html: "Para continuar, debe guardar los cambios",
-                        footer: "<div><button class='btn btn-warning discartChanges'>Continuar sin guardar</button></div>",
+                        footer: mainTabMenu.var.pID_ALTERNA ? "<div><button class='btn btn-warning discartChanges'>Continuar sin guardar</button></div>" : null,
                         type: 'warning',                        
                         allowOutsideClick : false,
                         showCancelButton: true,
@@ -62,7 +62,7 @@ var dynTabs = {
                         cancelButtonColor: '#d33'
                     }).then(function(result){
                         if (result.value === true){
-                            form.find('.btnGuardarSection').trigger('click',['tab']);
+                            form.find('.btnGuardarSection').trigger('click',['tab',e]);
                         }
                     });
                     e.preventDefault();
@@ -77,21 +77,27 @@ var dynTabs = {
     showTab : function(e){
         var tabRefObj = $(e.currentTarget.hash),
             form = tabRefObj.find('form');
+            
+        // if (formPrev.valid()) {
+        //     if( formPrev.find('.errorForm').length == 0 ) {
+        //         dynTabs.tabs.currentTab.tabPanel = tabRefObj;
+        //         dynTabs.tabs.currentTab.tabForm = form;
+        //         dynTabs.tabs.currentTab.linkRef = $('#' + e.currentTarget.id);
 
-        dynTabs.tabs.currentTab.tabPanel = tabRefObj;
-        dynTabs.tabs.currentTab.tabForm = form;
-        dynTabs.tabs.currentTab.linkRef = $('#' + e.currentTarget.id);
+        //         populate.form(dynTabs.tabs.currentTab.tabForm); 
+        //         MyCookie.tabRef.save(dynTabs.mode +'ChildTab',e.currentTarget.id);  
+        //         dynTabs.loaderTab();
+        //     }
+        // }
 
-        populate.form(dynTabs.tabs.currentTab.tabForm); 
-
+        populate.form(form); 
         MyCookie.tabRef.save(dynTabs.mode +'ChildTab',e.currentTarget.id);  
-        
         dynTabs.loaderTab();
     },
     setCurrentTab : function(tabContent){
-        dynTabs.tabs.currentTab.linkRef = tabContent.find('.tab-pane.active.show').find('.nav.nav-tabs').find('a.nav-link.active');
-        dynTabs.tabs.currentTab.tabPanel = $(dynTabs.tabs.currentTab.linkRef[0].hash);
-        dynTabs.tabs.currentTab.tabForm = dynTabs.tabs.currentTab.tabPanel.find('form');
+        // dynTabs.tabs.currentTab.linkRef = tabContent.find('.tab-pane.active.show').find('.nav.nav-tabs').find('a.nav-link.active');
+        // dynTabs.tabs.currentTab.tabPanel = $(dynTabs.tabs.currentTab.linkRef[0].hash);
+        // dynTabs.tabs.currentTab.tabForm = dynTabs.tabs.currentTab.tabPanel.find('form');
     },
     markTab : function(linkRef,content){        
         linkRef.find('span.tabMark').remove();
@@ -129,6 +135,17 @@ var dynTabs = {
                         $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
                     }
                 }
-            }, 500);
+            }, 300);
+    },
+    getCurrentTab : function(tabContent){
+        var linkRef = tabContent.find('.tab-pane.active.show').find('.nav.nav-tabs').find('a.nav-link.active'),
+            tabPanel = $(linkRef[0].hash),
+            tabForm = tabPanel.find('form');
+
+        return {
+            linkRef : linkRef,
+            tabPanel : tabPanel,
+            tabForm : tabForm
+        };
     }
 }

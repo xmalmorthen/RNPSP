@@ -1,357 +1,353 @@
     <div class="tab-pane fade show active" id="Adscripcion_actual" role="tabpanel" aria-labelledby="Adscripcion_actual-tab">
         <div class="_container">
             <form action="#" id="Adscripcion_actual_form" name="Adscripcion_actual_form" autocomplete="off">
-                    <br>
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                            <h3 class="titulo">Adscripción de la persona</h3>
-                        </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Adscripción de la persona</h3>
                     </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <span class="clr">*</span>Dependencia <!-- Se llena del catalogo "CAT_DEPENDENCIA" -->
-                            <select id="_dependenciaAdscripcionActual" name="_dependenciaAdscripcionActual"  class="form-control" data-error="#err__dependenciaAdscripcionActual" data-query='KzF1aFlFL3JFNDJyUzRxUUVFeGM5d3A4SEp0YXZjYnltR0NvMUFRbytnVi9JbVhtOW1XTnl6MW5qMzdOZ3dUZVI4enMyMElxcDVrZWlDTXVPcXdFUG9sT2s3TkZyUnlqQkdiY0pUNStPbTU5dVFlOGJhMzVvaXNNWEU1dmo5NWlHNmx3YzdCbzNueUsvWngwa2RFeEYvdnNsTUNVdlNTR3ZoOWsrRVVaY2NvPQ==' required></select> <!-- FALTA ID Y NAME -->
-                            <span id="err__dependenciaAdscripcionActual"></span>
-                        </div>
-                        <div class="col-md-6">
-                            <span class="clr">*</span>Corporación <!-- Se llena del catalogo "CAT_INSTITUCION" -->
-                            <select  class="form-control" id="pINSTITUCION" name="pINSTITUCION" data-error="#err_pINSTITUCION" data-query='Q1B0ZnNNbzI4bEFpTG5sSGdqVHVMNU4xMXlKVXBCUXpFbUt5Ynh2ZzFneTM0eUdiSmRubTJUdE5HYjBTY2FSV2hUUkE4ZVUzSGhjZVlEWWdxQ2krNnBpaVlQazk5MTgwV1pybktnN0NQOW0vQXlBZnVEZnJpWmk4b0x3V1VRSTBaM0U1LzBERjcvcmVWMjBQWXNKMlNNMFVkWTlDNFVrSythaU43bHhia3BVPQ==' data-cascade='true' data-force-refresh='true' data-cascade-id-ref='_dependenciaAdscripcionActual' data-params='ID_DEPENDENCIA={0}' required></select>
-                            <span id="err_pINSTITUCION"></span>
-                        </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="clr">*</span>Dependencia <!-- Se llena del catalogo "CAT_DEPENDENCIA" -->
+                        <select id="_dependenciaAdscripcionActual" name="_dependenciaAdscripcionActual"  class="form-control" data-error="#err__dependenciaAdscripcionActual" data-query='KzF1aFlFL3JFNDJyUzRxUUVFeGM5d3A4SEp0YXZjYnltR0NvMUFRbytnVi9JbVhtOW1XTnl6MW5qMzdOZ3dUZVI4enMyMElxcDVrZWlDTXVPcXdFUG9sT2s3TkZyUnlqQkdiY0pUNStPbTU5dVFlOGJhMzVvaXNNWEU1dmo5NWlHNmx3YzdCbzNueUsvWngwa2RFeEYvdnNsTUNVdlNTR3ZoOWsrRVVaY2NvPQ==' required></select> <!-- FALTA ID Y NAME -->
+                        <span id="err__dependenciaAdscripcionActual"></span>
                     </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-
-                        </div>
-                        <div class="col-md-4">
-                            <strong>Domicilio de la corporación</strong>
-                        </div>
+                    <div class="col-md-6">
+                        <span class="clr">*</span>Corporación <!-- Se llena del catalogo "CAT_INSTITUCION" -->
+                        <select  class="form-control" id="pINSTITUCION" name="pINSTITUCION" data-error="#err_pINSTITUCION" data-query='Q1B0ZnNNbzI4bEFpTG5sSGdqVHVMNU4xMXlKVXBCUXpFbUt5Ynh2ZzFneTM0eUdiSmRubTJUdE5HYjBTY2FSV2hUUkE4ZVUzSGhjZVlEWWdxQ2krNnBpaVlQazk5MTgwV1pybktnN0NQOW0vQXlBZnVEZnJpWmk4b0x3V1VRSTBaM0U1LzBERjcvcmVWMjBQWXNKMlNNMFVkWTlDNFVrSythaU43bHhia3BVPQ==' data-cascade='true' data-force-refresh='true' data-cascade-id-ref='_dependenciaAdscripcionActual' data-params='ID_DEPENDENCIA={0}' required></select>
+                        <span id="err_pINSTITUCION"></span>
                     </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <span class="clr">*</span>Código postal
-                            <input type="text"  id="pCP_EMP_ADSCRIPCION_ACTUAL" name="pCP_EMP_ADSCRIPCION_ACTUAL" class="form-control" class="form-control" required maxlength="5">
-                        </div>
-                        <div class="col-md-4">
-                            <span class="clr">*</span>Estado <!-- Se llena del catalogo "CAT_ENTIDAD" -->
-                            <select  class="form-control" id="pID_ENTIDAD_ADSCRIPCION_ACTUAL" name="pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-error="#err_pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-query='RG51N2cyVWNFVVp5Rlc5WDYydU0wcm0wbys4dElkSU1uaHBpTTJHMEJqOGVqdmRkUXJRUzB0TVZIa2Y0UldSWGpiMS9xQXhOWE5oVndVN0QzSFpHWHI4NEVzWTRIRU5RTmxjS09EK243V002bi9RV1ZUTU0waGRHdWlHSzFaT04=' required></select>
-                            <span id="err_pID_ENTIDAD_ADSCRIPCION_ACTUAL"></span>
-                        </div>
-                        <div class="col-md-4">
-                            <span class="clr">*</span>Municipio <!-- Se llena del catalogo "CAT_MUNICIPIO" dependiendo del catalogo de "ENTIDAD" -->
-                            <select  class="form-control" id="pID_MUNICIPIO_ADSCRIPCION_ACTUAL" name="pID_MUNICIPIO_ADSCRIPCION_ACTUAL" data-error="#err_pID_MUNICIPIO_ADSCRIPCION_ACTUAL" data-query='c244RWRmblByTDlCWExpTHc0ZnQ3NGUzbWMza1Y5MnZCck9rQmpCQ1hTdlA3dzJyRVNMRjhXTll4WmNmYkplM1BKM1BWckJ3RFdieG55eUNldGZ3N1dyS2taNXhWd2RWczkzT0lsVTk1anZPcVJFclZBN05mTUtwbjJuazJqa0tSaXVENkI2WVErcmUxNlFoVUFNamttMjB1S3RxK0ZjUFA3cEFhM0Fvak53PQ==' data-cascade='true' data-force-refresh='true' data-cascade-id-ref='pID_ENTIDAD_ADSCRIPCION_ACTUAL' data-params='ID_ENTIDAD={0}' required></select>
-                            <span id="err_pID_MUNICIPIO_ADSCRIPCION_ACTUAL"></span>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            Ciudad
-                            <input type="text" id="pCIUDAD" name="pCIUDAD" class="form-control" class="form-control" maxlength="50">
-                        </div>
-                        <div class="col-md-4">
-                            <span class="clr">*</span>Colonia/Localidad
-                            <input type="text" id="Colonia_Adscripcion_actual" name="Colonia_Adscripcion_actual" class="form-control" class="form-control" required maxlength="60">
-                        </div>
-                        <div class="col-md-4">
-                            <span class="clr">*</span>Calle
-                            <input type="text" id="Calle" name="Calle" class="form-control" required maxlength="50">
-                        </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
 
                     </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <span class="clr">*</span>Número exterior
-                            <input type="text" id="pNUM_EXTERIOR" name="pNUM_EXTERIOR" class="form-control" required maxlength="30" minlength="5"  required> 
-                        </div>
-                        <div class="col-md-4">
-                            Número interior
-                            <input type="text" id="pNUM_INTERIOR" name="pNUM_INTERIOR" class="form-control" maxlength="30" minlength="4">
-                        </div>
-                        <div class="col-md-4">
-                        <span class="clr">*</span>Número telefónico
-                            <input type="text"  id="pTELEFONO" name="pTELEFONO"  class="form-control" required minlength="10" maxlength="13">
-                        </div>
-
-
+                    <div class="col-md-4">
+                        <strong>Domicilio de la corporación</strong>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <span class="clr">*</span>Código postal
+                        <input type="text"  id="pCP_EMP_ADSCRIPCION_ACTUAL" name="pCP_EMP_ADSCRIPCION_ACTUAL" class="form-control" class="form-control" required maxlength="5">
+                    </div>
+                    <div class="col-md-4">
+                        <span class="clr">*</span>Estado <!-- Se llena del catalogo "CAT_ENTIDAD" -->
+                        <select  class="form-control" id="pID_ENTIDAD_ADSCRIPCION_ACTUAL" name="pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-error="#err_pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-query='RG51N2cyVWNFVVp5Rlc5WDYydU0wcm0wbys4dElkSU1uaHBpTTJHMEJqOGVqdmRkUXJRUzB0TVZIa2Y0UldSWGpiMS9xQXhOWE5oVndVN0QzSFpHWHI4NEVzWTRIRU5RTmxjS09EK243V002bi9RV1ZUTU0waGRHdWlHSzFaT04=' required></select>
+                        <span id="err_pID_ENTIDAD_ADSCRIPCION_ACTUAL"></span>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="clr">*</span>Municipio <!-- Se llena del catalogo "CAT_MUNICIPIO" dependiendo del catalogo de "ENTIDAD" -->
+                        <select  class="form-control" id="pID_MUNICIPIO_ADSCRIPCION_ACTUAL" name="pID_MUNICIPIO_ADSCRIPCION_ACTUAL" data-error="#err_pID_MUNICIPIO_ADSCRIPCION_ACTUAL" data-query='c244RWRmblByTDlCWExpTHc0ZnQ3NGUzbWMza1Y5MnZCck9rQmpCQ1hTdlA3dzJyRVNMRjhXTll4WmNmYkplM1BKM1BWckJ3RFdieG55eUNldGZ3N1dyS2taNXhWd2RWczkzT0lsVTk1anZPcVJFclZBN05mTUtwbjJuazJqa0tSaXVENkI2WVErcmUxNlFoVUFNamttMjB1S3RxK0ZjUFA3cEFhM0Fvak53PQ==' data-cascade='true' data-force-refresh='true' data-cascade-id-ref='pID_ENTIDAD_ADSCRIPCION_ACTUAL' data-params='ID_ENTIDAD={0}' required></select>
+                        <span id="err_pID_MUNICIPIO_ADSCRIPCION_ACTUAL"></span>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        Ciudad
+                        <input type="text" id="pCIUDAD" name="pCIUDAD" class="form-control" class="form-control" maxlength="50">
+                    </div>
+                    <div class="col-md-4">
+                        <span class="clr">*</span>Colonia/Localidad
+                        <input type="text" id="Colonia_Adscripcion_actual" name="Colonia_Adscripcion_actual" class="form-control" class="form-control" required maxlength="60">
+                    </div>
+                    <div class="col-md-4">
+                        <span class="clr">*</span>Calle
+                        <input type="text" id="Calle" name="Calle" class="form-control" required maxlength="50">
                     </div>
 
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <span class="clr">*</span>Número exterior
+                        <input type="text" id="pNUM_EXTERIOR" name="pNUM_EXTERIOR" class="form-control" required maxlength="30" minlength="5"  required> 
+                    </div>
+                    <div class="col-md-4">
+                        Número interior
+                        <input type="text" id="pNUM_INTERIOR" name="pNUM_INTERIOR" class="form-control" maxlength="30" minlength="4">
+                    </div>
+                    <div class="col-md-4">
+                    <span class="clr">*</span>Número telefónico
+                        <input type="text"  id="pTELEFONO" name="pTELEFONO"  class="form-control" required minlength="10" maxlength="13">
+                    </div>
+                </div>
+                <br>
+                <hr>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <span class="clr">*</span>Fecha de ingreso
+                        <input type="date" id="pFECHA_INGRESO" name="pFECHA_INGRESO" required class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <span class="clr">*</span>Puesto <!-- pendiente -->
+                        <!-- <select  class="form-control" id="pPUESTO_ADSCRIPCION_ACTUAL" name="pPUESTO_ADSCRIPCION_ACTUAL" required>
+                            <option value="">Seleccione</option>
+                        </select> -->
+                    </div>
+                    <div class="col-md-4">
+                        Especialidad
+                        <input type="text" id="pESPECIALIDAD" name="pESPECIALIDAD" class="form-control" maxlength="100">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        Rango o categoría
+                    <input type="text" id="pRANGO" name="pRANGO" class="form-control" maxlength="30">
+                    </div>
+                    <div class="col-md-4">
+                        Nivel de mando <!-- Se llena del catalogo "CAT_NIVEL_MANDO" -->
+                        <select  class="form-control" id="pID_NIVEL_MANDO" name="pID_NIVEL_MANDO" data-error="#err_pID_NIVEL_MANDO" data-query='ZTNHS0t4VzB5TTVIWFRSOTJyTk1EaklOUWNzYm9RZ0FqN1lFQUFuSWpZVWQ4c3FMMEtjNU12TUlxWFJXR2p0R3g4TWx3Q1FBVEI5Q2dLcnVnZldsT1dqaWRIWjZURGFLVGI1S3ZpV2NlZEVMMklJZTM5VmFWNGdjbmFhdit5bkd5ZFE5UkYyRkNuU0kzanNxaGxXM2NnMFlKU0pGaHZFZTkvMTZvVFZwdFNvPQ=='></select>
+                        <span id="err_pID_NIVEL_MANDO"></span>
+                    </div>
+                    <div class="col-md-4">
+                        Número de placa
+                        <input type="text" id="pNUMERO_PLACA" name="pNUMERO_PLACA" class="form-control" maxlength="20">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        Número de expediente
+                        <input id="pNUMERO_EXPEDIENTE" name="pNUMERO_EXPEDIENTE" type="text" class="form-control" maxlength="20">
+                    </div>
+                    <div class="col-md-4">
+                        Sueldo base (Mensual)
+                        <input id="pSUELDO_BASE" name="pSUELDO_BASE" type="text" class="form-control" maxlength="10">
+                    </div>
+                    <div class="col-md-4">
+                        Compensaciones (Mensuales)
+                        <input id="pCOMPENSACION" name="pCOMPENSACION" type="text" class="form-control" maxlength="10">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        Área o departamento <!-- Se llena del catalogo "CAT_AREA" -->
+                        <select  class="form-control" id="pID_AREA" name="pID_AREA" data-error="#err_pID_AREA" data-force-refresh ='true'></select>
+                        <span id="err_pID_AREA"></span>
+                    </div>
+                    <div class="col-md-4">
+                        División
+                        <input type="text" id="pDIVISION" name="pDIVISION"  class="form-control" maxlength="30">
+                    </div>
+                    <div class="col-md-4">
+                        Funciones
+                        <input type="text"  id="pFUNCIONES" name="pFUNCIONES" class="form-control" maxlength="100">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        CUIP del jefe inmediato
+                        <input type="text" id="ID_JEFE" name="ID_JEFE" class="form-control" maxlength="10" >
+                    </div>
+                    <div class="col-md-4">
+                        Nombre del jefe inmediato
+                        <input type="text" id="pNOMBREJEFEINMEDIATO" name="pNOMBREJEFEINMEDIATO" class="form-control" maxlength="50" >
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-default btnGuardarSection" id="guardarAdscripcion">Guardar adscripción</button>
+                    </div>
+                    <div class="col-md-4">
 
-                    <br>
-                    <hr>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <span class="clr">*</span>Fecha de ingreso
-                            <input type="date" id="pFECHA_INGRESO" name="pFECHA_INGRESO" required class="form-control">
-                        </div>
-                        <div class="col-md-4">
-                            <span class="clr">*</span>Puesto <!-- pendiente -->
-                            <select  class="form-control" id="pPUESTO_ADSCRIPCION_ACTUAL" name="pPUESTO_ADSCRIPCION_ACTUAL" required>
-                                <option value="">Seleccione</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4">
-                            Especialidad
-                            <input type="text" id="pESPECIALIDAD" name="pESPECIALIDAD" class="form-control" maxlength="100">
-                        </div>
                     </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            Rango o categoría
-                        <input type="text" id="pRANGO" name="pRANGO" class="form-control" maxlength="30">
-                        </div>
-                        <div class="col-md-4">
-                            Nivel de mando <!-- Se llena del catalogo "CAT_NIVEL_MANDO" -->
-                            <select  class="form-control" id="pID_NIVEL_MANDO" name="pID_NIVEL_MANDO" data-error="#err_pID_NIVEL_MANDO" data-query='ZTNHS0t4VzB5TTVIWFRSOTJyTk1EaklOUWNzYm9RZ0FqN1lFQUFuSWpZVWQ4c3FMMEtjNU12TUlxWFJXR2p0R3g4TWx3Q1FBVEI5Q2dLcnVnZldsT1dqaWRIWjZURGFLVGI1S3ZpV2NlZEVMMklJZTM5VmFWNGdjbmFhdit5bkd5ZFE5UkYyRkNuU0kzanNxaGxXM2NnMFlKU0pGaHZFZTkvMTZvVFZwdFNvPQ=='></select>
-                            <span id="err_pID_NIVEL_MANDO"></span>
-                        </div>
-                        <div class="col-md-4">
-                            Número de placa
-                            <input type="text" id="pNUMERO_PLACA" name="pNUMERO_PLACA" class="form-control" maxlength="20">
-                        </div>
+                </div>
+                <br>
+                <hr>
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- BEGIN TABLE -->
+                        <table id="tableAdscripcionactual" class="table display" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Id adscripción</th>
+                                    <th>Dependencia</th>
+                                    <th>Corporación</th>
+                                    <th>Área o departamento</th>
+                                    <th>Puesto</th>
+                                    <th>Estado</th>
+                                    <th>Municipio</th>
+                                </tr>
+                                </thead>
+                            <tbody>                                    
+                            </tbody>
+                    </table>
+                    <!-- END TABLE -->
                     </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            Número de expediente
-                            <input id="pNUMERO_EXPEDIENTE" name="pNUMERO_EXPEDIENTE" type="text" class="form-control" maxlength="20">
-                        </div>
-                        <div class="col-md-4">
-                            Sueldo base (Mensual)
-                            <input id="pSUELDO_BASE" name="pSUELDO_BASE" type="text" class="form-control" maxlength="10">
-                        </div>
-                        <div class="col-md-4">
-                            Compensaciones (Mensuales)
-                            <input id="pCOMPENSACION" name="pCOMPENSACION" type="text" class="form-control" maxlength="10">
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            Área o departamento <!-- Se llena del catalogo "CAT_AREA" -->
-                            <select  class="form-control" id="pID_AREA" name="pID_AREA" data-error="#err_pID_AREA" data-force-refresh ='true'></select>
-                            <span id="err_pID_AREA"></span>
-                        </div>
-                        <div class="col-md-4">
-                            División
-                            <input type="text" id="pDIVISION" name="pDIVISION"  class="form-control" maxlength="30">
-                        </div>
-                        <div class="col-md-4">
-                            Funciones
-                            <input type="text"  id="pFUNCIONES" name="pFUNCIONES" class="form-control" maxlength="100">
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            CUIP del jefe inmediato
-                            <input type="text" id="ID_JEFE" name="ID_JEFE" class="form-control" maxlength="10" >
-                        </div>
-                        <div class="col-md-4">
-                            Nombre del jefe inmediato
-                            <input type="text" id="pNOMBREJEFEINMEDIATO" name="pNOMBREJEFEINMEDIATO" class="form-control" maxlength="50" >
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <button class="btn btn-default" id="guardarAdscripcion">Guardar adscripción</button>
-                        </div>
-                        <div class="col-md-4">
+                </div>
 
-                        </div>
-                    </div>
-                    <br>
-                    <hr>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <!-- BEGIN TABLE -->
-                            <table id="tableAdscripcionactual" class="table display" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>Id adscripción</th>
-                                        <th>Dependencia</th>
-                                        <th>Corporación</th>
-                                        <th>Área o departamento</th>
-                                        <th>Puesto</th>
-                                        <th>Estado</th>
-                                        <th>Municipio</th>
-                                    </tr>
-                                    </thead>
-                                <tbody>                                    
-                                </tbody>
-                        </table>
-                        <!-- END TABLE -->
-                        </div>
-                    </div>
-
-                    <!-- INPUTS OCULTOS -->
-                    <input type="hidden" id="pID_ALTERNA_Adscripcion_actual" name="pID_ESTADO_EMISOR_Adscripcion_actual" value="" >
-                    <input type="hidden" id="pID_ESTADO_EMISOR_Adscripcion_actual" name="pID_ALTERNA_Adscripcion_actual" value="" >
-                    <input type="hidden" id="pID_EMISOR_Adscripcion_actual" name="pID_EMISOR_Adscripcion_actual" value="" >
-                    <input type="hidden" id="pID_DOC_BAJA_Adscripcion_actual" name="pID_DOC_BAJA_Adscripcion_actual" value="" >
-                    <input type="hidden" id="pID_TIPO_CONTRATO_Adscripcion_actual" name="pID_TIPO_CONTRATO_Adscripcion_actual" value="" >
-                    <input type="hidden" id="pNUMERO_EXPEDIENTE_Adscripcion_actual" name="pNUMERO_EXPEDIENTE_Adscripcion_actual" value="" >
-                    <input type="hidden" id="pID_CATEGORIA_PUEST_Adscripcion_actual" name="pID_CATEGORIA_PUEST_Adscripcion_actual" value="" >
-                    <input type="hidden" id="pID_JERARQUIA_PUEST_Adscripcion_actual" name="pID_JERARQUIA_PUEST_Adscripcion_actual" value="" >
-                    <input type="hidden" id="pID_AMBITO_PUESTO_Adscripcion_actual" name="pID_AMBITO_PUESTO_Adscripcion_actual" value="" >
-                
-                    <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4">
-                            <div class="row">                                
-                                <div class="col-md-12 text-center">
-                                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteAdscripcion" data-nexttab="#Empleos_diversos-tab">Siguiente Ficha</button>
-                                </div>
+                <!-- INPUTS OCULTOS -->
+                <input type="hidden" id="pID_ALTERNA_Adscripcion_actual" name="pID_ESTADO_EMISOR_Adscripcion_actual" value="" >
+                <input type="hidden" id="pID_ESTADO_EMISOR_Adscripcion_actual" name="pID_ALTERNA_Adscripcion_actual" value="" >
+                <input type="hidden" id="pID_EMISOR_Adscripcion_actual" name="pID_EMISOR_Adscripcion_actual" value="" >
+                <input type="hidden" id="pID_DOC_BAJA_Adscripcion_actual" name="pID_DOC_BAJA_Adscripcion_actual" value="" >
+                <input type="hidden" id="pID_TIPO_CONTRATO_Adscripcion_actual" name="pID_TIPO_CONTRATO_Adscripcion_actual" value="" >
+                <input type="hidden" id="pNUMERO_EXPEDIENTE_Adscripcion_actual" name="pNUMERO_EXPEDIENTE_Adscripcion_actual" value="" >
+                <input type="hidden" id="pID_CATEGORIA_PUEST_Adscripcion_actual" name="pID_CATEGORIA_PUEST_Adscripcion_actual" value="" >
+                <input type="hidden" id="pID_JERARQUIA_PUEST_Adscripcion_actual" name="pID_JERARQUIA_PUEST_Adscripcion_actual" value="" >
+                <input type="hidden" id="pID_AMBITO_PUESTO_Adscripcion_actual" name="pID_AMBITO_PUESTO_Adscripcion_actual" value="" >
+            
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div class="row">                                
+                            <div class="col-md-12 text-center">
+                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteAdscripcion" data-nexttab="#Empleos_diversos-tab">Siguiente Ficha</button>
                             </div>
-
                         </div>
-                        <div class="col-md-4"></div>
 
                     </div>
-                </form>
+                    <div class="col-md-4"></div>
+
+                </div>
+            </form>
         </div>
     </div>
 
     <div class="tab-pane fade" id="Empleos_diversos" role="tabpanel" aria-labelledby="Empleos_diversos-tab">
-        <form name="Empleos_diversos_form" id="Empleos_diversos_form" action="#">
-            <div class="_container">
-            <br>
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                            <h3 class="titulo">Empleos diversos</h3>
-                        </div>
-                    </div>                    
-                    <br>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <span class="clr">*</span>Empresa
-                            <input type="text" id="pEMPRESA" name="pEMPRESA" required  class="form-control"  maxlength="100" >
-                        </div>
-                        <div class="col-md-4">
-                            <span class="clr">*</span>Código postal
-                            <input type="text" id="pCP_EMP_EMPLEOS_DIVERSOS" name="pCP_EMP_EMPLEOS_DIVERSOS" required  class="form-control"  maxlength="5">
-                        </div>
-                        <div class="col-md-4">
-                            <span class="clr">*</span>Estado <!-- Se llena del catalogo "CAT_ENTIDAD" -->                            
-                            <select  class="form-control" id="pID_ENTIDAD_EMPLEOS_DIVERSOS" name="pID_ENTIDAD_EMPLEOS_DIVERSOS" data-error="#err_pID_ENTIDAD_EMPLEOS_DIVERSOS" data-query='RG51N2cyVWNFVVp5Rlc5WDYydU0wcm0wbys4dElkSU1uaHBpTTJHMEJqOGVqdmRkUXJRUzB0TVZIa2Y0UldSWGpiMS9xQXhOWE5oVndVN0QzSFpHWHI4NEVzWTRIRU5RTmxjS09EK243V002bi9RV1ZUTU0waGRHdWlHSzFaT04=' required></select>
-                            <span id="err_pID_ENTIDAD_EMPLEOS_DIVERSOS"></span>
-                        </div>
+        <div class="_container">
+            <form name="Empleos_diversos_form" id="Empleos_diversos_form" action="#"  autocomplete="off">
+                <br>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Empleos diversos</h3>
                     </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                        <span class="clr">*</span>Municipio <!-- Se llena del catalogo "CAT_MUNICIPIO" dependiendo del catalogo "ENTIDAD" -->
-                            <select  class="form-control" id="pID_MUNICIPIO_EMPLEOS_DIVERSOS" name="pID_MUNICIPIO_EMPLEOS_DIVERSOS" data-error="#err_pID_MUNICIPIO_EMPLEOS_DIVERSOS" data-query='c244RWRmblByTDlCWExpTHc0ZnQ3NGUzbWMza1Y5MnZCck9rQmpCQ1hTdlA3dzJyRVNMRjhXTll4WmNmYkplM1BKM1BWckJ3RFdieG55eUNldGZ3N1dyS2taNXhWd2RWczkzT0lsVTk1anZPcVJFclZBN05mTUtwbjJuazJqa0tSaXVENkI2WVErcmUxNlFoVUFNamttMjB1S3RxK0ZjUFA3cEFhM0Fvak53PQ==' data-cascade='true' data-force-refresh='true' data-cascade-id-ref='pID_ENTIDAD_EMPLEOS_DIVERSOS' data-params='ID_ENTIDAD={0}' required></select>
-                            <span id="err_pID_MUNICIPIO_EMPLEOS_DIVERSOS"></span>
-                        </div>
+                </div>                    
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <span class="clr">*</span>Empresa
+                        <input type="text" id="pEMPRESA" name="pEMPRESA" required  class="form-control"  maxlength="100" >
+                    </div>
+                    <div class="col-md-4">
+                        <span class="clr">*</span>Código postal
+                        <input type="text" id="pCP_EMP_EMPLEOS_DIVERSOS" name="pCP_EMP_EMPLEOS_DIVERSOS" required  class="form-control"  maxlength="5">
+                    </div>
+                    <div class="col-md-4">
+                        <span class="clr">*</span>Estado <!-- Se llena del catalogo "CAT_ENTIDAD" -->                            
+                        <select  class="form-control" id="pID_ENTIDAD_EMPLEOS_DIVERSOS" name="pID_ENTIDAD_EMPLEOS_DIVERSOS" data-error="#err_pID_ENTIDAD_EMPLEOS_DIVERSOS" data-query='RG51N2cyVWNFVVp5Rlc5WDYydU0wcm0wbys4dElkSU1uaHBpTTJHMEJqOGVqdmRkUXJRUzB0TVZIa2Y0UldSWGpiMS9xQXhOWE5oVndVN0QzSFpHWHI4NEVzWTRIRU5RTmxjS09EK243V002bi9RV1ZUTU0waGRHdWlHSzFaT04=' required></select>
+                        <span id="err_pID_ENTIDAD_EMPLEOS_DIVERSOS"></span>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                    <span class="clr">*</span>Municipio <!-- Se llena del catalogo "CAT_MUNICIPIO" dependiendo del catalogo "ENTIDAD" -->
+                        <select  class="form-control" id="pID_MUNICIPIO_EMPLEOS_DIVERSOS" name="pID_MUNICIPIO_EMPLEOS_DIVERSOS" data-error="#err_pID_MUNICIPIO_EMPLEOS_DIVERSOS" data-query='c244RWRmblByTDlCWExpTHc0ZnQ3NGUzbWMza1Y5MnZCck9rQmpCQ1hTdlA3dzJyRVNMRjhXTll4WmNmYkplM1BKM1BWckJ3RFdieG55eUNldGZ3N1dyS2taNXhWd2RWczkzT0lsVTk1anZPcVJFclZBN05mTUtwbjJuazJqa0tSaXVENkI2WVErcmUxNlFoVUFNamttMjB1S3RxK0ZjUFA3cEFhM0Fvak53PQ==' data-cascade='true' data-force-refresh='true' data-cascade-id-ref='pID_ENTIDAD_EMPLEOS_DIVERSOS' data-params='ID_ENTIDAD={0}' required></select>
+                        <span id="err_pID_MUNICIPIO_EMPLEOS_DIVERSOS"></span>
+                    </div>
 
-                        <div class="col-md-4">
-                            Colonia/Localidad
-                            <input type="text" id="pCOLONIA_EMPLEOS_DIVERSOS" name="pCOLONIA_EMPLEOS_DIVERSOS" required  class="form-control"  maxlength="60">
-                        </div>
-                        <div class="col-md-4">
-                            Calle y número
-                            <input type="text" id="pCALLE_Y_NUM_EMPLEOS_DIVERSOS" name="pCALLE_Y_NUM_EMPLEOS_DIVERSOS" required  class="form-control"  maxlength="60">
-                        </div>
+                    <div class="col-md-4">
+                        Colonia/Localidad
+                        <input type="text" id="pCOLONIA_EMPLEOS_DIVERSOS" name="pCOLONIA_EMPLEOS_DIVERSOS" required  class="form-control"  maxlength="60">
                     </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                                Número telefónico
-                            <input type="text" id="pNUM_TELEFONICO" name="pNUM_TELEFONICO"  class="form-control" maxlength="20">
-                        </div>
-                        <div class="col-md-4">
-                            <span class="clr">*</span>Área o departamento 
-                            <input type="text" id="pDESCRIP_AREA" name="pDESCRIP_AREA" required  class="form-control" maxlength="50">
-                        </div>
-                        <div class="col-md-4">
-                            Funciones
-                            <input type="text" id="pDESCRIP_FUNCION" name="pDESCRIP_FUNCION"  class="form-control" maxlength="100">
-                        </div>
+                    <div class="col-md-4">
+                        Calle y número
+                        <input type="text" id="pCALLE_Y_NUM_EMPLEOS_DIVERSOS" name="pCALLE_Y_NUM_EMPLEOS_DIVERSOS" required  class="form-control"  maxlength="60">
                     </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            Ingreso neto (mensual)
-                            <input type="text" id="pSUELDO_EMPLEOS_DIVERSOS" name="pSUELDO_EMPLEOS_DIVERSOS"  class="form-control" maxlength="10">
-                        </div>
-                        <div class="col-md-4">
-                            <span class="clr">*</span>Fecha de ingreso
-                            <input type="date" id="pFECHA_INICIO_EMPLEOS_DIVERSOS" name="pFECHA_INICIO_EMPLEOS_DIVERSOS" required  class="form-control">
-                        </div>
-                        <div class="col-md-4">
-                            <span class="clr">*</span>Fecha de separación
-                            <input type="date" id="pFECHA_TERMINO_EMPLEOS_DIVERSOS" name="pFECHA_TERMINO_EMPLEOS_DIVERSOS" required  class="form-control">
-                        </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                            Número telefónico
+                        <input type="text" id="pNUM_TELEFONICO" name="pNUM_TELEFONICO"  class="form-control" maxlength="20">
                     </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <span class="clr">*</span>Motivo de separación <!-- Se llena del catalogo "MOTIVO_MOB_LAB" -->
-                            <select  class="form-control" id="ID_MOTIVO_MOV_LAB" name="ID_MOTIVO_MOV_LAB" data-error="#err_ID_MOTIVO_MOV_LAB" data-query='a21xb0NlTDlQZFE3a0x6a3lDMkl3UTBBSElpeUJxNFU5L1grQjVMSUt0a1ZjNzQvQVgrN2ZwUFlFQkVkS3VkMVgzaGhoT1RyUys2KzRiOEdJTjU3b0swdDlCQnN3SzNPSlZaazUvUmR1Q2dUUlNrdm42cVhnY2lnZDVVaGExdm83S0p2N0JHUE1MaFdmQXl2cXlrYktKZVJ3NzVFdFp4Q2ZNY3JiWEhUQ3hzPQ==' required></select>
-                            <span id="err_ID_MOTIVO_MOV_LAB"></span>
-                        </div>
-                        <div class="col-md-4">
-                            <span class="clr">*</span>Tipo de separación <!-- Se llena del catalogo "TIPO_MOB_LAB" -->
-                            <select  class="form-control" id="pID_TIPO_MOV_LAB" name="pID_TIPO_MOV_LAB" data-error="#err_pID_TIPO_MOV_LAB" data-query='MUxYVVB0QlhEQXE4b3AyVi9KUGtDbjk4TEd2S0RGOFRvQnQxR1A2ZFc0NVNUUFd1Smw3SHZ2VWlkbzBJcko3NWxNNGF1Y3RxdFVkRG96NEhVdE11dHJTNVpWQ09IdVNjTU83eVNub3lncGIrUDRGVEdKalFvMDRYa08rbG9CRWYvWXppSGM1YnJrZXAwYmt3MDBnMmlWUDM1U2J0TU9BS2xrcFJDSStUN3dFPQ==' data-cascade='true' data-force-refresh='true' data-cascade-id-ref='ID_MOTIVO_MOV_LAB' data-params='ID_MOTIVO_MOV_LAB={0}' required></select>
-                            <span id="err_pID_TIPO_MOV_LAB"></span>
-                        </div>
-                        <div class="col-md-4">
-                            Descripción
-                            <input type="text" id="pDESCRIPCION" name="pDESCRIPCION" class="form-control" maxlength="150">
-                        </div>
+                    <div class="col-md-4">
+                        <span class="clr">*</span>Área o departamento 
+                        <input type="text" id="pDESCRIP_AREA" name="pDESCRIP_AREA" required  class="form-control" maxlength="50">
                     </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <button class="btn btn-default" id="guardarEmpleo">Guardar empleo</button>
-                        </div>
-                        <div class="col-md-4">
+                    <div class="col-md-4">
+                        Funciones
+                        <input type="text" id="pDESCRIP_FUNCION" name="pDESCRIP_FUNCION"  class="form-control" maxlength="100">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        Ingreso neto (mensual)
+                        <input type="text" id="pSUELDO_EMPLEOS_DIVERSOS" name="pSUELDO_EMPLEOS_DIVERSOS"  class="form-control" maxlength="10">
+                    </div>
+                    <div class="col-md-4">
+                        <span class="clr">*</span>Fecha de ingreso
+                        <input type="date" id="pFECHA_INICIO_EMPLEOS_DIVERSOS" name="pFECHA_INICIO_EMPLEOS_DIVERSOS" required  class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <span class="clr">*</span>Fecha de separación
+                        <input type="date" id="pFECHA_TERMINO_EMPLEOS_DIVERSOS" name="pFECHA_TERMINO_EMPLEOS_DIVERSOS" required  class="form-control">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <span class="clr">*</span>Motivo de separación <!-- Se llena del catalogo "MOTIVO_MOB_LAB" -->
+                        <select  class="form-control" id="ID_MOTIVO_MOV_LAB" name="ID_MOTIVO_MOV_LAB" data-error="#err_ID_MOTIVO_MOV_LAB" data-query='a21xb0NlTDlQZFE3a0x6a3lDMkl3UTBBSElpeUJxNFU5L1grQjVMSUt0a1ZjNzQvQVgrN2ZwUFlFQkVkS3VkMVgzaGhoT1RyUys2KzRiOEdJTjU3b0swdDlCQnN3SzNPSlZaazUvUmR1Q2dUUlNrdm42cVhnY2lnZDVVaGExdm83S0p2N0JHUE1MaFdmQXl2cXlrYktKZVJ3NzVFdFp4Q2ZNY3JiWEhUQ3hzPQ==' required></select>
+                        <span id="err_ID_MOTIVO_MOV_LAB"></span>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="clr">*</span>Tipo de separación <!-- Se llena del catalogo "TIPO_MOB_LAB" -->
+                        <select  class="form-control" id="pID_TIPO_MOV_LAB" name="pID_TIPO_MOV_LAB" data-error="#err_pID_TIPO_MOV_LAB" data-query='MUxYVVB0QlhEQXE4b3AyVi9KUGtDbjk4TEd2S0RGOFRvQnQxR1A2ZFc0NVNUUFd1Smw3SHZ2VWlkbzBJcko3NWxNNGF1Y3RxdFVkRG96NEhVdE11dHJTNVpWQ09IdVNjTU83eVNub3lncGIrUDRGVEdKalFvMDRYa08rbG9CRWYvWXppSGM1YnJrZXAwYmt3MDBnMmlWUDM1U2J0TU9BS2xrcFJDSStUN3dFPQ==' data-cascade='true' data-force-refresh='true' data-cascade-id-ref='ID_MOTIVO_MOV_LAB' data-params='ID_MOTIVO_MOV_LAB={0}' required></select>
+                        <span id="err_pID_TIPO_MOV_LAB"></span>
+                    </div>
+                    <div class="col-md-4">
+                        Descripción
+                        <input type="text" id="pDESCRIPCION" name="pDESCRIPCION" class="form-control" maxlength="150">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-default btnGuardarSection" id="guardarEmpleo">Guardar empleo</button>
+                    </div>
+                    <div class="col-md-4">
 
-                        </div>
                     </div>
-                    <br>
-                    <hr>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <table id="tableEmpleosdiversos" class="table display">
-                                <thead>
-                                    <tr>
-                                        <th>Id empleo adicional</th>
-                                        <th>Empresa</th>
-                                        <th>Número telefónico</th>
-                                        <th>Área o departamento</th>
-                                        <th>Ingreso neto mensual</th>
-                                        <th>Fecha de ingreso</th>
-                                        <th>Fecha de separación</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
+                </div>
+                <br>
+                <hr>
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table id="tableEmpleosdiversos" class="table display">
+                            <thead>
+                                <tr>
+                                    <th>Id empleo adicional</th>
+                                    <th>Empresa</th>
+                                    <th>Número telefónico</th>
+                                    <th>Área o departamento</th>
+                                    <th>Ingreso neto mensual</th>
+                                    <th>Fecha de ingreso</th>
+                                    <th>Fecha de separación</th>
+                                </tr>
+                            </thead>
+                        </table>
                     </div>
-                        <!-- HIDDEN INPUTS -->
-                    <input type="hidden" id="pID_ALTERNA_Empleos_diversos" name="pID_ALTERNA_Empleos_diversos"  value="">
-                    <input type="hidden" id="pID_ESTADO_EMISOR_Empleos_diversos" name="pID_ESTADO_EMISOR_Empleos_diversos"  value="">
-                    <input type="hidden" id="pID_EMISOR_Empleos_diversos" name="pID_EMISOR_Empleos_diversos"  value="">
+                </div>
+                    <!-- HIDDEN INPUTS -->
+                <input type="hidden" id="pID_ALTERNA_Empleos_diversos" name="pID_ALTERNA_Empleos_diversos"  value="">
+                <input type="hidden" id="pID_ESTADO_EMISOR_Empleos_diversos" name="pID_ESTADO_EMISOR_Empleos_diversos"  value="">
+                <input type="hidden" id="pID_EMISOR_Empleos_diversos" name="pID_EMISOR_Empleos_diversos"  value="">
 
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorEmpleo" data-nexttab="#Adscripcion_actual-tab">Anterior Ficha</button>                                
-                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteEmpleo" data-nexttab="#Actitudes_hacia_el_empleo-tab">Siguiente Ficha</button>
-                        </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorEmpleo" data-nexttab="#Adscripcion_actual-tab">Anterior Ficha</button>                                
+                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteEmpleo" data-nexttab="#Actitudes_hacia_el_empleo-tab">Siguiente Ficha</button>
                     </div>
-            </div>
-        </form>
+                </div>
+            </form>
+        </div>
     </div>
  
     <div class="tab-pane fade" id="Actitudes_hacia_el_empleo" role="tabpanel" aria-labelledby="Actitudes_hacia_el_empleo">
@@ -422,7 +418,7 @@
                 <br>
                 <div class="row">
                 <div class="col-md-4">
-                    <button class="btn btn-default" id="guardarActitud">Guardar actitud</button>
+                    <button class="btn btn-default btnGuardarSection" id="guardarActitud">Guardar actitud</button>
                 </div>
                 <div class="col-md-4">
 
@@ -488,7 +484,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <button class="btn btn-default" id="guardarComision">Guardar comisión</button>
+                        <button class="btn btn-default btnGuardarSection" id="guardarComision">Guardar comisión</button>
                     </div>
                 </div>
                 <br>

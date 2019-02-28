@@ -4,13 +4,17 @@ $(function() {
             clearInterval(statusIDBInterval);
             statusIDBInterval = null;
             mainTabMenu.fireInit();
-
         }
-    }, 1000);
+    }, 300);
 });
 
 var mainTabMenu = {
+    var : {
+        pID_ALTERNA : null
+    },
     fireInit : function(){
+        $('._container.d-none').removeClass('d-none');
+
         if (formMode.length == 0)
             window.location.href = base_url + 'Error/setError?err=No se especificó el modo del formulario!!!';
 
@@ -48,6 +52,13 @@ var mainTabMenu = {
     tab : {
         change : function(e){
             var tabRef = $(e.currentTarget);
+
+            // if (!$(tabRef).data('finish')){
+            //     e.preventDefault();
+            //     Swal.fire({ type: 'warning', title: 'Aviso', html: 'Debe completar la información de las fichas que actualmente se muestran.' });
+            //     return null;
+            // }
+
             mainTabMenu.actions.init(tabRef.attr('aria-controls'));
             MyCookie.tabRef.save(dynTabs.mode + 'MainTab',tabRef.attr('id'));
         }

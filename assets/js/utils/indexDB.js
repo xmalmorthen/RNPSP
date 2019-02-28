@@ -16,7 +16,7 @@ var iDB = {
                 clearInterval(iDBTablesCheck);
                 iDB.status = true;
             }
-        }, 1000);
+        }, 300);
     },
     actions : {
         getTablesNames : function(){
@@ -70,7 +70,7 @@ var iDB = {
                     var callUrl = base_url + "ajaxCatalogos/index";
                     if (factory.query) {
                         iDB.vars.toPopulate++;
-                        iDB.vars.iDBSync = setInterval(function(){iDB.actions.populatedInterval();}, 1000);
+                        iDB.vars.iDBSync = setInterval(function(){iDB.actions.populatedInterval();}, 300);
                         $.get(callUrl,{
                             qry : factory.query,
                             params : factory.params
@@ -138,8 +138,7 @@ var iDB = {
                                     
                                     options.success(data);
                                 }
-                            }, 1000);
-                            
+                            }, 300);                           
                         } else {
                             //FROM AJAX
                             obj.append('<option disabled selected value><i class="fa fa-refresh fa-spin fa-3x fa-fw"></i> Actualizando, favor de esperar...</option>');                                

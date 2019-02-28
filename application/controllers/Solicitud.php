@@ -122,9 +122,9 @@
 			if (!$Id)
 				$Id = $this->input->get('Id');
 		
-			// if (! $this->input->is_ajax_request()) {
-			// 	if (ENVIRONMENT == 'production') redirect('Error/e404','location');
-			// }		
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
 
 			$responseModel = NULL;
 			try {
@@ -146,4 +146,404 @@
 			echo json_encode( [ 'results' => $responseModel ] );
 			exit;
 		}
+
+		//DATOS GENERALES SECTION
+		public function ajaxSaveDatosGeneralesDatosPersonales(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+
+			$responseModel = [
+				'status' => false,
+				'message'=> '',
+				'data'=> null
+			];
+
+			try {
+				if (!$this->input->post())
+					throw new rulesException('Petición inválida');
+
+				$model = [];
+				parse_str($_POST["model"], $model);
+				
+				//TODO: Tamata - Implementar
+
+				$responseModel['status'] = false;
+				$responseModel['message'] = 'Método no implementado';				
+				$responseModel['data'] = [];
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+
+		public function ajaxSaveDatosGeneralesGenerarCIB(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+
+			$responseModel = [
+				'status' => false,
+				'message'=> '',
+				'data'=> null
+			];
+
+			try {
+				if (!$this->input->post())
+					throw new rulesException('Petición inválida');
+
+				$model = [];
+				parse_str($_POST["model"], $model);
+				
+				//TODO: Tamata - Implementar
+
+				$responseModel['status'] = false;
+				$responseModel['message'] = 'Método no implementado';				
+				$responseModel['data'] = [];
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+
+		public function ajaxSaveDatosGeneralesDesarrolloacademico(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+
+			$responseModel = [
+				'status' => false,
+				'message'=> '',
+				'data'=> null
+			];
+
+			try {
+				if (!$this->input->post())
+					throw new rulesException('Petición inválida');
+
+				$model = [];
+				parse_str($_POST["model"], $model);
+				
+				//TODO: Tamata - Implementar
+
+				$responseModel['status'] = true;
+				$responseModel['message'] = 'Método no implementado';				
+				$responseModel['data'] = [];
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+
+		public function ajaxSaveDatosGeneralesDomicilio(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+
+			$responseModel = [
+				'status' => false,
+				'message'=> '',
+				'data'=> null
+			];
+
+			try {
+				if (!$this->input->post())
+					throw new rulesException('Petición inválida');
+
+				$model = [];
+				parse_str($_POST["model"], $model);
+				
+				//TODO: Tamata - Implementar
+
+				$responseModel['status'] = false;
+				$responseModel['message'] = 'Método no implementado';				
+				$responseModel['data'] = [];
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+		
+		public function ajaxSaveDatosGeneralesReferencia(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+
+			$responseModel = [
+				'status' => false,
+				'message'=> '',
+				'data'=> null
+			];
+
+			try {
+				if (!$this->input->post())
+					throw new rulesException('Petición inválida');
+
+				$model = [];
+				parse_str($_POST["model"], $model);
+				
+				//TODO: Tamata - Implementar
+
+				$responseModel['status'] = false;
+				$responseModel['message'] = 'Método no implementado';				
+				$responseModel['data'] = [];
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+
+		public function ajaxSaveDatosGeneralesSocioeconomico(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+
+			$responseModel = [
+				'status' => false,
+				'message'=> '',
+				'data'=> null
+			];
+
+			try {
+				if (!$this->input->post())
+					throw new rulesException('Petición inválida');
+
+				$model = [];
+				parse_str($_POST["model"], $model);
+				
+				//TODO: Tamata - Implementar
+
+				$responseModel['status'] = false;
+				$responseModel['message'] = 'Método no implementado';				
+				$responseModel['data'] = [];
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+
+		public function ajaxSaveDatosGeneralesDependiente(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+
+			$responseModel = [
+				'status' => false,
+				'message'=> '',
+				'data'=> null
+			];
+
+			try {
+				if (!$this->input->post())
+					throw new rulesException('Petición inválida');
+
+				$model = [];
+				parse_str($_POST["model"], $model);
+				
+				//TODO: Tamata - Implementar
+
+				$responseModel['status'] = false;
+				$responseModel['message'] = 'Método no implementado';				
+				$responseModel['data'] = [];
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+
+		//LABORAL SECTION
+		public function ajaxSaveLaboralAdscripcion(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+
+			$responseModel = [
+				'status' => false,
+				'message'=> '',
+				'data'=> null
+			];
+
+			try {
+				if (!$this->input->post())
+					throw new rulesException('Petición inválida');
+
+				$model = [];
+				parse_str($_POST["model"], $model);
+				
+				//TODO: Tamata - Implementar
+
+				$responseModel['status'] = false;
+				$responseModel['message'] = 'Método no implementado';				
+				$responseModel['data'] = [];
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+		
+		public function ajaxSaveLaboralEmpleo(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+
+			$responseModel = [
+				'status' => false,
+				'message'=> '',
+				'data'=> null
+			];
+
+			try {
+				if (!$this->input->post())
+					throw new rulesException('Petición inválida');
+
+				$model = [];
+				parse_str($_POST["model"], $model);
+				
+				//TODO: Tamata - Implementar
+
+				$responseModel['status'] = false;
+				$responseModel['message'] = 'Método no implementado';				
+				$responseModel['data'] = [];
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+
+		public function ajaxSaveLaboralActitud(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+
+			$responseModel = [
+				'status' => false,
+				'message'=> '',
+				'data'=> null
+			];
+
+			try {
+				if (!$this->input->post())
+					throw new rulesException('Petición inválida');
+
+				$model = [];
+				parse_str($_POST["model"], $model);
+				
+				//TODO: Tamata - Implementar
+
+				$responseModel['status'] = false;
+				$responseModel['message'] = 'Método no implementado';				
+				$responseModel['data'] = [];
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+
+		public function ajaxSaveLaboralComision(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+
+			$responseModel = [
+				'status' => false,
+				'message'=> '',
+				'data'=> null
+			];
+
+			try {
+				if (!$this->input->post())
+					throw new rulesException('Petición inválida');
+
+				$model = [];
+				parse_str($_POST["model"], $model);
+				
+				//TODO: Tamata - Implementar
+
+				$responseModel['status'] = false;
+				$responseModel['message'] = 'Método no implementado';				
+				$responseModel['data'] = [];
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+
+
     }
