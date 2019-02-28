@@ -31,31 +31,7 @@ var dynTabs = {
 
             //VALIDATE FORM 
             if (dynTabs.validForm) {
-                if (form.valid()){
-                    if (form.data('hasChanged') == true){
-                        Swal.fire({
-                            title: 'Aviso',
-                            html: "Para continuar, debe guardar los cambios",
-                            footer: "<div><button class='btn btn-warning discartChanges'>Continuar sin guardar</button></div>",
-                            type: 'warning',                        
-                            allowOutsideClick : false,
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33'
-                        }).then(function(result){
-                            if (result.value === true){
-                                form.find('.btnGuardarSection').trigger('click',['tab']);
-                            }
-                        });
-                        e.preventDefault();
-                        if (options.discardFunction){
-                            if ($.isFunction( options.discardFunction )){
-                                $('.discartChanges').on('click',function(evnt) { options.discardFunction(evnt,e.relatedTarget); });
-                            }
-                        }                    
-                    }
-                }
-                else {
+                if (!form.valid()){
                     var linkRef = $('#' + e.currentTarget.id);
                     
                     if (!linkRef.hasClass('errorValidation')) {
@@ -71,7 +47,30 @@ var dynTabs = {
                         msg : 'Formulario incompleto'
                     });
 
-                    //e.preventDefault();
+                    // e.preventDefault();
+                    // return null;
+                }
+                if (form.data('hasChanged') == true){
+                    Swal.fire({
+                        title: 'Aviso',
+                        html: "Para continuar, debe guardar los cambios",
+                        footer: "<div><button class='btn btn-warning discartChanges'>Continuar sin guardar</button></div>",
+                        type: 'warning',                        
+                        allowOutsideClick : false,
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33'
+                    }).then(function(result){
+                        if (result.value === true){
+                            form.find('.btnGuardarSection').trigger('click',['tab']);
+                        }
+                    });
+                    e.preventDefault();
+                    if (options.discardFunction){
+                        if ($.isFunction( options.discardFunction )){
+                            $('.discartChanges').on('click',function(evnt) { options.discardFunction(evnt,e); });
+                        }
+                    }                    
                 }
             }
     },
@@ -85,7 +84,9 @@ var dynTabs = {
 
         populate.form(dynTabs.tabs.currentTab.tabForm); 
 
-        MyCookie.tabRef.save(dynTabs.mode +'ChildTab',e.currentTarget.id);       
+        MyCookie.tabRef.save(dynTabs.mode +'ChildTab',e.currentTarget.id);  
+        
+        dynTabs.loaderTab();
     },
     setCurrentTab : function(tabContent){
         dynTabs.tabs.currentTab.linkRef = tabContent.find('.tab-pane.active.show').find('.nav.nav-tabs').find('a.nav-link.active');
@@ -105,5 +106,29 @@ var dynTabs = {
     },
     unMarkTab : function(linkRef){
         linkRef.find('span.tabMark').remove();
+    },
+    loaderTab : function(e){        
+        var form = $('#myTabContent .tab-pane.active .nav-item a.nav-link.active'),
+            loaderShow = false;
+            
+            var initInterval = setInterval(function(){
+                objsToInsert = 0;
+                $.each( $('#' + form.attr('aria-controls')).find('form').find('select'), function( key, value ) {
+                    if ($(this).data('insert') !== undefined) 
+                        objsToInsert ++;
+                });
+                
+                //console.log(objsToInsert);
+
+                if (objsToInsert == 0) {
+                    $.LoadingOverlay("hide",true);
+                    clearInterval(initInterval);                    
+                } else {
+                    if (!loaderShow) {
+                        loaderShow = true;
+                        $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+                    }
+                }
+            }, 500);
     }
 }

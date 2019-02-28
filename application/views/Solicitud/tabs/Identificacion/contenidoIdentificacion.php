@@ -817,7 +817,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         Categoría de documento <!-- CAT_CATEGORIA_DOC -->
-                        <select  class="form-control" id="_categoriaDocumento" name="_categoriaDocumento" data-error="#err__categoriaDocumento" data-query='ZmV5OURhR3BURlJwc1NYRkVHMXNoV1kvOVBqdzgwZHB2Z0JueVR4QjZBS1hOYzdHQzB5QTc2V3NhK1VyM1V1N3hRTUhTWW9DWHlweTFCRzcrb1hhYnVreFpIeW9vTDIycUtIbkFuUlA0OW5WS0JQUG85cGE2ejk0WHUwRlJpWE16R0VEMnpZUzVCRUJqdDFqUi94V1ZYaEZ3RVBhNE9SVDZON2FGVjlkSjBVPQ==' required></select>
+                        <select  class="form-control" id="_categoriaDocumento" name="_categoriaDocumento" data-error="#err__categoriaDocumento" data-query='WkdEc3EycHBEQVhpWmoxRTlWdFV4MHd5NmIycFdRY1JDWU44WHdObU1UQnoyQnVGUGp4WjlLYUFYSWhjY1k3WmpxelM1dEl3eXZXam5KQ3lTckhHOSt2djZQMWsvVEYwalZPRm9ySWRxZVhzazRsd0J6VzhBZXgzU3d1ckJSa2JuaHQ2SFhBMW9NamQ4b2RNaERIODVsZVBBWm9EUlVVM0hVb2JBbXJrdFV3PQ==' required></select>
 						<span id="err__categoriaDocumento"></span>
                     </div>
                     <div class="col-md-4">

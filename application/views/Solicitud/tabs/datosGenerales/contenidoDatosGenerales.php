@@ -19,7 +19,7 @@
                     </div>
                     <div class="col-md-4">
                         Tipo de movimiento <!-- Se llena de la tabla CAT_TIPO_OPERACION  -->
-                        <select  class="form-control" name="pTIPO_MOV" id="pTIPO_MOV" data-error="#err_pTIPO_MOV" data-query='WEh6TEJUUFROWVFUNWdLYVVqOSt0eE5rRFBwL3NLWFhyY1RBYXNhUlQvMXJkaFN5bVhWNFUwRWJKdG1YQWFtWWl3VTVlQWtQVnp3NmVNOGdZT1hMWmFDczlzZnBNQVhWaGxhS1BibktwdklnckgxNmplYXkvblpVSWhIMWtoNlNIM041THFhTEdvMlQybDA4N1FiSndSWjVlMmRLQndqRTkvTHJrbS9jUkRvPQ==' required></select>
+                        <select  class="form-control" name="pTIPO_MOV" id="pTIPO_MOV" data-error="#err_pTIPO_MOV" data-cat='CAT_TIPO_OPERACION' data-query='WEh6TEJUUFROWVFUNWdLYVVqOSt0eE5rRFBwL3NLWFhyY1RBYXNhUlQvMXJkaFN5bVhWNFUwRWJKdG1YQWFtWWl3VTVlQWtQVnp3NmVNOGdZT1hMWmFDczlzZnBNQVhWaGxhS1BibktwdklnckgxNmplYXkvblpVSWhIMWtoNlNIM041THFhTEdvMlQybDA4N1FiSndSWjVlMmRLQndqRTkvTHJrbS9jUkRvPQ==' required></select>
                         <span id="err_pTIPO_MOV"></span>
                     </div>
                 </div>
@@ -91,10 +91,10 @@
                         Fecha de nacionalidad
                         <input type="date" id="pFECHA_NACIONALIDAD" name="pFECHA_NACIONALIDAD" class="form-control">
                     </div>
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                         <span class="clr">*</span>RFC
                         <input type="text" id="pRFC_DATOS_PERSONALES" name="pRFC_DATOS_PERSONALES" class="form-control" minlength="10" maxlength="13" required>
-                    </div>
+                    </div> -->
                     <div class="col-md-4">
                         <span class="clr">*</span>Estado civil <!-- Se llena del catálogo CAT_ESTADO_CIVIL -->
                         <select  class="form-control" id="pID_ESTADO_CIVIL" name="pID_ESTADO_CIVIL" data-error="#err_pID_ESTADO_CIVIL" data-query='ZXdxV1A3eEYrWDRZeVJ0dVhkeEdNNDNoOWZPY2o3d21HempWZml4Ukg1ZDdzWDNKWkpuWmNjS01VVHJDUFZtZjZ4NDBCRitGdzNlTktaUTl6STYxV2pmY0dtbk5qWnRDakUyZmVSMW5yREVubVlxNW5GdVFqOGNlY3oxd0JGNTlZUWZSeGZwcmk1VVgzWVBGVFBnWnpzS29ycEQrRHdGUkh1REd1NTBuSTNJPQ==' required></select>
@@ -132,9 +132,7 @@
                     </div>
                 </div>
                 <br><hr><br>
-                
-                <!-- TODO: Xmal - Implementar para mostrar u ocultar sección -->
-                <?php //if ($sessionUser[{perfil}] == { usuario de c4 }) { ?>
+                <?php if (verificaPermiso(14) == true) { ?>
                 <div class="row ">
                     <div class="col-md-4">
                         CIB                        
@@ -149,7 +147,7 @@
                         <button class="btn btn-default" id="GUARDAR_CIB" style="margin-top: 16px;"> Guardar CIB</button>
                     </div>
                 </div>
-                <?php //}?>
+                <?php }?>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
@@ -158,6 +156,7 @@
                 </div>
                 <br>
                 <hr>
+                <?php if (verificaPermiso(14) == true) { ?>
                 <br>
                 <div class="row">
                     <div class="col-md-12">
@@ -171,6 +170,7 @@
                         </table>
                     </div>
                 </div>
+                <?php } ?>
                 <input type="hidden" id="ID_ALTERNA_Datos_personales" name="ID_ALTERNA_Datos_personales" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Datos_personales" name="pID_ESTADO_EMISOR_Datos_personales" value="" >
                 <input type="hidden" id="pID_EMISOR_Datos_personales" name="pID_EMISOR_Datos_personales" value="" >

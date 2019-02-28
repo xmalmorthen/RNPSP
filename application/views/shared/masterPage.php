@@ -60,6 +60,7 @@
 		<script src="<?php echo base_url('assets/vendor/plugins/jquery-validation/dist/jquery.validate.min.js'); ?>"></script>
 		<script src="<?php echo base_url("assets/vendor/plugins/jquery-validation/dist/messages_es.js"); ?>"></script>
 		<script src="<?php echo base_url("assets/vendor/plugins/cookie/v3.14.1/js.cookie.min.js"); ?>"></script>
+		<script src="<?php echo base_url("assets/vendor/plugins/dixie/v2.0.4/dexie.min.js"); ?>"></script>
 		<script src="<?php echo base_url("assets/js/utils/cookie.js"); ?>"></script>
 		<!-- /JS -->
 		<!-- /VENDOR -->
@@ -119,7 +120,7 @@
 							
 						</div>						
 					</div>
-					<?php print $permisos; ?>
+					<?php //print $permisos; ?>
 				</div>
 				
 			</div>

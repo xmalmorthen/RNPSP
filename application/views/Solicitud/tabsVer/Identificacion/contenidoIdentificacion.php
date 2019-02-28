@@ -2,17 +2,12 @@
         <div class="_container">
             <form action="#" id="mediafiliacion_form" name="mediafiliacion_form" autocomplete="off">
                 <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                    <center><strong >Media filiación</strong></center>
+                    <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Media filiación</h3>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
+                </div>  
+               
                 <br>
                 <div class="row">
                     <div class="col-md-4">
@@ -31,19 +26,9 @@
                         <span id="err_pCAT_CARA"></span>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Cabello</strong></center>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
+                <br> <br>
+                <h6 class="titulo">Cabello</h6>
+                <hr>
                 <div class="row">
                     <div class="col-md-3">
                          <h6 class="borderButtom">Cantidad</h6> <!-- Se llena del catálogo CAT_CANTIDADCABELLO -->
@@ -74,14 +59,9 @@
                         <span id="err_pCAT_CABELLO_IMPLANTAC"></span>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Frente</strong></center>
-                    </div>
-                </div>
-                <br>
+                <br> <br>
+                <h6 class="titulo">Frente</h6>
+                <hr>
                 <div class="row">
                     <div class="col-md-4">
                          <h6 class="borderButtom">Altura</h6> <!-- Se llena del catálogo CAT_ALTURAFRENTE -->
@@ -100,18 +80,9 @@
                     </div>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Cejas</strong></center>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
+                  <br> <br>
+                <h6 class="titulo">Cejas</h6>
+                <hr>
                 <div class="row">
                     <div class="col-md-3">
                         <h6 class="borderButtom"> Dirección</h6> <!-- Se llena del catálogo CAT_DIRECCIONCEJAS -->
@@ -134,19 +105,9 @@
 						<span id="err_pCAT_CEJAS_TAMANO"></span>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Ojos</strong></center>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
+                <br> <br>
+                <h6 class="titulo">Color</h6>
+                <hr>
                 <div class="row">
                     <div class="col-md-4">
                          <h6 class="borderButtom">Color</h6> <!-- Se llena del catálogo CAT_COLOROJOS -->
@@ -164,19 +125,9 @@
 						<span id="err_pCAT_OJOS_TAMANO"></span>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Nariz</strong></center>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
+                 <br> <br>
+                <h6 class="titulo">Nariz</h6>
+                <hr>
                 <div class="row">
                     <div class="col-md-3">
                          <h6 class="borderButtom">Raíz</h6> <!-- Se llena del catálogo CAT_RAIZNARIZ -->
@@ -209,19 +160,9 @@
 						<span id="err_pCAT_NARIZ_ALTURA"></span>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Boca</strong></center>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
+                 <br> <br>
+                <h6 class="titulo">Boca</h6>
+                <hr>
                 <div class="row">
                     <div class="col-md-4">
                         <h6 class="borderButtom">Tamaño</h6> <!-- Se llena del catálogo CAT_TAMANOBOCA -->
@@ -234,19 +175,9 @@
 						<span id="err_pCAT_BOCA_COMISURAS"></span>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Labios</strong></center>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
+                 <br> <br>
+                <h6 class="titulo">Labios</h6>
+                <hr>
                 <div class="row">
                     <div class="col-md-4">
                         <h6 class="borderButtom">Espesor</h6> <!-- Se llena del catálogo CAT_ESPESORLABIOS -->
@@ -264,19 +195,9 @@
 						<span id="err_pCAT_LABIOS_PROMINENCIA"></span>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Mentón</strong></center>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
+                 <br> <br>
+                <h6 class="titulo">Mentón</h6>
+                <hr>
                 <div class="row">
                     <div class="col-md-4">
                         <h6 class="borderButtom">Tipo</h6> <!--   se llena del catalogo CAT_TIPOMENTON -->
@@ -294,19 +215,9 @@
 						<span id="err_pCAT_MENTON_INCLINACION"></span>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Oreja derecha</strong>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                </div>
-                <br>
+                 <br> <br>
+                <h6 class="titulo">Oreja derecha</h6>
+                <hr>
                 <div class="row">
                 <div class="col-md-4">
                         <h6 class="borderButtom">Forma</h6> <!-- Se llena del catálogo CAT_FORMAOREJA -->
@@ -319,15 +230,9 @@
 						<span id="err_pCAT_OREJA_ORIGINAL"></span>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                    </div>
-                    <div class="col-md-4">
-                        <center><h6 style="color: #6b6b6b; font-size: 1.0rem"><strong>Helix</strong></h6></center>
-                    </div>
-                </div>
-                <br>
+                  <br> <br>
+                <h6 class="titulo">Helix</h6>
+                <hr>
                 <div class="row">
                     <div class="col-md-3">
                         <h6 class="borderButtom">Superior</h6> <!-- Se llena del catálogo CAT_OREJAHELSUP -->
@@ -351,13 +256,9 @@
                     </div>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="col-md-4">
-                    </div>
-                    <div class="col-md-4">
-                        <center><h6 style="color: #6b6b6b; font-size: 1.0rem"><strong>Lóbulo</strong></h6></center>
-                    </div>
-                </div>
+                 <br> <br>
+                <h6 class="titulo">Lóbulo</h6>
+                <hr>
                 <div class="row">
                     <div class="col-md-3">
                             <h6 class="borderButtom">Adherencia</h6> <!-- Se llena del catálogo CAT_OREJALOBADHEREN -->
@@ -375,15 +276,9 @@
 						    <span id="err_pCAT_OREJA_LOB_DIMEN"></span>
                         </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><h6 style="color: #6b6b6b; font-size: 1.0rem"><strong>Sangre</strong></h6></center>
-                    </div>
-
-                </div>
-                <br>
+                  <br> <br>
+                <h6 class="titulo">Sangre</h6>
+                <hr>
                 <div class="row">
                     <div class="col-md-4">
                         <h6 class="borderButtom">Tipo</h6> <!-- Se llena del catálogo CAT_TIPODESANGRE -->
@@ -396,15 +291,9 @@
 						<span id="err_pCAT_FACTOR_RH"></span>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><h6 style="color: #6b6b6b; font-size: 1.0rem"><strong>Otros</strong></h6></center>
-                    </div>
-
-                </div>
-                <br>
+                  <br> <br>
+                <h6 class="titulo">Otros</h6>
+                <hr>
                 <div class="row">
                     <div class="col-md-4">
                         <h6 class="borderButtom"><span class="clr">*</span>¿Usa anteojos?</h6> <!-- S/N = SI/NO -->
@@ -446,14 +335,10 @@
             <form action="#" id="Senas_particulares_form" name="Senas_particulares_form" autocomplete="off">
                 <br>
                 <div class="row">
-                    <div class="col-md-4">
-                        <!-- SPACE -->
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Ficha fotográfica</h3>
                     </div>
-                    <div class="col-md-4">
-                        <center><strong >Señas particulares</strong></center>
-                    </div>
-                </div>
-                <br>
+                </div>                
                 <br>
                 <div class="row">
                     <div class="col-md-4">
@@ -526,17 +411,47 @@
             <form action="#" id="Registro_decadactilar_form" name="Registro_decadactilar_form" autocomplete="off">
                 <br>
                 <div class="row">
-                    <div class="col-md-4">
-                        <!-- SPACE -->
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Registro decadactilar</h3>
                     </div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Registro decadactilar</strong></center>
-                    </div>
-                </div>
-                <br>
+                </div>                
                 <br>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">CUIP</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Folio</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Adscripcion</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Institución</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Dependencia</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Apellido paterno</h6>
+                        <p></p>
+                    </div>
+
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Fecha de nacimiento</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Sexo</h6>
+                        <p></p>
+                    </div>
+
+                    <!-- <div class="col-md-6">
                         <ul>
                             <dd>CUIP:</dd>
                             <dd>Adscripcion:</dd>
@@ -554,7 +469,7 @@
                             <dd>Edad:</dd>
                             <dd>Fecha de nacimiento:</dd>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
                 <hr>
                 <br>
@@ -563,7 +478,7 @@
                         <!-- SPACE -->
                     </div>
                     <div class="col-md-4">
-                        <h6 class="borderButtom">Seleccione un documento</h6>
+                        <h6 class="borderButtom">Doumento</h6>
                         <p></p>
                     </div>
                 </div>
@@ -604,63 +519,67 @@
     <div class="tab-pane fade " id="Identificacion_de_voz" role="tabpanel" aria-labelledby="Identificacion_de_voz-tab">
         <div class="_container">
             <form action="#" id="Identificacion_de_voz_form" name="Identificacion_de_voz_form" autocomplete="off">
-                    <br>
+                <br>
                 <div class="row">
-                    <div class="col-md-4">
-                    </div>
-                    <div class="col-md-4">
-                        <strong class="titulo"><center>Identificación de voz</center></strong>
-                    </div>
-                </div>
-                    <br>
-                <div class="row">
-                    <div class="col-md-2">
-                    </div>
-                    <div class="col-md-8">
-                        <strong><center>Especificaciones para el archivo de identificación de voz</center></strong>
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Identificación de voz</h3>
                     </div>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="col-md-6">
-                        <ul>
-                            <dd>Formato: WAV PCM</dd>
-                            <dd>Sonido: Monoaural</dd>
-                            <dd>Duración del sonido: 2 minutos</dd>
-                            <dd>Frecuencia de muestreo: 8000HZ-11025HZ</dd>
-                        </ul>
+                <div class="row">                    
+                    <div class="col-md-12">
+                        <h5>Especificaciones para el archivo de identificación de voz</h5>
                     </div>
                 </div>
-                <br>
+                 <br>
                 <div class="row">
-                    <div class="col-md-2">
-
+                    <div class="col-md-3">
+                        <h6 class="borderButtom">Formato</h6>
+                        <p>WAV PCM</p>
                     </div>
-                    <div class="col-md-8">
-                        <center><strong>Información de identificación de voz</strong></center>
+                    <div class="col-md-3">
+                        <h6 class="borderButtom">Sonido</h6>
+                        <p>Monoaural</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="borderButtom">Duración del sonido</h6>
+                        <p>2 minutos</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="borderButtom">Frecuencia de muestreo</h6>
+                        <p>8000HZ-11025HZ</p>
                     </div>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-6">
-                        <ul>
-                            <dd>Adscripción:</dd>
-                            <dd>Dependencia</dd>
-                            <dd>Institución</dd>
-                        </ul>
-                    </div>
-                </div>
-                <br>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <!-- SPACE -->
+                    <div class="col-md-12">
+                        <h5>Información de identificación de voz</h5>
                     </div>
                     <div class="col-md-4">
-                        <!-- <center><audio id="audio" controls style="margin-left: -24px;">
-                        <source src="ruta_de_audio">
-                            Tu navegador no es compatible
-                    </audio></center> -->
+                        <h6 class="borderButtom">Adscripción</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Dependencia</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Institución</h6>
+                        <p></p>
+                    </div>
+                </div>
+                <br>
+                <hr>
+                <div class="row">                    
+                    <div class="col-md-4">
+                        Audio
+                        <div class="custom-file">
+                            <input type="file" id="vozFile" name="vozFile" class='custom-file-input inputFile' data-renderin='thumb_vozFile' accept="audio/*">
+                            <label class="custom-file-label" for="inputGroupFile01">Archivo</label>
+                        </div>
+                    </div>
+                    <div class="col-md-8 text-center">
+                        <!-- <audio id="audio" class='ml-5' style='width=90%!Important;' controls><source src="ruta_de_audio">Navegador no compatible con reproductor de audio</audio> -->
                     </div>
                 </div>
                 <br>
@@ -696,185 +615,153 @@
 
     <div class="tab-pane fade" id="Ficha_fotografica" role="tabpanel" aria-labelledby="Ficha_fotografica-tab">
         <div class="_container">
-            <form action="#" id="Ficha_fotografica_form" name="Ficha_fotografica_form" autocomplete="off">
+             <form action="#" id="Ficha_fotografica_form" name="Ficha_fotografica_form" autocomplete="off">
                 <br>
                 <div class="row">
-                    <div class="col-md-4">
-                        <!-- SPACE -->
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Ficha fotográfica</h3>
                     </div>
-                    <div class="col-md-4">
-                        <strong class="titulo"><center>Ficha fotográfica</center></strong>
-                    </div>
-                </div>
-                <br>
-
-                    <div class="row">
-                    <div class="col-md-4">
-
-                    </div>
-                    <div class="col-md-4">
-                        <strong><center>Parámetros</center></strong>
-                    </div>
-                </div>
+                </div>                
                 <br>
                 <div class="row">
-                    <div class="col-md-6">
-                        <ul>
-                            <dd>CUIP:</dd>
-                            <dd>Nombre(s):</dd>
-                            <dd>Apellido paterno:</dd>
-                            <dd>Apellido materno</dd>
-                            <dd>Fecha de nacimiento:</dd>
-                            <dd>Adscripción:</dd>
-                            <dd>Dependencia:</dd>
-                            <dd>Institución</dd>
-                        </ul>
+                    <div class="col-md-12 text-center">
+                        <h4>Parámetros</h4>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">CUIP</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Nombre(s)</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Apellido paterno</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Apellido materno</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Fecha de nacimiento</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Adscripción</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Dependencia</h6>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Institución</h6>
+                        <p></p>
                     </div>
                 </div>
                 <hr>
-                <br>
                 <div class="row">
-                    <div class="col-md-4">
-                        <table id="tablePerfilizq" class="table display">
-                            <thead>
-                                <tr>
-                                    <td><center>Perfil izquierdo</center></td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <input type="file" id="pIMAGEN_IZQUIERDO" name="pIMAGEN_IZQUIERDO"> <br>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        
-                    </div>
-                    <div class="col-md-4">
-                        <table id="tableFrente" class="table display">
-                            <thead>
-                                <tr>
-                                    <td><center>Frente</center></td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <input type="file" id="pIMAGEN_FRENTE" name="pIMAGEN_FRENTE"> <br>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        
-                    </div>
-                    <div class="col-md-4">
-                        <table id="tablePerfilderecho" class="table display">
-                            <thead>
-                                <tr>
-                                    <td><center>Perfil derecho</center></td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <input type="file" id="pIMAGEN_DERECHO" name="pIMAGEN_DERECHO"> <br>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-2">
-
-                    </div>
-                        <div class="col-md-4">
-                        <table id="tableFirmo" class="table display">
-                            <thead>
-                                <tr>
-                                    <td><center>Firma</center></td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <input type="file" id="pIMAGEN_FIRMA" name="pIMAGEN_FIRMA"> <br>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        
-                    </div>
-                    <div class="col-md-4">
-                        <table id="tableHuella" class="table display">
-                            <thead>
-                                <tr>
-                                    <td><center>Huella</center></td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <input type="file" id="pIMAGEN_HUELLA" name="pIMAGEN_HUELLA"> <br>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id="modificarFotografica">Modificar</button>
-                    </div>
-                </div>
-                <br>
-                <br>
-          
-                 <input type="hidden" id="pID_ALTERNA_Fotografica" name="pID_ALTERNA_Fotografica" value="" >
-                <input type="hidden" id="pID_ESTADO_EMISOR_Fotografica" name="pID_ESTADO_EMISOR_Fotografica" value="" >
-                <input type="hidden" id="pID_EMISOR_Fotografica" name="pID_EMISOR_Fotografica" value="" >
-                
-            </form>
-            <div class="row">
-                    <div class="col-md-4"></div>
                     <div class="col-md-4">
                         <div class="row">
-                            <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorFotografica" data-nexttab="#Senas_particulares-tab"> Anterior</button>
-                            </div>
-                            <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteFotografica" data-nexttab="#Registro_decadactilar-tab">Siguiente</button>
+                            <div class="col-md-12 text-center">
+                                <h6>Perfil izquierdo</h6>
+                                <img id="thumb_pIMAGEN_IZQUIERDO" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
+                                
                             </div>
                         </div>
-
+                        <br>
+                        <!-- <button class="btn btn-default mt-5" id="subirFotografica">subir</button> -->
                     </div>
-                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <h6>Frente</h6>
+                                <img id="thumb_pIMAGEN_FRENTE" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
+                              
+                            </div>
+                        </div>
+                        <br>
+                        <!-- <button class="btn btn-default mt-5" id="subirFotografica">subir</button> -->
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <h6>Perfil derecho</h6>
+                                <img id="thumb_pIMAGEN_DERECHO" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
+                               
+                            </div>
+                        </div>
+                        <br>
+                        <!-- <button class="btn btn-default mt-5" id="subirFotografica">subir</button> -->
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <h6>Firma</h6>
+                                <img id="thumb_pIMAGEN_FIRMA" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
+                               
+                            </div>
+                        </div>
+                        <br>
+                        <!-- <button class="btn btn-default mt-5">subir</button> -->
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <h6>Huella</h6>
+                                <img id="thumb_pIMAGEN_HUELLA" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
+                              
+                            </div>
+                        </div>
+                        <br>
+                        <!-- <button class="btn btn-default mt-5">subir</button> -->
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-default" id='modificarFicha'>Modificar</button>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorFotografica" data-nexttab="#Senas_particulares-tab"> Anterior</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteFotografica" data-nexttab="#Registro_decadactilar-tab">Siguiente</button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4"></div>
 
                 </div>
+           
+                <input type="hidden" id="pID_ALTERNA_Fotografica" name="pID_ALTERNA_Fotografica" value="" >
+                <input type="hidden" id="pID_ESTADO_EMISOR_Fotografica" name="pID_ESTADO_EMISOR_Fotografica" value="" >
+                <input type="hidden" id="pID_EMISOR_Fotografica" name="pID_EMISOR_Fotografica" value="" >
+               
+            </form>
         </div>
     </div>
 
     <div class="tab-pane fade" id="Digitalizacion_de_documento" role="tabpanel" aria-labelledby="Digitalizacion_de_documento-tab">
             <form action="#" id="Digitalizacion_de_documento_form" name="Digitalizacion_de_documento_form" autocomplete="off">
-                <br>
+                < <br>
                 <div class="row">
-                    <div class="col-md-2">
-                        <!-- SPACE -->
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Digitalización del documento</h3>
                     </div>
-                    <div class="col-md-8">
-                        <strong class="titulo"><center>Digitalización de documento</center></strong>
-                    </div>
-                </div>
-                <br>
+                </div>                
                 <br>
                 <div class="row">
                     <div class="col-md-4">
@@ -886,17 +773,14 @@
                         <h6 class="borderButtom">Fecha documento</h6>
                         <p></p>
                     </div>
-                </div>
-                <br>
-                <div class="row">
                     <div class="col-md-4">
-
-                    </div>
-                    <div class="col-md-4">
-                        <h6 class="borderButtom">Seleccione un documento</h6>
+                        <h6 class="borderButtom">Documento</h6>
                         <p></p>
                     </div>
                 </div>
+                <br>
+                <br>
+              
                 <div class="row">
                     <div class="col-md-4">
                         <button class="btn btn-default" id="modificarDocumento">Modificar</button>

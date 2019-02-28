@@ -1,11 +1,10 @@
      <div class="tab-pane fade show active" id="Datos_personales" role="tab-panel" aria-labelledby="Datos_personales-tab">
         <div class="_container">
             <form action="#" id="Datos_personales_form" name="Datos_personales_form" autocomplete="off">
-                <br>
+                 <br>
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Datos personales</strong></center>
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Datos personales</h3>
                     </div>
                 </div>
                 <br>
@@ -81,10 +80,10 @@
                         <h6 class="borderButtom">Fecha de nacionalidad</h6>
                         <p></p>
                     </div>
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                         <h6 class="borderButtom"><span class="clr">*</span>RFC</h6>
                         <p></p>
-                    </div>
+                    </div> -->
                     <div class="col-md-4">
                         <h6 class="borderButtom"><span class="clr">*</span>Estado civil <!-- Se llena del catálogo CAT_ESTADO_CIVIL --></h6>
                         <p></p>
@@ -147,12 +146,10 @@
      <div class="tab-pane fade" id="Desarrollo" role="tabpanel" aria-labelledby="Desarrollo-tab">
         <div class="_container">
             <form action="#" id="Desarrollo_form" name="Desarrollo_form" autocomplete="off">
-                <br>
+                 <br>
                 <div class="row">
-                    <div class="col-md-4">
-                    </div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Desarrollo académico</strong></center>
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Desarrollo académico</h3>
                     </div>
                 </div>
                 <br>
@@ -239,9 +236,8 @@
             <form action="#" id="Domicilio_form" name="Domicilio_form" autocomplete="off">
                 <br>
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Domicilio</strong></center>
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Domicilio</h3>
                     </div>
                 </div>
                 <br>
@@ -338,11 +334,10 @@
     <div class="tab-pane fade" id="Referencias" role="tabpanel" aria-labelledby="Referencias-tab">
         <div class="_container">
             <form action="#" id="Referencias_form" name="Referencias_form" autocomplete="off">
-                <br>
+                 <br>
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Referencias</strong></center>
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Referencias</h3>
                     </div>
                 </div>
                 <br>
@@ -470,11 +465,10 @@
     <div class="tab-pane fade" id="Socioeconomicos" role="tabpanel" arialabelledby="Socioeconomicos-tab" >
         <div class="_container">
             <form action="#" id="Socioeconomicos_form" name="Socioeconomicos_form" autocomplete="off">
-                <br>
+                 <br>
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Socioeconómicos</strong></center>
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Socioeconomicos</h3>
                     </div>
                 </div>
                 <br>

@@ -17,14 +17,12 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="Capacitacion-tab" data-toggle="tab" href="#Capacitacion" role="tab" aria-controls="Capacitacion" aria-selected="false">Capacitación</a>
-                </li>
-                
-                <!-- TODO: Xmal - Implementar para mostrar u ocultar sección -->
-                <?php //if ($sessionUser[{perfil}] == { usuario de c4 }) { ?>
+                </li>                            
+                <?php if (verificaPermiso(15) == true) { ?>
                 <li class="nav-item">
                     <a class="nav-link" id="Identificacion-tab" data-toggle="tab" href="#Identificacion" role="tab" aria-controls="Identificacion" aria-selected="false">Identificación</a>
                 </li>
-                <?php //} ?>
+                <?php } ?>
             </ul>
         </div>
     </div>
@@ -48,15 +46,14 @@
                 <?php echo $this->load->view('Solicitud/tabs/Capacitacion/contenidoCapacitacion',null,TRUE) ?>
             </div>
         </div>
-        <!-- TODO: Xmal - Implementar para mostrar u ocultar sección -->
-        <?php //if ($sessionUser[{perfil}] == { usuario de c4 }) { ?>
+        <?php if (verificaPermiso(15) == true) { ?>
         <div class="tab-pane fade" id="Identificacion" role="tabpanel" aria-labelledby="Tab3-tab">
             <?php echo $this->load->view('Solicitud/tabs/Identificacion/mnuTabIdentificacion',null,TRUE) ?>
             <div class="tab-content">
                     <?php echo $this->load->view('Solicitud/tabs/Identificacion/contenidoIdentificacion',null,TRUE) ?>
             </div>
         </div>
-        <?php //} ?>
+        <?php } ?>
     </div>
 </div>
 
@@ -68,6 +65,7 @@
 <script src="<?php echo base_url('assets/js/utils/populateFormsCatalogs.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/utils/alerts.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/utils/dynamicTabs.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/utils/indexDB.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/utils/catalogs.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/utils/serialized.js') ?>"></script>
 
@@ -76,10 +74,10 @@
 <script src="<?php echo base_url('assets/js/views/solicitud/capacitacionTab.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/views/solicitud/registro.js') ?>"></script>
 
-<!-- TODO: Xmal - Implementar para mostrar u ocultar sección -->
-<?php //if ($sessionUser[{perfil}] == { usuario de c4 }) { ?> 
+
+<?php if (verificaPermiso(15) == true) { ?>
     <script src="<?php echo base_url('assets/js/views/solicitud/identificacionTab.js') ?>"></script>
-<?php //} ?>
+<?php } ?>
 
 <script type="text/javascript">
     var formMode = "<?php echo $this->session->flashdata('formMode'); ?>",

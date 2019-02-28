@@ -1,14 +1,12 @@
     <div class="tab-pane fade show active" id="Idiomas_dialectos" role="tabpanel" aria-labelledby="Idiomas_dialectos-tab">
         <div class="_container">
             <form action="#" name="Idiomas_dialectos_form" id="Idiomas_dialectos_form" autocomplete="off">
-                <br>
+                 <br>
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Idiomas y/o dialectos</strong></center>
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Idiomas y/o dialectos</h3>
                     </div>
                 </div>
-                <br>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
@@ -81,13 +79,10 @@
      <div class="tab-pane fade" id="Habilidades_aptitudes" role="tabpanel" aria-labelledby="Habilidades_aptitudes-tab">
         <div class="_container">
             <form action="#" id="Habilidades_aptitudes_form" name="Habilidades_aptitudes_form"autocomplete="off">
-                <br>
+                 <br>
                 <div class="row">
-                    <div class="col-md-4">
-
-                    </div>
-                    <div class="col-md-4">
-                        <center><strong class="titulo">Habilidades y/o aptitudes</strong></center>
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Habilidades y/o actitudes</h3>
                     </div>
                 </div>
                 <br>
