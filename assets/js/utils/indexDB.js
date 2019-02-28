@@ -11,6 +11,8 @@ var iDB = {
         const tablas = await iDB.actions.getTablesNames();
         iDB.actions.createIDB(tablas);
 
+
+
         var iDBTablesCheck = setInterval(function(){
             if (iDB.vars.tablesChecked == iDB.vars.db.tables.length || iDB.status){
                 clearInterval(iDBTablesCheck);
@@ -35,6 +37,9 @@ var iDB = {
             iDB.vars.db.on('ready',function(){iDB.actions.populateTables()});
         },
         populateTables : function(){
+            //Limpiar tablas que se generaron y hubo cambio donde actualmente no debe popularse por INDEXEDDB
+            iDB.vars.db.ID_RELACION_REFERENCIAS.clear().then(function() {});
+
             const tables = iDB.vars.db.tables;
             tables.forEach(function (table) {
                 table.count().then(function(count){                    

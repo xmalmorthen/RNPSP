@@ -449,8 +449,8 @@
                 <div class="row">
                     <div class="col-md-4">
                         Relación o parentesco <br> <!-- Se llena del catálogo CAT_RELACION -->
-                        <select style="width:356px;" name="ID_RELACION_REFERENCIAS" id="ID_RELACION_REFERENCIAS" class="form-control" data-error="#err_ID_RELACION" data-query='WGJqek5KZDlveE96NE4rQ3grdWlnU01adGw1clZVQ3dhUmlrN3N1VjNxd2ZBZ2pZTXRGWnhEeTFRWmFwTllUUU5TTnpra0wra05SQTVXRUxXQUovdk1LaVRndXlwNHVKcUdVMjErdVZhR0hWRFp3TTNiNEgvWksrbjkxUFlFb0U='></select>
-                        <span id="err_ID_RELACION"></span>
+                        <select  class="form-control" id="ID_RELACION_REFERENCIAS" name="ID_RELACION_REFERENCIAS" data-error="#err_ID_RELACION_REFERENCIAS" data-query='aVlaNnpEUWZuQ2J4Ulp2VytYNHVlWDR1ck9LRE83R3ZOWmVnenRuampBcnR3WmliWUVqTno4VEhNdFFrdDB0L2tyTCs5YWZHdUlVYUxMVFZuc2tpS05maVhXaXBUcjN1eWtoS0hCS3IrWnJKdkFqSDBQanRvbzhtSFlvZU1zMlVLNFdTeVZxSFR5Mng5VjU2RzlnTkpiM1BqTWZQamRXS095T1J6bnRsTVRrPQ==' data-cascade='true' data-force-refresh='true' data-cascade-id-ref='ID_TIPO_REFERENCIA' data-params='ID_TIPO_REFERENCIA={0}' required></select>
+                        <span id="err_ID_RELACION_REFERENCIAS"></span>
                     </div>
                 </div>
                 <br>
