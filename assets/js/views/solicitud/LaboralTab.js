@@ -215,22 +215,22 @@ var objViewLaboral = {
 
                 var callUrl = base_url + 'ajaxCatalogos';
                 $.get(callUrl,
-                    {
-                        qry : 'bTgxZG9aN21oYUhOaDZ6RUxFQ2dJNGo0QmczOXgxNGlodVpVbnJYY0ljNk5yeU5NT3k0NzdvWHVYdm5QR2tNeDNyWGRBQzg3TmpZZGFqV1BQMitOUmZTZnl5OEYrdTNYcmw2R1Q2SHEvUmF3cXBaSjNKZkEwcmRUN0FERzh5a0U=',
-                        params : 'ID_INSTITUCION=' + valInstitucion
-                    },
-                    function (data) {
-                        if (!data)
-                            return null;
+                {
+                    qry : 'bTgxZG9aN21oYUhOaDZ6RUxFQ2dJNGo0QmczOXgxNGlodVpVbnJYY0ljNk5yeU5NT3k0NzdvWHVYdm5QR2tNeDNyWGRBQzg3TmpZZGFqV1BQMitOUmZTZnl5OEYrdTNYcmw2R1Q2SHEvUmF3cXBaSjNKZkEwcmRUN0FERzh5a0U=',
+                    params : 'ID_INSTITUCION=' + valInstitucion
+                },
+                function (data) {
+                    if (!data)
+                        return null;
 
-                        var id = data.results[0].ID_ENTIDAD;
-                        if (id) 
-                            $('#pID_ENTIDAD_ADSCRIPCION_ACTUAL').val(id).trigger('change.select2');
-                    }).fail(function (err) {})
-                    .always(function () {
-                        $('#pID_ENTIDAD_ADSCRIPCION_ACTUAL').LoadingOverlay("hide");
-                    });
-
+                    var id = data.results[0].ID_ENTIDAD;
+                    if (id) 
+                        $('#pID_ENTIDAD_ADSCRIPCION_ACTUAL').val(id).trigger('change').trigger('change.select2');
+                }).fail(function (err) {})
+                .always(function () {
+                    $('#pID_ENTIDAD_ADSCRIPCION_ACTUAL').LoadingOverlay("hide");
+                });
+                
                 $('#pID_AREA').getCatalog({
                     query : 'dlIwdE11aDdRNlltQitFQjRFVWd6UXZGbUFDS2xxeFJpNDA2b1pkUi9GMUtabi9ncDZERVVDTnlMLzBEakEwTzAybnVNa0RUUGdlek92bjNmZWozNkVCbU12UG5MdUZZVExjdnZvczdwbm43c0lONnAyeHFSUU96SWlkd3NDZVQ=',
                     params :  '[ID_DEPENDENCIA]=' + valDependencia + ' and [ID_INSTITUCION]=' + valInstitucion,

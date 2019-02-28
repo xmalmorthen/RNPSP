@@ -201,9 +201,9 @@ var mainFormActions = {
         mainFormActions.insertValueInSelect($('#pID_ENTIDAD_NAC'),'6');
         mainFormActions.insertValueInSelect($('#pID_MUNICIPIO_NAC'),'2');
         
-        mainFormActions.insertValueInSelect($('#_dependenciaAdscripcionActual'),'2');
-        mainFormActions.insertValueInSelect($('#pINSTITUCION'),'1');
-        mainFormActions.insertValueInSelect($('#pID_AREA'),'1656');
+        mainFormActions.insertValueInSelect($('#_dependenciaAdscripcionActual'),'9');
+        mainFormActions.insertValueInSelect($('#pINSTITUCION'),'3817');
+        mainFormActions.insertValueInSelect($('#pID_AREA'),'173525');                
         
         dynTabs.loaderTab();
     },

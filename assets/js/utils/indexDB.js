@@ -66,11 +66,11 @@ var iDB = {
                 if (factory.cascade == true) {
                     reject(null);
                 } else {
+                    
                     var callUrl = base_url + "ajaxCatalogos/index";
                     if (factory.query) {
                         iDB.vars.toPopulate++;
                         iDB.vars.iDBSync = setInterval(function(){iDB.actions.populatedInterval();}, 1000);
-
                         $.get(callUrl,{
                             qry : factory.query,
                             params : factory.params
@@ -122,9 +122,28 @@ var iDB = {
                                     obj.append('<option value=' + data.id + '>' + data.text + '</option>');
                                 }
                             });
+
+                            var selValueInterval = setInterval(function(){
+                                if ($('#_dependenciaAdscripcionActual').find('option:enabled').length > 0 ) {
+                                    clearInterval(selValueInterval);
+                                    selValueInterval = null;
+                            
+                                    //SI SE ASIGNA UN VALOR Y AUN NO ESTA POPULADO
+                                    //LO OBTIENE DEL DATA [INSERT]
+                                    if ( obj.data('insert') ) {
+                                        obj.val(obj.data('insert')).trigger('change.select2');
+                                        obj.trigger('change');
+                                        obj.removeData('insert');
+                                    }
+                                    
+                                    options.success(data);
+                                }
+                            }, 1000);
+                            
                         } else {
                             //FROM AJAX
                             obj.append('<option disabled selected value><i class="fa fa-refresh fa-spin fa-3x fa-fw"></i> Actualizando, favor de esperar...</option>');                                
+                            var callUrl = base_url + "ajaxCatalogos/index";
                             $.get(callUrl,{
                                 qry : options.query,
                                 params : options.params

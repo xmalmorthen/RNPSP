@@ -118,7 +118,7 @@ var dynTabs = {
                         objsToInsert ++;
                 });
                 
-                console.log(objsToInsert);
+                //console.log(objsToInsert);
 
                 if (objsToInsert == 0) {
                     $.LoadingOverlay("hide",true);
