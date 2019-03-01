@@ -2,7 +2,6 @@ var objViewIdentificacion = {
     vars : {
         general : {
             init : false,
-            btnSiguienteAnterior : null
         },
         identificacion : {
             forms : {
@@ -88,8 +87,6 @@ var objViewIdentificacion = {
         objViewIdentificacion.vars.identificacion.btns.validarVoz = $('#validarVoz');
         objViewIdentificacion.vars.identificacion.btns.validarReplicar = $('#validarReplicar');
 
-        objViewIdentificacion.vars.general.btnSiguienteAnterior = $('.btnSiguienteAnterior');
-
         // INIT SELECTS
         objViewIdentificacion.vars.general.mainContentTab.find('select').select2({width : '100%'});
         $(document).on('focus', '.select2.select2-container', function (e) {
@@ -113,8 +110,6 @@ var objViewIdentificacion = {
         objViewIdentificacion.vars.identificacion.btns.guardarVoz.on('click',objViewIdentificacion.events.click.identificacion.guardarVoz);
         objViewIdentificacion.vars.identificacion.btns.validarVoz.on('click',objViewIdentificacion.events.click.identificacion.validarVoz);
         objViewIdentificacion.vars.identificacion.btns.validarReplicar.on('click',objViewIdentificacion.events.click.identificacion.validarReplicar);
-        
-        objViewIdentificacion.vars.general.btnSiguienteAnterior.on('click',objViewIdentificacion.events.click.general.btnSiguienteAnterior);
         
         // INIT TYPE FILES
         objViewIdentificacion.vars.identificacion.files.inputFile.on('change',objViewIdentificacion.events.change.inputFile);
@@ -152,12 +147,7 @@ var objViewIdentificacion = {
     },
     events : {
         click : {
-            general : {
-                btnSiguienteAnterior : function(e){
-                    e.preventDefault();
-                    var tab = $(this).data('nexttab'); 
-                    $(tab).tab('show');
-                }
+            general : {                
             },
             identificacion : {
                 guardarMediafiliacion : function(e, from, tabRef){

@@ -48,6 +48,17 @@ var mainTabMenu = {
                 mainTabMenu.mainInit();
             break;
         }
+
+        $('.btnSiguienteAnterior').on('click',function(e){
+            e.preventDefault();
+            var tab = $(this).data('nexttab'); 
+            $(tab).tab('show');
+        })
+
+        $('.endTab').on('click',function(e){
+            var nextTab = $('#mainContainerTab li.nav-item a.nav-link.active').closest('li').next('li.nav-item').find('a.nav-link');
+            nextTab.tab('show'); 
+        });
     },
     tab : {
         change : function(e){
@@ -107,7 +118,8 @@ var mainTabMenu = {
             }
             var linkRef = $('#' + linkRefHash);
             linkRef.trigger('click');
-        }
+        },
+
     },
     mainInit : function(){
         Swal.fire({

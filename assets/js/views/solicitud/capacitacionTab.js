@@ -2,7 +2,6 @@ var objViewCapacitacion = {
     vars : {
         general : {
             init : false,
-            btnSiguienteAnterior : null
         },
         capacitacion : {
             forms : {
@@ -47,8 +46,6 @@ var objViewCapacitacion = {
         objViewCapacitacion.vars.capacitacion.btns.guardarIdioma = $('#guardarIdioma');
         objViewCapacitacion.vars.capacitacion.btns.guardarHabilidad = $('#guardarHabilidad');
 
-        objViewCapacitacion.vars.general.btnSiguienteAnterior = $('.btnSiguienteAnterior');
-        
         // INIT SELECTS
         objViewCapacitacion.vars.general.mainContentTab.find('select').select2({width : '100%'});
         $(document).on('focus', '.select2.select2-container', function (e) {
@@ -66,7 +63,7 @@ var objViewCapacitacion = {
         // CLICK
         objViewCapacitacion.vars.capacitacion.btns.guardarIdioma.on('click',objViewCapacitacion.events.click.capacitacion.guardarIdioma);
         objViewCapacitacion.vars.capacitacion.btns.guardarHabilidad.on('click',objViewCapacitacion.events.click.capacitacion.guardarHabilidad);
-        objViewCapacitacion.vars.general.btnSiguienteAnterior.on('click',objViewCapacitacion.events.click.general.btnSiguienteAnterior);
+        
         //FOCUSOUT
         
         //Rutina para verificar si se hace algún cambio en cualquier forulario
@@ -102,12 +99,7 @@ var objViewCapacitacion = {
     },
     events : {
         click : {
-            general : {
-                btnSiguienteAnterior : function(e){
-                    e.preventDefault();
-                    var tab = $(this).data('nexttab'); 
-                    $(tab).tab('show');
-                }
+            general : {                
             },
             capacitacion : {
                 guardarIdioma : function(e, from, tabRef){

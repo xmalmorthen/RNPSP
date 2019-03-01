@@ -3,7 +3,6 @@ var objViewDatosGenerales = {
         general : {
             init : false,
             datosGeneralesContentTab : null,
-            btnSiguienteAnterior : null
         },
         datosGenerales : {
             forms : {
@@ -85,7 +84,6 @@ var objViewDatosGenerales = {
         objViewDatosGenerales.vars.datosGenerales.btns.guardarSocioeconomico = $('#guardarSocioeconomico');  
         objViewDatosGenerales.vars.datosGenerales.btns.guardarDependiente = $('#guardarDependiente');        
 
-        objViewDatosGenerales.vars.general.btnSiguienteAnterior = $('.btnSiguienteAnterior');
         // OBJS
         objViewDatosGenerales.vars.datosGenerales.objs.pCURP = $('#pCURP');
 
@@ -113,7 +111,6 @@ var objViewDatosGenerales = {
         objViewDatosGenerales.vars.datosGenerales.btns.guardarSocioeconomico.on('click',objViewDatosGenerales.events.click.datosGenerales.guardarSocioeconomico);
         objViewDatosGenerales.vars.datosGenerales.btns.guardarDependiente.on('click',objViewDatosGenerales.events.click.datosGenerales.guardarDependiente);
 
-        objViewDatosGenerales.vars.general.btnSiguienteAnterior.on('click',objViewDatosGenerales.events.click.general.btnSiguienteAnterior);
         //FOCUSOUT
         // objViewDatosGenerales.vars.datosGenerales.objs.pCURP.on('focusout',objViewDatosGenerales.events.focus.out.pCURP);      
 
@@ -151,12 +148,7 @@ var objViewDatosGenerales = {
     },
     events : {
         click : {
-            general : {
-                btnSiguienteAnterior : function(e){
-                    e.preventDefault();
-                    var tab = $(this).data('nexttab'); 
-                    $(tab).tab('show');
-                }
+            general : {                
             },
             datosGenerales : {
                 guardarDatosPersonales : function(e, from, tabRef){
@@ -318,7 +310,6 @@ var objViewDatosGenerales = {
             dynTabs.tabs.prebTab.tabForm.data('hasDiscardChanges',true);
 
             $("#" + eTab.relatedTarget.id).trigger('click');
-            // dynTabs.tabs.prebTab.tabForm.find('.btnSiguienteAnterior.siguienteTab').trigger('click');
         },
         ajax : {
             callResponseValidations : function(form, data, from, tabRef, callback){
