@@ -231,4 +231,63 @@ class SOLICITUD_model extends MY_Model
     return $this->response;
 
   }
+  /*
+  * @method sp_B2_DG_addReferencias - Agraga la informacion de las referencias de la persona				
+  */
+  public function addReferencias($model){
+
+    $this->arrayToPost($model);
+    $_POST['ID_ALTERNA'] = 4;//ID_ALTERNA_Referencias
+
+    $this->load->library('form_validation');
+
+    $this->addParam('pID_ALTERNA','ID_ALTERNA');
+    $this->addParam('pID_ESTADO_EMISOR','pID_ESTADO_EMISOR_Referencias','',array('rule'=>'trim|numeric'));
+    $this->addParam('pID_EMISOR','pID_EMISOR_Referencias','',array('rule'=>'trim|numeric'));
+    $this->addParam('pID_TIPO_REFERENCIA','ID_TIPO_REFERENCIA','',array('name'=>'Tipo de referencia','rule'=>'trim|numeric'));
+    $this->addParam('pID_OCUPACION','OCUPACION','',array('name'=>'Ocupación','rule'=>'trim|numeric'));
+    $this->addParam('pNOMBRE','NOMBRE_REFERENCIAS','N',array('name'=>'Nombre','rule'=>'trim|required|max_length[30]'));
+    $this->addParam('pPATERNO','PATERNO_REFERENCIAS','N',array('name'=>'Apellido paterno','rule'=>'trim|required|max_length[30]'));
+    $this->addParam('pMATERNO','MATERNO_REFERENCIAS','N',array('name'=>'Apellido materno','rule'=>'trim|max_length[30]'));
+    $this->addParam('pSEXO','SEXO_REFERENCIAS','N',array('name'=>'Sexo','rule'=>'trim|max_length[1]'));
+    $this->addParam('pID_RELACION','ID_RELACION_REFERENCIAS','',array('name'=>'','rule'=>'trim|numeric'));
+    $this->addParam('pID_TIPO_DOM',NULL); //NO LO ENCONTRE EN EL FORMULARIO
+    $this->addParam('pID_PAIS',NULL); //NO LO ENCONTRE EN EL FORMULARIO
+    $this->addParam('pCALLE','CALLE_REFERENCIAS','N',array('name'=>'Calle','rule'=>'trim|max_length[60]'));
+    $this->addParam('pCOLONIA','COLONIA_REFERENCIAS','N',array('name'=>'Colonia/localidad','rule'=>'trim|max_length[60]'));
+    $this->addParam('pNUM_EXTERIOR','NUM_EXTERIOR_REFERENCIAS','N',array('name'=>'Número exterior','rule'=>'trim|max_length[30]'));
+    $this->addParam('pNUM_INTERIOR','NUM_INTERIOR_REFERENCIAS','N',array('name'=>'Número interior','rule'=>'trim|max_length[30]'));
+    $this->addParam('pTELEFONO',NULL); //NO LO ENCONTRE EN EL FORMULARIO
+    $this->addParam('pID_ENTIDAD','ID_ENTIDAD_REFERENCIAS','',array('name'=>'Entidad federativa','rule'=>'trim|numeric'));
+    $this->addParam('pID_MUNICIPIO','ID_MUNICIPIO_REFERENCIAS','',array('name'=>'Municipio','rule'=>'trim|numeric'));
+    $this->addParam('pENTRE_CALLE','ENTRE_CALLE_REFERENCIAS','N',array('name'=>'Entre calle de ','rule'=>'trim|max_length[60]'));
+    $this->addParam('pY_CALLE','Y_CALLE_REFERENCIAS','N',array('name'=>'Y la calle de ','rule'=>'trim|max_length[45]'));
+    $this->addParam('pCODIGO_POSTAL','CODIGO_POSTAL_REFERENCIAS','N',array('name'=>'Código postal','rule'=>'trim|max_length[100]'));
+    $this->addParam('pCIUDAD','CIUDAD_REFERENCIAS','N',array('name'=>'CiudadCiudad','rule'=>'trim|max_length[50]'));
+    
+    if ($this->form_validation->run() === true) {
+
+      $this->procedure('sp_B2_DG_addReferencias');
+      $this->iniParam('txtError','varchar','250');
+      $this->iniParam('msg','varchar','80');
+      $this->iniParam('tranEstatus','int');
+      Utils::pre($this->build_query());
+
+      $query = $this->db->query($this->build_query());
+      $response = $this->query_row($query);
+
+      if($response == FALSE){
+        $this->response['status'] = false;
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      }else{
+        $this->response['status'] = (bool)$response['tranEstatus'];
+        $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
+      }
+    } else {
+      $this->response['status'] = false;
+      $this->response['message'] = $this->form_validation->error_array();
+    }
+    return $this->response;
+
+  }
 }
