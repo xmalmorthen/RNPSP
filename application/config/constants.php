@@ -113,3 +113,5 @@ defined('DEFAULTSESSIONTYPE') OR define('DEFAULTSESSIONTYPE', 'userSession');
 * Descripción: 
 */
 defined('ERROR_GET_DB') OR define('ERROR_GET_DB', 'Error al consultar la base de datos');
+
+defined('STATIC_DOCUMMENTS_PATH') OR define('STATIC_DOCUMMENTS_PATH', './assets/files/');

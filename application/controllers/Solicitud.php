@@ -695,17 +695,57 @@
 			];
 
 			try {
-				if (!$this->input->post())
-					throw new rulesException('Petición inválida');
+				$filesCount = count($_FILES['fichaFotografica']['name']);
+				$errors = array();
+				$files = array();
 
-				$model = [];
-				parse_str($_POST["model"], $model);
-				
-				//TODO: Tamata - Implementar
+				foreach ($_FILES['fichaFotografica']['name'] as $key => $value) {
+					$_FILES['_fichaFotografica']['name']      = $_FILES['fichaFotografica']['name'][$key];
+					$_FILES['_fichaFotografica']['type']      = $_FILES['fichaFotografica']['type'][$key];
+					$_FILES['_fichaFotografica']['tmp_name']  = $_FILES['fichaFotografica']['tmp_name'][$key];
+					$_FILES['_fichaFotografica']['error']     = $_FILES['fichaFotografica']['error'][$key];
+					$_FILES['_fichaFotografica']['size']      = $_FILES['fichaFotografica']['size'][$key];
 
-				$responseModel['status'] = false;
-				$responseModel['message'] = 'Método no implementado';				
-				$responseModel['data'] = [];
+					$config['upload_path']          = STATIC_DOCUMMENTS_PATH . 'fichaFotografica';
+					$config['allowed_types']        = 'jpg|jpeg|png';
+					$config['max_size']             = 10240;
+					$config['max_width']            = 0;
+					$config['max_height']           = 0;
+					$config['encrypt_name']         = TRUE;
+
+					$this->load->library('upload', $config);
+
+					if ( ! $this->upload->do_upload('_fichaFotografica'))
+					{
+						array_push($errors,array('idDoc' => $key, 'error' => $this->upload->display_errors('', '')));
+						$this->upload->error_msg = [];
+						
+					} else {
+						$fileInfo = $this->upload->data();
+						$data = array(
+							"originalName" => $_FILES['_fichaFotografica']['name'],
+							"name" => $fileInfo['file_name'], 
+							"idDoc" => $key
+						);
+						array_push($files,$data);
+					}
+				}
+
+				if (count($errors) == 0) {
+					$outputMSG = "";
+
+					//TODO: Tamata - Implementar el guardado de las referencias de archivos.
+					// La variable [ $files ] contiene la lista de archivos subidos
+					// La variable POST $this->input->post("pID_ALTERNA") contiene el ID_ALTERNA
+
+					$responseModel['status'] = false;
+					$responseModel['message'] = 'Método no implementado';
+					$responseModel['data'] = [];
+
+				} else {
+					$responseModel['message'] = 'Error al intentar guardar';
+					$responseModel['data'] = $errors;
+				}				
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
