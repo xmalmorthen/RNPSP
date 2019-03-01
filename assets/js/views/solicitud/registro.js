@@ -64,11 +64,12 @@ var mainTabMenu = {
         change : function(e){
             var tabRef = $(e.relatedTarget);
 
-            if (!$(tabRef).data('finish')){
-                e.preventDefault();
-                Swal.fire({ type: 'warning', title: 'Aviso', html: 'Debe completar la información de las fichas que actualmente se muestran.' });
-                return null;
-            }
+            //TODO: Xmal - Quitar comentarios en bloque para implementación
+            // if (!$(tabRef).data('finish')){
+            //     e.preventDefault();
+            //     Swal.fire({ type: 'warning', title: 'Aviso', html: 'Debe completar la información de las fichas que actualmente se muestran.' });
+            //     return null;
+            // }
 
             mainTabMenu.actions.init(tabRef.attr('aria-controls'));
             MyCookie.tabRef.save(dynTabs.mode + 'MainTab',tabRef.attr('id'));

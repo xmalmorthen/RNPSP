@@ -43,9 +43,10 @@ var dynTabs = {
                         header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
                         msg : 'Formulario incompleto'
                     });
-
-                    e.preventDefault();
-                    return null;
+    
+                    //TODO: Xmal - Quitar comentarios en bloque para implementación
+                    // e.preventDefault();
+                    // return null;
                 }
                 if (form.data('hasChanged') == true){
                     Swal.fire({
