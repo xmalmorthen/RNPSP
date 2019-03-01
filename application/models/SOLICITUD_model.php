@@ -164,4 +164,71 @@ class SOLICITUD_model extends MY_Model
     return $this->response;
 
   }
+
+  public function addDomicilio($model){
+
+    $this->arrayToPost($model);
+    $_POST['ID_ALTERNA'] = 4;
+
+    
+    $this->load->library('form_validation');
+    $this->form_validation->set_rules('ID_ALTERNA', 'hidden', 'numeric');
+    $this->form_validation->set_rules('pID_ESTADO_EMISOR_Domicilio', 'hidden', 'numeric');
+    $this->form_validation->set_rules('pID_EMISOR_Domicilio', 'hidden', 'numeric');
+    $this->form_validation->set_rules('pID_TIPO_DOM', '', 'numeric');// NO SE ENCONTRO formulario
+    $this->form_validation->set_rules('pID_PAIS', '', 'numeric');// NO SE ENCONTRO formulario
+    $this->form_validation->set_rules('pCALLE_DOMICILIO', 'Calle', 'trim|max_length[60]');
+    $this->form_validation->set_rules('pCOLONIA_DOMICILIO', 'Colonia/Localidad', 'trim|max_length[60]');
+    $this->form_validation->set_rules('pNUM_EXTERIOR_DOMICILIO', 'Número exterior', 'trim|max_length[30]');
+    $this->form_validation->set_rules('pNUM_INTERIOR_DOMICILIO', 'Número interior', 'trim|max_length[30]');
+    $this->form_validation->set_rules('pTELEFONO_DOMICILIO', 'Número telefónico', 'trim|max_length[20]');
+    $this->form_validation->set_rules('pID_ENTIDAD_DOMICILIO', 'Estado', 'numeric');
+    $this->form_validation->set_rules('pID_MUNICIPIO_DOMICILIO', 'Municipio', 'numeric');
+    $this->form_validation->set_rules('pENTRE_CALLE_DOMICILIO', 'Entre la calle de', 'trim|max_length[60]');
+    $this->form_validation->set_rules('pY_CALLE_DOMICILIO', 'Y la calle de', 'trim|max_length[10]');
+    $this->form_validation->set_rules('pCODIGO_POSTAL_DOMICILIO', 'Código postal', 'trim|max_length[50]');
+    $this->form_validation->set_rules('pCIUDAD_DOMICILIO', 'Ciudad', 'trim|max_length[100]');
+
+    if ($this->form_validation->run() === true) {
+
+      $this->procedure('sp_B1_addDomicilio');
+
+      $this->addParam('pID_ALTERNA','ID_ALTERNA');
+      $this->addParam('pID_ESTADO_EMISOR','pID_ESTADO_EMISOR_Domicilio');
+      $this->addParam('pID_EMISOR','pID_EMISOR_Domicilio');
+      $this->addParam('pID_TIPO_DOM',null); // NO SE ENCONTRO formulario
+      $this->addParam('pID_PAIS',null); // NO SE ENCONTRO formulario
+      $this->addParam('pCALLE','pCALLE_DOMICILIO','N');
+      $this->addParam('pCOLONIA','pCOLONIA_DOMICILIO','N');
+      $this->addParam('pNUM_EXTERIOR','pNUM_EXTERIOR_DOMICILIO','N');
+      $this->addParam('pNUM_INTERIOR','pNUM_INTERIOR_DOMICILIO','N');
+      $this->addParam('pTELEFONO','pTELEFONO_DOMICILIO','N');
+      $this->addParam('pID_ENTIDAD','pID_ENTIDAD_DOMICILIO');
+      $this->addParam('pID_MUNICIPIO','pID_MUNICIPIO_DOMICILIO');
+      $this->addParam('pENTRE_CALLE','pENTRE_CALLE_DOMICILIO','N');
+      $this->addParam('pY_CALLE','pY_CALLE_DOMICILIO','N');
+      $this->addParam('pCODIGO_POSTAL','pCODIGO_POSTAL_DOMICILIO','N');
+      $this->addParam('pCIUDAD','pCIUDAD_DOMICILIO','N');
+
+      $this->iniParam('txtError','varchar','250');
+      $this->iniParam('msg','varchar','80');
+      $this->iniParam('tranEstatus','int');
+
+      $query = $this->db->query($this->build_query());
+      $response = $this->query_row($query);
+
+      if($response == FALSE){
+        $this->response['status'] = false;
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      }else{
+        $this->response['status'] = (bool)$response['tranEstatus'];
+        $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
+      }
+    } else {
+      $this->response['status'] = false;
+      $this->response['message'] = $this->form_validation->error_array();
+    }
+    return $this->response;
+
+  }
 }
