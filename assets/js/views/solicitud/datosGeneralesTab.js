@@ -120,8 +120,7 @@ var objViewDatosGenerales = {
         $.each(objViewDatosGenerales.vars.datosGenerales.forms, function( index, value ) {
             var form = value;
             form.find('input, select').change(function(e) {
-                form.removeData('hasSaved');
-                form.removeData('hasDiscardChanges');
+                form.removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError');
                 form.data('hasChanged',true);
                 $(e.target).removeError();
             });
@@ -323,7 +322,7 @@ var objViewDatosGenerales = {
                     if (!data.results.status)
                         throw new Error(data.results.message ? data.results.message : 'Error desconocido.' );
                     
-                    form.removeData('hasChanged').removeData('hasDiscardChanges');
+                    form.removeData('hasChanged').removeData('hasDiscardChanges').removeData('withError');
                     form.data('hasSaved',true);
 
                     if (from) {
@@ -353,6 +352,9 @@ var objViewDatosGenerales = {
                     msg : err.message ? err.message : err.statusText
                 });
 
+                form.removeData('hasSaved').removeData('hasDiscardChanges');
+                form.data('withError',true);
+
                 if (from) {
                     if(from == 'tab') {
                         dynTabs.markTab( $(tabRef.currentTarget),  '<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
@@ -361,7 +363,7 @@ var objViewDatosGenerales = {
                 }
                 dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef,'<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
             },
-            generateRequest: function($this,callUrl,from, callback){
+            generateRequest: function($this,callUrl,from,tabRef, callback){                
                 var form = $this.parents('form:first');
                 form.closeAlert({alertType : 'alert-danger'});
                 
@@ -378,15 +380,15 @@ var objViewDatosGenerales = {
                         model : model
                     },
                     function (data) {  
-                        objViewDatosGenerales.actions.ajax.callResponseValidations(form,data, from,callback);
+                        objViewDatosGenerales.actions.ajax.callResponseValidations(form,data, from, tabRef, callback);
                     }).fail(function (err) {
-                        objViewDatosGenerales.actions.ajax.throwError(err,form,from);                            
+                        objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                            
                     }).always(function () {
                         $.LoadingOverlay("hide");
                     });
 
                 }catch(err) {
-                    objViewDatosGenerales.actions.ajax.throwError(err,form,from);                        
+                    objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                        
                 }
             }
         }
