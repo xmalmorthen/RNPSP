@@ -65,7 +65,7 @@ class MY_Model extends CI_Model
     return $this->procName;
   }
   public function addParam($nombre,$value = false,$valuePrefix = ''){
-    $value = ($value == false)? "{$nombre} OUTPUT" : "{$valuePrefix}{$this->db->escape($value)}";
+    $value = ($value !== null)? (($value === false)? "{$nombre} OUTPUT" : "{$valuePrefix}{$this->db->escape($value)}") : 'null';
     array_push($this->params,"@{$nombre} = {$value}");
     return $this->params;
   }
@@ -103,6 +103,12 @@ class MY_Model extends CI_Model
       $query = rtrim($query,',');
     }
     $query .= '; ';
+
+    $this->iniParams = array();
+    $this->procName = '';
+    $this->params = array();
+    $this->output = array();
+
     return "BEGIN TRANSACTION {$query} COMMIT TRANSACTION";
   }
 
@@ -264,6 +270,7 @@ class MY_Model extends CI_Model
 
   public function query_row($query)
   {
+    $result = false;
     try {
       if ($query == false) {
         throw new Exception('Error query_row');
