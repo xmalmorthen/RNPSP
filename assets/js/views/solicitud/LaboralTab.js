@@ -139,7 +139,6 @@ var objViewLaboral = {
                     e.preventDefault();
                     objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralAdscripcion',from, tabRef, function(data){
                         console.log(data);
-                        //TODO: Xmal - Actualizar variable [ mainTabMenu.var.pID_ALTERNA ] cuando se haga el guardado de la primer ficha y regrese el pID_ALTERNA;
                         debugger;
                     });
                 },
@@ -147,7 +146,6 @@ var objViewLaboral = {
                     e.preventDefault();
                     objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralEmpleo',from, tabRef, function(data){
                         console.log(data);
-                        //TODO: Xmal - Actualizar variable [ mainTabMenu.var.pID_ALTERNA ] cuando se haga el guardado de la primer ficha y regrese el pID_ALTERNA;
                         debugger;
                     });
                 },
@@ -155,7 +153,6 @@ var objViewLaboral = {
                     e.preventDefault();
                     objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralActitud',from, tabRef, function(data){
                         console.log(data);
-                        //TODO: Xmal - Actualizar variable [ mainTabMenu.var.pID_ALTERNA ] cuando se haga el guardado de la primer ficha y regrese el pID_ALTERNA;
                         debugger;
                     });
                 },
@@ -163,7 +160,6 @@ var objViewLaboral = {
                     e.preventDefault();
                     objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralComision',from, tabRef, function(data){
                         console.log(data);
-                        //TODO: Xmal - Actualizar variable [ mainTabMenu.var.pID_ALTERNA ] cuando se haga el guardado de la primer ficha y regrese el pID_ALTERNA;
                         debugger;
                     });
                 }
@@ -247,7 +243,7 @@ var objViewLaboral = {
                             callback(data); 
 
                 }catch(err) {
-                    objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);
+                    objViewLaboral.actions.ajax.throwError(err,form,from,tabRef);
                 }
             },
             throwError: function(err,form,from,tabRef){
@@ -285,15 +281,15 @@ var objViewLaboral = {
                         model : model
                     },
                     function (data) {  
-                        objViewDatosGenerales.actions.ajax.callResponseValidations(form,data, from,callback);
+                        objViewLaboral.actions.ajax.callResponseValidations(form,data, from,callback);
                     }).fail(function (err) {
-                        objViewDatosGenerales.actions.ajax.throwError(err,form,from);                            
+                        objViewLaboral.actions.ajax.throwError(err,form,from);                            
                     }).always(function () {
                         $.LoadingOverlay("hide");
                     });
 
                 }catch(err) {
-                    objViewDatosGenerales.actions.ajax.throwError(err,form,from);                        
+                    objViewLaboral.actions.ajax.throwError(err,form,from);                        
                 }
             }
         }
