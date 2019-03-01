@@ -62,7 +62,8 @@ var mainTabMenu = {
     },
     tab : {
         change : function(e){
-            var tabRef = $(e.relatedTarget),
+            debugger;
+            var tabRef = $(e.currentTarget),
                 forms = $('#myTabContent>.tab-pane.show.active form'),
                 allFormsSaved = true;
 
@@ -74,7 +75,7 @@ var mainTabMenu = {
                 }
             });
 
-            $(tabRef).data('finish',allFormsSaved);
+            $(e.relatedTarget).data('finish',allFormsSaved);
 
             // TODO: Xmal - Quitar comentarios en bloque para implementación
             if (!$(tabRef).data('finish')){
