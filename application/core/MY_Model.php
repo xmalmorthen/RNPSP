@@ -282,4 +282,12 @@ class MY_Model extends CI_Model
     }
     return $result;
   }
+
+  public function modelToPost($model){
+    if(is_array($model)){
+      foreach ($model as $key => $value) {
+        $_POST[$key] = $value;
+      }
+    }
+  }
 }

@@ -236,11 +236,8 @@
 				$model = [];
 				parse_str($_POST["model"], $model);
 				
-				//TODO: Tamata - Implementar
-
-				$responseModel['status'] = true;
-				$responseModel['message'] = 'Método no implementado';				
-				$responseModel['data'] = [];
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->addNivelEstudios($model);
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
