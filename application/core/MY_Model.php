@@ -64,10 +64,16 @@ class MY_Model extends CI_Model
     $this->procName = $name;
     return $this->procName;
   }
-  public function addParam($nombre,$_value = false,$valuePrefix = ''){
+  public function addParam($nombre,$_value = false,$valuePrefix = '',$validation = array()){
     $value = ($_value !== null && $this->input->post($_value) != false)? $this->input->post($_value) : null;
     $value = ($value !== null)? (($value === false)? "{$nombre} OUTPUT" : "{$valuePrefix}{$this->db->escape($value)}") : 'null';
     array_push($this->params,"@{$nombre} = {$value}");
+
+    if($validation != false && is_array($validation) && count($validation)>0){
+      // Utils::pre( array($nombre, (array_key_exists('name',$validation)? $validation['name'] : $nombre), (array_key_exists('rule',$validation)? $validation['rule'] : 'trim')),false );
+      $this->form_validation->set_rules($_value, (array_key_exists('name',$validation)? $validation['name'] : $nombre), (array_key_exists('rule',$validation)? $validation['rule'] : 'trim'));
+    }
+
     return $this->params;
   }
 
