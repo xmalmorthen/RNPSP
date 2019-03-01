@@ -36,9 +36,6 @@ var dynTabs = {
                     
                     if (!linkRef.hasClass('errorValidation')) {
                         dynTabs.markTab( linkRef,'<span class="text-danger tabMark errorValidation mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i></span>');
-                        
-                        // var mainTab = $('#mainContainerTab.nav .nav-item a.nav-link.active');
-                        // dynTabs.markTab( mainTab,'<span class="text-danger tabMark errorValidation mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i></span>');
                     }                
                     form.setAlert({
                         alertType :  'alert-danger',
@@ -46,7 +43,8 @@ var dynTabs = {
                         header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
                         msg : 'Formulario incompleto'
                     });
-
+    
+                    //TODO: Xmal - Quitar comentarios en bloque para implementación
                     // e.preventDefault();
                     // return null;
                 }
@@ -78,26 +76,11 @@ var dynTabs = {
         var tabRefObj = $(e.currentTarget.hash),
             form = tabRefObj.find('form');
             
-        // if (formPrev.valid()) {
-        //     if( formPrev.find('.errorForm').length == 0 ) {
-        //         dynTabs.tabs.currentTab.tabPanel = tabRefObj;
-        //         dynTabs.tabs.currentTab.tabForm = form;
-        //         dynTabs.tabs.currentTab.linkRef = $('#' + e.currentTarget.id);
-
-        //         populate.form(dynTabs.tabs.currentTab.tabForm); 
-        //         MyCookie.tabRef.save(dynTabs.mode +'ChildTab',e.currentTarget.id);  
-        //         dynTabs.loaderTab();
-        //     }
-        // }
-
         populate.form(form); 
         MyCookie.tabRef.save(dynTabs.mode +'ChildTab',e.currentTarget.id);  
         dynTabs.loaderTab();
     },
-    setCurrentTab : function(tabContent){
-        // dynTabs.tabs.currentTab.linkRef = tabContent.find('.tab-pane.active.show').find('.nav.nav-tabs').find('a.nav-link.active');
-        // dynTabs.tabs.currentTab.tabPanel = $(dynTabs.tabs.currentTab.linkRef[0].hash);
-        // dynTabs.tabs.currentTab.tabForm = dynTabs.tabs.currentTab.tabPanel.find('form');
+    setCurrentTab : function(tabContent){        
     },
     markTab : function(linkRef,content){        
         linkRef.find('span.tabMark').remove();
@@ -124,8 +107,6 @@ var dynTabs = {
                         objsToInsert ++;
                 });
                 
-                //console.log(objsToInsert);
-
                 if (objsToInsert == 0) {
                     $.LoadingOverlay("hide",true);
                     clearInterval(initInterval);                    

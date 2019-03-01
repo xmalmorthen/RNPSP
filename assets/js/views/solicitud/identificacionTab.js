@@ -2,7 +2,6 @@ var objViewIdentificacion = {
     vars : {
         general : {
             init : false,
-            btnSiguienteAnterior : null
         },
         identificacion : {
             forms : {
@@ -15,7 +14,7 @@ var objViewIdentificacion = {
                 Identificacion_de_voz_form: null
             },
             btns : {
-                guardarmediafiliación : null,
+                guardarMediafiliacion : null,
                 guardarSenia : null,                
                 guardarFicha : null,
                 guardarRegistrodecadactilar : null,
@@ -79,7 +78,7 @@ var objViewIdentificacion = {
         objViewIdentificacion.vars.identificacion.forms.Identificacion_de_voz_form = $('#Identificacion_de_voz_form');
 
         // BUTTONS
-        objViewIdentificacion.vars.identificacion.btns.guardarmediafiliación = $('#guardarmediafiliación');
+        objViewIdentificacion.vars.identificacion.btns.guardarMediafiliacion = $('#guardarMediafiliacion');
         objViewIdentificacion.vars.identificacion.btns.guardarSenia = $('#guardarSenia');
         objViewIdentificacion.vars.identificacion.btns.guardarFicha = $('#guardarFicha');
         objViewIdentificacion.vars.identificacion.btns.guardarRegistrodecadactilar = $('#guardarRegistrodecadactilar');
@@ -87,8 +86,6 @@ var objViewIdentificacion = {
         objViewIdentificacion.vars.identificacion.btns.guardarVoz = $('#guardarVoz');
         objViewIdentificacion.vars.identificacion.btns.validarVoz = $('#validarVoz');
         objViewIdentificacion.vars.identificacion.btns.validarReplicar = $('#validarReplicar');
-
-        objViewIdentificacion.vars.general.btnSiguienteAnterior = $('.btnSiguienteAnterior');
 
         // INIT SELECTS
         objViewIdentificacion.vars.general.mainContentTab.find('select').select2({width : '100%'});
@@ -105,7 +102,7 @@ var objViewIdentificacion = {
             e.preventDefault();
         });
         // CLICK
-        objViewIdentificacion.vars.identificacion.btns.guardarmediafiliación.on('click',objViewIdentificacion.events.click.identificacion.guardarmediafiliación);
+        objViewIdentificacion.vars.identificacion.btns.guardarMediafiliacion.on('click',objViewIdentificacion.events.click.identificacion.guardarMediafiliacion);
         objViewIdentificacion.vars.identificacion.btns.guardarSenia.on('click',objViewIdentificacion.events.click.identificacion.guardarSenia);
         objViewIdentificacion.vars.identificacion.btns.guardarFicha.on('click',objViewIdentificacion.events.click.identificacion.guardarFicha);
         objViewIdentificacion.vars.identificacion.btns.guardarRegistrodecadactilar.on('click',objViewIdentificacion.events.click.identificacion.guardarRegistrodecadactilar);
@@ -113,8 +110,6 @@ var objViewIdentificacion = {
         objViewIdentificacion.vars.identificacion.btns.guardarVoz.on('click',objViewIdentificacion.events.click.identificacion.guardarVoz);
         objViewIdentificacion.vars.identificacion.btns.validarVoz.on('click',objViewIdentificacion.events.click.identificacion.validarVoz);
         objViewIdentificacion.vars.identificacion.btns.validarReplicar.on('click',objViewIdentificacion.events.click.identificacion.validarReplicar);
-        
-        objViewIdentificacion.vars.general.btnSiguienteAnterior.on('click',objViewIdentificacion.events.click.general.btnSiguienteAnterior);
         
         // INIT TYPE FILES
         objViewIdentificacion.vars.identificacion.files.inputFile.on('change',objViewIdentificacion.events.change.inputFile);
@@ -152,89 +147,65 @@ var objViewIdentificacion = {
     },
     events : {
         click : {
-            general : {
-                btnSiguienteAnterior : function(e){
-                    e.preventDefault();
-                    var tab = $(this).data('nexttab'); 
-                    $(tab).tab('show');
-                }
+            general : {                
             },
             identificacion : {
-                guardarmediafiliación : function(e, from){
+                guardarMediafiliacion : function(e, from, tabRef){
                     e.preventDefault();
-
-                    var $this = $(this),
-                        form = $this.parents('form:first');
-                    
-                    form.closeAlert({alertType : 'alert-danger'});
-
-                    //VALID FORM
-                    try {
-                        if (!objViewIdentificacion.vars.identificacion.forms.Adscripcion_actual_form.valid())
-                            throw "Invalid FORM";
-
-                        $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
-
-                        var callUrl = base_url + 'Ejemplos/ajaxGetSample';
-                        model = {
-                            var1 : 'val1',
-                            var2 : 'val2'
-                        };
-
-                        $.when(
-                            $.get(callUrl,{model : model})
-                            .always(function () {
-                                MyCookie.session.reset();
-                            })
-                        ).then( 
-                            //success
-                            function(data, textStatus, jqXHR){
-                                form.removeData('hasChanged');
-                                form.data('hasSaved',true);
-
-                                dynTabs.markTab( ( dynTabs.tabs.prebTab.linkRef ? dynTabs.tabs.prebTab.linkRef : dynTabs.tabs.currentTab.linkRef),  '<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
-
-                                $.LoadingOverlay("hide");
-
-                                if (from)
-                                    if(from == 'tab')
-                                        dynTabs.tabs.prebTab.tabForm.find('.btnSiguienteAnterior.siguienteTab').trigger('click');
-                            },
-                            //error
-                            function(err, textStatus, jqXHR){
-                                $.LoadingOverlay("hide");
-                                var msg = err.status + ' - ' + err.statusText;
-                                                                
-                                form.setAlert({
-                                    alertType :  'alert-danger',
-                                    dismissible : true,
-                                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error al guardar',
-                                    msg : msg,
-                                    callback : function(){
-                                        //Swal.fire({ type: 'error', title: 'Error', html: msg }); //se comenta porque al mostrar el modal no respeta el scroll top al bloque del alert.
-                                    }
-                                });
-
-                                dynTabs.markTab( ( dynTabs.tabs.prebTab.linkRef ? dynTabs.tabs.prebTab.linkRef : dynTabs.tabs.currentTab.linkRef),  '<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
-                            } 
-                        );
-                    }catch(err) {
-                        dynTabs.markTab( ( dynTabs.tabs.prebTab.linkRef ? dynTabs.tabs.prebTab.linkRef : dynTabs.tabs.currentTab.linkRef),  '<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
-                        form.setAlert({
-                            alertType :  'alert-danger',
-                            dismissible : true,
-                            header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
-                            msg : 'Formulario incompleto'
-                        });
-                    }
+                    objViewIdentificacion.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveIdentificacionMediafiliacion',from, tabRef, function(data){
+                        console.log(data);
+                        
+                        debugger;
+                    });
                 },
-                guardarSenia : function(e, from){},                
-                guardarFicha : function(e, from){},
-                guardarRegistrodecadactilar : function(e, from){},
-                guardarDocumento : function(e, from){},
-                guardarVoz : function(e, from){},
-                validarVoz : function(e, from){},
-                validarReplicar : function(e, from){}
+                guardarSenia : function(e, from, tabRef){
+                    e.preventDefault();
+                    objViewIdentificacion.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveIdentificacionSenia',from, tabRef, function(data){
+                        console.log(data);
+                        
+                        debugger;
+                    });
+                },                
+                guardarFicha : function(e, from, tabRef){
+                    e.preventDefault();
+                    objViewIdentificacion.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveIdentificacionFicha',from, tabRef, function(data){
+                        console.log(data);
+                        
+                        debugger;
+                    });
+                },
+                guardarRegistrodecadactilar : function(e, from, tabRef){
+                    e.preventDefault();
+                    objViewIdentificacion.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveIdentificacionRegistrodecadactilar',from, tabRef, function(data){
+                        console.log(data);
+                        
+                        debugger;
+                    });
+                },
+                guardarDocumento : function(e, from, tabRef){
+                    e.preventDefault();
+                    objViewIdentificacion.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveIdentificacionDocumento',from, tabRef, function(data){
+                        console.log(data);
+                        
+                        debugger;
+                    });
+                },
+                guardarVoz : function(e, from, tabRef){
+                    e.preventDefault();
+                    objViewIdentificacion.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveIdentificacionVoz',from, tabRef, function(data){
+                        console.log(data);
+                        
+                        debugger;
+                    });
+                },
+                validarVoz : function(e, from, tabRef){
+                    e.preventDefault();
+                    alert('implementar');
+                },
+                validarReplicar : function(e, from, tabRef){
+                    e.preventDefault();
+                    alert('implementar');
+                }
             }
         },
         change : {
@@ -264,16 +235,97 @@ var objViewIdentificacion = {
         }
     },
     actions : {        
-        discartChanges : function(e,relatedTarget){ 
-            
+        discartChanges : function(e,eTab){
+            var form = $('#' + $(eTab.currentTarget).attr('aria-controls')).find('form');
+            form.closeAlert({alertType : 'alert-danger'});
+
             dynTabs.markTab(dynTabs.tabs.prebTab.linkRef,'<span class="text-warning tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true"></i></span>');
             Swal.close();
                 
             dynTabs.tabs.prebTab.tabForm.removeData('hasChanged');
             dynTabs.tabs.prebTab.tabForm.data('hasDiscardChanges',true);
 
-            $("#" + relatedTarget.id).trigger('click');
-            //dynTabs.tabs.prebTab.tabForm.find('.btnSiguienteAnterior.siguienteTab').trigger('click');
+            $("#" + eTab.relatedTarget.id).trigger('click');
+            // dynTabs.tabs.prebTab.tabForm.find('.btnSiguienteAnterior.siguienteTab').trigger('click');
+        },
+        ajax : {
+            callResponseValidations : function(form, data, from, tabRef, callback){
+                try{
+                    if (!data) 
+                        throw new Error('Respuesta inesperada, favor de intentarlo de nuevo.');
+                    if (!data.results)
+                        throw new Error('Respuesta inesperada, favor de intentarlo de nuevo.');
+                    if (typeof data.results.status === "undefined")
+                        throw new Error('Estatus desconocido, favor de contactar a soporte.');
+                    if (!data.results.status)
+                        throw new Error(data.results.message ? data.results.message : 'Error desconocido.' );
+                    
+                    form.removeData('hasChanged').removeData('hasDiscardChanges');
+                    form.data('hasSaved',true);
+
+                    if (from) {
+                        if(from == 'tab') {
+                            $(tabRef.relatedTarget).trigger('click');
+                            dynTabs.markTab( $(tabRef.currentTarget),  '<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
+                            return null;
+                        }
+                    }
+                    dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef ,'<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
+
+                    if (callback) 
+                        if ($.isFunction( callback ))
+                            callback(data); 
+
+                }catch(err) {
+                    objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);
+                }
+            },
+            throwError: function(err,form,from,tabRef){
+                $.LoadingOverlay("hide");
+                
+                form.setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.message ? err.message : err.statusText
+                });
+
+                if (from) {
+                    if(from == 'tab') {
+                        dynTabs.markTab( $(tabRef.currentTarget),  '<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
+                        return null;
+                    }
+                }
+                dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef,'<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
+            },
+            generateRequest: function($this,callUrl,from, callback){
+                var form = $this.parents('form:first');
+                form.closeAlert({alertType : 'alert-danger'});
+                
+                try {
+                    //VALID FORM
+                    if (!form.valid())
+                        throw new Error("Formulario incompleto");
+
+                    $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+                    
+                    var model = form.serialize();
+                    
+                    $.post(callUrl,{
+                        model : model
+                    },
+                    function (data) {  
+                        objViewIdentificacion.actions.ajax.callResponseValidations(form,data, from,callback);
+                    }).fail(function (err) {
+                        objViewIdentificacion.actions.ajax.throwError(err,form,from);                            
+                    }).always(function () {
+                        $.LoadingOverlay("hide");
+                    });
+
+                }catch(err) {
+                    objViewIdentificacion.actions.ajax.throwError(err,form,from);                        
+                }
+            }
         }
     }
 }

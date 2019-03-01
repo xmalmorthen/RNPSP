@@ -48,11 +48,23 @@ var mainTabMenu = {
                 mainTabMenu.mainInit();
             break;
         }
+
+        $('.btnSiguienteAnterior').on('click',function(e){
+            e.preventDefault();
+            var tab = $(this).data('nexttab'); 
+            $(tab).tab('show');
+        })
+
+        $('.endTab').on('click',function(e){
+            var nextTab = $('#mainContainerTab li.nav-item a.nav-link.active').closest('li').next('li.nav-item').find('a.nav-link');
+            nextTab.tab('show'); 
+        });
     },
     tab : {
         change : function(e){
-            var tabRef = $(e.currentTarget);
+            var tabRef = $(e.relatedTarget);
 
+            //TODO: Xmal - Quitar comentarios en bloque para implementación
             // if (!$(tabRef).data('finish')){
             //     e.preventDefault();
             //     Swal.fire({ type: 'warning', title: 'Aviso', html: 'Debe completar la información de las fichas que actualmente se muestran.' });
@@ -68,7 +80,7 @@ var mainTabMenu = {
         init : function(tabRef, callback){
             mainTabMenu.actions.inited = false;
 
-            //dynTabs.validForm = formMode != 'edit' ? true : false;
+            // dynTabs.validForm = formMode != 'edit' ? true : false;
 
             switch (tabRef) {
                 case 'datosGenerales':
@@ -107,7 +119,8 @@ var mainTabMenu = {
             }
             var linkRef = $('#' + linkRefHash);
             linkRef.trigger('click');
-        }
+        },
+
     },
     mainInit : function(){
         Swal.fire({
@@ -226,7 +239,6 @@ var mainFormActions = {
                 ref.val(value);
                 ref.trigger('change.select2').trigger('change');
             }
-            //ref.val(value).data('insert',value).trigger('change').trigger('change.select2');
         }
     }
 }

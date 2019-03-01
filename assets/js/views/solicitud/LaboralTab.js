@@ -2,7 +2,6 @@ var objViewLaboral = {
     vars : {
         general : {
             init : false,
-            btnSiguienteAnterior : null
         },
         laboral : {
             forms : {
@@ -64,7 +63,6 @@ var objViewLaboral = {
         objViewLaboral.vars.laboral.btns.guardarActitud = $('#guardarActitud');
         objViewLaboral.vars.laboral.btns.guardarComision = $('#guardarComision');
 
-        objViewLaboral.vars.general.btnSiguienteAnterior = $('.btnSiguienteAnterior');
         // SELECTS
         objViewLaboral.vars.laboral.cmbs.pINSTITUCION = $('#pINSTITUCION');
 
@@ -87,7 +85,7 @@ var objViewLaboral = {
         objViewLaboral.vars.laboral.btns.guardarEmpleo.on('click',objViewLaboral.events.click.laboral.guardarEmpleo);
         objViewLaboral.vars.laboral.btns.guardarActitud.on('click',objViewLaboral.events.click.laboral.guardarActitud);
         objViewLaboral.vars.laboral.btns.guardarComision.on('click',objViewLaboral.events.click.laboral.guardarComision);
-        objViewLaboral.vars.general.btnSiguienteAnterior.on('click',objViewLaboral.events.click.general.btnSiguienteAnterior);
+        
         //FOCUSOUT
         
         //CHANGE
@@ -127,12 +125,7 @@ var objViewLaboral = {
     },
     events : {
         click : {
-            general : {
-                btnSiguienteAnterior : function(e){
-                    e.preventDefault();
-                    var tab = $(this).data('nexttab'); 
-                    $(tab).tab('show');
-                }
+            general : {                
             },
             laboral : {
                 guardarAdscripcion : function(e, from, tabRef){
