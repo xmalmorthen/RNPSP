@@ -45,8 +45,8 @@ var dynTabs = {
                     });
     
                     //TODO: Xmal - Quitar comentarios en bloque para implementación
-                    // e.preventDefault();
-                    // return null;
+                    e.preventDefault();
+                    return null;
                 }
                 if (form.data('hasChanged') == true){
                     Swal.fire({

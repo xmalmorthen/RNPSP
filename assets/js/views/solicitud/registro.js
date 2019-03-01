@@ -62,14 +62,26 @@ var mainTabMenu = {
     },
     tab : {
         change : function(e){
-            var tabRef = $(e.relatedTarget);
+            var tabRef = $(e.relatedTarget),
+                forms = $('#myTabContent>.tab-pane.show.active form'),
+                allFormsSaved = true;
 
-            //TODO: Xmal - Quitar comentarios en bloque para implementación
-            // if (!$(tabRef).data('finish')){
-            //     e.preventDefault();
-            //     Swal.fire({ type: 'warning', title: 'Aviso', html: 'Debe completar la información de las fichas que actualmente se muestran.' });
-            //     return null;
-            // }
+
+            forms.each(function( index ) {
+                if ( $(this).data('hasSaved') != true ) {
+                    allFormsSaved = false;
+                    return false;
+                }
+            });
+
+            $(tabRef).data('finish',allFormsSaved);
+
+            // TODO: Xmal - Quitar comentarios en bloque para implementación
+            if (!$(tabRef).data('finish')){
+                e.preventDefault();
+                Swal.fire({ type: 'warning', title: 'Aviso', html: 'Debe completar y guardar la información de las pestañas que actualmente se muestran.' });
+                return null;
+            }
 
             mainTabMenu.actions.init(tabRef.attr('aria-controls'));
             MyCookie.tabRef.save(dynTabs.mode + 'MainTab',tabRef.attr('id'));
