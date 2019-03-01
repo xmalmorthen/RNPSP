@@ -62,7 +62,6 @@ var mainTabMenu = {
     },
     tab : {
         change : function(e){
-            debugger;
             var tabRef = $(e.currentTarget),
                 forms = $('#myTabContent>.tab-pane.show.active form'),
                 allFormsSaved = true;
