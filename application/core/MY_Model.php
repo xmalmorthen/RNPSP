@@ -55,7 +55,7 @@ class MY_Model extends CI_Model
   }
 
   public function iniParam($nombre,$tipo = 'varchar',$longitud = false){
-    $longitud = ($longitud != false)? "({$longitud})" : "";
+    $longitud = ($longitud != false)? "(".$longitud.")" : "";
     array_push($this->iniParams,"@{$nombre} {$tipo}{$longitud}");
     array_push($this->output,$nombre);
     return $this->iniParams;
@@ -64,7 +64,8 @@ class MY_Model extends CI_Model
     $this->procName = $name;
     return $this->procName;
   }
-  public function addParam($nombre,$value = false,$valuePrefix = ''){
+  public function addParam($nombre,$_value = false,$valuePrefix = ''){
+    $value = ($_value !== null && $this->input->post($_value) != false)? $this->input->post($_value) : null;
     $value = ($value !== null)? (($value === false)? "{$nombre} OUTPUT" : "{$valuePrefix}{$this->db->escape($value)}") : 'null';
     array_push($this->params,"@{$nombre} = {$value}");
     return $this->params;
@@ -98,7 +99,7 @@ class MY_Model extends CI_Model
       $query .= ' SELECT ';
       foreach ($this->output as $value) {
         $sValue = $this->db->escape($value);
-        $query .= " @{$value} AS N{$sValue},";
+        $query .= " @{$value} AS N".$sValue.",";
       }
       $query = rtrim($query,',');
     }
