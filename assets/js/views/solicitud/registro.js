@@ -62,13 +62,13 @@ var mainTabMenu = {
     },
     tab : {
         change : function(e){
-            var tabRef = $(e.currentTarget);
+            var tabRef = $(e.relatedTarget);
 
-            // if (!$(tabRef).data('finish')){
-            //     e.preventDefault();
-            //     Swal.fire({ type: 'warning', title: 'Aviso', html: 'Debe completar la información de las fichas que actualmente se muestran.' });
-            //     return null;
-            // }
+            if (!$(tabRef).data('finish')){
+                e.preventDefault();
+                Swal.fire({ type: 'warning', title: 'Aviso', html: 'Debe completar la información de las fichas que actualmente se muestran.' });
+                return null;
+            }
 
             mainTabMenu.actions.init(tabRef.attr('aria-controls'));
             MyCookie.tabRef.save(dynTabs.mode + 'MainTab',tabRef.attr('id'));
@@ -79,7 +79,7 @@ var mainTabMenu = {
         init : function(tabRef, callback){
             mainTabMenu.actions.inited = false;
 
-            //dynTabs.validForm = formMode != 'edit' ? true : false;
+            // dynTabs.validForm = formMode != 'edit' ? true : false;
 
             switch (tabRef) {
                 case 'datosGenerales':
@@ -238,7 +238,6 @@ var mainFormActions = {
                 ref.val(value);
                 ref.trigger('change.select2').trigger('change');
             }
-            //ref.val(value).data('insert',value).trigger('change').trigger('change.select2');
         }
     }
 }
