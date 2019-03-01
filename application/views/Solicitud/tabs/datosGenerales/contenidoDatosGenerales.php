@@ -14,6 +14,10 @@
                         <input type="text" id="pCURP" name="pCURP" class="form-control consultaCURP " minlength="18" maxlength="20" required>
                     </div>
                     <div class="col-md-4">
+                        <span class="clr">*</span>RFC
+                        <input type="text" class="form-control" id="pRFC_DOMICILIO" name="pRFC_DOMICILIO" maxlength="13" minlength="10" required>
+                    </div>
+                    <div class="col-md-4">
                         Tipo de movimiento <!-- Se llena de la tabla CAT_TIPO_OPERACION  -->
                         <select  class="form-control" name="pTIPO_MOV" id="pTIPO_MOV" data-error="#err_pTIPO_MOV" data-cat='CAT_TIPO_OPERACION' data-query='WEh6TEJUUFROWVFUNWdLYVVqOSt0eE5rRFBwL3NLWFhyY1RBYXNhUlQvMXJkaFN5bVhWNFUwRWJKdG1YQWFtWWl3VTVlQWtQVnp3NmVNOGdZT1hMWmFDczlzZnBNQVhWaGxhS1BibktwdklnckgxNmplYXkvblpVSWhIMWtoNlNIM041THFhTEdvMlQybDA4N1FiSndSWjVlMmRLQndqRTkvTHJrbS9jUkRvPQ==' required></select>
                         <span id="err_pTIPO_MOV"></span>
@@ -349,14 +353,7 @@
                         <input type="text" class="form-control" id="pTELEFONO_DOMICILIO" name="pTELEFONO_DOMICILIO" maxlength="13" minlength="10" required>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <span class="clr">*</span>RFC
-                        <input type="text" class="form-control" id="pRFC_DOMICILIO" name="pRFC_DOMICILIO" maxlength="13" minlength="10" required>
-                    </div>
-                </div>
-                <br>
+                <br>                
                 <div class="row">
                     <div class="col-md-4">
                         <button class="btn btn-default btnGuardarSection" id="guardarDomicilio">Guardar domicilio</button>
