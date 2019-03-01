@@ -9,6 +9,10 @@
 class MY_Model extends CI_Model
 {
   protected $table_name = 'table_name';
+  public $iniParams = array();
+  public $procName = '';
+  public $params = array();
+  public $output = array();
   public function __construct()
   {
     parent::__construct();
@@ -37,6 +41,71 @@ class MY_Model extends CI_Model
    * 
    * @return array    Array with results.
    */
+
+  private function getType($mime){
+    $type = '';
+    switch ($mime) {
+      case 'varchar':
+        
+        break;
+      case 'int':
+        break;
+      
+    }
+  }
+
+  public function iniParam($nombre,$tipo = 'varchar',$longitud = false){
+    $longitud = ($longitud != false)? "({$longitud})" : "";
+    array_push($this->iniParams,"@{$nombre} {$tipo}{$longitud}");
+    array_push($this->output,$nombre);
+    return $this->iniParams;
+  }
+  public function procedure($name){
+    $this->procName = $name;
+    return $this->procName;
+  }
+  public function addParam($nombre,$value = false,$valuePrefix = ''){
+    $value = ($value == false)? "{$nombre} OUTPUT" : "{$valuePrefix}{$this->db->escape($value)}";
+    array_push($this->params,"@{$nombre} = {$value}");
+    return $this->params;
+  }
+
+  public function build_query(){
+    $query = '';
+
+    if(count($this->iniParams) > 0){
+      $query .= 'DECLARE '.implode(', ',$this->iniParams).'; ';
+    }
+
+    $query .= ' EXEC ['.$this->procName.'] ';
+
+    if(count($this->params) > 0){
+      $query .= implode(', ',$this->params) ;
+    }
+
+    if(count($this->output) > 0){
+      if(count($this->params) > 0){
+        $query .= ', ';
+      }
+      foreach ($this->output as $value) {
+        $query .= "@{$value} = @{$value} OUTPUT,";
+      }
+      $query = rtrim($query,',');
+    }
+    $query .= '; ';
+
+    if(count($this->output) > 0){
+      $query .= ' SELECT ';
+      foreach ($this->output as $value) {
+        $sValue = $this->db->escape($value);
+        $query .= " @{$value} AS N{$sValue},";
+      }
+      $query = rtrim($query,',');
+    }
+    $query .= '; ';
+    return "BEGIN TRANSACTION {$query} COMMIT TRANSACTION";
+  }
+
   function find($params = array(), $is_row_array = false)
   {
     try {

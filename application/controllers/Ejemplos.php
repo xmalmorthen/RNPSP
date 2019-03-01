@@ -11,6 +11,9 @@ class Ejemplos extends CI_Controller {
 	
 	public function ejemplo1(){
 		// BREADCRUMB
+
+		$response = $this->Ejemplos_model->tmpTestXmal();
+		Utils::pre($response);
 		$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');
 		// /BREADCRUMB
 
@@ -25,7 +28,7 @@ class Ejemplos extends CI_Controller {
 			$isSerialized = $serialized->exist($this->session->userdata(SESSIONVAR)['IdUsuario'],current_url());
 			$this->session->set_flashdata('isSerializedFORM',$isSerialized);
 
-			//$response = $this->Ejemplos_model->tmpTestXmal();
+			//
 
 			$this->load->model('catalogos/CAT_ACADEMIA_model');
 
