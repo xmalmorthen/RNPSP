@@ -445,14 +445,6 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        Relación o parentesco <br> <!-- Se llena del catálogo CAT_RELACION -->
-                        <select  class="form-control" id="ID_RELACION_REFERENCIAS" name="ID_RELACION_REFERENCIAS" data-error="#err_ID_RELACION_REFERENCIAS" data-query='aVlaNnpEUWZuQ2J4Ulp2VytYNHVlWDR1ck9LRE83R3ZOWmVnenRuampBcnR3WmliWUVqTno4VEhNdFFrdDB0L2tyTCs5YWZHdUlVYUxMVFZuc2tpS05maVhXaXBUcjN1eWtoS0hCS3IrWnJKdkFqSDBQanRvbzhtSFlvZU1zMlVLNFdTeVZxSFR5Mng5VjU2RzlnTkpiM1BqTWZQamRXS095T1J6bnRsTVRrPQ==' data-cascade='true' data-force-refresh='true' data-cascade-id-ref='ID_TIPO_REFERENCIA' data-params='ID_TIPO_REFERENCIA={0}' required></select>
-                        <span id="err_ID_RELACION_REFERENCIAS"></span>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
                         Código postal
                         <input type="text" id="CODIGO_POSTAL_REFERENCIAS" name="CODIGO_POSTAL_REFERENCIAS" class="form-control" maxlength="10">
                     </div>
@@ -674,6 +666,14 @@
                     </div>
                 </div>
                 <br>
+                   <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        Relación o parentesco <br> <!-- Se llena del catálogo CAT_RELACION -->
+                        <select  class="form-control" id="ID_RELACION_SOCIOECONOMICOS" name="ID_RELACION_SOCIOECONOMICOS" data-error="#err_ID_RELACION_SOCIOECONOMICOS" data-query='aVlaNnpEUWZuQ2J4Ulp2VytYNHVlWDR1ck9LRE83R3ZOWmVnenRuampBcnR3WmliWUVqTno4VEhNdFFrdDB0L2tyTCs5YWZHdUlVYUxMVFZuc2tpS05maVhXaXBUcjN1eWtoS0hCS3IrWnJKdkFqSDBQanRvbzhtSFlvZU1zMlVLNFdTeVZxSFR5Mng5VjU2RzlnTkpiM1BqTWZQamRXS095T1J6bnRsTVRrPQ==' data-cascade='true' data-force-refresh='true' data-cascade-id-ref='ID_TIPO_REFERENCIA' data-params='ID_TIPO_REFERENCIA={0}' required></select>
+                        <span id="err_ID_RELACION_SOCIOECONOMICOS"></span>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-4">
                         <button class="btn btn-default" id="guardarDependiente">Guardar dependiente</button>
