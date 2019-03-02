@@ -37,7 +37,7 @@
         <div class="tab-pane fade show active" id="datosGenerales" role="tabpanel" aria-labelledby="Tab1-tab">
                 <?php echo $this->load->view('Solicitud/tabs/datosGenerales/mnuTabDatosGenerales',null,TRUE) ?>
             <div class="tab-content" id="contentDatosGenerales">
-                    <?php echo $this->load->view('Solicitud/tabs/datosGenerales/contenidoDatosGenerales',null,TRUE) ?>
+                <?php echo $this->load->view('Solicitud/tabs/datosGenerales/contenidoDatosGenerales',null,TRUE) ?>
             </div>
         </div>
         <div class="tab-pane fade" id="Laboral" role="tabpanel" aria-labelledby="profile-tab">

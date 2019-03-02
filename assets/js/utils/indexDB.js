@@ -1,7 +1,8 @@
 var iDB = {
+    version: 1,
     status : false,
     vars : {
-        db : new Dexie('SGP'),
+        db : new Dexie('SGPv1'),
         selects : $('select'),
         toPopulate : 0,
         tablesChecked : 0,
@@ -10,8 +11,6 @@ var iDB = {
     init : async function(){
         const tablas = await iDB.actions.getTablesNames();
         iDB.actions.createIDB(tablas);
-
-
 
         var iDBTablesCheck = setInterval(function(){
             if (iDB.vars.tablesChecked == iDB.vars.db.tables.length || iDB.status){
@@ -32,13 +31,16 @@ var iDB = {
             });
         },
         createIDB : function(tables){
-            iDB.vars.db.version(1).stores(tables);
+            var oldDB = new Dexie('SGP');
+            oldDB.delete().then(function() {}).catch(function(err) {})
+
+            iDB.vars.db.version( iDB.version ).stores(tables);
             iDB.vars.db.open();
             iDB.vars.db.on('ready',function(){iDB.actions.populateTables()});
         },
         populateTables : function(){
             //Limpiar tablas que se generaron y hubo cambio donde actualmente no debe popularse por INDEXEDDB
-            iDB.vars.db.ID_RELACION_REFERENCIAS.clear().then(function() {});
+            // iDB.vars.db.ID_RELACION_REFERENCIAS.clear().then(function() {});
 
             const tables = iDB.vars.db.tables;
             tables.forEach(function (table) {
@@ -54,6 +56,7 @@ var iDB = {
                     }).catch(function(){
                         iDB.vars.tablesChecked++;
                     });
+                }).catch(function(err){                    
                 });
             });            
         },

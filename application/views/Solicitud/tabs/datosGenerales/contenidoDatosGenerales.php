@@ -25,7 +25,7 @@
                 </div>
                 <br>
                 <div class="row">
-                <div class="col-md-4">
+                    <div class="col-md-4">
                         <span class="clr">*</span>Nombre
                         <input type="text" id="pNOMBRE_DATOS_PERSONALES" name="pNOMBRE_DATOS_PERSONALES" class="form-control consultaCURP"  maxlength="40" required>
                     </div>
@@ -661,19 +661,29 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Parentesco <br><!-- Se llena del catálogo CAT_RELACION -->
-                        <select style="width:356px;" class="form-control" id="ID_RELACION" name="ID_RELACION" data-error="#err_ID_RELACION" data-query='NXMrSFhUSXFSNWxoNmJ4Ri9TTUNjRGROSzBpY01FSmxaSndnN3ZXdHlKU2hFWjRUZGF4M0JkSGUzMHE2Z0dFT1k0T3I2UmsveUU0L2JpUjJRL3Q3YjA5ZXBUZkVXNFFiaFIxYXdOTnNkQXg0RTNySEpseDJUam1wSWRnWjNvZ3c=' required></select>
+                        <select style="width:356px;" id="ID_RELACION" name="ID_RELACION" class="form-control" data-error="#err_ID_RELACION" data-query='d1lEQ2dSOSsrZUtnU2wwVjJWRHBCSE12STBKUElSU2l5bHA4OTRJbzlXc01BVFNvYms3V0lYYm1QWkVPellLdlNsZmNicy83akdkaEVTZDAxTDVGNVRzdnZtK3k5KzRzZFJxYXZCNERJRmhwOCtFb0ZFS0hjNEhaZTd4cWw1U2Y=' required></select>                        
                         <span id="err_ID_RELACION"></span>
                     </div>
                 </div>
                 <br>
-                   <br>
                 <div class="row">
                     <div class="col-md-4">
-                        Relación o parentesco <br> <!-- Se llena del catálogo CAT_RELACION -->
-                        <select  class="form-control" id="ID_RELACION_SOCIOECONOMICOS" name="ID_RELACION_SOCIOECONOMICOS" data-error="#err_ID_RELACION_SOCIOECONOMICOS" data-query='aVlaNnpEUWZuQ2J4Ulp2VytYNHVlWDR1ck9LRE83R3ZOWmVnenRuampBcnR3WmliWUVqTno4VEhNdFFrdDB0L2tyTCs5YWZHdUlVYUxMVFZuc2tpS05maVhXaXBUcjN1eWtoS0hCS3IrWnJKdkFqSDBQanRvbzhtSFlvZU1zMlVLNFdTeVZxSFR5Mng5VjU2RzlnTkpiM1BqTWZQamRXS095T1J6bnRsTVRrPQ==' data-cascade='true' data-force-refresh='true' data-cascade-id-ref='ID_TIPO_REFERENCIA' data-params='ID_TIPO_REFERENCIA={0}' required></select>
+                        <span class="clr">*</span>Relación <br> <!-- Se llena del catálogo CAT_RELACION -->
+                        <select
+                            class="form-control" 
+                            id="ID_RELACION_SOCIOECONOMICOS" 
+                            name="ID_RELACION_SOCIOECONOMICOS" 
+                            data-error="#err_ID_RELACION_SOCIOECONOMICOS" 
+                            data-query='aVlaNnpEUWZuQ2J4Ulp2VytYNHVlWDR1ck9LRE83R3ZOWmVnenRuampBcnR3WmliWUVqTno4VEhNdFFrdDB0L2tyTCs5YWZHdUlVYUxMVFZuc2tpS05maVhXaXBUcjN1eWtoS0hCS3IrWnJKdkFqSDBQanRvbzhtSFlvZU1zMlVLNFdTeVZxSFR5Mng5VjU2RzlnTkpiM1BqTWZQamRXS095T1J6bnRsTVRrPQ==' 
+                            data-cascade='true' 
+                            data-force-refresh='true' 
+                            data-cascade-id-ref='ID_RELACION' 
+                            data-params='ID_TIPO_REFERENCIA={0}' 
+                            required></select>
                         <span id="err_ID_RELACION_SOCIOECONOMICOS"></span>
                     </div>
                 </div>
+                <br>
                 <div class="row">
                     <div class="col-md-4">
                         <button class="btn btn-default" id="guardarDependiente">Guardar dependiente</button>

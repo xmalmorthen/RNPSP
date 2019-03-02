@@ -51,7 +51,7 @@
 			// /TITLE BODY PAGE
 			
 			// FORM MODE
-			$this->session->set_flashdata('formMode','add'); //MODO EDICIÓN
+			$this->session->set_flashdata('formMode','add'); //MODO REGISTRO
 
 			$this->load->view('Solicitud/Registro');
         }
