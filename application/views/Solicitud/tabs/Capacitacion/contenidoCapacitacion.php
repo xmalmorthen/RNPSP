@@ -45,7 +45,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <button class="btn btn-default" id="guardarIdioma">Guardar idioma y/o dialecto</button>
+                        <button class="btn btn-default btnGuardarSection" id="guardarIdioma">Guardar idioma y/o dialecto</button>
                     </div>
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
@@ -82,7 +82,7 @@
 
      <div class="tab-pane fade" id="Habilidades_aptitudes" role="tabpanel" aria-labelledby="Habilidades_aptitudes-tab">
         <div class="_container">
-            <form action="#" id="Habilidades_aptitudes_form" name="Habilidades_aptitudes_form"autocomplete="off">
+            <form action="#" id="Habilidades_aptitudes_form" name="Habilidades_aptitudes_form" autocomplete="off">
                 <br>
                 <div class="row">
                     <div class="col-md-12 text-center">
@@ -109,7 +109,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <button class="btn btn-default" id="guardarHabilidad">Guardar habilidad y/o aptitud</button>
+                        <button class="btn btn-default btnGuardarSection" id="guardarHabilidad">Guardar habilidad y/o aptitud</button>
                     </div>
                     <div class="col-md-4"></div>
                     <div class="col-md-4">

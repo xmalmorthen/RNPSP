@@ -2,7 +2,6 @@ var objViewLaboral = {
     vars : {
         general : {
             init : false,
-            btnSiguienteAnterior : null
         },
         laboral : {
             forms : {
@@ -64,12 +63,16 @@ var objViewLaboral = {
         objViewLaboral.vars.laboral.btns.guardarActitud = $('#guardarActitud');
         objViewLaboral.vars.laboral.btns.guardarComision = $('#guardarComision');
 
-        objViewLaboral.vars.general.btnSiguienteAnterior = $('.btnSiguienteAnterior');
         // SELECTS
         objViewLaboral.vars.laboral.cmbs.pINSTITUCION = $('#pINSTITUCION');
 
         // INIT SELECTS
         objViewLaboral.vars.general.mainContentTab.find('select').select2({width : '100%'});
+        $(document).on('focus', '.select2.select2-container', function (e) {
+            if (e.originalEvent) {
+                $(this).siblings('select').select2('open');
+            }
+        });
 
         //EVENTS
         //SUBMIT
@@ -80,9 +83,9 @@ var objViewLaboral = {
         // CLICK
         objViewLaboral.vars.laboral.btns.guardarAdscripcion.on('click',objViewLaboral.events.click.laboral.guardarAdscripcion);
         objViewLaboral.vars.laboral.btns.guardarEmpleo.on('click',objViewLaboral.events.click.laboral.guardarEmpleo);
-        objViewLaboral.vars.laboral.btns.guardarActitud.on('click',objViewLaboral.events.click.general.guardarActitud);
-        objViewLaboral.vars.laboral.btns.guardarComision.on('click',objViewLaboral.events.click.general.guardarComision);
-        objViewLaboral.vars.general.btnSiguienteAnterior.on('click',objViewLaboral.events.click.general.btnSiguienteAnterior);
+        objViewLaboral.vars.laboral.btns.guardarActitud.on('click',objViewLaboral.events.click.laboral.guardarActitud);
+        objViewLaboral.vars.laboral.btns.guardarComision.on('click',objViewLaboral.events.click.laboral.guardarComision);
+        
         //FOCUSOUT
         
         //CHANGE
@@ -93,8 +96,7 @@ var objViewLaboral = {
         $.each(objViewLaboral.vars.laboral.forms, function( index, value ) {
             var form = value;
             form.find('input, select').change(function(e) {
-                form.removeData('hasSaved');
-                form.removeData('hasDiscardChanges');
+                form.removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError');
                 form.data('hasChanged',true);
 
                 $(e.target).removeError();
@@ -122,85 +124,37 @@ var objViewLaboral = {
     },
     events : {
         click : {
-            general : {
-                btnSiguienteAnterior : function(e){
-                    e.preventDefault();
-                    var tab = $(this).data('nexttab'); 
-                    $(tab).tab('show');
-                }
+            general : {                
             },
             laboral : {
-                guardarAdscripcion : function(e, from){
+                guardarAdscripcion : function(e, from, tabRef){
                     e.preventDefault();
-
-                    var $this = $(this),
-                        form = $this.parents('form:first');
-                    
-                    form.closeAlert({alertType : 'alert-danger'});
-
-                    //VALID FORM
-                    try {
-                        if (!objViewLaboral.vars.laboral.forms.Adscripcion_actual_form.valid())
-                            throw "Invalid FORM";
-
-                        $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
-
-                        var callUrl = base_url + 'Ejemplos/ajaxGetSample';
-                        model = {
-                            var1 : 'val1',
-                            var2 : 'val2'
-                        };
-
-                        $.when(
-                            $.get(callUrl,{model : model})
-                            .always(function () {
-                                MyCookie.session.reset();
-                            })
-                        ).then( 
-                            //success
-                            function(data, textStatus, jqXHR){
-                                form.removeData('hasChanged');
-                                form.data('hasSaved',true);
-
-                                dynTabs.markTab( ( dynTabs.tabs.prebTab.linkRef ? dynTabs.tabs.prebTab.linkRef : dynTabs.tabs.currentTab.linkRef),  '<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
-
-                                $.LoadingOverlay("hide");
-
-                                if (from)
-                                    if(from == 'tab')
-                                        dynTabs.tabs.prebTab.tabForm.find('.btnSiguienteAnterior.siguienteTab').trigger('click');
-                            },
-                            //error
-                            function(err, textStatus, jqXHR){
-                                $.LoadingOverlay("hide");
-                                var msg = err.status + ' - ' + err.statusText;
-                                                                
-                                form.setAlert({
-                                    alertType :  'alert-danger',
-                                    dismissible : true,
-                                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error al guardar',
-                                    msg : msg,
-                                    callback : function(){
-                                        //Swal.fire({ type: 'error', title: 'Error', html: msg }); //se comenta porque al mostrar el modal no respeta el scroll top al bloque del alert.
-                                    }
-                                });
-
-                                dynTabs.markTab( ( dynTabs.tabs.prebTab.linkRef ? dynTabs.tabs.prebTab.linkRef : dynTabs.tabs.currentTab.linkRef),  '<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
-                            } 
-                        );
-                    }catch(err) {
-                        dynTabs.markTab( ( dynTabs.tabs.prebTab.linkRef ? dynTabs.tabs.prebTab.linkRef : dynTabs.tabs.currentTab.linkRef),  '<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
-                        form.setAlert({
-                            alertType :  'alert-danger',
-                            dismissible : true,
-                            header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
-                            msg : 'Formulario incompleto'
-                        });
-                    }
+                    objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralAdscripcion',from, tabRef, function(data){
+                        console.log(data);
+                        debugger;
+                    });
                 },
-                guardarEmpleo : function(e, from){},
-                guardarActitud : function(e, from){},
-                guardarComision : function(e, from){}
+                guardarEmpleo : function(e, from, tabRef){
+                    e.preventDefault();
+                    objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralEmpleo',from, tabRef, function(data){
+                        console.log(data);
+                        debugger;
+                    });
+                },
+                guardarActitud : function(e, from, tabRef){
+                    e.preventDefault();
+                    objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralActitud',from, tabRef, function(data){
+                        console.log(data);
+                        debugger;
+                    });
+                },
+                guardarComision : function(e, from, tabRef){
+                    e.preventDefault();
+                    objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralComision',from, tabRef, function(data){
+                        console.log(data);
+                        debugger;
+                    });
+                }
             }
         },
         change : {
@@ -215,22 +169,22 @@ var objViewLaboral = {
 
                 var callUrl = base_url + 'ajaxCatalogos';
                 $.get(callUrl,
-                    {
-                        qry : 'bTgxZG9aN21oYUhOaDZ6RUxFQ2dJNGo0QmczOXgxNGlodVpVbnJYY0ljNk5yeU5NT3k0NzdvWHVYdm5QR2tNeDNyWGRBQzg3TmpZZGFqV1BQMitOUmZTZnl5OEYrdTNYcmw2R1Q2SHEvUmF3cXBaSjNKZkEwcmRUN0FERzh5a0U=',
-                        params : 'ID_INSTITUCION=' + valInstitucion
-                    },
-                    function (data) {
-                        if (!data)
-                            return null;
+                {
+                    qry : 'bTgxZG9aN21oYUhOaDZ6RUxFQ2dJNGo0QmczOXgxNGlodVpVbnJYY0ljNk5yeU5NT3k0NzdvWHVYdm5QR2tNeDNyWGRBQzg3TmpZZGFqV1BQMitOUmZTZnl5OEYrdTNYcmw2R1Q2SHEvUmF3cXBaSjNKZkEwcmRUN0FERzh5a0U=',
+                    params : 'ID_INSTITUCION=' + valInstitucion
+                },
+                function (data) {
+                    if (!data)
+                        return null;
 
-                        var id = data.results[0].ID_ENTIDAD;
-                        if (id) 
-                            $('#pID_ENTIDAD_ADSCRIPCION_ACTUAL').val(id).trigger('change.select2');
-                    }).fail(function (err) {})
-                    .always(function () {
-                        $('#pID_ENTIDAD_ADSCRIPCION_ACTUAL').LoadingOverlay("hide");
-                    });
-
+                    var id = data.results[0].ID_ENTIDAD;
+                    if (id) 
+                        $('#pID_ENTIDAD_ADSCRIPCION_ACTUAL').val(id).trigger('change').trigger('change.select2');
+                }).fail(function (err) {})
+                .always(function () {
+                    $('#pID_ENTIDAD_ADSCRIPCION_ACTUAL').LoadingOverlay("hide");
+                });
+                
                 $('#pID_AREA').getCatalog({
                     query : 'dlIwdE11aDdRNlltQitFQjRFVWd6UXZGbUFDS2xxeFJpNDA2b1pkUi9GMUtabi9ncDZERVVDTnlMLzBEakEwTzAybnVNa0RUUGdlek92bjNmZWozNkVCbU12UG5MdUZZVExjdnZvczdwbm43c0lONnAyeHFSUU96SWlkd3NDZVQ=',
                     params :  '[ID_DEPENDENCIA]=' + valDependencia + ' and [ID_INSTITUCION]=' + valInstitucion,
@@ -240,14 +194,99 @@ var objViewLaboral = {
         }
     },
     actions : {        
-        discartChanges : function(e,relatedTarget){   
+        discartChanges : function(e,eTab){
+            var form = $('#' + $(eTab.currentTarget).attr('aria-controls')).find('form');
+            form.closeAlert({alertType : 'alert-danger'});
+
             dynTabs.markTab(dynTabs.tabs.prebTab.linkRef,'<span class="text-warning tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true"></i></span>');
             Swal.close();
+                
             dynTabs.tabs.prebTab.tabForm.removeData('hasChanged');
             dynTabs.tabs.prebTab.tabForm.data('hasDiscardChanges',true);
 
-            $("#" + relatedTarget.id).trigger('click');
-            dynTabs.tabs.prebTab.tabForm.find('.btnSiguienteAnterior.siguienteTab').trigger('click');
+            $("#" + eTab.relatedTarget.id).trigger('click');
+        },
+        ajax : {
+            callResponseValidations : function(form, data, from, tabRef, callback){
+                try{
+                    if (!data) 
+                        throw new Error('Respuesta inesperada, favor de intentarlo de nuevo.');
+                    if (!data.results)
+                        throw new Error('Respuesta inesperada, favor de intentarlo de nuevo.');
+                    if (typeof data.results.status === "undefined")
+                        throw new Error('Estatus desconocido, favor de contactar a soporte.');
+                    if (!data.results.status)
+                        throw new Error(data.results.message ? data.results.message : 'Error desconocido.' );
+                    
+                    form.removeData('hasChanged').removeData('hasDiscardChanges').removeData('withError');
+                    form.data('hasSaved',true);
+
+                    if (from) {
+                        if(from == 'tab') {
+                            $(tabRef.relatedTarget).trigger('click');
+                            dynTabs.markTab( $(tabRef.currentTarget),  '<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
+                            return null;
+                        }
+                    }
+                    dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef ,'<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
+
+                    if (callback) 
+                        if ($.isFunction( callback ))
+                            callback(data); 
+
+                }catch(err) {
+                    objViewLaboral.actions.ajax.throwError(err,form,from,tabRef);
+                }
+            },
+            throwError: function(err,form,from,tabRef){
+                $.LoadingOverlay("hide");
+                
+                form.setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.message ? err.message : err.statusText
+                });
+
+                form.removeData('hasSaved').removeData('hasDiscardChanges');
+                form.data('withError',true);
+
+                if (from) {
+                    if(from == 'tab') {
+                        dynTabs.markTab( $(tabRef.currentTarget),  '<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
+                        return null;
+                    }
+                }
+                dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef,'<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
+            },
+            generateRequest: function($this,callUrl,from,tabRef, callback){
+                var form = $this.parents('form:first');
+                form.closeAlert({alertType : 'alert-danger'});
+                
+                try {
+                    //VALID FORM
+                    if (!form.valid())
+                        throw new Error("Formulario incompleto");
+
+                    $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+                    
+                    var model = form.serialize();
+                    
+                    $.post(callUrl,{
+                        model : model
+                    },
+                    function (data) {  
+                        objViewDatosGenerales.actions.ajax.callResponseValidations(form,data, from, tabRef, callback);
+                    }).fail(function (err) {
+                        objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                            
+                    }).always(function () {
+                        $.LoadingOverlay("hide");
+                    });
+
+                }catch(err) {
+                    objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                        
+                }
+            }
         }
     }
 }

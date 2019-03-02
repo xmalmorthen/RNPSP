@@ -9,6 +9,10 @@
 class MY_Model extends CI_Model
 {
   protected $table_name = 'table_name';
+  public $iniParams = array();
+  public $procName = '';
+  public $params = array();
+  public $output = array();
   public function __construct()
   {
     parent::__construct();
@@ -37,6 +41,84 @@ class MY_Model extends CI_Model
    * 
    * @return array    Array with results.
    */
+
+  private function getType($mime){
+    $type = '';
+    switch ($mime) {
+      case 'varchar':
+        
+        break;
+      case 'int':
+        break;
+      
+    }
+  }
+
+  public function iniParam($nombre,$tipo = 'varchar',$longitud = false){
+    $longitud = ($longitud != false)? "(".$longitud.")" : "";
+    array_push($this->iniParams,"@{$nombre} {$tipo}{$longitud}");
+    array_push($this->output,$nombre);
+    return $this->iniParams;
+  }
+  public function procedure($name){
+    $this->procName = $name;
+    return $this->procName;
+  }
+  public function addParam($nombre,$_value = false,$valuePrefix = '',$validation = array()){
+    $value = ($_value !== null && $this->input->post($_value) != false)? $this->input->post($_value) : null;
+    $value = ($value !== null)? (($value === false)? "{$nombre} OUTPUT" : "{$valuePrefix}{$this->db->escape($value)}") : 'null';
+    array_push($this->params,"@{$nombre} = {$value}");
+
+    if($validation != false && is_array($validation) && count($validation)>0){
+      // Utils::pre( array($nombre, (array_key_exists('name',$validation)? $validation['name'] : $nombre), (array_key_exists('rule',$validation)? $validation['rule'] : 'trim')),false );
+      $this->form_validation->set_rules($_value, (array_key_exists('name',$validation)? $validation['name'] : $nombre), (array_key_exists('rule',$validation)? $validation['rule'] : 'trim'));
+    }
+
+    return $this->params;
+  }
+
+  public function build_query(){
+    $query = '';
+
+    if(count($this->iniParams) > 0){
+      $query .= 'DECLARE '.implode(', ',$this->iniParams).'; ';
+    }
+
+    $query .= ' EXEC ['.$this->procName.'] ';
+
+    if(count($this->params) > 0){
+      $query .= implode(', ',$this->params) ;
+    }
+
+    if(count($this->output) > 0){
+      if(count($this->params) > 0){
+        $query .= ', ';
+      }
+      foreach ($this->output as $value) {
+        $query .= "@{$value} = @{$value} OUTPUT,";
+      }
+      $query = rtrim($query,',');
+    }
+    $query .= '; ';
+
+    if(count($this->output) > 0){
+      $query .= ' SELECT ';
+      foreach ($this->output as $value) {
+        $sValue = $this->db->escape($value);
+        $query .= " @{$value} AS N".$sValue.",";
+      }
+      $query = rtrim($query,',');
+    }
+    $query .= '; ';
+
+    $this->iniParams = array();
+    $this->procName = '';
+    $this->params = array();
+    $this->output = array();
+
+    return "BEGIN TRANSACTION {$query} COMMIT TRANSACTION";
+  }
+
   function find($params = array(), $is_row_array = false)
   {
     try {
@@ -191,5 +273,28 @@ class MY_Model extends CI_Model
       Msg_reporting::error_log($e);
     }
     return $result;
+  }
+
+  public function query_row($query)
+  {
+    $result = false;
+    try {
+      if ($query == false) {
+        throw new Exception('Error query_row');
+      }
+      $result = $query->row_array();
+      $query->free_result();
+    } catch (Exception $e) {
+      Msg_reporting::error_log($e);
+    }
+    return $result;
+  }
+
+  public function modelToPost($model){
+    if(is_array($model)){
+      foreach ($model as $key => $value) {
+        $_POST[$key] = $value;
+      }
+    }
   }
 }

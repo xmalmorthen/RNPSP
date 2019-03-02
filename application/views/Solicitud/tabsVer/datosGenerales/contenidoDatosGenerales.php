@@ -80,10 +80,10 @@
                         <h6 class="borderButtom">Fecha de nacionalidad</h6>
                         <p></p>
                     </div>
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                         <h6 class="borderButtom"><span class="clr">*</span>RFC</h6>
                         <p></p>
-                    </div>
+                    </div> -->
                     <div class="col-md-4">
                         <h6 class="borderButtom"><span class="clr">*</span>Estado civil <!-- Se llena del catálogo CAT_ESTADO_CIVIL --></h6>
                         <p></p>

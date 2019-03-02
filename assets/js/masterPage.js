@@ -61,8 +61,8 @@ if ( typeof sess_time_to_update !== 'undefined') {
     }, 1000);
 }
 
-
 $(document).ready(function () { 
+    
     moment.locale('es');
     
     $.LoadingOverlaySetup({image:"",fontawesome : "fa fa-gear fa-spin",maxSize:150,minSize:20,zIndex : 1000});

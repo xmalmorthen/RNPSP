@@ -1,43 +1,88 @@
 $(function() {
-    if (formMode.length == 0)
-        window.location.href = base_url + 'Error/setError?err=No se especificó el modo del formulario!!!';
-
-    dynTabs.mode = formMode;
-
-    //CAMBIO DE TABS
-    //MAIN TAB
-    $('#mainContainerTab a[data-toggle="tab"]').on('show.bs.tab',mainTabMenu.tab.change);
-    $('#mainContainerTab a[data-toggle="tab"]').on('shown.bs.tab',dynTabs.loaderTab);
-    
-
-    var linkRefHash = MyCookie.tabRef.get(dynTabs.mode + 'MainTab');
-    if (!linkRefHash){
-        linkRefHash = $('#mainContainerTab .nav-item a.nav-link.active')[0].id;
-        MyCookie.tabRef.save(dynTabs.mode + 'MainTab',linkRefHash);
-    }
-    var linkRef = $('#' + linkRefHash);
-
-    mainTabMenu.actions.init(
-        linkRef.attr('aria-controls'),
-        function(){
-            linkRef.trigger('click');
+    var statusIDBInterval = setInterval(function(){
+        if (iDB.status) {
+            clearInterval(statusIDBInterval);
+            statusIDBInterval = null;
+            mainTabMenu.fireInit();
         }
-    );
-
-    switch (formMode) {
-        case 'edit':
-            mainFormActions.populateData(id);
-        break;
-        case 'add' : 
-            mainTabMenu.mainInit();
-        break;
-    }
+    }, 300);
 });
 
 var mainTabMenu = {
+    var : {
+        pID_ALTERNA : null
+    },
+    fireInit : function(){
+        $('._container.d-none').removeClass('d-none');
+
+        if (formMode.length == 0)
+            window.location.href = base_url + 'Error/setError?err=No se especificó el modo del formulario!!!';
+
+        dynTabs.mode = formMode;
+
+        //CAMBIO DE TABS
+        //MAIN TAB
+        $('#mainContainerTab a[data-toggle="tab"]').on('show.bs.tab',mainTabMenu.tab.change);
+        $('#mainContainerTab a[data-toggle="tab"]').on('shown.bs.tab',dynTabs.loaderTab);
+        
+
+        var linkRefHash = MyCookie.tabRef.get(dynTabs.mode + 'MainTab');
+        if (!linkRefHash){
+            linkRefHash = $('#mainContainerTab .nav-item a.nav-link.active')[0].id;
+            MyCookie.tabRef.save(dynTabs.mode + 'MainTab',linkRefHash);
+        }
+        var linkRef = $('#' + linkRefHash);
+
+        mainTabMenu.actions.init(
+            linkRef.attr('aria-controls'),
+            function(){
+                linkRef.trigger('click');
+            }
+        );
+
+        switch (formMode) {
+            case 'edit':
+                mainFormActions.populateData(id);
+            break;
+            case 'add' : 
+                mainTabMenu.mainInit();
+            break;
+        }
+
+        $('.btnSiguienteAnterior').on('click',function(e){
+            e.preventDefault();
+            var tab = $(this).data('nexttab'); 
+            $(tab).tab('show');
+        })
+
+        $('.endTab').on('click',function(e){
+            var nextTab = $('#mainContainerTab li.nav-item a.nav-link.active').closest('li').next('li.nav-item').find('a.nav-link');
+            nextTab.tab('show'); 
+        });
+    },
     tab : {
         change : function(e){
-            var tabRef = $(e.currentTarget);
+            var tabRef = $(e.currentTarget),
+                forms = $('#myTabContent>.tab-pane.show.active form'),
+                allFormsSaved = true;
+
+
+            forms.each(function( index ) {
+                if ( $(this).data('hasSaved') != true ) {
+                    allFormsSaved = false;
+                    return false;
+                }
+            });
+
+            $(e.relatedTarget).data('finish',allFormsSaved);
+
+            // TODO: Xmal - Quitar comentarios en bloque para implementación
+            // if (!$(tabRef).data('finish')){
+            //     e.preventDefault();
+            //     Swal.fire({ type: 'warning', title: 'Aviso', html: 'Debe completar y guardar la información de las pestañas que actualmente se muestran.' });
+            //     return null;
+            // }
+
             mainTabMenu.actions.init(tabRef.attr('aria-controls'));
             MyCookie.tabRef.save(dynTabs.mode + 'MainTab',tabRef.attr('id'));
         }
@@ -47,7 +92,7 @@ var mainTabMenu = {
         init : function(tabRef, callback){
             mainTabMenu.actions.inited = false;
 
-            //dynTabs.validForm = formMode != 'edit' ? true : false;
+            // dynTabs.validForm = formMode != 'edit' ? true : false;
 
             switch (tabRef) {
                 case 'datosGenerales':
@@ -86,7 +131,8 @@ var mainTabMenu = {
             }
             var linkRef = $('#' + linkRefHash);
             linkRef.trigger('click');
-        }
+        },
+
     },
     mainInit : function(){
         Swal.fire({
@@ -191,9 +237,9 @@ var mainFormActions = {
         mainFormActions.insertValueInSelect($('#pID_ENTIDAD_NAC'),'6');
         mainFormActions.insertValueInSelect($('#pID_MUNICIPIO_NAC'),'2');
         
-        mainFormActions.insertValueInSelect($('#_dependenciaAdscripcionActual'),'2');
-        mainFormActions.insertValueInSelect($('#pINSTITUCION'),'1');
-        mainFormActions.insertValueInSelect($('#pID_AREA'),'1656');
+        mainFormActions.insertValueInSelect($('#_dependenciaAdscripcionActual'),'9');
+        mainFormActions.insertValueInSelect($('#pINSTITUCION'),'3817');
+        mainFormActions.insertValueInSelect($('#pID_AREA'),'173525');                
         
         dynTabs.loaderTab();
     },
@@ -205,7 +251,6 @@ var mainFormActions = {
                 ref.val(value);
                 ref.trigger('change.select2').trigger('change');
             }
-            //ref.val(value).data('insert',value).trigger('change').trigger('change.select2');
         }
     }
 }
