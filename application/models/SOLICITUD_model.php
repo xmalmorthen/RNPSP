@@ -2,6 +2,7 @@
 
 class SOLICITUD_model extends MY_Model
 {
+  public $nombreCatalogo = 'vw_Solicitudes';
   public $response = array();
   public function __construct()
   {
@@ -13,16 +14,14 @@ class SOLICITUD_model extends MY_Model
     );
   }
 
-  public function arrayToPost($model){
-    if(is_array($model)){
-      foreach ($model as $key => $value) {
-        $_POST[$key] = $value;
-      }
-    }
+  
+
+  public function get(){
+    $this->select('FOLIO,NOMBRE,PATERNO,MATERNO,FECHA_REGISTRO,TIPO_OPERACION,DESCRIPCION,ESTATUS,Expr1');
+    return $this->response_list();
   }
 
   public function addDatosPersonales($model){
-    
     $this->arrayToPost($model);
     $this->load->library('form_validation');
     $this->form_validation->set_rules('pTIPO_MOV', 'Tipo de movimiento', 'trim|required|max_length[3]');
@@ -36,7 +35,7 @@ class SOLICITUD_model extends MY_Model
     $this->form_validation->set_rules('pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES', 'Fecha de nacimiento', 'trim|required');
     //$this->form_validation->set_rules('pSEXO_DATOS_PERSONALES', 'Sexo', 'trim|required|max_length[1]'); //NO SE ENCONTRO
     $this->form_validation->set_rules('pCURP', 'CURP', 'trim|required|max_length[20]');
-    //$this->form_validation->set_rules('pRFC', '', 'numeric|max_length[10]'); //NO SE ENCONTRO
+    $this->form_validation->set_rules('pRFC', 'pRFC_DOMICILIO', 'max_length[20]');
     $this->form_validation->set_rules('pCREDENCIAL_LECTOR', 'Clave de elector', 'trim|max_length[30]');
     $this->form_validation->set_rules('pCARTILLA_SMN', 'Cartilla del SMN', 'trim|max_length[20]');
     $this->form_validation->set_rules('pLICENCIA_DATOS_PERSONALES', 'Licencia de conducir', 'trim|max_length[20]');
@@ -62,38 +61,37 @@ class SOLICITUD_model extends MY_Model
       $this->addParam('pID_MUNICIPIO_NAC','pID_MUNICIPIO_NAC');
       $this->addParam('pID_ESTADO_CIVIL','pID_ESTADO_CIVIL');
       $this->addParam('pFECHA_NAC','pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES');
-      // $this->addParam('pSEXO','pSEXO_DATOS_PERSONALES','N');
-      $this->addParam('pSEXO',null);
+      $this->addParam('pSEXO','pSEXO_DATOS_PERSONALES','N');
       $this->addParam('pCURP','pCURP','N');
-      $this->addParam('pRFC',null,'N');
+      $this->addParam('pRFC','pRFC_DOMICILIO','N');
       $this->addParam('pCREDENCIAL_ELECTOR','pCREDENCIAL_LECTOR','N');
       $this->addParam('pCARTILLA_SMN','pCARTILLA_SMN','N');
       $this->addParam('pLICENCIA','pLICENCIA_DATOS_PERSONALES','N');
       $this->addParam('pPASAPORTE','pPASAPORTE','N');
       $this->addParam('pMODO_NACIONALIDAD','pMODO_NACIONALIDAD');
       $this->addParam('pID_NACIONALIDAD','pID_NACIONALIDAD');
-      $this->addParam('pNIDEPERSON',null);
+      $this->addParam('pNIDEPERSON',null);//envial NULL 
       $this->addParam('pLICENCIA_VIG','pLICENCIA_VIG');
       $this->addParam('pCIUDAD_NAC','pCIUDAD_NAC_DATOS_PERSONALES','N');
       $this->addParam('pFECHA_NACIONALIDAD','pFECHA_NACIONALIDAD');
       $this->addParam('pCIB','CIB','N');
       $this->addParam('pMotivoCIB','motivoCIB','N');
 
-      $this->iniParam('pID_ALTERNA','NUMERIC');
+      $this->iniParam('pID_ALTERNA','numeric');
       $this->iniParam('txtError','varchar','250');
       $this->iniParam('msg','varchar','80');
       $this->iniParam('tranEstatus','int');
-
+      // Utils::pre($this->build_query());
       $query = $this->db->query($this->build_query());
       $response = $this->query_row($query);
-
+      // Utils::pre($response);
       if($response == FALSE){
         $this->response['status'] = false;
         $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
       }else{
         $this->response['status'] = $response['tranEstatus'];
         $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
-        $this->response['data'] = array('ID_ALTERNA'=>$response['ID_ALTERNA']);
+        $this->response['data'] = array('ID_ALTERNA'=> (array_key_exists('ID_ALTERNA',$response)? $response['ID_ALTERNA'] : false) );
         
       }
     } else {
@@ -458,6 +456,43 @@ class SOLICITUD_model extends MY_Model
       $this->response['message'] = $this->form_validation->error_array();
     }
     return $this->response;
-
   }
+
+  /*
+  * "Opcion Nueva Solicitud - Boton Gurdar CIB sp_B1_addPersonaCIB - Agraga un nuevo CIB a una persona"
+  */
+  public function  sp_B1_addPersonaCIB($model){
+    $this->arrayToPost($model);
+    $_POST['ID_ALTERNA'] = 4;
+
+    $this->load->library('form_validation'  );
+
+    $this->addParam('@pID_ALTERNA','ID_ALTERNA');
+    $this->addParam('@pCIB','','',array('rule'=>'trim|max_length[50]'));
+    $this->addParam('@pMotivoCIB','','',array('rule'=>'trim|max_length[300]'));
+
+    if ($this->form_validation->run() === true) {
+
+      $this->procedure('sp_B1_addPersonaCIB');
+      $this->iniParam('txtError','varchar','250');
+      $this->iniParam('msg','varchar','80');
+      $this->iniParam('tranEstatus','int');
+    
+      $query = $this->db->query($this->build_query());
+      $response = $this->query_row($query);
+
+      if($response == FALSE){
+        $this->response['status'] = false;
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      }else{
+        $this->response['status'] = (bool)$response['tranEstatus'];
+        $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
+      }
+    } else {
+      $this->response['status'] = false;
+      $this->response['message'] = $this->form_validation->error_array();
+    }
+    return $this->response;
+  }
+
 }

@@ -41,61 +41,72 @@ class MY_Model extends CI_Model
    * 
    * @return array    Array with results.
    */
-
-  public function iniParam($nombre,$tipo = 'varchar',$longitud = false){
-    $longitud = ($longitud != false)? "(".$longitud.")" : "";
-    array_push($this->iniParams,"@{$nombre} {$tipo}{$longitud}");
-    array_push($this->output,$nombre);
+  public function arrayToPost($model)
+  {
+    if (is_array($model)) {
+      foreach ($model as $key => $value) {
+        $_POST[$key] = $value;
+      }
+    }
+  }
+  public function iniParam($nombre, $tipo = 'varchar', $longitud = false)
+  {
+    $longitud = ($longitud != false) ? "(" . $longitud . ")" : "";
+    array_push($this->iniParams, "@{$nombre} {$tipo}{$longitud}");
+    array_push($this->output, $nombre);
     return $this->iniParams;
   }
-  public function procedure($name){
+  public function procedure($name)
+  {
     $this->procName = $name;
     return $this->procName;
   }
-  public function addParam($nombre,$_value = false,$valuePrefix = '',$validation = array()){
-    $value = ($_value !== null && $this->input->post($_value) != false)? $this->input->post($_value) : null;
-    $value = ($value !== null)? (($value === false)? "{$nombre} OUTPUT" : "{$valuePrefix}{$this->db->escape($value)}") : 'null';
-    array_push($this->params,"@{$nombre} = {$value}");
+  public function addParam($nombre, $_value = false, $valuePrefix = '', $validation = array())
+  {
+    $value = ($_value !== null && $this->input->post($_value) != false) ? $this->input->post($_value) : null;
+    $value = ($value !== null) ? (($value === false) ? "{$nombre} OUTPUT" : "{$valuePrefix}{$this->db->escape($value)}") : 'null';
+    array_push($this->params, "@{$nombre} = {$value}");
 
-    if($validation != false && is_array($validation) && count($validation)>0 && $_value !== null){
+    if ($validation != false && is_array($validation) && count($validation) > 0 && $_value !== null) {
       // Utils::pre( array($nombre, (array_key_exists('name',$validation)? $validation['name'] : $nombre), (array_key_exists('rule',$validation)? $validation['rule'] : 'trim')),false );
-      $this->form_validation->set_rules($_value, (array_key_exists('name',$validation)? $validation['name'] : $nombre), (array_key_exists('rule',$validation)? $validation['rule'] : 'trim'));
+      $this->form_validation->set_rules($_value, (array_key_exists('name', $validation) ? $validation['name'] : $nombre), (array_key_exists('rule', $validation) ? $validation['rule'] : 'trim'));
     }
 
     return $this->params;
   }
 
-  public function build_query(){
+  public function build_query()
+  {
     $query = '';
 
-    if(count($this->iniParams) > 0){
-      $query .= 'DECLARE '.implode(', ',$this->iniParams).'; ';
+    if (count($this->iniParams) > 0) {
+      $query .= 'DECLARE ' . implode(', ', $this->iniParams) . '; ';
     }
 
-    $query .= ' EXEC ['.$this->procName.'] ';
+    $query .= ' EXEC [' . $this->procName . '] ';
 
-    if(count($this->params) > 0){
-      $query .= implode(', ',$this->params) ;
+    if (count($this->params) > 0) {
+      $query .= implode(', ', $this->params);
     }
 
-    if(count($this->output) > 0){
-      if(count($this->params) > 0){
+    if (count($this->output) > 0) {
+      if (count($this->params) > 0) {
         $query .= ', ';
       }
       foreach ($this->output as $value) {
         $query .= "@{$value} = @{$value} OUTPUT,";
       }
-      $query = rtrim($query,',');
+      $query = rtrim($query, ',');
     }
     $query .= '; ';
 
-    if(count($this->output) > 0){
+    if (count($this->output) > 0) {
       $query .= ' SELECT ';
       foreach ($this->output as $value) {
         $sValue = $this->db->escape($value);
-        $query .= " @{$value} AS N".$sValue.",";
+        $query .= " @{$value} AS N" . $sValue . ",";
       }
-      $query = rtrim($query,',');
+      $query = rtrim($query, ',');
     }
     $query .= '; ';
 
@@ -213,13 +224,13 @@ class MY_Model extends CI_Model
     $this->db->from($this->nombreCatalogo);
   }
 
-  public function join($table,$join,$inner = false){
-    if($inner == false){
-      $this->db->join($table,$join);
-    }else{
-      $this->db->join($table,$join,$inner);
+  public function join($table, $join, $inner = false)
+  {
+    if ($inner == false) {
+      $this->db->join($table, $join);
+    } else {
+      $this->db->join($table, $join, $inner);
     }
-    
   }
 
   public function where($column, $value)
@@ -278,8 +289,9 @@ class MY_Model extends CI_Model
     return $result;
   }
 
-  public function modelToPost($model){
-    if(is_array($model)){
+  public function modelToPost($model)
+  {
+    if (is_array($model)) {
       foreach ($model as $key => $value) {
         $_POST[$key] = $value;
       }
