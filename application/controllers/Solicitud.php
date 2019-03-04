@@ -888,7 +888,7 @@
 					// La variable [ $files ] contiene la lista de archivos subidos
 					// La variable POST $this->input->post("pID_ALTERNA") contiene el ID_ALTERNA
 
-					$responseModel['status'] = true;
+					$responseModel['status'] = false;
 					$responseModel['message'] = 'Método no implementado';
 					$responseModel['data'] = [];
 
@@ -921,17 +921,61 @@
 			];
 
 			try {
-				if (!$this->input->post())
-					throw new rulesException('Petición inválida');
+				$filesCount = count($_FILES['fichaVoz']['name']);
+				$errors = array();
+				$files = array();
 
-				$model = [];
-				parse_str($_POST["model"], $model);
-				
-				//TODO: Tamata - Implementar
+				if($filesCount == 0)
+					throw new rulesException('No se encontraron archivos para guardar');
+					
 
-				$responseModel['status'] = false;
-				$responseModel['message'] = 'Método no implementado';				
-				$responseModel['data'] = [];
+				foreach ($_FILES['fichaVoz']['name'] as $key => $value) {
+					$_FILES['_fichaVoz']['name']      = $_FILES['fichaVoz']['name'][$key];
+					$_FILES['_fichaVoz']['type']      = $_FILES['fichaVoz']['type'][$key];
+					$_FILES['_fichaVoz']['tmp_name']  = $_FILES['fichaVoz']['tmp_name'][$key];
+					$_FILES['_fichaVoz']['error']     = $_FILES['fichaVoz']['error'][$key];
+					$_FILES['_fichaVoz']['size']      = $_FILES['fichaVoz']['size'][$key];
+
+					$config['upload_path']          = STATIC_DOCUMMENTS_PATH . 'fichaVoz';
+					$config['allowed_types']        = 'mp3';
+					$config['max_size']             = 10240;
+					$config['max_width']            = 0;
+					$config['max_height']           = 0;
+					$config['encrypt_name']         = TRUE;
+
+					$this->load->library('upload', $config);
+
+					if ( ! $this->upload->do_upload('_fichaVoz'))
+					{
+						array_push($errors,array('idDoc' => $key, 'error' => $this->upload->display_errors('', '')));
+						$this->upload->error_msg = [];
+						
+					} else {
+						$fileInfo = $this->upload->data();
+						$data = array(
+							"originalName" => $_FILES['_fichaVoz']['name'],
+							"name" => $fileInfo['file_name'], 
+							"idDoc" => $key
+						);
+						array_push($files,$data);
+					}
+				}
+
+				if (count($errors) == 0) {
+					$outputMSG = "";
+
+					//TODO: Tamata - Implementar el guardado de las referencias de archivos.
+					// La variable [ $files ] contiene la lista de archivos subidos
+					// La variable POST $this->input->post("pID_ALTERNA") contiene el ID_ALTERNA
+
+					$responseModel['status'] = false;
+					$responseModel['message'] = 'Método no implementado';
+					$responseModel['data'] = [];
+
+				} else {
+					$responseModel['message'] = 'Error al intentar guardar';
+					$responseModel['data'] = $errors;
+				}				
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));

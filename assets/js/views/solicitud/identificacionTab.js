@@ -484,11 +484,109 @@ var objViewIdentificacion = {
                 },
                 guardarVoz : function(e, from, tabRef){
                     e.preventDefault();
-                    objViewIdentificacion.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveIdentificacionVoz',from, tabRef, function(data){
-                        console.log(data);
+
+                    var form = $(this).parents('form:first'),
+                        inputFiles = form.find('input:file'),
+                        model = new FormData(),
+                        callUrl = base_url + 'Solicitud/ajaxSaveIdentificacionVoz';
+
+                    form.closeAlert({alertType : 'alert-danger'});
+
+                    try {
+                        //VALID FORM
+                        if (!form.valid())
+                            throw new Error("Formulario incompleto");
+
+                        $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+                        model.append("pID_ALTERNA",  mainTabMenu.var.pID_ALTERNA);
                         
-                        debugger;
-                    });
+                        var filesComplete = true;
+                        for (var i = 0; i < inputFiles.length ; i++) {
+                            if (inputFiles[i].files.length > 0)
+                                model.append("fichaVoz[" + inputFiles[i].id + "]", inputFiles[i].files[0]);
+                            else {
+                                $(inputFiles[i]).setError('Información obligatoria.');
+                                filesComplete = false;
+                            }
+                        }
+
+                        if (filesComplete) {
+                            $.ajax({
+                                type: "POST",
+                                enctype: 'multipart/form-data',
+                                url: callUrl,
+                                data: model,
+                                processData: false,
+                                contentType: false,
+                                cache: false,
+                                timeout: 600000,
+                                success: function (data) {
+                                    try{
+                                        if (!data) 
+                                            throw new Error('Respuesta inesperada, favor de intentarlo de nuevo.');
+                                        if (!data.results)
+                                            throw new Error('Respuesta inesperada, favor de intentarlo de nuevo.');
+                                        if (typeof data.results.status === "undefined")
+                                            throw new Error('Estatus desconocido, favor de contactar a soporte.');
+                                        if (!data.results.status)
+                                            throw new Error(data.results.message ? data.results.message : 'Error desconocido.' );
+                                        
+                                        form.removeData('hasChanged').removeData('hasDiscardChanges').removeData('withError');
+                                        form.data('hasSaved',true);
+
+                                        if (from) {
+                                            if(from == 'tab') {
+                                                $(tabRef.relatedTarget).trigger('click');
+                                                dynTabs.markTab( $(tabRef.currentTarget),  '<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
+                                                return null;
+                                            }
+                                        }
+                                        dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef ,'<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
+                                        
+                                        populate.reset(form);
+                                        $.LoadingOverlay("hide");
+                                    }catch(err) {
+                                        $.LoadingOverlay("hide");
+                    
+                                        form.setAlert({
+                                            alertType :  'alert-danger',
+                                            dismissible : true,
+                                            header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                                            msg : err.message ? err.message : err.statusText
+                                        });
+
+                                        if (data.results.data)
+                                            $.each(data.results.data, function( index, value ) {
+                                                $('#' + value.idDoc).setError(value.error);
+                                            });
+
+                                        form.removeData('hasSaved').removeData('hasDiscardChanges');
+                                        form.data('withError',true);
+
+                                        if (from) {
+                                            if(from == 'tab') {
+                                                dynTabs.markTab( $(tabRef.currentTarget),  '<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
+                                                return null;
+                                            }
+                                        }
+                                        dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef,'<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
+                                    }
+                                },
+                                error: function (err) {
+                                    objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                                 
+                                },
+                                always : function(){
+                                    $.LoadingOverlay("hide");
+                                }
+                            });
+                        } else {
+                            throw new Error("Formulario incompleto");                            
+                        }
+
+                    }catch(err) {
+                        objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                        
+                    } 
                 },
                 validarVoz : function(e, from, tabRef){
                     e.preventDefault();
