@@ -271,7 +271,177 @@ class SOLICITUD_model extends MY_Model
       $this->iniParam('txtError','varchar','250');
       $this->iniParam('msg','varchar','80');
       $this->iniParam('tranEstatus','int');
-      Utils::pre($this->build_query());
+
+      $query = $this->db->query($this->build_query());
+      $response = $this->query_row($query);
+
+      if($response == FALSE){
+        $this->response['status'] = false;
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      }else{
+        $this->response['status'] = (bool)$response['tranEstatus'];
+        $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
+      }
+    } else {
+      $this->response['status'] = false;
+      $this->response['message'] = $this->form_validation->error_array();
+    }
+    return $this->response;
+
+  }
+  /*
+  * $this->addParam('method sp_B2_DG_addSocioEconomico - Agraga el niviel socioeconomico de la persona
+  */
+  public function addSocioEconomico($model){
+
+    $this->arrayToPost($model);
+    $_POST['ID_ALTERNA'] = 4;//ID_ALTERNA_Socioeconomico
+
+    $this->load->library('form_validation');
+
+    $this->addParam('pID_ALTERNA','ID_ALTERNA');
+    $this->addParam('pID_ESTADO_EMISOR','pID_ESTADO_EMISOR_Socioeconomico','',array('rule'=>'trim|numeric'));
+    $this->addParam('pID_EMISOR','pID_EMISOR_Socioeconomico','',array('rule'=>'trim|numeric'));
+
+    $this->addParam('pVIVE_FAMILIA','VIVE_FAMILIA','',array('name'=>'¿Vive con su familia?','rule'=>'trim'));
+    $this->addParam('pINGRESO_FAMILIAR','INGRESO_FAMILIAR','',array('name'=>'Ingreso familiar adicional (mensual)','rule'=>'trim|numeric'));
+    $this->addParam('pID_TIPO_DOMIC','ID_TIPO_DOMICILIO','',array('name'=>'Su domicilio es','rule'=>'trim|numeric'));
+    $this->addParam('pACTIVIDAD_CULTURAL','ACTIVIDAD_CULTURAL','',array('name'=>'Actividades culturales o deportivas que practica','rule'=>'trim'));
+    $this->addParam('pINMUEBLES','INMUEBLES','',array('name'=>'Especificación de inmuebles y costos','rule'=>'trim'));
+    $this->addParam('pINVERSIONES','INVERSIONES','',array('name'=>'Inversión y monto aproximado','rule'=>'trim'));
+    $this->addParam('pNUMERO_AUTOS','NUMERO_AUTOS','',array('name'=>'Vehículo y costo aproximado','rule'=>'trim'));
+    $this->addParam('pCALIDAD_VIDA','CALIDAD_VIDA','',array('name'=>'Calidad de vida','rule'=>'trim'));
+    $this->addParam('pVICIOS','VICIOS','',array('name'=>'Vicios','rule'=>'trim'));
+    $this->addParam('pIMAGEN_PUBLICA','IMAGEN_PUBLICA','',array('name'=>'Imágen pública','rule'=>'trim'));
+    $this->addParam('pRESPONSABLE_CORP',null); // no se encontro en el formulario
+    $this->addParam('pCOMPORTA_SOCIAL','COMPORTA_SOCIAL','',array('name'=>'Comportamiento social ','rule'=>'trim'));
+    
+    if ($this->form_validation->run() === true) {
+
+      $this->procedure('sp_B2_DG_addSocioEconomico');
+      $this->iniParam('txtError','varchar','250');
+      $this->iniParam('msg','varchar','80');
+      $this->iniParam('tranEstatus','int');
+
+      $query = $this->db->query($this->build_query());
+      $response = $this->query_row($query);
+
+      if($response == FALSE){
+        $this->response['status'] = false;
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      }else{
+        $this->response['status'] = (bool)$response['tranEstatus'];
+        $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
+      }
+    } else {
+      $this->response['status'] = false;
+      $this->response['message'] = $this->form_validation->error_array();
+    }
+    return $this->response;
+
+  }
+
+  /*
+  * $this->addParam('method sp_B2_DG_addDependiente - Agrega los datos de las personas dependientes del elemento				
+  */
+  public function addDependiente($model){
+    $this->arrayToPost($model);
+    $_POST['ID_ALTERNA'] = 4;//ID_ALTERNA_Socioeconomico
+
+    $this->load->library('form_validation');
+
+    $this->addParam('pID_ALTERNA','ID_ALTERNA');
+    $this->addParam('pID_ESTADO_EMISOR','pID_ESTADO_EMISOR_Socioeconomico','',array('rule'=>'trim|numeric'));
+    $this->addParam('pID_EMISOR','pID_EMISOR_Socioeconomico','',array('rule'=>'trim|numeric'));
+
+    $this->addParam('pPATERNO','PATERNO_SOCIOECONOMICOS','',array('name'=>'Apellido paterno','rule'=>'trim|required'));
+    $this->addParam('pMATERNO','MATERNO_SOCIOECONOMICOS','',array('name'=>'Apellido materno','rule'=>'trim'));
+    $this->addParam('pFECHA_NAC','FECHA_NAC_SOCIOECONOMICOS','',array('name'=>'Fecha de nacimiento','rule'=>'trim|required'));
+    $this->addParam('pSEXO','SEXO_SOCIOECONOMICOS','',array('name'=>'Sexo','rule'=>'trim|required'));
+    $this->addParam('pNOMBRE','NOMBRE_SOCIOECONOMICOS','',array('name'=>'Nombre','rule'=>'trim|required'));
+    $this->addParam('pID_SUBTIPO_REF','ID_RELACION','',array('name'=>'Parentesco','rule'=>'trim|numeric'));
+    $this->addParam('pID_TIPO_DEPENDIENT','ID_RELACION_SOCIOECONOMICOS','',array('name'=>'Relación ','rule'=>'trim|numeric'));
+    
+    if ($this->form_validation->run() === true) {
+
+      $this->procedure('sp_B2_DG_addDependiente');
+      $this->iniParam('txtError','varchar','250');
+      $this->iniParam('msg','varchar','80');
+      $this->iniParam('tranEstatus','int');
+      Utils::pre($this->build_query()); 
+      // retorna
+      // Debe exsitir un registro sobre datos sobre el entorno socioeconómico del elemento, para poder registrar los depedientes
+      $query = $this->db->query($this->build_query());
+      $response = $this->query_row($query);
+
+      if($response == FALSE){
+        $this->response['status'] = false;
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      }else{
+        $this->response['status'] = (bool)$response['tranEstatus'];
+        $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
+      }
+    } else {
+      $this->response['status'] = false;
+      $this->response['message'] = $this->form_validation->error_array();
+    }
+    return $this->response;
+
+  }
+
+  /*
+  * $this->addParam('method sp_B2_LAB_addEmpleoSeg - Agraga la información de los empleos anteriores en seguridad pública del elemento.
+  */
+  public function  sp_B2_LAB_addEmpleoSeg($model){
+    $this->arrayToPost($model);
+    $_POST['ID_ALTERNA'] = 4;//pID_ALTERNA_Adscripcion_actual
+
+    $this->load->library('form_validation'  );
+
+    $this->addParam('pID_ALTERNA','ID_ALTERNA');
+    $this->addParam('pID_ESTADO_EMISOR','pID_ESTADO_EMISOR_Adscripcion_actual','',array('rule'=>'trim|numeric'));
+    $this->addParam('pID_EMISOR','pID_EMISOR_Adscripcion_actual','',array('rule'=>'trim|numeric'));
+
+    $this->addParam('pID_DEPENDENCIA','_dependenciaAdscripcionActual','',array('rule'=>'trim'));
+    $this->addParam('pID_DOC_BAJA','pID_DOC_BAJA_Adscripcion_actual','',array('rule'=>'trim'));
+    $this->addParam('pID_ENTIDAD','pID_ENTIDAD_ADSCRIPCION_ACTUAL','',array('rule'=>'trim'));
+    $this->addParam('pID_MUNICIPIO','pID_MUNICIPIO_ADSCRIPCION_ACTUAL','',array('rule'=>'trim'));
+    $this->addParam('pID_MOTIVO_MOV_LAB',null,'',array('rule'=>'trim')); //NO LO ENCONTRE EN EL FORMULARIO
+    $this->addParam('pID_TIPO_MOV_LAB',NULL,'',array('rule'=>'trim|numeric'));//NO LO ENCONTRE EN EL FORMULARIO
+    $this->addParam('pID_AREA','pID_AREA','',array('rule'=>'trim|numeric'));
+    $this->addParam('pID_PUESTO',null,'',array('rule'=>'trim|numeric'));//NO LO ENCONTRE EN EL MODEL
+    $this->addParam('pID_INSTITUCION','pINSTITUCION','',array('rule'=>'trim|numeric')); //
+    $this->addParam('pID_TIPO_CONTRATO','pID_TIPO_CONTRATO_Adscripcion_actual','',array('rule'=>'trim'));
+    $this->addParam('pFECHA_INGRESO','pFECHA_INGRESO','',array('rule'=>'trim'));
+    $this->addParam('pESPECIALIDAD','pESPECIALIDAD','',array('rule'=>'trim'));
+    $this->addParam('pRANGO','pRANGO','',array('rule'=>'trim'));
+    $this->addParam('pSUELDO_BASE','pSUELDO_BASE','',array('rule'=>'trim'));
+    $this->addParam('pID_NIVEL_MANDO','pID_NIVEL_MANDO','',array('rule'=>'trim'));
+    $this->addParam('pCOMPENSACION','pCOMPENSACION','',array('rule'=>'trim'));
+    $this->addParam('pNUMERO_PLACA','pNUMERO_PLACA','',array('rule'=>'trim'));
+    $this->addParam('pNUMERO_EXPEDIENTE','pNUMERO_EXPEDIENTE','',array('rule'=>'trim'));
+    $this->addParam('pID_TIPO_BAJA','pID_DOC_BAJA_Adscripcion_actual','',array('rule'=>'trim'));
+    $this->addParam('pFECHA_BAJA',null,'',array('rule'=>'trim'));//NO LO ENCONTRE EN EL FORMULARIO
+    $this->addParam('pOBSERVACION_BAJA',null,'',array('rule'=>'trim'));//NO LO ENCONTRE EN EL FORMULARIO
+    $this->addParam('pFUNCIONES','pFUNCIONES','',array('rule'=>'trim'));
+    $this->addParam('pNUMERO_EMPLEADO',null,'',array('rule'=>'trim'));//NO LO ENCONTRE EN EL FORMULARIO
+    $this->addParam('pID_CATEGORIA_PUEST','pID_CATEGORIA_PUEST_Adscripcion_actual','',array('rule'=>'trim|numeric'));
+    $this->addParam('pID_JERARQUIA_PUEST','pID_JERARQUIA_PUEST_Adscripcion_actual','',array('rule'=>'trim|numeric'));
+    $this->addParam('pID_FUNCION_PUESTO',null,'',array('rule'=>'trim'));//NO LO ENCONTRE EN EL FORMULARIO
+    $this->addParam('pID_AMBITO_PUESTO','pID_AMBITO_PUESTO_Adscripcion_actual','',array('rule'=>'trim|numeric'));
+    $this->addParam('pDIVISION','pDIVISION','',array('rule'=>'trim'));
+    $this->addParam('pID_JEFE','ID_JEFE','',array('name'=>'CUIP del jefe inmediato','rule'=>'trim|numeric'));
+
+    
+
+    if ($this->form_validation->run() === true) {
+
+      $this->procedure('sp_B2_LAB_addEmpleoSeg');
+      $this->iniParam('txtError','varchar','250');
+      $this->iniParam('msg','varchar','80');
+      $this->iniParam('tranEstatus','int');
+      //Cannot insert the value NULL into column 'ID_ESTADO_EMISOR', table 'zzhpregpersonalc4.zzhpregpersc4.EMPLEOS_SEG'; column does not allow nulls. INSERT fails. (515)
+      Utils::pre($this->build_query()); 
 
       $query = $this->db->query($this->build_query());
       $response = $this->query_row($query);

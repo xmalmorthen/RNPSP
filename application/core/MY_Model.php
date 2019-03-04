@@ -42,18 +42,6 @@ class MY_Model extends CI_Model
    * @return array    Array with results.
    */
 
-  private function getType($mime){
-    $type = '';
-    switch ($mime) {
-      case 'varchar':
-        
-        break;
-      case 'int':
-        break;
-      
-    }
-  }
-
   public function iniParam($nombre,$tipo = 'varchar',$longitud = false){
     $longitud = ($longitud != false)? "(".$longitud.")" : "";
     array_push($this->iniParams,"@{$nombre} {$tipo}{$longitud}");
@@ -69,7 +57,7 @@ class MY_Model extends CI_Model
     $value = ($value !== null)? (($value === false)? "{$nombre} OUTPUT" : "{$valuePrefix}{$this->db->escape($value)}") : 'null';
     array_push($this->params,"@{$nombre} = {$value}");
 
-    if($validation != false && is_array($validation) && count($validation)>0){
+    if($validation != false && is_array($validation) && count($validation)>0 && $_value !== null){
       // Utils::pre( array($nombre, (array_key_exists('name',$validation)? $validation['name'] : $nombre), (array_key_exists('rule',$validation)? $validation['rule'] : 'trim')),false );
       $this->form_validation->set_rules($_value, (array_key_exists('name',$validation)? $validation['name'] : $nombre), (array_key_exists('rule',$validation)? $validation['rule'] : 'trim'));
     }
