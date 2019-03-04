@@ -686,6 +686,9 @@
 				$errors = array();
 				$files = array();
 
+				if($filesCount == 0)
+					throw new rulesException('No se encontraron archivos para guardar');
+
 				foreach ($_FILES['fichaFotografica']['name'] as $key => $value) {
 					$_FILES['_fichaFotografica']['name']      = $_FILES['fichaFotografica']['name'][$key];
 					$_FILES['_fichaFotografica']['type']      = $_FILES['fichaFotografica']['type'][$key];
@@ -758,17 +761,61 @@
 			];
 
 			try {
-				if (!$this->input->post())
-					throw new rulesException('Petición inválida');
+				$filesCount = count($_FILES['fichaDecadactilar']['name']);
+				$errors = array();
+				$files = array();
 
-				$model = [];
-				parse_str($_POST["model"], $model);
-				
-				//TODO: Tamata - Implementar
+				if($filesCount == 0)
+					throw new rulesException('No se encontraron archivos para guardar');
+					
 
-				$responseModel['status'] = false;
-				$responseModel['message'] = 'Método no implementado';				
-				$responseModel['data'] = [];
+				foreach ($_FILES['fichaDecadactilar']['name'] as $key => $value) {
+					$_FILES['_fichaDecadactilar']['name']      = $_FILES['fichaDecadactilar']['name'][$key];
+					$_FILES['_fichaDecadactilar']['type']      = $_FILES['fichaDecadactilar']['type'][$key];
+					$_FILES['_fichaDecadactilar']['tmp_name']  = $_FILES['fichaDecadactilar']['tmp_name'][$key];
+					$_FILES['_fichaDecadactilar']['error']     = $_FILES['fichaDecadactilar']['error'][$key];
+					$_FILES['_fichaDecadactilar']['size']      = $_FILES['fichaDecadactilar']['size'][$key];
+
+					$config['upload_path']          = STATIC_DOCUMMENTS_PATH . 'fichaDecadactilar';
+					$config['allowed_types']        = 'jpg|jpeg|png|pdf';
+					$config['max_size']             = 10240;
+					$config['max_width']            = 0;
+					$config['max_height']           = 0;
+					$config['encrypt_name']         = TRUE;
+
+					$this->load->library('upload', $config);
+
+					if ( ! $this->upload->do_upload('_fichaDecadactilar'))
+					{
+						array_push($errors,array('idDoc' => $key, 'error' => $this->upload->display_errors('', '')));
+						$this->upload->error_msg = [];
+						
+					} else {
+						$fileInfo = $this->upload->data();
+						$data = array(
+							"originalName" => $_FILES['_fichaDecadactilar']['name'],
+							"name" => $fileInfo['file_name'], 
+							"idDoc" => $key
+						);
+						array_push($files,$data);
+					}
+				}
+
+				if (count($errors) == 0) {
+					$outputMSG = "";
+
+					//TODO: Tamata - Implementar el guardado de las referencias de archivos.
+					// La variable [ $files ] contiene la lista de archivos subidos
+					// La variable POST $this->input->post("pID_ALTERNA") contiene el ID_ALTERNA
+
+					$responseModel['status'] = false;
+					$responseModel['message'] = 'Método no implementado';
+					$responseModel['data'] = [];
+
+				} else {
+					$responseModel['message'] = 'Error al intentar guardar';
+					$responseModel['data'] = $errors;
+				}				
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
@@ -794,17 +841,61 @@
 			];
 
 			try {
-				if (!$this->input->post())
-					throw new rulesException('Petición inválida');
+				$filesCount = count($_FILES['fichaDocumento']['name']);
+				$errors = array();
+				$files = array();
 
-				$model = [];
-				parse_str($_POST["model"], $model);
-				
-				//TODO: Tamata - Implementar
+				if($filesCount == 0)
+					throw new rulesException('No se encontraron archivos para guardar');
+					
 
-				$responseModel['status'] = true;
-				$responseModel['message'] = 'Método no implementado';				
-				$responseModel['data'] = [];
+				foreach ($_FILES['fichaDocumento']['name'] as $key => $value) {
+					$_FILES['_fichaDocumento']['name']      = $_FILES['fichaDocumento']['name'][$key];
+					$_FILES['_fichaDocumento']['type']      = $_FILES['fichaDocumento']['type'][$key];
+					$_FILES['_fichaDocumento']['tmp_name']  = $_FILES['fichaDocumento']['tmp_name'][$key];
+					$_FILES['_fichaDocumento']['error']     = $_FILES['fichaDocumento']['error'][$key];
+					$_FILES['_fichaDocumento']['size']      = $_FILES['fichaDocumento']['size'][$key];
+
+					$config['upload_path']          = STATIC_DOCUMMENTS_PATH . 'fichaDocumento';
+					$config['allowed_types']        = 'jpg|jpeg|png|pdf';
+					$config['max_size']             = 10240;
+					$config['max_width']            = 0;
+					$config['max_height']           = 0;
+					$config['encrypt_name']         = TRUE;
+
+					$this->load->library('upload', $config);
+
+					if ( ! $this->upload->do_upload('_fichaDocumento'))
+					{
+						array_push($errors,array('idDoc' => $key, 'error' => $this->upload->display_errors('', '')));
+						$this->upload->error_msg = [];
+						
+					} else {
+						$fileInfo = $this->upload->data();
+						$data = array(
+							"originalName" => $_FILES['_fichaDocumento']['name'],
+							"name" => $fileInfo['file_name'], 
+							"idDoc" => $key
+						);
+						array_push($files,$data);
+					}
+				}
+
+				if (count($errors) == 0) {
+					$outputMSG = "";
+
+					//TODO: Tamata - Implementar el guardado de las referencias de archivos.
+					// La variable [ $files ] contiene la lista de archivos subidos
+					// La variable POST $this->input->post("pID_ALTERNA") contiene el ID_ALTERNA
+
+					$responseModel['status'] = true;
+					$responseModel['message'] = 'Método no implementado';
+					$responseModel['data'] = [];
+
+				} else {
+					$responseModel['message'] = 'Error al intentar guardar';
+					$responseModel['data'] = $errors;
+				}				
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));

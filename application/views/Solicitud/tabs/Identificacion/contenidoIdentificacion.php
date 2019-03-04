@@ -821,7 +821,7 @@
                     <div class="col-md-4">
                         Documento
                         <div class="custom-file">
-                            <input type="file" id="pIMAGEN" name="pIMAGEN" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN' accept="application/pdf,image/*">
+                            <input type="file" id="pIMAGEN" name="pIMAGEN" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN' accept="application/pdf,image/*" required>
                             <label class="custom-file-label" for="inputGroupFile01">Seleccionar documento</label>
                         </div>
                     </div>

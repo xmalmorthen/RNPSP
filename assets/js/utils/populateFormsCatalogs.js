@@ -42,5 +42,10 @@ var populate = {
                 });
             }
         }
+    },
+    reset : function(form){
+        form.trigger('reset');
+        form.find('select').trigger('change'); //refrescado para selects2
+        form.find('.custom-file-label').html(''); //Contenedor especial para los input file
     }
 }
