@@ -21,6 +21,25 @@ class SOLICITUD_model extends MY_Model
     return $this->response_list();
   }
 
+  /*
+  * "Opcion Nueva Solicitud - Validar CURP sp_validaCURP- Valida si una CURP se encuentra ya registrada o no. SI está, regresa la informacion de los datos personales"
+  */
+  public function sp_validaCURP($CURP){
+
+    $this->procedure('sp_validaCURP');
+    $this->addParam('pCURP',$CURP,'N',array('name'=>'CURP','rule'=>'trim|required|min_length[16]|max_length[20]'));
+    $this->iniParam('tranEstatus','int');
+    $query = $this->db->query($this->build_query());
+    $response = $this->query_row($query);
+    if($response == FALSE){
+      $this->response['status'] = false;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    }else{
+      $this->response['status'] = current($response);
+    }
+    return $this->response;
+  }
+
   public function addDatosPersonales($model){
     $this->arrayToPost($model);
     $this->load->library('form_validation');

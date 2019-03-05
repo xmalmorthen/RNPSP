@@ -106,7 +106,8 @@
 					throw new rulesException('Parámetros incorrectos');
 				}
 				
-				//TODO: Tamata - Implementar la consulta para obtener datos de registro
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_validaCURP($CURP);
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));

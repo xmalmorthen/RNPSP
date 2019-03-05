@@ -63,13 +63,18 @@ class MY_Model extends CI_Model
   }
   public function addParam($nombre, $_value = false, $valuePrefix = '', $validation = array())
   {
-    $value = ($_value !== null && $this->input->post($_value) != false) ? $this->input->post($_value) : null;
-    $value = ($value !== null) ? (($value === false) ? "{$nombre} OUTPUT" : "{$valuePrefix}{$this->db->escape($value)}") : 'null';
-    array_push($this->params, "@{$nombre} = {$value}");
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+      $value = ($_value !== null && $this->input->post($_value) != false) ? $this->input->post($_value) : null;
+      $value = ($value !== null) ? (($value === false) ? "{$nombre} OUTPUT" : "{$valuePrefix}{$this->db->escape($value)}") : 'null';
+      array_push($this->params, "@{$nombre} = {$value}");
 
-    if ($validation != false && is_array($validation) && count($validation) > 0 && $_value !== null) {
-      // Utils::pre( array($nombre, (array_key_exists('name',$validation)? $validation['name'] : $nombre), (array_key_exists('rule',$validation)? $validation['rule'] : 'trim')),false );
-      $this->form_validation->set_rules($_value, (array_key_exists('name', $validation) ? $validation['name'] : $nombre), (array_key_exists('rule', $validation) ? $validation['rule'] : 'trim'));
+      if ($validation != false && is_array($validation) && count($validation) > 0 && $_value !== null) {
+        // Utils::pre( array($nombre, (array_key_exists('name',$validation)? $validation['name'] : $nombre), (array_key_exists('rule',$validation)? $validation['rule'] : 'trim')),false );
+        $this->form_validation->set_rules($_value, (array_key_exists('name', $validation) ? $validation['name'] : $nombre), (array_key_exists('rule', $validation) ? $validation['rule'] : 'trim'));
+      }
+    }else{
+      $value = ($_value !== null) ? (($_value === false) ? "{$nombre} OUTPUT" : "{$valuePrefix}{$this->db->escape($_value)}") : 'null';
+      array_push($this->params, "@{$nombre} = {$value}");
     }
 
     return $this->params;
