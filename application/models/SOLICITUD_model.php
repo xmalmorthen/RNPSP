@@ -7,7 +7,7 @@ class SOLICITUD_model extends MY_Model
   public function __construct()
   {
     parent::__construct();
-    $this->respinse = array(
+    $this->response = array(
       'status' => false,
       'message'=> '',
       'data'=> null
@@ -23,6 +23,7 @@ class SOLICITUD_model extends MY_Model
 
   /*
   * "Opcion Nueva Solicitud - Validar CURP sp_validaCURP- Valida si una CURP se encuentra ya registrada o no. SI está, regresa la informacion de los datos personales"
+  * El procedimiento almacenado esta retornando dos resultados
   */
   public function sp_validaCURP($CURP){
 
@@ -35,8 +36,13 @@ class SOLICITUD_model extends MY_Model
       $this->response['status'] = false;
       $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
     }else{
-      $this->response['status'] = (is_array($response) && current($response) > 0)? true : false;
-      $this->response['data'] = array('pID_ALTERNA'=>current($response));
+      if(array_key_exists('tranEstatus',$response)){
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron coincidencias';
+      }else{
+        $this->response['status'] = 1;
+        $this->response['data'] = $response;
+      }
     }
     return $this->response;
   }

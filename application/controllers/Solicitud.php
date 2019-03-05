@@ -116,8 +116,11 @@
 				header("HTTP/1.0 500 Internal Server Error");
 			}
 			
-			header('Content-type: application/json');
-			echo json_encode( [ 'results' => $responseModel ] );
+			$this->output
+        ->set_status_header(200)
+        ->set_content_type('application/json', 'utf-8')
+        ->set_output(json_encode([ 'results' => $responseModel ]))
+        ->_display();
 			exit;
 		}
 

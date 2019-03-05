@@ -80,7 +80,7 @@ class MY_Model extends CI_Model
     return $this->params;
   }
 
-  public function build_query()
+  public function build_query($select = true)
   {
     $query = '';
 
@@ -104,16 +104,17 @@ class MY_Model extends CI_Model
       $query = rtrim($query, ',');
     }
     $query .= '; ';
-
-    if (count($this->output) > 0) {
-      $query .= ' SELECT ';
-      foreach ($this->output as $value) {
-        $sValue = $this->db->escape($value);
-        $query .= " @{$value} AS N" . $sValue . ",";
+    if($select == true){
+      if (count($this->output) > 0) {
+        $query .= ' SELECT ';
+        foreach ($this->output as $value) {
+          $sValue = $this->db->escape($value);
+          $query .= " @{$value} AS N" . $sValue . ",";
+        }
+        $query = rtrim($query, ',');
       }
-      $query = rtrim($query, ',');
+      $query .= '; ';
     }
-    $query .= '; ';
 
     $this->iniParams = array();
     $this->procName = '';
