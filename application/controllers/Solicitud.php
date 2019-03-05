@@ -91,7 +91,7 @@
 			$this->load->view('Solicitud/Ver');
         }
         
-        public function ajaxGetSolicitudByCURP($CURP = NULL){
+        public function ajaxGetSolicitudByCURP($CURP = null){
 			if (!$CURP)
 				$CURP = $this->input->get('CURP');
 		
@@ -109,7 +109,7 @@
 				//TODO: Tamata - Implementar la consulta para obtener datos de registro
 			} 
 			catch (rulesException $e){	
-				header("HTTP/1.0 400 Bad Request");
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 Internal Server Error");
@@ -120,9 +120,9 @@
 			exit;
 		}
 
-		public function ajaxGetSolicitudById($Id = NULL){
-			if (!$Id)
-				$Id = $this->input->get('Id');
+		public function ajaxGetSolicitudById($idRef = null){
+			if (!$idRef)
+				$idRef = $this->input->get('idRef');
 		
 			if (! $this->input->is_ajax_request()) {
 				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
@@ -130,15 +130,15 @@
 
 			$responseModel = NULL;
 			try {
-				if(!$Id){
+				if(!$idRef){
 					throw new rulesException('Parámetros incorrectos');
 				}
 				
-				$responseModel = true;
+				$responseModel = false;
 				//TODO: Tamata - Implementar la consulta para obtener datos de registro
 			} 
 			catch (rulesException $e){	
-				header("HTTP/1.0 400 Bad Request");
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 Internal Server Error");

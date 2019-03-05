@@ -209,25 +209,29 @@ var mainFormActions = {
     },
     populateData : function(idRef){
         $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
-        var callUrl = base_url + `Solicitud/ajaxGetSolicitudById/${idRef}`;
-        fetch(callUrl)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(response.statusText);
-                }
-                return response.json();
-            })
-            .then(response => {
-                if (!response.results) {
-                    throw new Error('No se encontró información');
-                } else {
-                    mainFormActions.fillData(response.results);
-                }
-            })
-            .catch(error => {
-                Swal.fire({ type: 'error', title: 'Error', html: error.message });
+        var callUrl = base_url + 'Solicitud/ajaxGetSolicitudById';
+
+        return new Promise(function (resolve, reject) {
+            $.get(callUrl,{
+                idRef : idRef
+            },
+            function (data) {
+                resolve(data);
+            }).fail(function (err) {                    
+                reject(err);
+            });
+        }).then(function (data) {
+            if (data.results) {
+                mainFormActions.fillData(response.results);
+            } else
+                throw new Error('No se encontró información');
+        }).catch(function(err){
+            $.LoadingOverlay("hide");
+            Swal.fire({ type: 'error', title: 'Error', html: err.statusText ? err.statusText : err.message})
+            .then(() => {
                 window.location.href = base_url + 'Solicitud';
             });
+        });        
     },
     fillData : function(data){
         $('.consultaCURP').readOnly();
@@ -239,7 +243,8 @@ var mainFormActions = {
         
         mainFormActions.insertValueInSelect($('#_dependenciaAdscripcionActual'),'9');
         mainFormActions.insertValueInSelect($('#pINSTITUCION'),'3817');
-        mainFormActions.insertValueInSelect($('#pID_AREA'),'173525');                
+        mainFormActions.insertValueInSelect($('#pID_AREA'),'173525');  
+        mainFormActions.insertValueInSelect($('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL'),'2');  
         
         dynTabs.loaderTab();
     },
