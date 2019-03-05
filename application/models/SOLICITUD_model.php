@@ -31,11 +31,12 @@ class SOLICITUD_model extends MY_Model
     $this->iniParam('tranEstatus','int');
     $query = $this->db->query($this->build_query());
     $response = $this->query_row($query);
-    if($response == FALSE){
+    if($response === FALSE){
       $this->response['status'] = false;
       $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
     }else{
-      $this->response['status'] = current($response);
+      $this->response['status'] = (is_array($response) && current($response) > 0)? true : false;
+      $this->response['data'] = array('pID_ALTERNA'=>current($response));
     }
     return $this->response;
   }
