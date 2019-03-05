@@ -45,11 +45,11 @@ var objViewLaboral = {
         
         // INIT DATATABLE
         objViewLaboral.vars.laboral.tables.tableAdscripcionactual.dom = $('#tableAdscripcionactual');
-        objViewLaboral.vars.laboral.tables.tableAdscripcionactual.obj = objViewLaboral.vars.laboral.tables.tableAdscripcionactual.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});
+        objViewLaboral.vars.laboral.tables.tableAdscripcionactual.obj = objViewLaboral.vars.laboral.tables.tableAdscripcionactual.dom.DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});
         objViewLaboral.vars.laboral.tables.tableEmpleosdiversos.dom = $('#tableEmpleosdiversos');
-        objViewLaboral.vars.laboral.tables.tableEmpleosdiversos.obj = objViewLaboral.vars.laboral.tables.tableEmpleosdiversos.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});
+        objViewLaboral.vars.laboral.tables.tableEmpleosdiversos.obj = objViewLaboral.vars.laboral.tables.tableEmpleosdiversos.dom.DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});
         objViewLaboral.vars.laboral.tables.tableComisiones.dom = $('#tableComisiones');
-        objViewLaboral.vars.laboral.tables.tableComisiones.obj = objViewLaboral.vars.laboral.tables.tableComisiones.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});
+        objViewLaboral.vars.laboral.tables.tableComisiones.obj = objViewLaboral.vars.laboral.tables.tableComisiones.dom.DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});
 
         // INIT ELEMENTS
         // FORMS

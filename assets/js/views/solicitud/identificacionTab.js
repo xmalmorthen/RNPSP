@@ -56,13 +56,13 @@ var objViewIdentificacion = {
         
         // INIT DATATABLE
         objViewIdentificacion.vars.identificacion.tables.tableSenasparticulares.dom = $('#tableSenasparticulares');
-        objViewIdentificacion.vars.identificacion.tables.tableSenasparticulares.obj = objViewIdentificacion.vars.identificacion.tables.tableSenasparticulares.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});
+        objViewIdentificacion.vars.identificacion.tables.tableSenasparticulares.obj = objViewIdentificacion.vars.identificacion.tables.tableSenasparticulares.dom.DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});
         objViewIdentificacion.vars.identificacion.tables.tableFichafotografica.dom = $('#tableFichafotografica');
-        objViewIdentificacion.vars.identificacion.tables.tableFichafotografica.obj = objViewIdentificacion.vars.identificacion.tables.tableFichafotografica.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});
+        objViewIdentificacion.vars.identificacion.tables.tableFichafotografica.obj = objViewIdentificacion.vars.identificacion.tables.tableFichafotografica.dom.DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});
         objViewIdentificacion.vars.identificacion.tables.tableRegistrodecadactilar.dom = $('#tableRegistrodecadactilar');
-        objViewIdentificacion.vars.identificacion.tables.tableRegistrodecadactilar.obj = objViewIdentificacion.vars.identificacion.tables.tableRegistrodecadactilar.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});
+        objViewIdentificacion.vars.identificacion.tables.tableRegistrodecadactilar.obj = objViewIdentificacion.vars.identificacion.tables.tableRegistrodecadactilar.dom.DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});
         objViewIdentificacion.vars.identificacion.tables.tableDigitalizaciondoc.dom = $('#tableDigitalizaciondoc');
-        objViewIdentificacion.vars.identificacion.tables.tableDigitalizaciondoc.obj = objViewIdentificacion.vars.identificacion.tables.tableDigitalizaciondoc.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});        
+        objViewIdentificacion.vars.identificacion.tables.tableDigitalizaciondoc.obj = objViewIdentificacion.vars.identificacion.tables.tableDigitalizaciondoc.dom.DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});        
 
         //INIT TYPE FILES
         objViewIdentificacion.vars.identificacion.files.inputFile = $('.inputFile');

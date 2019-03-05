@@ -35,6 +35,7 @@ var objViewIndex = {
 
         // INIT DATATABLE
         objViewIndex.vars.general.table.obj = $('#tableAdministrarsolicitud').DataTable({
+            stateSave: true,
             "language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},
             "columnDefs": [{"orderable": false,"targets": [0,8]}],
             "order" : [[1]],
