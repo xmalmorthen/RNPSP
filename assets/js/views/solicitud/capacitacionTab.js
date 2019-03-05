@@ -80,6 +80,7 @@ var objViewCapacitacion = {
         //CAMBIO DE TABS
         objViewCapacitacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewCapacitacion.actions.discartChanges}, e); } );
         objViewCapacitacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('show.bs.tab',dynTabs.showTab);
+        objViewCapacitacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('shown.bs.tab',objViewCapacitacion.events.change.tableResponsive);
 
         populate.form($('#Idiomas_dialectos_form')); //popular selects del primer tab NOTA: cambiar programación al tab actual si se obtiene por cookie
         dynTabs.setCurrentTab($('#myTabContent'));
@@ -113,6 +114,13 @@ var objViewCapacitacion = {
                         console.log(data);
                     });
                 }
+            }
+        },
+        change : {
+            tableResponsive : function(){
+                $.each( objViewCapacitacion.vars.capacitacion.tables, function( key, value ) {
+                    try{value.obj.responsive.rebuild().responsive.recalc();}catch(err){}
+                });                
             }
         }
     },
@@ -199,15 +207,15 @@ var objViewCapacitacion = {
                         model : model
                     },
                     function (data) {  
-                        objViewDatosGenerales.actions.ajax.callResponseValidations(form,data, from, tabRef, callback);
+                        objViewCapacitacion.actions.ajax.callResponseValidations(form,data, from, tabRef, callback);
                     }).fail(function (err) {
-                        objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                            
+                        objViewCapacitacion.actions.ajax.throwError(err,form,from,tabRef);                            
                     }).always(function () {
                         $.LoadingOverlay("hide");
                     });
 
                 }catch(err) {
-                    objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                        
+                    objViewCapacitacion.actions.ajax.throwError(err,form,from,tabRef);                        
                 }
             }
         }

@@ -384,7 +384,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12">
-                            <table id="tableSenasparticulares" class="table display">
+                            <table id="tableSenasparticulares" class="table display table-striped dt-responsive" style="width:100%">
                                 <thead>
                                         <th>Id seña</th>
                                         <th>Tipo de seña</th>
@@ -511,7 +511,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12">
-                        <table id="tableRegistrodecadactilar" class="table display">
+                        <table id="tableRegistrodecadactilar" class="table display table-striped dt-responsive" style="width:100%">
                             <thead>
                                     <th>Id registro dactilar</th>
                                     <th>Dependencia</th>
@@ -770,7 +770,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12">
-                        <table id="tableFichafotografica" class="table display">
+                        <table id="tableFichafotografica" class="table display table-striped dt-responsive" style="width:100%">
                             <thead>
                                     <th>Id evaluación</th>
                                     <th>Tipo de evaluación</th>
@@ -844,7 +844,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12">
-                        <table id="tableDigitalizaciondoc" class="table display">
+                        <table id="tableDigitalizaciondoc" class="table display table-striped dt-responsive" style="width:100%">
                             <thead>
                                     <th>Id documento</th>
                                     <th>Categoría de documento</th>

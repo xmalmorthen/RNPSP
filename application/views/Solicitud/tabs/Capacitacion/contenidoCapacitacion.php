@@ -55,7 +55,7 @@
                 <br>
                 <hr>
                 <br>
-                <table id="tableIdiomas" class="table display">
+                <table id="tableIdiomas" class="table display table-striped dt-responsive" style="width:100%">
                     <thead>
                         <th>Id idioma y/o dialecto</th>
                         <th>Idioma</th>
@@ -119,7 +119,7 @@
                 <br>
                 <hr>
                 <br>
-                <table id="tableHabilidades" class="table display">
+                <table id="tableHabilidades" class="table display table-striped dt-responsive" style="width:100%">
                     <thead>
                         <th>Id habilidad y/o aptitud</th>
                         <th>Tipo de habilidad y/o aptitud</th>

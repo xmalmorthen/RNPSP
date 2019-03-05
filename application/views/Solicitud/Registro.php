@@ -1,6 +1,7 @@
 <!-- CSS -->
-<link rel="stylesheet" href="<?php echo base_url('assets/vendor/datatable/jquery.dataTables.min.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url("assets/vendor/datatable/dataTables.bootstrap.min.css"); ?>">
+<link rel="stylesheet" href="<?php echo base_url("assets/vendor/datatable/dataTables.bootstrap4.min.css"); ?>">
+<link rel="stylesheet" href="<?php echo base_url("assets/vendor/datatable/responsive.bootstrap4.min.css"); ?>">
+
 <link rel="stylesheet" href="<?php echo base_url("assets/vendor/plugins/select2/css/select2.min.css"); ?>">
 <!-- /CSS -->
 
@@ -65,6 +66,10 @@
 
 <!-- JS -->
 <script src="<?php echo base_url("assets/vendor/datatable/jquery.dataTables.min.js"); ?>"></script>
+<script src="<?php echo base_url("assets/vendor/datatable/dataTables.bootstrap4.min.js"); ?>"></script>
+<script src="<?php echo base_url("assets/vendor/datatable/dataTables.responsive.min.js"); ?>"></script>
+<script src="<?php echo base_url("assets/vendor/datatable/responsive.bootstrap4.min.js"); ?>"></script>
+
 <script src="<?php echo base_url('assets/vendor/plugins/select2/js/select2.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/utils/collectionGenerics.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/utils/dom.js') ?>"></script>
