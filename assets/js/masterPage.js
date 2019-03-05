@@ -1,5 +1,18 @@
 var swalShow = false;
 
+// init bunch of sounds
+// ion.sound({
+//     sounds: [
+//         {name: "bell_ring"},
+//     ],
+
+//     // main config
+//     path: "assets/vendor/plugins/ion.sound/v3.0.7/sounds/",
+//     preload: true,
+//     multiplay: true,
+//     volume: 0.9
+// });
+
 if ( typeof sess_time_to_update !== 'undefined') {
     var timer = setInterval(function() { 
         if (parseInt(sess_time_to_update) <= parseInt(sess_time_left_to_confirm) && !swalShow ){
@@ -18,16 +31,9 @@ if ( typeof sess_time_to_update !== 'undefined') {
                 cancelButtonColor: '#d33',
                 timer: sess_time_to_update * 1000,
                 onBeforeOpen: function() {
+                    var leftToBeep = 0;
                     timerInterval = setInterval(function() {
-
-                        // var sessionObj = MyCookie.session.get();
-                        // if (parseInt(sessionObj.sess_time_to_update) > parseInt(sessionObj.sess_time_left_to_confirm)){
-                        //     Swal.close();
-                        //     return null;
-                        // }
-
                         var content = Swal.getContent();
-                        
                         if (content) {
                             var timeLeft = (Swal.getTimerLeft() / 1000),
                                 mitnutesLeft = Math.trunc(timeLeft / 60),
@@ -37,7 +43,16 @@ if ( typeof sess_time_to_update !== 'undefined') {
                             content.querySelector('strong')
                             .textContent = (msgLeft);
                         }
+                        
+                        leftToBeep++;
+                        if (leftToBeep == 10){
+                            beep();
+                            leftToBeep = 0;
+                        }
+
                     }, 1000);
+
+                    beep();
                 },
                 onClose: () => {
                     clearInterval(timerInterval)
@@ -112,4 +127,5 @@ $(document).ready(function () {
     });    
 
     $('[data-toggle="tooltip"]').tooltip();
+
 });

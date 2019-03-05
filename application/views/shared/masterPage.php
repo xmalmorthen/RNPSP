@@ -55,6 +55,7 @@
 		<script src="<?php echo base_url('assets/vendor/js/fastclick.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/vendor/js/jquery.blockUI.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/vendor/js/jquery.nicescroll.js'); ?>"></script>
+		<!-- <script src="<?php //echo base_url("assets/vendor/plugins/ion.sound/v3.0.7/ion.sound.min.js"); ?>"></script> -->
 		<script src="<?php echo base_url('assets/vendor/plugins/sweetAlert2/v8/sweetalert2@8.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/vendor/plugins/LoadingOverlay/v2.1.5/loadingOverlay.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/vendor/plugins/jquery-validation/dist/jquery.validate.min.js'); ?>"></script>
@@ -62,6 +63,8 @@
 		<script src="<?php echo base_url("assets/vendor/plugins/cookie/v3.14.1/js.cookie.min.js"); ?>"></script>
 		<script src="<?php echo base_url("assets/vendor/plugins/dixie/v2.0.4/dexie.min.js"); ?>"></script>
 		<script src="<?php echo base_url("assets/js/utils/cookie.js"); ?>"></script>
+		<script src="<?php echo base_url("assets/js/utils/beep.js"); ?>"></script>
+
 		<!-- /JS -->
 		<!-- /VENDOR -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
