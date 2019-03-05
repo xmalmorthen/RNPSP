@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Ejemplos_model extends CI_Model {
+class Ejemplos_model extends My_model {
         
         public function __construct(){
                 parent::__construct();
@@ -8,6 +8,24 @@ class Ejemplos_model extends CI_Model {
 
         public function tmpTestXmal(){
                 $returnResponse = NULL;
+
+                $this->iniParam('pID_ALTERNA','int');
+                $this->iniParam('txtError','varchar','250');
+                $this->iniParam('msg','varchar','80');
+                $this->iniParam('tranEstatus','int');
+                $this->procedure('tmpTestXmal');
+                $this->addParam('pID_ESTADO_EMISOR','1');
+                $this->addParam('pTIPO_OPERACION','holo','N');
+                $this->addParam('pFECHA_ACTUALIZACION','2019-01-31');
+                $query = $this->db->query($this->build_query());
+                $response = $this->query_row($query);
+                Utils::pre($response);
+
+
+
+                Utils::pre($this->iniParam('tranEstatus','int'));
+
+
                 try {
                         $exec = "DECLARE	
                                         @pID_ALTERNA int,

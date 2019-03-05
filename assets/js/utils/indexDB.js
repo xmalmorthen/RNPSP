@@ -1,7 +1,8 @@
 var iDB = {
+    version: 1,
     status : false,
     vars : {
-        db : new Dexie('SGP'),
+        db : new Dexie('SGPv1'),
         selects : $('select'),
         toPopulate : 0,
         tablesChecked : 0,
@@ -16,7 +17,7 @@ var iDB = {
                 clearInterval(iDBTablesCheck);
                 iDB.status = true;
             }
-        }, 1000);
+        }, 300);
     },
     actions : {
         getTablesNames : function(){
@@ -30,11 +31,17 @@ var iDB = {
             });
         },
         createIDB : function(tables){
-            iDB.vars.db.version(1).stores(tables);
+            var oldDB = new Dexie('SGP');
+            oldDB.delete().then(function() {}).catch(function(err) {})
+
+            iDB.vars.db.version( iDB.version ).stores(tables);
             iDB.vars.db.open();
             iDB.vars.db.on('ready',function(){iDB.actions.populateTables()});
         },
         populateTables : function(){
+            //Limpiar tablas que se generaron y hubo cambio donde actualmente no debe popularse por INDEXEDDB
+            // iDB.vars.db.ID_RELACION_REFERENCIAS.clear().then(function() {});
+
             const tables = iDB.vars.db.tables;
             tables.forEach(function (table) {
                 table.count().then(function(count){                    
@@ -49,6 +56,7 @@ var iDB = {
                     }).catch(function(){
                         iDB.vars.tablesChecked++;
                     });
+                }).catch(function(err){                    
                 });
             });            
         },
@@ -70,7 +78,7 @@ var iDB = {
                     var callUrl = base_url + "ajaxCatalogos/index";
                     if (factory.query) {
                         iDB.vars.toPopulate++;
-                        iDB.vars.iDBSync = setInterval(function(){iDB.actions.populatedInterval();}, 1000);
+                        iDB.vars.iDBSync = setInterval(function(){iDB.actions.populatedInterval();}, 300);
                         $.get(callUrl,{
                             qry : factory.query,
                             params : factory.params
@@ -138,8 +146,7 @@ var iDB = {
                                     
                                     options.success(data);
                                 }
-                            }, 1000);
-                            
+                            }, 300);                           
                         } else {
                             //FROM AJAX
                             obj.append('<option disabled selected value><i class="fa fa-refresh fa-spin fa-3x fa-fw"></i> Actualizando, favor de esperar...</option>');                                

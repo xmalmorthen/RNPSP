@@ -1,7 +1,3 @@
-<?php 
-    $sessionUser = $this->session->userdata(SESSIONVAR);    
-?>
-
     <div class="tab-pane fade show active" id="Datos_personales" role="tab-panel" aria-labelledby="Datos_personales-tab">
         <div class="_container">
             <form action="#" id="Datos_personales_form" name="Datos_personales_form" autocomplete="off">
@@ -18,6 +14,10 @@
                         <input type="text" id="pCURP" name="pCURP" class="form-control consultaCURP " minlength="18" maxlength="20" required>
                     </div>
                     <div class="col-md-4">
+                        <span class="clr">*</span>RFC
+                        <input type="text" class="form-control" id="pRFC_DOMICILIO" name="pRFC_DOMICILIO" maxlength="13" minlength="10" required>
+                    </div>
+                    <div class="col-md-4">
                         Tipo de movimiento <!-- Se llena de la tabla CAT_TIPO_OPERACION  -->
                         <select  class="form-control" name="pTIPO_MOV" id="pTIPO_MOV" data-error="#err_pTIPO_MOV" data-cat='CAT_TIPO_OPERACION' data-query='WEh6TEJUUFROWVFUNWdLYVVqOSt0eE5rRFBwL3NLWFhyY1RBYXNhUlQvMXJkaFN5bVhWNFUwRWJKdG1YQWFtWWl3VTVlQWtQVnp3NmVNOGdZT1hMWmFDczlzZnBNQVhWaGxhS1BibktwdklnckgxNmplYXkvblpVSWhIMWtoNlNIM041THFhTEdvMlQybDA4N1FiSndSWjVlMmRLQndqRTkvTHJrbS9jUkRvPQ==' required></select>
                         <span id="err_pTIPO_MOV"></span>
@@ -25,7 +25,7 @@
                 </div>
                 <br>
                 <div class="row">
-                <div class="col-md-4">
+                    <div class="col-md-4">
                         <span class="clr">*</span>Nombre
                         <input type="text" id="pNOMBRE_DATOS_PERSONALES" name="pNOMBRE_DATOS_PERSONALES" class="form-control consultaCURP"  maxlength="40" required>
                     </div>
@@ -160,7 +160,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12">
-                        <table id="tableDatospersonales" class="table display" style="width:100%">
+                        <table id="tableDatospersonales" class="table display table-striped dt-responsive" style="width:100%">
                             <thead>
                                 <th>CIB</th>
                                 <th>Motivo</th>
@@ -251,7 +251,7 @@
                 <br><hr><br>
                 <div class="row">
                     <div class="col-md-12">
-                        <table id="tableDesarrollo" class="table display" style="width:100%">
+                        <table id="tableDesarrollo" class="table display table-striped dt-responsive" style="width:100%">
                             <thead>
                                 <th>Id nivel</th>
                                 <th>Máxima escolaridad</th>
@@ -283,8 +283,6 @@
                     <div class="col-md-4"></div>
                 </div>
             </form>
-            
-            
         </div>
     </div>
 
@@ -310,7 +308,7 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Municipio <br> <!-- Se llena del catálogo CAT_MUNICIPIO -->
-                        <select style="width:356px;" class="form-control" id="pID_MUNICIPIO_DOMICILIO" name="pID_MUNICIPIO_DOMICILIO" data-error="#err_pID_MUNICIPIO" data-query='c244RWRmblByTDlCWExpTHc0ZnQ3NGUzbWMza1Y5MnZCck9rQmpCQ1hTdlA3dzJyRVNMRjhXTll4WmNmYkplM1BKM1BWckJ3RFdieG55eUNldGZ3N1dyS2taNXhWd2RWczkzT0lsVTk1anZPcVJFclZBN05mTUtwbjJuazJqa0tSaXVENkI2WVErcmUxNlFoVUFNamttMjB1S3RxK0ZjUFA3cEFhM0Fvak53PQ==' data-cascade='true' data-force-refresh='true' data-cascade-id-ref='pID_ENTIDAD_DOMICILIO' data-params='ID_ENTIDAD={0}' required></select>
+                        <select style="width:356px;" class="form-control" id="pID_MUNICIPIO_DOMICILIO" name="pID_MUNICIPIO_DOMICILIO" data-error="#err_pID_MUNICIPIO_DOMICILIO" data-query='c244RWRmblByTDlCWExpTHc0ZnQ3NGUzbWMza1Y5MnZCck9rQmpCQ1hTdlA3dzJyRVNMRjhXTll4WmNmYkplM1BKM1BWckJ3RFdieG55eUNldGZ3N1dyS2taNXhWd2RWczkzT0lsVTk1anZPcVJFclZBN05mTUtwbjJuazJqa0tSaXVENkI2WVErcmUxNlFoVUFNamttMjB1S3RxK0ZjUFA3cEFhM0Fvak53PQ==' data-cascade='true' data-force-refresh='true' data-cascade-id-ref='pID_ENTIDAD_DOMICILIO' data-params='ID_ENTIDAD={0}' required></select>
                         <span id="err_pID_MUNICIPIO_DOMICILIO"></span>
                     </div>
                 </div>
@@ -333,11 +331,11 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Número exterior
-                        <input type="text" class="form-control" id="pNUM_EXTERIOR_DOMICILIO" name="pNUM_EXTERIOR_DOMICILIO" maxlength="30" minlength="5" required>
+                        <input type="text" class="form-control" id="pNUM_EXTERIOR_DOMICILIO" name="pNUM_EXTERIOR_DOMICILIO" required>
                     </div>
                     <div class="col-md-4">
                         Número interior
-                        <input type="text" class="form-control" id="pNUM_INTERIOR_DOMICILIO" name="pNUM_INTERIOR_DOMICILIO" maxlength="30" minlength="4">
+                        <input type="text" class="form-control" id="pNUM_INTERIOR_DOMICILIO" name="pNUM_INTERIOR_DOMICILIO" >
                     </div>
                 </div>
                 <br>
@@ -355,14 +353,7 @@
                         <input type="text" class="form-control" id="pTELEFONO_DOMICILIO" name="pTELEFONO_DOMICILIO" maxlength="13" minlength="10" required>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <span class="clr">*</span>RFC
-                        <input type="text" class="form-control" id="pRFC_DOMICILIO" name="pRFC_DOMICILIO" maxlength="13" minlength="10" required>
-                    </div>
-                </div>
-                <br>
+                <br>                
                 <div class="row">
                     <div class="col-md-4">
                         <button class="btn btn-default btnGuardarSection" id="guardarDomicilio">Guardar domicilio</button>
@@ -373,7 +364,7 @@
                 <br>
                 <hr>
                 <br>
-                <table id="tableDomicilio" class="table display" style="width:100%">
+                <table id="tableDomicilio" class="table display table-striped dt-responsive" style="width:100%">
                     <thead>
                         <th>Id domicilio</th>
                         <th>Código postal</th>
@@ -384,7 +375,7 @@
                         <th>Número interior</th>
                     </thead>
                     <tbody>
-,                    </tbody>
+                    </tbody>
                 </table>
                 <input type="hidden" id="ID_ALTERNA_Domicilio" name="ID_ALTERNA_Domicilio" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Domicilio" name="pID_ESTADO_EMISOR_Domicilio" value="" >
@@ -454,14 +445,6 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        Relación o parentesco <br> <!-- Se llena del catálogo CAT_RELACION -->
-                        <select style="width:356px;" name="ID_RELACION_REFERENCIAS" id="ID_RELACION_REFERENCIAS" class="form-control" data-error="#err_ID_RELACION" data-query='WGJqek5KZDlveE96NE4rQ3grdWlnU01adGw1clZVQ3dhUmlrN3N1VjNxd2ZBZ2pZTXRGWnhEeTFRWmFwTllUUU5TTnpra0wra05SQTVXRUxXQUovdk1LaVRndXlwNHVKcUdVMjErdVZhR0hWRFp3TTNiNEgvWksrbjkxUFlFb0U='></select>
-                        <span id="err_ID_RELACION"></span>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
                         Código postal
                         <input type="text" id="CODIGO_POSTAL_REFERENCIAS" name="CODIGO_POSTAL_REFERENCIAS" class="form-control" maxlength="10">
                     </div>
@@ -495,11 +478,11 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Número exterior
-                        <input type="text" class="form-control" name="NUM_EXTERIOR_REFERENCIAS" id="NUM_EXTERIOR_REFERENCIAS" maxlength="30" minlength="5" required>
+                        <input type="number" class="form-control" name="NUM_EXTERIOR_REFERENCIAS" id="NUM_EXTERIOR_REFERENCIAS" required>
                     </div>
                     <div class="col-md-4">
                         Número interior
-                        <input type="text" class="form-control" name="NUM_INTERIOR_REFERENCIAS" id="NUM_INTERIOR_REFERENCIAS" maxlength="30" minlength="4">
+                        <input type="number" class="form-control" name="NUM_INTERIOR_REFERENCIAS" id="NUM_INTERIOR_REFERENCIAS" >
                     </div>
                 </div>
                 <br>
@@ -524,7 +507,7 @@
                 <br>
                 <hr>
                 <br>
-                <table id="tableReferencias" class="table display" style="width:100%">
+                <table id="tableReferencias" class="table display table-striped dt-responsive" style="width:100%">
                     <thead>
                         <th>Id referencia</th>
                         <th>Nombre</th>
@@ -638,14 +621,18 @@
                     </div>
                 </div>
                 <br>
-                <hr>
+                <input type="hidden" id="ID_ALTERNA_Socioeconomico" name="ID_ALTERNA_Socioeconomico" value="" >
+                <input type="hidden" id="pID_ESTADO_EMISOR_Socioeconomico" name="pID_ESTADO_EMISOR_Socioeconomico" value="" >
+                <input type="hidden" id="pID_EMISOR_Socioeconomico" name="pID_EMISOR_Socioeconomico" value="" >
+            </form>
+            <hr>
+            <form action="#" id="Dependientes_form" name="Dependientes_form" autocomplete="off">
                 <br>
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <strong>Dependientes económicos</strong>
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Dependientes económicos</h3>
                     </div>
-                </div>
+                </div> 
                 <br>
                 <div class="row">
                     <div class="col-md-4">
@@ -674,8 +661,26 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Parentesco <br><!-- Se llena del catálogo CAT_RELACION -->
-                        <select style="width:356px;" class="form-control" id="ID_RELACION" name="ID_RELACION" data-error="#err_ID_RELACION" data-query='NXMrSFhUSXFSNWxoNmJ4Ri9TTUNjRGROSzBpY01FSmxaSndnN3ZXdHlKU2hFWjRUZGF4M0JkSGUzMHE2Z0dFT1k0T3I2UmsveUU0L2JpUjJRL3Q3YjA5ZXBUZkVXNFFiaFIxYXdOTnNkQXg0RTNySEpseDJUam1wSWRnWjNvZ3c=' required></select>
+                        <select style="width:356px;" id="ID_RELACION" name="ID_RELACION" class="form-control" data-error="#err_ID_RELACION" data-query='d1lEQ2dSOSsrZUtnU2wwVjJWRHBCSE12STBKUElSU2l5bHA4OTRJbzlXc01BVFNvYms3V0lYYm1QWkVPellLdlNsZmNicy83akdkaEVTZDAxTDVGNVRzdnZtK3k5KzRzZFJxYXZCNERJRmhwOCtFb0ZFS0hjNEhaZTd4cWw1U2Y=' required></select>                        
                         <span id="err_ID_RELACION"></span>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <span class="clr">*</span>Relación <br> <!-- Se llena del catálogo CAT_RELACION -->
+                        <select
+                            class="form-control" 
+                            id="ID_RELACION_SOCIOECONOMICOS" 
+                            name="ID_RELACION_SOCIOECONOMICOS" 
+                            data-error="#err_ID_RELACION_SOCIOECONOMICOS" 
+                            data-query='aVlaNnpEUWZuQ2J4Ulp2VytYNHVlWDR1ck9LRE83R3ZOWmVnenRuampBcnR3WmliWUVqTno4VEhNdFFrdDB0L2tyTCs5YWZHdUlVYUxMVFZuc2tpS05maVhXaXBUcjN1eWtoS0hCS3IrWnJKdkFqSDBQanRvbzhtSFlvZU1zMlVLNFdTeVZxSFR5Mng5VjU2RzlnTkpiM1BqTWZQamRXS095T1J6bnRsTVRrPQ==' 
+                            data-cascade='true' 
+                            data-force-refresh='true' 
+                            data-cascade-id-ref='ID_RELACION' 
+                            data-params='ID_TIPO_REFERENCIA={0}' 
+                            required></select>
+                        <span id="err_ID_RELACION_SOCIOECONOMICOS"></span>
                     </div>
                 </div>
                 <br>
@@ -686,46 +691,45 @@
                     <div class="col-md-4"></div>
                     <div class="col-md-4"></div>
                 </div>
-                <br>
-                <hr>
-                <br>
-                <div class="row">
-                    <div class="col-md-12">
-                        <table id="tableSocioeconomicos" class="table display" style="width:100%">
-                            <thead>
-                                <th>Id dependiente</th>
-                                <th>Nombre</th>
-                                <th>Apellido paterno</th>
-                                <th>Apellido materno</th>
-                                <th>Sexo</th>
-                                <th>Fecha de nacimiento</th>
-                                <th>Parentesco</th>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                 <input type="hidden" id="ID_ALTERNA_Socioeconomico" name="ID_ALTERNA_Socioeconomico" value="" >
+                <input type="hidden" id="ID_ALTERNA_Socioeconomico" name="ID_ALTERNA_Socioeconomico" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Socioeconomico" name="pID_ESTADO_EMISOR_Socioeconomico" value="" >
                 <input type="hidden" id="pID_EMISOR_Socioeconomico" name="pID_EMISOR_Socioeconomico" value="" >
-                
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorSocioeconomico" data-nexttab="#Referencias-tab"> Anterior Ficha</button>
-                            </div>
-                            <div class="col-md-6">
-                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab endTab" id="finalizarDatosGenerales">Finalizar</button>
-                            </div>
+            </form>
+            <br>
+            <hr>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <table id="tableSocioeconomicos" class="table display table-striped dt-responsive" style="width:100%">
+                        <thead>
+                            <th>Id dependiente</th>
+                            <th>Nombre</th>
+                            <th>Apellido paterno</th>
+                            <th>Apellido materno</th>
+                            <th>Sexo</th>
+                            <th>Fecha de nacimiento</th>
+                            <th>Parentesco</th>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorSocioeconomico" data-nexttab="#Referencias-tab"> Anterior Ficha</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab endTab" id="finalizarDatosGenerales">Finalizar</button>
                         </div>
                     </div>
-                    <div class="col-md-4"></div>
                 </div>
-            </form>
+                <div class="col-md-4"></div>
+            </div>            
         </div>
     </div>
 

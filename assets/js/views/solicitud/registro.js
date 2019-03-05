@@ -4,13 +4,17 @@ $(function() {
             clearInterval(statusIDBInterval);
             statusIDBInterval = null;
             mainTabMenu.fireInit();
-
         }
-    }, 1000);
+    }, 300);
 });
 
 var mainTabMenu = {
+    var : {
+        pID_ALTERNA : null
+    },
     fireInit : function(){
+        $('._container.d-none').removeClass('d-none');
+
         if (formMode.length == 0)
             window.location.href = base_url + 'Error/setError?err=No se especificó el modo del formulario!!!';
 
@@ -20,6 +24,7 @@ var mainTabMenu = {
         //MAIN TAB
         $('#mainContainerTab a[data-toggle="tab"]').on('show.bs.tab',mainTabMenu.tab.change);
         $('#mainContainerTab a[data-toggle="tab"]').on('shown.bs.tab',dynTabs.loaderTab);
+        $('#mainContainerTab a[data-toggle="tab"]').on('shown.bs.tab',mainTabMenu.actions.tableResponsive);
         
 
         var linkRefHash = MyCookie.tabRef.get(dynTabs.mode + 'MainTab');
@@ -44,10 +49,41 @@ var mainTabMenu = {
                 mainTabMenu.mainInit();
             break;
         }
+
+        $('.btnSiguienteAnterior').on('click',function(e){
+            e.preventDefault();
+            var tab = $(this).data('nexttab'); 
+            $(tab).tab('show');
+        })
+
+        $('.endTab').on('click',function(e){
+            var nextTab = $('#mainContainerTab li.nav-item a.nav-link.active').closest('li').next('li.nav-item').find('a.nav-link');
+            nextTab.tab('show'); 
+        });
     },
     tab : {
         change : function(e){
-            var tabRef = $(e.currentTarget);
+            var tabRef = $(e.currentTarget),
+                forms = $('#myTabContent>.tab-pane.show.active form'),
+                allFormsSaved = true;
+
+
+            forms.each(function( index ) {
+                if ( $(this).data('hasSaved') != true ) {
+                    allFormsSaved = false;
+                    return false;
+                }
+            });
+
+            $(e.relatedTarget).data('finish',allFormsSaved);
+
+            // TODO: Xmal - Quitar comentarios en bloque para implementación
+            // if (!$(tabRef).data('finish')){
+            //     e.preventDefault();
+            //     Swal.fire({ type: 'warning', title: 'Aviso', html: 'Debe completar y guardar la información de las pestañas que actualmente se muestran.' });
+            //     return null;
+            // }
+
             mainTabMenu.actions.init(tabRef.attr('aria-controls'));
             MyCookie.tabRef.save(dynTabs.mode + 'MainTab',tabRef.attr('id'));
         }
@@ -57,7 +93,7 @@ var mainTabMenu = {
         init : function(tabRef, callback){
             mainTabMenu.actions.inited = false;
 
-            //dynTabs.validForm = formMode != 'edit' ? true : false;
+            // dynTabs.validForm = formMode != 'edit' ? true : false;
 
             switch (tabRef) {
                 case 'datosGenerales':
@@ -96,6 +132,16 @@ var mainTabMenu = {
             }
             var linkRef = $('#' + linkRefHash);
             linkRef.trigger('click');
+        },
+        tableResponsive : function(){
+            if ($.isFunction(objViewDatosGenerales.events.change.tableResponsive))
+                objViewDatosGenerales.events.change.tableResponsive();
+            if ($.isFunction(objViewLaboral.events.change.tableResponsive))
+                objViewLaboral.events.change.tableResponsive();
+            if ($.isFunction(objViewCapacitacion.events.change.tableResponsive))
+                objViewCapacitacion.events.change.tableResponsive();
+            if ($.isFunction(objViewIdentificacion.events.change.tableResponsive))
+                objViewIdentificacion.events.change.tableResponsive();
         }
     },
     mainInit : function(){
@@ -173,25 +219,29 @@ var mainFormActions = {
     },
     populateData : function(idRef){
         $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
-        var callUrl = base_url + `Solicitud/ajaxGetSolicitudById/${idRef}`;
-        fetch(callUrl)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(response.statusText);
-                }
-                return response.json();
-            })
-            .then(response => {
-                if (!response.results) {
-                    throw new Error('No se encontró información');
-                } else {
-                    mainFormActions.fillData(response.results);
-                }
-            })
-            .catch(error => {
-                Swal.fire({ type: 'error', title: 'Error', html: error.message });
+        var callUrl = base_url + 'Solicitud/ajaxGetSolicitudById';
+
+        return new Promise(function (resolve, reject) {
+            $.get(callUrl,{
+                idRef : idRef
+            },
+            function (data) {
+                resolve(data);
+            }).fail(function (err) {                    
+                reject(err);
+            });
+        }).then(function (data) {
+            if (data.results) {
+                mainFormActions.fillData(response.results);
+            } else
+                throw new Error('No se encontró información');
+        }).catch(function(err){
+            $.LoadingOverlay("hide");
+            Swal.fire({ type: 'error', title: 'Error', html: err.statusText ? err.statusText : err.message})
+            .then(() => {
                 window.location.href = base_url + 'Solicitud';
             });
+        });        
     },
     fillData : function(data){
         $('.consultaCURP').readOnly();
@@ -203,7 +253,8 @@ var mainFormActions = {
         
         mainFormActions.insertValueInSelect($('#_dependenciaAdscripcionActual'),'9');
         mainFormActions.insertValueInSelect($('#pINSTITUCION'),'3817');
-        mainFormActions.insertValueInSelect($('#pID_AREA'),'173525');                
+        mainFormActions.insertValueInSelect($('#pID_AREA'),'173525');  
+        mainFormActions.insertValueInSelect($('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL'),'2');  
         
         dynTabs.loaderTab();
     },
@@ -215,7 +266,6 @@ var mainFormActions = {
                 ref.val(value);
                 ref.trigger('change.select2').trigger('change');
             }
-            //ref.val(value).data('insert',value).trigger('change').trigger('change.select2');
         }
     }
 }

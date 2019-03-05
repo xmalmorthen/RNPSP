@@ -3,7 +3,6 @@ var objViewDatosGenerales = {
         general : {
             init : false,
             datosGeneralesContentTab : null,
-            btnSiguienteAnterior : null
         },
         datosGenerales : {
             forms : {
@@ -59,15 +58,15 @@ var objViewDatosGenerales = {
         
         // INIT DATATABLE
         objViewDatosGenerales.vars.datosGenerales.tables.tableDatospersonales.dom = $('#tableDatospersonales');
-        objViewDatosGenerales.vars.datosGenerales.tables.tableDatospersonales.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableDatospersonales.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});
+        objViewDatosGenerales.vars.datosGenerales.tables.tableDatospersonales.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableDatospersonales.dom.DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});        
         objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.dom = $('#tableDesarrollo');
-        objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});
+        objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.dom.DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});        
         objViewDatosGenerales.vars.datosGenerales.tables.tableDomicilio.dom = $('#tableDomicilio');
-        objViewDatosGenerales.vars.datosGenerales.tables.tableDomicilio.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableDomicilio.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});
+        objViewDatosGenerales.vars.datosGenerales.tables.tableDomicilio.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableDomicilio.dom.DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});        
         objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.dom = $('#tableReferencias');
-        objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});        
+        objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.dom.DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});        
         objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.dom = $('#tableSocioeconomicos');
-        objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});        
+        objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.dom.DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});                
         
         // INIT ELEMENTS
         // FORMS
@@ -85,12 +84,16 @@ var objViewDatosGenerales = {
         objViewDatosGenerales.vars.datosGenerales.btns.guardarSocioeconomico = $('#guardarSocioeconomico');  
         objViewDatosGenerales.vars.datosGenerales.btns.guardarDependiente = $('#guardarDependiente');        
 
-        objViewDatosGenerales.vars.general.btnSiguienteAnterior = $('.btnSiguienteAnterior');
         // OBJS
         objViewDatosGenerales.vars.datosGenerales.objs.pCURP = $('#pCURP');
 
         // INIT SELECTS
         objViewDatosGenerales.vars.general.mainContentTab.find('select').select2({width : '100%'});
+        $(document).on('focus', '.select2.select2-container', function (e) {
+            if (e.originalEvent) {
+                $(this).siblings('select').select2('open');
+            }
+        });
 
         //EVENTS
         //SUBMIT
@@ -108,7 +111,6 @@ var objViewDatosGenerales = {
         objViewDatosGenerales.vars.datosGenerales.btns.guardarSocioeconomico.on('click',objViewDatosGenerales.events.click.datosGenerales.guardarSocioeconomico);
         objViewDatosGenerales.vars.datosGenerales.btns.guardarDependiente.on('click',objViewDatosGenerales.events.click.datosGenerales.guardarDependiente);
 
-        objViewDatosGenerales.vars.general.btnSiguienteAnterior.on('click',objViewDatosGenerales.events.click.general.btnSiguienteAnterior);
         //FOCUSOUT
         // objViewDatosGenerales.vars.datosGenerales.objs.pCURP.on('focusout',objViewDatosGenerales.events.focus.out.pCURP);      
 
@@ -118,8 +120,7 @@ var objViewDatosGenerales = {
         $.each(objViewDatosGenerales.vars.datosGenerales.forms, function( index, value ) {
             var form = value;
             form.find('input, select').change(function(e) {
-                form.removeData('hasSaved');
-                form.removeData('hasDiscardChanges');
+                form.removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError');
                 form.data('hasChanged',true);
                 $(e.target).removeError();
             });
@@ -128,6 +129,7 @@ var objViewDatosGenerales = {
         //CAMBIO DE TABS
         objViewDatosGenerales.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewDatosGenerales.actions.discartChanges}, e); } );
         objViewDatosGenerales.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('show.bs.tab',dynTabs.showTab);        
+        objViewDatosGenerales.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('shown.bs.tab',objViewDatosGenerales.events.change.tableResponsive);
         
         populate.form($('#Datos_personales_form')); //popular selects del primer tab NOTA: cambiar programación al tab actual si se obtiene por cookie
         dynTabs.setCurrentTab($('#myTabContent'));
@@ -146,91 +148,59 @@ var objViewDatosGenerales = {
     },
     events : {
         click : {
-            general : {
-                btnSiguienteAnterior : function(e){
-                    e.preventDefault();
-                    var tab = $(this).data('nexttab'); 
-                    $(tab).tab('show');
-                }
+            general : {                
             },
             datosGenerales : {
-                guardarDatosPersonales : function(e, from){
+                guardarDatosPersonales : function(e, from, tabRef){
                     e.preventDefault();
-
-                    var $this = $(this),
-                        form = $this.parents('form:first');
-                    
-                    form.closeAlert({alertType : 'alert-danger'});
-
-                    //VALID FORM
-                    try {
-                        if (!objViewDatosGenerales.vars.datosGenerales.forms.Datos_personales_form.valid())
-                            throw "Invalid FORM";
-
-                        $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
-
-                        var callUrl = base_url + 'Ejemplos/ajaxGetSample';
-                        model = {
-                            var1 : 'val1',
-                            var2 : 'val2'
-                        };
-
-                        $.when(
-                            $.get(callUrl,{model : model})
-                            .always(function () {
-                                MyCookie.session.reset();
-                            })
-                        ).then( 
-                            //success
-                            function(data, textStatus, jqXHR){
-                                form.removeData('hasChanged').removeData('hasDiscardChanges');                                
-                                form.data('hasSaved',true);
-
-                                $.LoadingOverlay("hide");
-
-                                if (from) {
-                                    if(from == 'tab') {
-                                        dynTabs.tabs.prebTab.tabForm.find('.btnSiguienteAnterior.siguienteTab').trigger('click');
-                                        dynTabs.markTab( ( dynTabs.tabs.prebTab.linkRef ? dynTabs.tabs.prebTab.linkRef : dynTabs.tabs.currentTab.linkRef),  '<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');                                        
-                                        return null;
-                                    }
-                                }
-                                dynTabs.markTab( dynTabs.tabs.currentTab.linkRef,'<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
-                            },
-                            //error
-                            function(err, textStatus, jqXHR){
-                                $.LoadingOverlay("hide");
-                                var msg = err.status + ' - ' + err.statusText;
-                                                                
-                                form.setAlert({
-                                    alertType :  'alert-danger',
-                                    dismissible : true,
-                                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error al guardar',
-                                    msg : msg,
-                                    callback : function(){
-                                        //Swal.fire({ type: 'error', title: 'Error', html: msg }); //se comenta porque al mostrar el modal no respeta el scroll top al bloque del alert.
-                                    }
-                                });
-
-                                dynTabs.markTab( ( dynTabs.tabs.prebTab.linkRef ? dynTabs.tabs.prebTab.linkRef : dynTabs.tabs.currentTab.linkRef),  '<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
-                            } 
-                        );
-                    }catch(err) {
-                        dynTabs.markTab( ( dynTabs.tabs.prebTab.linkRef ? dynTabs.tabs.prebTab.linkRef : dynTabs.tabs.currentTab.linkRef),  '<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
-                        form.setAlert({
-                            alertType :  'alert-danger',
-                            dismissible : true,
-                            header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
-                            msg : 'Formulario incompleto'
-                        });
-                    }
+                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDatosPersonales',from, tabRef, function(data){
+                        console.log(data);
+                        //TODO: Xmal - Actualizar variable [ mainTabMenu.var.pID_ALTERNA ] cuando se haga el guardado de la primer ficha y regrese el pID_ALTERNA;
+                        debugger;
+                    });
                 },
-                generarCIB : function(e){Swal.fire({ type: 'warning', title: 'Implementar', html: 'Omplementar método' });},
-                guardarDesarrolloacademico : function(e){Swal.fire({ type: 'warning', title: 'Implementar', html: 'Omplementar método' });},
-                guardarDomicilio : function(e){Swal.fire({ type: 'warning', title: 'Implementar', html: 'Omplementar método' });},
-                guardarReferencia : function(e){Swal.fire({ type: 'warning', title: 'Implementar', html: 'Omplementar método' });},
-                guardarSocioeconomico : function(e){Swal.fire({ type: 'warning', title: 'Implementar', html: 'Omplementar método' });},
-                guardarDependiente : function(e){Swal.fire({ type: 'warning', title: 'Implementar', html: 'Omplementar método' });}
+                generarCIB : function(e, from, tabRef){
+                    e.preventDefault();
+                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesGenerarCIB',from, tabRef, function(data){
+                        console.log(data);
+                        debugger;
+                    });
+                },
+                guardarDesarrolloacademico : function(e, from, tabRef){
+                    e.preventDefault();
+                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDesarrolloacademico',from, tabRef, function(data){
+                        console.log(data);
+                        debugger;
+                    });
+                },
+                guardarDomicilio : function(e, from, tabRef){
+                    e.preventDefault();
+                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDomicilio',from, tabRef, function(data){
+                        console.log(data);
+                        debugger;
+                    });
+                },
+                guardarReferencia : function(e, from, tabRef){
+                    e.preventDefault();
+                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesReferencia',from, tabRef, function(data){
+                        console.log(data);
+                        debugger;
+                    });
+                },
+                guardarSocioeconomico : function(e, from, tabRef){
+                    e.preventDefault();
+                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesSocioeconomico',from, tabRef, function(data){
+                        console.log(data);
+                        debugger;
+                    });
+                },
+                guardarDependiente : function(e, from, tabRef){
+                    e.preventDefault();
+                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDependiente',from, tabRef, function(data){
+                        console.log(data);
+                        debugger;
+                    });
+                }
             }
         },
         focus : {
@@ -302,7 +272,12 @@ var objViewDatosGenerales = {
                 }
             }
         },
-        change : {            
+        change : {
+            tableResponsive : function(){
+                $.each( objViewDatosGenerales.vars.datosGenerales.tables, function( key, value ) {
+                    try {value.obj.responsive.rebuild().responsive.recalc();}catch(err){}
+                });                
+            }
         }
     },
     actions : { 
@@ -329,7 +304,7 @@ var objViewDatosGenerales = {
             $('#pSEXO_DATOS_PERSONALES').removeError();
             $('#pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES').removeError();
         },    
-        discartChanges : function(e,eTab){        
+        discartChanges : function(e,eTab){
             var form = $('#' + $(eTab.currentTarget).attr('aria-controls')).find('form');
             form.closeAlert({alertType : 'alert-danger'});
 
@@ -340,7 +315,88 @@ var objViewDatosGenerales = {
             dynTabs.tabs.prebTab.tabForm.data('hasDiscardChanges',true);
 
             $("#" + eTab.relatedTarget.id).trigger('click');
-            // dynTabs.tabs.prebTab.tabForm.find('.btnSiguienteAnterior.siguienteTab').trigger('click');
+        },
+        ajax : {
+            callResponseValidations : function(form, data, from, tabRef, callback){
+                try{
+                    if (!data) 
+                        throw new Error('Respuesta inesperada, favor de intentarlo de nuevo.');
+                    if (!data.results)
+                        throw new Error('Respuesta inesperada, favor de intentarlo de nuevo.');
+                    if (typeof data.results.status === "undefined")
+                        throw new Error('Estatus desconocido, favor de contactar a soporte.');
+                    if (!data.results.status)
+                        throw new Error(data.results.message ? data.results.message : 'Error desconocido.' );
+                    
+                    form.removeData('hasChanged').removeData('hasDiscardChanges').removeData('withError');
+                    form.data('hasSaved',true);
+
+                    if (from) {
+                        if(from == 'tab') {
+                            $(tabRef.relatedTarget).trigger('click');
+                            dynTabs.markTab( $(tabRef.currentTarget),  '<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
+                            return null;
+                        }
+                    }
+                    dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef ,'<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
+
+                    if (callback) 
+                        if ($.isFunction( callback ))
+                            callback(data); 
+
+                }catch(err) {
+                    objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);
+                }
+            },
+            throwError: function(err,form,from,tabRef){
+                $.LoadingOverlay("hide");
+                
+                form.setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.message ? err.message : err.statusText
+                });
+
+                form.removeData('hasSaved').removeData('hasDiscardChanges');
+                form.data('withError',true);
+
+                if (from) {
+                    if(from == 'tab') {
+                        dynTabs.markTab( $(tabRef.currentTarget),  '<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
+                        return null;
+                    }
+                }
+                dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef,'<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
+            },
+            generateRequest: function($this,callUrl,from,tabRef, callback){                
+                var form = $this.parents('form:first');
+                form.closeAlert({alertType : 'alert-danger'});
+                
+                try {
+                    //VALID FORM
+                    if (!form.valid())
+                        throw new Error("Formulario incompleto");
+
+                    $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+                    
+                    var model = form.serialize();
+                    
+                    $.post(callUrl,{
+                        model : model
+                    },
+                    function (data) {  
+                        objViewDatosGenerales.actions.ajax.callResponseValidations(form,data, from, tabRef, callback);
+                    }).fail(function (err) {
+                        objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                            
+                    }).always(function () {
+                        $.LoadingOverlay("hide");
+                    });
+
+                }catch(err) {
+                    objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                        
+                }
+            }
         }
     }
 }

@@ -472,19 +472,19 @@
                     <div class="col-md-4">
                          <h6 class="borderButtom">¿Vive con su familia?</h6> <br><!-- S/N = SI/NO -->
                         <p></p>
-                        <span id="err_VIVE_FAMILIA"></span>
+                  
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Ingreso familiar adicional (mensual)</h6>
                         <p></p>
                     </div>
                     <div class="col-md-4">
-                        <h6 class="borderButtom">Su domicilio es</h6> <br> <!-- Se llena del catálogo CAT_TIPO_DOMICILIO -->
+                        <h6 class="borderButtom">Su domicilio es</h6>  <!-- Se llena del catálogo CAT_TIPO_DOMICILIO -->
                         <p></p>
                       
                     </div>
                 </div>
-                <br>
+          
                 <div class="row">
                     <div class="col-md-4" >
                        <h6 class="borderButtom"> Actividades culturales o deportivas que practica</h6>
@@ -530,9 +530,8 @@
                 <hr>
                 <br>
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <center><strong>Dependientes económicos</strong></center>
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Dependientes económicos</h3>
                     </div>
                 </div>
                 <br>

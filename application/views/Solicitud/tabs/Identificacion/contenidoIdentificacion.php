@@ -312,21 +312,20 @@
                         <input type="number" class="form-control" id="pCAT_PESO" name="pCAT_PESO" required min="1" max="999">                        
                     </div>
                 </div>
-            <input type="hidden" id="pID_ALTERNA_Media_filiacion" name="pID_ALTERNA_Media_filiacion" value="" >
-            <input type="hidden" id="pID_ESTADO_EMISOR_Media_filiacion" name="pID_ESTADO_EMISOR_Media_filiacion" value="" >
-            <input type="hidden" id="pID_EMISOR_Media_filiacion" name="pID_EMISOR_Media_filiacion" value="" >
-            <br>
-            <div class="row">
-                <div class="col-md-4">
-                    <input type="button" id="guardarmediafiliación" class="btn btn-default" value="Guardar media filiación">
+                <input type="hidden" id="pID_ALTERNA_Media_filiacion" name="pID_ALTERNA_Media_filiacion" value="" >
+                <input type="hidden" id="pID_ESTADO_EMISOR_Media_filiacion" name="pID_ESTADO_EMISOR_Media_filiacion" value="" >
+                <input type="hidden" id="pID_EMISOR_Media_filiacion" name="pID_EMISOR_Media_filiacion" value="" >
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-default btnGuardarSection" id="guardarMediafiliacion">Guardar media filiación</button>                        
+                    </div>            
                 </div>
-            
-            </div>
-            <div class="row">                
-                <div class="col-md-12 text-center">
-                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="siguienteMediafiliacion" data-nexttab="#Datos-tab">Siguiente Ficha</button>
+                <div class="row">                
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="siguienteMediafiliacion" data-nexttab="#Senas_particulares-tab">Siguiente Ficha</button>
+                    </div>
                 </div>
-            </div>
             </form>
         </div>
     </div>    
@@ -377,9 +376,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <button class="btn btn-default" id="guardarSenia">
-                            Guardar seña
-                        </button>
+                        <button class="btn btn-default btnGuardarSection" id="guardarSenia">Guardar seña</button>
                     </div>
                 </div>
                 <br>
@@ -387,7 +384,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12">
-                            <table id="tableSenasparticulares" class="table display">
+                            <table id="tableSenasparticulares" class="table display table-striped dt-responsive" style="width:100%">
                                 <thead>
                                         <th>Id seña</th>
                                         <th>Tipo de seña</th>
@@ -407,7 +404,7 @@
                 <input type="hidden" id="pID_EMISOR_Senas" name="pID_EMISOR_Senas" value="" >
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorSeña" data-nexttab="#Senas_particulares">Anterior Ficha</button>
+                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorSeña" data-nexttab="#mediafiliacion-tab">Anterior Ficha</button>
                         <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="SiguienteSeña" data-nexttab="#Ficha_fotografica-tab">Siguiente Ficha</button>
                     </div>
                 </div>
@@ -506,9 +503,7 @@
                 <br> -->
                 <div class="row">
                     <div class="col-md-4">
-                        <button class="btn btn-default" id="guardarRegistrodecadactilar">
-                            Guardar registro
-                        </button>
+                        <button class="btn btn-default btnGuardarSection" id="guardarRegistrodecadactilar">Guardar registro</button>
                     </div>
                 </div>
                 <br>
@@ -516,7 +511,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12">
-                        <table id="tableRegistrodecadactilar" class="table display">
+                        <table id="tableRegistrodecadactilar" class="table display table-striped dt-responsive" style="width:100%">
                             <thead>
                                     <th>Id registro dactilar</th>
                                     <th>Dependencia</th>
@@ -599,7 +594,7 @@
                     <div class="col-md-4">
                         Audio
                         <div class="custom-file">
-                            <input type="file" id="vozFile" name="vozFile" class='custom-file-input inputFile' data-renderin='thumb_vozFile' accept="audio/*">
+                            <input type="file" id="vozFile" name="vozFile" class='custom-file-input inputFile' data-renderin='thumb_vozFile' accept="audio/*" required>
                             <label class="custom-file-label" for="inputGroupFile01">Seleccionar archivo</label>
                         </div>
                     </div>
@@ -610,9 +605,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <button class="btn btn-default" id="guardarVoz">
-                            Guardar
-                        </button>
+                        <button class="btn btn-default btnGuardarSection" id="guardarVoz">Guardar identificación de voz</button>
                     </div>
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
@@ -771,13 +764,13 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <button class="btn btn-default" id='guardarFicha'>Guardar ficha</button>
+                        <button class="btn btn-default btnGuardarSection" id='guardarFicha'>Guardar ficha</button>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-12">
-                        <table id="tableFichafotografica" class="table display">
+                        <table id="tableFichafotografica" class="table display table-striped dt-responsive" style="width:100%">
                             <thead>
                                     <th>Id evaluación</th>
                                     <th>Tipo de evaluación</th>
@@ -805,6 +798,7 @@
     </div>
 
     <div class="tab-pane fade" id="Digitalizacion_de_documento" role="tabpanel" aria-labelledby="Digitalizacion_de_documento-tab">
+        <div class="_container">        
             <form action="#" id="Digitalizacion_de_documento_form" name="Digitalizacion_de_documento_form" autocomplete="off">
                 <br>
                 <div class="row">
@@ -827,7 +821,7 @@
                     <div class="col-md-4">
                         Documento
                         <div class="custom-file">
-                            <input type="file" id="pIMAGEN" name="pIMAGEN" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN' accept="application/pdf,image/*">
+                            <input type="file" id="pIMAGEN" name="pIMAGEN" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN' accept="application/pdf,image/*" required>
                             <label class="custom-file-label" for="inputGroupFile01">Seleccionar documento</label>
                         </div>
                     </div>
@@ -842,9 +836,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <button class="btn btn-default" id="guardarDocumento">
-                            Guardar documento
-                        </button>
+                        <button class="btn btn-default btnGuardarSection" id="guardarDocumento">Guardar documento</button>
                     </div>
                 </div>
                 <br>
@@ -852,7 +844,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12">
-                        <table id="tableDigitalizaciondoc" class="table display">
+                        <table id="tableDigitalizaciondoc" class="table display table-striped dt-responsive" style="width:100%">
                             <thead>
                                     <th>Id documento</th>
                                     <th>Categoría de documento</th>
@@ -865,7 +857,7 @@
                         </table>
                     </div>
                 </div>
-                 <input type="hidden" id="pID_ALTERNA_Documento" name="pID_ALTERNA_Documento" value="" >
+                <input type="hidden" id="pID_ALTERNA_Documento" name="pID_ALTERNA_Documento" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Documento" name="pID_ESTADO_EMISOR_Documento" value="" >
                 <input type="hidden" id="pID_EMISOR_Documento" name="pID_EMISOR_Documento" value="" >
                 <div class="row">

@@ -153,7 +153,7 @@
 								}
 							} else {
 								$.LoadingOverlay("hide");
-								Swal.fire({ type: 'error', title: 'Error', html: data.message });
+								Swal.fire({ type: 'error', title: 'Error', html: data.message ? data.message : 'Error al intentar iniciar sesión, favor de intentarlo.' });
 							}
 						}).fail(function (err) {
 							$.LoadingOverlay("hide");
