@@ -109,7 +109,7 @@
                     </div>
                     <div class="col-md-4">
                         Clave de elector
-                        <input type="text" id="pCREDENCIAL_LECTOR" name="pCREDENCIAL_LECTOR" class="form-control" maxlength="30">
+                        <input type="text" id="pCREDENCIAL_ELECTOR" name="pCREDENCIAL_ELECTOR" class="form-control" maxlength="30">
                     </div>
                     <div class="col-md-4">
                         Pasaporte
@@ -218,11 +218,11 @@
                     </div>
                     <div class="col-md-4">
                         Fecha de inicio
-                        <input type="date" class="form-control" id="pINICIO" name="pINICIO">
+                        <input type="date" class="form-control" id="pINICIO_DESARROLLO" name="pINICIO_DESARROLLO">
                     </div>
                     <div class="col-md-4">
                         Fecha de término
-                        <input type="date" class="form-control" id="pTERMINO" name="pTERMINO">
+                        <input type="date" class="form-control" id="pTERMINO_DESARROLLO" name="pTERMINO_DESARROLLO">
                     </div>
                 </div>
                 <br>
@@ -349,7 +349,8 @@
                         <input type="text" class="form-control" id="pY_CALLE_DOMICILIO" name="pY_CALLE_DOMICILIO" maxlength="45">
                     </div>
                     <div class="col-md-4">
-                        <span class="clr">*</span>Número telefónico
+                        <span class="clr">*</span>Número telefónico.
+                        
                         <input type="text" class="form-control" id="pTELEFONO_DOMICILIO" name="pTELEFONO_DOMICILIO" maxlength="13" minlength="10" required>
                     </div>
                 </div>
@@ -428,8 +429,8 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Sexo <br> <!-- Se llena del catálogo CAT_SEXO -->
-                        <select style="width:356px;" name="SEXO_REFERENCIAS" id="SEXO_REFERENCIAS" class="form-control" data-error="#err_SEXO_REFERENCIAS" data-query='cmw2WmwzeW03a1lsakNJd1dEWWt0WmRmOU95OFFzS0ZESENTMmpyYkNySis1VlhVOFEza205bHF1Z0trTWVLVW4zV081M284cjNPc0pObExOZ2dKcGhnTE9KZU83SlM0bkZIaWhBdm4rV2ZjOGRZRmpnMkI3N1ZaZWVoZnk4R0g=' required></select>
-                        <span id="err_SEXO_REFERENCIAS"></span>
+                        <select style="width:356px;" name="pSEXO_REFERENCIAS" id="pSEXO_REFERENCIAS" class="form-control" data-error="#err_pSEXO_REFERENCIAS" data-query='cmw2WmwzeW03a1lsakNJd1dEWWt0WmRmOU95OFFzS0ZESENTMmpyYkNySis1VlhVOFEza205bHF1Z0trTWVLVW4zV081M284cjNPc0pObExOZ2dKcGhnTE9KZU83SlM0bkZIaWhBdm4rV2ZjOGRZRmpnMkI3N1ZaZWVoZnk4R0g=' required></select>
+                        <span id="err_pSEXO_REFERENCIAS"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Ocupación <br> <!-- Se llena del catálogo CAT_OCUPACION -->
@@ -657,7 +658,7 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Fecha de nacimiento
-                        <input type="date" class="form-control" id="FECHA_NAC_SOCIOECONOMICOS" name="FECHA_NAC_SOCIOECONOMICOS" required>
+                        <input type="date" class="form-control" id="pFECHA_NAC_SOCIOECONOMICOS" name="pFECHA_NAC_SOCIOECONOMICOS" required>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Parentesco <br><!-- Se llena del catálogo CAT_RELACION -->
