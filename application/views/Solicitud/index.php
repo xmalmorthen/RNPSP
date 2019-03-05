@@ -1,7 +1,7 @@
 <!-- CSS -->
-<link rel="stylesheet" href="<?php echo base_url('assets/css/dise.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('assets/vendor/datatable/jquery.dataTables.min.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url("assets/vendor/datatable/dataTables.bootstrap.min.css"); ?>">
+<link rel="stylesheet" href="<?php echo base_url("assets/vendor/datatable/dataTables.bootstrap4.min.css"); ?>">
+<link rel="stylesheet" href="<?php echo base_url("assets/vendor/datatable/responsive.bootstrap4.min.css"); ?>">
+
 <!-- /CSS -->
 
 <div class="row bodyVew">
@@ -10,7 +10,7 @@
     </div>
     <div class="col-md-12">
         <!-- BEGIN TABLE -->
-        <table id="tableAdministrarsolicitud" class="d-none" style="width:100%">
+        <table id="tableAdministrarsolicitud" class="d-none table table-striped dt-responsive" style="width:100%">
             <thead>
                 <tr>
                     <th><input type="checkbox" name='checkAll' id='checkAll' class='checkAll'></th>
@@ -57,7 +57,12 @@
 
 <!-- JS -->
 <script src="<?php echo base_url("assets/vendor/datatable/jquery.dataTables.min.js"); ?>"></script>
+<script src="<?php echo base_url("assets/vendor/datatable/dataTables.bootstrap4.min.js"); ?>"></script>
+<script src="<?php echo base_url("assets/vendor/datatable/dataTables.responsive.min.js"); ?>"></script>
+<script src="<?php echo base_url("assets/vendor/datatable/responsive.bootstrap4.min.js"); ?>"></script>
+
 <script src="<?php echo base_url('assets/js/views/solicitud/index.js') ?>"></script>
+
 <script>
     $(function() {
         objViewIndex.init();    

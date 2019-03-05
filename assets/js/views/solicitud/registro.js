@@ -24,6 +24,7 @@ var mainTabMenu = {
         //MAIN TAB
         $('#mainContainerTab a[data-toggle="tab"]').on('show.bs.tab',mainTabMenu.tab.change);
         $('#mainContainerTab a[data-toggle="tab"]').on('shown.bs.tab',dynTabs.loaderTab);
+        $('#mainContainerTab a[data-toggle="tab"]').on('shown.bs.tab',mainTabMenu.actions.tableResponsive);
         
 
         var linkRefHash = MyCookie.tabRef.get(dynTabs.mode + 'MainTab');
@@ -132,7 +133,16 @@ var mainTabMenu = {
             var linkRef = $('#' + linkRefHash);
             linkRef.trigger('click');
         },
-
+        tableResponsive : function(){
+            if ($.isFunction(objViewDatosGenerales.events.change.tableResponsive))
+                objViewDatosGenerales.events.change.tableResponsive();
+            if ($.isFunction(objViewLaboral.events.change.tableResponsive))
+                objViewLaboral.events.change.tableResponsive();
+            if ($.isFunction(objViewCapacitacion.events.change.tableResponsive))
+                objViewCapacitacion.events.change.tableResponsive();
+            if ($.isFunction(objViewIdentificacion.events.change.tableResponsive))
+                objViewIdentificacion.events.change.tableResponsive();
+        }
     },
     mainInit : function(){
         Swal.fire({

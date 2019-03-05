@@ -128,6 +128,7 @@ var objViewIdentificacion = {
         //CAMBIO DE TABS
         objViewIdentificacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewIdentificacion.actions.discartChanges}, e); } );
         objViewIdentificacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('show.bs.tab',dynTabs.showTab);
+        objViewIdentificacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('shown.bs.tab',objViewIdentificacion.events.change.tableResponsive);
 
         populate.form($('#mediafiliacion_form')); //popular selects del primer tab NOTA: cambiar programación al tab actual si se obtiene por cookie
         dynTabs.setCurrentTab($('#myTabContent'));
@@ -255,7 +256,7 @@ var objViewIdentificacion = {
                                     }
                                 },
                                 error: function (err) {
-                                    objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                                 
+                                    objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);                                 
                                 },
                                 always : function(){
                                     $.LoadingOverlay("hide");
@@ -266,7 +267,7 @@ var objViewIdentificacion = {
                         }
 
                     }catch(err) {
-                        objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                        
+                        objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);                        
                     }                    
                 },
                 guardarRegistrodecadactilar : function(e, from, tabRef){
@@ -361,7 +362,7 @@ var objViewIdentificacion = {
                                     }
                                 },
                                 error: function (err) {
-                                    objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                                 
+                                    objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);                                 
                                 },
                                 always : function(){
                                     $.LoadingOverlay("hide");
@@ -372,7 +373,7 @@ var objViewIdentificacion = {
                         }
 
                     }catch(err) {
-                        objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                        
+                        objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);                        
                     } 
                 },
                 guardarDocumento : function(e, from, tabRef){
@@ -468,7 +469,7 @@ var objViewIdentificacion = {
                                     }
                                 },
                                 error: function (err) {
-                                    objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                                 
+                                    objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);                                 
                                 },
                                 always : function(){
                                     $.LoadingOverlay("hide");
@@ -479,7 +480,7 @@ var objViewIdentificacion = {
                         }
 
                     }catch(err) {
-                        objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                        
+                        objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);                        
                     }
                 },
                 guardarVoz : function(e, from, tabRef){
@@ -574,7 +575,7 @@ var objViewIdentificacion = {
                                     }
                                 },
                                 error: function (err) {
-                                    objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                                 
+                                    objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);                                 
                                 },
                                 always : function(){
                                     $.LoadingOverlay("hide");
@@ -585,7 +586,7 @@ var objViewIdentificacion = {
                         }
 
                     }catch(err) {
-                        objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                        
+                        objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);                        
                     } 
                 },
                 validarVoz : function(e, from, tabRef){
@@ -621,7 +622,12 @@ var objViewIdentificacion = {
                 } else {
                     labelNameFile.text('');
                 }
-            } 
+            },
+            tableResponsive : function(){
+                $.each( objViewIdentificacion.vars.identificacion.tables, function( key, value ) {
+                    try{value.obj.responsive.rebuild().responsive.recalc();}catch(err){}
+                });                
+            }
         }
     },
     actions : {        
@@ -708,15 +714,15 @@ var objViewIdentificacion = {
                         model : model
                     },
                     function (data) {  
-                        objViewDatosGenerales.actions.ajax.callResponseValidations(form,data, from, tabRef, callback);
+                        objViewIdentificacion.actions.ajax.callResponseValidations(form,data, from, tabRef, callback);
                     }).fail(function (err) {
-                        objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);
+                        objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);
                     }).always(function () {
                         $.LoadingOverlay("hide");
                     });
 
                 }catch(err) {
-                    objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                        
+                    objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);                        
                 }
             }
         }

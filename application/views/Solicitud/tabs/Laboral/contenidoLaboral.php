@@ -169,7 +169,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <!-- BEGIN TABLE -->
-                        <table id="tableAdscripcionactual" class="table display" style="width:100%">
+                        <table id="tableAdscripcionactual" class="table display table-striped dt-responsive" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Id adscripción</th>
@@ -320,7 +320,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12">
-                        <table id="tableEmpleosdiversos" class="table display">
+                        <table id="tableEmpleosdiversos" class="table display table-striped dt-responsive" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Id empleo adicional</th>
@@ -492,7 +492,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12">
-                        <table id="tableComisiones" class="table display">
+                        <table id="tableComisiones" class="table display table-striped dt-responsive" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Id comisión</th>

@@ -58,15 +58,15 @@ var objViewDatosGenerales = {
         
         // INIT DATATABLE
         objViewDatosGenerales.vars.datosGenerales.tables.tableDatospersonales.dom = $('#tableDatospersonales');
-        objViewDatosGenerales.vars.datosGenerales.tables.tableDatospersonales.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableDatospersonales.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});
+        objViewDatosGenerales.vars.datosGenerales.tables.tableDatospersonales.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableDatospersonales.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});        
         objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.dom = $('#tableDesarrollo');
-        objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});
+        objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});        
         objViewDatosGenerales.vars.datosGenerales.tables.tableDomicilio.dom = $('#tableDomicilio');
-        objViewDatosGenerales.vars.datosGenerales.tables.tableDomicilio.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableDomicilio.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});
+        objViewDatosGenerales.vars.datosGenerales.tables.tableDomicilio.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableDomicilio.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});        
         objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.dom = $('#tableReferencias');
         objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});        
         objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.dom = $('#tableSocioeconomicos');
-        objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});        
+        objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.dom.DataTable({"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});                
         
         // INIT ELEMENTS
         // FORMS
@@ -129,6 +129,7 @@ var objViewDatosGenerales = {
         //CAMBIO DE TABS
         objViewDatosGenerales.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewDatosGenerales.actions.discartChanges}, e); } );
         objViewDatosGenerales.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('show.bs.tab',dynTabs.showTab);        
+        objViewDatosGenerales.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('shown.bs.tab',objViewDatosGenerales.events.change.tableResponsive);
         
         populate.form($('#Datos_personales_form')); //popular selects del primer tab NOTA: cambiar programación al tab actual si se obtiene por cookie
         dynTabs.setCurrentTab($('#myTabContent'));
@@ -271,7 +272,12 @@ var objViewDatosGenerales = {
                 }
             }
         },
-        change : {            
+        change : {
+            tableResponsive : function(){
+                $.each( objViewDatosGenerales.vars.datosGenerales.tables, function( key, value ) {
+                    try {value.obj.responsive.rebuild().responsive.recalc();}catch(err){}
+                });                
+            }
         }
     },
     actions : { 
