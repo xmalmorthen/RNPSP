@@ -370,13 +370,7 @@
                         <p></p>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <h6 class="borderButtom">Relación o parentesco</h6>
-                        <p></p>
-                    </div>
-                </div>
+              
                 <br>
                 <div class="row">
                     <div class="col-md-4">
@@ -566,6 +560,14 @@
                         <span id="err_ID_RELACION"></span>
                     </div>
                 </div>
+     
+                <div class="row">
+                    <div class="col-md-4">
+                        <h6 class="borderButtom">Relación o parentesco</h6>
+                        <p></p>
+                    </div>
+                </div>
+                <br>
                     <div class="row">
                     <div class="col-md-4">
                         <button class="btn btn-default" id="modificarSocioeconomico">Modificar</button>
