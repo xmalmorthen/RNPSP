@@ -105,7 +105,7 @@
             $pdf->Ln(10);
             $pdf->SetFont('Arial','',10);
             $pdf->cell(12);
-            $pdf->Cell(30,5,utf8_decode('Sin otro particular hago propicia la ocasión para hacerle llegar un cordial saludo'));
+            $pdf->Cell(30,5,utf8_decode('Sin otro partic9*ular hago propicia la ocasión para hacerle llegar un cordial saludo'));
         
             $pdf->Ln(10);
             $pdf->SetFont('Arial','B',8);

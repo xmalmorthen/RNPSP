@@ -333,48 +333,47 @@
 
     <div class="tab-pane fade" id="Referencias" role="tabpanel" aria-labelledby="Referencias-tab">
         <div class="_container">
-            <form action="#" id="Referencias_form" name="Referencias_form" autocomplete="off">
-                 <br>
+        <form action="#" id="Referencias_form" name="Referencias_form" autocomplete="off">
+                <br>
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <h3 class="titulo">Referencias</h3>
                     </div>
                 </div>
                 <br>
-                 <div class="row">
+                <div class="row">
                     <div class="col-md-4">
                         <h6 class="borderButtom"><span class="clr">*</span>Nombre</h6>
                         <p></p>
                     </div>
                     <div class="col-md-4">
-                        <h6 class="borderButtom"><span class="clr">*</span>Apellido paterno</h6>
+                    <h6 class="borderButtom"><span class="clr">*</span>Apellido paterno</h6>
                         <p></p>
-                    
+                    </div>
                     <div class="col-md-4">
-                        <h6 class="borderButtom">Apellido materno</h6>
-                       <p></p>
+                    <h6 class="borderButtom">Apellido materno</h6>
+                        <p></p>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <h6 class="borderButtom"><span class="clr">*</span>Sexo <br> <!-- Se llena del catálogo CAT_SEXO --></h6>
+                        <h6 class="borderButtom"><span class="clr">*</span>Sexo</h6>
                         <p></p>
                     </div>
                     <div class="col-md-4">
-                        <h6 class="borderButtom"><span class="clr">*</span>Ocupación <br> <!-- Se llena del catálogo CAT_OCUPACION --></h6>
+                        <h6 class="borderButtom"><span class="clr">*</span>Ocupación</h6>
                         <p></p>
                     </div>
                     <div class="col-md-4">
-                        <h6 class="borderButtom"><span class="clr">*</span>Tipo de referencia <br> <!-- Se llena del catálogo CAT_REFERENCIA --></h6>
+                        <h6 class="borderButtom"><span class="clr">*</span>Tipo de referencia</h6>
                         <p></p>
                     </div>
-                </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <h6 class="borderButtom">Relación o parentesco <br> <!-- Se llena del catálogo CAT_RELACION --></h6>
+                        <h6 class="borderButtom">Relación o parentesco</h6>
                         <p></p>
                     </div>
                 </div>
@@ -385,16 +384,16 @@
                         <p></p>
                     </div>
                     <div class="col-md-4">
-                        <h6 class="borderButtom"><span class="clr">*</span>Estado <br> <!-- Se llena del catálog CAT_ENTIDAD --></h6>
+                        <h6 class="borderButtom"><span class="clr">*</span>Estado</h6>
                         <p></p>
                     </div>
                     <div class="col-md-4">
-                        <h6 class="borderButtom"><span class="clr">*</span>Municipio <br><!-- Se llena del catálogo CAT_MUNICIPIO --></h6>
+                        <h6 class="borderButtom"><span class="clr">*</span>Municipio</h6>
                         <p></p>
                     </div>
                 </div>
                 <br>
-               <div class="row">
+                <div class="row">
                     <div class="col-md-4">
                         <h6 class="borderButtom">Ciudad</h6>
                         <p></p>
@@ -404,7 +403,7 @@
                         <p></p>
                     </div>
                     <div class="col-md-4">
-                        <h6 class="borderButtom">Calle</h6>
+                        <h6 class="borderButtom"><span class="clr">*</span>Calle</h6>
                         <p></p>
                     </div>
                 </div>
@@ -415,12 +414,12 @@
                         <p></p>
                     </div>
                     <div class="col-md-4">
-                         <h6 class="borderButtom">Número interior</h6>
+                        <h6 class="borderButtom">Número interior</h6>
                         <p></p>
                     </div>
                 </div>
                 <br>
-               <div class="row">
+                <div class="row">
                     <div class="col-md-4">
                         <h6 class="borderButtom">Entre la calle de</h6>
                         <p></p>
@@ -431,19 +430,16 @@
                     </div>
                 </div>
                 <br>
-                    <div class="row">
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id="modificarReferencias">Modificar</button>
-                    </div>
-                </div>
+             
                 <br>
                 <hr>
                 <br>
-              
+           
                  <input type="hidden" id="ID_ALTERNA_Referencias" name="ID_ALTERNA_Referencias" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Referencias" name="pID_ESTADO_EMISOR_Referencias" value="" >
                 <input type="hidden" id="pID_EMISOR_Referencias" name="pID_EMISOR_Referencias" value="" >
 
+            
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
@@ -458,7 +454,7 @@
                     </div>
                     <div class="col-md-4"></div>
                 </div>
-            </form>            
+            </form>               
         </div>
     </div> 
 
