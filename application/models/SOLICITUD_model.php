@@ -436,45 +436,43 @@ class SOLICITUD_model extends MY_Model
   */
   public function  sp_B2_LAB_addEmpleoSeg($model){
     $this->arrayToPost($model);
-    $_POST['ID_ALTERNA'] = 4;//pID_ALTERNA_Adscripcion_actual
+    $_POST['pID_ALTERNA'] = 4;//$this->input->post('pID_ALTERNA_Adscripcion_actual');
 
     $this->load->library('form_validation'  );
 
-    $this->addParam('pID_ALTERNA','ID_ALTERNA');
-    $this->addParam('pID_ESTADO_EMISOR','pID_ESTADO_EMISOR_Adscripcion_actual','',array('rule'=>'trim|numeric'));
-    $this->addParam('pID_EMISOR','pID_EMISOR_Adscripcion_actual','',array('rule'=>'trim|numeric'));
+    $this->addParam('pID_ALTERNA','pID_ALTERNA');
+    $this->addParam('pID_ESTADO_EMISOR','pID_ESTADO_EMISOR_Adscripcion_actual','',array('rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pID_EMISOR','pID_EMISOR_Adscripcion_actual','',array('rule'=>'trim|numeric|max_length[10]'));
 
-    $this->addParam('pID_DEPENDENCIA','_dependenciaAdscripcionActual','',array('rule'=>'trim'));
-    $this->addParam('pID_DOC_BAJA','pID_DOC_BAJA_Adscripcion_actual','',array('rule'=>'trim'));
-    $this->addParam('pID_ENTIDAD','pID_ENTIDAD_ADSCRIPCION_ACTUAL','',array('rule'=>'trim'));
-    $this->addParam('pID_MUNICIPIO','pID_MUNICIPIO_ADSCRIPCION_ACTUAL','',array('rule'=>'trim'));
+    $this->addParam('pID_DEPENDENCIA','pID_DEPENDENCIA_ADSCRIPCION_ACTUAL','',array('name'=>'Dependencia','rule'=>'trim|required|max_length[10]')); //DESAPARECIO DE LA DOCUMENTACION
+    $this->addParam('pID_DOC_BAJA','pID_DOC_BAJA_Adscripcion_actual','',array('rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pID_ENTIDAD','pID_ENTIDAD_ADSCRIPCION_ACTUAL','',array('name'=>'Estado','rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pID_MUNICIPIO','pID_MUNICIPIO_ADSCRIPCION_ACTUAL','',array('name'=>'Municipio','rule'=>'trim'));
     $this->addParam('pID_MOTIVO_MOV_LAB',null,'',array('rule'=>'trim')); //NO LO ENCONTRE EN EL FORMULARIO
     $this->addParam('pID_TIPO_MOV_LAB',NULL,'',array('rule'=>'trim|numeric'));//NO LO ENCONTRE EN EL FORMULARIO
-    $this->addParam('pID_AREA','pID_AREA','',array('rule'=>'trim|numeric'));
-    $this->addParam('pID_PUESTO',null,'',array('rule'=>'trim|numeric'));//NO LO ENCONTRE EN EL MODEL
-    $this->addParam('pID_INSTITUCION','pINSTITUCION','',array('rule'=>'trim|numeric')); //
-    $this->addParam('pID_TIPO_CONTRATO','pID_TIPO_CONTRATO_Adscripcion_actual','',array('rule'=>'trim'));
-    $this->addParam('pFECHA_INGRESO','pFECHA_INGRESO','',array('rule'=>'trim'));
-    $this->addParam('pESPECIALIDAD','pESPECIALIDAD','',array('rule'=>'trim'));
-    $this->addParam('pRANGO','pRANGO','',array('rule'=>'trim'));
-    $this->addParam('pSUELDO_BASE','pSUELDO_BASE','',array('rule'=>'trim'));
-    $this->addParam('pID_NIVEL_MANDO','pID_NIVEL_MANDO','',array('rule'=>'trim'));
-    $this->addParam('pCOMPENSACION','pCOMPENSACION','',array('rule'=>'trim'));
-    $this->addParam('pNUMERO_PLACA','pNUMERO_PLACA','',array('rule'=>'trim'));
-    $this->addParam('pNUMERO_EXPEDIENTE','pNUMERO_EXPEDIENTE','',array('rule'=>'trim'));
-    $this->addParam('pID_TIPO_BAJA','pID_DOC_BAJA_Adscripcion_actual','',array('rule'=>'trim'));
-    $this->addParam('pFECHA_BAJA',null,'',array('rule'=>'trim'));//NO LO ENCONTRE EN EL FORMULARIO
+    $this->addParam('pID_AREA','pID_AREA','',array('name'=>'Área o departamento','rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pID_PUESTO',null,'',array('name'=>'Puesto','rule'=>'trim|numeric')); //PENDIENTE
+    $this->addParam('pID_INSTITUCION','pID_INSTITUCION','',array('name'=>'Corporación','rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pID_TIPO_CONTRATO','pID_TIPO_CONTRATO_Adscripcion_actual','',array('rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pFECHA_INGRESO','pFECHA_INGRESO','',array('name'=>'Fecha de ingreso','rule'=>'trim|required|max_length[10]'));
+    $this->addParam('pESPECIALIDAD','pESPECIALIDAD','N',array('name'=>'Especialidad','rule'=>'trim|max_length[100]'));
+    $this->addParam('pRANGO','pRANGO','N',array('name'=>'Rango o categoría','rule'=>'trim|max_length[30]'));
+    $this->addParam('pSUELDO_BASE','pSUELDO_BASE','',array('name'=>'Sueldo base (Mensual)','rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pID_NIVEL_MANDO','pID_NIVEL_MANDO','',array('name'=>'Nivel de mando','rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pCOMPENSACION','pCOMPENSACION','',array('name'=>'Compensaciones (Mensuales)','rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pNUMERO_PLACA','pNUMERO_PLACA','N',array('name'=>'Número de placa','rule'=>'trim|max_length[20]'));
+    $this->addParam('pNUMERO_EXPEDIENTE','pNUMERO_EXPEDIENTE','',array('name'=>'Número de expediente','rule'=>'trim|max_length[20]'));
+    $this->addParam('pID_TIPO_BAJA','pID_DOC_BAJA_Adscripcion_actual','',array('rule'=>'trim')); //ESTA EN EL MODEL PERO NO EN EL FORMULARIO
+    $this->addParam('pFECHA_BAJA',null,'',array('rule'=>'trim|max_length[10]'));//NO LO ENCONTRE EN EL FORMULARIO
     $this->addParam('pOBSERVACION_BAJA',null,'',array('rule'=>'trim'));//NO LO ENCONTRE EN EL FORMULARIO
-    $this->addParam('pFUNCIONES','pFUNCIONES','',array('rule'=>'trim'));
+    $this->addParam('pFUNCIONES','pFUNCIONES','',array('name'=>'Funciones','rule'=>'trim|max_length[100]'));
     $this->addParam('pNUMERO_EMPLEADO',null,'',array('rule'=>'trim'));//NO LO ENCONTRE EN EL FORMULARIO
-    $this->addParam('pID_CATEGORIA_PUEST','pID_CATEGORIA_PUEST_Adscripcion_actual','',array('rule'=>'trim|numeric'));
-    $this->addParam('pID_JERARQUIA_PUEST','pID_JERARQUIA_PUEST_Adscripcion_actual','',array('rule'=>'trim|numeric'));
+    $this->addParam('pID_CATEGORIA_PUEST','pID_CATEGORIA_PUEST_Adscripcion_actual','',array('rule'=>'trim|numeric')); //ESTA EN EL MODEL PERO NO EN EL FORMULARIO
+    $this->addParam('pID_JERARQUIA_PUEST','pID_JERARQUIA_PUEST_Adscripcion_actual','',array('rule'=>'trim|numeric')); //ESTA EN EL MODEL PERO NO EN EL FORMULARIO
     $this->addParam('pID_FUNCION_PUESTO',null,'',array('rule'=>'trim'));//NO LO ENCONTRE EN EL FORMULARIO
-    $this->addParam('pID_AMBITO_PUESTO','pID_AMBITO_PUESTO_Adscripcion_actual','',array('rule'=>'trim|numeric'));
-    $this->addParam('pDIVISION','pDIVISION','',array('rule'=>'trim'));
-    $this->addParam('pID_JEFE','ID_JEFE','',array('name'=>'CUIP del jefe inmediato','rule'=>'trim|numeric'));
-
-    
+    $this->addParam('pID_AMBITO_PUESTO','pID_AMBITO_PUESTO_Adscripcion_actual','',array('rule'=>'trim|numeric')); //ESTA EN EL MODEL PERO NO EN EL FORMULARIO
+    $this->addParam('pDIVISION','pDIVISION','',array('name'=>'División','rule'=>'trim|max_length[20]'));
+    $this->addParam('pID_JEFE','ID_JEFE','',array('name'=>'CUIP del jefe inmediato','rule'=>'trim|numeric|max_length[10]'));
 
     if ($this->form_validation->run() === true) {
 
@@ -496,8 +494,11 @@ class SOLICITUD_model extends MY_Model
         $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
       }
     } else {
+      $this->load->helper('html');
       $this->response['status'] = false;
-      $this->response['message'] = $this->form_validation->error_array();
+      $message = $this->form_validation->error_array();
+      $this->response['message'] = ul($message);
+      $this->response['validation'] = $message;
     }
     return $this->response;
   }
