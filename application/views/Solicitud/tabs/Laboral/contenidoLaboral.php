@@ -16,7 +16,7 @@
                     </div>
                     <div class="col-md-6">
                         <span class="clr">*</span>Corporación <!-- Se llena del catalogo "CAT_INSTITUCION" -->
-                        <select  class="form-control" id="pID_INSTITUCION" name="pID_INSTITUCION" data-error="#err_pID_INSTITUCION" data-query='Q1B0ZnNNbzI4bEFpTG5sSGdqVHVMNU4xMXlKVXBCUXpFbUt5Ynh2ZzFneTM0eUdiSmRubTJUdE5HYjBTY2FSV2hUUkE4ZVUzSGhjZVlEWWdxQ2krNnBpaVlQazk5MTgwV1pybktnN0NQOW0vQXlBZnVEZnJpWmk4b0x3V1VRSTBaM0U1LzBERjcvcmVWMjBQWXNKMlNNMFVkWTlDNFVrSythaU43bHhia3BVPQ==' data-cascade='true' data-force-refresh='true' data-cascade-id-ref='_dependenciaAdscripcionActual' data-params='ID_DEPENDENCIA={0}' required></select>
+                        <select  class="form-control" id="pID_INSTITUCION" name="pID_INSTITUCION" data-error="#err_pID_INSTITUCION" data-query='Q1B0ZnNNbzI4bEFpTG5sSGdqVHVMNU4xMXlKVXBCUXpFbUt5Ynh2ZzFneTM0eUdiSmRubTJUdE5HYjBTY2FSV2hUUkE4ZVUzSGhjZVlEWWdxQ2krNnBpaVlQazk5MTgwV1pybktnN0NQOW0vQXlBZnVEZnJpWmk4b0x3V1VRSTBaM0U1LzBERjcvcmVWMjBQWXNKMlNNMFVkWTlDNFVrSythaU43bHhia3BVPQ==' data-cascade='true' data-force-refresh='true' data-cascade-id-ref='pID_DEPENDENCIA_ADSCRIPCION_ACTUAL' data-params='ID_DEPENDENCIA={0}' required></select>
                         <span id="err_pID_INSTITUCION"></span>
                     </div>
                 </div>
