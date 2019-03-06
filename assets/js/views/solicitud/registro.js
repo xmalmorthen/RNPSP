@@ -171,7 +171,8 @@ var mainTabMenu = {
                             reject(err);
                         });
                     }).then(function (data) {
-                        if (!data.results) {
+                        var getFromCURPQuery = data.results.data ? false : true;
+                        if (getFromCURPQuery == true) {
                             return new Promise(function (resolve,reject){
                                 callUrl = base_url + `ajaxAPIs/curp`;
                                 $.get(callUrl,{
@@ -188,7 +189,7 @@ var mainTabMenu = {
                             });
 
                         } else
-                            return {from:'bd', data: data[0]};
+                            return {from:'bd', data: data};
                     }).catch(function(err){
                         Swal.showValidationMessage(err.statusText);
                     });
@@ -246,7 +247,16 @@ var mainFormActions = {
     fillData : function(data){
         $('.consultaCURP').readOnly();
 
-        objViewDatosGenerales.vars.datosGenerales.objs.pCURP.val('RUAM811123HCMDGG05');
+        mainTabMenu.var.pID_ALTERNA = data.results.data.ID_ALTERNA;
+
+        //AutoFill
+        $.each(data.results.data,function(key,value){
+            mainFormActions.insertValueInSelect($('#'+ key),value);
+        });
+
+
+
+        /*objViewDatosGenerales.vars.datosGenerales.objs.pCURP.val('RUAM811123HCMDGG05');
         mainFormActions.insertValueInSelect($('#pTIPO_MOV'),'BE');
         mainFormActions.insertValueInSelect($('#pID_ENTIDAD_NAC'),'6');
         mainFormActions.insertValueInSelect($('#pID_MUNICIPIO_NAC'),'2');
@@ -254,18 +264,40 @@ var mainFormActions = {
         mainFormActions.insertValueInSelect($('#_dependenciaAdscripcionActual'),'9');
         mainFormActions.insertValueInSelect($('#pINSTITUCION'),'3817');
         mainFormActions.insertValueInSelect($('#pID_AREA'),'173525');  
-        mainFormActions.insertValueInSelect($('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL'),'2');  
+        mainFormActions.insertValueInSelect($('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL'),'2');  */
         
         dynTabs.loaderTab();
     },
     insertValueInSelect : function(ref,value){
-        if (ref){
-            if (ref.find('option:enabled').size() == 0)
-                ref.data('insert', value);
-            else {                
-                ref.val(value);
-                ref.trigger('change.select2').trigger('change');
-            }
+
+        if (ref.length > 0 && value){
+            $objTypeOf = ref[0].tagName.toLowerCase();            
+
+            switch ($objTypeOf) {
+                case 'input':
+                    $type = ref.attr('type').toLowerCase();
+                    switch ($type) {
+                        case 'text':
+                        case 'password':
+                        case 'date':
+                        case 'email':
+                        case 'hidden':
+                        case 'numeric':
+                            ref.val(value);
+                        break;                        
+                    }
+                break;
+                case 'select':                
+                    if (ref.find('option:enabled').size() == 0)
+                        ref.data('insert', value);
+                    else {                
+                        ref.val(value);
+                        ref.trigger('change.select2').trigger('change');
+                    }
+                break;                                    
+                default:
+                break;
+            }            
         }
     }
 }
