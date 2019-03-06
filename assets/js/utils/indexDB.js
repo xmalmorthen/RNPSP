@@ -33,7 +33,6 @@ var iDB = {
         createIDB : function(tables){
             var dbToDelete = ['SGP','SGPv1']
             $.each(dbToDelete,function(key, value) {
-                debugger;
                 var oldDB = new Dexie(value);
                 oldDB.delete().then(function() {}).catch(function(err) {});
                 oldDB.close();
