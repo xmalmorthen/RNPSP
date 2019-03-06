@@ -131,23 +131,6 @@
                         <input type="text" id="pCUIP" name="pCUIP" class="form-control" maxlength="40">
                     </div>
                 </div>
-                <br><hr><br>
-                <?php if (verificaPermiso(14) == true) { ?>
-                <div class="row ">
-                    <div class="col-md-4">
-                        CIB                        
-                        <input type="text" id="CIB" name="CIB" class="form-control" maxlength="30">
-                    </div>
-                    <div class="col-md-4">
-                        Motivo de cambio de CIB 
-                        <input type="text" id="motivoCIB" name="motivoCIB" class="form-control" maxlength="250">
-                    <br>
-                    </div>
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id="GUARDAR_CIB" style="margin-top: 16px;"> Guardar CIB</button>
-                    </div>
-                </div>
-                <?php }?>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
@@ -156,7 +139,28 @@
                 </div>
                 <br>
                 <hr>
-                <?php if (verificaPermiso(14) == true) { ?>
+                <br>
+                <input type="hidden" id="PID_ALTERNA_Datos_personales" name="PID_ALTERNA_Datos_personales" value="" >
+                <input type="hidden" id="pID_ESTADO_EMISOR_Datos_personales" name="pID_ESTADO_EMISOR_Datos_personales" value="" >
+                <input type="hidden" id="pID_EMISOR_Datos_personales" name="pID_EMISOR_Datos_personales" value="" >
+            </form>            
+            <?php if (verificaPermiso(14) == true) { ?>
+            <form action="#" id="Datos_personales_CIB_form" name="Datos_personales_CIB_form" autocomplete="off">
+                <div class="row ">
+                    <div class="col-md-4">
+                        CIB                        
+                        <input type="text" id="CIB" name="CIB" class="form-control" maxlength="30" required>
+                    </div>
+                    <div class="col-md-4">
+                        Motivo de cambio de CIB 
+                        <input type="text" id="motivoCIB" name="motivoCIB" class="form-control" maxlength="250" required>
+                    <br>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-default" id="GUARDAR_CIB" style="margin-top: 16px;"> Guardar CIB</button>
+                    </div>
+                </div>
+            </form>
                 <br>
                 <div class="row">
                     <div class="col-md-12">
@@ -170,17 +174,12 @@
                         </table>
                     </div>
                 </div>
-                <?php } ?>
-                <input type="hidden" id="PID_ALTERNA_Datos_personales" name="PID_ALTERNA_Datos_personales" value="" >
-                <input type="hidden" id="pID_ESTADO_EMISOR_Datos_personales" name="pID_ESTADO_EMISOR_Datos_personales" value="" >
-                <input type="hidden" id="pID_EMISOR_Datos_personales" name="pID_EMISOR_Datos_personales" value="" >
-
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab"  id="siguienteDatosPersonales" data-nexttab="#Desarrollo-tab">Siguiente Ficha</button>
-                    </div>
+            <?php } ?>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab"  id="siguienteDatosPersonales" data-nexttab="#Desarrollo-tab">Siguiente Ficha</button>
                 </div>
-            </form>            
+            </div>
         </div>
     </div>
     

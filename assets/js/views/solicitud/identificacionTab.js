@@ -725,6 +725,7 @@ var objViewIdentificacion = {
                         objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);
                     }).always(function () {
                         $.LoadingOverlay("hide");
+                        MyCookie.session.reset();
                     });
 
                 }catch(err) {
