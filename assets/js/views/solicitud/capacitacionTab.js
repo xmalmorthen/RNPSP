@@ -206,6 +206,7 @@ var objViewCapacitacion = {
                     $selectDisabled.prop("disabled", false);
 
                     var model = form.serialize();
+                    model += '&pID_ALTERNA=' + mainTabMenu.var.pID_ALTERNA;
 
                     $selectDisabled.prop("disabled", true);
                     

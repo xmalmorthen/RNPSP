@@ -152,24 +152,20 @@ var objViewDatosGenerales = {
                 guardarDatosPersonales : function(e, from, tabRef){
                     e.preventDefault();
                     objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDatosPersonales',from, tabRef, function(data){
-                        console.log(data);
-                        //TODO: Xmal - Actualizar variable [ mainTabMenu.var.pID_ALTERNA ] cuando se haga el guardado de la primer ficha y regrese el pID_ALTERNA;
+                        mainTabMenu.var.pID_ALTERNA = data.results.data.ID_ALTERNA ? data.results.data.ID_ALTERNA : null;
                         debugger;
                     });
                 },
                 generarCIB : function(e, from, tabRef){
                     e.preventDefault();
-
-                    debugger;
-
                     var form = $("#Datos_personales_CIB_form");
                     try {
                         //VALID FORM
                         if (!form.valid())
                             throw new Error("Formulario incompleto");
 
-                        // if (!mainTabMenu.var.pID_ALTERNA)
-                        //     throw new Error("Debe registrar primero los datos personales");
+                         if (!mainTabMenu.var.pID_ALTERNA)
+                             throw new Error("Debe registrar primero los datos personales");
 
                         $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
                         
@@ -345,10 +341,7 @@ var objViewDatosGenerales = {
                 try {
                     //VALID FORM
                     if (!form.valid())
-                        throw new Error("Formulario incompleto");
-
-                    if (!mainTabMenu.var.pID_ALTERNA)
-                        throw new Error("Debe registrar primero los datos personales");
+                        throw new Error("Formulario incompleto");                    
 
                     $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
                     
