@@ -451,7 +451,7 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estado <br> <!-- Se llena del catálog CAT_ENTIDAD -->
-                        <select style="width:356px;" name="pID_ENTIDAD_REFERENCIAS" id="pID_ENTIDAD_REFERENCIAS"_REFERENCIAS  class="form-control" data-error="#err_pID_ENTIDAD_REFERENCIAS" data-query='RG51N2cyVWNFVVp5Rlc5WDYydU0wcm0wbys4dElkSU1uaHBpTTJHMEJqOGVqdmRkUXJRUzB0TVZIa2Y0UldSWGpiMS9xQXhOWE5oVndVN0QzSFpHWHI4NEVzWTRIRU5RTmxjS09EK243V002bi9RV1ZUTU0waGRHdWlHSzFaT04=' required></select>
+                        <select style="width:356px;" name="pID_ENTIDAD_REFERENCIAS" id="pID_ENTIDAD_REFERENCIAS"  class="form-control" data-error="#err_pID_ENTIDAD_REFERENCIAS" data-query='RG51N2cyVWNFVVp5Rlc5WDYydU0wcm0wbys4dElkSU1uaHBpTTJHMEJqOGVqdmRkUXJRUzB0TVZIa2Y0UldSWGpiMS9xQXhOWE5oVndVN0QzSFpHWHI4NEVzWTRIRU5RTmxjS09EK243V002bi9RV1ZUTU0waGRHdWlHSzFaT04=' required></select>
                         <span id="err_pID_ENTIDAD_REFERENCIAS"></span>
                     </div>
                     <div class="col-md-4">

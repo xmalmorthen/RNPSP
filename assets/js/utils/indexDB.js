@@ -2,7 +2,7 @@ var iDB = {
     version: 1,
     status : false,
     vars : {
-        db : new Dexie('SGPv1'),
+        db : new Dexie('SGPv2'),
         selects : $('select'),
         toPopulate : 0,
         tablesChecked : 0,
@@ -31,8 +31,14 @@ var iDB = {
             });
         },
         createIDB : function(tables){
-            var oldDB = new Dexie('SGP');
-            oldDB.delete().then(function() {}).catch(function(err) {})
+            var dbToDelete = ['SGP','SGPv1']
+            $.each(dbToDelete,function(key, value) {
+                var oldDB = new Dexie(value);
+                oldDB.delete().then(function() {}).catch(function(err) {});
+                oldDB.close();
+                oldDB = null;
+            });
+            
 
             iDB.vars.db.version( iDB.version ).stores(tables);
             iDB.vars.db.open();
