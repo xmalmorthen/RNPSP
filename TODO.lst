@@ -7,4 +7,3 @@
 //TODO: Xmal - Actualizar variable [ mainTabMenu.var.pID_ALTERNA ] cuando se haga el guardado de la primer ficha y regrese el pID_ALTERNA [ assets\js\views\solicitud\datosGeneralesTab.js ];
 //TODO: Xmal - Quitar comentarios en bloque para implementación [ assets\js\views\solicitud\registro.js ]
 //TODO: Xmal - Quitar comentarios en bloque para implementación [ assets\js\utils\dynamicTabs.js ]
-//TODO: Xmal - Mostrar los datos de usuario en la sección de sesión de usuario

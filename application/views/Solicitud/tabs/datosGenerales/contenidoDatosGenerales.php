@@ -73,7 +73,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         Descripción ciudad de nacimiento <!--  Campo CIUDAD_NAC-->
-                        <input type="text" class="form-control" id="pCIUDAD_NAC_DATOS_PERSONALES" name="pCIUDAD_NAC_DATOS_PERSONALES" max="50">
+                        <input type="text" class="form-control" id="pCIUDAD_NAC_DATOS_PERSONALES" name="pCIUDAD_NAC_DATOS_PERSONALES" maxlength="50">
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Nacionalidad <!-- Se llena de CAT_PAIS -->

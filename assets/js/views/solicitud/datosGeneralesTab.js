@@ -152,8 +152,7 @@ var objViewDatosGenerales = {
                 guardarDatosPersonales : function(e, from, tabRef){
                     e.preventDefault();
                     objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDatosPersonales',from, tabRef, function(data){
-                        mainTabMenu.var.pID_ALTERNA = data.results.data.ID_ALTERNA ? data.results.data.ID_ALTERNA : null;
-                        debugger;
+                        mainTabMenu.var.pID_ALTERNA = data.results.data.pID_ALTERNA ? data.results.data.pID_ALTERNA : null;
                     });
                 },
                 generarCIB : function(e, from, tabRef){
