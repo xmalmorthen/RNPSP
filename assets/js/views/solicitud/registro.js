@@ -245,7 +245,7 @@ var mainFormActions = {
         });        
     },
     fillData : function(data){
-        $('.consultaCURP').readOnly();
+        
 
         mainTabMenu.var.pID_ALTERNA = data.results.data.ID_ALTERNA;
 
@@ -253,8 +253,6 @@ var mainFormActions = {
         $.each(data.results.data,function(key,value){
             mainFormActions.insertValueInSelect($('#'+ key),value);
         });
-
-
 
         /*objViewDatosGenerales.vars.datosGenerales.objs.pCURP.val('RUAM811123HCMDGG05');
         mainFormActions.insertValueInSelect($('#pTIPO_MOV'),'BE');
@@ -266,6 +264,7 @@ var mainFormActions = {
         mainFormActions.insertValueInSelect($('#pID_AREA'),'173525');  
         mainFormActions.insertValueInSelect($('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL'),'2');  */
         
+        $('.consultaCURP').readOnly();
         dynTabs.loaderTab();
     },
     insertValueInSelect : function(ref,value){
