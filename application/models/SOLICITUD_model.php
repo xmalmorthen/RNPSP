@@ -10,6 +10,7 @@ class SOLICITUD_model extends MY_Model
     $this->response = array(
       'status' => false,
       'message'=> '',
+      'validation' => false,
       'data'=> null
     );
   }
@@ -127,36 +128,36 @@ class SOLICITUD_model extends MY_Model
     return $this->response;
   }
 
-
-  public function addNivelEstudios($model){
+  
+  public function sp_B1_addNivelEstudios($model){
 
     $this->arrayToPost($model);
-    $_POST['ID_ALTERNA'] = 4;
+    $_POST['pID_ALTERNA'] = 4;
     
     $this->load->library('form_validation');
-    // $this->form_validation->set_rules('pID_ALTERNA', 'Máxima escolaridad', 'numeric|max_length[10]');
-    // $this->form_validation->set_rules('pID_ESTADO_EMISOR', 'Máxima escolaridad', 'numeric|max_length[10]');
-    // $this->form_validation->set_rules('pID_EMISOR', 'Máxima escolaridad', 'numeric|max_length[10]');
-    $this->form_validation->set_rules('pID_GRADO_ESCOLAR', 'Máxima escolaridad', 'numeric');
-    $this->form_validation->set_rules('pESPECIALIDAD_DESARROLLO', 'Máxima escolaridad', 'trim|max_length[100]');
-    $this->form_validation->set_rules('pNOMBRE_ESCUELA', 'Máxima escolaridad', 'trim|max_length[100]');
-    $this->form_validation->set_rules('pCEDULA_PROFESIONAL', 'Máxima escolaridad', 'numeric');
-    $this->form_validation->set_rules('pINICIO', 'Máxima escolaridad', 'trim');
-    $this->form_validation->set_rules('pTERMINO', 'Máxima escolaridad', 'trim');
-    $this->form_validation->set_rules('pREGISTRO_SEP', 'Máxima escolaridad', 'trim|max_length[1]');
-    $this->form_validation->set_rules('pFOLIO_CERTIFICADO', 'Máxima escolaridad', 'trim|max_length[30]');
-    $this->form_validation->set_rules('pPROMEDIO', 'Máxima escolaridad', 'numeric|max_length[10]');
+    $this->form_validation->set_rules('pID_ALTERNA', 'Máxima escolaridad', 'numeric|max_length[10]');
+    $this->form_validation->set_rules('pID_ESTADO_EMISOR', 'Máxima escolaridad', 'numeric|max_length[10]');
+    $this->form_validation->set_rules('pID_EMISOR', 'Máxima escolaridad', 'numeric|max_length[10]');
+    $this->form_validation->set_rules('pID_GRADO_ESCOLAR', 'Máxima escolaridad', 'trim|numeric|max_length[10]');
+    $this->form_validation->set_rules('pESPECIALIDAD_DESARROLLO', 'Especialidad o estudio', 'trim|max_length[100]');
+    $this->form_validation->set_rules('pNOMBRE_ESCUELA', 'Escuela', 'trim|max_length[100]');
+    $this->form_validation->set_rules('pCEDULA_PROFESIONAL', 'Cédula profesional', 'trim|numeric|max_length[10]');
+    $this->form_validation->set_rules('pINICIO', 'Fecha de inicio', 'trim|max_length[10]');
+    $this->form_validation->set_rules('pTERMINO', 'Fecha de término', 'trim|max_length[10]');
+    $this->form_validation->set_rules('pREGISTRO_SEP', 'Registro SEP', 'trim|max_length[1]');
+    $this->form_validation->set_rules('pFOLIO_CERTIFICADO', 'Número de folio de certificado', 'trim|max_length[30]');
+    $this->form_validation->set_rules('pPROMEDIO', 'Promedio', 'trim|numeric|max_length[10]');
 
     if ($this->form_validation->run() === true) {
 
       $this->procedure('sp_B1_addNivelEstudios');
 
       // $this->addParam('pID_ALTERNA',$model['ID_ALTERNA_Desarrollo']);
-      $this->addParam('pID_ALTERNA','ID_ALTERNA');
+      $this->addParam('pID_ALTERNA','pID_ALTERNA');
       //$this->addParam('pID_ESTADO_EMISOR',$model['pID_ESTADO_EMISOR_Desarrollo']); //Enviar vacio
       $this->addParam('pID_ESTADO_EMISOR',null); //Enviar vacio
       //$this->addParam('pID_EMISOR',$model['pID_EMISOR_Desarrollo']); //Enviar vacio
-      $this->addParam('pID_EMISOR',null); //Enviar vacio•
+      $this->addParam('pID_EMISOR',null); //Enviar vacio
       $this->addParam('pID_GRADO_ESCOLAR','pID_GRADO_ESCOLAR');
       $this->addParam('pESPECIALIDAD','pESPECIALIDAD_DESARROLLO','N');
       $this->addParam('pNOMBRE_ESCUELA','pNOMBRE_ESCUELA','N');
@@ -182,8 +183,11 @@ class SOLICITUD_model extends MY_Model
         $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
       }
     } else {
+      $this->load->helper('html');
       $this->response['status'] = false;
-      $this->response['message'] = $this->form_validation->error_array();
+      $message = $this->form_validation->error_array();
+      $this->response['message'] = ul($message);
+      $this->response['validation'] = $message;
     }
     return $this->response;
 
@@ -197,31 +201,31 @@ class SOLICITUD_model extends MY_Model
     
     $this->load->library('form_validation');
     $this->form_validation->set_rules('ID_ALTERNA', 'hidden', 'numeric');
-    $this->form_validation->set_rules('pID_ESTADO_EMISOR_Domicilio', 'hidden', 'numeric');
-    $this->form_validation->set_rules('pID_EMISOR_Domicilio', 'hidden', 'numeric');
-    $this->form_validation->set_rules('pID_TIPO_DOM', '', 'numeric');// NO SE ENCONTRO formulario
-    $this->form_validation->set_rules('pID_PAIS', '', 'numeric');// NO SE ENCONTRO formulario
-    $this->form_validation->set_rules('pCALLE_DOMICILIO', 'Calle', 'trim|max_length[60]');
-    $this->form_validation->set_rules('pCOLONIA_DOMICILIO', 'Colonia/Localidad', 'trim|max_length[60]');
-    $this->form_validation->set_rules('pNUM_EXTERIOR_DOMICILIO', 'Número exterior', 'trim|max_length[30]');
+    // $this->form_validation->set_rules('pID_ESTADO_EMISOR_Domicilio', 'hidden', 'numeric');//Enviar vacio
+    // $this->form_validation->set_rules('pID_EMISOR_Domicilio', 'hidden', 'numeric');//Enviar vacio
+    // $this->form_validation->set_rules('pID_TIPO_DOM', '', 'numeric');//Enviar vacio
+    // $this->form_validation->set_rules('pID_PAIS', '', 'numeric');// Enviar vacio
+    $this->form_validation->set_rules('pCALLE_DOMICILIO', 'Calle', 'trim|required|max_length[60]');
+    $this->form_validation->set_rules('pCOLONIA_DOMICILIO', 'Colonia/Localidad', 'trim|required|max_length[60]');
+    $this->form_validation->set_rules('pNUM_EXTERIOR_DOMICILIO', 'Número exterior', 'trim|required|max_length[30]');
     $this->form_validation->set_rules('pNUM_INTERIOR_DOMICILIO', 'Número interior', 'trim|max_length[30]');
-    $this->form_validation->set_rules('pTELEFONO_DOMICILIO', 'Número telefónico', 'trim|max_length[20]');
-    $this->form_validation->set_rules('pID_ENTIDAD_DOMICILIO', 'Estado', 'numeric');
-    $this->form_validation->set_rules('pID_MUNICIPIO_DOMICILIO', 'Municipio', 'numeric');
-    $this->form_validation->set_rules('pENTRE_CALLE_DOMICILIO', 'Entre la calle de', 'trim|max_length[60]');
-    $this->form_validation->set_rules('pY_CALLE_DOMICILIO', 'Y la calle de', 'trim|max_length[10]');
-    $this->form_validation->set_rules('pCODIGO_POSTAL_DOMICILIO', 'Código postal', 'trim|max_length[50]');
-    $this->form_validation->set_rules('pCIUDAD_DOMICILIO', 'Ciudad', 'trim|max_length[100]');
+    $this->form_validation->set_rules('pTELEFONO_DOMICILIO', 'Número telefónico', 'trim|required|max_length[20]');
+    $this->form_validation->set_rules('pID_ENTIDAD_DOMICILIO', 'Estado', 'trim|required|numeric|max_length[10]');
+    $this->form_validation->set_rules('pID_MUNICIPIO_DOMICILIO', 'Municipio', 'trim|required|numeric|max_length[10]');
+    $this->form_validation->set_rules('pENTRE_CALLE_DOMICILIO', 'Entre la calle de', 'trim|required|max_length[60]');
+    $this->form_validation->set_rules('pY_CALLE_DOMICILIO', 'Y la calle de', 'trim|max_length[45]');
+    $this->form_validation->set_rules('pCODIGO_POSTAL_DOMICILIO', 'Código postal', 'trim|required|max_length[10]');
+    $this->form_validation->set_rules('pCIUDAD_DOMICILIO', 'Ciudad', 'trim|max_length[50]');
 
     if ($this->form_validation->run() === true) {
 
       $this->procedure('sp_B1_addDomicilio');
 
       $this->addParam('pID_ALTERNA','ID_ALTERNA');
-      $this->addParam('pID_ESTADO_EMISOR','pID_ESTADO_EMISOR_Domicilio');
-      $this->addParam('pID_EMISOR','pID_EMISOR_Domicilio');
-      $this->addParam('pID_TIPO_DOM',null); // NO SE ENCONTRO formulario
-      $this->addParam('pID_PAIS',null); // NO SE ENCONTRO formulario
+      $this->addParam('pID_ESTADO_EMISOR',null);//Enviar vacio
+      $this->addParam('pID_EMISOR',null);//Enviar vacio
+      $this->addParam('pID_TIPO_DOM',null); //Enviar vacio
+      $this->addParam('pID_PAIS',null); // Enviar vacio
       $this->addParam('pCALLE','pCALLE_DOMICILIO','N');
       $this->addParam('pCOLONIA','pCOLONIA_DOMICILIO','N');
       $this->addParam('pNUM_EXTERIOR','pNUM_EXTERIOR_DOMICILIO','N');
@@ -249,8 +253,11 @@ class SOLICITUD_model extends MY_Model
         $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
       }
     } else {
+      $this->load->helper('html');
       $this->response['status'] = false;
-      $this->response['message'] = $this->form_validation->error_array();
+      $message = $this->form_validation->error_array();
+      $this->response['message'] = ul($message);
+      $this->response['validation'] = $message;
     }
     return $this->response;
 

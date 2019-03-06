@@ -54,7 +54,6 @@
 			
 			// FORM MODE
 			$this->session->set_flashdata('formMode','add'); //MODO REGISTRO
-
 			$this->load->view('Solicitud/Registro');
         }
 		
@@ -238,9 +237,12 @@
 
 				$model = [];
 				parse_str($_POST["model"], $model);
-				
+				/*
+				*ALGUNOS DATOS ESTAN INCOMPLETOS
+				*SE DEJO EL ID ALTENA FIJO
+				*/
 				$this->load->model('SOLICITUD_model');
-				$responseModel = $this->SOLICITUD_model->addNivelEstudios($model);
+				$responseModel = $this->SOLICITUD_model->sp_B1_addNivelEstudios($model);
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
