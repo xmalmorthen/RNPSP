@@ -280,6 +280,22 @@ class MY_Model extends CI_Model
     return $result;
   }
 
+  public function query_multi($query){
+    $result = array();
+    try {
+      $stmt = sqlsrv_query($this->db->conn_id, $query);
+      while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC)){
+        $result[] = $row;
+        sqlsrv_next_result($stmt);
+      }
+    } catch (Exception $th) {
+      $result = false;
+      Msg_reporting::error_log($th);
+      Msg_reporting::error_log(sqlsrv_errors());
+    }
+    return $result;
+  }
+
   public function query_row($query)
   {
     $result = false;
