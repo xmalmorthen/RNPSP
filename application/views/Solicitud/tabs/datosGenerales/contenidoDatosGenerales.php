@@ -17,10 +17,10 @@
                         <span class="clr">*</span>RFC
                         <input type="text" class="form-control" id="pRFC_DOMICILIO" name="pRFC_DOMICILIO" maxlength="13" minlength="10" required>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4"> <!-- PENDIENTEEEEE -->
                         Tipo de movimiento <!-- Se llena de la tabla CAT_TIPO_OPERACION  -->
-                        <select  class="form-control" name="pTIPO_MOV" id="pTIPO_MOV" data-error="#err_pTIPO_MOV" data-cat='CAT_TIPO_OPERACION' data-query='WEh6TEJUUFROWVFUNWdLYVVqOSt0eE5rRFBwL3NLWFhyY1RBYXNhUlQvMXJkaFN5bVhWNFUwRWJKdG1YQWFtWWl3VTVlQWtQVnp3NmVNOGdZT1hMWmFDczlzZnBNQVhWaGxhS1BibktwdklnckgxNmplYXkvblpVSWhIMWtoNlNIM041THFhTEdvMlQybDA4N1FiSndSWjVlMmRLQndqRTkvTHJrbS9jUkRvPQ==' required></select>
-                        <span id="err_pTIPO_MOV"></span>
+                        <select  class="form-control" name="pTIPO_OPERACION" id="pTIPO_OPERACION" data-error="#err_pTIPO_OPERACION" data-cat='CAT_TIPO_OPERACION' data-query='WEh6TEJUUFROWVFUNWdLYVVqOSt0eE5rRFBwL3NLWFhyY1RBYXNhUlQvMXJkaFN5bVhWNFUwRWJKdG1YQWFtWWl3VTVlQWtQVnp3NmVNOGdZT1hMWmFDczlzZnBNQVhWaGxhS1BibktwdklnckgxNmplYXkvblpVSWhIMWtoNlNIM041THFhTEdvMlQybDA4N1FiSndSWjVlMmRLQndqRTkvTHJrbS9jUkRvPQ==' required></select>
+                        <span id="err_pTIPO_OPERACION"></span>
                     </div>
                 </div>
                 <br>
@@ -171,7 +171,7 @@
                     </div>
                 </div>
                 <?php } ?>
-                <input type="hidden" id="ID_ALTERNA_Datos_personales" name="ID_ALTERNA_Datos_personales" value="" >
+                <input type="hidden" id="PID_ALTERNA_Datos_personales" name="PID_ALTERNA_Datos_personales" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Datos_personales" name="pID_ESTADO_EMISOR_Datos_personales" value="" >
                 <input type="hidden" id="pID_EMISOR_Datos_personales" name="pID_EMISOR_Datos_personales" value="" >
 
@@ -265,7 +265,7 @@
                         </table>
                     </div>
                 </div>
-                <input type="hidden" id="ID_ALTERNA_Desarrollo" name="ID_ALTERNA_Desarrollo" value="" >
+                <input type="hidden" id="pID_ALTERNA_Desarrollo" name="pID_ALTERNA_Desarrollo" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Desarrollo" name="pID_ESTADO_EMISOR_Desarrollo" value="" >
                 <input type="hidden" id="pID_EMISOR_Desarrollo" name="pID_EMISOR_Desarrollo" value="" >
 
@@ -350,7 +350,7 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Número telefónico.
-                        
+
                         <input type="text" class="form-control" id="pTELEFONO_DOMICILIO" name="pTELEFONO_DOMICILIO" maxlength="13" minlength="10" required>
                     </div>
                 </div>
@@ -378,7 +378,7 @@
                     <tbody>
                     </tbody>
                 </table>
-                <input type="hidden" id="ID_ALTERNA_Domicilio" name="ID_ALTERNA_Domicilio" value="" >
+                <input type="hidden" id="pID_ALTERNA_Domicilio" name="pID_ALTERNA_Domicilio" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Domicilio" name="pID_ESTADO_EMISOR_Domicilio" value="" >
                 <input type="hidden" id="pID_EMISOR_Domicilio" name="pID_EMISOR_Domicilio" value="" >
 
@@ -414,15 +414,15 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Nombre
-                        <input type="text" id="NOMBRE_REFERENCIAS" name="NOMBRE_REFERENCIAS" class="form-control" maxlength="30" required>
+                        <input type="text" id="pNOMBRE_REFERENCIAS" name="pNOMBRE_REFERENCIAS" class="form-control" maxlength="30" required>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Apellido paterno
-                        <input type="text" id="PATERNO_REFERENCIAS" name="PATERNO_REFERENCIAS" class="form-control" maxlength="30" required>
+                        <input type="text" id="pPATERNO_REFERENCIAS" name="pPATERNO_REFERENCIAS" class="form-control" maxlength="30" required>
                     </div>
                     <div class="col-md-4">
                         Apellido materno
-                        <input type="text" class="form-control" id="MATERNO_REFERENCIAS" name="MATERNO_REFERENCIAS" maxlength="30">
+                        <input type="text" class="form-control" id="pMATERNO_REFERENCIAS" name="pMATERNO_REFERENCIAS" maxlength="30">
                     </div>
                 </div>
                 <br>
@@ -434,67 +434,67 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Ocupación <br> <!-- Se llena del catálogo CAT_OCUPACION -->
-                        <select style="width:356px;" name="OCUPACION" id="OCUPACION" class="form-control" data-error="#err_OCUPACION" data-query='cjB0dGsrdDFKdDJNRVR4RVRUQmlVZTRES2tSTmhFZXRxUktaZm5UTjFTM1F6T0VMbHkyMTQ1L3JkaHZ2d1AwZkRWVlpIMlVOMnpNam1pUnFSUWRZM2xBMXJncWl0d3hEYTQrTnh6WStWcUsrUWRwTnNGc2lUVUNndEp4YUFRNVY=' required></select>
-                        <span id="err_OCUPACION"></span>
+                        <select style="width:356px;" name="pID_OCUPACION" id="pID_OCUPACION" class="form-control" data-error="#err_pID_OCUPACION" data-query='cjB0dGsrdDFKdDJNRVR4RVRUQmlVZTRES2tSTmhFZXRxUktaZm5UTjFTM1F6T0VMbHkyMTQ1L3JkaHZ2d1AwZkRWVlpIMlVOMnpNam1pUnFSUWRZM2xBMXJncWl0d3hEYTQrTnh6WStWcUsrUWRwTnNGc2lUVUNndEp4YUFRNVY=' required></select>
+                        <span id="err_pID_OCUPACION"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Tipo de referencia <br> <!-- Se llena del catálogo CAT_REFERENCIA -->
-                        <select style="width:356px;" id="ID_TIPO_REFERENCIA" name="ID_TIPO_REFERENCIA" class="form-control" data-error="#err_ID_TIPO_REFERENCIA_REFERENCIAS" data-query='d1lEQ2dSOSsrZUtnU2wwVjJWRHBCSE12STBKUElSU2l5bHA4OTRJbzlXc01BVFNvYms3V0lYYm1QWkVPellLdlNsZmNicy83akdkaEVTZDAxTDVGNVRzdnZtK3k5KzRzZFJxYXZCNERJRmhwOCtFb0ZFS0hjNEhaZTd4cWw1U2Y=' required></select>
-                        <span id="err_ID_TIPO_REFERENCIA"></span>
+                        <select style="width:356px;" id="pID_TIPO_REFERENCIA" name="pID_TIPO_REFERENCIA" class="form-control" data-error="#err_pID_TIPO_REFERENCIA_REFERENCIAS" data-query='d1lEQ2dSOSsrZUtnU2wwVjJWRHBCSE12STBKUElSU2l5bHA4OTRJbzlXc01BVFNvYms3V0lYYm1QWkVPellLdlNsZmNicy83akdkaEVTZDAxTDVGNVRzdnZtK3k5KzRzZFJxYXZCNERJRmhwOCtFb0ZFS0hjNEhaZTd4cWw1U2Y=' required></select>
+                        <span id="err_pID_TIPO_REFERENCIA"></span>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         Código postal
-                        <input type="text" id="CODIGO_POSTAL_REFERENCIAS" name="CODIGO_POSTAL_REFERENCIAS" class="form-control" maxlength="10">
+                        <input type="text" id="pCODIGO_POSTAL_REFERENCIAS" name="pCODIGO_POSTAL_REFERENCIAS" class="form-control" maxlength="10">
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estado <br> <!-- Se llena del catálog CAT_ENTIDAD -->
-                        <select style="width:356px;" name="ID_ENTIDAD_REFERENCIAS" id="ID_ENTIDAD_REFERENCIAS"_REFERENCIAS  class="form-control" data-error="#err_ID_ENTIDAD_REFERENCIAS" data-query='RG51N2cyVWNFVVp5Rlc5WDYydU0wcm0wbys4dElkSU1uaHBpTTJHMEJqOGVqdmRkUXJRUzB0TVZIa2Y0UldSWGpiMS9xQXhOWE5oVndVN0QzSFpHWHI4NEVzWTRIRU5RTmxjS09EK243V002bi9RV1ZUTU0waGRHdWlHSzFaT04=' required></select>
-                        <span id="err_ID_ENTIDAD_REFERENCIAS"></span>
+                        <select style="width:356px;" name="pID_ENTIDAD_REFERENCIAS" id="pID_ENTIDAD_REFERENCIAS"_REFERENCIAS  class="form-control" data-error="#err_pID_ENTIDAD_REFERENCIAS" data-query='RG51N2cyVWNFVVp5Rlc5WDYydU0wcm0wbys4dElkSU1uaHBpTTJHMEJqOGVqdmRkUXJRUzB0TVZIa2Y0UldSWGpiMS9xQXhOWE5oVndVN0QzSFpHWHI4NEVzWTRIRU5RTmxjS09EK243V002bi9RV1ZUTU0waGRHdWlHSzFaT04=' required></select>
+                        <span id="err_pID_ENTIDAD_REFERENCIAS"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Municipio <br><!-- Se llena del catálogo CAT_MUNICIPIO -->
-                        <select style="width:356px;" name="ID_MUNICIPIO_REFERENCIAS" id="ID_MUNICIPIO_REFERENCIAS" class="form-control" data-error="#err_ID_MUNICIPIO_REFERENCIAS" data-query='c244RWRmblByTDlCWExpTHc0ZnQ3NGUzbWMza1Y5MnZCck9rQmpCQ1hTdlA3dzJyRVNMRjhXTll4WmNmYkplM1BKM1BWckJ3RFdieG55eUNldGZ3N1dyS2taNXhWd2RWczkzT0lsVTk1anZPcVJFclZBN05mTUtwbjJuazJqa0tSaXVENkI2WVErcmUxNlFoVUFNamttMjB1S3RxK0ZjUFA3cEFhM0Fvak53PQ==' data-cascade='true' data-force-refresh='true' data-cascade-id-ref='ID_ENTIDAD_REFERENCIAS' data-params='ID_ENTIDAD={0}' required></select>
-                        <span id="err_ID_MUNICIPIO_REFERENCIAS"></span>
+                        <select style="width:356px;" name="pID_MUNICIPIO_REFERENCIAS" id="pID_MUNICIPIO_REFERENCIAS" class="form-control" data-error="#err_pID_MUNICIPIO_REFERENCIAS" data-query='c244RWRmblByTDlCWExpTHc0ZnQ3NGUzbWMza1Y5MnZCck9rQmpCQ1hTdlA3dzJyRVNMRjhXTll4WmNmYkplM1BKM1BWckJ3RFdieG55eUNldGZ3N1dyS2taNXhWd2RWczkzT0lsVTk1anZPcVJFclZBN05mTUtwbjJuazJqa0tSaXVENkI2WVErcmUxNlFoVUFNamttMjB1S3RxK0ZjUFA3cEFhM0Fvak53PQ==' data-cascade='true' data-force-refresh='true' data-cascade-id-ref='pID_ENTIDAD_REFERENCIAS' data-params='ID_ENTIDAD={0}' required></select>
+                        <span id="err_pID_MUNICIPIO_REFERENCIAS"></span>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         Ciudad
-                        <input type="text" id="CIUDAD_REFERENCIAS" name="CIUDAD_REFERENCIAS" class="form-control" maxlength="50" required>
+                        <input type="text" id="pCIUDAD_REFERENCIAS" name="pCIUDAD_REFERENCIAS" class="form-control" maxlength="50" required>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Colonia/Localidad
-                        <input type="text"  id="COLONIA_REFERENCIAS" name="COLONIA_REFERENCIAS" class="form-control" maxlength="60" required>
+                        <input type="text"  id="pCOLONIA_REFERENCIAS" name="pCOLONIA_REFERENCIAS" class="form-control" maxlength="60" required>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Calle
-                        <input type="text" id="CALLE_REFERENCIAS" name="CALLE_REFERENCIAS" class="form-control" maxlength="60" required>
+                        <input type="text" id="pCALLE_REFERENCIAS" name="pCALLE_REFERENCIAS" class="form-control" maxlength="60" required>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Número exterior
-                        <input type="number" class="form-control" name="NUM_EXTERIOR_REFERENCIAS" id="NUM_EXTERIOR_REFERENCIAS" required>
+                        <input type="number" class="form-control" name="pNUM_EXTERIOR_REFERENCIAS" id="pNUM_EXTERIOR_REFERENCIAS" required>
                     </div>
                     <div class="col-md-4">
                         Número interior
-                        <input type="number" class="form-control" name="NUM_INTERIOR_REFERENCIAS" id="NUM_INTERIOR_REFERENCIAS" >
+                        <input type="number" class="form-control" name="pNUM_INTERIOR_REFERENCIAS" id="pNUM_INTERIOR_REFERENCIAS" >
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         Entre la calle de
-                        <input type="text" class="form-control" id="ENTRE_CALLE_REFERENCIAS" name="ENTRE_CALLE_REFERENCIAS" maxlength="60">
+                        <input type="text" class="form-control" id="pENTRE_CALLE_REFERENCIAS" name="pENTRE_CALLE_REFERENCIAS" maxlength="60">
                     </div>
                     <div class="col-md-4">
                         Y la calle de
-                        <input type="text" class="form-control" id="Y_CALLE_REFERENCIAS" name="Y_CALLE_REFERENCIAS" maxlength="45">
+                        <input type="text" class="form-control" id="pY_CALLE_REFERENCIAS" name="pY_CALLE_REFERENCIAS" maxlength="45">
                     </div>
                 </div>
                 <br>
@@ -520,7 +520,7 @@
                     <tbody>
                     </tbody>
                 </table>
-                 <input type="hidden" id="ID_ALTERNA_Referencias" name="ID_ALTERNA_Referencias" value="" >
+                <input type="hidden" id="pID_ALTERNA_Referencias" name="pID_ALTERNA_Referencias" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Referencias" name="pID_ESTADO_EMISOR_Referencias" value="" >
                 <input type="hidden" id="pID_EMISOR_Referencias" name="pID_EMISOR_Referencias" value="" >
 
@@ -555,21 +555,21 @@
                 <div class="row">
                     <div class="col-md-4">
                         ¿Vive con su familia? <br><!-- S/N = SI/NO -->
-                        <select style="width:356px;" class="form-control" id="VIVE_FAMILIA" name="VIVE_FAMILIA" data-error="#err_VIVE_FAMILIA" data-query=''>
+                        <select style="width:356px;" class="form-control" id="pVIVE_FAMILIA" name="pVIVE_FAMILIA" data-error="#err_pVIVE_FAMILIA" data-query=''>
                             <option disabled selected value>Seleccione una opción</option>
                             <option value="S">SI</option>
                             <option value="N">NO</option>
                         </select>
-                        <span id="err_VIVE_FAMILIA"></span>
+                        <span id="err_pVIVE_FAMILIA"></span>
                     </div>
                     <div class="col-md-4">
                         Ingreso familiar adicional (mensual)
-                        <input type="text" class="form-control" id="INGRESO_FAMILIAR" name="INGRESO_FAMILIAR" maxlength="10.2">
+                        <input type="text" class="form-control" id="pINGRESO_FAMILIAR" name="pINGRESO_FAMILIAR" maxlength="10.2">
                     </div>
                     <div class="col-md-4">
                         Su domicilio es <br> <!-- Se llena del catálogo CAT_TIPO_DOMICILIO -->
-                        <select style="width:356px;" name="ID_TIPO_DOMICILIO" id="ID_TIPO_DOMICILIO" class="form-control" data-error="#err_ID_TIPO_DOMICILIO" data-query='Y3ZMRjVwQ3hJdU1nVy95Yk15enNSWmpyaXBYbHFmQVdMOHUxTkVlY3RSZ3ZWTElpRVRkZ2V6alpURTQ5WC9ONm9oVnBsTEpSNzdPMDFUUTFUcVBZQzFFL2d2LytMZVFWR1dWS1FKSmt0c2JYWDBOWTd1dW85TTFENjVVYnJadlJuNG5za3kyRkhHMitISmIxTTZlQ2JZaGtqQTdaeHplRE5LNzVrWHp1cW53PQ=='>
-                        <span id="err_ID_TIPO_DOMICILIO"></span>
+                        <select style="width:356px;" name="pID_TIPO_DOMICILIO" id="pID_TIPO_DOMICILIO" class="form-control" data-error="#err_pID_TIPO_DOMICILIO" data-query='Y3ZMRjVwQ3hJdU1nVy95Yk15enNSWmpyaXBYbHFmQVdMOHUxTkVlY3RSZ3ZWTElpRVRkZ2V6alpURTQ5WC9ONm9oVnBsTEpSNzdPMDFUUTFUcVBZQzFFL2d2LytMZVFWR1dWS1FKSmt0c2JYWDBOWTd1dW85TTFENjVVYnJadlJuNG5za3kyRkhHMitISmIxTTZlQ2JZaGtqQTdaeHplRE5LNzVrWHp1cW53PQ=='>
+                        <span id="err_pID_TIPO_DOMICILIO"></span>
                         <option value="">Seleccione</option></select>
                     </div>
                 </div>
@@ -577,42 +577,42 @@
                 <div class="row">
                     <div class="col-md-4" >
                         Actividades culturales o deportivas que practica
-                        <input type="text" class="form-control" id="ACTIVIDAD_CULTURAL" name="ACTIVIDAD_CULTURAL" maxlength="100">
+                        <input type="text" class="form-control" id="pACTIVIDAD_CULTURAL" name="pACTIVIDAD_CULTURAL" maxlength="100">
                     </div>
                     <div class="col-md-4">
                         Especificación de inmuebles y costos
-                        <input type="text" class="form-control" id="INMUEBLES" name="INMUEBLES" maxlength="100">
+                        <input type="text" class="form-control" id="pINMUEBLES" name="pINMUEBLES" maxlength="100">
                     </div>
                     <div class="col-md-4">
                         Inversión y monto aproximado
-                        <input type="text" class="form-control" id="INVERSIONES" name="INVERSIONES" maxlength="100">
+                        <input type="text" class="form-control" id="pINVERSIONES" name="pINVERSIONES" maxlength="100">
                     </div>
                 </div>  
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         Vehículo y costo aproximado
-                        <input type="text" class="form-control" id="NUMERO_AUTOS" name="NUMERO_AUTOS" maxlength="100">
+                        <input type="text" class="form-control" id="pNUMERO_AUTOS" name="pNUMERO_AUTOS" maxlength="100">
                         <!-- ¿? -->
                     </div>
                     <div class="col-md-4">
                         Calidad de vida
-                        <input type="text" class="form-control" id="CALIDAD_VIDA" name="CALIDAD_VIDA" maxlength="50">
+                        <input type="text" class="form-control" id="pCALIDAD_VIDA" name="pCALIDAD_VIDA" maxlength="50">
                     </div>
                     <div class="col-md-4">
                         Vicios
-                        <input type="text" class="form-control" id="VICIOS" name="VICIOS" maxlength="100">
+                        <input type="text" class="form-control" id="pVICIOS" name="pVICIOS" maxlength="100">
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4" >
                         Imágen pública
-                        <input type="text" class="form-control" id="IMAGEN_PUBLICA" name="IMAGEN_PUBLICA" maxlength="50">
+                        <input type="text" class="form-control" id="pIMAGEN_PUBLICA" name="pIMAGEN_PUBLICA" maxlength="50">
                     </div>
                     <div class="col-md-4">
                         Comportamiento social
-                        <input type="text" class="form-control" id="COMPORTA_SOCIAL" name="COMPORTA_SOCIAL" maxlength="50">
+                        <input type="text" class="form-control" id="pCOMPORTA_SOCIAL" name="pCOMPORTA_SOCIAL" maxlength="50">
                     </div>
                 </div>
                 <br>
@@ -622,7 +622,7 @@
                     </div>
                 </div>
                 <br>
-                <input type="hidden" id="ID_ALTERNA_Socioeconomico" name="ID_ALTERNA_Socioeconomico" value="" >
+                <input type="hidden" id="pID_ALTERNA_Socioeconomico" name="pID_ALTERNA_Socioeconomico" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Socioeconomico" name="pID_ESTADO_EMISOR_Socioeconomico" value="" >
                 <input type="hidden" id="pID_EMISOR_Socioeconomico" name="pID_EMISOR_Socioeconomico" value="" >
             </form>
@@ -638,23 +638,23 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Nombre
-                        <input type="text" class="form-control" id="NOMBRE_SOCIOECONOMICOS" name="NOMBRE_SOCIOECONOMICOS" maxlength="40" required>
+                        <input type="text" class="form-control" id="pNOMBRE_SOCIOECONOMICOS" name="pNOMBRE_SOCIOECONOMICOS" maxlength="40" required>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Apellido paterno
-                        <input type="text" class="form-control" id="PATERNO_SOCIOECONOMICOS" name="PATERNO_SOCIOECONOMICOS" maxlength="40" required>
+                        <input type="text" class="form-control" id="pPATERNO_SOCIOECONOMICOS" name="pPATERNO_SOCIOECONOMICOS" maxlength="40" required>
                     </div>
                     <div class="col-md-4">
                         Apellido materno
-                        <input type="text" class="form-control" id="MATERNO_SOCIOECONOMICOS" name="MATERNO_SOCIOECONOMICOS" maxlength="40">
+                        <input type="text" class="form-control" id="pMATERNO_SOCIOECONOMICOS" name="pMATERNO_SOCIOECONOMICOS" maxlength="40">
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Sexo <br> <!-- Se llena del catálogo CAT_SEXO -->
-                        <select style="width:356px;" class="form-control" id="SEXO_SOCIOECONOMICOS" name="SEXO_SOCIOECONOMICOS" data-error="#err_SEXO" data-query='cmw2WmwzeW03a1lsakNJd1dEWWt0WmRmOU95OFFzS0ZESENTMmpyYkNySis1VlhVOFEza205bHF1Z0trTWVLVW4zV081M284cjNPc0pObExOZ2dKcGhnTE9KZU83SlM0bkZIaWhBdm4rV2ZjOGRZRmpnMkI3N1ZaZWVoZnk4R0g=' required></select>
-                        <span id="err_SEXO"></span>
+                        <select style="width:356px;" class="form-control" id="pSEXO_SOCIOECONOMICOS" name="pSEXO_SOCIOECONOMICOS" data-error="#err_pSEXO_SOCIOECONOMICOS" data-query='cmw2WmwzeW03a1lsakNJd1dEWWt0WmRmOU95OFFzS0ZESENTMmpyYkNySis1VlhVOFEza205bHF1Z0trTWVLVW4zV081M284cjNPc0pObExOZ2dKcGhnTE9KZU83SlM0bkZIaWhBdm4rV2ZjOGRZRmpnMkI3N1ZaZWVoZnk4R0g=' required></select>
+                        <span id="err_pSEXO_SOCIOECONOMICOS"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Fecha de nacimiento
@@ -662,8 +662,8 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Parentesco <br><!-- Se llena del catálogo CAT_RELACION -->
-                        <select style="width:356px;" id="ID_RELACION" name="ID_RELACION" class="form-control" data-error="#err_ID_RELACION" data-query='d1lEQ2dSOSsrZUtnU2wwVjJWRHBCSE12STBKUElSU2l5bHA4OTRJbzlXc01BVFNvYms3V0lYYm1QWkVPellLdlNsZmNicy83akdkaEVTZDAxTDVGNVRzdnZtK3k5KzRzZFJxYXZCNERJRmhwOCtFb0ZFS0hjNEhaZTd4cWw1U2Y=' required></select>                        
-                        <span id="err_ID_RELACION"></span>
+                        <select style="width:356px;" id="pID_RELACION" name="pID_RELACION" class="form-control" data-error="#err_pID_RELACION" data-query='d1lEQ2dSOSsrZUtnU2wwVjJWRHBCSE12STBKUElSU2l5bHA4OTRJbzlXc01BVFNvYms3V0lYYm1QWkVPellLdlNsZmNicy83akdkaEVTZDAxTDVGNVRzdnZtK3k5KzRzZFJxYXZCNERJRmhwOCtFb0ZFS0hjNEhaZTd4cWw1U2Y=' required></select>                        
+                        <span id="err_pID_RELACION"></span>
                     </div>
                 </div>
                 <br>
@@ -672,16 +672,16 @@
                         <span class="clr">*</span>Relación <br> <!-- Se llena del catálogo CAT_RELACION -->
                         <select
                             class="form-control" 
-                            id="ID_RELACION_SOCIOECONOMICOS" 
-                            name="ID_RELACION_SOCIOECONOMICOS" 
-                            data-error="#err_ID_RELACION_SOCIOECONOMICOS" 
+                            id="pID_RELACION_SOCIOECONOMICOS" 
+                            name="pID_RELACION_SOCIOECONOMICOS" 
+                            data-error="#err_pID_RELACION_SOCIOECONOMICOS" 
                             data-query='aVlaNnpEUWZuQ2J4Ulp2VytYNHVlWDR1ck9LRE83R3ZOWmVnenRuampBcnR3WmliWUVqTno4VEhNdFFrdDB0L2tyTCs5YWZHdUlVYUxMVFZuc2tpS05maVhXaXBUcjN1eWtoS0hCS3IrWnJKdkFqSDBQanRvbzhtSFlvZU1zMlVLNFdTeVZxSFR5Mng5VjU2RzlnTkpiM1BqTWZQamRXS095T1J6bnRsTVRrPQ==' 
                             data-cascade='true' 
                             data-force-refresh='true' 
                             data-cascade-id-ref='ID_RELACION' 
-                            data-params='ID_TIPO_REFERENCIA={0}' 
+                            data-params='pID_TIPO_REFERENCIA={0}' 
                             required></select>
-                        <span id="err_ID_RELACION_SOCIOECONOMICOS"></span>
+                        <span id="err_pID_RELACION_SOCIOECONOMICOS"></span>
                     </div>
                 </div>
                 <br>
@@ -692,7 +692,7 @@
                     <div class="col-md-4"></div>
                     <div class="col-md-4"></div>
                 </div>
-                <input type="hidden" id="ID_ALTERNA_Socioeconomico" name="ID_ALTERNA_Socioeconomico" value="" >
+                <input type="hidden" id="pID_ALTERNA_Socioeconomico" name="pID_ALTERNA_Socioeconomico" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Socioeconomico" name="pID_ESTADO_EMISOR_Socioeconomico" value="" >
                 <input type="hidden" id="pID_EMISOR_Socioeconomico" name="pID_EMISOR_Socioeconomico" value="" >
             </form>
