@@ -288,7 +288,7 @@
 				parse_str($_POST["model"], $model);
 				
 				$this->load->model('SOLICITUD_model');
-				$responseModel = $this->SOLICITUD_model->addDomicilio($model);
+				$responseModel = $this->SOLICITUD_model->sp_B1_addDomicilio($model);
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
@@ -321,7 +321,7 @@
 				parse_str($_POST["model"], $model);
 				
 				$this->load->model('SOLICITUD_model');
-				$responseModel = $this->SOLICITUD_model->addReferencias($model);
+				$responseModel = $this->SOLICITUD_model->sp_B2_DG_addReferencias($model);
 				
 			} 
 			catch (rulesException $e){	
