@@ -185,6 +185,7 @@ var objViewLaboral = {
                 }).fail(function (err) {})
                 .always(function () {
                     $('#pID_ENTIDAD_ADSCRIPCION_ACTUAL').LoadingOverlay("hide");
+                    MyCookie.session.reset();
                 });
                 
                 $('#pID_AREA').getCatalog({
@@ -293,6 +294,7 @@ var objViewLaboral = {
                         objViewLaboral.actions.ajax.throwError(err,form,from,tabRef);                            
                     }).always(function () {
                         $.LoadingOverlay("hide");
+                        MyCookie.session.reset();
                     });
 
                 }catch(err) {

@@ -77,7 +77,7 @@ var objViewDatosGenerales = {
         objViewDatosGenerales.vars.datosGenerales.forms.Socioeconomicos_form = $('#Socioeconomicos_form');
         // BUTTONS
         objViewDatosGenerales.vars.datosGenerales.btns.guardarDatosPersonales = $('#guardarDatosPersonales');        
-        objViewDatosGenerales.vars.datosGenerales.btns.generarCIB = $('#generarCIB');  
+        objViewDatosGenerales.vars.datosGenerales.btns.generarCIB = $('#GUARDAR_CIB');
         objViewDatosGenerales.vars.datosGenerales.btns.guardarDesarrolloacademico = $('#guardarDesarrolloacademico');        
         objViewDatosGenerales.vars.datosGenerales.btns.guardarDomicilio = $('#guardarDomicilio');  
         objViewDatosGenerales.vars.datosGenerales.btns.guardarReferencia = $('#guardarReferencia');        
@@ -159,10 +159,49 @@ var objViewDatosGenerales = {
                 },
                 generarCIB : function(e, from, tabRef){
                     e.preventDefault();
-                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesGenerarCIB',from, tabRef, function(data){
-                        console.log(data);
-                        debugger;
-                    });
+
+                    debugger;
+
+                    var form = $("#Datos_personales_CIB_form");
+                    try {
+                        //VALID FORM
+                        if (!form.valid())
+                            throw new Error("Formulario incompleto");
+
+                        // if (!mainTabMenu.var.pID_ALTERNA)
+                        //     throw new Error("Debe registrar primero los datos personales");
+
+                        $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+                        
+                        $selectDisabled = form.find('select:disabled');
+                        $selectDisabled.prop("disabled", false);
+
+                        var model = form.serialize();
+                        model += '&pID_ALTERNA=' + mainTabMenu.var.pID_ALTERNA;
+
+                        $selectDisabled.prop("disabled", true);
+                        
+                        var callUrl = base_url + 'Solicitud/ajaxSaveDatosGeneralesGenerarCIB';
+
+                        $.post(callUrl,{
+                            model : model
+                        },
+                        function (data) {  
+                            objViewDatosGenerales.actions.ajax.callResponseValidations(form,data, from, tabRef, function(data){
+                                console.log(data);
+                                debugger;
+                            });
+                        }).fail(function (err) {
+                            objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                            
+                        }).always(function () {
+                            $.LoadingOverlay("hide");
+                            MyCookie.session.reset();
+                        });
+
+                    }catch(err) {
+                        objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                        
+                    }
+                    
                 },
                 guardarDesarrolloacademico : function(e, from, tabRef){
                     e.preventDefault();
@@ -308,12 +347,16 @@ var objViewDatosGenerales = {
                     if (!form.valid())
                         throw new Error("Formulario incompleto");
 
+                    if (!mainTabMenu.var.pID_ALTERNA)
+                        throw new Error("Debe registrar primero los datos personales");
+
                     $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
                     
                     $selectDisabled = form.find('select:disabled');
                     $selectDisabled.prop("disabled", false);
 
                     var model = form.serialize();
+                    model += '&pID_ALTERNA=' + mainTabMenu.var.pID_ALTERNA;
 
                     $selectDisabled.prop("disabled", true);
                     
@@ -326,6 +369,7 @@ var objViewDatosGenerales = {
                         objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                            
                     }).always(function () {
                         $.LoadingOverlay("hide");
+                        MyCookie.session.reset();
                     });
 
                 }catch(err) {

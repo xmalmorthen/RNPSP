@@ -44,7 +44,7 @@ $.fn.getCatalog = function(options) {
                 }).fail(function (err) {                    
                     options.error(err);
                 }).always(function () {   
-                    MyCookie.session.reset();                 
+                    MyCookie.session.reset();
                     options.always();
                 });
                 break;
