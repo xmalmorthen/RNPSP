@@ -34,13 +34,19 @@ var generic = {
                 var ajaxCall = null;
 
                 if (!model){
-                    $.post(callUrl)
+                    model = {};
+                    model[csrf.token_name] = csrf.hash;
+                    
+                    ajaxCall = $.post(callUrl,model)
                         .always(function () {
                             MyCookie.session.reset();
                         }
                     );
                 } else {
-                    $.post(callUrl,{model: model})
+                    model = {model : model};
+                    model[csrf.token_name] = csrf.hash;
+
+                    ajaxCall = $.post(callUrl,model)
                         .always(function () {
                             MyCookie.session.reset();
                         }
@@ -106,7 +112,9 @@ var generic = {
         async : {
             post : function(callUrl,model,success,error){
                 if (!model){
-                    $.post(callUrl,
+                    model = {};
+                    model[csrf.token_name] = csrf.hash;
+                    $.post(callUrl,model,
                         function (data) {
                             if (success) 
                                 if ($.isFunction( success ))
@@ -120,9 +128,10 @@ var generic = {
                         }
                     );
                 } else {
-                    $.post(callUrl,{
-                            model: model
-                        },
+                    model = {model : model};
+                    model[csrf.token_name] = csrf.hash;
+
+                    $.post(callUrl,model,
                         function (data) {
                             if (success) 
                                 if ($.isFunction( success ))

@@ -1,6 +1,7 @@
     <div class="tab-pane fade show active" id="Datos_personales" role="tab-panel" aria-labelledby="Datos_personales-tab">
         <div class="_container">
             <form action="#" id="Datos_personales_form" name="Datos_personales_form" autocomplete="off">
+                <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                 <br>
                 <div class="row">
                     <div class="col-md-12 text-center">
@@ -146,6 +147,7 @@
             </form>            
             <?php if (verificaPermiso(14) == true) { ?>
             <form action="#" id="Datos_personales_CIB_form" name="Datos_personales_CIB_form" autocomplete="off">
+                <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                 <div class="row ">
                     <div class="col-md-4">
                         CIB                        
