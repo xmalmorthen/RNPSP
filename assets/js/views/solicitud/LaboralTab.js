@@ -70,7 +70,8 @@ var objViewLaboral = {
         objViewLaboral.vars.general.mainContentTab.find('select').select2({width : '100%'});
         $(document).on('focus', '.select2.select2-container', function (e) {
             if (e.originalEvent) {
-                $(this).siblings('select').select2('open');
+                if ($(this).siblings('select').is(':enabled'))
+                    $(this).siblings('select').select2('open');
             }
         });
 
@@ -276,7 +277,12 @@ var objViewLaboral = {
 
                     $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
                     
+                    $selectDisabled = form.find('select:disabled');
+                    $selectDisabled.prop("disabled", false);
+
                     var model = form.serialize();
+                    
+                    $selectDisabled.prop("disabled", true);
                     
                     $.post(callUrl,{
                         model : model

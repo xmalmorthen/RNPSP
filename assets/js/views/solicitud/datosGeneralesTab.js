@@ -91,7 +91,8 @@ var objViewDatosGenerales = {
         objViewDatosGenerales.vars.general.mainContentTab.find('select').select2({width : '100%'});
         $(document).on('focus', '.select2.select2-container', function (e) {
             if (e.originalEvent) {
-                $(this).siblings('select').select2('open');
+                if ($(this).siblings('select').is(':enabled'))
+                    $(this).siblings('select').select2('open');
             }
         });
 
@@ -110,10 +111,7 @@ var objViewDatosGenerales = {
         objViewDatosGenerales.vars.datosGenerales.btns.guardarReferencia.on('click',objViewDatosGenerales.events.click.datosGenerales.guardarReferencia);
         objViewDatosGenerales.vars.datosGenerales.btns.guardarSocioeconomico.on('click',objViewDatosGenerales.events.click.datosGenerales.guardarSocioeconomico);
         objViewDatosGenerales.vars.datosGenerales.btns.guardarDependiente.on('click',objViewDatosGenerales.events.click.datosGenerales.guardarDependiente);
-
-        //FOCUSOUT
-        // objViewDatosGenerales.vars.datosGenerales.objs.pCURP.on('focusout',objViewDatosGenerales.events.focus.out.pCURP);      
-
+        
         //CHANGE
 
         //Rutina para verificar si se hace algún cambio en cualquier forulario
@@ -203,75 +201,6 @@ var objViewDatosGenerales = {
                 }
             }
         },
-        focus : {
-            out : {
-                pCURP : function(){
-                    $this = $(this);
-
-                    var value = $(this).val();
-
-                    if ($this.data('find') == value)
-                        return null;
-
-                    $this.removeError();
-                    if (value == 0) return null;
-                    if ( value.length < 18 || value.length > 20 ) {
-                        $this.setError('Formato de CURP incorrecto');
-                        return null;
-                    }
-
-                    $this.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
-
-                    //TODO: XMAL - Verificar si exite registro en BD
-
-                    var callUrl = base_url + 'ajaxAPIs/curp',
-                        model = {CURP : value};
-
-                    //desactivar controles involucrados en la consulta CURP
-                    $('.consultaCURP').readOnly();
-
-                    generic.ajax.async.get(
-                        callUrl,
-                        model,
-                        //success
-                        function(data){
-                            $this.data('find',value);
-
-                            $('#pNOMBRE_DATOS_PERSONALES').val(data[0].nombres);
-                            $('#pPATERNO_DATOS_PERSONALES').val(data[0].apellido1);
-                            $('#pMATERNO_DATOS_PERSONALES').val(data[0].apellido2);
-                            $('#pSEXO_DATOS_PERSONALES').val(data[0].sexo);
-                            $('#pSEXO_DATOS_PERSONALES').select2(); //ACTUALIZAR SELECT PARA QUE SE MUESTRE LA SELECCIÓN
-
-                            var dateParts = data[0].fechNac.split("/");
-                            var dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]); 
-                            date = moment( dateObject ).format('YYYY-MM-DD');
-                            $('#pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES').val(date);
-
-                            $('#pNOMBRE_DATOS_PERSONALES').removeError();
-                            $('#pPATERNO_DATOS_PERSONALES').removeError();
-                            $('#pMATERNO_DATOS_PERSONALES').removeError();
-                            $('#pSEXO_DATOS_PERSONALES').removeError();
-                            $('#pSEXO_DATOS_PERSONALES').removeError();
-                            $('#pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES').removeError();
-
-                        }, 
-                        //error
-                        function(err){
-                            var msg = err.status + ' - ' + err.statusText;
-                            Swal.fire({ type: 'error', title: 'Error', html: msg }); 
-                            $this.setError(err.statusText);
-                            $('.consultaCURP').resetReadOnly();
-                        },
-                        //always
-                        function(){
-                            //
-                            $this.LoadingOverlay("hide");
-                        }
-                    );
-                }
-            }
-        },
         change : {
             tableResponsive : function(){
                 $.each( objViewDatosGenerales.vars.datosGenerales.tables, function( key, value ) {
@@ -282,14 +211,11 @@ var objViewDatosGenerales = {
     },
     actions : { 
         populateCURPData : function(data){
-            $('.consultaCURP').readOnly();
-
             objViewDatosGenerales.vars.datosGenerales.objs.pCURP.val(data.CURP);
             $('#pNOMBRE_DATOS_PERSONALES').val(data.nombres);
             $('#pPATERNO_DATOS_PERSONALES').val(data.apellido1);
             $('#pMATERNO_DATOS_PERSONALES').val(data.apellido2);
-            $('#pSEXO_DATOS_PERSONALES').val(data.sexo);
-            $('#pSEXO_DATOS_PERSONALES').select2(); //ACTUALIZAR SELECT PARA QUE SE MUESTRE LA SELECCIÓN
+            $('#pSEXO_DATOS_PERSONALES').val(data.sexo).trigger('change.select2').trigger('change');
 
             var dateParts = data.fechNac.split("/");
             var dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]); 
@@ -303,6 +229,10 @@ var objViewDatosGenerales = {
             $('#pSEXO_DATOS_PERSONALES').removeError();
             $('#pSEXO_DATOS_PERSONALES').removeError();
             $('#pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES').removeError();
+
+            $('.consultaCURP').readOnly();
+
+            $('#pSEXO_DATOS_PERSONALES').prop("disabled", true);
         },    
         discartChanges : function(e,eTab){
             var form = $('#' + $(eTab.currentTarget).attr('aria-controls')).find('form');
@@ -380,7 +310,12 @@ var objViewDatosGenerales = {
 
                     $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
                     
+                    $selectDisabled = form.find('select:disabled');
+                    $selectDisabled.prop("disabled", false);
+
                     var model = form.serialize();
+
+                    $selectDisabled.prop("disabled", true);
                     
                     $.post(callUrl,{
                         model : model

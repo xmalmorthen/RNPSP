@@ -18,7 +18,7 @@ $.fn.readOnly = function() {
                 }
             break;
             case 'select': 
-                $(this).prop('disabled', 'disabled');               
+                //$(this).prop('disabled', true);               
             break;                                    
             default:
             break;
