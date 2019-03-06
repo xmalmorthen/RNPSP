@@ -170,20 +170,6 @@
 				
 				$this->load->model('SOLICITUD_model');
 				$responseModel = $this->SOLICITUD_model->addDatosPersonales($model);
-
-				if (!$responseModel['status']) {
-					$msg = '';
-					if (is_array($responseModel['message'])){
-						$msg = '<ul>';
-						foreach ( $responseModel['message'] as $key => $value ) {
-							$msg .= "<li> {$value} </li>";							
-						}
-						$msg .= '</ul>';
-					}else {
-						$msg = $responseModel['message'];
-					}
-					throw new rulesException($msg);
-				}
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
@@ -354,7 +340,7 @@
 				$model = [];
 				parse_str($_POST["model"], $model);
 				$this->load->model('SOLICITUD_model');
-				$responseModel = $this->SOLICITUD_model->addSocioEconomico($model);
+				$responseModel = $this->SOLICITUD_model->sp_B2_DG_addSocioEconomico($model);
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
@@ -386,8 +372,7 @@
 				$model = [];
 				parse_str($_POST["model"], $model);
 				$this->load->model('SOLICITUD_model');
-				$responseModel = $this->SOLICITUD_model->addDependiente($model);
-				Utils::pre($responseModel);
+				$responseModel = $this->SOLICITUD_model->sp_B2_DG_addDependiente($model);
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));

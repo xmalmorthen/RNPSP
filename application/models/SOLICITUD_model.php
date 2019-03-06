@@ -15,8 +15,6 @@ class SOLICITUD_model extends MY_Model
     );
   }
 
-  
-
   public function get(){
     $this->select('FOLIO,NOMBRE,PATERNO,MATERNO,FECHA_REGISTRO,TIPO_OPERACION,DESCRIPCION,ESTATUS,Expr1');
     return $this->response_list();
@@ -51,7 +49,7 @@ class SOLICITUD_model extends MY_Model
   public function addDatosPersonales($model){
     $this->arrayToPost($model);
     $this->load->library('form_validation');
-    $this->form_validation->set_rules('pTIPO_MOV', 'Tipo de movimiento', 'trim|required|max_length[3]');
+    $this->form_validation->set_rules('pTIPO_OPERACION', 'Tipo de movimiento', 'trim|required|max_length[3]');
     $this->form_validation->set_rules('pID_PAIS_NAC', 'País de nacimiento', 'trim|required|numeric|max_length[10]');
     $this->form_validation->set_rules('pNOMBRE_DATOS_PERSONALES', 'Nombre', 'trim|required|max_length[40]');
     $this->form_validation->set_rules('pPATERNO_DATOS_PERSONALES', 'Apellido paterno', 'trim|required|max_length[40]');
@@ -60,7 +58,7 @@ class SOLICITUD_model extends MY_Model
     $this->form_validation->set_rules('pID_MUNICIPIO_NAC', 'Municipio de nacimiento', 'trim|required|numeric');
     $this->form_validation->set_rules('pID_ESTADO_CIVIL', 'Estado civil', 'trim|required|numeric');
     $this->form_validation->set_rules('pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES', 'Fecha de nacimiento', 'trim|required');
-    //$this->form_validation->set_rules('pSEXO_DATOS_PERSONALES', 'Sexo', 'trim|required|max_length[1]'); //NO SE ENCONTRO
+    $this->form_validation->set_rules('pSEXO_DATOS_PERSONALES', 'Sexo', 'trim|required|max_length[1]'); //NO SE ENCONTRO
     $this->form_validation->set_rules('pCURP', 'CURP', 'trim|required|max_length[20]');
     $this->form_validation->set_rules('pRFC', 'pRFC_DOMICILIO', 'max_length[20]');
     $this->form_validation->set_rules('pCREDENCIAL_LECTOR', 'Clave de elector', 'trim|max_length[30]');
@@ -79,7 +77,7 @@ class SOLICITUD_model extends MY_Model
     if ($this->form_validation->run() === true) {
 
       $this->procedure('sp_addDatosPersonales');
-      $this->addParam('pTIPO_OPERACION','pTIPO_MOV');
+      $this->addParam('pTIPO_OPERACION','pTIPO_OPERACION');
       $this->addParam('pID_PAIS_NAC','pID_PAIS_NAC');
       $this->addParam('pNOMBRE','pNOMBRE_DATOS_PERSONALES','N');
       $this->addParam('pPATERNO','pPATERNO_DATOS_PERSONALES','N');
@@ -108,10 +106,9 @@ class SOLICITUD_model extends MY_Model
       $this->iniParam('txtError','varchar','250');
       $this->iniParam('msg','varchar','80');
       $this->iniParam('tranEstatus','int');
-      // Utils::pre($this->build_query());
       $query = $this->db->query($this->build_query());
       $response = $this->query_row($query);
-      // Utils::pre($response);
+
       if($response == FALSE){
         $this->response['status'] = false;
         $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
@@ -119,11 +116,13 @@ class SOLICITUD_model extends MY_Model
         $this->response['status'] = $response['tranEstatus'];
         $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
         $this->response['data'] = array('ID_ALTERNA'=> (array_key_exists('ID_ALTERNA',$response)? $response['ID_ALTERNA'] : false) );
-        
       }
     } else {
+      $this->load->helper('html');
       $this->response['status'] = false;
-      $this->response['message'] = $this->form_validation->error_array();
+      $message = $this->form_validation->error_array();
+      $this->response['message'] = ul($message);
+      $this->response['validation'] = $message;
     }
     return $this->response;
   }
@@ -132,13 +131,14 @@ class SOLICITUD_model extends MY_Model
   public function sp_B1_addNivelEstudios($model){
 
     $this->arrayToPost($model);
-    $_POST['pID_ALTERNA'] = 4;
+
+    $_POST['pID_ALTERNA'] = 4;//$this->input->post('pID_ALTERNA_Desarrollo');
     
     $this->load->library('form_validation');
     $this->form_validation->set_rules('pID_ALTERNA', 'Máxima escolaridad', 'numeric|max_length[10]');
     $this->form_validation->set_rules('pID_ESTADO_EMISOR', 'Máxima escolaridad', 'numeric|max_length[10]');
     $this->form_validation->set_rules('pID_EMISOR', 'Máxima escolaridad', 'numeric|max_length[10]');
-    $this->form_validation->set_rules('pID_GRADO_ESCOLAR', 'Máxima escolaridad', 'trim|numeric|max_length[10]');
+    $this->form_validation->set_rules('pID_GRADO_ESCOLAR', 'Máxima escolaridad', 'trim|required|numeric|max_length[10]');
     $this->form_validation->set_rules('pESPECIALIDAD_DESARROLLO', 'Especialidad o estudio', 'trim|max_length[100]');
     $this->form_validation->set_rules('pNOMBRE_ESCUELA', 'Escuela', 'trim|max_length[100]');
     $this->form_validation->set_rules('pCEDULA_PROFESIONAL', 'Cédula profesional', 'trim|numeric|max_length[10]');
@@ -200,11 +200,10 @@ class SOLICITUD_model extends MY_Model
   public function sp_B1_addDomicilio($model){
 
     $this->arrayToPost($model);
-    $_POST['ID_ALTERNA'] = 4;
+    $_POST['pID_ALTERNA'] = 4;//$this->input->post('pID_ALTERNA_Domicilio');
 
-    
     $this->load->library('form_validation');
-    $this->form_validation->set_rules('ID_ALTERNA', 'hidden', 'numeric');
+    $this->form_validation->set_rules('pID_ALTERNA', 'hidden', 'numeric');
     // $this->form_validation->set_rules('pID_ESTADO_EMISOR_Domicilio', 'hidden', 'numeric');//Enviar vacio
     // $this->form_validation->set_rules('pID_EMISOR_Domicilio', 'hidden', 'numeric');//Enviar vacio
     // $this->form_validation->set_rules('pID_TIPO_DOM', '', 'numeric');//Enviar vacio
@@ -225,7 +224,7 @@ class SOLICITUD_model extends MY_Model
 
       $this->procedure('sp_B1_addDomicilio');
 
-      $this->addParam('pID_ALTERNA','ID_ALTERNA');
+      $this->addParam('pID_ALTERNA','pID_ALTERNA');
       $this->addParam('pID_ESTADO_EMISOR',null);//Enviar vacio
       $this->addParam('pID_EMISOR',null);//Enviar vacio
       $this->addParam('pID_TIPO_DOM',null); //Enviar vacio
@@ -272,11 +271,11 @@ class SOLICITUD_model extends MY_Model
   public function sp_B2_DG_addReferencias($model){
 
     $this->arrayToPost($model);
-    $_POST['ID_ALTERNA'] = 4;//ID_ALTERNA_Referencias
+    $_POST['pID_ALTERNA'] = 4;//$this->input->post('pID_ALTERNA_Referencias');
 
     $this->load->library('form_validation');
 
-    $this->addParam('pID_ALTERNA','ID_ALTERNA');
+    $this->addParam('pID_ALTERNA','pID_ALTERNA');
     $this->addParam('pID_ESTADO_EMISOR','pID_ESTADO_EMISOR_Referencias','',array('rule'=>'trim|numeric|max_length[10]'));
     $this->addParam('pID_EMISOR','pID_EMISOR_Referencias','',array('rule'=>'trim|numeric|max_length[10]'));
     $this->addParam('pID_TIPO_REFERENCIA','pID_TIPO_REFERENCIA','',array('name'=>'Tipo de referencia','rule'=>'trim|required|numeric|max_length[10]'));
@@ -297,7 +296,7 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pID_MUNICIPIO','pID_MUNICIPIO_REFERENCIAS','',array('name'=>'Municipio','rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pENTRE_CALLE','pENTRE_CALLE_REFERENCIAS','N',array('name'=>'Entre calle de ','rule'=>'trim|required|max_length[60]'));
     $this->addParam('pY_CALLE','pY_CALLE_REFERENCIAS','N',array('name'=>'Y la calle de ','rule'=>'trim|max_length[45]'));
-    $this->addParam('pCODIGO_POSTAL','pCODIGO_POSTAL_REFERENCIAS','N',array('name'=>'Código postal','rule'=>'trim|max_length[10]'));
+    $this->addParam('pCODIGO_POSTAL','pCODIGO_POSTAL_REFERENCIAS','N',array('name'=>'Código postal','rule'=>'trim|numeric|max_length[10]'));
     $this->addParam('pCIUDAD','pCIUDAD_REFERENCIAS','N',array('name'=>'Ciudad','rule'=>'trim|max_length[50]'));
     
     if ($this->form_validation->run() === true) {
@@ -328,30 +327,31 @@ class SOLICITUD_model extends MY_Model
   }
   /*
   * $this->addParam('method sp_B2_DG_addSocioEconomico - Agraga el niviel socioeconomico de la persona
+  * NO SON HIGUALES LOS FORM
   */
-  public function addSocioEconomico($model){
+  public function sp_B2_DG_addSocioEconomico($model){
 
     $this->arrayToPost($model);
-    $_POST['ID_ALTERNA'] = 4;//ID_ALTERNA_Socioeconomico
+    $_POST['pID_ALTERNA'] = 4;//$this->input->post('ID_ALTERNA_Socioeconomico');
 
     $this->load->library('form_validation');
 
-    $this->addParam('pID_ALTERNA','ID_ALTERNA');
+    $this->addParam('pID_ALTERNA','pID_ALTERNA');
     $this->addParam('pID_ESTADO_EMISOR','pID_ESTADO_EMISOR_Socioeconomico','',array('rule'=>'trim|numeric'));
     $this->addParam('pID_EMISOR','pID_EMISOR_Socioeconomico','',array('rule'=>'trim|numeric'));
 
-    $this->addParam('pVIVE_FAMILIA','VIVE_FAMILIA','',array('name'=>'¿Vive con su familia?','rule'=>'trim'));
-    $this->addParam('pINGRESO_FAMILIAR','INGRESO_FAMILIAR','',array('name'=>'Ingreso familiar adicional (mensual)','rule'=>'trim|numeric'));
-    $this->addParam('pID_TIPO_DOMIC','ID_TIPO_DOMICILIO','',array('name'=>'Su domicilio es','rule'=>'trim|numeric'));
-    $this->addParam('pACTIVIDAD_CULTURAL','ACTIVIDAD_CULTURAL','',array('name'=>'Actividades culturales o deportivas que practica','rule'=>'trim'));
-    $this->addParam('pINMUEBLES','INMUEBLES','',array('name'=>'Especificación de inmuebles y costos','rule'=>'trim'));
-    $this->addParam('pINVERSIONES','INVERSIONES','',array('name'=>'Inversión y monto aproximado','rule'=>'trim'));
-    $this->addParam('pNUMERO_AUTOS','NUMERO_AUTOS','',array('name'=>'Vehículo y costo aproximado','rule'=>'trim'));
-    $this->addParam('pCALIDAD_VIDA','CALIDAD_VIDA','',array('name'=>'Calidad de vida','rule'=>'trim'));
-    $this->addParam('pVICIOS','VICIOS','',array('name'=>'Vicios','rule'=>'trim'));
-    $this->addParam('pIMAGEN_PUBLICA','IMAGEN_PUBLICA','',array('name'=>'Imágen pública','rule'=>'trim'));
+    $this->addParam('pVIVE_FAMILIA','pVIVE_FAMILIA','N',array('name'=>'¿Vive con su familia?','rule'=>'trim|max_length[1]'));
+    $this->addParam('pINGRESO_FAMILIAR','pINGRESO_FAMILIAR','',array('name'=>'Ingreso familiar adicional (mensual)','rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pID_TIPO_DOMIC','pID_TIPO_DOMICILIO','',array('name'=>'Su domicilio es','rule'=>'trim|numeric|max_length[30]'));
+    $this->addParam('pACTIVIDAD_CULTURAL','pACTIVIDAD_CULTURAL','N',array('name'=>'Actividades culturales o deportivas que practica','rule'=>'trim|max_length[100]'));
+    $this->addParam('pINMUEBLES','pINMUEBLES','N',array('name'=>'Especificación de inmuebles y costos','rule'=>'trim|max_length[100]'));
+    $this->addParam('pINVERSIONES','pINVERSIONES','N',array('name'=>'Inversión y monto aproximado','rule'=>'trim|max_length[100]'));
+    $this->addParam('pNUMERO_AUTOS','pNUMERO_AUTOS','N',array('name'=>'Vehículo y costo aproximado','rule'=>'trim|max_length[100]'));
+    $this->addParam('pCALIDAD_VIDA','pCALIDAD_VIDA','N',array('name'=>'Calidad de vida','rule'=>'trim|max_length[50]'));
+    $this->addParam('pVICIOS','pVICIOS','N',array('name'=>'Vicios','rule'=>'trim|max_length[100]'));
+    $this->addParam('pIMAGEN_PUBLICA','pIMAGEN_PUBLICA','N',array('name'=>'Imágen pública','rule'=>'trim|max_length[50]'));
     $this->addParam('pRESPONSABLE_CORP',null); // no se encontro en el formulario
-    $this->addParam('pCOMPORTA_SOCIAL','COMPORTA_SOCIAL','',array('name'=>'Comportamiento social ','rule'=>'trim'));
+    $this->addParam('pCOMPORTA_SOCIAL','pCOMPORTA_SOCIAL','N',array('name'=>'Comportamiento social ','rule'=>'trim|max_length[40]'));
     
     if ($this->form_validation->run() === true) {
 
@@ -371,8 +371,11 @@ class SOLICITUD_model extends MY_Model
         $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
       }
     } else {
+      $this->load->helper('html');
       $this->response['status'] = false;
-      $this->response['message'] = $this->form_validation->error_array();
+      $message = $this->form_validation->error_array();
+      $this->response['message'] = ul($message);
+      $this->response['validation'] = $message;
     }
     return $this->response;
 
@@ -381,23 +384,23 @@ class SOLICITUD_model extends MY_Model
   /*
   * $this->addParam('method sp_B2_DG_addDependiente - Agrega los datos de las personas dependientes del elemento				
   */
-  public function addDependiente($model){
+  public function sp_B2_DG_addDependiente($model){
     $this->arrayToPost($model);
-    $_POST['ID_ALTERNA'] = 4;//ID_ALTERNA_Socioeconomico
+    $_POST['pID_ALTERNA'] = 4;//$this->input->post('pID_ALTERNA_Socioeconomico');
 
     $this->load->library('form_validation');
 
-    $this->addParam('pID_ALTERNA','ID_ALTERNA');
-    $this->addParam('pID_ESTADO_EMISOR','pID_ESTADO_EMISOR_Socioeconomico','',array('rule'=>'trim|numeric'));
-    $this->addParam('pID_EMISOR','pID_EMISOR_Socioeconomico','',array('rule'=>'trim|numeric'));
+    $this->addParam('pID_ALTERNA','pID_ALTERNA');
+    $this->addParam('pID_ESTADO_EMISOR','pID_ESTADO_EMISOR_Socioeconomico','',array('rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pID_EMISOR','pID_EMISOR_Socioeconomico','',array('rule'=>'trim|numeric|max_length[10]'));
 
-    $this->addParam('pPATERNO','PATERNO_SOCIOECONOMICOS','',array('name'=>'Apellido paterno','rule'=>'trim|required'));
-    $this->addParam('pMATERNO','MATERNO_SOCIOECONOMICOS','',array('name'=>'Apellido materno','rule'=>'trim'));
-    $this->addParam('pFECHA_NAC','FECHA_NAC_SOCIOECONOMICOS','',array('name'=>'Fecha de nacimiento','rule'=>'trim|required'));
-    $this->addParam('pSEXO','SEXO_SOCIOECONOMICOS','',array('name'=>'Sexo','rule'=>'trim|required'));
-    $this->addParam('pNOMBRE','NOMBRE_SOCIOECONOMICOS','',array('name'=>'Nombre','rule'=>'trim|required'));
-    $this->addParam('pID_SUBTIPO_REF','ID_RELACION','',array('name'=>'Parentesco','rule'=>'trim|numeric'));
-    $this->addParam('pID_TIPO_DEPENDIENT','ID_RELACION_SOCIOECONOMICOS','',array('name'=>'Relación ','rule'=>'trim|numeric'));
+    $this->addParam('pPATERNO','pPATERNO_SOCIOECONOMICOS','',array('name'=>'Apellido paterno','rule'=>'trim|required|max_length[40]'));
+    $this->addParam('pMATERNO','pMATERNO_SOCIOECONOMICOS','',array('name'=>'Apellido materno','rule'=>'trim|max_length[40]'));
+    $this->addParam('pFECHA_NAC','pFECHA_NAC_SOCIOECONOMICOS','',array('name'=>'Fecha de nacimiento','rule'=>'trim|required|max_length[10]'));
+    $this->addParam('pSEXO','pSEXO_SOCIOECONOMICOS','',array('name'=>'Sexo','rule'=>'trim|required|max_length[1]'));
+    $this->addParam('pNOMBRE','pNOMBRE_SOCIOECONOMICOS','',array('name'=>'Nombre','rule'=>'trim|required|max_length[40]'));
+    $this->addParam('pID_SUBTIPO_REF','pID_RELACION','',array('name'=>'Parentesco','rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pID_TIPO_DEPENDIENT','pID_RELACION_SOCIOECONOMICOS','',array('name'=>'Relación ','rule'=>'trim|required|numeric|max_length[10]'));
     
     if ($this->form_validation->run() === true) {
 
@@ -405,7 +408,6 @@ class SOLICITUD_model extends MY_Model
       $this->iniParam('txtError','varchar','250');
       $this->iniParam('msg','varchar','80');
       $this->iniParam('tranEstatus','int');
-      Utils::pre($this->build_query()); 
       // retorna
       // Debe exsitir un registro sobre datos sobre el entorno socioeconómico del elemento, para poder registrar los depedientes
       $query = $this->db->query($this->build_query());
@@ -419,8 +421,11 @@ class SOLICITUD_model extends MY_Model
         $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
       }
     } else {
+      $this->load->helper('html');
       $this->response['status'] = false;
-      $this->response['message'] = $this->form_validation->error_array();
+      $message = $this->form_validation->error_array();
+      $this->response['message'] = ul($message);
+      $this->response['validation'] = $message;
     }
     return $this->response;
 
