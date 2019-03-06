@@ -10,7 +10,7 @@ dbUtils.on('ready',function(){
     dbUtils.sounds.where('name').equals('bell_ring').count().then((count) => {
         if (count == 0){
             return new Promise( resolve => {
-                $.get(base_url + 'assets/js/utils/beep.js.b64/bell_ring.sound.b64',function(data){
+                $.get(base_url + 'assets/js/utils/beep.js.b64/bell_ring.sound.txt',function(data){
                     resolve (data);
                 });
             }).then((data) =>{
