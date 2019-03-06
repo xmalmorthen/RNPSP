@@ -207,7 +207,7 @@ var mainTabMenu = {
                 if (result.value.from == 'query')
                     mainFormActions.populateCURPFields(result.value.data);
                 else
-                    mainFormActions.fillData(results.value.data);
+                    mainFormActions.fillData(result.value.data);
             }
         });
     }
