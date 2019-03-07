@@ -37,6 +37,10 @@
 		<script>
 			var base_url = '<?php echo base_url(); ?>',
 				site_url = '<?php echo site_url(); ?>',
+				csrf = {
+					token_name : "<?php echo $this->security->get_csrf_token_name(); ?>",
+					hash : "<?php echo $this->security->get_csrf_hash(); ?>"
+				},
 				uri = {
 					uri_string : JSON.parse('<?php echo json_encode($this->uri->uri_string);  ?>'),
 					segments : JSON.parse('<?php echo json_encode($this->uri->segments);  ?>'),

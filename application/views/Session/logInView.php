@@ -96,7 +96,7 @@
 									<h2><i class="fa fa-user-circle-o" aria-hidden="true"></i> Inicio de sesión</h2>
 								</div>
 								<div class="card-body">
-									<form action="<?php echo site_url('usuario/iniciarSesion'); ?>" method="post" data-parsley-validate novalidate>
+									<form action="<?php echo site_url('usuario/iniciarSesion'); ?>" method="post" data-parsley-validate novalidate>										
 										<input type="hidden" id="toGo" name="toGo" value="<?php echo isset($toGo) ? $toGo : ''; ?> ">
 										<div class="form-group">
 											<label for="userName">Nombre de usuario</label>
@@ -142,6 +142,7 @@
 						model = $('form').serialize();
 
 						$.post(callUrl,{
+							"<?php echo $this->security->get_csrf_token_name(); ?>" : "<?php echo $this->security->get_csrf_hash(); ?>",
 							model: model
 						},
 						function (data) {					

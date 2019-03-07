@@ -93,6 +93,9 @@ var iDB = {
                             resolve(data);
                         }).fail(function (err) {                    
                             reject(err);
+                        }).always(function () {   
+                            MyCookie.session.reset();
+                            options.always();
                         });
                     } else {
                         reject(err);
@@ -193,9 +196,8 @@ var iDB = {
                                 options.error(err);
                             }).always(function () {
                                 obj.LoadingOverlay("hide");
-                                options.always();
-                                                    
                                 MyCookie.session.reset();
+                                options.always();
                             });
                         }
                     });

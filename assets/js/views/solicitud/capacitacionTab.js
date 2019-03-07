@@ -206,12 +206,13 @@ var objViewCapacitacion = {
                     $selectDisabled.prop("disabled", false);
 
                     var model = form.serialize();
+                    model += '&pID_ALTERNA=' + mainTabMenu.var.pID_ALTERNA;
+                    model = {model : model};
+                    model[csrf.token_name] = csrf.hash;
 
                     $selectDisabled.prop("disabled", true);
                     
-                    $.post(callUrl,{
-                        model : model
-                    },
+                    $.post(callUrl,model,
                     function (data) {  
                         objViewCapacitacion.actions.ajax.callResponseValidations(form,data, from, tabRef, callback);
                     }).fail(function (err) {

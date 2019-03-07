@@ -9,7 +9,7 @@
 
 		public function index(){
 			// BREADCRUMB
-			$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');		
+			$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');
 			$this->breadcrumbs->push('[ Solicitudes ] - Solicitudes - Persona - Alta', site_url('alta/cedula/datosPersonales'));
 			// /BREADCRUMB
 		

@@ -1,9 +1,11 @@
 var serialized = {
     save : function(model,callback, error){
         var callUrl = base_url + 'ajaxSerealize/ajaxSaveProgress';
-        $.post(callUrl,{
-            model: model
-        },
+        
+        model = {model : model};
+        model[csrf.token_name] = csrf.hash;
+
+        $.post(callUrl,model,
         function (data) {
             callback(data);            
         }).fail(function (err) {
@@ -14,9 +16,11 @@ var serialized = {
     },
     get : function(callback,error){
         var callUrl = base_url + 'ajaxSerealize/ajaxGetProgress';
-        $.post(callUrl,{
-            model: $('#current_url').val()
-        },
+
+        var model = {model : $('#current_url').val()};
+            model[csrf.token_name] = csrf.hash;
+
+        $.post(callUrl,model,
         function (data) {
             callback(data);            
         }).fail(function (err) {

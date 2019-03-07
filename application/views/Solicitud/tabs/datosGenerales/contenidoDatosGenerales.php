@@ -1,6 +1,7 @@
     <div class="tab-pane fade show active" id="Datos_personales" role="tab-panel" aria-labelledby="Datos_personales-tab">
         <div class="_container">
             <form action="#" id="Datos_personales_form" name="Datos_personales_form" autocomplete="off">
+                <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                 <br>
                 <div class="row">
                     <div class="col-md-12 text-center">
@@ -72,7 +73,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         Descripción ciudad de nacimiento <!--  Campo CIUDAD_NAC-->
-                        <input type="text" class="form-control" id="pCIUDAD_NAC_DATOS_PERSONALES" name="pCIUDAD_NAC_DATOS_PERSONALES" max="50">
+                        <input type="text" class="form-control" id="pCIUDAD_NAC_DATOS_PERSONALES" name="pCIUDAD_NAC_DATOS_PERSONALES" maxlength="50">
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Nacionalidad <!-- Se llena de CAT_PAIS -->
@@ -146,6 +147,7 @@
             </form>            
             <?php if (verificaPermiso(14) == true) { ?>
             <form action="#" id="Datos_personales_CIB_form" name="Datos_personales_CIB_form" autocomplete="off">
+                <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                 <div class="row ">
                     <div class="col-md-4">
                         CIB                        
@@ -677,8 +679,8 @@
                             data-query='aVlaNnpEUWZuQ2J4Ulp2VytYNHVlWDR1ck9LRE83R3ZOWmVnenRuampBcnR3WmliWUVqTno4VEhNdFFrdDB0L2tyTCs5YWZHdUlVYUxMVFZuc2tpS05maVhXaXBUcjN1eWtoS0hCS3IrWnJKdkFqSDBQanRvbzhtSFlvZU1zMlVLNFdTeVZxSFR5Mng5VjU2RzlnTkpiM1BqTWZQamRXS095T1J6bnRsTVRrPQ==' 
                             data-cascade='true' 
                             data-force-refresh='true' 
-                            data-cascade-id-ref='ID_RELACION' 
-                            data-params='pID_TIPO_REFERENCIA={0}' 
+                            data-cascade-id-ref='pID_RELACION' 
+                            data-params='ID_TIPO_REFERENCIA={0}' 
                             required></select>
                         <span id="err_pID_RELACION_SOCIOECONOMICOS"></span>
                     </div>

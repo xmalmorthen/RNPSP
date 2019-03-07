@@ -107,16 +107,17 @@ class SOLICITUD_model extends MY_Model
       $this->iniParam('txtError','varchar','250');
       $this->iniParam('msg','varchar','80');
       $this->iniParam('tranEstatus','int');
-      $query = $this->db->query($this->build_query());
-      $response = $this->query_row($query);
 
+      $response = $this->query_multi($this->build_query());
+      
       if($response == FALSE){
         $this->response['status'] = false;
         $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
       }else{
-        $this->response['status'] = $response['tranEstatus'];
-        $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
-        $this->response['data'] = array('ID_ALTERNA'=> (array_key_exists('ID_ALTERNA',$response)? $response['ID_ALTERNA'] : false) );
+        $resp = end($response);
+        $this->response['status'] = $resp['tranEstatus'];
+        $this->response['message'] = ($resp['tranEstatus'] == 1)? $resp['msg'] : $resp['txtError'];
+        $this->response['data'] = array('pID_ALTERNA'=> (array_key_exists('pID_ALTERNA',$resp)? $resp['pID_ALTERNA'] : false) );
       }
     } else {
       $this->load->helper('html');
