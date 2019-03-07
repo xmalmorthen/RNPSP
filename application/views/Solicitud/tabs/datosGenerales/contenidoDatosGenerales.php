@@ -679,8 +679,8 @@
                             data-query='aVlaNnpEUWZuQ2J4Ulp2VytYNHVlWDR1ck9LRE83R3ZOWmVnenRuampBcnR3WmliWUVqTno4VEhNdFFrdDB0L2tyTCs5YWZHdUlVYUxMVFZuc2tpS05maVhXaXBUcjN1eWtoS0hCS3IrWnJKdkFqSDBQanRvbzhtSFlvZU1zMlVLNFdTeVZxSFR5Mng5VjU2RzlnTkpiM1BqTWZQamRXS095T1J6bnRsTVRrPQ==' 
                             data-cascade='true' 
                             data-force-refresh='true' 
-                            data-cascade-id-ref='ID_RELACION' 
-                            data-params='pID_TIPO_REFERENCIA={0}' 
+                            data-cascade-id-ref='pID_RELACION' 
+                            data-params='ID_TIPO_REFERENCIA={0}' 
                             required></select>
                         <span id="err_pID_RELACION_SOCIOECONOMICOS"></span>
                     </div>
