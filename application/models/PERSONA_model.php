@@ -30,6 +30,6 @@ class PERSONA_model extends MY_Model
     //   $this->response['status'] = (count($response)>0)? 1 : 0;
     //   $this->response['data'] = $response;
     // }
-    return $response;
+    return  $this->try_result($response);
   }
 }

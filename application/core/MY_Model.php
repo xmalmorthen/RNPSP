@@ -60,7 +60,7 @@ class MY_Model extends CI_Model
   }
 
   public function addIdentificadorCadena($string){
-    return (strtolower(substr($string, 0, 1)) == 'p')? $string : 'p'.$string;
+    return (strtolower(substr(trim($string), 0, 1)) == 'p')? $string : 'p'.$string;
   }
 
   public function arrayToPost($model)
