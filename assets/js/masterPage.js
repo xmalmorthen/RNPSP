@@ -20,7 +20,17 @@ if ( typeof sess_time_to_update !== 'undefined') {
 
             swalShow = true;
             timerInterval = null;
-            Swal.fire({
+
+            var swalPreserve = null;
+            if (Swal.isVisible()){
+                swalPreserve = {
+                    preserve : $('.swal2-container').data('preserve'),
+                    preserveCall : $('.swal2-container').data('preserveCall')
+                }                
+            }
+
+
+            Swal.fire({                
                 title: 'Sesión',
                 html: "Está a punto de expirar la sesión por inactividad,<br> desea mantener la sesión activa?<br><br> Tiempo restante: <span class='swalSessionRemainTime'><strong></strong></span>",
                 footer: "<div>Se perderá cualquier avance no guardado...</div>",
@@ -59,10 +69,24 @@ if ( typeof sess_time_to_update !== 'undefined') {
                 }
             }).then(function(result){
                 if (result.value === true){
+
+                    if (swalPreserve){
+                        if (swalPreserve.preserve){
+                            $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+                        }
+                    }
+
                     $.getJSON(site_url + 'UserSession/renovateSession/' + guid(), function(timeRemain) {
                         swalShow = false;
                         sess_base_time = timeRemain;
                         sess_time_to_update = timeRemain;
+
+                        if (swalPreserve){
+                            if (swalPreserve.preserve){
+                                eval(swalPreserve.preserveCall + '()');
+                                $.LoadingOverlay("hide");
+                            }
+                        }
                     });                    
                 } else if (result.dismiss === 'cancel') {
                     window.location.href = site_url + 'Sesion/Terminar';

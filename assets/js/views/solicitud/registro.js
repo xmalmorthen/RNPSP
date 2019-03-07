@@ -201,6 +201,7 @@ var mainTabMenu = {
             allowOutsideClick: false,
             onBeforeOpen: () => {  
                 $('.swal2-container').css('z-index','2000');
+                $('.swal2-container').data('preserve',true).data('preserveCall','mainTabMenu.mainInit');
             }
         }).then((result) => {
             if ( typeof result.dismiss !== 'undefined') {
