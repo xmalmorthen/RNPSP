@@ -196,9 +196,8 @@ var iDB = {
                                 options.error(err);
                             }).always(function () {
                                 obj.LoadingOverlay("hide");
-                                options.always();
-                                                    
                                 MyCookie.session.reset();
+                                options.always();
                             });
                         }
                     });
