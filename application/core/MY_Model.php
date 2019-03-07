@@ -42,15 +42,16 @@ class MY_Model extends CI_Model
    * @return array    Array with results.
    */
 
-  public function try_result($array){
+  public function try_result($array)
+  {
     $result = array();
-    if(is_array($array)){
+    if (is_array($array)) {
       foreach ($array as $key => $value) {
-        if(is_array($value)){
+        if (is_array($value)) {
           foreach ($value as $key2 => $value2) {
             $result[$key][$this->addIdentificadorCadena($key2)] = $value;
           }
-        }else{
+        } else {
           $result[$this->addIdentificadorCadena($key)] = $value;
         }
       }
@@ -59,8 +60,9 @@ class MY_Model extends CI_Model
     return $result;
   }
 
-  public function addIdentificadorCadena($string){
-    return (substr(trim($string), 0, 1) === 'p')? $string : 'p'.$string;
+  public function addIdentificadorCadena($string)
+  {
+    return (substr(trim($string), 0, 1) === 'p') ? $string : 'p' . $string;
   }
 
   public function arrayToPost($model)
@@ -85,7 +87,7 @@ class MY_Model extends CI_Model
   }
   public function addParam($nombre, $_value = false, $valuePrefix = '', $validation = array())
   {
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $value = ($_value !== null && $this->input->post($_value) != false) ? $this->input->post($_value) : null;
       $value = ($value !== null) ? (($value === false) ? "{$nombre} OUTPUT" : "{$valuePrefix}{$this->db->escape($value)}") : 'null';
       array_push($this->params, "@{$nombre} = {$value}");
@@ -94,7 +96,7 @@ class MY_Model extends CI_Model
         // Utils::pre( array($nombre, (array_key_exists('name',$validation)? $validation['name'] : $nombre), (array_key_exists('rule',$validation)? $validation['rule'] : 'trim')),false );
         $this->form_validation->set_rules($_value, (array_key_exists('name', $validation) ? $validation['name'] : $nombre), (array_key_exists('rule', $validation) ? $validation['rule'] : 'trim'));
       }
-    }else{
+    } else {
       $value = ($_value !== null) ? (($_value === false) ? "{$nombre} OUTPUT" : "{$valuePrefix}{$this->db->escape($_value)}") : 'null';
       array_push($this->params, "@{$nombre} = {$value}");
     }
@@ -126,7 +128,7 @@ class MY_Model extends CI_Model
       $query = rtrim($query, ',');
     }
     $query .= '; ';
-    if($select == true){
+    if ($select == true) {
       if (count($this->output) > 0) {
         $query .= ' SELECT ';
         foreach ($this->output as $value) {
@@ -302,13 +304,17 @@ class MY_Model extends CI_Model
     return $result;
   }
 
-  public function query_multi($query){
-    $result = array();
+  public function query_multi($query)
+  {
     try {
+      $result = array();
       $stmt = sqlsrv_query($this->db->conn_id, $query);
-      while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC)){
+      while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
         $result[] = $row;
-        sqlsrv_next_result($stmt);
+        $next_result = sqlsrv_next_result($stmt);
+        if (!$next_result) {
+          break;
+        }
       }
     } catch (Exception $th) {
       $result = false;
