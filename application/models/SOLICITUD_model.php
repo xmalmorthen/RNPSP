@@ -23,6 +23,7 @@ class SOLICITUD_model extends MY_Model
   /*
   * "Opcion Nueva Solicitud - Validar CURP sp_validaCURP- Valida si una CURP se encuentra ya registrada o no. SI está, regresa la informacion de los datos personales"
   * El procedimiento almacenado esta retornando dos resultados
+  * actualizar procedimiento almacenado
   */
   public function sp_validaCURP($CURP){
 
@@ -58,7 +59,7 @@ class SOLICITUD_model extends MY_Model
     $this->form_validation->set_rules('pID_MUNICIPIO_NAC', 'Municipio de nacimiento', 'trim|required|numeric');
     $this->form_validation->set_rules('pID_ESTADO_CIVIL', 'Estado civil', 'trim|required|numeric');
     $this->form_validation->set_rules('pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES', 'Fecha de nacimiento', 'trim|required');
-    $this->form_validation->set_rules('pSEXO_DATOS_PERSONALES', 'Sexo', 'trim|required|max_length[1]'); //NO SE ENCONTRO
+    $this->form_validation->set_rules('pSEXO_DATOS_PERSONALES', 'Sexo', 'trim|required|max_length[1]');
     $this->form_validation->set_rules('pCURP', 'CURP', 'trim|required|max_length[20]');
     $this->form_validation->set_rules('pRFC', 'pRFC_DOMICILIO', 'max_length[20]');
     $this->form_validation->set_rules('pCREDENCIAL_LECTOR', 'Clave de elector', 'trim|max_length[30]');
@@ -433,7 +434,10 @@ class SOLICITUD_model extends MY_Model
 
   /*
   * $this->addParam('method sp_B2_LAB_addEmpleoSeg - Agraga la información de los empleos anteriores en seguridad pública del elemento.
+  * sp_B1_ADD_ABSCRIPTCION
+
   */
+
   public function  sp_B2_LAB_addEmpleoSeg($model){
     $this->arrayToPost($model);
     $_POST['pID_ALTERNA'] = 4;//$this->input->post('pID_ALTERNA_Adscripcion_actual');
