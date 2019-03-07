@@ -146,7 +146,7 @@ var iDB = {
                             });
 
                             var selValueInterval = setInterval(function(){
-                                if ($('#_dependenciaAdscripcionActual').find('option:enabled').length > 0 ) {
+                                if (obj.find('option:enabled').length > 0 ) {
                                     clearInterval(selValueInterval);
                                     selValueInterval = null;
                             

@@ -1,5 +1,6 @@
 var dynTabs = {
     mode : '',
+    loading : false,
     validForm : true,
     tabs : {
         currentTab : {
@@ -78,7 +79,7 @@ var dynTabs = {
             
         populate.form(form); 
         MyCookie.tabRef.save(dynTabs.mode +'ChildTab',e.currentTarget.id);  
-        dynTabs.loaderTab();
+        dynTabs.loaderTab(e);
     },
     setCurrentTab : function(tabContent){        
     },
@@ -96,20 +97,35 @@ var dynTabs = {
     unMarkTab : function(linkRef){
         linkRef.find('span.tabMark').remove();
     },
-    loaderTab : function(e){        
-        var form = $('#myTabContent .tab-pane.active .nav-item a.nav-link.active'),
+    loaderTab : function(e){
+        
+        dynTabs.loading = true;
+
+        var form = e ? $('#' + $(e.currentTarget).attr('aria-controls')).find('form') : $('#' + $('#myTabContent .tab-pane.active .nav-item a.nav-link.active').attr('aria-controls')).find('form'),
             loaderShow = false;
-            
+                    
             var initInterval = setInterval(function(){
                 objsToInsert = 0;
-                $.each( $('#' + form.attr('aria-controls')).find('form').find('select'), function( key, value ) {
-                    if ($(this).data('insert') !== undefined) 
-                        objsToInsert ++;
-                });
+                for (var index = 0; index < form.length; index++) {
+                    $.each( $(form[index]).find('select'), function( key, value ) {
+                        if ($(this).data('insert') !== undefined) 
+                            objsToInsert ++;
+                    });                    
+                }
                 
                 if (objsToInsert == 0) {
+                    clearInterval(initInterval);
+
                     $.LoadingOverlay("hide",true);
-                    clearInterval(initInterval);                    
+                    dynTabs.loading = false;
+
+                    //Rutina para verificar si se hace algún cambio en cualquier forulario
+                    form.find('input, select').change(function(e) {                
+                        form.removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError');
+                        form.data('hasChanged',true);
+                        $(e.target).removeError();
+                    });
+
                 } else {
                     if (!loaderShow) {
                         loaderShow = true;

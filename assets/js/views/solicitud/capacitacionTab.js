@@ -67,17 +67,6 @@ var objViewCapacitacion = {
         
         //FOCUSOUT
         
-        //Rutina para verificar si se hace algún cambio en cualquier forulario
-        $.each(objViewCapacitacion.vars.capacitacion.forms, function( index, value ) {
-            var form = value;
-            form.find('input, select').change(function(e) {
-                form.removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError');
-                form.data('hasChanged',true);
-
-                $(e.target).removeError();
-            });
-        });
-        
         //CAMBIO DE TABS
         objViewCapacitacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewCapacitacion.actions.discartChanges}, e); } );
         objViewCapacitacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('show.bs.tab',dynTabs.showTab);

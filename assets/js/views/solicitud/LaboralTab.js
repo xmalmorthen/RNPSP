@@ -93,17 +93,6 @@ var objViewLaboral = {
         //objViewLaboral.vars.laboral.cmbs.pINSTITUCION.on('select2:select',objViewLaboral.events.change.pINSTITUCION);
         objViewLaboral.vars.laboral.cmbs.pINSTITUCION.on('change',objViewLaboral.events.change.pINSTITUCION);
 
-        //Rutina para verificar si se hace algún cambio en cualquier forulario
-        $.each(objViewLaboral.vars.laboral.forms, function( index, value ) {
-            var form = value;
-            form.find('input, select').change(function(e) {
-                form.removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError');
-                form.data('hasChanged',true);
-
-                $(e.target).removeError();
-            });
-        });
-        
         //CAMBIO DE TABS
         objViewLaboral.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewLaboral.actions.discartChanges}, e); } );
         objViewLaboral.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('show.bs.tab',dynTabs.showTab);

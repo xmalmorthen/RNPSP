@@ -7,10 +7,12 @@ var objViewDatosGenerales = {
         datosGenerales : {
             forms : {
                 Datos_personales_form : null,
+                Datos_personales_CIB_form : null,
                 Desarrollo_form : null,
                 Domicilio_form : null,
                 Referencias_form : null,
-                Socioeconomicos_form : null
+                Socioeconomicos_form : null,
+                Dependientes_form : null
             },
             btns : {
                 guardarDatosPersonales : null,
@@ -71,10 +73,12 @@ var objViewDatosGenerales = {
         // INIT ELEMENTS
         // FORMS
         objViewDatosGenerales.vars.datosGenerales.forms.Datos_personales_form = $('#Datos_personales_form');
+        objViewDatosGenerales.vars.datosGenerales.forms.Datos_personales_CIB_form = $('#Datos_personales_CIB_form');
         objViewDatosGenerales.vars.datosGenerales.forms.Desarrollo_form = $('#Desarrollo_form');
         objViewDatosGenerales.vars.datosGenerales.forms.Domicilio_form = $('#Domicilio_form');
         objViewDatosGenerales.vars.datosGenerales.forms.Referencias_form = $('#Referencias_form');
         objViewDatosGenerales.vars.datosGenerales.forms.Socioeconomicos_form = $('#Socioeconomicos_form');
+        objViewDatosGenerales.vars.datosGenerales.forms.Dependientes_form = $('#Dependientes_form');
         // BUTTONS
         objViewDatosGenerales.vars.datosGenerales.btns.guardarDatosPersonales = $('#guardarDatosPersonales');        
         objViewDatosGenerales.vars.datosGenerales.btns.generarCIB = $('#GUARDAR_CIB');
@@ -113,16 +117,6 @@ var objViewDatosGenerales = {
         objViewDatosGenerales.vars.datosGenerales.btns.guardarDependiente.on('click',objViewDatosGenerales.events.click.datosGenerales.guardarDependiente);
         
         //CHANGE
-
-        //Rutina para verificar si se hace algún cambio en cualquier forulario
-        $.each(objViewDatosGenerales.vars.datosGenerales.forms, function( index, value ) {
-            var form = value;
-            form.find('input, select').change(function(e) {
-                form.removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError');
-                form.data('hasChanged',true);
-                $(e.target).removeError();
-            });
-        });
         
         //CAMBIO DE TABS
         objViewDatosGenerales.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewDatosGenerales.actions.discartChanges}, e); } );

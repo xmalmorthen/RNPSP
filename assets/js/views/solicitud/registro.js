@@ -23,7 +23,7 @@ var mainTabMenu = {
         //CAMBIO DE TABS
         //MAIN TAB
         $('#mainContainerTab a[data-toggle="tab"]').on('show.bs.tab',mainTabMenu.tab.change);
-        $('#mainContainerTab a[data-toggle="tab"]').on('shown.bs.tab',dynTabs.loaderTab);
+        $('#mainContainerTab a[data-toggle="tab"]').on('shown.bs.tab',function() {dynTabs.loaderTab()});
         $('#mainContainerTab a[data-toggle="tab"]').on('shown.bs.tab',mainTabMenu.actions.tableResponsive);
         
 
@@ -97,10 +97,7 @@ var mainTabMenu = {
 
             switch (tabRef) {
                 case 'datosGenerales':
-                    objViewDatosGenerales.init(function(){ 
-                        dynTabs.validForm = true; 
-                        mainTabMenu.actions.inited = true; 
-                    });
+                    objViewDatosGenerales.init(function(){dynTabs.validForm = true; mainTabMenu.actions.inited = true; });
                 break;
                 case 'Laboral':
                     objViewLaboral.init(function(){ dynTabs.validForm = true; mainTabMenu.actions.inited = true;});
@@ -270,7 +267,18 @@ var mainFormActions = {
         //mainFormActions.insertValueInSelect($('#pCUIP'),data.);
         $('#pCUIP').setError('No se encontró en el modelo...');
 
+
+        mainFormActions.insertValueInSelect($('#pID_GRADO_ESCOLAR'),10);
+        mainFormActions.insertValueInSelect($('#pNOMBRE_ESCUELA'),'666');
+
+
         $('.consultaCURP').readOnly();
+
+        dynTabs.mode = 'edit';
+        
+        const currTab = dynTabs.getCurrentTab($('#myTabContent'));
+        currTab.tabForm.removeData('hasChanged');
+
         dynTabs.loaderTab();
     },
     insertValueInSelect : function(ref,value){

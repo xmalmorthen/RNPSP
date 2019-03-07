@@ -115,17 +115,6 @@ var objViewIdentificacion = {
         // INIT TYPE FILES
         objViewIdentificacion.vars.identificacion.files.inputFile.on('change',objViewIdentificacion.events.change.inputFile);
 
-        //Rutina para verificar si se hace algún cambio en cualquier forulario
-        $.each(objViewIdentificacion.vars.identificacion.forms, function( index, value ) {
-            var form = value;
-            form.find('input, select').change(function(e) {
-                form.removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError');
-                form.data('hasChanged',true);
-
-                $(e.target).removeError();
-            });
-        });
-        
         //CAMBIO DE TABS
         objViewIdentificacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewIdentificacion.actions.discartChanges}, e); } );
         objViewIdentificacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('show.bs.tab',dynTabs.showTab);
