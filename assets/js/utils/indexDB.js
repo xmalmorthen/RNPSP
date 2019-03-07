@@ -93,6 +93,9 @@ var iDB = {
                             resolve(data);
                         }).fail(function (err) {                    
                             reject(err);
+                        }).always(function () {   
+                            MyCookie.session.reset();
+                            options.always();
                         });
                     } else {
                         reject(err);
