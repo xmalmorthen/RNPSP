@@ -41,6 +41,28 @@ class MY_Model extends CI_Model
    * 
    * @return array    Array with results.
    */
+
+  public function try_result($array){
+    $result = array();
+    if(is_array($array)){
+      foreach ($array as $key => $value) {
+        if(is_array($value)){
+          foreach ($value as $key2 => $value2) {
+            $result[$key][$this->addIdentificadorCadena($key2)] = $value;
+          }
+        }else{
+          $result[$this->addIdentificadorCadena($key)] = $value;
+        }
+      }
+    }
+    unset($array);
+    return $result;
+  }
+
+  public function addIdentificadorCadena($string){
+    return (strtolower(substr($string, 0, 1)) == 'p')? $string : 'p'.$string;
+  }
+
   public function arrayToPost($model)
   {
     if (is_array($model)) {

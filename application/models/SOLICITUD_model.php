@@ -43,7 +43,7 @@ class SOLICITUD_model extends MY_Model
 
         $this->response['status'] = $responseOutput['tranEstatus'];
         $this->response['message'] = $responseOutput['msg'];
-        $this->response['data'] = $responseSelect;
+        $this->response['data'] = $this->try_result($responseSelect);
       }else{
         $responseOutput = current($response);
         $this->response['status'] = $responseOutput['tranEstatus'];
