@@ -3,33 +3,33 @@
 class PERSONA_model extends MY_Model
 {
 
+  public $response = array();
   public function __construct()
   {
     parent::__construct();
+    $this->response = array(
+      'status' => false,
+      'message'=> '',
+      'validation' => false,
+      'data'=> null
+    );
   }
 
-  public function getPersona($curp)
+  public function getPersona($curp = null,$id_alterna = null)
   {
-    $returnResponse = null;
-    try {
-      $exec = "EXEC	sp_B1_getPersona @pCURP = ?";
-      $result = $this->db->query($exec,array(
-          $curp,
-        )
-      );
+    $this->procedure('sp_B1_getPersona');
+    $this->addParam('pCURP',$curp,'N',array('rule'=>'trim|min_length[16]|max_length[20]'));
+    $this->addParam('pID_ALTERNA',$id_alterna,'',array('rule'=>'trim|numeric'));
+    $query = $this->db->query($this->build_query());
+    $response = $this->query_row($query);
 
-      if (!$result) {
-        throw new Exception($this->db->error()['message']);
-      }
-      $returnResponse = $this->query_row($result);
-    } catch (rulesException $e) {
-      log_message('info', $e->getMessage() . " [ PERSONA_model - tmpTestXmal ] [ GUID = {$this->config->item('GUID')} ]");
-      throw $e;
-    } catch (Exception $e) {
-      log_message('error', $e->getMessage() . " [ PERSONA_model - tmpTestXmal ] [ GUID = {$this->config->item('GUID')} ]");
-      show_error("Error interno - GUID de rastreo [ {$this->config->item('GUID')} ]", 500, 'Ocurrió un error');
-    }
-
-    return $returnResponse;
+    // if($response == FALSE){
+    //   $this->response['status'] = 0;
+    // }else{
+    //   $resp = end($response);
+    //   $this->response['status'] = (count($response)>0)? 1 : 0;
+    //   $this->response['data'] = $response;
+    // }
+    return $response;
   }
 }

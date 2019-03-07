@@ -15,9 +15,7 @@ class ajaxAPIs extends CI_Controller {
 
 		if (! $this->input->is_ajax_request()) {
 			if (ENVIRONMENT == 'production') redirect('Error/e404','location');
-        }		
-		
-
+        }
 		$responseModel = null;
 		try {
 			if(!$curp){
@@ -26,9 +24,10 @@ class ajaxAPIs extends CI_Controller {
 
 			if (strlen($curp) < 18 || strlen($curp) > 20)
 				throw new rulesException('Formato de CURP inválido',400);
-
+			
 			$this->load->model('PERSONA_model');
 			$responseModel = $this->PERSONA_model->getPersona($curp);
+
 			if($responseModel == false){
 				$this->load->spark('restclient/2.1.0');
 				$this->load->library('rest');

@@ -30,18 +30,24 @@ class SOLICITUD_model extends MY_Model
     $this->procedure('sp_validaCURP');
     $this->addParam('pCURP',$CURP,'N',array('name'=>'CURP','rule'=>'trim|required|min_length[16]|max_length[20]'));
     $this->iniParam('tranEstatus','int');
-    $query = $this->db->query($this->build_query());
-    $response = $this->query_row($query);
+    $this->iniParam('msg','varchar','80');
+    $response = $this->query_multi($this->build_query());
+
     if($response === FALSE){
-      $this->response['status'] = false;
+      $this->response['status'] = 0;
       $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
     }else{
-      if(array_key_exists('tranEstatus',$response)){
-        $this->response['status'] = 0;
-        $this->response['message'] = 'No se encontraron coincidencias';
+      if(count($response) > 1){
+        $responseSelect = current($response);
+        $responseOutput = end($response);
+
+        $this->response['status'] = $responseOutput['tranEstatus'];
+        $this->response['message'] = $responseOutput['msg'];
+        $this->response['data'] = $responseSelect;
       }else{
-        $this->response['status'] = 1;
-        $this->response['data'] = $response;
+        $responseOutput = current($response);
+        $this->response['status'] = $responseOutput['tranEstatus'];
+        $this->response['message'] = $responseOutput['msg'];
       }
     }
     return $this->response;
