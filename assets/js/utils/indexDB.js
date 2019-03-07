@@ -6,7 +6,8 @@ var iDB = {
         selects : $('select'),
         toPopulate : 0,
         tablesChecked : 0,
-        iDBSync : null
+        iDBSync : null,
+        tables : []
     },
     init : async function(){
         const tablas = await iDB.actions.getTablesNames();
@@ -50,11 +51,14 @@ var iDB = {
 
             const tables = iDB.vars.db.tables;
             tables.forEach(function (table) {
-                table.count().then(function(count){                    
+                table.count().then(function(count){
+                    iDB.vars.tables.push(table.name);
+                    
                     if (count > 0) {
                         iDB.vars.tablesChecked++;
                         return null;
                     }
+                    
                     iDB.actions.getDataFromBD(table).then(() =>{
                         iDB.vars.tablesChecked++;
                         iDB.vars.toPopulate--;
@@ -62,6 +66,7 @@ var iDB = {
                     }).catch(function(){
                         iDB.vars.tablesChecked++;
                     });
+                    
                 }).catch(function(err){                    
                 });
             });            
@@ -95,7 +100,7 @@ var iDB = {
                             reject(err);
                         }).always(function () {   
                             MyCookie.session.reset();
-                            options.always();
+                            //options.always();
                         });
                     } else {
                         reject(err);

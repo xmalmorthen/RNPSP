@@ -171,8 +171,7 @@ var mainTabMenu = {
                             reject(err);
                         });
                     }).then(function (data) {
-                        var getFromCURPQuery = data.results.data ? false : true;
-                        if (getFromCURPQuery == true) {
+                        if (data.results.status == 0) {
                             return new Promise(function (resolve,reject){
                                 callUrl = base_url + `ajaxAPIs/curp`;
                                 $.get(callUrl,{
@@ -187,11 +186,13 @@ var mainTabMenu = {
                             }).then(function(data){
                                 return {from:'query', data: data[0]};
                             });
-
-                        } else
+                        } else if (data.results.status == 1) {
                             return {from:'bd', data: data};
+                        } else {
+                            throw new Error(data.results.message);
+                        }                        
                     }).catch(function(err){
-                        Swal.showValidationMessage(err.statusText);
+                        Swal.showValidationMessage(err.statusText ? err.statusText : err.message);
                     });
                 } catch (error) {
                     Swal.showValidationMessage(error);
@@ -245,25 +246,28 @@ var mainFormActions = {
         });        
     },
     fillData : function(data){
-        
+        data = data.results.data;
 
-        mainTabMenu.var.pID_ALTERNA = data.results.data.ID_ALTERNA;
+        mainTabMenu.var.pID_ALTERNA = data.pID_ALTERNA;
 
         //AutoFill
-        $.each(data.results.data,function(key,value){
+        $.each(data,function(key,value){
             mainFormActions.insertValueInSelect($('#'+ key),value);
         });
 
-        /*objViewDatosGenerales.vars.datosGenerales.objs.pCURP.val('RUAM811123HCMDGG05');
-        mainFormActions.insertValueInSelect($('#pTIPO_MOV'),'BE');
-        mainFormActions.insertValueInSelect($('#pID_ENTIDAD_NAC'),'6');
-        mainFormActions.insertValueInSelect($('#pID_MUNICIPIO_NAC'),'2');
-        
-        mainFormActions.insertValueInSelect($('#_dependenciaAdscripcionActual'),'9');
-        mainFormActions.insertValueInSelect($('#pINSTITUCION'),'3817');
-        mainFormActions.insertValueInSelect($('#pID_AREA'),'173525');  
-        mainFormActions.insertValueInSelect($('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL'),'2');  */
-        
+        //Special
+        mainFormActions.insertValueInSelect($('#pRFC_DOMICILIO'),data.pRFC);        
+        mainFormActions.insertValueInSelect($('#pNOMBRE_DATOS_PERSONALES'),data.pNOMBRE);
+        mainFormActions.insertValueInSelect($('#pPATERNO_DATOS_PERSONALES'),data.pPATERNO);
+        mainFormActions.insertValueInSelect($('#pMATERNO_DATOS_PERSONALES'),data.pMATERNO);
+        mainFormActions.insertValueInSelect($('#pSEXO_DATOS_PERSONALES'),data.pSEXO);
+        mainFormActions.insertValueInSelect($('#pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES'),data.pFECHA_NAC);
+        mainFormActions.insertValueInSelect($('#pCIUDAD_NAC_DATOS_PERSONALES'),data.pCIUDAD_NAC);
+        mainFormActions.insertValueInSelect($('#pCREDENCIAL_ELECTOR'),data.pCREDENCIAL_ELECTOR);//
+        mainFormActions.insertValueInSelect($('#pPASAPORTE'),data.pPASAPORTE);
+        mainFormActions.insertValueInSelect($('#pLICENCIA_DATOS_PERSONALES'),data.pLICENCIA);
+        mainFormActions.insertValueInSelect($('#pCUIP'),'no viene en el modelo');
+
         $('.consultaCURP').readOnly();
         dynTabs.loaderTab();
     },
