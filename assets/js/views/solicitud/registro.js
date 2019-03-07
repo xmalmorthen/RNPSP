@@ -266,7 +266,8 @@ var mainFormActions = {
         mainFormActions.insertValueInSelect($('#pCREDENCIAL_ELECTOR'),data.pCREDENCIAL_ELECTOR);//
         mainFormActions.insertValueInSelect($('#pPASAPORTE'),data.pPASAPORTE);
         mainFormActions.insertValueInSelect($('#pLICENCIA_DATOS_PERSONALES'),data.pLICENCIA);
-        mainFormActions.insertValueInSelect($('#pCUIP'),'no viene en el modelo');
+        //mainFormActions.insertValueInSelect($('#pCUIP'),data.);
+        $('#pCUIP').setError('No se encontró en el modelo...');
 
         $('.consultaCURP').readOnly();
         dynTabs.loaderTab();

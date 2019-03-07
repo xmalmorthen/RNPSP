@@ -116,7 +116,7 @@ var dynTabs = {
                         $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
                     }
                 }
-            }, 300);
+            }, 100);
     },
     getCurrentTab : function(tabContent){
         var linkRef = tabContent.find('.tab-pane.active.show').find('.nav.nav-tabs').find('a.nav-link.active'),
