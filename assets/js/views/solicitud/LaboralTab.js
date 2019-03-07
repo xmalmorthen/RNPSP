@@ -17,7 +17,7 @@ var objViewLaboral = {
                 guardarComision : null
             },
             cmbs : {
-                pINSTITUCION : null,
+                pID_INSTITUCION : null,
             },
             tables : {
                 tableAdscripcionactual : {
@@ -64,7 +64,7 @@ var objViewLaboral = {
         objViewLaboral.vars.laboral.btns.guardarComision = $('#guardarComision');
 
         // SELECTS
-        objViewLaboral.vars.laboral.cmbs.pINSTITUCION = $('#pINSTITUCION');
+        objViewLaboral.vars.laboral.cmbs.pID_INSTITUCION = $('#pID_INSTITUCION');
 
         // INIT SELECTS
         objViewLaboral.vars.general.mainContentTab.find('select').select2({width : '100%'});
@@ -90,8 +90,8 @@ var objViewLaboral = {
         //FOCUSOUT
         
         //CHANGE
-        //objViewLaboral.vars.laboral.cmbs.pINSTITUCION.on('select2:select',objViewLaboral.events.change.pINSTITUCION);
-        objViewLaboral.vars.laboral.cmbs.pINSTITUCION.on('change',objViewLaboral.events.change.pINSTITUCION);
+        //objViewLaboral.vars.laboral.cmbs.pID_INSTITUCION.on('select2:select',objViewLaboral.events.change.pID_INSTITUCION);
+        objViewLaboral.vars.laboral.cmbs.pID_INSTITUCION.on('change',objViewLaboral.events.change.pID_INSTITUCION);
 
         //CAMBIO DE TABS
         objViewLaboral.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewLaboral.actions.discartChanges}, e); } );
@@ -149,10 +149,10 @@ var objViewLaboral = {
             }
         },
         change : {
-            pINSTITUCION : function(e){
+            pID_INSTITUCION : function(e){
                 var $this = $(this),
                     valInstitucion = $this.val(),
-                    valDependencia = $('#_dependenciaAdscripcionActual').val();
+                    valDependencia = $('#pID_DEPENDENCIA_ADSCRIPCION_ACTUAL').val();
 
                 if (!valInstitucion) return null;
 

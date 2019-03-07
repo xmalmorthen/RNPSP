@@ -254,6 +254,7 @@ var mainFormActions = {
         });
 
         //Special
+        //DATOS GENERALES - DATOS PERSONALES
         mainFormActions.insertValueInSelect($('#pRFC_DOMICILIO'),data.pRFC);        
         mainFormActions.insertValueInSelect($('#pNOMBRE_DATOS_PERSONALES'),data.pNOMBRE);
         mainFormActions.insertValueInSelect($('#pPATERNO_DATOS_PERSONALES'),data.pPATERNO);
@@ -267,17 +268,19 @@ var mainFormActions = {
         //mainFormActions.insertValueInSelect($('#pCUIP'),data.);
         $('#pCUIP').setError('No se encontró en el modelo...');
 
+        //DATOS GENERALES - DESARROLLO ACADÉMICO
+        mainFormActions.insertValueInSelect($('#pID_GRADO_ESCOLAR'),10); //DATO DE PRUEBA
+        mainFormActions.insertValueInSelect($('#pNOMBRE_ESCUELA'),'666'); //DATO DE PRUEBA
 
-        mainFormActions.insertValueInSelect($('#pID_GRADO_ESCOLAR'),10);
-        mainFormActions.insertValueInSelect($('#pNOMBRE_ESCUELA'),'666');
-
+        //LABORAL - ADSCRIPCIÓN ACTUAL
+        mainFormActions.insertValueInSelect($('#pID_DEPENDENCIA_ADSCRIPCION_ACTUAL'),1); //DATO DE PRUEBA
+        mainFormActions.insertValueInSelect($('#pID_INSTITUCION'),5116); //DATO DE PRUEBA
 
         $('.consultaCURP').readOnly();
-
         dynTabs.mode = 'edit';
         
-        const currTab = dynTabs.getCurrentTab($('#myTabContent'));
-        currTab.tabForm.removeData('hasChanged');
+        // const currTab = dynTabs.getCurrentTab($('#myTabContent'));
+        // currTab.tabForm.removeData('hasChanged');
 
         dynTabs.loaderTab();
     },
