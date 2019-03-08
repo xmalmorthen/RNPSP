@@ -200,12 +200,9 @@
 
 				$model = [];
 				parse_str($_POST["model"], $model);
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_B1_addPersonaCIB($model);
 				
-				//TODO: Tamata - Implementar
-
-				$responseModel['status'] = false;
-				$responseModel['message'] = 'Método no implementado';				
-				$responseModel['data'] = [];
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
@@ -405,7 +402,7 @@
 				$model = [];
 				parse_str($_POST["model"], $model);
 				$this->load->model('SOLICITUD_model');
-				$responseModel = $this->SOLICITUD_model->sp_B2_LAB_addEmpleoSeg($model);
+				$responseModel = $this->SOLICITUD_model->sp_B1_addAdscripcion($model);
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));

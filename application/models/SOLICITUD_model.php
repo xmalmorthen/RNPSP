@@ -54,6 +54,7 @@ class SOLICITUD_model extends MY_Model
   }
 
   public function addDatosPersonales($model){
+
     $this->arrayToPost($model);
     $this->load->library('form_validation');
     $this->form_validation->set_rules('pTIPO_OPERACION', 'Tipo de movimiento', 'trim|required|max_length[3]');
@@ -78,8 +79,7 @@ class SOLICITUD_model extends MY_Model
     $this->form_validation->set_rules('pLICENCIA_VIG', 'Vigencia de licencia', 'trim');
     $this->form_validation->set_rules('pCIUDAD_NAC_DATOS_PERSONALES', 'Descripción ciudad de nacimiento', 'trim|max_length[50]');
     $this->form_validation->set_rules('pFECHA_NACIONALIDAD', 'Fecha de nacionalidad', 'trim');
-    $this->form_validation->set_rules('CIB', 'CIB', 'trim|max_length[50]');
-    $this->form_validation->set_rules('motivoCIB', 'Motivo de cambio de CIB', 'trim|max_length[300]');
+    $this->form_validation->set_rules('pCUIP', 'CUIP', 'trim|max_length[50]');
 
     if ($this->form_validation->run() === true) {
 
@@ -106,8 +106,9 @@ class SOLICITUD_model extends MY_Model
       $this->addParam('pLICENCIA_VIG','pLICENCIA_VIG');
       $this->addParam('pCIUDAD_NAC','pCIUDAD_NAC_DATOS_PERSONALES','N');
       $this->addParam('pFECHA_NACIONALIDAD','pFECHA_NACIONALIDAD');
-      $this->addParam('pCIB','CIB','N');
-      $this->addParam('pMotivoCIB','motivoCIB','N');
+      // $this->addParam('pCUIP','pCUIP','N');
+      $this->addParam('pCIB',null,'');
+      $this->addParam('pMotivoCIB',null,'');
 
       $this->iniParam('pID_ALTERNA','numeric');
       $this->iniParam('txtError','varchar','250');
@@ -137,13 +138,9 @@ class SOLICITUD_model extends MY_Model
 
   
   public function sp_B1_addNivelEstudios($model){
-
-    $this->arrayToPost($model);
-
-    $_POST['pID_ALTERNA'] = 4;//$this->input->post('pID_ALTERNA_Desarrollo');
-    
+    $this->arrayToPost($model);    
     $this->load->library('form_validation');
-    $this->form_validation->set_rules('pID_ALTERNA', 'Máxima escolaridad', 'numeric|max_length[10]');
+    $this->form_validation->set_rules('pID_ALTERNA_Desarrollo', 'pID_ALTERNA', 'trim|required|numeric|max_length[10]');
     $this->form_validation->set_rules('pID_ESTADO_EMISOR', 'Máxima escolaridad', 'numeric|max_length[10]');
     $this->form_validation->set_rules('pID_EMISOR', 'Máxima escolaridad', 'numeric|max_length[10]');
     $this->form_validation->set_rules('pID_GRADO_ESCOLAR', 'Máxima escolaridad', 'trim|required|numeric|max_length[10]');
@@ -160,11 +157,8 @@ class SOLICITUD_model extends MY_Model
 
       $this->procedure('sp_B1_addNivelEstudios');
 
-      // $this->addParam('pID_ALTERNA',$model['ID_ALTERNA_Desarrollo']);
-      $this->addParam('pID_ALTERNA','pID_ALTERNA');
-      //$this->addParam('pID_ESTADO_EMISOR',$model['pID_ESTADO_EMISOR_Desarrollo']); //Enviar vacio
+      $this->addParam('pID_ALTERNA','pID_ALTERNA_Desarrollo');
       $this->addParam('pID_ESTADO_EMISOR',null); //Enviar vacio
-      //$this->addParam('pID_EMISOR',$model['pID_EMISOR_Desarrollo']); //Enviar vacio
       $this->addParam('pID_EMISOR',null); //Enviar vacio
       $this->addParam('pID_GRADO_ESCOLAR','pID_GRADO_ESCOLAR');
       $this->addParam('pESPECIALIDAD','pESPECIALIDAD_DESARROLLO','N');
@@ -208,10 +202,8 @@ class SOLICITUD_model extends MY_Model
   public function sp_B1_addDomicilio($model){
 
     $this->arrayToPost($model);
-    $_POST['pID_ALTERNA'] = 4;//$this->input->post('pID_ALTERNA_Domicilio');
-
     $this->load->library('form_validation');
-    $this->form_validation->set_rules('pID_ALTERNA', 'hidden', 'numeric');
+    $this->form_validation->set_rules('pID_ALTERNA_Domicilio', 'pID_ALTERNA', 'trim|required|numeric|max_length[10]');
     // $this->form_validation->set_rules('pID_ESTADO_EMISOR_Domicilio', 'hidden', 'numeric');//Enviar vacio
     // $this->form_validation->set_rules('pID_EMISOR_Domicilio', 'hidden', 'numeric');//Enviar vacio
     // $this->form_validation->set_rules('pID_TIPO_DOM', '', 'numeric');//Enviar vacio
@@ -231,8 +223,7 @@ class SOLICITUD_model extends MY_Model
     if ($this->form_validation->run() === true) {
 
       $this->procedure('sp_B1_addDomicilio');
-
-      $this->addParam('pID_ALTERNA','pID_ALTERNA');
+      $this->addParam('pID_ALTERNA','pID_ALTERNA_Domicilio');
       $this->addParam('pID_ESTADO_EMISOR',null);//Enviar vacio
       $this->addParam('pID_EMISOR',null);//Enviar vacio
       $this->addParam('pID_TIPO_DOM',null); //Enviar vacio
@@ -277,13 +268,9 @@ class SOLICITUD_model extends MY_Model
   * @method sp_B2_DG_addReferencias - Agraga la informacion de las referencias de la persona		
   */
   public function sp_B2_DG_addReferencias($model){
-
     $this->arrayToPost($model);
-    $_POST['pID_ALTERNA'] = 4;//$this->input->post('pID_ALTERNA_Referencias');
-
     $this->load->library('form_validation');
-
-    $this->addParam('pID_ALTERNA','pID_ALTERNA');
+    $this->addParam('pID_ALTERNA','pID_ALTERNA_Referencias','',array('rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pID_ESTADO_EMISOR','pID_ESTADO_EMISOR_Referencias','',array('rule'=>'trim|numeric|max_length[10]'));
     $this->addParam('pID_EMISOR','pID_EMISOR_Referencias','',array('rule'=>'trim|numeric|max_length[10]'));
     $this->addParam('pID_TIPO_REFERENCIA','pID_TIPO_REFERENCIA','',array('name'=>'Tipo de referencia','rule'=>'trim|required|numeric|max_length[10]'));
@@ -338,13 +325,9 @@ class SOLICITUD_model extends MY_Model
   * NO SON HIGUALES LOS FORM
   */
   public function sp_B2_DG_addSocioEconomico($model){
-
     $this->arrayToPost($model);
-    $_POST['pID_ALTERNA'] = 4;//$this->input->post('ID_ALTERNA_Socioeconomico');
-
     $this->load->library('form_validation');
-
-    $this->addParam('pID_ALTERNA','pID_ALTERNA');
+    $this->addParam('pID_ALTERNA','pID_ALTERNA_Socioeconomico','',array('rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pID_ESTADO_EMISOR','pID_ESTADO_EMISOR_Socioeconomico','',array('rule'=>'trim|numeric'));
     $this->addParam('pID_EMISOR','pID_EMISOR_Socioeconomico','',array('rule'=>'trim|numeric'));
 
@@ -358,8 +341,8 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pCALIDAD_VIDA','pCALIDAD_VIDA','N',array('name'=>'Calidad de vida','rule'=>'trim|max_length[50]'));
     $this->addParam('pVICIOS','pVICIOS','N',array('name'=>'Vicios','rule'=>'trim|max_length[100]'));
     $this->addParam('pIMAGEN_PUBLICA','pIMAGEN_PUBLICA','N',array('name'=>'Imágen pública','rule'=>'trim|max_length[50]'));
-    $this->addParam('pRESPONSABLE_CORP',null); // no se encontro en el formulario
-    $this->addParam('pCOMPORTA_SOCIAL','pCOMPORTA_SOCIAL','N',array('name'=>'Comportamiento social ','rule'=>'trim|max_length[40]'));
+    $this->addParam('pRESPONSABLE_CORP','pCOMPORTA_SOCIAL','N',array('name'=>'Comportamiento social ','rule'=>'trim|max_length[40]'));
+    $this->addParam('pCOMPORTA_SOCIAL',null); // no se encontro en el formulario
     
     if ($this->form_validation->run() === true) {
 
@@ -394,14 +377,10 @@ class SOLICITUD_model extends MY_Model
   */
   public function sp_B2_DG_addDependiente($model){
     $this->arrayToPost($model);
-    $_POST['pID_ALTERNA'] = 4;//$this->input->post('pID_ALTERNA_Socioeconomico');
-
     $this->load->library('form_validation');
-
-    $this->addParam('pID_ALTERNA','pID_ALTERNA');
+    $this->addParam('pID_ALTERNA','pID_ALTERNA_Socioeconomico','',array('rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pID_ESTADO_EMISOR','pID_ESTADO_EMISOR_Socioeconomico','',array('rule'=>'trim|numeric|max_length[10]'));
     $this->addParam('pID_EMISOR','pID_EMISOR_Socioeconomico','',array('rule'=>'trim|numeric|max_length[10]'));
-
     $this->addParam('pPATERNO','pPATERNO_SOCIOECONOMICOS','',array('name'=>'Apellido paterno','rule'=>'trim|required|max_length[40]'));
     $this->addParam('pMATERNO','pMATERNO_SOCIOECONOMICOS','',array('name'=>'Apellido materno','rule'=>'trim|max_length[40]'));
     $this->addParam('pFECHA_NAC','pFECHA_NAC_SOCIOECONOMICOS','',array('name'=>'Fecha de nacimiento','rule'=>'trim|required|max_length[10]'));
@@ -409,18 +388,95 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pNOMBRE','pNOMBRE_SOCIOECONOMICOS','',array('name'=>'Nombre','rule'=>'trim|required|max_length[40]'));
     $this->addParam('pID_SUBTIPO_REF','pID_RELACION','',array('name'=>'Parentesco','rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pID_TIPO_DEPENDIENT','pID_RELACION_SOCIOECONOMICOS','',array('name'=>'Relación ','rule'=>'trim|required|numeric|max_length[10]'));
-    
     if ($this->form_validation->run() === true) {
-
       $this->procedure('sp_B2_DG_addDependiente');
       $this->iniParam('txtError','varchar','250');
       $this->iniParam('msg','varchar','80');
       $this->iniParam('tranEstatus','int');
-      // retorna
-      // Debe exsitir un registro sobre datos sobre el entorno socioeconómico del elemento, para poder registrar los depedientes
       $query = $this->db->query($this->build_query());
       $response = $this->query_row($query);
+      if($response == FALSE){
+        $this->response['status'] = false;
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      }else{
+        $this->response['status'] = (bool)$response['tranEstatus'];
+        $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
+      }
+    } else {
+      $this->load->helper('html');
+      $this->response['status'] = false;
+      $message = $this->form_validation->error_array();
+      $this->response['message'] = ul($message);
+      $this->response['validation'] = $message;
+    }
+    return $this->response;
+  }
 
+  /*
+  * "Opcion Nueva Solicitud - Ficha Laboral - Pestaña Adscripción Actual
+  * Boton Guardar Adscipcion.
+  * sp_B1_addAdscripcion - Agraga la adscripcion de la persona"
+  */
+
+  /*
+  > Msg 515, Level 16, State 2, Server P3NWPLSK12SQL12, Procedure sp_B1_addAdscripcion, Line 65
+Cannot insert the value NULL into column 'ID_AREA', table 'zzhpregpersonalc4.zzhpregpersc4.ADSCRIPCION'; column does not allow nulls. INSERT fails.
+> The statement has been terminated.
+> [23000] [Microsoft][SQL Server Native Client 11.0][SQL Server]Cannot insert the value NULL into column 'ID_AREA', table 'zzhpregpersonalc4.zzhpregpersc4.ADSCRIPCION'; column does not allow nulls. INSERT fails. (515)
+[01000] [Microsoft][SQL Server Native Client 11.0][SQL Server]The statement has been terminated. (3621)
+  */
+  public function sp_B1_addAdscripcion($model){
+    Utils::pre($model);
+    $this->arrayToPost($model);
+    $this->load->library('form_validation');
+    $this->addParam('pID_ALTERNA','pID_ALTERNA','',array('rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pID_ESTADO_EMISOR','pID_ESTADO_EMISOR_Adscripcion_actual','',array('rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pID_EMISOR','pID_EMISOR_Adscripcion_actual','',array('rule'=>'trim|numeric|max_length[10]'));
+    
+    $this->addParam('pID_ENTIDAD','pID_ENTIDAD_ADSCRIPCION_ACTUAL','',array('name'=>'Estado','rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pID_MUNICIPIO','pID_MUNICIPIO_ADSCRIPCION_ACTUAL','',array('name'=>'Municipio','rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pID_AREA','pID_AREA','',array('name'=>'Área o departamento','rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pID_PUESTO',null,'',array('name'=>'Puesto','rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pID_DEPENDENCIA','pID_DEPENDENCIA_ADSCRIPCION_ACTUAL','',array('name'=>'Dependencia','rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pID_INSTITUCION','pID_INSTITUCION','',array('name'=>'','rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pID_TIPO_CONTRATO','pID_TIPO_CONTRATO_Adscripcion_actual','',array('name'=>'','rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pFECHA_INGRESO','pFECHA_INGRESO','',array('name'=>'Fecha de ingreso','rule'=>'trim|required|max_length[10]'));
+    $this->addParam('pESPECIALIDAD','pESPECIALIDAD','N',array('name'=>'Especialidad','rule'=>'trim|max_length[50]'));
+    $this->addParam('pRANGO','pRANGO','N',array('name'=>'Rango o categoría','rule'=>'trim|max_length[30]'));
+    $this->addParam('pSUELDO_BASE','pSUELDO_BASE','',array('name'=>'Sueldo base (Mensual)','rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pID_NIVEL_MANDO','pID_NIVEL_MANDO','',array('name'=>'Nivel de mando','rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pCOMPENSACION','pCOMPENSACION','',array('name'=>'Compensaciones (Mensuales)','rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pNUMERO_PLACA','pNUMERO_PLACA','N',array('name'=>'Número de placa','rule'=>'trim|max_length[20]'));
+    $this->addParam('pNUMERO_EXPEDIENTE','pNUMERO_EXPEDIENTE','N',array('name'=>'Número de expediente','rule'=>'trim|max_length[20]'));
+    $this->addParam('pFUNCIONES','pFUNCIONES','N',array('name'=>'Funciones','rule'=>'trim|max_length[100]'));
+    $this->addParam('pNUMERO_EMPLEADO',null,'N',array('name'=>'','rule'=>'trim|max_length[10]'));//no lo encontre
+    $this->addParam('pID_CATEGORIA_PUEST','pID_CATEGORIA_PUEST_Adscripcion_actual','',array('rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pID_JERARQUIA_PUEST','pID_JERARQUIA_PUEST_Adscripcion_actual','',array('rule'=>'trim|numeric|max_length[10]'));//no lo encontre
+    $this->addParam('pID_FUNCION_PUESTO',null,'',array('name'=>'','rule'=>'trim|numeric|max_length[10]'));//no lo encontre
+    $this->addParam('pID_AMBITO_PUESTO','pID_AMBITO_PUESTO_Adscripcion_actual','',array('rule'=>'trim|numeric|max_length[10]'));//no lo encontre
+    $this->addParam('pDIVISION','pDIVISION','N',array('name'=>'','rule'=>'trim|max_length[30]'));
+    $this->addParam('pID_JEFE','ID_JEFE','',array('rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pID_MOTIVO_MOV_LAB',null);//no lo encontre
+    $this->addParam('pID_TIPO_BAJA',null);//no lo encontre
+    $this->addParam('pFECHA_BAJA',null);//no lo encontre
+    $this->addParam('pOBSERVACION_BAJA',null);//no lo encontre
+    $this->addParam('pCODIGO_POSTAL','pCP_EMP_ADSCRIPCION_ACTUAL','N',array('name'=>'Código postal','rule'=>'trim|required|max_length[10]'));
+    $this->addParam('pCIUDAD','pCIUDAD','N',array('name'=>'Ciudad','rule'=>'trim|max_length[50]'));
+    $this->addParam('pCOLONIA','Colonia/Localidad','N',array('name'=>'Ciudad','rule'=>'trim|max_length[60]'));
+    $this->addParam('pCALLE','Calle','N',array('name'=>'Calle','rule'=>'trim|required|max_length[60]'));
+    $this->addParam('pNUM_EXTERIOR','pNUM_EXTERIOR','N',array('name'=>'Número exterior','rule'=>'trim|required|max_length[30]'));
+    $this->addParam('pNUM_INTERIOR','pNUM_INTERIOR','N',array('name'=>'Número interior','rule'=>'trim|max_length[30]'));
+    $this->addParam('pTELEFONO','pTELEFONO','N',array('name'=>'Número telefónico','rule'=>'trim|required|max_length[20]'));
+    
+    if ($this->form_validation->run() === true) {
+      $this->procedure('sp_B1_addAdscripcion');
+      $this->iniParam('txtError','varchar','250');
+      $this->iniParam('msg','varchar','80');
+      $this->iniParam('tranEstatus','int');
+      Utils::pre($this->build_query());
+      $query = $this->db->query($this->build_query());
+      $response = $this->query_row($query);
+      Utils::pre($response);
       if($response == FALSE){
         $this->response['status'] = false;
         $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
@@ -442,58 +498,95 @@ class SOLICITUD_model extends MY_Model
   /*
   * $this->addParam('method sp_B2_LAB_addEmpleoSeg - Agraga la información de los empleos anteriores en seguridad pública del elemento.
   * sp_B1_ADD_ABSCRIPTCION
-
   */
+  // public function  sp_B2_LAB_addEmpleoSeg($model){
+  //   Utils::pre($model);
+  //   $this->arrayToPost($model);
+  //   $_POST['pID_ALTERNA'] = 4;//$this->input->post('pID_ALTERNA_Adscripcion_actual');
 
-  public function  sp_B2_LAB_addEmpleoSeg($model){
+  //   $this->load->library('form_validation'  );
+
+  //   $this->addParam('pID_ALTERNA','pID_ALTERNA_Adscripcion_actual','',array('rule'=>'trim|required|numeric|max_length[10]'));
+  //   $this->addParam('pID_ESTADO_EMISOR','pID_ESTADO_EMISOR_Adscripcion_actual','',array('rule'=>'trim|numeric|max_length[10]'));
+  //   $this->addParam('pID_EMISOR','pID_EMISOR_Adscripcion_actual','',array('rule'=>'trim|numeric|max_length[10]'));
+
+  //   $this->addParam('pID_DEPENDENCIA','pID_DEPENDENCIA_ADSCRIPCION_ACTUAL','',array('name'=>'Dependencia','rule'=>'trim|required|max_length[10]')); //DESAPARECIO DE LA DOCUMENTACION
+  //   $this->addParam('pID_DOC_BAJA','pID_DOC_BAJA_Adscripcion_actual','',array('rule'=>'trim|numeric|max_length[10]'));
+  //   $this->addParam('pID_ENTIDAD','pID_ENTIDAD_ADSCRIPCION_ACTUAL','',array('name'=>'Estado','rule'=>'trim|numeric|max_length[10]'));
+  //   $this->addParam('pID_MUNICIPIO','pID_MUNICIPIO_ADSCRIPCION_ACTUAL','',array('name'=>'Municipio','rule'=>'trim'));
+  //   $this->addParam('pID_MOTIVO_MOV_LAB',null,'',array('rule'=>'trim')); //NO LO ENCONTRE EN EL FORMULARIO
+  //   $this->addParam('pID_TIPO_MOV_LAB',NULL,'',array('rule'=>'trim|numeric'));//NO LO ENCONTRE EN EL FORMULARIO
+  //   $this->addParam('pID_AREA','pID_AREA','',array('name'=>'Área o departamento','rule'=>'trim|numeric|max_length[10]'));
+  //   $this->addParam('pID_PUESTO',null,'',array('name'=>'Puesto','rule'=>'trim|numeric')); //PENDIENTE
+  //   $this->addParam('pID_INSTITUCION','pID_INSTITUCION','',array('name'=>'Corporación','rule'=>'trim|numeric|max_length[10]'));
+  //   $this->addParam('pID_TIPO_CONTRATO','pID_TIPO_CONTRATO_Adscripcion_actual','',array('rule'=>'trim|numeric|max_length[10]'));
+  //   $this->addParam('pFECHA_INGRESO','pFECHA_INGRESO','',array('name'=>'Fecha de ingreso','rule'=>'trim|required|max_length[10]'));
+  //   $this->addParam('pESPECIALIDAD','pESPECIALIDAD','N',array('name'=>'Especialidad','rule'=>'trim|max_length[100]'));
+  //   $this->addParam('pRANGO','pRANGO','N',array('name'=>'Rango o categoría','rule'=>'trim|max_length[30]'));
+  //   $this->addParam('pSUELDO_BASE','pSUELDO_BASE','',array('name'=>'Sueldo base (Mensual)','rule'=>'trim|numeric|max_length[10]'));
+  //   $this->addParam('pID_NIVEL_MANDO','pID_NIVEL_MANDO','',array('name'=>'Nivel de mando','rule'=>'trim|numeric|max_length[10]'));
+  //   $this->addParam('pCOMPENSACION','pCOMPENSACION','',array('name'=>'Compensaciones (Mensuales)','rule'=>'trim|numeric|max_length[10]'));
+  //   $this->addParam('pNUMERO_PLACA','pNUMERO_PLACA','N',array('name'=>'Número de placa','rule'=>'trim|max_length[20]'));
+  //   $this->addParam('pNUMERO_EXPEDIENTE','pNUMERO_EXPEDIENTE','N',array('name'=>'Número de expediente','rule'=>'trim|max_length[20]'));
+  //   $this->addParam('pID_TIPO_BAJA','pID_DOC_BAJA_Adscripcion_actual','',array('rule'=>'trim')); //ESTA EN EL MODEL PERO NO EN EL FORMULARIO
+  //   $this->addParam('pFECHA_BAJA',null,'',array('rule'=>'trim|max_length[10]'));//NO LO ENCONTRE EN EL FORMULARIO
+  //   $this->addParam('pOBSERVACION_BAJA',null,'',array('rule'=>'trim'));//NO LO ENCONTRE EN EL FORMULARIO
+  //   $this->addParam('pFUNCIONES','pFUNCIONES','',array('name'=>'Funciones','rule'=>'trim|max_length[100]'));
+  //   $this->addParam('pNUMERO_EMPLEADO',null,'',array('rule'=>'trim'));//NO LO ENCONTRE EN EL FORMULARIO
+  //   $this->addParam('pID_CATEGORIA_PUEST','pID_CATEGORIA_PUEST_Adscripcion_actual','',array('rule'=>'trim|numeric')); //ESTA EN EL MODEL PERO NO EN EL FORMULARIO
+  //   $this->addParam('pID_JERARQUIA_PUEST','pID_JERARQUIA_PUEST_Adscripcion_actual','',array('rule'=>'trim|numeric')); //ESTA EN EL MODEL PERO NO EN EL FORMULARIO
+  //   $this->addParam('pID_FUNCION_PUESTO',null,'',array('rule'=>'trim'));//NO LO ENCONTRE EN EL FORMULARIO
+  //   $this->addParam('pID_AMBITO_PUESTO','pID_AMBITO_PUESTO_Adscripcion_actual','',array('rule'=>'trim|numeric')); //ESTA EN EL MODEL PERO NO EN EL FORMULARIO
+  //   $this->addParam('pDIVISION','pDIVISION','',array('name'=>'División','rule'=>'trim|max_length[20]'));
+  //   $this->addParam('pID_JEFE','ID_JEFE','',array('name'=>'CUIP del jefe inmediato','rule'=>'trim|numeric|max_length[10]'));
+
+  //   if ($this->form_validation->run() === true) {
+
+  //     $this->procedure('sp_B2_LAB_addEmpleoSeg');
+  //     $this->iniParam('txtError','varchar','250');
+  //     $this->iniParam('msg','varchar','80');
+  //     $this->iniParam('tranEstatus','int');
+  //     //Cannot insert the value NULL into column 'ID_ESTADO_EMISOR', table 'zzhpregpersonalc4.zzhpregpersc4.EMPLEOS_SEG'; column does not allow nulls. INSERT fails. (515)
+  //     Utils::pre($this->build_query()); 
+
+  //     $query = $this->db->query($this->build_query());
+  //     $response = $this->query_row($query);
+
+  //     if($response == FALSE){
+  //       $this->response['status'] = false;
+  //       $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+  //     }else{
+  //       $this->response['status'] = (bool)$response['tranEstatus'];
+  //       $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
+  //     }
+  //   } else {
+  //     $this->load->helper('html');
+  //     $this->response['status'] = false;
+  //     $message = $this->form_validation->error_array();
+  //     $this->response['message'] = ul($message);
+  //     $this->response['validation'] = $message;
+  //   }
+  //   return $this->response;
+  // }
+
+  /*
+  * "Opcion Nueva Solicitud - Boton Gurdar CIB sp_B1_addPersonaCIB - Agraga un nuevo CIB a una persona"
+  */
+  public function  sp_B1_addPersonaCIB($model){
     $this->arrayToPost($model);
-    $_POST['pID_ALTERNA'] = 4;//$this->input->post('pID_ALTERNA_Adscripcion_actual');
 
     $this->load->library('form_validation'  );
-
-    $this->addParam('pID_ALTERNA','pID_ALTERNA');
-    $this->addParam('pID_ESTADO_EMISOR','pID_ESTADO_EMISOR_Adscripcion_actual','',array('rule'=>'trim|numeric|max_length[10]'));
-    $this->addParam('pID_EMISOR','pID_EMISOR_Adscripcion_actual','',array('rule'=>'trim|numeric|max_length[10]'));
-
-    $this->addParam('pID_DEPENDENCIA','pID_DEPENDENCIA_ADSCRIPCION_ACTUAL','',array('name'=>'Dependencia','rule'=>'trim|required|max_length[10]')); //DESAPARECIO DE LA DOCUMENTACION
-    $this->addParam('pID_DOC_BAJA','pID_DOC_BAJA_Adscripcion_actual','',array('rule'=>'trim|numeric|max_length[10]'));
-    $this->addParam('pID_ENTIDAD','pID_ENTIDAD_ADSCRIPCION_ACTUAL','',array('name'=>'Estado','rule'=>'trim|numeric|max_length[10]'));
-    $this->addParam('pID_MUNICIPIO','pID_MUNICIPIO_ADSCRIPCION_ACTUAL','',array('name'=>'Municipio','rule'=>'trim'));
-    $this->addParam('pID_MOTIVO_MOV_LAB',null,'',array('rule'=>'trim')); //NO LO ENCONTRE EN EL FORMULARIO
-    $this->addParam('pID_TIPO_MOV_LAB',NULL,'',array('rule'=>'trim|numeric'));//NO LO ENCONTRE EN EL FORMULARIO
-    $this->addParam('pID_AREA','pID_AREA','',array('name'=>'Área o departamento','rule'=>'trim|numeric|max_length[10]'));
-    $this->addParam('pID_PUESTO',null,'',array('name'=>'Puesto','rule'=>'trim|numeric')); //PENDIENTE
-    $this->addParam('pID_INSTITUCION','pID_INSTITUCION','',array('name'=>'Corporación','rule'=>'trim|numeric|max_length[10]'));
-    $this->addParam('pID_TIPO_CONTRATO','pID_TIPO_CONTRATO_Adscripcion_actual','',array('rule'=>'trim|numeric|max_length[10]'));
-    $this->addParam('pFECHA_INGRESO','pFECHA_INGRESO','',array('name'=>'Fecha de ingreso','rule'=>'trim|required|max_length[10]'));
-    $this->addParam('pESPECIALIDAD','pESPECIALIDAD','N',array('name'=>'Especialidad','rule'=>'trim|max_length[100]'));
-    $this->addParam('pRANGO','pRANGO','N',array('name'=>'Rango o categoría','rule'=>'trim|max_length[30]'));
-    $this->addParam('pSUELDO_BASE','pSUELDO_BASE','',array('name'=>'Sueldo base (Mensual)','rule'=>'trim|numeric|max_length[10]'));
-    $this->addParam('pID_NIVEL_MANDO','pID_NIVEL_MANDO','',array('name'=>'Nivel de mando','rule'=>'trim|numeric|max_length[10]'));
-    $this->addParam('pCOMPENSACION','pCOMPENSACION','',array('name'=>'Compensaciones (Mensuales)','rule'=>'trim|numeric|max_length[10]'));
-    $this->addParam('pNUMERO_PLACA','pNUMERO_PLACA','N',array('name'=>'Número de placa','rule'=>'trim|max_length[20]'));
-    $this->addParam('pNUMERO_EXPEDIENTE','pNUMERO_EXPEDIENTE','',array('name'=>'Número de expediente','rule'=>'trim|max_length[20]'));
-    $this->addParam('pID_TIPO_BAJA','pID_DOC_BAJA_Adscripcion_actual','',array('rule'=>'trim')); //ESTA EN EL MODEL PERO NO EN EL FORMULARIO
-    $this->addParam('pFECHA_BAJA',null,'',array('rule'=>'trim|max_length[10]'));//NO LO ENCONTRE EN EL FORMULARIO
-    $this->addParam('pOBSERVACION_BAJA',null,'',array('rule'=>'trim'));//NO LO ENCONTRE EN EL FORMULARIO
-    $this->addParam('pFUNCIONES','pFUNCIONES','',array('name'=>'Funciones','rule'=>'trim|max_length[100]'));
-    $this->addParam('pNUMERO_EMPLEADO',null,'',array('rule'=>'trim'));//NO LO ENCONTRE EN EL FORMULARIO
-    $this->addParam('pID_CATEGORIA_PUEST','pID_CATEGORIA_PUEST_Adscripcion_actual','',array('rule'=>'trim|numeric')); //ESTA EN EL MODEL PERO NO EN EL FORMULARIO
-    $this->addParam('pID_JERARQUIA_PUEST','pID_JERARQUIA_PUEST_Adscripcion_actual','',array('rule'=>'trim|numeric')); //ESTA EN EL MODEL PERO NO EN EL FORMULARIO
-    $this->addParam('pID_FUNCION_PUESTO',null,'',array('rule'=>'trim'));//NO LO ENCONTRE EN EL FORMULARIO
-    $this->addParam('pID_AMBITO_PUESTO','pID_AMBITO_PUESTO_Adscripcion_actual','',array('rule'=>'trim|numeric')); //ESTA EN EL MODEL PERO NO EN EL FORMULARIO
-    $this->addParam('pDIVISION','pDIVISION','',array('name'=>'División','rule'=>'trim|max_length[20]'));
-    $this->addParam('pID_JEFE','ID_JEFE','',array('name'=>'CUIP del jefe inmediato','rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pID_ALTERNA','pID_ALTERNA','',array('rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pCIB','CIB','N',array('rule'=>'trim|max_length[50]'));
+    $this->addParam('pMotivoCIB','motivoCIB','N',array('rule'=>'trim|max_length[300]'));
 
     if ($this->form_validation->run() === true) {
 
-      $this->procedure('sp_B2_LAB_addEmpleoSeg');
+      $this->procedure('sp_B1_addPersonaCIB');
       $this->iniParam('txtError','varchar','250');
       $this->iniParam('msg','varchar','80');
       $this->iniParam('tranEstatus','int');
-      //Cannot insert the value NULL into column 'ID_ESTADO_EMISOR', table 'zzhpregpersonalc4.zzhpregpersc4.EMPLEOS_SEG'; column does not allow nulls. INSERT fails. (515)
-      Utils::pre($this->build_query()); 
-
+      
       $query = $this->db->query($this->build_query());
       $response = $this->query_row($query);
 
@@ -510,43 +603,6 @@ class SOLICITUD_model extends MY_Model
       $message = $this->form_validation->error_array();
       $this->response['message'] = ul($message);
       $this->response['validation'] = $message;
-    }
-    return $this->response;
-  }
-
-  /*
-  * "Opcion Nueva Solicitud - Boton Gurdar CIB sp_B1_addPersonaCIB - Agraga un nuevo CIB a una persona"
-  */
-  public function  sp_B1_addPersonaCIB($model){
-    $this->arrayToPost($model);
-    $_POST['ID_ALTERNA'] = 4;
-
-    $this->load->library('form_validation'  );
-
-    $this->addParam('@pID_ALTERNA','ID_ALTERNA');
-    $this->addParam('@pCIB','','',array('rule'=>'trim|max_length[50]'));
-    $this->addParam('@pMotivoCIB','','',array('rule'=>'trim|max_length[300]'));
-
-    if ($this->form_validation->run() === true) {
-
-      $this->procedure('sp_B1_addPersonaCIB');
-      $this->iniParam('txtError','varchar','250');
-      $this->iniParam('msg','varchar','80');
-      $this->iniParam('tranEstatus','int');
-    
-      $query = $this->db->query($this->build_query());
-      $response = $this->query_row($query);
-
-      if($response == FALSE){
-        $this->response['status'] = false;
-        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
-      }else{
-        $this->response['status'] = (bool)$response['tranEstatus'];
-        $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
-      }
-    } else {
-      $this->response['status'] = false;
-      $this->response['message'] = $this->form_validation->error_array();
     }
     return $this->response;
   }
