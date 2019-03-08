@@ -231,7 +231,7 @@ class SOLICITUD_model extends MY_Model
 
   }
   /**************************************************************************************************************** */
-  /* Domicilio */
+  # Domicilio
   /**************************************************************************************************************** */
   /*
   * "Opcion Nueva Solicitud - Ficha Domicilio - Grid de Domicilio
@@ -333,7 +333,7 @@ class SOLICITUD_model extends MY_Model
   }
 
   /**************************************************************************************************************** */
-  /* Referencias */
+  # Referencias
   /**************************************************************************************************************** */
   /*
   * "Opcion Nueva Solicitud - Ficha Referencias- Grid de Referencias
@@ -371,7 +371,7 @@ class SOLICITUD_model extends MY_Model
   public function sp_B2_DG_addReferencias($model){
     $this->arrayToPost($model);
     $this->load->library('form_validation');
-    $this->addParam('pID_ALTERNA','pID_ALTERNA_Referencias','',array('rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pID_ALTERNA','pID_ALTERNA','',array('rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pID_ESTADO_EMISOR','pID_ESTADO_EMISOR_Referencias','',array('rule'=>'trim|numeric|max_length[10]'));
     $this->addParam('pID_EMISOR','pID_EMISOR_Referencias','',array('rule'=>'trim|numeric|max_length[10]'));
     $this->addParam('pID_TIPO_REFERENCIA','pID_TIPO_REFERENCIA','',array('name'=>'Tipo de referencia','rule'=>'trim|required|numeric|max_length[10]'));
@@ -458,7 +458,7 @@ class SOLICITUD_model extends MY_Model
   public function sp_B2_DG_addSocioEconomico($model){
     $this->arrayToPost($model);
     $this->load->library('form_validation');
-    $this->addParam('pID_ALTERNA','pID_ALTERNA_Socioeconomico','',array('rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pID_ALTERNA','pID_ALTERNA','',array('rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pID_ESTADO_EMISOR','pID_ESTADO_EMISOR_Socioeconomico','',array('rule'=>'trim|numeric'));
     $this->addParam('pID_EMISOR','pID_EMISOR_Socioeconomico','',array('rule'=>'trim|numeric'));
 
@@ -536,7 +536,7 @@ class SOLICITUD_model extends MY_Model
   public function sp_B2_DG_addDependiente($model){
     $this->arrayToPost($model);
     $this->load->library('form_validation');
-    $this->addParam('pID_ALTERNA','pID_ALTERNA_Socioeconomico','',array('rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pID_ALTERNA','pID_ALTERNA','',array('rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pID_ESTADO_EMISOR','pID_ESTADO_EMISOR_Socioeconomico','',array('rule'=>'trim|numeric|max_length[10]'));
     $this->addParam('pID_EMISOR','pID_EMISOR_Socioeconomico','',array('rule'=>'trim|numeric|max_length[10]'));
     $this->addParam('pPATERNO','pPATERNO_SOCIOECONOMICOS','',array('name'=>'Apellido paterno','rule'=>'trim|required|max_length[40]'));
