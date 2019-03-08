@@ -106,7 +106,7 @@ class SOLICITUD_model extends MY_Model
       $this->addParam('pLICENCIA_VIG','pLICENCIA_VIG');
       $this->addParam('pCIUDAD_NAC','pCIUDAD_NAC_DATOS_PERSONALES','N');
       $this->addParam('pFECHA_NACIONALIDAD','pFECHA_NACIONALIDAD');
-      // $this->addParam('pCUIP','pCUIP','N');
+      $this->addParam('pCUIP','pCUIP','N');
       $this->addParam('pCIB',null,'');
       $this->addParam('pMotivoCIB',null,'');
 
@@ -138,9 +138,10 @@ class SOLICITUD_model extends MY_Model
 
   
   public function sp_B1_addNivelEstudios($model){
+
     $this->arrayToPost($model);    
     $this->load->library('form_validation');
-    $this->form_validation->set_rules('pID_ALTERNA_Desarrollo', 'pID_ALTERNA', 'trim|required|numeric|max_length[10]');
+    $this->form_validation->set_rules('pID_ALTERNA', 'pID_ALTERNA', 'trim|required|numeric|max_length[10]');
     $this->form_validation->set_rules('pID_ESTADO_EMISOR', 'Máxima escolaridad', 'numeric|max_length[10]');
     $this->form_validation->set_rules('pID_EMISOR', 'Máxima escolaridad', 'numeric|max_length[10]');
     $this->form_validation->set_rules('pID_GRADO_ESCOLAR', 'Máxima escolaridad', 'trim|required|numeric|max_length[10]');
@@ -157,7 +158,7 @@ class SOLICITUD_model extends MY_Model
 
       $this->procedure('sp_B1_addNivelEstudios');
 
-      $this->addParam('pID_ALTERNA','pID_ALTERNA_Desarrollo');
+      $this->addParam('pID_ALTERNA','pID_ALTERNA');
       $this->addParam('pID_ESTADO_EMISOR',null); //Enviar vacio
       $this->addParam('pID_EMISOR',null); //Enviar vacio
       $this->addParam('pID_GRADO_ESCOLAR','pID_GRADO_ESCOLAR');
@@ -173,8 +174,8 @@ class SOLICITUD_model extends MY_Model
       $this->iniParam('txtError','varchar','250');
       $this->iniParam('msg','varchar','80');
       $this->iniParam('tranEstatus','int');
-
-      $query = $this->db->query($this->build_query());
+      $buid = $this->build_query();
+      $query = $this->db->query($buid);
       $response = $this->query_row($query);
 
       if($response == FALSE){
