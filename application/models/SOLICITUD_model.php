@@ -136,6 +136,9 @@ class SOLICITUD_model extends MY_Model
     return $this->response;
   }
 
+  /**************************************************************************************************************** */
+  # NivelEstudios
+  /**************************************************************************************************************** */
   /*
   * "Opcion Nueva Solicitud - Ficha Desarrollo Académico - Grid de datos Desarrollo Académico
   * sp_B1_getNivelEstudios - Obtiene los niveles de estudios de una persona"				      
@@ -227,7 +230,9 @@ class SOLICITUD_model extends MY_Model
     return $this->response;
 
   }
-
+  /**************************************************************************************************************** */
+  /* Domicilio */
+  /**************************************************************************************************************** */
   /*
   * "Opcion Nueva Solicitud - Ficha Domicilio - Grid de Domicilio
   * sp_B1_getDomicilio - Obtiene los domicilios de una persona"							      
@@ -327,6 +332,9 @@ class SOLICITUD_model extends MY_Model
 
   }
 
+  /**************************************************************************************************************** */
+  /* Referencias */
+  /**************************************************************************************************************** */
   /*
   * "Opcion Nueva Solicitud - Ficha Referencias- Grid de Referencias
   * sp_B2_DG_getReferencias - Obtiene la informacion de las referencias de la persona "				
@@ -413,6 +421,36 @@ class SOLICITUD_model extends MY_Model
     return $this->response;
 
   }
+
+  /**************************************************************************************************************** */
+  # SocioEconomico
+  /**************************************************************************************************************** */
+  # "Opcion Nueva Solicitud - Ficha Socioeconomico- Obtener datos de socioeconomico
+  # sp_B2_DG_getSocioEconomico - Obtiene el niviel socioeconomico de la persona"				
+  public function sp_B2_DG_getSocioEconomico($idAlterna = null,$curp = null){
+    $this->procedure('sp_B2_DG_getSocioEconomico');
+    $this->addParam('pCURP',$curp,'N');
+    $this->addParam('pID_ALTERNA',$idAlterna);
+
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_list($query);
+
+    if($response === FALSE){
+      $this->response['status'] = 0;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    }else{
+      if(count($response) > 1){
+        $this->response['status'] = 1;
+        $this->response['data'] = $response;
+      }else{
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron resultados.';
+      }
+    }
+    return $this->response;
+  }
+
   /*
   * $this->addParam('method sp_B2_DG_addSocioEconomico - Agraga el niviel socioeconomico de la persona
   * NO SON HIGUALES LOS FORM
@@ -465,9 +503,36 @@ class SOLICITUD_model extends MY_Model
 
   }
 
-  /*
-  * $this->addParam('method sp_B2_DG_addDependiente - Agrega los datos de las personas dependientes del elemento				
-  */
+  /**************************************************************************************************************** */
+  # Dependiente
+  /**************************************************************************************************************** */
+  # "Opcion Nueva Solicitud - Ficha Socioeconomico- Grid dependientes
+  # sp_B2_DG_getDependientes - Obtiene los datos de las personas dependientes del elemento "				
+  public function sp_B2_DG_getDependientes($idAlterna = null,$curp = null){
+    $this->procedure('sp_B2_DG_getDependientes');
+    $this->addParam('pCURP',$curp,'N');
+    $this->addParam('pID_ALTERNA',$idAlterna);
+
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_list($query);
+
+    if($response === FALSE){
+      $this->response['status'] = 0;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    }else{
+      if(count($response) > 1){
+        $this->response['status'] = 1;
+        $this->response['data'] = $response;
+      }else{
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron resultados.';
+      }
+    }
+    return $this->response;
+  }
+  
+  # @method sp_B2_DG_addDependiente - Agrega los datos de las personas dependientes del elemento				
   public function sp_B2_DG_addDependiente($model){
     $this->arrayToPost($model);
     $this->load->library('form_validation');
@@ -504,6 +569,9 @@ class SOLICITUD_model extends MY_Model
     }
     return $this->response;
   }
+
+
+
 
   /*
   * "Opcion Nueva Solicitud - Ficha Laboral - Pestaña Adscripción Actual
