@@ -1,9 +1,10 @@
 //TODO: Xmal - Sigue pendiente programar combo de puesto [ tab - Laboral/Adscripción actual ]
 //TODO: Xmal -  Implementar la impresión [ assets\js\views\solicitud\index.js ]
 //TODO: Xmal -  Implementar la replicación [ assets\js\views\solicitud\index.js ]
-[ application\controllers\Solicitud.php ]
-    //TODO: Tamata - Implementar la consulta para obtener datos de registro 
-    //TODO: Tamata - Implementar la consulta para obtener datos de registro
-//TODO: Xmal - Actualizar variable [ mainTabMenu.var.pID_ALTERNA ] cuando se haga el guardado de la primer ficha y regrese el pID_ALTERNA [ assets\js\views\solicitud\datosGeneralesTab.js ];
 //TODO: Xmal - Quitar comentarios en bloque para implementación [ assets\js\views\solicitud\registro.js ]
 //TODO: Xmal - Quitar comentarios en bloque para implementación [ assets\js\utils\dynamicTabs.js ]
+
+//TODO: Xmal - Implementar la obtención del datos y llenado de componentes [ GENERALES - Socioeconómicos ]
+//TODO: Xmal - Implementar la obtención de DATOS y llenado de GRID [ GENERALES - Dependientes económicos ]
+//TODO: Xmal - Implementar la actualización de GRID en la pestaña donde se guarde una entrada de registro [ P.E. al guardar un Desarrollo Económico, que se actualice el GRID y se limpie el formulario ]
+
