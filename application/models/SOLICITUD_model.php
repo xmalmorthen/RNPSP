@@ -549,16 +549,19 @@ class SOLICITUD_model extends MY_Model
     if ($this->form_validation->run() === true) {
       $this->procedure('sp_B2_DG_addDependiente');
       $this->iniParam('txtError','varchar','250');
-      $this->iniParam('msg','varchar','80');
+      $this->iniParam('msg','varchar','90');
       $this->iniParam('tranEstatus','int');
       $query = $this->db->query($this->build_query());
       $response = $this->query_row($query);
+
       if($response == FALSE){
         $this->response['status'] = false;
         $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
       }else{
         $this->response['status'] = (bool)$response['tranEstatus'];
-        $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
+        #PARCHE EL PROCEDIMIENTO ESTA REGRESANDO EL MENSAGE DE ERROR POR MSG NO POR TXTERROR
+        $msg = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
+        $this->response['message'] = (strlen(trim($msg))>0)? $msg : $response['msg'];
       }
     } else {
       $this->load->helper('html');
