@@ -127,7 +127,7 @@ class MY_Model extends CI_Model
       }
       $query = rtrim($query, ',');
     }
-    $query .= '; ';
+    $query .= ';';
     if ($select == true) {
       if (count($this->output) > 0) {
         $query .= ' SELECT ';
@@ -137,9 +137,9 @@ class MY_Model extends CI_Model
         }
         $query = rtrim($query, ',');
       }
-      $query .= '; ';
+      $query .= ';';
     }
-
+    $query = str_replace(";;", ";",$query);
     $this->iniParams = array();
     $this->procName = '';
     $this->params = array();
@@ -332,6 +332,20 @@ class MY_Model extends CI_Model
         throw new Exception('Error query_row');
       }
       $result = $query->row_array();
+      $query->free_result();
+    } catch (Exception $e) {
+      Msg_reporting::error_log($e);
+    }
+    return $result;
+  }
+  public function query_list($query)
+  {
+    $result = false;
+    try {
+      if ($query == false) {
+        throw new Exception('Error query_list');
+      }
+      $result = $query->result_array();
       $query->free_result();
     } catch (Exception $e) {
       Msg_reporting::error_log($e);
