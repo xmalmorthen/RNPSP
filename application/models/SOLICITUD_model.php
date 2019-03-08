@@ -136,7 +136,39 @@ class SOLICITUD_model extends MY_Model
     return $this->response;
   }
 
-  
+  /*
+  * "Opcion Nueva Solicitud - Ficha Desarrollo Académico - Grid de datos Desarrollo Académico
+  * sp_B1_getNivelEstudios - Obtiene los niveles de estudios de una persona"				      
+  */
+  public function sp_B1_getNivelEstudios($idAlterna = null,$curp = null){
+
+    $this->procedure('sp_B1_getNivelEstudios');
+    $this->addParam('pCURP',$curp,'N');
+    $this->addParam('pID_ALTERNA',$idAlterna);
+
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_list($query);
+
+    if($response === FALSE){
+      $this->response['status'] = 0;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    }else{
+      if(count($response) > 1){
+        $this->response['status'] = 1;
+        $this->response['data'] = $response;
+      }else{
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron resultados.';
+      }
+    }
+    return $this->response;
+  }
+
+  /*
+  * Opcion Nueva Solicitud - Ficha Desarrollo Académico - Boton Guradar desarrollo academico
+  * sp_B1_addNivelEstudios - Agraga un nivel de estudios a una persona
+  */
   public function sp_B1_addNivelEstudios($model){
 
     $this->arrayToPost($model);    
@@ -197,14 +229,43 @@ class SOLICITUD_model extends MY_Model
   }
 
   /*
-  * COMPLETO
-  * FALTA EL ID ALTERNA
+  * "Opcion Nueva Solicitud - Ficha Domicilio - Grid de Domicilio
+  * sp_B1_getDomicilio - Obtiene los domicilios de una persona"							      
+  */
+  public function sp_B1_getDomicilio($idAlterna = null,$curp = null){
+
+    $this->procedure('sp_B1_getDomicilio');
+    $this->addParam('pCURP',$curp,'N');
+    $this->addParam('pID_ALTERNA',$idAlterna);
+
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_list($query);
+
+    if($response === FALSE){
+      $this->response['status'] = 0;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    }else{
+      if(count($response) > 1){
+        $this->response['status'] = 1;
+        $this->response['data'] = $response;
+      }else{
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron resultados.';
+      }
+    }
+    return $this->response;
+  }
+  
+  /*
+  *"Opcion Nueva Solicitud - Ficha Dimiclio - Boton Guardar Domicilio
+  * sp_B1_addDomicilio - Agraga un domicilio a una persona "				
   */
   public function sp_B1_addDomicilio($model){
 
     $this->arrayToPost($model);
     $this->load->library('form_validation');
-    $this->form_validation->set_rules('pID_ALTERNA_Domicilio', 'pID_ALTERNA', 'trim|required|numeric|max_length[10]');
+    $this->form_validation->set_rules('pID_ALTERNA', 'pID_ALTERNA', 'trim|required|numeric|max_length[10]');
     // $this->form_validation->set_rules('pID_ESTADO_EMISOR_Domicilio', 'hidden', 'numeric');//Enviar vacio
     // $this->form_validation->set_rules('pID_EMISOR_Domicilio', 'hidden', 'numeric');//Enviar vacio
     // $this->form_validation->set_rules('pID_TIPO_DOM', '', 'numeric');//Enviar vacio
@@ -224,7 +285,7 @@ class SOLICITUD_model extends MY_Model
     if ($this->form_validation->run() === true) {
 
       $this->procedure('sp_B1_addDomicilio');
-      $this->addParam('pID_ALTERNA','pID_ALTERNA_Domicilio');
+      $this->addParam('pID_ALTERNA','pID_ALTERNA');
       $this->addParam('pID_ESTADO_EMISOR',null);//Enviar vacio
       $this->addParam('pID_EMISOR',null);//Enviar vacio
       $this->addParam('pID_TIPO_DOM',null); //Enviar vacio
@@ -265,6 +326,37 @@ class SOLICITUD_model extends MY_Model
     return $this->response;
 
   }
+
+  /*
+  * "Opcion Nueva Solicitud - Ficha Referencias- Grid de Referencias
+  * sp_B2_DG_getReferencias - Obtiene la informacion de las referencias de la persona "				
+										      
+  */
+  public function sp_B2_DG_getReferencias($idAlterna = null,$curp = null){
+
+    $this->procedure('sp_B2_DG_getReferencias');
+    $this->addParam('pCURP',$curp,'N');
+    $this->addParam('pID_ALTERNA',$idAlterna);
+
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_list($query);
+
+    if($response === FALSE){
+      $this->response['status'] = 0;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    }else{
+      if(count($response) > 1){
+        $this->response['status'] = 1;
+        $this->response['data'] = $response;
+      }else{
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron resultados.';
+      }
+    }
+    return $this->response;
+  }
+  
   /*
   * @method sp_B2_DG_addReferencias - Agraga la informacion de las referencias de la persona		
   */
