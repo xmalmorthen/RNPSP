@@ -69,7 +69,7 @@ class SOLICITUD_model extends MY_Model
     $this->form_validation->set_rules('pSEXO_DATOS_PERSONALES', 'Sexo', 'trim|required|max_length[1]');
     $this->form_validation->set_rules('pCURP', 'CURP', 'trim|required|max_length[20]');
     $this->form_validation->set_rules('pRFC', 'pRFC_DOMICILIO', 'max_length[20]');
-    $this->form_validation->set_rules('pCREDENCIAL_LECTOR', 'Clave de elector', 'trim|max_length[30]');
+    $this->form_validation->set_rules('pCREDENCIAL_ELECTOR', 'Clave de elector', 'trim|max_length[30]');
     $this->form_validation->set_rules('pCARTILLA_SMN', 'Cartilla del SMN', 'trim|max_length[20]');
     $this->form_validation->set_rules('pLICENCIA_DATOS_PERSONALES', 'Licencia de conducir', 'trim|max_length[20]');
     $this->form_validation->set_rules('pPASAPORTE', 'Pasaporte', 'trim|max_length[20]');
@@ -96,7 +96,7 @@ class SOLICITUD_model extends MY_Model
       $this->addParam('pSEXO','pSEXO_DATOS_PERSONALES','N');
       $this->addParam('pCURP','pCURP','N');
       $this->addParam('pRFC','pRFC_DOMICILIO','N');
-      $this->addParam('pCREDENCIAL_ELECTOR','pCREDENCIAL_LECTOR','N');
+      $this->addParam('pCREDENCIAL_ELECTOR','pCREDENCIAL_ELECTOR','N');
       $this->addParam('pCARTILLA_SMN','pCARTILLA_SMN','N');
       $this->addParam('pLICENCIA','pLICENCIA_DATOS_PERSONALES','N');
       $this->addParam('pPASAPORTE','pPASAPORTE','N');
@@ -114,8 +114,8 @@ class SOLICITUD_model extends MY_Model
       $this->iniParam('txtError','varchar','250');
       $this->iniParam('msg','varchar','80');
       $this->iniParam('tranEstatus','int');
-
-      $response = $this->query_multi($this->build_query());
+      $build = $this->build_query();
+      $response = $this->query_multi($build);
       
       if($response == FALSE){
         $this->response['status'] = false;
