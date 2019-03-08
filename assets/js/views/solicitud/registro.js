@@ -248,40 +248,14 @@ var mainFormActions = {
 
         mainTabMenu.var.pID_ALTERNA = data.pID_ALTERNA;
 
-        //AutoFill
-        $.each(data,function(key,value){
-            mainFormActions.insertValueInSelect($('#'+ key),value);
-        });
-
-        //Special
-        //DATOS GENERALES - DATOS PERSONALES
-        mainFormActions.insertValueInSelect($('#pRFC_DOMICILIO'),data.pRFC);        
-        mainFormActions.insertValueInSelect($('#pNOMBRE_DATOS_PERSONALES'),data.pNOMBRE);
-        mainFormActions.insertValueInSelect($('#pPATERNO_DATOS_PERSONALES'),data.pPATERNO);
-        mainFormActions.insertValueInSelect($('#pMATERNO_DATOS_PERSONALES'),data.pMATERNO);
-        mainFormActions.insertValueInSelect($('#pSEXO_DATOS_PERSONALES'),data.pSEXO);
-        mainFormActions.insertValueInSelect($('#pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES'),data.pFECHA_NAC);
-        mainFormActions.insertValueInSelect($('#pCIUDAD_NAC_DATOS_PERSONALES'),data.pCIUDAD_NAC);
-        mainFormActions.insertValueInSelect($('#pCREDENCIAL_ELECTOR'),data.pCREDENCIAL_ELECTOR);//
-        mainFormActions.insertValueInSelect($('#pPASAPORTE'),data.pPASAPORTE);
-        mainFormActions.insertValueInSelect($('#pLICENCIA_DATOS_PERSONALES'),data.pLICENCIA);
-        //mainFormActions.insertValueInSelect($('#pCUIP'),data.);
-        $('#pCUIP').setError('No se encontró en el modelo...');
-
-        //DATOS GENERALES - DESARROLLO ACADÉMICO
-        mainFormActions.insertValueInSelect($('#pID_GRADO_ESCOLAR'),10); //DATO DE PRUEBA
-        mainFormActions.insertValueInSelect($('#pNOMBRE_ESCUELA'),'666'); //DATO DE PRUEBA
-
-        //LABORAL - ADSCRIPCIÓN ACTUAL
-        mainFormActions.insertValueInSelect($('#pID_DEPENDENCIA_ADSCRIPCION_ACTUAL'),1); //DATO DE PRUEBA
-        mainFormActions.insertValueInSelect($('#pID_INSTITUCION'),5116); //DATO DE PRUEBA
+        fillData.datosGenerales.datosPersonales(data);
+        fillData.datosGenerales.desarrolloAcademico(mainTabMenu.var.pID_ALTERNA);
+        fillData.datosGenerales.domicilio(mainTabMenu.var.pID_ALTERNA);
+        fillData.datosGenerales.referencias(mainTabMenu.var.pID_ALTERNA);
 
         $('.consultaCURP').readOnly();
         dynTabs.mode = 'edit';
         
-        // const currTab = dynTabs.getCurrentTab($('#myTabContent'));
-        // currTab.tabForm.removeData('hasChanged');
-
         dynTabs.loaderTab();
     },
     insertValueInSelect : function(ref,value){
@@ -314,6 +288,97 @@ var mainFormActions = {
                 default:
                 break;
             }            
+        }
+    }
+}
+
+var fillData = {
+    genericPromise : function(callUrl,model){
+        return new Promise ( (resolve, reject) => {
+            generic.ajax.async.get(callUrl,model, 
+                //success
+                function(data){
+                    if (data)
+                        if (data.results)
+                            if (data.results.status) {
+                                resolve(data.results.data);
+                                return true;
+                            }
+                    
+                    resolve(null);
+                },
+                //error
+                function(err){
+                    reject(err);
+                }
+            );
+        });
+    },
+    datosGenerales : {
+        datosPersonales : function(data){
+            //AutoFill
+            $.each(data,function(key,value){
+                mainFormActions.insertValueInSelect($('#'+ key),value);
+            });
+
+            //Special
+            //DATOS GENERALES - DATOS PERSONALES
+            mainFormActions.insertValueInSelect($('#pRFC_DOMICILIO'),data.pRFC);        
+            mainFormActions.insertValueInSelect($('#pNOMBRE_DATOS_PERSONALES'),data.pNOMBRE);
+            mainFormActions.insertValueInSelect($('#pPATERNO_DATOS_PERSONALES'),data.pPATERNO);
+            mainFormActions.insertValueInSelect($('#pMATERNO_DATOS_PERSONALES'),data.pMATERNO);
+            mainFormActions.insertValueInSelect($('#pSEXO_DATOS_PERSONALES'),data.pSEXO);
+            mainFormActions.insertValueInSelect($('#pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES'),data.pFECHA_NAC);
+            mainFormActions.insertValueInSelect($('#pCIUDAD_NAC_DATOS_PERSONALES'),data.pCIUDAD_NAC);
+            mainFormActions.insertValueInSelect($('#pCREDENCIAL_ELECTOR'),data.pCREDENCIAL_ELECTOR);
+            mainFormActions.insertValueInSelect($('#pPASAPORTE'),data.pPASAPORTE);
+            mainFormActions.insertValueInSelect($('#pLICENCIA_DATOS_PERSONALES'),data.pLICENCIA);            
+        },
+        desarrolloAcademico : function(pID_ALTERNA){
+            var callUrl = base_url + `Solicitud/getNivelEstudios`;
+            fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+                if (data) {
+                    $.each( data, function(key,value) {
+                        var row = [ value.ID_NIVEL_ESTUDIOS_EXT, value.MAXIMA_ESCOLARIDAD, value.ESPECIALIDAD, value.FECHA_INICIO, value.FECHA_TERMINO, value.PROMEDIO ];
+                        objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.obj.row.add( row ).draw( false );
+                    });
+                }
+            })
+            .catch( (err) => {
+                $('#' + objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.obj.tables().nodes().to$().attr('id')).setError(err.statusText);
+            });
+        },
+        domicilio : function(pID_ALTERNA){
+            var callUrl = base_url + `Solicitud/getDomicilio`;
+            fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+                if (data) {
+                    $.each( data, function(key,value) {
+                        var row = [ value.ID_DOMICILIO_EXT, value.CODIGO_POSTAL, value.NOM_ESTADO, value.COLONIA, value.CALLE, value.NUM_EXTERIOR, value.NUM_INTERIOR ];
+                        objViewDatosGenerales.vars.datosGenerales.tables.tableDomicilio.obj.row.add( row ).draw( false );
+                    });
+                }
+            })
+            .catch( (err) => {
+                $('#' + objViewDatosGenerales.vars.datosGenerales.tables.tableDomicilio.obj.tables().nodes().to$().attr('id')).setError(err.statusText);
+            });
+        },
+        referencias : function(pID_ALTERNA){
+            var callUrl = base_url + `Solicitud/getReferencias`;
+            fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {                
+                if (data) {
+                    $.each( data, function(key,value) {
+                        var domicilio = value.CALLE + ' ' + value.NUM_EXTERIOR + ' ' + (value.NUM_INTERIOR ? value.NUM_INTERIOR + ' ' : '' ) + (value.COLONIA ? value.COLONIA + ' ' : '' ) + value.MUNICIPIO_DOM;
+                        var row = [ value.ID_REFERENCIA_EXT, value.NOMBRE, value.PATERNO, value.MATERNO, value.ID_TIPO_REFERENCIA, domicilio ];
+                        objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.obj.row.add( row ).draw( false );
+                    });
+                }
+            })
+            .catch( (err) => {
+                $('#' + objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.obj.tables().nodes().to$().attr('id')).setError(err.statusText);
+            });
         }
     }
 }

@@ -165,10 +165,8 @@ var generic = {
                                         always();
                         }
                     );
-                } else {
-                    $.get(callUrl,{
-                            model : model                    
-                        },
+                } else {                    
+                    $.get(callUrl,model,
                         function (data) {
                             if (success) 
                                     if ($.isFunction( success ))
