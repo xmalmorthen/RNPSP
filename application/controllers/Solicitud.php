@@ -990,6 +990,7 @@
 		}
 
 		/*
+		* XMAL obtener datos pestaña "DATOS GELERALES" -> "Desarrollo academico"
 		* get getNivelEstudios pID_ALTERNA,pCURP
 		*/
 		public function getNivelEstudios(){
@@ -1015,6 +1016,7 @@
 		}
 
 		/*
+		* XMAL obtener datos pestaña "DATOS GELERALES" -> "Domicilio"
 		* get getDomicilio pID_ALTERNA,pCURP
 		*/
 		public function getDomicilio(){
@@ -1040,6 +1042,7 @@
 		}
 
 		/*
+		* XMAL obtener datos pestaña "DATOS GELERALES" -> "Referencia"
 		* get getReferencias pID_ALTERNA,pCURP
 		*/
 		public function getReferencias(){
@@ -1065,6 +1068,7 @@
 		}
 
 		/*
+		* XMAL obtener datos pestaña "DATOS GELERALES" -> "Socioeconómicos"
 		* get getSocioEconomico pID_ALTERNA,pCURP
 		*/
 		public function getSocioEconomico(){
@@ -1090,6 +1094,7 @@
 		}
 
 		/*
+		* XMAL obtener datos pestaña "DATOS GELERALES" -> "Dependientes económicos"
 		* get getDependientes pID_ALTERNA,pCURP
 		*/
 		public function getDependientes(){
