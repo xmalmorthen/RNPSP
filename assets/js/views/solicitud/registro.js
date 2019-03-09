@@ -252,6 +252,8 @@ var mainFormActions = {
         fillData.datosGenerales.desarrolloAcademico(mainTabMenu.var.pID_ALTERNA);
         fillData.datosGenerales.domicilio(mainTabMenu.var.pID_ALTERNA);
         fillData.datosGenerales.referencias(mainTabMenu.var.pID_ALTERNA);
+        fillData.datosGenerales.socioeconomicos(mainTabMenu.var.pID_ALTERNA);
+        fillData.datosGenerales.dependientesEconomicos(mainTabMenu.var.pID_ALTERNA);
 
         $('.consultaCURP').readOnly();
         dynTabs.mode = 'edit';
@@ -332,7 +334,7 @@ var fillData = {
             mainFormActions.insertValueInSelect($('#pCIUDAD_NAC_DATOS_PERSONALES'),data.pCIUDAD_NAC);
             mainFormActions.insertValueInSelect($('#pCREDENCIAL_ELECTOR'),data.pCREDENCIAL_ELECTOR);
             mainFormActions.insertValueInSelect($('#pPASAPORTE'),data.pPASAPORTE);
-            mainFormActions.insertValueInSelect($('#pLICENCIA_DATOS_PERSONALES'),data.pLICENCIA);            
+            mainFormActions.insertValueInSelect($('#pLICENCIA_DATOS_PERSONALES'),data.pLICENCIA);
         },
         desarrolloAcademico : function(pID_ALTERNA){
             var callUrl = base_url + `Solicitud/getNivelEstudios`;
@@ -379,6 +381,44 @@ var fillData = {
             .catch( (err) => {
                 $('#' + objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.obj.tables().nodes().to$().attr('id')).setError(err.statusText);
             });
+        },
+        socioeconomicos : function(pID_ALTERNA){
+            var callUrl = base_url + `Solicitud/getSocioEconomico`;
+            fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {                
+                if (data) {
+                    $.each(data,function(key,value){
+                        mainFormActions.insertValueInSelect($('#'+ key),value);
+                    });
+
+                    //special
+                    mainFormActions.insertValueInSelect($('#pID_TIPO_DOMICILIO'),data.ID_TIPO_DOMIC);
+                }
+            })
+            .catch( (err) => {
+                $('#Socioeconomicos_form').setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.statusText
+                });
+            });
+        },
+        dependientesEconomicos : function(pID_ALTERNA){
+            var callUrl = base_url + `Solicitud/getDependientes`;
+            fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {                
+                if (data) {
+                    $.each( data, function(key,value) {
+                        var row = [ value.ID_DEPENDIENTE_EXT, value.NOMBRE, value.PATERNO, value.MATERNO, value.ID_TIPO_REFERENCIA, value.SEXO, value.FECHA_NACIMIENTO, value.PARENTESCO ];
+                        objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.obj.row.add( row ).draw( false );
+                    });
+                }
+            })
+            .catch( (err) => {
+                $('#' + objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.obj.tables().nodes().to$().attr('id')).setError(err.statusText);
+            });
         }
+
     }
 }

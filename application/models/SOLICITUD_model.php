@@ -37,7 +37,7 @@ class SOLICITUD_model extends MY_Model
       $this->response['status'] = 0;
       $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
     }else{
-      if(count($response) > 1){
+      if(count($response) > 0){
         $responseSelect = current($response);
         $responseOutput = end($response);
 
@@ -157,7 +157,7 @@ class SOLICITUD_model extends MY_Model
       $this->response['status'] = 0;
       $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
     }else{
-      if(count($response) > 1){
+      if(count($response) > 0){
         $this->response['status'] = 1;
         $this->response['data'] = $response;
       }else{
@@ -251,7 +251,7 @@ class SOLICITUD_model extends MY_Model
       $this->response['status'] = 0;
       $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
     }else{
-      if(count($response) > 1){
+      if(count($response) > 0){
         $this->response['status'] = 1;
         $this->response['data'] = $response;
       }else{
@@ -354,7 +354,7 @@ class SOLICITUD_model extends MY_Model
       $this->response['status'] = 0;
       $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
     }else{
-      if(count($response) > 1){
+      if(count($response) > 0){
         $this->response['status'] = 1;
         $this->response['data'] = $response;
       }else{
@@ -440,7 +440,7 @@ class SOLICITUD_model extends MY_Model
       $this->response['status'] = 0;
       $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
     }else{
-      if(count($response) > 1){
+      if(count($response) > 0){
         $this->response['status'] = 1;
         $this->response['data'] = $response;
       }else{
@@ -521,7 +521,7 @@ class SOLICITUD_model extends MY_Model
       $this->response['status'] = 0;
       $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
     }else{
-      if(count($response) > 1){
+      if(count($response) > 0){
         $this->response['status'] = 1;
         $this->response['data'] = $response;
       }else{

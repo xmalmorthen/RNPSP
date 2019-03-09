@@ -160,7 +160,7 @@
                     </div>
                 </div>
                 <br><br>
-                <h6 class="titulo">Bova</h6>
+                <h6 class="titulo"Boca</h6>
                 <hr>
                 <div class="row">
                     <div class="col-md-4">
