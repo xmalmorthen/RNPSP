@@ -575,23 +575,40 @@ class SOLICITUD_model extends MY_Model
 
 
 
+  /**************************************************************************************************************** */
+  # Adscripcion
+  /**************************************************************************************************************** */
+  public function sp_B1_getAdscripcion($idAlterna = null,$curp = null){
+    $this->procedure('sp_B1_getAdscripcion');
+    $this->addParam('pCURP',$curp,'N');
+    $this->addParam('pID_ALTERNA',$idAlterna);
 
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_list($query);
+
+    if($response === FALSE){
+      $this->response['status'] = 0;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    }else{
+      if(count($response) > 0){
+        $this->response['status'] = 1;
+        $this->response['data'] = $this->try_result($response);
+      }else{
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron resultados.';
+      }
+    }
+    return $this->response;
+  }
   /*
   * "Opcion Nueva Solicitud - Ficha Laboral - Pestaña Adscripción Actual
   * Boton Guardar Adscipcion.
   * sp_B1_addAdscripcion - Agraga la adscripcion de la persona"
   */
-
-  /*
-  > Msg 515, Level 16, State 2, Server P3NWPLSK12SQL12, Procedure sp_B1_addAdscripcion, Line 65
-Cannot insert the value NULL into column 'ID_AREA', table 'zzhpregpersonalc4.zzhpregpersc4.ADSCRIPCION'; column does not allow nulls. INSERT fails.
-> The statement has been terminated.
-> [23000] [Microsoft][SQL Server Native Client 11.0][SQL Server]Cannot insert the value NULL into column 'ID_AREA', table 'zzhpregpersonalc4.zzhpregpersc4.ADSCRIPCION'; column does not allow nulls. INSERT fails. (515)
-[01000] [Microsoft][SQL Server Native Client 11.0][SQL Server]The statement has been terminated. (3621)
-  */
   public function sp_B1_addAdscripcion($model){
-    Utils::pre($model);
     $this->arrayToPost($model);
+    $_POST['pID_PUESTO'] = 1; //TEMPORAL
     $this->load->library('form_validation');
     $this->addParam('pID_ALTERNA','pID_ALTERNA','',array('rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pID_ESTADO_EMISOR','pID_ESTADO_EMISOR_Adscripcion_actual','',array('rule'=>'trim|numeric|max_length[10]'));
@@ -600,7 +617,7 @@ Cannot insert the value NULL into column 'ID_AREA', table 'zzhpregpersonalc4.zzh
     $this->addParam('pID_ENTIDAD','pID_ENTIDAD_ADSCRIPCION_ACTUAL','',array('name'=>'Estado','rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pID_MUNICIPIO','pID_MUNICIPIO_ADSCRIPCION_ACTUAL','',array('name'=>'Municipio','rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pID_AREA','pID_AREA','',array('name'=>'Área o departamento','rule'=>'trim|numeric|max_length[10]'));
-    $this->addParam('pID_PUESTO',null,'',array('name'=>'Puesto','rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pID_PUESTO','pID_PUESTO','',array('name'=>'Puesto','rule'=>'trim|numeric|max_length[10]'));
     $this->addParam('pID_DEPENDENCIA','pID_DEPENDENCIA_ADSCRIPCION_ACTUAL','',array('name'=>'Dependencia','rule'=>'trim|numeric|max_length[10]'));
     $this->addParam('pID_INSTITUCION','pID_INSTITUCION','',array('name'=>'','rule'=>'trim|numeric|max_length[10]'));
     $this->addParam('pID_TIPO_CONTRATO','pID_TIPO_CONTRATO_Adscripcion_actual','',array('name'=>'','rule'=>'trim|numeric|max_length[10]'));
@@ -637,10 +654,9 @@ Cannot insert the value NULL into column 'ID_AREA', table 'zzhpregpersonalc4.zzh
       $this->iniParam('txtError','varchar','250');
       $this->iniParam('msg','varchar','80');
       $this->iniParam('tranEstatus','int');
-      Utils::pre($this->build_query());
+
       $query = $this->db->query($this->build_query());
       $response = $this->query_row($query);
-      Utils::pre($response);
       if($response == FALSE){
         $this->response['status'] = false;
         $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
