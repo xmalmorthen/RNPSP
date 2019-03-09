@@ -347,7 +347,7 @@ var fillData = {
             .then( (data) => {
                 if (data) {
                     $.each( data, function(key,value) {
-                        var row = [ value.ID_NIVEL_ESTUDIOS_EXT, value.MAXIMA_ESCOLARIDAD, value.ESPECIALIDAD, value.FECHA_INICIO, value.FECHA_TERMINO, value.PROMEDIO ];
+                        var row = [ value.pID_NIVEL_ESTUDIOS_EXT, value.pMAXIMA_ESCOLARIDAD, value.pESPECIALIDAD, value.pFECHA_INICIO, value.pFECHA_TERMINO, value.pPROMEDIO ];
                         tableObj.row.add( row ).draw( false );
                     });
                 }
@@ -369,7 +369,7 @@ var fillData = {
             .then( (data) => {
                 if (data) {
                     $.each( data, function(key,value) {
-                        var row = [ value.ID_DOMICILIO_EXT, value.CODIGO_POSTAL, value.NOM_ESTADO, value.COLONIA, value.CALLE, value.NUM_EXTERIOR, value.NUM_INTERIOR ];
+                        var row = [ value.pID_DOMICILIO_EXT, value.pCODIGO_POSTAL, value.pNOM_ESTADO, value.pCOLONIA, value.pCALLE, value.pNUM_EXTERIOR, value.pNUM_INTERIOR ];
                         tableObj.row.add( row ).draw( false );
                     });
                 }
@@ -391,8 +391,8 @@ var fillData = {
             .then( (data) => {                
                 if (data) {
                     $.each( data, function(key,value) {
-                        var domicilio = value.CALLE + ' ' + value.NUM_EXTERIOR + ' ' + (value.NUM_INTERIOR ? value.NUM_INTERIOR + ' ' : '' ) + (value.COLONIA ? value.COLONIA + ' ' : '' ) + value.MUNICIPIO_DOM;
-                        var row = [ value.ID_REFERENCIA_EXT, value.NOMBRE, value.PATERNO, value.MATERNO, value.ID_TIPO_REFERENCIA, domicilio ];
+                        var domicilio = value.pCALLE + ' ' + value.pNUM_EXTERIOR + ' ' + (value.pNUM_INTERIOR ? value.pNUM_INTERIOR + ' ' : '' ) + (value.pCOLONIA ? value.COLONIA + ' ' : '' ) + value.pMUNICIPIO_DOM;
+                        var row = [ value.pID_REFERENCIA_EXT, value.pNOMBRE, value.pPATERNO, value.pMATERNO, value.pID_TIPO_REFERENCIA, domicilio ];
                         tableObj.row.add( row ).draw( false );
                     });
                 }
@@ -406,7 +406,7 @@ var fillData = {
         socioeconomicos : function(pID_ALTERNA){
             var callUrl = base_url + `Solicitud/getSocioEconomico`;
             fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
-            .then( (data) => {                
+            .then( (data) => {  
                 if (data) {
                     $.each(data,function(key,value){
                         mainFormActions.insertValueInSelect($('#'+ key),value);
@@ -436,7 +436,7 @@ var fillData = {
             .then( (data) => {                
                 if (data) {
                     $.each( data, function(key,value) {
-                        var row = [ value.ID_DEPENDIENTE_EXT, value.NOMBRE, value.PATERNO, value.MATERNO, value.ID_TIPO_REFERENCIA, value.SEXO, value.FECHA_NACIMIENTO, value.PARENTESCO ];
+                        var row = [ value.pID_DEPENDIENTE_EXT, value.pNOMBRE, value.pPATERNO, value.pMATERNO, value.pSEXO, value.pFECHA_NACIMIENTO, value.pPARENTESCO ];
                         tableObj.row.add( row ).draw( false );
                     });
                 }

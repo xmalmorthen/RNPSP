@@ -159,7 +159,7 @@ class SOLICITUD_model extends MY_Model
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
-        $this->response['data'] = $response;
+        $this->response['data'] = $this->try_result($response);
       }else{
         $this->response['status'] = 0;
         $this->response['message'] = 'No se encontraron resultados.';
@@ -253,7 +253,7 @@ class SOLICITUD_model extends MY_Model
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
-        $this->response['data'] = $response;
+        $this->response['data'] = $this->try_result($response);
       }else{
         $this->response['status'] = 0;
         $this->response['message'] = 'No se encontraron resultados.';
@@ -356,7 +356,7 @@ class SOLICITUD_model extends MY_Model
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
-        $this->response['data'] = $response;
+        $this->response['data'] = $this->try_result($response);
       }else{
         $this->response['status'] = 0;
         $this->response['message'] = 'No se encontraron resultados.';
@@ -434,7 +434,7 @@ class SOLICITUD_model extends MY_Model
 
     $buid = $this->build_query();
     $query = $this->db->query($buid);
-    $response = $this->query_list($query);
+    $response = $this->query_row($query);
 
     if($response === FALSE){
       $this->response['status'] = 0;
@@ -442,7 +442,7 @@ class SOLICITUD_model extends MY_Model
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
-        $this->response['data'] = $response;
+        $this->response['data'] = $this->try_result($response);
       }else{
         $this->response['status'] = 0;
         $this->response['message'] = 'No se encontraron resultados.';
@@ -472,8 +472,8 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pCALIDAD_VIDA','pCALIDAD_VIDA','N',array('name'=>'Calidad de vida','rule'=>'trim|max_length[50]'));
     $this->addParam('pVICIOS','pVICIOS','N',array('name'=>'Vicios','rule'=>'trim|max_length[100]'));
     $this->addParam('pIMAGEN_PUBLICA','pIMAGEN_PUBLICA','N',array('name'=>'Imágen pública','rule'=>'trim|max_length[50]'));
-    $this->addParam('pRESPONSABLE_CORP','pCOMPORTA_SOCIAL','N',array('name'=>'Comportamiento social ','rule'=>'trim|max_length[40]'));
-    $this->addParam('pCOMPORTA_SOCIAL',null); // no se encontro en el formulario
+    $this->addParam('pCOMPORTA_SOCIAL','pCOMPORTA_SOCIAL','N',array('name'=>'Comportamiento social ','rule'=>'trim|max_length[40]'));
+    $this->addParam('pRESPONSABLE_CORP',null); // no se encontro en el formulario
     
     if ($this->form_validation->run() === true) {
 
@@ -523,7 +523,7 @@ class SOLICITUD_model extends MY_Model
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
-        $this->response['data'] = $response;
+        $this->response['data'] = $this->try_result($response);
       }else{
         $this->response['status'] = 0;
         $this->response['message'] = 'No se encontraron resultados.';
@@ -544,8 +544,8 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pFECHA_NAC','pFECHA_NAC_SOCIOECONOMICOS','',array('name'=>'Fecha de nacimiento','rule'=>'trim|required|max_length[10]'));
     $this->addParam('pSEXO','pSEXO_SOCIOECONOMICOS','',array('name'=>'Sexo','rule'=>'trim|required|max_length[1]'));
     $this->addParam('pNOMBRE','pNOMBRE_SOCIOECONOMICOS','',array('name'=>'Nombre','rule'=>'trim|required|max_length[40]'));
-    $this->addParam('pID_SUBTIPO_REF','pID_RELACION','',array('name'=>'Parentesco','rule'=>'trim|required|numeric|max_length[10]'));
-    $this->addParam('pID_TIPO_DEPENDIENT','pID_RELACION_SOCIOECONOMICOS','',array('name'=>'Relación ','rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pID_SUBTIPO_REF','pID_RELACION_SOCIOECONOMICOS','',array('name'=>'Parentesco','rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pID_TIPO_DEPENDIENT','pID_RELACION','',array('name'=>'Relación ','rule'=>'trim|required|numeric|max_length[10]'));
     if ($this->form_validation->run() === true) {
       $this->procedure('sp_B2_DG_addDependiente');
       $this->iniParam('txtError','varchar','250');
