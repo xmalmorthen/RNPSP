@@ -337,49 +337,70 @@ var fillData = {
             mainFormActions.insertValueInSelect($('#pLICENCIA_DATOS_PERSONALES'),data.pLICENCIA);
         },
         desarrolloAcademico : function(pID_ALTERNA){
-            var callUrl = base_url + `Solicitud/getNivelEstudios`;
+            var tableRef = $('#' + objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.obj.tables().nodes().to$().attr('id')),
+                tableObj = objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.obj,
+                callUrl = base_url + `Solicitud/getNivelEstudios`;
+
+            tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
             fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {
                 if (data) {
                     $.each( data, function(key,value) {
                         var row = [ value.ID_NIVEL_ESTUDIOS_EXT, value.MAXIMA_ESCOLARIDAD, value.ESPECIALIDAD, value.FECHA_INICIO, value.FECHA_TERMINO, value.PROMEDIO ];
-                        objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.obj.row.add( row ).draw( false );
+                        tableObj.row.add( row ).draw( false );
                     });
                 }
+                tableRef.LoadingOverlay("hide");
             })
             .catch( (err) => {
-                $('#' + objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.obj.tables().nodes().to$().attr('id')).setError(err.statusText);
+                tableRef.setError(err.statusText);
+                tableRef.LoadingOverlay("hide");
             });
         },
         domicilio : function(pID_ALTERNA){
-            var callUrl = base_url + `Solicitud/getDomicilio`;
+            var tableRef = $('#' + objViewDatosGenerales.vars.datosGenerales.tables.tableDomicilio.obj.tables().nodes().to$().attr('id')),
+                tableObj = objViewDatosGenerales.vars.datosGenerales.tables.tableDomicilio.obj,
+                callUrl = base_url + `Solicitud/getDomicilio`;
+
+            tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
             fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {
                 if (data) {
                     $.each( data, function(key,value) {
                         var row = [ value.ID_DOMICILIO_EXT, value.CODIGO_POSTAL, value.NOM_ESTADO, value.COLONIA, value.CALLE, value.NUM_EXTERIOR, value.NUM_INTERIOR ];
-                        objViewDatosGenerales.vars.datosGenerales.tables.tableDomicilio.obj.row.add( row ).draw( false );
+                        tableObj.row.add( row ).draw( false );
                     });
                 }
+                tableRef.LoadingOverlay("hide");
             })
             .catch( (err) => {
-                $('#' + objViewDatosGenerales.vars.datosGenerales.tables.tableDomicilio.obj.tables().nodes().to$().attr('id')).setError(err.statusText);
+                tableRef.setError(err.statusText);
+                tableRef.LoadingOverlay("hide");
             });
         },
         referencias : function(pID_ALTERNA){
-            var callUrl = base_url + `Solicitud/getReferencias`;
+            var tableRef = $('#' + objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.obj.tables().nodes().to$().attr('id')),
+                tableObj = objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.obj,
+                callUrl = base_url + `Solicitud/getReferencias`;
+
+            tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
             fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {                
                 if (data) {
                     $.each( data, function(key,value) {
                         var domicilio = value.CALLE + ' ' + value.NUM_EXTERIOR + ' ' + (value.NUM_INTERIOR ? value.NUM_INTERIOR + ' ' : '' ) + (value.COLONIA ? value.COLONIA + ' ' : '' ) + value.MUNICIPIO_DOM;
                         var row = [ value.ID_REFERENCIA_EXT, value.NOMBRE, value.PATERNO, value.MATERNO, value.ID_TIPO_REFERENCIA, domicilio ];
-                        objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.obj.row.add( row ).draw( false );
+                        tableObj.row.add( row ).draw( false );
                     });
                 }
+                tableRef.LoadingOverlay("hide");
             })
             .catch( (err) => {
-                $('#' + objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.obj.tables().nodes().to$().attr('id')).setError(err.statusText);
+                tableRef.setError(err.statusText);
+                tableRef.LoadingOverlay("hide");
             });
         },
         socioeconomicos : function(pID_ALTERNA){
@@ -392,7 +413,7 @@ var fillData = {
                     });
 
                     //special
-                    mainFormActions.insertValueInSelect($('#pID_TIPO_DOMICILIO'),data.ID_TIPO_DOMIC);
+                    mainFormActions.insertValueInSelect($('#pID_TIPO_DOMICILIO'),data.pID_TIPO_DOMIC);
                 }
             })
             .catch( (err) => {
@@ -405,18 +426,25 @@ var fillData = {
             });
         },
         dependientesEconomicos : function(pID_ALTERNA){
-            var callUrl = base_url + `Solicitud/getDependientes`;
+            var tableRef = $('#' + objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.obj.tables().nodes().to$().attr('id')),
+                tableObj = objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.obj,
+                callUrl = base_url + `Solicitud/getDependientes`;
+
+            tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+            
             fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {                
                 if (data) {
                     $.each( data, function(key,value) {
                         var row = [ value.ID_DEPENDIENTE_EXT, value.NOMBRE, value.PATERNO, value.MATERNO, value.ID_TIPO_REFERENCIA, value.SEXO, value.FECHA_NACIMIENTO, value.PARENTESCO ];
-                        objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.obj.row.add( row ).draw( false );
+                        tableObj.row.add( row ).draw( false );
                     });
                 }
+                tableRef.LoadingOverlay("hide");
             })
             .catch( (err) => {
-                $('#' + objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.obj.tables().nodes().to$().attr('id')).setError(err.statusText);
+                tableRef.setError(err.statusText);
+                tableRef.LoadingOverlay("hide");
             });
         }
 

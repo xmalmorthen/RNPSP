@@ -195,22 +195,22 @@ var objViewDatosGenerales = {
                 guardarDesarrolloacademico : function(e, from, tabRef){
                     e.preventDefault();
                     objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDesarrolloacademico',from, tabRef, function(data){
-                        console.log(data);
-                        debugger;
+                        objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.obj.clear().draw();
+                        fillData.datosGenerales.desarrolloAcademico(mainTabMenu.var.pID_ALTERNA);
                     });
                 },
                 guardarDomicilio : function(e, from, tabRef){
                     e.preventDefault();
                     objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDomicilio',from, tabRef, function(data){
-                        console.log(data);
-                        debugger;
+                        objViewDatosGenerales.vars.datosGenerales.tables.tableDomicilio.obj.clear().draw();
+                        fillData.datosGenerales.domicilio(mainTabMenu.var.pID_ALTERNA);
                     });
                 },
                 guardarReferencia : function(e, from, tabRef){
                     e.preventDefault();
                     objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesReferencia',from, tabRef, function(data){
-                        console.log(data);
-                        debugger;
+                        objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.obj.clear().draw();
+                        fillData.datosGenerales.referencias(mainTabMenu.var.pID_ALTERNA);
                     });
                 },
                 guardarSocioeconomico : function(e, from, tabRef){
@@ -223,8 +223,8 @@ var objViewDatosGenerales = {
                 guardarDependiente : function(e, from, tabRef){
                     e.preventDefault();
                     objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDependiente',from, tabRef, function(data){
-                        console.log(data);
-                        debugger;
+                        objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.obj.clear().draw();
+                        fillData.datosGenerales.dependientesEconomicos(mainTabMenu.var.pID_ALTERNA);
                     });
                 }
             }

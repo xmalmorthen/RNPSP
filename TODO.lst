@@ -4,7 +4,4 @@
 //TODO: Xmal - Quitar comentarios en bloque para implementación [ assets\js\views\solicitud\registro.js ]
 //TODO: Xmal - Quitar comentarios en bloque para implementación [ assets\js\utils\dynamicTabs.js ]
 
-//TODO: Xmal - Implementar la obtención del datos y llenado de componentes [ GENERALES - Socioeconómicos ]
-//TODO: Xmal - Implementar la obtención de DATOS y llenado de GRID [ GENERALES - Dependientes económicos ]
 //TODO: Xmal - Implementar la actualización de GRID en la pestaña donde se guarde una entrada de registro [ P.E. al guardar un Desarrollo Económico, que se actualice el GRID y se limpie el formulario ]
-

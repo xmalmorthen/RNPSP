@@ -491,7 +491,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         Entre la calle de
-                        <input type="text" class="form-control" id="pENTRE_CALLE_REFERENCIAS" name="pENTRE_CALLE_REFERENCIAS" maxlength="60">
+                        <input type="text" class="form-control" id="pENTRE_CALLE_REFERENCIAS" name="pENTRE_CALLE_REFERENCIAS" maxlength="60" required>
                     </div>
                     <div class="col-md-4">
                         Y la calle de
