@@ -49,7 +49,7 @@ class MY_Model extends CI_Model
       foreach ($array as $key => $value) {
         if (is_array($value)) {
           foreach ($value as $key2 => $value2) {
-            $result[$key][$this->addIdentificadorCadena($key2)] = $value;
+            $result[$key][$this->addIdentificadorCadena($key2)] = $value2;
           }
         } else {
           $result[$this->addIdentificadorCadena($key)] = $value;
@@ -128,8 +128,10 @@ class MY_Model extends CI_Model
       $query = rtrim($query, ',');
     }
     $query .= ';';
+    $exitOutput = false;
     if ($select == true) {
       if (count($this->output) > 0) {
+        $exitOutput = true;
         $query .= ' SELECT ';
         foreach ($this->output as $value) {
           $sValue = $this->db->escape($value);
@@ -145,7 +147,7 @@ class MY_Model extends CI_Model
     $this->params = array();
     $this->output = array();
 
-    return "BEGIN TRANSACTION {$query} COMMIT TRANSACTION";
+    return ($exitOutput == true)? "BEGIN TRANSACTION {$query} COMMIT TRANSACTION" : $query;
   }
 
   function find($params = array(), $is_row_array = false)
