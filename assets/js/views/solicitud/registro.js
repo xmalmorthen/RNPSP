@@ -110,7 +110,7 @@ var mainTabMenu = {
                 case 'Laboral':
                     objViewLaboral.init(function(){
                         if (dynTabs.mode == 'edit') { 
-                            fillData.laboral.all(mainTabMenu.var.pID_ALTERNA);
+                            fillData.laboral.all();
                         }
 
                         dynTabs.validForm = true; 
@@ -118,7 +118,14 @@ var mainTabMenu = {
                     });
                 break;
                 case 'Capacitacion':
-                    objViewCapacitacion.init(function(){ dynTabs.validForm = true; mainTabMenu.actions.inited = true;});
+                    objViewCapacitacion.init(function(){ 
+                        if (dynTabs.mode == 'edit') { 
+                            fillData.capacitacion.all();
+                        }
+
+                        dynTabs.validForm = true; 
+                        mainTabMenu.actions.inited = true;
+                    });
                 break;
                 case 'Identificacion':
                     objViewIdentificacion.init(function(){ dynTabs.validForm = true; mainTabMenu.actions.inited = true;});
@@ -553,6 +560,56 @@ var fillData = {
                 if (data) {
                     $.each( data, function(key,value) {
                         var row = [ value.pID_COMISION_EXT, value.pFECHA_INICIO, value.pFECHA_TERMINO, value.pTIPO_COMISION, value.pMOTIVO, value.pDESTINO ];
+                        tableObj.row.add( row ).draw( false );
+                    });
+                }
+                tableRef.LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                tableRef.setError(err.statusText);
+                tableRef.LoadingOverlay("hide");
+            });
+        },
+    },
+    capacitacion : {
+        all : function(){
+            fillData.capacitacion.idiomasDialectos(mainTabMenu.var.pID_ALTERNA);
+            fillData.capacitacion.habilidadesAptitudes(mainTabMenu.var.pID_ALTERNA);
+        },
+        idiomasDialectos : function(pID_ALTERNA){
+            var tableRef = $('#' + objViewCapacitacion.vars.capacitacion.tables.tableIdiomas.obj.tables().nodes().to$().attr('id')),
+                tableObj = objViewCapacitacion.vars.capacitacion.tables.tableIdiomas.obj,
+                callUrl = base_url + `Solicitud/getIdiomaHablado`;
+
+            tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+            fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+                if (data) {
+                    $.each( data, function(key,value) {
+                        var row = [ value.pID_IDIOMA_HABLADO_EXT, value.pIDIOMA, value.pPORCENTAJE_LECTURA, value.pPORCENTAJE_ESCRITURA, value.pPORCENTAJE_CONVERSACION ];
+                        tableObj.row.add( row ).draw( false );
+                    });
+                }
+                tableRef.LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                tableRef.setError(err.statusText);
+                tableRef.LoadingOverlay("hide");
+            });
+        },
+        habilidadesAptitudes : function(pID_ALTERNA){
+            var tableRef = $('#' + objViewCapacitacion.vars.capacitacion.tables.tableHabilidades.obj.tables().nodes().to$().attr('id')),
+                tableObj = objViewCapacitacion.vars.capacitacion.tables.tableHabilidades.obj,
+                callUrl = base_url + `Solicitud/getHabilidadAptitud`;
+
+            tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+            fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+                if (data) {
+                    $.each( data, function(key,value) {
+                        var row = [ value.pID_HABILIDAD_APTIT_EXT, value.pTIPO_HABAILIDAD, value.pGRADO ];
                         tableObj.row.add( row ).draw( false );
                     });
                 }
