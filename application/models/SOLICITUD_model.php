@@ -914,6 +914,48 @@ class SOLICITUD_model extends MY_Model
     return $this->response;
   }
 
+  # ****************************************************************************************************************
+  # Idiomas y/o dialectos
+  # ****************************************************************************************************************
+  # Opcion Nueva Solicitud - Ficha Capacitacion - Pestaña Idiomay/o dialecto
+  # Boton Guardar Idioma y/o dialecto.
+  # sp_B2_CAPS_addIdiomaHablado - Agrega la información de idiomas que habla el elemento.
+  public function  sp_B2_CAPS_addIdiomaHablado($model){
+
+    $this->arrayToPost($model);
+    $this->load->library('form_validation');
+
+    $this->addParam('pID_ALTERNA','pID_ALTERNA','',array('rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pID_ESTADO_EMISOR',null);
+    $this->addParam('pID_EMISOR',null);
+
+    $this->addParam('pID_IDIOMA','pID_IDIOMA','',array('name'=>'Idioma y/o dialecto ','rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pGRADO_LECTURA','pGRADO_LECTURA','',array('name'=>'Lectura','rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pGRADO_ESCRITURA','pGRADO_ESCRITURA','',array('name'=>'Escritura','rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pGRADO_CONVERSACION','pGRADO_CONVERSACION','',array('name'=>'Conversación','rule'=>'trim|numeric|max_length[10]'));
+    if ($this->form_validation->run() === true) {
+      $this->procedure('sp_B2_CAPS_addIdiomaHablado');
+      $this->iniParam('txtError','varchar','250');
+      $this->iniParam('msg','varchar','80');
+      $this->iniParam('tranEstatus','int');
+      $query = $this->db->query($this->build_query());
+      $response = $this->query_row($query);
+      if($response == FALSE){
+        $this->response['status'] = false;
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      }else{
+        $this->response['status'] = (bool)$response['tranEstatus'];
+        $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
+      }
+    } else {
+      $this->load->helper('html');
+      $this->response['status'] = false;
+      $message = $this->form_validation->error_array();
+      $this->response['message'] = ul($message);
+      $this->response['validation'] = $message;
+    }
+    return $this->response;
+  }
 
 
 
