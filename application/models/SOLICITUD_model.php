@@ -984,6 +984,46 @@ class SOLICITUD_model extends MY_Model
     return $this->response;
   }
 
+  # ****************************************************************************************************************
+  # Habilidades y/o actitudes
+  # ****************************************************************************************************************
+  # Opcion Nueva Solicitud - Ficha Capacitacion - Pestaña Habilidad y/o actitud
+  # Boton Guardar habilidad y/o actitud.
+  # sp_B2_CAPS_addHabilidadAptitud - Agrega los datos sobre habilidades y aptitudes del elemento.
+  public function  sp_B2_CAPS_addHabilidadAptitud($model){
+    $this->arrayToPost($model);
+    $this->load->library('form_validation');
 
+    $this->addParam('pID_ALTERNA','pID_ALTERNA','',array('rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pID_ESTADO_EMISOR',null);
+    $this->addParam('pID_EMISOR',null);
+
+    $this->addParam('pID_TIPO_APTITUD','ID_TIPO_APTITUD','',array('name'=>'Tipo de habilidad y/o aptitud','rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pESPECIFIQUE','ESPECIFIQUE','N',array('name'=>'Descripción','rule'=>'trim|max_length[100]'));
+    $this->addParam('pID_GRADO_APT_HAB','ID_GRADO_APT_HAB','',array('name'=>'Grado de aptitud o dominio','rule'=>'trim|numeric|max_length[10]'));
+    if ($this->form_validation->run() === true) {
+      $this->procedure('sp_B2_CAPS_addHabilidadAptitud');
+      $this->iniParam('txtError','varchar','250');
+      $this->iniParam('msg','varchar','80');
+      $this->iniParam('tranEstatus','int');
+      $query = $this->db->query($this->build_query());
+      $response = $this->query_row($query);
+      if($response == FALSE){
+        $this->response['status'] = false;
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      }else{
+        $this->response['status'] = (bool)$response['tranEstatus'];
+        $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
+      }
+    } else {
+      $this->load->helper('html');
+      $this->response['status'] = false;
+      $message = $this->form_validation->error_array();
+      $this->response['message'] = ul($message);
+      $this->response['validation'] = $message;
+    }
+    return $this->response;
+  }
+  
 
 }
