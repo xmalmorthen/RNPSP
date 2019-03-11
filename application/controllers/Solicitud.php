@@ -1232,7 +1232,7 @@
 			exit;
 		}
 		/*
-		* XMAL obtener datos pestaña "Laboral" -> "Comisiones"
+		* XMAL obtener datos pestaña "Datos generales" -> "Datos personales"
 		* get getPersonaCIB pID_ALTERNA,pCURP
 		# EJEMPLO: http://localhost/SGP/Solicitud/getPersonaCIB?pID_ALTERNA=56
 		*/
