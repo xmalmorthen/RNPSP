@@ -52,31 +52,30 @@
 
                     </div>
                 </div>
-                <br>
-                <hr>
-                <br>
-                <table id="tableIdiomas" class="table display table-striped dt-responsive" style="width:100%">
-                    <thead>
-                        <th>Id idioma y/o dialecto</th>
-                        <th>Idioma</th>
-                        <th>Porcentaje de lectura</th>
-                        <th>Porcentaje de escritura</th>
-                        <th>Porcentaje de conversación</th>
-                    </thead>
-                    <tbody>                        
-                    </tbody>
-                </table>
                 <input type="hidden" id="pID_ALTERNA_Idioma" name="pID_ALTERNA_Idioma" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Idioma" name="pID_ESTADO_EMISOR_Idioma" value="" >
                 <input type="hidden" id="pID_EMISOR_Idioma" name="pID_EMISOR_Idioma" value="" >
                 <input type="hidden" id="pID_IDIOMA_HABLADO_EXT" name="pID_IDIOMA_HABLADO_EXT" value="" >
-            
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteIdioma" data-nexttab="#Habilidades_aptitudes-tab">Siguiente Ficha</button>
-                    </div>
-                </div>
             </form>
+            <br>
+            <hr>
+            <br>
+            <table id="tableIdiomas" class="table display table-striped dt-responsive" style="width:100%">
+                <thead>
+                    <th>Id idioma y/o dialecto</th>
+                    <th>Idioma</th>
+                    <th>Porcentaje de lectura</th>
+                    <th>Porcentaje de escritura</th>
+                    <th>Porcentaje de conversación</th>
+                </thead>
+                <tbody>                        
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteIdioma" data-nexttab="#Habilidades_aptitudes-tab">Siguiente Ficha</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -116,29 +115,28 @@
 
                     </div>
                 </div>
-                <br>
-                <hr>
-                <br>
-                <table id="tableHabilidades" class="table display table-striped dt-responsive" style="width:100%">
-                    <thead>
-                        <th>Id habilidad y/o aptitud</th>
-                        <th>Tipo de habilidad y/o aptitud</th>
-                        <th>Grado</th>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
                 <input type="hidden" id="pID_ALTERNA_Habilidades" name="pID_ALTERNA_Habilidades" value="">
                 <input type="hidden" id="pID_ESTADO_EMISOR_Habilidades" name="pID_ESTADO_EMISOR_Habilidades" value="">
                 <input type="hidden" id="pID_EMISOR_Habilidades" name="pID_EMISOR_Habilidades" value="">
                 <input type="hidden" id="pID_HABILIDAD_APTIT_EXT" name="pID_HABILIDAD_APTIT_EXT" value="">
-            
-                <div class="row">                    
-                    <div class="col-md-12 text-center">
-                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorHabilidad" data-nexttab="#Idiomas_dialectos-tab">Anterior Ficha</button>
-                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab endTab" id="SiguienteHabilidad">Finalizar</button>
-                    </div>                            
-                </div>
             </form>
+            <br>
+            <hr>
+            <br>
+            <table id="tableHabilidades" class="table display table-striped dt-responsive" style="width:100%">
+                <thead>
+                    <th>Id habilidad y/o aptitud</th>
+                    <th>Tipo de habilidad y/o aptitud</th>
+                    <th>Grado</th>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <div class="row">                    
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorHabilidad" data-nexttab="#Idiomas_dialectos-tab">Anterior Ficha</button>
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab endTab" id="SiguienteHabilidad">Finalizar</button>
+                </div>                            
+            </div>
         </div>
     </div>

@@ -145,7 +145,7 @@ var objViewDatosGenerales = {
             datosGenerales : {
                 guardarDatosPersonales : function(e, from, tabRef){
                     e.preventDefault();
-                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDatosPersonales',from, tabRef, function(data){
+                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDatosPersonales',from, tabRef, false , function(data){
                         mainTabMenu.var.pID_ALTERNA = data.results.data.pID_ALTERNA ? data.results.data.pID_ALTERNA : null;
                     });
                 },
@@ -176,7 +176,7 @@ var objViewDatosGenerales = {
 
                         $.post(callUrl,model,
                         function (data) {  
-                            objViewDatosGenerales.actions.ajax.callResponseValidations(form,data, from, tabRef, function(data){
+                            objViewDatosGenerales.actions.ajax.callResponseValidations(form,data, from, tabRef, true, function(data){
                                 console.log(data);
                                 debugger;
                                 $.LoadingOverlay("hide");

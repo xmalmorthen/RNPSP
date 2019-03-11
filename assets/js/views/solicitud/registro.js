@@ -253,7 +253,7 @@ var mainFormActions = {
 
         mainTabMenu.var.pID_ALTERNA = data.pID_ALTERNA;
 
-        fillData.datosGenerales.datosPersonales(data);
+        fillData.datosGenerales.datosPersonales(data);        
         fillData.datosGenerales.desarrolloAcademico(mainTabMenu.var.pID_ALTERNA);
         fillData.datosGenerales.domicilio(mainTabMenu.var.pID_ALTERNA);
         fillData.datosGenerales.referencias(mainTabMenu.var.pID_ALTERNA);
@@ -340,6 +340,31 @@ var fillData = {
             mainFormActions.insertValueInSelect($('#pCREDENCIAL_ELECTOR'),data.pCREDENCIAL_ELECTOR);
             mainFormActions.insertValueInSelect($('#pPASAPORTE'),data.pPASAPORTE);
             mainFormActions.insertValueInSelect($('#pLICENCIA_DATOS_PERSONALES'),data.pLICENCIA);
+
+            
+            if (!objViewDatosGenerales.vars.datosGenerales.tables.tableDatospersonales.dom) 
+                return false;
+
+            var tableRef = $('#' + objViewDatosGenerales.vars.datosGenerales.tables.tableDatospersonales.obj.tables().nodes().to$().attr('id')),
+                tableObj = objViewDatosGenerales.vars.datosGenerales.tables.tableDatospersonales.obj,
+                callUrl = base_url + `Solicitud/getPersonaCIB`;
+
+            tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+            fillData.genericPromise(callUrl,{ pID_ALTERNA : mainTabMenu.var.pID_ALTERNA})
+            .then( (data) => {
+                if (data) {
+                    $.each( data, function(key,value) {
+                        var row = [ value.pCIB, value.pMotivoCIB ];
+                        tableObj.row.add( row ).draw( false );
+                    });
+                }
+                tableRef.LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                tableRef.setError(err.statusText);
+                tableRef.LoadingOverlay("hide");
+            });
         },
         desarrolloAcademico : function(pID_ALTERNA){
             var tableRef = $('#' + objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.obj.tables().nodes().to$().attr('id')),

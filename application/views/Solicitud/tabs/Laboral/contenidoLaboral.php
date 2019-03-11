@@ -163,31 +163,6 @@
 
                     </div>
                 </div>
-                <br>
-                <hr>
-                <br>
-                <div class="row">
-                    <div class="col-md-12">
-                        <!-- BEGIN TABLE -->
-                        <table id="tableAdscripcionactual" class="table display table-striped dt-responsive" style="width:100%">
-                            <thead>
-                                <tr>
-                                    <th>Id adscripción</th>
-                                    <th>Dependencia</th>
-                                    <th>Corporación</th>
-                                    <th>Área o departamento</th>
-                                    <th>Puesto</th>
-                                    <th>Estado</th>
-                                    <th>Municipio</th>
-                                </tr>
-                                </thead>
-                            <tbody>                                    
-                            </tbody>
-                    </table>
-                    <!-- END TABLE -->
-                    </div>
-                </div>
-
                 <!-- INPUTS OCULTOS -->
                 <input type="hidden" id="pID_ALTERNA_Adscripcion_actual" name="pID_ESTADO_EMISOR_Adscripcion_actual" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Adscripcion_actual" name="pID_ALTERNA_Adscripcion_actual" value="" >
@@ -198,21 +173,43 @@
                 <input type="hidden" id="pID_CATEGORIA_PUEST_Adscripcion_actual" name="pID_CATEGORIA_PUEST_Adscripcion_actual" value="" >
                 <input type="hidden" id="pID_JERARQUIA_PUEST_Adscripcion_actual" name="pID_JERARQUIA_PUEST_Adscripcion_actual" value="" >
                 <input type="hidden" id="pID_AMBITO_PUESTO_Adscripcion_actual" name="pID_AMBITO_PUESTO_Adscripcion_actual" value="" >
-            
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <div class="row">                                
-                            <div class="col-md-12 text-center">
-                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteAdscripcion" data-nexttab="#Empleos_diversos-tab">Siguiente Ficha</button>
-                            </div>
+            </form>
+            <br>
+            <hr>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- BEGIN TABLE -->
+                    <table id="tableAdscripcionactual" class="table display table-striped dt-responsive" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Id adscripción</th>
+                                <th>Dependencia</th>
+                                <th>Corporación</th>
+                                <th>Área o departamento</th>
+                                <th>Puesto</th>
+                                <th>Estado</th>
+                                <th>Municipio</th>
+                            </tr>
+                            </thead>
+                        <tbody>                                    
+                        </tbody>
+                    </table>
+                    <!-- END TABLE -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <div class="row">                                
+                        <div class="col-md-12 text-center">
+                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteAdscripcion" data-nexttab="#Empleos_diversos-tab">Siguiente Ficha</button>
                         </div>
-
                     </div>
-                    <div class="col-md-4"></div>
 
                 </div>
-            </form>
+                <div class="col-md-4"></div>
+            </div>
         </div>
     </div>
 
@@ -315,38 +312,37 @@
 
                     </div>
                 </div>
-                <br>
-                <hr>
-                <br>
-                <div class="row">
-                    <div class="col-md-12">
-                        <table id="tableEmpleosdiversos" class="table display table-striped dt-responsive" style="width:100%">
-                            <thead>
-                                <tr>
-                                    <th>Id empleo adicional</th>
-                                    <th>Empresa</th>
-                                    <th>Número telefónico</th>
-                                    <th>Área o departamento</th>
-                                    <th>Ingreso neto mensual</th>
-                                    <th>Fecha de ingreso</th>
-                                    <th>Fecha de separación</th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-                </div>
-                    <!-- HIDDEN INPUTS -->
+                <!-- HIDDEN INPUTS -->
                 <input type="hidden" id="pID_ALTERNA_Empleos_diversos" name="pID_ALTERNA_Empleos_diversos"  value="">
                 <input type="hidden" id="pID_ESTADO_EMISOR_Empleos_diversos" name="pID_ESTADO_EMISOR_Empleos_diversos"  value="">
                 <input type="hidden" id="pID_EMISOR_Empleos_diversos" name="pID_EMISOR_Empleos_diversos"  value="">
-
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorEmpleo" data-nexttab="#Adscripcion_actual-tab">Anterior Ficha</button>                                
-                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteEmpleo" data-nexttab="#Actitudes_hacia_el_empleo-tab">Siguiente Ficha</button>
-                    </div>
-                </div>
             </form>
+            <br>
+            <hr>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <table id="tableEmpleosdiversos" class="table display table-striped dt-responsive" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Id empleo adicional</th>
+                                <th>Empresa</th>
+                                <th>Número telefónico</th>
+                                <th>Área o departamento</th>
+                                <th>Ingreso neto mensual</th>
+                                <th>Fecha de ingreso</th>
+                                <th>Fecha de separación</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorEmpleo" data-nexttab="#Adscripcion_actual-tab">Anterior Ficha</button>                                
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteEmpleo" data-nexttab="#Actitudes_hacia_el_empleo-tab">Siguiente Ficha</button>
+                </div>
+            </div>
         </div>
     </div>
  
@@ -487,39 +483,37 @@
                         <button class="btn btn-default btnGuardarSection" id="guardarComision">Guardar comisión</button>
                     </div>
                 </div>
-                <br>
-                <hr>
-                <br>
-                <div class="row">
-                    <div class="col-md-12">
-                        <table id="tableComisiones" class="table display table-striped dt-responsive" style="width:100%">
-                            <thead>
-                                <tr>
-                                    <th>Id comisión</th>
-                                    <th>Fecha de inicio</th>
-                                    <th>Fecha de término</th>
-                                    <th>Tipo de comisión</th>
-                                    <th>Motivo</th>
-                                    <th>Destino</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
                 <!-- HIDDEN INPUTS -->
                 <input type="hidden" id="pID_ALTERNA_Comisiones" name="pID_ESTADO_EMISOR_Comisiones" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Comisiones" name="pID_ALTERNA_Comisiones" value="" >
                 <input type="hidden" id="pID_EMISOR_Comisiones" name="pID_EMISOR_Comisiones" value="" >
-            
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorComision" data-nexttab="#Actitudes_hacia_el_empleo-tab">Anterior Ficha</button>
-                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab endTab" id="FinalizarLaboral">Finalizar</button>
-                    </div>
-                </div>
             </form>
+            <br>
+            <hr>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <table id="tableComisiones" class="table display table-striped dt-responsive" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Id comisión</th>
+                                <th>Fecha de inicio</th>
+                                <th>Fecha de término</th>
+                                <th>Tipo de comisión</th>
+                                <th>Motivo</th>
+                                <th>Destino</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorComision" data-nexttab="#Actitudes_hacia_el_empleo-tab">Anterior Ficha</button>
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab endTab" id="FinalizarLaboral">Finalizar</button>
+                </div>
+            </div>
         </div>
     </div>
