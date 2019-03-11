@@ -102,10 +102,20 @@ var mainTabMenu = {
 
             switch (tabRef) {
                 case 'datosGenerales':
-                    objViewDatosGenerales.init(function(){dynTabs.validForm = true; mainTabMenu.actions.inited = true; });
+                    objViewDatosGenerales.init(function(){
+                        dynTabs.validForm = true; 
+                        mainTabMenu.actions.inited = true;                         
+                    });
                 break;
                 case 'Laboral':
-                    objViewLaboral.init(function(){ dynTabs.validForm = true; mainTabMenu.actions.inited = true;});
+                    objViewLaboral.init(function(){
+                        if (dynTabs.mode == 'edit') { 
+                            fillData.laboral.all(mainTabMenu.var.pID_ALTERNA);
+                        }
+
+                        dynTabs.validForm = true; 
+                        mainTabMenu.actions.inited = true;
+                    });
                 break;
                 case 'Capacitacion':
                     objViewCapacitacion.init(function(){ dynTabs.validForm = true; mainTabMenu.actions.inited = true;});
@@ -253,12 +263,7 @@ var mainFormActions = {
 
         mainTabMenu.var.pID_ALTERNA = data.pID_ALTERNA;
 
-        fillData.datosGenerales.datosPersonales(data);        
-        fillData.datosGenerales.desarrolloAcademico(mainTabMenu.var.pID_ALTERNA);
-        fillData.datosGenerales.domicilio(mainTabMenu.var.pID_ALTERNA);
-        fillData.datosGenerales.referencias(mainTabMenu.var.pID_ALTERNA);
-        fillData.datosGenerales.socioeconomicos(mainTabMenu.var.pID_ALTERNA);
-        fillData.datosGenerales.dependientesEconomicos(mainTabMenu.var.pID_ALTERNA);
+        fillData.datosGenerales.all(data);
 
         $('.consultaCURP').readOnly();
         dynTabs.mode = 'edit';
@@ -322,6 +327,14 @@ var fillData = {
         });
     },
     datosGenerales : {
+        all : function(data){
+            fillData.datosGenerales.datosPersonales(data);        
+            fillData.datosGenerales.desarrolloAcademico(mainTabMenu.var.pID_ALTERNA);
+            fillData.datosGenerales.domicilio(mainTabMenu.var.pID_ALTERNA);
+            fillData.datosGenerales.referencias(mainTabMenu.var.pID_ALTERNA);
+            fillData.datosGenerales.socioeconomicos(mainTabMenu.var.pID_ALTERNA);
+            fillData.datosGenerales.dependientesEconomicos(mainTabMenu.var.pID_ALTERNA);
+        },
         datosPersonales : function(data){
             //AutoFill
             $.each(data,function(key,value){
@@ -477,6 +490,78 @@ var fillData = {
                 tableRef.LoadingOverlay("hide");
             });
         }
+    },
+    laboral : {
+        all : function(){
+            fillData.laboral.adscripcionActual(mainTabMenu.var.pID_ALTERNA);
+            fillData.laboral.empleosDiversos(mainTabMenu.var.pID_ALTERNA);
+            fillData.laboral.comisiones(mainTabMenu.var.pID_ALTERNA);
+        },
+        adscripcionActual : function(pID_ALTERNA){
+            var tableRef = $('#' + objViewLaboral.vars.laboral.tables.tableAdscripcionactual.obj.tables().nodes().to$().attr('id')),
+                tableObj = objViewLaboral.vars.laboral.tables.tableAdscripcionactual.obj,
+                callUrl = base_url + `Solicitud/getAdscripcion`;
 
+            tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+            fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+                if (data) {
+                    $.each( data, function(key,value) {
+                        var row = [ value.pID_ADSCRIPCION_EXT, value.pNOMBRE_DEPENDENCIA, value.pCORPORACION, value.pNOMBRE_AREA, value.pNOMBRE_PUESTO ? value.pNOMBRE_PUESTO : 'No viene en el modelo de bd', value.pNOM_ENTIDAD, value.pNOM_MUNICIPIO ];
+                        tableObj.row.add( row ).draw( false );
+                    });
+                }
+                tableRef.LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                tableRef.setError(err.statusText);
+                tableRef.LoadingOverlay("hide");
+            });
+        },
+        empleosDiversos : function(pID_ALTERNA){
+            var tableRef = $('#' + objViewLaboral.vars.laboral.tables.tableEmpleosdiversos.obj.tables().nodes().to$().attr('id')),
+                tableObj = objViewLaboral.vars.laboral.tables.tableEmpleosdiversos.obj,
+                callUrl = base_url + `Solicitud/getEmpleoAdicional`;
+
+            tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+            fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+                if (data) {
+                    $.each( data, function(key,value) {
+                        var row = [ value.pID_EMPLEO_ADIC_EXT, value.pEMPRESA, value.pNUM_TELEFONICO, value.pAREA, value.pSUELDO, value.pFECHA_INGRESO, value.pFECHA_SEPARACION ];
+                        tableObj.row.add( row ).draw( false );
+                    });
+                }
+                tableRef.LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                tableRef.setError(err.statusText);
+                tableRef.LoadingOverlay("hide");
+            });
+        },
+        comisiones : function(pID_ALTERNA){
+            var tableRef = $('#' + objViewLaboral.vars.laboral.tables.tableComisiones.obj.tables().nodes().to$().attr('id')),
+                tableObj = objViewLaboral.vars.laboral.tables.tableComisiones.obj,
+                callUrl = base_url + `Solicitud/getComision`;
+
+            tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+            fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+                if (data) {
+                    $.each( data, function(key,value) {
+                        var row = [ value.pID_COMISION_EXT, value.pFECHA_INICIO, value.pFECHA_TERMINO, value.pTIPO_COMISION, value.pMOTIVO, value.pDESTINO ];
+                        tableObj.row.add( row ).draw( false );
+                    });
+                }
+                tableRef.LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                tableRef.setError(err.statusText);
+                tableRef.LoadingOverlay("hide");
+            });
+        },
     }
 }
