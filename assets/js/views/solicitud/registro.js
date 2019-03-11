@@ -109,7 +109,7 @@ var mainTabMenu = {
                 break;
                 case 'Laboral':
                     objViewLaboral.init(function(){
-                        if (dynTabs.mode == 'edit') { 
+                        if (dynTabs.mode == 'edit' && !objViewLaboral.vars.general.init) { 
                             fillData.laboral.all();
                         }
 
@@ -119,7 +119,7 @@ var mainTabMenu = {
                 break;
                 case 'Capacitacion':
                     objViewCapacitacion.init(function(){ 
-                        if (dynTabs.mode == 'edit') { 
+                        if (dynTabs.mode == 'edit' && !objViewCapacitacion.vars.general.init) { 
                             fillData.capacitacion.all();
                         }
 
@@ -335,7 +335,7 @@ var fillData = {
     },
     datosGenerales : {
         all : function(data){
-            fillData.datosGenerales.datosPersonales(data);        
+            fillData.datosGenerales.datosPersonales(data);
             fillData.datosGenerales.desarrolloAcademico(mainTabMenu.var.pID_ALTERNA);
             fillData.datosGenerales.domicilio(mainTabMenu.var.pID_ALTERNA);
             fillData.datosGenerales.referencias(mainTabMenu.var.pID_ALTERNA);
@@ -361,7 +361,9 @@ var fillData = {
             mainFormActions.insertValueInSelect($('#pPASAPORTE'),data.pPASAPORTE);
             mainFormActions.insertValueInSelect($('#pLICENCIA_DATOS_PERSONALES'),data.pLICENCIA);
 
-            
+            fillData.datosGenerales.CIB(mainTabMenu.var.pID_ALTERNA);
+        },
+        CIB : function(pID_ALTERNA){
             if (!objViewDatosGenerales.vars.datosGenerales.tables.tableDatospersonales.dom) 
                 return false;
 
@@ -369,9 +371,12 @@ var fillData = {
                 tableObj = objViewDatosGenerales.vars.datosGenerales.tables.tableDatospersonales.obj,
                 callUrl = base_url + `Solicitud/getPersonaCIB`;
 
+            
             tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
-            fillData.genericPromise(callUrl,{ pID_ALTERNA : mainTabMenu.var.pID_ALTERNA})
+            tableObj.clear().draw();
+
+            fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {
                 if (data) {
                     $.each( data, function(key,value) {
@@ -379,6 +384,12 @@ var fillData = {
                         tableObj.row.add( row ).draw( false );
                     });
                 }
+
+                //Boton para refrescar datatable
+                var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
+                if (btnRefreshRef.find('.refreshTable').length == 0)
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3' data-call='fillData.datosGenerales.CIB(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+
                 tableRef.LoadingOverlay("hide");
             })
             .catch( (err) => {
@@ -392,7 +403,9 @@ var fillData = {
                 callUrl = base_url + `Solicitud/getNivelEstudios`;
 
             tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
-
+            
+            tableObj.clear().draw();
+            
             fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {
                 if (data) {
@@ -401,6 +414,12 @@ var fillData = {
                         tableObj.row.add( row ).draw( false );
                     });
                 }
+
+                //Boton para refrescar datatable
+                var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
+                if (btnRefreshRef.find('.refreshTable').length == 0)
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3' data-call='fillData.datosGenerales.desarrolloAcademico(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+
                 tableRef.LoadingOverlay("hide");
             })
             .catch( (err) => {
@@ -415,6 +434,8 @@ var fillData = {
 
             tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
+            tableObj.clear().draw();
+
             fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {
                 if (data) {
@@ -423,6 +444,12 @@ var fillData = {
                         tableObj.row.add( row ).draw( false );
                     });
                 }
+
+                //Boton para refrescar datatable
+                var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
+                if (btnRefreshRef.find('.refreshTable').length == 0)
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3' data-call='fillData.datosGenerales.domicilio(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+
                 tableRef.LoadingOverlay("hide");
             })
             .catch( (err) => {
@@ -437,6 +464,8 @@ var fillData = {
 
             tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
+            tableObj.clear().draw();
+
             fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {                
                 if (data) {
@@ -446,6 +475,12 @@ var fillData = {
                         tableObj.row.add( row ).draw( false );
                     });
                 }
+                
+                //Boton para refrescar datatable
+                var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
+                if (btnRefreshRef.find('.refreshTable').length == 0)
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3' data-call='fillData.datosGenerales.referencias(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+
                 tableRef.LoadingOverlay("hide");
             })
             .catch( (err) => {
@@ -482,6 +517,8 @@ var fillData = {
 
             tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
             
+            tableObj.clear().draw();
+
             fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {                
                 if (data) {
@@ -490,6 +527,12 @@ var fillData = {
                         tableObj.row.add( row ).draw( false );
                     });
                 }
+
+                //Boton para refrescar datatable
+                var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
+                if (btnRefreshRef.find('.refreshTable').length == 0)
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3' data-call='fillData.datosGenerales.dependientesEconomicos(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+
                 tableRef.LoadingOverlay("hide");
             })
             .catch( (err) => {
@@ -502,6 +545,7 @@ var fillData = {
         all : function(){
             fillData.laboral.adscripcionActual(mainTabMenu.var.pID_ALTERNA);
             fillData.laboral.empleosDiversos(mainTabMenu.var.pID_ALTERNA);
+            fillData.laboral.actitudesHaciaEmpleo(mainTabMenu.var.pID_ALTERNA);
             fillData.laboral.comisiones(mainTabMenu.var.pID_ALTERNA);
         },
         adscripcionActual : function(pID_ALTERNA){
@@ -510,6 +554,8 @@ var fillData = {
                 callUrl = base_url + `Solicitud/getAdscripcion`;
 
             tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+            tableObj.clear().draw();
 
             fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {
@@ -533,6 +579,8 @@ var fillData = {
 
             tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
+            tableObj.clear().draw();
+
             fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {
                 if (data) {
@@ -548,12 +596,38 @@ var fillData = {
                 tableRef.LoadingOverlay("hide");
             });
         },
+        actitudesHaciaEmpleo : function(pID_ALTERNA){
+            //TODO : Xmal - Quitar comentarios e implementar cuando se haya creado la acción
+
+            /*var callUrl = base_url + `Solicitud/getSocioEconomico`;
+            fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {  
+                if (data) {
+                    $.each(data,function(key,value){
+                        mainFormActions.insertValueInSelect($('#'+ key),value);
+                    });
+
+                    //special
+                    mainFormActions.insertValueInSelect($('#pID_TIPO_DOMICILIO'),data.pID_TIPO_DOMIC);
+                }
+            })
+            .catch( (err) => {
+                $('#Actitudes_hacia_el_empleo_form').setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.statusText
+                });
+            });*/
+        },
         comisiones : function(pID_ALTERNA){
             var tableRef = $('#' + objViewLaboral.vars.laboral.tables.tableComisiones.obj.tables().nodes().to$().attr('id')),
                 tableObj = objViewLaboral.vars.laboral.tables.tableComisiones.obj,
                 callUrl = base_url + `Solicitud/getComision`;
 
             tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+            tableObj.clear().draw();
 
             fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {
@@ -583,6 +657,8 @@ var fillData = {
 
             tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
+            tableObj.clear().draw();
+
             fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {
                 if (data) {
@@ -605,6 +681,8 @@ var fillData = {
 
             tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
+            tableObj.clear().draw();
+
             fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {
                 if (data) {
@@ -621,4 +699,9 @@ var fillData = {
             });
         },
     }
+}
+
+function refreshTable(e,self){
+    e.preventDefault();
+    eval($(self).data('call'));
 }

@@ -77,8 +77,6 @@ var objViewCapacitacion = {
 
         mainTabMenu.actions.changeTab();
 
-        objViewCapacitacion.vars.general.init = true;
-
         $('#myTabContent').LoadingOverlay("hide");
 
         if (callback){
@@ -86,6 +84,8 @@ var objViewCapacitacion = {
                 callback();
             }
         }
+
+        objViewCapacitacion.vars.general.init = true;
     },
     events : {
         click : {
@@ -95,13 +95,13 @@ var objViewCapacitacion = {
                 guardarIdioma : function(e, from, tabRef){
                     e.preventDefault();
                     objViewCapacitacion.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveCapacitacionIdioma',from, tabRef, true, function(data){
-                        console.log(data);
+                        fillData.capacitacion.idiomasDialectos(mainTabMenu.var.pID_ALTERNA);
                     });
                 },
                 guardarHabilidad : function(e, from, tabRef){
                     e.preventDefault();
                     objViewCapacitacion.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveCapacitacionHabilidad',from, tabRef, true, function(data){
-                        console.log(data);
+                        fillData.capacitacion.habilidadesAptitudes(mainTabMenu.var.pID_ALTERNA);
                     });
                 }
             }

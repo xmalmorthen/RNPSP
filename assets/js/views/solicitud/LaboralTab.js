@@ -103,8 +103,6 @@ var objViewLaboral = {
 
         mainTabMenu.actions.changeTab();        
 
-        objViewLaboral.vars.general.init = true;
-
         $('#myTabContent').LoadingOverlay("hide");
 
         if (callback){
@@ -112,6 +110,8 @@ var objViewLaboral = {
                 callback();
             }
         }
+
+        objViewLaboral.vars.general.init = true;
     },
     events : {
         click : {
@@ -121,29 +121,24 @@ var objViewLaboral = {
                 guardarAdscripcion : function(e, from, tabRef){
                     e.preventDefault();
                     objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralAdscripcion',from, tabRef, true, function(data){
-                        console.log(data);
-                        debugger;
+                        fillData.laboral.adscripcionActual(mainTabMenu.var.pID_ALTERNA);
                     });
                 },
                 guardarEmpleo : function(e, from, tabRef){
                     e.preventDefault();
                     objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralEmpleo',from, tabRef, true, function(data){
-                        console.log(data);
-                        debugger;
+                        fillData.laboral.empleosDiversos(mainTabMenu.var.pID_ALTERNA);
                     });
                 },
                 guardarActitud : function(e, from, tabRef){
                     e.preventDefault();
                     objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralActitud',from, tabRef, false, function(data){
-                        console.log(data);
-                        debugger;
                     });
                 },
                 guardarComision : function(e, from, tabRef){
                     e.preventDefault();
                     objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralComision',from, tabRef, true, function(data){
-                        console.log(data);
-                        debugger;
+                        fillData.laboral.comisiones(mainTabMenu.var.pID_ALTERNA);
                     });
                 }
             }

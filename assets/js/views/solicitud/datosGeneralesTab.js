@@ -60,7 +60,7 @@ var objViewDatosGenerales = {
         
         // INIT DATATABLE
         objViewDatosGenerales.vars.datosGenerales.tables.tableDatospersonales.dom = $('#tableDatospersonales');
-        objViewDatosGenerales.vars.datosGenerales.tables.tableDatospersonales.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableDatospersonales.dom.DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});        
+        objViewDatosGenerales.vars.datosGenerales.tables.tableDatospersonales.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableDatospersonales.dom.DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}});
         objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.dom = $('#tableDesarrollo');
         objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.dom.DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"}, "order": [[ 0, "desc" ]]});
         objViewDatosGenerales.vars.datosGenerales.tables.tableDomicilio.dom = $('#tableDomicilio');
@@ -69,7 +69,7 @@ var objViewDatosGenerales = {
         objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.dom.DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"order": [[ 0, "desc" ]]});        
         objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.dom = $('#tableSocioeconomicos');
         objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.dom.DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"order": [[ 0, "desc" ]]});                
-        
+
         // INIT ELEMENTS
         // FORMS
         objViewDatosGenerales.vars.datosGenerales.forms.Datos_personales_form = $('#Datos_personales_form');
@@ -128,8 +128,6 @@ var objViewDatosGenerales = {
 
         mainTabMenu.actions.changeTab();
 
-        objViewDatosGenerales.vars.general.init = true;
-
         $('#myTabContent').LoadingOverlay("hide");
 
         if (callback){
@@ -137,6 +135,8 @@ var objViewDatosGenerales = {
                 callback();
             }
         }
+
+        objViewDatosGenerales.vars.general.init = true;
     },
     events : {
         click : {
@@ -195,21 +195,18 @@ var objViewDatosGenerales = {
                 guardarDesarrolloacademico : function(e, from, tabRef){
                     e.preventDefault();
                     objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDesarrolloacademico',from, tabRef, true, function(data,form){
-                        objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.obj.clear().draw();
                         fillData.datosGenerales.desarrolloAcademico(mainTabMenu.var.pID_ALTERNA);                        
                     });
                 },
                 guardarDomicilio : function(e, from, tabRef){
                     e.preventDefault();
                     objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDomicilio',from, tabRef, true, function(data,form){
-                        objViewDatosGenerales.vars.datosGenerales.tables.tableDomicilio.obj.clear().draw();
                         fillData.datosGenerales.domicilio(mainTabMenu.var.pID_ALTERNA);
                     });
                 },
                 guardarReferencia : function(e, from, tabRef){
                     e.preventDefault();
                     objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesReferencia',from, tabRef, true, function(data,form){
-                        objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.obj.clear().draw();
                         fillData.datosGenerales.referencias(mainTabMenu.var.pID_ALTERNA);
                     });
                 },
@@ -223,7 +220,6 @@ var objViewDatosGenerales = {
                 guardarDependiente : function(e, from, tabRef){
                     e.preventDefault();
                     objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDependiente',from, tabRef, true, function(data,form){
-                        objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.obj.clear().draw();
                         fillData.datosGenerales.dependientesEconomicos(mainTabMenu.var.pID_ALTERNA);
                     });
                 }
