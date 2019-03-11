@@ -60,6 +60,11 @@ var mainTabMenu = {
             var nextTab = $('#mainContainerTab li.nav-item a.nav-link.active').closest('li').next('li.nav-item').find('a.nav-link');
             nextTab.tab('show'); 
         });
+
+        $('form').on('reset', function(e){
+            $(this).find('select').val(null).trigger('change.select2').trigger('change');
+        });
+
     },
     tab : {
         change : function(e){

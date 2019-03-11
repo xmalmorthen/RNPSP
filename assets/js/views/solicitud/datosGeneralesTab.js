@@ -179,11 +179,11 @@ var objViewDatosGenerales = {
                             objViewDatosGenerales.actions.ajax.callResponseValidations(form,data, from, tabRef, function(data){
                                 console.log(data);
                                 debugger;
+                                $.LoadingOverlay("hide");
                             });
                         }).fail(function (err) {
                             objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                            
                         }).always(function () {
-                            $.LoadingOverlay("hide");
                             MyCookie.session.reset();
                         });
 
@@ -194,35 +194,35 @@ var objViewDatosGenerales = {
                 },
                 guardarDesarrolloacademico : function(e, from, tabRef){
                     e.preventDefault();
-                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDesarrolloacademico',from, tabRef, function(data){
+                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDesarrolloacademico',from, tabRef, true, function(data,form){
                         objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.obj.clear().draw();
-                        fillData.datosGenerales.desarrolloAcademico(mainTabMenu.var.pID_ALTERNA);
+                        fillData.datosGenerales.desarrolloAcademico(mainTabMenu.var.pID_ALTERNA);                        
                     });
                 },
                 guardarDomicilio : function(e, from, tabRef){
                     e.preventDefault();
-                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDomicilio',from, tabRef, function(data){
+                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDomicilio',from, tabRef, true, function(data,form){
                         objViewDatosGenerales.vars.datosGenerales.tables.tableDomicilio.obj.clear().draw();
                         fillData.datosGenerales.domicilio(mainTabMenu.var.pID_ALTERNA);
                     });
                 },
                 guardarReferencia : function(e, from, tabRef){
                     e.preventDefault();
-                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesReferencia',from, tabRef, function(data){
+                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesReferencia',from, tabRef, true, function(data,form){
                         objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.obj.clear().draw();
                         fillData.datosGenerales.referencias(mainTabMenu.var.pID_ALTERNA);
                     });
                 },
                 guardarSocioeconomico : function(e, from, tabRef){
                     e.preventDefault();
-                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesSocioeconomico',from, tabRef, function(data){
+                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesSocioeconomico',from, tabRef, false, function(data){
                         console.log(data);
                         debugger;
                     });
                 },
                 guardarDependiente : function(e, from, tabRef){
                     e.preventDefault();
-                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDependiente',from, tabRef, function(data){
+                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDependiente',from, tabRef, true, function(data,form){
                         objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.obj.clear().draw();
                         fillData.datosGenerales.dependientesEconomicos(mainTabMenu.var.pID_ALTERNA);
                     });
@@ -275,7 +275,7 @@ var objViewDatosGenerales = {
             $("#" + eTab.relatedTarget.id).trigger('click');
         },
         ajax : {
-            callResponseValidations : function(form, data, from, tabRef, callback){
+            callResponseValidations : function(form, data, from, tabRef, resetForm, callback){
                 try{
                     if (!data) 
                         throw new Error('Respuesta inesperada, favor de intentarlo de nuevo.');
@@ -286,6 +286,10 @@ var objViewDatosGenerales = {
                     if (!data.results.status)
                         throw new Error(data.results.message ? data.results.message : 'Error desconocido.' );
                     
+                    if (resetForm) {
+                        form[0].reset();                        
+                    }
+
                     form.removeData('hasChanged').removeData('hasDiscardChanges').removeData('withError');
                     form.data('hasSaved',true);
 
@@ -300,8 +304,9 @@ var objViewDatosGenerales = {
 
                     if (callback) 
                         if ($.isFunction( callback ))
-                            callback(data); 
-
+                            callback(data,form); 
+                    
+                    $.LoadingOverlay("hide");
                 }catch(err) {
                     objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);
                 }
@@ -327,7 +332,7 @@ var objViewDatosGenerales = {
                 }
                 dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef,'<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
             },
-            generateRequest: function($this,callUrl,from,tabRef, callback){                
+            generateRequest: function($this,callUrl,from,tabRef, resetForm, callback){                
                 var form = $this.parents('form:first');
                 form.closeAlert({alertType : 'alert-danger'});
                 
@@ -350,11 +355,10 @@ var objViewDatosGenerales = {
                     
                     $.post(callUrl,model,
                     function (data) {  
-                        objViewDatosGenerales.actions.ajax.callResponseValidations(form,data, from, tabRef, callback);
+                        objViewDatosGenerales.actions.ajax.callResponseValidations(form,data, from, tabRef, resetForm, callback);
                     }).fail(function (err) {
                         objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                            
-                    }).always(function () {
-                        $.LoadingOverlay("hide");
+                    }).always(function () {                        
                         MyCookie.session.reset();
                     });
 
