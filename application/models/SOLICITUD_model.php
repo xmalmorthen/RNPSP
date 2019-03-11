@@ -719,7 +719,6 @@ class SOLICITUD_model extends MY_Model
   # Opcion Nueva Solicitud - Ficha Laboral - Pestaña Empleos DIversos
   # Boton Guardar Empleo.
   # sp_B2_LAB_addEmpleoAdicional - Agrega la información de los empleos del elemento en general
-
   public function  sp_B2_LAB_addEmpleoAdicional($model){
     $this->arrayToPost($model);
     $this->load->library('form_validation');
@@ -767,5 +766,127 @@ class SOLICITUD_model extends MY_Model
     }
     return $this->response;
   }
+
+  # Opcion Nueva Solicitud - Ficha Laboral - Pestaña Empleos DIversos
+  # Grid -  Empleos.
+  # sp_B2_LAB_getEmpleoAdicional - Obtiene la información de los empleos del elemento en general
+  public function sp_B2_LAB_getEmpleoAdicional($idAlterna = null,$curp = null){
+    $this->procedure('sp_B2_LAB_getEmpleoAdicional');
+    $this->addParam('pCURP',$curp,'N');
+    $this->addParam('pID_ALTERNA',$idAlterna);
+
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_list($query);
+
+    if($response === FALSE){
+      $this->response['status'] = 0;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    }else{
+      if(count($response) > 0){
+        $this->response['status'] = 1;
+        $this->response['data'] = $this->try_result($response);
+      }else{
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron resultados.';
+      }
+    }
+    return $this->response;
+  }
+
+  # ****************************************************************************************************************
+  # Actitudes hacia el empleo
+  # ****************************************************************************************************************
+  # Opcion Nueva Solicitud - Ficha Laboral - Pestaña Actitutes hacia el empleo
+  # Boton Guardar Actitud.
+  # sp_B2_LAB_addActitud - Agrega la información de las actitudes hacia el empleo por parte del elemento.
+  public function  sp_B2_LAB_addActitud($model){
+
+    $this->arrayToPost($model);
+    $this->load->library('form_validation');
+
+    $this->addParam('pID_ALTERNA','pID_ALTERNA','',array('rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pID_ESTADO_EMISOR',null);
+    $this->addParam('pID_EMISOR',null);
+
+    $this->addParam('pELECCION_EMPLEO','pELECCION_EMPLEO','N',array('name'=>'¿Por qué eligió éste empleo?','rule'=>'trim|max_length[250]'));
+    $this->addParam('pRAZON_NO_RECON','pRAZON_NO_RECON','N',array('name'=>'¿Razones por las que no ha obtenido un reconocimiento?','rule'=>'trim|max_length[150]'));
+    $this->addParam('pPUESTO','pPUESTO_ACTITUDES_EMPLEO','N',array('name'=>'¿Qué puesto desearía tener?','rule'=>'trim|max_length[150]'));
+    $this->addParam('pCONOCE_REG_RECON','pCONOCE_REG_RECON','N',array('name'=>'¿Conoce el reglamento de los reconocimientos?','rule'=>'trim|max_length[1]'));
+    $this->addParam('pTIEMPO_ASCENDER','pTIEMPO_ASCENDER','N',array('name'=>'¿En qué tiempo desea ascender?','rule'=>'trim|max_length[20]'));
+    $this->addParam('pAREA','pAREA','N',array('name'=>'¿En qué Área o departamento desearía estar?','rule'=>'trim|max_length[150]'));
+    $this->addParam('pCAPACITACION','pCAPACITACION','N',array('name'=>'¿Qué capacitación le gustaría recibir?','rule'=>'trim|max_length[100]'));
+    $this->addParam('pCONOCE_REG_ASCENSO','pCONOCE_REG_ASCENSO','N',array('name'=>'¿Conoce la reglamentación de los ascensos?','rule'=>'trim|max_length[1]'));
+    $this->addParam('pRAZON_NO_ASCENSO',null,'N',array('name'=>'¿Razones por las que no ha obtenido un ascenso?','rule'=>'trim|max_length[150]'));//ERROR CAMPO REPETIDO
+    if ($this->form_validation->run() === true) {
+      $this->procedure('sp_B2_LAB_addActitud');
+      $this->iniParam('txtError','varchar','250');
+      $this->iniParam('msg','varchar','80');
+      $this->iniParam('tranEstatus','int');
+      Utils::pre($this->build_query());
+      $query = $this->db->query($this->build_query());
+      $response = $this->query_row($query);
+      if($response == FALSE){
+        $this->response['status'] = false;
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      }else{
+        $this->response['status'] = (bool)$response['tranEstatus'];
+        $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
+      }
+    } else {
+      $this->load->helper('html');
+      $this->response['status'] = false;
+      $message = $this->form_validation->error_array();
+      $this->response['message'] = ul($message);
+      $this->response['validation'] = $message;
+    }
+    return $this->response;
+  }
+  
+  # ****************************************************************************************************************
+  # Comisiones
+  # ****************************************************************************************************************
+  # Opcion Nueva Solicitud - Ficha Laboral - Pestaña Comisiones
+  # Boton Guardar Comision.
+  # sp_B2_LAB_addComision - Agrega la información referente a comisiones asociadas al elemento.
+  public function  sp_B2_LAB_addComision($model){
+
+    $this->arrayToPost($model);
+    $this->load->library('form_validation');
+
+    $this->addParam('pID_ALTERNA','pID_ALTERNA','',array('rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pID_ESTADO_EMISOR',null);
+    $this->addParam('pID_EMISOR',null);
+
+    $this->addParam('pID_TIPO_COMISION','ID_TIPO_COMISION','',array('name'=>'Tipo de comisión','rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pID_MOTIVO','pID_MOTIVO','',array('name'=>'Motivo','rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pFECHA_INICIO','pFECHA_INICIO_COMISIONES','',array('name'=>'Fecha de inicio','rule'=>'trim|required|max_length[10]'));
+    $this->addParam('pFECHA_TERMINO','pFECHA_TERMINO_COMISIONES','',array('name'=>'Fecha de término','rule'=>'trim|required|max_length[10]'));
+    $this->addParam('pDESTINO','pDESTINO','N',array('name'=>'Destino','rule'=>'trim|required|max_length[250]'));
+    if ($this->form_validation->run() === true) {
+      $this->procedure('sp_B2_LAB_addComision');
+      $this->iniParam('txtError','varchar','250');
+      $this->iniParam('msg','varchar','80');
+      $this->iniParam('tranEstatus','int');
+      $query = $this->db->query($this->build_query());
+      $response = $this->query_row($query);
+      if($response == FALSE){
+        $this->response['status'] = false;
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      }else{
+        $this->response['status'] = (bool)$response['tranEstatus'];
+        $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
+      }
+    } else {
+      $this->load->helper('html');
+      $this->response['status'] = false;
+      $message = $this->form_validation->error_array();
+      $this->response['message'] = ul($message);
+      $this->response['validation'] = $message;
+    }
+    return $this->response;
+  }
+
+
 
 }

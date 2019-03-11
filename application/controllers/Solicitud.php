@@ -465,12 +465,9 @@
 
 				$model = [];
 				parse_str($_POST["model"], $model);
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_B2_LAB_addActitud($model);
 				
-				//TODO: Tamata - Implementar
-
-				$responseModel['status'] = false;
-				$responseModel['message'] = 'Método no implementado';				
-				$responseModel['data'] = [];
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
@@ -501,12 +498,8 @@
 
 				$model = [];
 				parse_str($_POST["model"], $model);
-				
-				//TODO: Tamata - Implementar
-
-				$responseModel['status'] = false;
-				$responseModel['message'] = 'Método no implementado';				
-				$responseModel['data'] = [];
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_B2_LAB_addComision($model);
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
@@ -1117,9 +1110,10 @@
 		
 		/*
 		* XMAL obtener datos pestaña "Laboral" -> "Adscripción actual"
-		* get sp_B1_getAdscripcion pID_ALTERNA,pCURP
+		* get getAdscripcion pID_ALTERNA,pCURP
+		# ejemplo: http://localhost/SGP/Solicitud/getAdscripcion?pID_ALTERNA=56
 		*/
-		public function sp_B1_getAdscripcion(){
+		public function getAdscripcion(){
 			if (! $this->input->is_ajax_request()) {
 				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
 			}
@@ -1128,6 +1122,33 @@
 			try {
 				$this->load->model('SOLICITUD_model');
 				$responseModel = $this->SOLICITUD_model->sp_B1_getAdscripcion($idAlterna,$curp);
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+
+		/*
+		* XMAL obtener datos pestaña "Laboral" -> "Empleos diversos"
+		* get sp_B1_getAdscripcion pID_ALTERNA,pCURP
+		# EJEMPLO: http://localhost/SGP/Solicitud/getEmpleoAdicional?pID_ALTERNA=56
+		*/
+		public function getEmpleoAdicional(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+			$idAlterna = $this->input->get('pID_ALTERNA');
+			$curp = $this->input->get('pCURP');
+			try {
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_B2_LAB_getEmpleoAdicional($idAlterna,$curp);
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
