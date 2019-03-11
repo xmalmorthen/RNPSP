@@ -565,6 +565,13 @@ var fillData = {
                         tableObj.row.add( row ).draw( false );
                     });
                 }
+
+                //Boton para refrescar datatable
+                var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
+                if (btnRefreshRef.find('.refreshTable').length == 0)
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3' data-call='fillData.laboral.adscripcionActual(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+
+
                 tableRef.LoadingOverlay("hide");
             })
             .catch( (err) => {
@@ -589,6 +596,12 @@ var fillData = {
                         tableObj.row.add( row ).draw( false );
                     });
                 }
+
+                //Boton para refrescar datatable
+                var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
+                if (btnRefreshRef.find('.refreshTable').length == 0)
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3' data-call='fillData.laboral.empleosDiversos(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+
                 tableRef.LoadingOverlay("hide");
             })
             .catch( (err) => {
@@ -637,6 +650,12 @@ var fillData = {
                         tableObj.row.add( row ).draw( false );
                     });
                 }
+
+                //Boton para refrescar datatable
+                var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
+                if (btnRefreshRef.find('.refreshTable').length == 0)
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3' data-call='fillData.laboral.comisiones(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+
                 tableRef.LoadingOverlay("hide");
             })
             .catch( (err) => {
@@ -667,6 +686,12 @@ var fillData = {
                         tableObj.row.add( row ).draw( false );
                     });
                 }
+
+                //Boton para refrescar datatable
+                var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
+                if (btnRefreshRef.find('.refreshTable').length == 0)
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3' data-call='fillData.capacitacion.idiomasDialectos(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+
                 tableRef.LoadingOverlay("hide");
             })
             .catch( (err) => {
@@ -691,13 +716,19 @@ var fillData = {
                         tableObj.row.add( row ).draw( false );
                     });
                 }
+
+                //Boton para refrescar datatable
+                var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
+                if (btnRefreshRef.find('.refreshTable').length == 0)
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3' data-call='fillData.capacitacion.habilidadesAptitudes(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+
                 tableRef.LoadingOverlay("hide");
             })
             .catch( (err) => {
                 tableRef.setError(err.statusText);
                 tableRef.LoadingOverlay("hide");
             });
-        },
+        }
     }
 }
 
