@@ -1024,6 +1024,33 @@ class SOLICITUD_model extends MY_Model
     }
     return $this->response;
   }
+
+  # Opcion Nueva Solicitud - Ficha Capacitacion - Pestaña Habilidad y/o actitud
+  # Grid - habilidad y/o actitud.
+  # sp_B2_CAPS_getHabilidadAptitud - Obtiene los datos sobre habilidades y aptitudes del elemento.
+  public function sp_B2_CAPS_getHabilidadAptitud($idAlterna = null,$curp = null){
+    $this->procedure('sp_B2_CAPS_getHabilidadAptitud');
+    $this->addParam('pCURP',$curp,'N');
+    $this->addParam('pID_ALTERNA',$idAlterna);
+
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_list($query);
+
+    if($response === FALSE){
+      $this->response['status'] = 0;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    }else{
+      if(count($response) > 0){
+        $this->response['status'] = 1;
+        $this->response['data'] = $this->try_result($response);
+      }else{
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron resultados.';
+      }
+    }
+    return $this->response;
+  }
   
 
 }

@@ -1205,5 +1205,31 @@
 			echo json_encode( [ 'results' => $responseModel ] );
 			exit;
 		}
+		/*
+		* XMAL obtener datos pestaña "Laboral" -> "Comisiones"
+		* get getHabilidadAptitud pID_ALTERNA,pCURP
+		# EJEMPLO: http://localhost/SGP/Solicitud/getHabilidadAptitud?pID_ALTERNA=56
+		*/
+		public function getHabilidadAptitud(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+			$idAlterna = $this->input->get('pID_ALTERNA');
+			$curp = $this->input->get('pCURP');
+			try {
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_B2_CAPS_getHabilidadAptitud($idAlterna,$curp);
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
 
     }
