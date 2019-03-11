@@ -721,54 +721,36 @@ class SOLICITUD_model extends MY_Model
   # sp_B2_LAB_addEmpleoAdicional - Agrega la información de los empleos del elemento en general
 
   public function  sp_B2_LAB_addEmpleoAdicional($model){
-    Utils::pre($model);
     $this->arrayToPost($model);
     $this->load->library('form_validation');
 
     $this->addParam('pID_ALTERNA','pID_ALTERNA','',array('rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pID_ESTADO_EMISOR',null);
     $this->addParam('pID_EMISOR',null);
-    $this->addParam('pID_DOC_BAJA',null);//NO LO ENTONTRE EN EL FORMULARIO
+
+    $this->addParam('pFECHA_INICIO','pFECHA_INICIO_EMPLEOS_DIVERSOS','',array('name'=>'Fecha de ingreso','rule'=>'trim|required|max_length[10]'));
+    $this->addParam('pFECHA_TERMINO','pFECHA_TERMINO_EMPLEOS_DIVERSOS','',array('name'=>'Fecha de separación','rule'=>'trim|required|max_length[10]'));
     $this->addParam('pID_ENTIDAD','pID_ENTIDAD_EMPLEOS_DIVERSOS','',array('name'=>'Estado','rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pID_MUNICIPIO','pID_MUNICIPIO_EMPLEOS_DIVERSOS','',array('name'=>'Municipio','rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pEMPRESA','pEMPRESA','N',array('name'=>'Empresa','rule'=>'trim|required|max_length[100]'));
+    $this->addParam('pDESCRIP_FUNCION','pDESCRIP_FUNCION','N',array('name'=>'Funciones','rule'=>'trim|max_length[100]'));
+    $this->addParam('pDESCRIP_AREA','pDESCRIP_AREA','N',array('name'=>'Área o departamento','rule'=>'trim|max_length[50]'));
+    $this->addParam('pCALLE_Y_NUM_EMP','pCALLE_Y_NUM_EMPLEOS_DIVERSOS','N',array('name'=>'Calle y número','rule'=>'trim|max_length[60]'));
+    $this->addParam('pCOLONIA_EMP','pCOLONIA_EMPLEOS_DIVERSOS','',array('name'=>'Colonia/Localidad','rule'=>'trim|max_length[60]'));
+    $this->addParam('pCP_EMP','pCP_EMP_EMPLEOS_DIVERSOS','N',array('name'=>'Código postal','rule'=>'trim|required|numeric|max_length[5]'));
+    $this->addParam('pNUM_TELEFONICO','pNUM_TELEFONICO','N',array('name'=>'Número telefónico','rule'=>'trim|required|max_length[20]'));
     $this->addParam('pID_MOTIVO_MOV_LAB','ID_MOTIVO_MOV_LAB','',array('name'=>'Motivo de separación','rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pID_TIPO_MOV_LAB','pID_TIPO_MOV_LAB','',array('name'=>'Tipo de separación','rule'=>'trim|required|numeric|max_length[10]'));
-    $this->addParam('pID_AREA','pID_AREA','',array('name'=>'Área o departamento','rule'=>'trim|required|numeric|max_length[10]'));
-    $this->addParam('pID_PUESTO',null); //NO LO ENTONTRE EN EL FORMULARIO
-    $this->addParam('pID_INSTITUCION','pEMPRESA','',array('name'=>'Empresa','rule'=>'trim|required|numeric|max_length[10]'));
-    $this->addParam('pID_TIPO_CONTRATO',null); //NO LO ENTONTRE EN EL FORMULARIO
-    $this->addParam('pFECHA_INGRESO','pFECHA_INICIO_EMPLEOS_DIVERSOS','',array('name'=>'Fecha de ingreso','rule'=>'trim|required|max_length[10]'));
-    $this->addParam('pESPECIALIDAD',null); //NO LO ENTONTRE EN EL FORMULARIO
-    $this->addParam('pRANGO',null); //NO LO ENTONTRE EN EL FORMULARIO
-    $this->addParam('pSUELDO_BASE','pSUELDO_EMPLEOS_DIVERSOS','',array('name'=>'Ingreso neto (mensual)','rule'=>'trim|numeric|max_length[10]'));
-    $this->addParam('pID_NIVEL_MANDO',null); //NO LO ENTONTRE EN EL FORMULARIO
-    $this->addParam('pCOMPENSACION',null); //NO LO ENTONTRE EN EL FORMULARIO
-    $this->addParam('pNUMERO_PLACA',null); //NO LO ENTONTRE EN EL FORMULARIO
-    $this->addParam('pNUMERO_EXPEDIENTE',null);
-    $this->addParam('pID_TIPO_BAJA','pID_TIPO_MOV_LAB','',array('name'=>'Tipo de separación','rule'=>'trim|required|numeric|max_length[10]'));
-    $this->addParam('pFECHA_BAJA','Fecha de separación','',array('rule'=>'trim|required|max_length[10]'));
-    $this->addParam('pOBSERVACION_BAJA','pDESCRIPCION','N',array('name'=>'Descripción','rule'=>'trim|max_length[100]'));
-    $this->addParam('pFUNCIONES','pDESCRIP_FUNCION','N',array('name'=>'Funciones','rule'=>'trim|max_length[100]'));
-    $this->addParam('pNUMERO_EMPLEADO','pNUM_TELEFONICO','N',array('name'=>'Número telefónico','rule'=>'trim'));
-    $this->addParam('pID_CATEGORIA_PUEST',null);
-    $this->addParam('pID_JERARQUIA_PUEST',null);
-    $this->addParam('pID_FUNCION_PUESTO',null); //NO LO ENCONTRE EN EL FORMULARIO
-    $this->addParam('pID_AMBITO_PUESTO',null); //NO LO ENCONTRE EN EL FORMULARIO
-    $this->addParam('pDIVISION',null); //NO LO ENCONTRE EN EL FORMULARIO
-    $this->addParam('pID_JEFE',null); //NO LO ENCONTRE EN EL FORMULARIO
-
+    $this->addParam('pSUELDO','pSUELDO_EMPLEOS_DIVERSOS','',array('name'=>'Ingreso neto (mensual)','rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pDESCRIPCION','pDESCRIPCION','N',array('name'=>'Descripción','rule'=>'trim|max_length[150]'));
     if ($this->form_validation->run() === true) {
-
       $this->procedure('sp_B2_LAB_addEmpleoAdicional');
       $this->iniParam('txtError','varchar','250');
       $this->iniParam('msg','varchar','80');
       $this->iniParam('tranEstatus','int');
-      //Cannot insert the value NULL into column 'ID_ESTADO_EMISOR', table 'zzhpregpersonalc4.zzhpregpersc4.EMPLEOS_SEG'; column does not allow nulls. INSERT fails. (515)
-      Utils::pre($this->build_query()); 
 
       $query = $this->db->query($this->build_query());
       $response = $this->query_row($query);
-
       if($response == FALSE){
         $this->response['status'] = false;
         $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
@@ -785,7 +767,5 @@ class SOLICITUD_model extends MY_Model
     }
     return $this->response;
   }
-
-  
 
 }
