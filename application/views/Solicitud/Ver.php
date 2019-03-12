@@ -12,7 +12,7 @@
                 <li class="nav-item">
                     <a class="nav-link" id="Capacitacion-tab" data-toggle="tab" href="#Capacitacion" role="tab" aria-controls="Capacitacion" aria-selected="false" data-finish='false'>Capacitación</a>
                 </li>                            
-                <?php //if (verificaPermiso(15) == true) 
+                <?php //if (verificaPermiso(25) == true) 
                 { ?>
                 <li class="nav-item">
                     <a class="nav-link" id="Identificacion-tab" data-toggle="tab" href="#Identificacion" role="tab" aria-controls="Identificacion" aria-selected="false" data-finish='false'>Identificación</a>
@@ -47,7 +47,7 @@
                 <?php echo $this->load->view('Solicitud/tabsVer/Capacitacion/contenidoCapacitacion',null,TRUE) ?>
             </div>
         </div>
-        <?php //if (verificaPermiso(15) == true) 
+        <?php //if (verificaPermiso(25) == true) 
         { ?>
         <div class="tab-pane fade" id="Identificacion" role="tabpanel" aria-labelledby="Tab3-tab">
             <?php echo $this->load->view('Solicitud/tabsVer/Identificacion/mnuTabIdentificacion',null,TRUE) ?>
