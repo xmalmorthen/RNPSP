@@ -596,12 +596,8 @@
 
 				$model = [];
 				parse_str($_POST["model"], $model);
-				
-				//TODO: Tamata - Implementar
-
-				$responseModel['status'] = false;
-				$responseModel['message'] = 'Método no implementado';				
-				$responseModel['data'] = [];
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_B2_MF_addFiliacion($model);
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
@@ -1180,7 +1176,7 @@
 			exit;
 		}
 		/*
-		* XMAL obtener datos pestaña "Laboral" -> "Comisiones"
+		* XMAL obtener datos pestaña "Capacitación" -> "Idiomas y/o dialectos"
 		* get getIdiomaHablado pID_ALTERNA,pCURP
 		# EJEMPLO: http://localhost/SGP/Solicitud/getIdiomaHablado?pID_ALTERNA=56
 		*/
@@ -1206,7 +1202,7 @@
 			exit;
 		}
 		/*
-		* XMAL obtener datos pestaña "Laboral" -> "Comisiones"
+		* XMAL obtener datos pestaña "Capacitación" -> "Habilidades y/o actitudes"
 		* get getHabilidadAptitud pID_ALTERNA,pCURP
 		# EJEMPLO: http://localhost/SGP/Solicitud/getHabilidadAptitud?pID_ALTERNA=56
 		*/
@@ -1219,6 +1215,32 @@
 			try {
 				$this->load->model('SOLICITUD_model');
 				$responseModel = $this->SOLICITUD_model->sp_B2_CAPS_getHabilidadAptitud($idAlterna,$curp);
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+		/*
+		* XMAL obtener datos pestaña "Laboral" -> "Actitudes hacia el empleo"
+		* get getHabilidadAptitud pID_ALTERNA,pCURP
+		# EJEMPLO: http://localhost/SGP/Solicitud/getActitud?pID_ALTERNA=56
+		*/
+		public function getActitud(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+			$idAlterna = $this->input->get('pID_ALTERNA');
+			$curp = $this->input->get('pCURP');
+			try {
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_B2_LAB_getActitud($idAlterna,$curp);
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));

@@ -823,7 +823,7 @@ class SOLICITUD_model extends MY_Model
       $this->iniParam('txtError','varchar','250');
       $this->iniParam('msg','varchar','80');
       $this->iniParam('tranEstatus','int');
-      Utils::pre($this->build_query());
+
       $query = $this->db->query($this->build_query());
       $response = $this->query_row($query);
       if($response == FALSE){
@@ -839,6 +839,30 @@ class SOLICITUD_model extends MY_Model
       $message = $this->form_validation->error_array();
       $this->response['message'] = ul($message);
       $this->response['validation'] = $message;
+    }
+    return $this->response;
+  }
+
+  public function sp_B2_LAB_getActitud($idAlterna = null,$curp = null){
+    $this->procedure('sp_B2_LAB_getActitud');
+    $this->addParam('pCURP',$curp,'N');
+    $this->addParam('pID_ALTERNA',$idAlterna);
+
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_list($query);
+
+    if($response === FALSE){
+      $this->response['status'] = 0;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    }else{
+      if(count($response) > 0){
+        $this->response['status'] = 1;
+        $this->response['data'] = $this->try_result($response);
+      }else{
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron resultados.';
+      }
     }
     return $this->response;
   }
@@ -1048,6 +1072,91 @@ class SOLICITUD_model extends MY_Model
         $this->response['status'] = 0;
         $this->response['message'] = 'No se encontraron resultados.';
       }
+    }
+    return $this->response;
+  }
+
+  # ****************************************************************************************************************
+  # Media filiación
+  # ****************************************************************************************************************
+  # Opcion Nueva Solicitud - Ficha Identificación- Pestaña Media Filiacion
+  # Boton Guardar Media filiacion.
+  # sp_B2_MF_addFiliacion - Agrega la información de la media filiación del elemento.
+  public function  sp_B2_MF_addFiliacion($model){
+
+    $this->arrayToPost($model);
+    $this->load->library('form_validation');
+
+    $this->addParam('pID_ALTERNA','pID_ALTERNA','',array('rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pID_ESTADO_EMISOR',null);
+    $this->addParam('pID_EMISOR',null);
+
+    $this->addParam('pCOMPLEXION','pCOMPLEXION','',array('name'=>'Complexión','rule'=>'trim|max_length[10]'));
+    $this->addParam('pCOLOR_PIEL','pCOLOR_PIEL','',array('name'=>'Color de piel','rule'=>'trim|max_length[10]'));
+    $this->addParam('pCARA','pCARA','',array('name'=>'Cara','rule'=>'trim|max_length[10]'));//DIFERENTE
+    $this->addParam('pCABELLO_CANTIDAD','pCABELLO_CANTIDAD','',array('name'=>'Cantidad','rule'=>'trim|max_length[10]'));
+    $this->addParam('pCABELLO_COLOR','pCABELLO_COLOR','',array('name'=>'Color','rule'=>'trim|max_length[10]'));
+    $this->addParam('pCABELLO_FORMA','pCABELLO_FORMA','',array('name'=>'Forma','rule'=>'trim|max_length[10]'));
+    $this->addParam('pCABELLO_CALVICIE','pCABELLO_CALVICIE','',array('name'=>'Calvicie','rule'=>'trim|max_length[10]'));
+    $this->addParam('pCABELLO_IMPLANTAC','pCABELLO_IMPLANTAC','',array('name'=>'Implantación','rule'=>'trim|max_length[10]'));
+    $this->addParam('pFRENTE_ALTURA','pFRENTE_ALTURA','',array('name'=>'Altura','rule'=>'trim|max_length[10]'));
+    $this->addParam('pFRENTE_INCLINACION','pFRENTE_INCLINACION','',array('name'=>'Inclinación','rule'=>'trim|max_length[10]'));
+    $this->addParam('pFRENTE_ANCHO','pFRENTE_ANCHO','',array('name'=>'Ancho','rule'=>'trim|max_length[10]'));
+    $this->addParam('pCEJAS_DIRECCION','pCEJAS_DIRECCION','',array('name'=>'Dirección','rule'=>'trim|max_length[10]'));
+    $this->addParam('pCEJAS_IMPLANTAC','pCEJAS_IMPLANTAC','',array('name'=>'Implantación','rule'=>'trim|max_length[10]'));
+    $this->addParam('pCEJAS_FORMA','pCEJAS_FORMA','',array('name'=>'Forma','rule'=>'trim|max_length[10]'));
+    $this->addParam('pCEJAS_TAMANO','pCEJAS_TAMANO','',array('name'=>'Tamaño','rule'=>'trim|max_length[10]'));
+    $this->addParam('pOJOS_COLOR','pOJOS_COLOR','',array('name'=>'Color','rule'=>'trim|max_length[10]'));
+    $this->addParam('pOJOS_FORMA','pOJOS_FORMA','',array('name'=>'Forma','rule'=>'trim|max_length[10]'));
+    $this->addParam('pOJOS_TAMANO','pOJOS_TAMANO','',array('name'=>'Tamaño','rule'=>'trim|max_length[10]'));
+    $this->addParam('pNARIZ_RAIZ','pNARIZ_RAIZ','',array('name'=>'Raíz','rule'=>'trim|max_length[10]'));//DIFERENTE
+    $this->addParam('pNARIZ_DORSO','pNARIZ_DORSO','',array('name'=>'Dorso','rule'=>'trim|max_length[10]'));
+    $this->addParam('pNARIZ_ANCHO','pNARIZ_ANCHO','',array('name'=>'Ancho','rule'=>'trim|max_length[10]'));
+    $this->addParam('pNARIZ_BASE','pNARIZ_BASE','',array('name'=>'Base','rule'=>'trim|max_length[10]'));
+    $this->addParam('pNARIZ_ALTURA','pNARIZ_ALTURA','',array('name'=>'Altura','rule'=>'trim|max_length[10]'));
+    $this->addParam('pBOCA_TAMANO','pBOCA_TAMANO','',array('name'=>'Tamaño','rule'=>'trim|max_length[10]'));
+    $this->addParam('pBOCA_COMISURAS','pBOCA_COMISURAS','',array('name'=>'Comisuras','rule'=>'trim|max_length[10]'));
+    $this->addParam('pLABIOS_ESPESOR','pLABIOS_ESPESOR','',array('name'=>'Espesor','rule'=>'trim|max_length[10]'));
+    $this->addParam('pLABIOS_ALTURA','pLABIOS_ALTURA','',array('name'=>'Altura naso-labial','rule'=>'trim|max_length[10]'));
+    $this->addParam('pLABIOS_PROMINENCIA','pLABIOS_PROMINENCIA','',array('name'=>'Prominencia','rule'=>'trim|max_length[10]'));
+    $this->addParam('pMENTON_TIPO','pMENTON_TIPO','',array('name'=>'Tipo','rule'=>'trim|max_length[10]'));
+    $this->addParam('pMENTON_FORMA','pMENTON_FORMA','',array('name'=>'Froma','rule'=>'trim|max_length[10]'));
+    $this->addParam('pMENTON_INCLINACION','pMENTON_INCLINACION','',array('name'=>'Inclinación','rule'=>'trim|max_length[10]'));
+    $this->addParam('pOREJA_FORMA','pOREJA_FORMA','',array('name'=>'Forma','rule'=>'trim|max_length[10]'));
+    $this->addParam('pOREJA_ORIGINAL','pOREJA_ORIGINAL','',array('name'=>'Original','rule'=>'trim|max_length[10]'));
+    $this->addParam('pOREJA_HEL_SUP','pOREJA_HEL_SUP','',array('name'=>'Superior','rule'=>'trim|max_length[10]'));
+    $this->addParam('pOREJA_HEL_POST','pOREJA_HEL_POST','',array('name'=>'Posterior','rule'=>'trim|max_length[10]'));
+    $this->addParam('pOREJA_HEL_ADHEREN','pOREJA_HEL_ADHEREN','',array('name'=>'Adherencia','rule'=>'trim|max_length[10]'));
+    $this->addParam('pOREJA_HEL_CONTORNO','pOREJA_HEL_CONTORNO','',array('name'=>'Contorno','rule'=>'trim|max_length[10]'));
+    $this->addParam('pOREJA_LOB_ADHEREN','pOREJA_LOB_ADHEREN','',array('name'=>'Adherencia','rule'=>'trim|max_length[10]'));
+    $this->addParam('pOREJA_LOB_PARTIC','pOREJA_LOB_PARTIC','',array('name'=>'Particularidad','rule'=>'trim|max_length[10]'));
+    $this->addParam('pOREJA_LOB_DIMEN','pOREJA_LOB_DIMEN','',array('name'=>'Dimensión','rule'=>'trim|max_length[10]'));
+    $this->addParam('pSANGRE','pSANGRE','',array('name'=>'Tipo','rule'=>'trim|max_length[10]'));
+    $this->addParam('pFACTOR_RH','pFACTOR_RH','',array('name'=>'Factor RH','rule'=>'trim|max_length[10]'));//NO SE VE EL COMBO
+    $this->addParam('pLENTES','pLENTES','N',array('name'=>'¿Usa anteojos?','rule'=>'trim|max_length[10]'));
+    $this->addParam('pESTATURA','pESTATURA','',array('name'=>'Estatura (cm)','rule'=>'trim|max_length[10]'));//ESTA DIFERENTE
+    $this->addParam('pPESO','pPESO','',array('name'=>'Peso (kg)','rule'=>'trim|max_length[10]'));//p_PESO
+
+    if ($this->form_validation->run() === true) {
+      $this->procedure('sp_B2_MF_addFiliacion');
+      $this->iniParam('txtError','varchar','250');
+      $this->iniParam('msg','varchar','80');
+      $this->iniParam('tranEstatus','int');
+      $query = $this->db->query($this->build_query());
+      $response = $this->query_row($query);
+      if($response == FALSE){
+        $this->response['status'] = false;
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      }else{
+        $this->response['status'] = (bool)$response['tranEstatus'];
+        $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
+      }
+    } else {
+      $this->load->helper('html');
+      $this->response['status'] = false;
+      $message = $this->form_validation->error_array();
+      $this->response['message'] = ul($message);
+      $this->response['validation'] = $message;
     }
     return $this->response;
   }
