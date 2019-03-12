@@ -134,8 +134,8 @@
 					throw new rulesException('Parámetros incorrectos');
 				}
 				
-				$responseModel = false;
-				//TODO: Tamata - Implementar la consulta para obtener datos de registro
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_B1_getPersona($idRef);
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
