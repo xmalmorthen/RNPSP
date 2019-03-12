@@ -377,36 +377,36 @@
                         <button class="btn btn-default btnGuardarSection" id="guardarSenia">Guardar seña</button>
                     </div>
                 </div>
-                <br>
-                <hr>
-                <br>
-                <div class="row">
-                    <div class="col-md-12">
-                            <table id="tableSenasparticulares" class="table display table-striped dt-responsive" style="width:100%">
-                                <thead>
-                                        <th>Id seña</th>
-                                        <th>Tipo de seña</th>
-                                        <th>Lado</th>
-                                        <th>Región</th>
-                                        <th>Vista</th>
-                                        <th>Cantidad</th>
-                                        <th>Descripción</th>
-                                </thead>
-                                <tbody>                                    
-                                </tbody>
-                            </table>
-                        </div>
-                </div>
-                 <input type="hidden" id="pID_ALTERNA_Senas" name="pID_ALTERNA_Senas" value="" >
+                <input type="hidden" id="pID_ALTERNA_Senas" name="pID_ALTERNA_Senas" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Senas" name="pID_ESTADO_EMISOR_Senas" value="" >
                 <input type="hidden" id="pID_EMISOR_Senas" name="pID_EMISOR_Senas" value="" >
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorSeña" data-nexttab="#mediafiliacion-tab">Anterior Ficha</button>
-                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="SiguienteSeña" data-nexttab="#Ficha_fotografica-tab">Siguiente Ficha</button>
-                    </div>
-                </div>
             </form>
+            <br>
+            <hr>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                        <table id="tableSenasparticulares" class="table display table-striped dt-responsive" style="width:100%">
+                            <thead>
+                                    <th>Id seña</th>
+                                    <th>Tipo de seña</th>
+                                    <th>Lado</th>
+                                    <th>Región</th>
+                                    <th>Vista</th>
+                                    <th>Cantidad</th>
+                                    <th>Descripción</th>
+                            </thead>
+                            <tbody>                                    
+                            </tbody>
+                        </table>
+                    </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorSeña" data-nexttab="#mediafiliacion-tab">Anterior Ficha</button>
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="SiguienteSeña" data-nexttab="#Ficha_fotografica-tab">Siguiente Ficha</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -504,33 +504,33 @@
                         <button class="btn btn-default btnGuardarSection" id="guardarRegistrodecadactilar">Guardar registro</button>
                     </div>
                 </div>
-                <br>
-                <hr>
-                <br>
-                <div class="row">
-                    <div class="col-md-12">
-                        <table id="tableRegistrodecadactilar" class="table display table-striped dt-responsive" style="width:100%">
-                            <thead>
-                                    <th>Id registro dactilar</th>
-                                    <th>Dependencia</th>
-                                    <th>Institución</th>
-                                    <th>Fecha de registro</th>
-                            </thead>
-                            <tbody>                                
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                 <input type="hidden" id="pID_ALTERNA_Datos" name="pID_ALTERNA_Datos" value="" >
+                <input type="hidden" id="pID_ALTERNA_Datos" name="pID_ALTERNA_Datos" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Datos" name="pID_ESTADO_EMISOR_Datos" value="" >
                 <input type="hidden" id="pID_EMISOR_Datos" name="pID_EMISOR_Datos" value="" >
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorDecadacticar" data-nexttab="#Ficha_fotografica-tab">Anterior Ficha</button>
-                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteDecadactilar" data-nexttab="#Digitalizacion_de_documento-tab">Siguiente Ficha</button>
-                    </div>
-                </div>
             </form>
+            <br>
+            <hr>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <table id="tableRegistrodecadactilar" class="table display table-striped dt-responsive" style="width:100%">
+                        <thead>
+                                <th>Id registro dactilar</th>
+                                <th>Dependencia</th>
+                                <th>Institución</th>
+                                <th>Fecha de registro</th>
+                        </thead>
+                        <tbody>                                
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorDecadacticar" data-nexttab="#Ficha_fotografica-tab">Anterior Ficha</button>
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteDecadactilar" data-nexttab="#Digitalizacion_de_documento-tab">Siguiente Ficha</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -765,33 +765,35 @@
                         <button class="btn btn-default btnGuardarSection" id='guardarFicha'>Guardar ficha</button>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-12">
-                        <table id="tableFichafotografica" class="table display table-striped dt-responsive" style="width:100%">
-                            <thead>
-                                    <th>Id evaluación</th>
-                                    <th>Tipo de evaluación</th>
-                                    <th>Examen</th>
-                                    <th>Lugar de aplicación</th>
-                                    <th>Fecha de programación</th>
-                                    <th>Fecha de resultado</th>
-                            </thead>
-                            <tbody>                               
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
                 <input type="hidden" id="pID_ALTERNA_Fotografica" name="pID_ALTERNA_Fotografica" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Fotografica" name="pID_ESTADO_EMISOR_Fotografica" value="" >
                 <input type="hidden" id="pID_EMISOR_Fotografica" name="pID_EMISOR_Fotografica" value="" >
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorFotografica" data-nexttab="#Senas_particulares-tab">Anterior Ficha</button>
-                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteFotografica" data-nexttab="#Registro_decadactilar-tab">Siguiente Ficha</button>
-                    </div>
-                </div>
             </form>
+            <br>
+            <hr>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <table id="tableFichafotografica" class="table display table-striped dt-responsive" style="width:100%">
+                        <thead>
+                                <th>Id evaluación</th>
+                                <th>Tipo de evaluación</th>
+                                <th>Examen</th>
+                                <th>Lugar de aplicación</th>
+                                <th>Fecha de programación</th>
+                                <th>Fecha de resultado</th>
+                        </thead>
+                        <tbody>                               
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorFotografica" data-nexttab="#Senas_particulares-tab">Anterior Ficha</button>
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteFotografica" data-nexttab="#Registro_decadactilar-tab">Siguiente Ficha</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -837,33 +839,33 @@
                         <button class="btn btn-default btnGuardarSection" id="guardarDocumento">Guardar documento</button>
                     </div>
                 </div>
-                <br>
-                <hr>
-                <br>
-                <div class="row">
-                    <div class="col-md-12">
-                        <table id="tableDigitalizaciondoc" class="table display table-striped dt-responsive" style="width:100%">
-                            <thead>
-                                    <th>Id documento</th>
-                                    <th>Categoría de documento</th>
-                                    <th>Valor</th>
-                                    <th>Fecha documento</th>
-                                    <th>Estatus</th>
-                            </thead>
-                            <tbody>                                
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
                 <input type="hidden" id="pID_ALTERNA_Documento" name="pID_ALTERNA_Documento" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Documento" name="pID_ESTADO_EMISOR_Documento" value="" >
                 <input type="hidden" id="pID_EMISOR_Documento" name="pID_EMISOR_Documento" value="" >
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorDocumento" data-nexttab="#Registro_decadactilar-tab">Anterior Ficha</button>
-                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteDocumento" data-nexttab="#Identificacion_de_voz-tab">Siguiente Ficha</button>
-                    </div>
-                </div>
             </form>
+            <br>
+            <hr>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <table id="tableDigitalizaciondoc" class="table display table-striped dt-responsive" style="width:100%">
+                        <thead>
+                                <th>Id documento</th>
+                                <th>Categoría de documento</th>
+                                <th>Valor</th>
+                                <th>Fecha documento</th>
+                                <th>Estatus</th>
+                        </thead>
+                        <tbody>                                
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorDocumento" data-nexttab="#Registro_decadactilar-tab">Anterior Ficha</button>
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteDocumento" data-nexttab="#Identificacion_de_voz-tab">Siguiente Ficha</button>
+                </div>
+            </div>
         </div>
     </div>

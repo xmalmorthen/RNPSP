@@ -77,8 +77,6 @@ var objViewCapacitacion = {
 
         mainTabMenu.actions.changeTab();
 
-        objViewCapacitacion.vars.general.init = true;
-
         $('#myTabContent').LoadingOverlay("hide");
 
         if (callback){
@@ -86,6 +84,8 @@ var objViewCapacitacion = {
                 callback();
             }
         }
+
+        objViewCapacitacion.vars.general.init = true;
     },
     events : {
         click : {
@@ -94,14 +94,14 @@ var objViewCapacitacion = {
             capacitacion : {
                 guardarIdioma : function(e, from, tabRef){
                     e.preventDefault();
-                    objViewCapacitacion.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveCapacitacionIdioma',from, tabRef, function(data){
-                        console.log(data);
+                    objViewCapacitacion.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveCapacitacionIdioma',from, tabRef, true, function(data){
+                        fillData.capacitacion.idiomasDialectos(mainTabMenu.var.pID_ALTERNA);
                     });
                 },
                 guardarHabilidad : function(e, from, tabRef){
                     e.preventDefault();
-                    objViewCapacitacion.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveCapacitacionHabilidad',from, tabRef, function(data){
-                        console.log(data);
+                    objViewCapacitacion.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveCapacitacionHabilidad',from, tabRef, true, function(data){
+                        fillData.capacitacion.habilidadesAptitudes(mainTabMenu.var.pID_ALTERNA);
                     });
                 }
             }
@@ -128,7 +128,7 @@ var objViewCapacitacion = {
             $("#" + eTab.relatedTarget.id).trigger('click');
         },
         ajax : {
-            callResponseValidations : function(form, data, from, tabRef, callback){
+            callResponseValidations : function(form, data, from, tabRef, resetForm, callback){
                 try{
                     if (!data) 
                         throw new Error('Respuesta inesperada, favor de intentarlo de nuevo.');
@@ -138,6 +138,10 @@ var objViewCapacitacion = {
                         throw new Error('Estatus desconocido, favor de contactar a soporte.');
                     if (!data.results.status)
                         throw new Error(data.results.message ? data.results.message : 'Error desconocido.' );
+                    
+                    if (resetForm) {
+                        form[0].reset();                        
+                    }
                     
                     form.removeData('hasChanged').removeData('hasDiscardChanges').removeData('withError');
                     form.data('hasSaved',true);
@@ -180,7 +184,7 @@ var objViewCapacitacion = {
                 }
                 dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef,'<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
             },
-            generateRequest: function($this,callUrl,from,tabRef, callback){
+            generateRequest: function($this,callUrl,from,tabRef, resetForm, callback){
                 var form = $this.parents('form:first');
                 form.closeAlert({alertType : 'alert-danger'});
                 
@@ -203,7 +207,7 @@ var objViewCapacitacion = {
                     
                     $.post(callUrl,model,
                     function (data) {  
-                        objViewCapacitacion.actions.ajax.callResponseValidations(form,data, from, tabRef, callback);
+                        objViewCapacitacion.actions.ajax.callResponseValidations(form,data, from, tabRef, resetForm, callback);
                     }).fail(function (err) {
                         objViewCapacitacion.actions.ajax.throwError(err,form,from,tabRef);                            
                     }).always(function () {

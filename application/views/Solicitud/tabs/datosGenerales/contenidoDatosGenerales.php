@@ -249,41 +249,40 @@
                     <div class="col-md-4"></div>
                     <div class="col-md-4"></div>
                 </div>
-                <br><hr><br>
-                <div class="row">
-                    <div class="col-md-12">
-                        <table id="tableDesarrollo" class="table display table-striped dt-responsive" style="width:100%">
-                            <thead>
-                                <th>Id nivel</th>
-                                <th>Máxima escolaridad</th>
-                                <th>Especialidad</th>
-                                <th>Fecha de inicio</th>
-                                <th>Fecha de término</th>
-                                <th>Promedio</th>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
                 <input type="hidden" id="pID_ALTERNA_Desarrollo" name="pID_ALTERNA_Desarrollo" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Desarrollo" name="pID_ESTADO_EMISOR_Desarrollo" value="" >
                 <input type="hidden" id="pID_EMISOR_Desarrollo" name="pID_EMISOR_Desarrollo" value="" >
-
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <div class="row">
-                            <div class="col-md-12 text-center">
-                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorDesarrolloacademico" data-nexttab="#Datos_personales-tab">Anterior Ficha</button>
-                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteDesarrolloacademico" data-nexttab="#Domicilio-tab">Siguiente Ficha</button>
-                            </div>
+            </form>
+            <br><hr><br>
+            <div class="row">
+                <div class="col-md-12">
+                    <table id="tableDesarrollo" class="table display table-striped dt-responsive" style="width:100%">
+                        <thead>
+                            <th>Id nivel</th>
+                            <th>Máxima escolaridad</th>
+                            <th>Especialidad</th>
+                            <th>Fecha de inicio</th>
+                            <th>Fecha de término</th>
+                            <th>Promedio</th>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorDesarrolloacademico" data-nexttab="#Datos_personales-tab">Anterior Ficha</button>
+                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteDesarrolloacademico" data-nexttab="#Domicilio-tab">Siguiente Ficha</button>
                         </div>
                     </div>
-                    <div class="col-md-4"></div>
                 </div>
-            </form>
+                <div class="col-md-4"></div>
+            </div>
         </div>
     </div>
 
@@ -363,42 +362,41 @@
                     <div class="col-md-4"></div>
                     <div class="col-md-4"></div>
                 </div>
-                <br>
-                <hr>
-                <br>
-                <table id="tableDomicilio" class="table display table-striped dt-responsive" style="width:100%">
-                    <thead>
-                        <th>Id domicilio</th>
-                        <th>Código postal</th>
-                        <th>Estado</th>
-                        <th>Colonia/Localidad</th>
-                        <th>Calle </th>
-                        <th>Número exterior</th>
-                        <th>Número interior</th>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
                 <input type="hidden" id="pID_ALTERNA_Domicilio" name="pID_ALTERNA_Domicilio" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Domicilio" name="pID_ESTADO_EMISOR_Domicilio" value="" >
                 <input type="hidden" id="pID_EMISOR_Domicilio" name="pID_EMISOR_Domicilio" value="" >
-
-                <br>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorDomicilio" data-nexttab="#Desarrollo-tab"> Anterior Ficha</button>
-                            </div>
-                            <div class="col-md-6">
-                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteDomicilio" data-nexttab="#Referencias-tab">Siguiente Ficha</button>
-                            </div>
+            </form>
+            <br>
+            <hr>
+            <br>
+            <table id="tableDomicilio" class="table display table-striped dt-responsive" style="width:100%">
+                <thead>
+                    <th>Id domicilio</th>
+                    <th>Código postal</th>
+                    <th>Estado</th>
+                    <th>Colonia/Localidad</th>
+                    <th>Calle </th>
+                    <th>Número exterior</th>
+                    <th>Número interior</th>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <br>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorDomicilio" data-nexttab="#Desarrollo-tab"> Anterior Ficha</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteDomicilio" data-nexttab="#Referencias-tab">Siguiente Ficha</button>
                         </div>
                     </div>
-                    <div class="col-md-4"></div>
                 </div>
-            </form>            
+                <div class="col-md-4"></div>
+            </div>
         </div>
     </div> 
 
@@ -506,40 +504,39 @@
                     <div class="col-md-4"></div>
                     <div class="col-md-4"></div>
                 </div>
-                <br>
-                <hr>
-                <br>
-                <table id="tableReferencias" class="table display table-striped dt-responsive" style="width:100%">
-                    <thead>
-                        <th>Id referencia</th>
-                        <th>Nombre</th>
-                        <th>Apellido paterno</th>
-                        <th>Apellido materno</th>
-                        <th>Tipo de referencia</th>
-                        <th>Domicilio</th>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
                 <input type="hidden" id="pID_ALTERNA_Referencias" name="pID_ALTERNA_Referencias" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Referencias" name="pID_ESTADO_EMISOR_Referencias" value="" >
                 <input type="hidden" id="pID_EMISOR_Referencias" name="pID_EMISOR_Referencias" value="" >
-
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorReferencia" data-nexttab="#Domicilio-tab"> Anterior Ficha</button>
-                            </div>
-                            <div class="col-md-6">
-                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteReferencia" data-nexttab="#Socioeconomicos-tab">Siguiente Ficha</button>
-                            </div>
+            </form>
+            <br>
+            <hr>
+            <br>
+            <table id="tableReferencias" class="table display table-striped dt-responsive" style="width:100%">
+                <thead>
+                    <th>Id referencia</th>
+                    <th>Nombre</th>
+                    <th>Apellido paterno</th>
+                    <th>Apellido materno</th>
+                    <th>Tipo de referencia</th>
+                    <th>Domicilio</th>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorReferencia" data-nexttab="#Domicilio-tab"> Anterior Ficha</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteReferencia" data-nexttab="#Socioeconomicos-tab">Siguiente Ficha</button>
                         </div>
                     </div>
-                    <div class="col-md-4"></div>
                 </div>
-            </form>            
+                <div class="col-md-4"></div>
+            </div>
         </div>
     </div> 
 

@@ -91,6 +91,33 @@ class SOLICITUD_model extends MY_Model
     return $this->response;
   }
 
+  # Opción Nueva Solicitud - GRID de CIB
+  # sp_B1_getPersonaCIB
+  public function sp_B1_getPersonaCIB($idAlterna = null,$curp = null){
+
+    $this->procedure('sp_B1_getPersonaCIB');
+    $this->addParam('pCURP',$curp,'N');
+    $this->addParam('pID_ALTERNA',$idAlterna);
+
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_list($query);
+
+    if($response === FALSE){
+      $this->response['status'] = 0;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    }else{
+      if(count($response) > 0){
+        $this->response['status'] = 1;
+        $this->response['data'] = $this->try_result($response);
+      }else{
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron resultados.';
+      }
+    }
+    return $this->response;
+  }
+
   public function addDatosPersonales($model){
 
     $this->arrayToPost($model);

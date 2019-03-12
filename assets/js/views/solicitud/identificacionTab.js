@@ -142,7 +142,7 @@ var objViewIdentificacion = {
             identificacion : {
                 guardarMediafiliacion : function(e, from, tabRef){
                     e.preventDefault();
-                    objViewIdentificacion.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveIdentificacionMediafiliacion',from, tabRef, function(data){
+                    objViewIdentificacion.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveIdentificacionMediafiliacion',from, tabRef, false, function(data){
                         console.log(data);
                         
                         debugger;
@@ -150,7 +150,7 @@ var objViewIdentificacion = {
                 },
                 guardarSenia : function(e, from, tabRef){
                     e.preventDefault();
-                    objViewIdentificacion.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveIdentificacionSenia',from, tabRef, function(data){
+                    objViewIdentificacion.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveIdentificacionSenia',from, tabRef, true, function(data){
                         console.log(data);
                         
                         debugger;
@@ -639,7 +639,7 @@ var objViewIdentificacion = {
             // dynTabs.tabs.prebTab.tabForm.find('.btnSiguienteAnterior.siguienteTab').trigger('click');
         },
         ajax : {
-            callResponseValidations : function(form, data, from, tabRef, callback){
+            callResponseValidations : function(form, data, from, tabRef, resetForm, callback){
                 try{
                     if (!data) 
                         throw new Error('Respuesta inesperada, favor de intentarlo de nuevo.');
@@ -649,6 +649,10 @@ var objViewIdentificacion = {
                         throw new Error('Estatus desconocido, favor de contactar a soporte.');
                     if (!data.results.status)
                         throw new Error(data.results.message ? data.results.message : 'Error desconocido.' );
+                    
+                    if (resetForm) {
+                        form[0].reset();                        
+                    }
                     
                     form.removeData('hasChanged').removeData('hasDiscardChanges').removeData('withError');
                     form.data('hasSaved',true);
@@ -691,7 +695,7 @@ var objViewIdentificacion = {
                 }
                 dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef,'<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
             },
-            generateRequest: function($this,callUrl,from,tabRef, callback){
+            generateRequest: function($this,callUrl,from,tabRef, resetForm, callback){
                 var form = $this.parents('form:first');
                 form.closeAlert({alertType : 'alert-danger'});
 
@@ -714,7 +718,7 @@ var objViewIdentificacion = {
                     
                     $.post(callUrl,model,
                     function (data) {  
-                        objViewIdentificacion.actions.ajax.callResponseValidations(form,data, from, tabRef, callback);
+                        objViewIdentificacion.actions.ajax.callResponseValidations(form,data, from, tabRef, resetForm, callback);
                     }).fail(function (err) {
                         objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);
                     }).always(function () {

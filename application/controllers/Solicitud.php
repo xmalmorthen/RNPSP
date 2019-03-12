@@ -1253,5 +1253,4 @@
 			echo json_encode( [ 'results' => $responseModel ] );
 			exit;
 		}
-
     }

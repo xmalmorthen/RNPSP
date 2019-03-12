@@ -4,4 +4,6 @@
 //TODO: Xmal - Quitar comentarios en bloque para implementación [ assets\js\views\solicitud\registro.js ]
 //TODO: Xmal - Quitar comentarios en bloque para implementación [ assets\js\utils\dynamicTabs.js ]
 
-//TODO: Xmal - Implementar la actualización de GRID en la pestaña donde se guarde una entrada de registro [ P.E. al guardar un Desarrollo Económico, que se actualice el GRID y se limpie el formulario ]
+//TODO: Xmal - Implementar la actualización de GRID en la pestaña donde se guarde una entrada de registro [ Falta la ficha de identificación ]
+//TODO: Xmal - Implementar el boton de refrescado de los grids en ficha Identificación 
+//TODO: Xmal - Quitar comentarios e implementar cuando se haya creado la acción [ assets\js\views\solicitud\registro.js ]

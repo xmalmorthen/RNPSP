@@ -103,8 +103,6 @@ var objViewLaboral = {
 
         mainTabMenu.actions.changeTab();        
 
-        objViewLaboral.vars.general.init = true;
-
         $('#myTabContent').LoadingOverlay("hide");
 
         if (callback){
@@ -112,6 +110,8 @@ var objViewLaboral = {
                 callback();
             }
         }
+
+        objViewLaboral.vars.general.init = true;
     },
     events : {
         click : {
@@ -120,30 +120,25 @@ var objViewLaboral = {
             laboral : {
                 guardarAdscripcion : function(e, from, tabRef){
                     e.preventDefault();
-                    objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralAdscripcion',from, tabRef, function(data){
-                        console.log(data);
-                        debugger;
+                    objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralAdscripcion',from, tabRef, true, function(data){
+                        fillData.laboral.adscripcionActual(mainTabMenu.var.pID_ALTERNA);
                     });
                 },
                 guardarEmpleo : function(e, from, tabRef){
                     e.preventDefault();
-                    objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralEmpleo',from, tabRef, function(data){
-                        console.log(data);
-                        debugger;
+                    objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralEmpleo',from, tabRef, true, function(data){
+                        fillData.laboral.empleosDiversos(mainTabMenu.var.pID_ALTERNA);
                     });
                 },
                 guardarActitud : function(e, from, tabRef){
                     e.preventDefault();
-                    objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralActitud',from, tabRef, function(data){
-                        console.log(data);
-                        debugger;
+                    objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralActitud',from, tabRef, false, function(data){
                     });
                 },
                 guardarComision : function(e, from, tabRef){
                     e.preventDefault();
-                    objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralComision',from, tabRef, function(data){
-                        console.log(data);
-                        debugger;
+                    objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralComision',from, tabRef, true, function(data){
+                        fillData.laboral.comisiones(mainTabMenu.var.pID_ALTERNA);
                     });
                 }
             }
@@ -204,7 +199,7 @@ var objViewLaboral = {
             $("#" + eTab.relatedTarget.id).trigger('click');
         },
         ajax : {
-            callResponseValidations : function(form, data, from, tabRef, callback){
+            callResponseValidations : function(form, data, from, tabRef, resetForm, callback){
                 try{
                     if (!data) 
                         throw new Error('Respuesta inesperada, favor de intentarlo de nuevo.');
@@ -215,6 +210,10 @@ var objViewLaboral = {
                     if (!data.results.status)
                         throw new Error(data.results.message ? data.results.message : 'Error desconocido.' );
                     
+                    if (resetForm) {
+                        form[0].reset();                        
+                    }
+
                     form.removeData('hasChanged').removeData('hasDiscardChanges').removeData('withError');
                     form.data('hasSaved',true);
 
@@ -256,7 +255,7 @@ var objViewLaboral = {
                 }
                 dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef,'<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
             },
-            generateRequest: function($this,callUrl,from,tabRef, callback){
+            generateRequest: function($this,callUrl,from,tabRef, resetForm, callback){
                 var form = $this.parents('form:first');
                 form.closeAlert({alertType : 'alert-danger'});
                 
@@ -280,7 +279,7 @@ var objViewLaboral = {
                     
                     $.post(callUrl,model,
                     function (data) {  
-                        objViewLaboral.actions.ajax.callResponseValidations(form,data, from, tabRef, callback);
+                        objViewLaboral.actions.ajax.callResponseValidations(form,data, from, tabRef, resetForm, callback);
                     }).fail(function (err) {
                         objViewLaboral.actions.ajax.throwError(err,form,from,tabRef);                            
                     }).always(function () {
