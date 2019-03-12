@@ -2,7 +2,7 @@ var iDB = {
     version: 1,
     status : false,
     vars : {
-        db : new Dexie('SGPv2'),
+        db : new Dexie('SGPv3'),
         selects : $('select'),
         toPopulate : 0,
         tablesChecked : 0,
@@ -32,7 +32,7 @@ var iDB = {
             });
         },
         createIDB : function(tables){
-            var dbToDelete = ['SGP','SGPv1']
+            var dbToDelete = ['SGP','SGPv1','SGPv2']
             $.each(dbToDelete,function(key, value) {
                 var oldDB = new Dexie(value);
                 oldDB.delete().then(function() {}).catch(function(err) {});
