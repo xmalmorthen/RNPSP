@@ -92,17 +92,17 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Tipo de habilidad y/o aptitud<!-- Se llena con el catalogo "CAT_TIPO_APTITUD" -->
-                        <select  class="form-control" id="ID_TIPO_APTITUD" name="ID_TIPO_APTITUD" data-error="#err_ID_TIPO_APTITUD" data-query='VXRtRTZNWVIrVUphUzQ4MFNkQzZRcytBbFZDMzQ3c01vR21jTXIyNmZPT2FPdnRua2N3MlRYT0ZKczc5SFRSN00vQjBML2l3dXJwVVliTG5paHNzQ3ZKR0hvaHRKUUdSSW9xdzI4TUpLL2VmTVNObVRzaFpVSHBpZnJuTWtrODdCcG8wc0VOSlZXUTJUNkIwSEVRM2JSQnFzaitKUFJwUDdCTXZqNXFsOHJzPQ==' required></select>
-                        <span id="err_ID_TIPO_APTITUD"></span>
+                        <select  class="form-control" id="pID_TIPO_APTITUD" name="pID_TIPO_APTITUD" data-error="#err_pID_TIPO_APTITUD" data-query='VXRtRTZNWVIrVUphUzQ4MFNkQzZRcytBbFZDMzQ3c01vR21jTXIyNmZPT2FPdnRua2N3MlRYT0ZKczc5SFRSN00vQjBML2l3dXJwVVliTG5paHNzQ3ZKR0hvaHRKUUdSSW9xdzI4TUpLL2VmTVNObVRzaFpVSHBpZnJuTWtrODdCcG8wc0VOSlZXUTJUNkIwSEVRM2JSQnFzaitKUFJwUDdCTXZqNXFsOHJzPQ==' required></select>
+                        <span id="err_pID_TIPO_APTITUD"></span>
                     </div>
                     <div class="col-md-4">
                         Descripción
-                        <input type="text" class="form-control" id="ESPECIFIQUE" name="ESPECIFIQUE" minlength="0" maxlength="100">
+                        <input type="text" class="form-control" id="pESPECIFIQUE" name="pESPECIFIQUE" minlength="0" maxlength="100">
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Grado de aptitud o dominio <!-- Se rellena con el catalogo "CAT_GRADO_APTITUD_HAB" depende del select "TIPO_ACTITUD" -->
-                        <select  class="form-control" id="ID_GRADO_APT_HAB" name="ID_GRADO_APT_HAB" data-error="#err_ID_GRADO_APT_HAB" data-query='Qks2NHVpUW94OUlNMmxDU3ZpcXdsYUFXKzZtUm13a1l0enMxY0dsY2c1Q2I1VndmSlA4N3kxRmlFMjlldkt0UkpOcy9xS253Z1JaWUx3N3FiTE5rR0hGbGRUZzgzV0RxMlRHa1U5MDFST1VXUFpyQjliSTRqRkZKSzhmUFBvK3V1cFhjUnZXY0F1MEV6dHlvQUlEZnE1cnNxeSs2VTBKWEVZdWp1TFBqTFdnPQ==' required></select>
-                        <span id="err_ID_GRADO_APT_HAB"></span>
+                        <select  class="form-control" id="pID_GRADO_APT_HAB" name="pID_GRADO_APT_HAB" data-error="#err_pID_GRADO_APT_HAB" data-query='Qks2NHVpUW94OUlNMmxDU3ZpcXdsYUFXKzZtUm13a1l0enMxY0dsY2c1Q2I1VndmSlA4N3kxRmlFMjlldkt0UkpOcy9xS253Z1JaWUx3N3FiTE5rR0hGbGRUZzgzV0RxMlRHa1U5MDFST1VXUFpyQjliSTRqRkZKSzhmUFBvK3V1cFhjUnZXY0F1MEV6dHlvQUlEZnE1cnNxeSs2VTBKWEVZdWp1TFBqTFdnPQ==' required></select>
+                        <span id="err_pID_GRADO_APT_HAB"></span>
                     </div>
                 </div>
                 <br>

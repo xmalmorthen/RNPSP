@@ -21,8 +21,8 @@
                     </div>
                     <div class="col-md-4">
                         Cara <!-- Se llena del catálogo CAT_CARA -->
-                        <select  class="form-control" id="pCAT_CARA" name="pCAT_CARA" data-error="#err_pCAT_CARA" data-query='N3Q2b0dlbzJXMGlNL1ltbUVVQUt4dE1YeW5qZEVOclJUUVF2cFpEc1dmOFBQandDN2JZQmZiYTBmRDUrZjJ4ai8vV3RVbjd3UTVsUG82UTk5WDNVbmFkWG5xSDF3endVWjNFNjdNOVBTa0FmeUFDOUVHR2VHY25rbDRRT3NjcTE='></select>
-                        <span id="err_pCAT_CARA"></span>
+                        <select  class="form-control" id="pCARA" name="pCARA" data-error="#err_pCARA" data-query='N3Q2b0dlbzJXMGlNL1ltbUVVQUt4dE1YeW5qZEVOclJUUVF2cFpEc1dmOFBQandDN2JZQmZiYTBmRDUrZjJ4ai8vV3RVbjd3UTVsUG82UTk5WDNVbmFkWG5xSDF3endVWjNFNjdNOVBTa0FmeUFDOUVHR2VHY25rbDRRT3NjcTE='></select>
+                        <span id="err_pCARA"></span>
                     </div>
                 </div>
                 <br><br>
@@ -132,8 +132,8 @@
                 <div class="row">
                     <div class="col-md-3">
                         Raíz <!-- Se llena del catálogo CAT_RAIZNARIZ -->
-                        <select  class="form-control" id="pRAIZ_NARIZ" name="pRAIZ_NARIZ" data-error="#err_pRAIZ_NARIZ" data-query='dzFzSlplNVArUDdiK1IwZjQwYjJqbzRRRWwzYktRVlhGV2ZiRHB2dlprbmhic3lUTE9KM0tsOEU0Uk1OZE9BYjhPM1ZZdnNJTHJ5K3hod2dpVFMrMkZpaUJld0gyM1hBV1l1QndzdDdMeTBvTG9MU2FoQ0JhSDMzRU5rOUJtRnk='></select>
-						<span id="err_pRAIZ_NARIZ"></span>
+                        <select  class="form-control" id="pNARIZ_RAIZ" name="pNARIZ_RAIZ" data-error="#err_pNARIZ_RAIZ" data-query='dzFzSlplNVArUDdiK1IwZjQwYjJqbzRRRWwzYktRVlhGV2ZiRHB2dlprbmhic3lUTE9KM0tsOEU0Uk1OZE9BYjhPM1ZZdnNJTHJ5K3hod2dpVFMrMkZpaUJld0gyM1hBV1l1QndzdDdMeTBvTG9MU2FoQ0JhSDMzRU5rOUJtRnk='></select>
+						<span id="err_pNARIZ_RAIZ"></span>
                     </div>
                     <div class="col-md-3">
                         Dorso <!-- Se llena del catálogo CAT_DORSONARIZ -->
@@ -285,7 +285,10 @@
                     </div>
                     <div class="col-md-4">
                         Factor RH <!-- se llen CAT_FACTORRH -->
-                        <select  class="form-control" id="pFACTOR_RH" name="pFACTOR_RH" data-error="#err_pFACTOR_RH" data-query=''></select>
+                        <select  class="form-control" id="pFACTOR_RH" name="pFACTOR_RH" data-error="#err_pFACTOR_RH" data-query=''>
+                            <option value="0">-</option>
+                            <option value="1">+</option>
+                        </select>
 						<span id="err_pFACTOR_RH"></span>
                     </div>
                 </div>
@@ -303,11 +306,11 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estatura (cm)
-                        <input type="number" class="form-control" id="pCAT_ESTATURA" name="pCAT_ESTATURA" required min="1" max="999">
+                        <input type="number" class="form-control" id="pESTATURA" name="pESTATURA" required min="1" max="999">
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Peso (kg)
-                        <input type="number" class="form-control" id="p_PESO" name="p_PESO" required min="1" max="999">                        
+                        <input type="number" class="form-control" id="pPESO" name="pPESO" required min="1" max="999">                        
                     </div>
                 </div>
                 <input type="hidden" id="pID_ALTERNA_Media_filiacion" name="pID_ALTERNA_Media_filiacion" value="" >
