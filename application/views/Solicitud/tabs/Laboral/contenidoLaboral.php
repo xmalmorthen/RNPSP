@@ -373,11 +373,11 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-4" style="margin-top: 42px;" >
+                    <div class="col-md-4">
                         ¿En qué tiempo desea ascender?
                         <input type="text" id="pTIEMPO_ASCENDER" name="pTIEMPO_ASCENDER" class="form-control" maxlength="20">
                     </div>
-                    <div class="col-md-4" style="margin-top: 42px;">
+                    <div class="col-md-4">
                         ¿Conoce el reglamento de los reconocimientos? <!-- S/N = SI/NO -->
                         <select class="form-control" id="pCONOCE_REG_RECON" name="pCONOCE_REG_RECON" data-error="#err_pCONOCE_REG_RECON" data-query=''>
                             <option disabled selected value>Seleccione una opción</option>
@@ -386,14 +386,14 @@
                         </select>
                         <span id="err_pCONOCE_REG_RECON"></span>
                     </div>
-                    <div class="col-md-4" style="margin-top: 21px;">
+                    <div class="col-md-4" >
                         ¿Razones por las que no ha obtenido un reconocimiento?
                         <input type="text" id="pRAZON_NO_ASCENSO" name="pRAZON_NO_ASCENSO" class="form-control" maxlength="150">
                     </div>
                 </div>
                 <br>
-                <div class="row" style="margin-top: 21px;">
-                    <div class="col-md-4" style="margin-top: 21px;">
+                <div class="row" >
+                    <div class="col-md-4" >
                         ¿Conoce la reglamentación de los ascensos? <!-- S/N = SI/NO -->
                         <select class="form-control" id="pCONOCE_REG_ASCENSO" name="pCONOCE_REG_ASCENSO" data-error="#err_pCONOCE_REG_ASCENSO" data-query=''>
                             <option disabled selected value>Seleccione una opción</option>
@@ -406,7 +406,7 @@
                         ¿Razones por las que no ha obtenido un ascenso?
                         <input type="text" id="pRAZON_NO_RECON" name="pRAZON_NO_RECON" class="form-control" maxlength="150">
                     </div>
-                    <div class="col-md-4" style="margin-top: 21px;">
+                    <div class="col-md-4" >
                         ¿Qué capacitación le gustaría recibir?
                         <input type="text" id="pCAPACITACION" name="pCAPACITACION" class="form-control" maxlength="100">
                     </div>

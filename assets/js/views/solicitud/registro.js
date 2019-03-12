@@ -610,8 +610,6 @@ var fillData = {
             });
         },
         actitudesHaciaEmpleo : function(pID_ALTERNA){
-            debugger;
-
             var callUrl = base_url + `Solicitud/getActitud`;
             fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {  
