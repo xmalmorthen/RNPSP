@@ -98,7 +98,7 @@ class SOLICITUD_model extends MY_Model
 
     $buid = $this->build_query();
     $query = $this->db->query($buid);
-    $response = $this->query_list($query);
+    $response = $this->query_row($query);
 
     if($response === FALSE){
       $this->response['status'] = 0;
