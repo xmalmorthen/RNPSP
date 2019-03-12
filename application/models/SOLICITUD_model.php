@@ -1188,5 +1188,51 @@ class SOLICITUD_model extends MY_Model
     return $this->response;
   }
   
+  # ****************************************************************************************************************
+  # Señas particulares
+  # ****************************************************************************************************************
+  # Opcion Nueva Solicitud - Ficha Identificación- Pestaña Señas particulares
+  # Boton Guardar Seña.
+  # sp_B2_MF_addSenasParticulares - Agrega las señas particulares correspondientes al elemento policial.
+  public function  sp_B2_MF_addSenasParticulares($model){
+
+    $this->arrayToPost($model);
+    $this->load->library('form_validation');
+
+    $this->addParam('pID_ALTERNA','pID_ALTERNA','',array('rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pID_ESTADO_EMISOR',null);
+    $this->addParam('pID_EMISOR',null);
+
+    $this->addParam('pID_TIPO_SENAS','pID_TIPO_SENAS','',array('name'=>'Tipo de seña','rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pLADO','pLADO','N',array('name'=>'Lado','rule'=>'trim|required|max_length[1]'));
+    $this->addParam('pID_REGION','pID_REGION','',array('name'=>'Cara','rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pVISTA','pVISTA','N',array('name'=>'Vista','rule'=>'trim|required|max_length[1]'));
+    $this->addParam('pCANTIDAD','pCANTIDAD','',array('name'=>'Cantidad','rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pDESCRIPCION','pDESCRIPCION','N',array('name'=>'Descripción','rule'=>'trim|max_length[30]'));
+    
+    if ($this->form_validation->run() === true) {
+      $this->procedure('sp_B2_MF_addSenasParticulares');
+      $this->iniParam('txtError','varchar','250');
+      $this->iniParam('msg','varchar','80');
+      $this->iniParam('tranEstatus','int');
+      $query = $this->db->query($this->build_query());
+      $response = $this->query_row($query);
+      if($response == FALSE){
+        $this->response['status'] = false;
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      }else{
+        $this->response['status'] = (bool)$response['tranEstatus'];
+        $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
+      }
+    } else {
+      $this->load->helper('html');
+      $this->response['status'] = false;
+      $message = $this->form_validation->error_array();
+      $this->response['message'] = ul($message);
+      $this->response['validation'] = $message;
+    }
+    return $this->response;
+  }
+
 
 }
