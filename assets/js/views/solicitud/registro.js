@@ -388,7 +388,7 @@ var fillData = {
                 //Boton para refrescar datatable
                 var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
                 if (btnRefreshRef.find('.refreshTable').length == 0)
-                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3' data-call='fillData.datosGenerales.CIB(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.datosGenerales.CIB(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
 
                 tableRef.LoadingOverlay("hide");
             })
@@ -418,7 +418,7 @@ var fillData = {
                 //Boton para refrescar datatable
                 var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
                 if (btnRefreshRef.find('.refreshTable').length == 0)
-                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3' data-call='fillData.datosGenerales.desarrolloAcademico(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.datosGenerales.desarrolloAcademico(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
 
                 tableRef.LoadingOverlay("hide");
             })
@@ -448,7 +448,7 @@ var fillData = {
                 //Boton para refrescar datatable
                 var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
                 if (btnRefreshRef.find('.refreshTable').length == 0)
-                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3' data-call='fillData.datosGenerales.domicilio(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.datosGenerales.domicilio(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
 
                 tableRef.LoadingOverlay("hide");
             })
@@ -479,7 +479,7 @@ var fillData = {
                 //Boton para refrescar datatable
                 var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
                 if (btnRefreshRef.find('.refreshTable').length == 0)
-                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3' data-call='fillData.datosGenerales.referencias(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.datosGenerales.referencias(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
 
                 tableRef.LoadingOverlay("hide");
             })
@@ -531,7 +531,7 @@ var fillData = {
                 //Boton para refrescar datatable
                 var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
                 if (btnRefreshRef.find('.refreshTable').length == 0)
-                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3' data-call='fillData.datosGenerales.dependientesEconomicos(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.datosGenerales.dependientesEconomicos(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
 
                 tableRef.LoadingOverlay("hide");
             })
@@ -569,7 +569,7 @@ var fillData = {
                 //Boton para refrescar datatable
                 var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
                 if (btnRefreshRef.find('.refreshTable').length == 0)
-                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3' data-call='fillData.laboral.adscripcionActual(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.laboral.adscripcionActual(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
 
 
                 tableRef.LoadingOverlay("hide");
@@ -600,7 +600,7 @@ var fillData = {
                 //Boton para refrescar datatable
                 var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
                 if (btnRefreshRef.find('.refreshTable').length == 0)
-                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3' data-call='fillData.laboral.empleosDiversos(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.laboral.empleosDiversos(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
 
                 tableRef.LoadingOverlay("hide");
             })
@@ -654,7 +654,7 @@ var fillData = {
                 //Boton para refrescar datatable
                 var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
                 if (btnRefreshRef.find('.refreshTable').length == 0)
-                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3' data-call='fillData.laboral.comisiones(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.laboral.comisiones(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
 
                 tableRef.LoadingOverlay("hide");
             })
@@ -690,7 +690,7 @@ var fillData = {
                 //Boton para refrescar datatable
                 var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
                 if (btnRefreshRef.find('.refreshTable').length == 0)
-                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3' data-call='fillData.capacitacion.idiomasDialectos(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.capacitacion.idiomasDialectos(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
 
                 tableRef.LoadingOverlay("hide");
             })
@@ -720,7 +720,7 @@ var fillData = {
                 //Boton para refrescar datatable
                 var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
                 if (btnRefreshRef.find('.refreshTable').length == 0)
-                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3' data-call='fillData.capacitacion.habilidadesAptitudes(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.capacitacion.habilidadesAptitudes(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
 
                 tableRef.LoadingOverlay("hide");
             })
