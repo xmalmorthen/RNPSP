@@ -669,7 +669,7 @@
                     </div>
                 </div>
                 <br>
-                 <input type="hidden" id="pID_ALTERNA_Voz" name="pID_ALTERNA_Voz" value="" >
+                <input type="hidden" id="pID_ALTERNA_Voz" name="pID_ALTERNA_Voz" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Voz" name="pID_ESTADO_EMISOR_Voz" value="" >
                 <input type="hidden" id="pID_EMISOR_Voz" name="pID_EMISOR_Voz" value="" >
                 <div class="row">

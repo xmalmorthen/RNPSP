@@ -65,6 +65,13 @@ var mainTabMenu = {
             $(this).find('select').val(null).trigger('change.select2').trigger('change');
         });
 
+
+        if (selectPrincipalTabId){
+            $('#' + selectPrincipalTabId).trigger('click');
+            if (selectSubTabId){
+                $('#' + selectSubTabId).trigger('click');
+            }
+        }
     },
     tab : {
         change : function(e){

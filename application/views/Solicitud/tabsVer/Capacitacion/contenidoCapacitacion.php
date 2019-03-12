@@ -42,36 +42,16 @@
                         </div>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id="modificarDesarrollo">Modificar</button>
-                    </div>
-                </div>
-                <br>
-                <br>
-                <hr>
-                <br>
                 <input type="hidden" id="pID_ALTERNA_Idioma" name="pID_ALTERNA_Idioma" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Idioma" name="pID_ESTADO_EMISOR_Idioma" value="" >
                 <input type="hidden" id="pID_EMISOR_Idioma" name="pID_EMISOR_Idioma" value="" >
                 <input type="hidden" id="pID_IDIOMA_HABLADO_EXT" name="pID_IDIOMA_HABLADO_EXT" value="" >
             </form>
+            <br>
             <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorIdioma"> Anterior</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteIdioma">Siguiente</button>
-                        </div>
-                    </div>
-
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteIdioma" data-nexttab="#Habilidades_aptitudes-tab">Siguiente Ficha</button>
                 </div>
-                <div class="col-md-4"></div>
-
             </div>
         </div>
     </div>
@@ -102,36 +82,17 @@
                         <span id="err_ID_GRADO_APT_HAB"></span>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id="modificarDesarrollo">Modificar</button>
-                    </div>
-                </div>
-                <br>
-                <br>
-                <hr>
-                <br>
                 <input type="hidden" id="pID_ALTERNA_Habilidades" name="pID_ALTERNA_Habilidades" value="">
                 <input type="hidden" id="pID_ESTADO_EMISOR_Habilidades" name="pID_ESTADO_EMISOR_Habilidades" value="">
                 <input type="hidden" id="pID_EMISOR_Habilidades" name="pID_EMISOR_Habilidades" value="">
                 <input type="hidden" id="pID_HABILIDAD_APTIT_EXT" name="pID_HABILIDAD_APTIT_EXT" value="">
             </form>
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorHabilidad" data-nexttab="#Idiomas_dialectos-tab"> Anterior</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="SiguienteHabilidad">Siguiente</button>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-md-4"></div>
-
+            <br>
+            <div class="row">                    
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorHabilidad" data-nexttab="#Idiomas_dialectos-tab">Anterior Ficha</button>
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab endTab" id="SiguienteHabilidad">Siguiente Ficha</button>
+                </div>                            
             </div>
         </div>
     </div>

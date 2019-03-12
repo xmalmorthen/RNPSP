@@ -10,8 +10,6 @@ var iDB = {
         tables : []
     },
     init : async function(){
-        debugger;
-
         iDB.vars.db = new Dexie('SGPv' + iDB.version);
 
         const tablas = await iDB.actions.getTablesNames();
