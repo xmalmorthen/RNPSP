@@ -323,7 +323,7 @@
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
-                    <center><input type="button" name="next" id="siguienteMediafiliacion" class="btn btn-default btnSiguienteAnterior siguienteTab" style="height:40px;" data-nexttab="#Datos-tab" value="Siguiente"/></center>
+                    <center><input type="button" name="next" id="siguienteMediafiliacion" class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" style="height:40px;" data-nexttab="#Datos-tab" value="Siguiente"/></center>
                 </div>
             </div>
         </div>
@@ -394,10 +394,10 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorSeña" data-nexttab="#Datos-tab"> Anterior</button>
+                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorSeña" data-nexttab="#Datos-tab"> Anterior</button>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="SiguienteSeña" data-nexttab="#Ficha_fotografica-tab">Siguiente</button>
+                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="SiguienteSeña" data-nexttab="#Ficha_fotografica-tab">Siguiente</button>
                         </div>
                     </div>
                 </div>
@@ -478,7 +478,7 @@
                         <!-- SPACE -->
                     </div>
                     <div class="col-md-4">
-                        <h6 class="borderButtom">Doumento</h6>
+                        <h6 class="borderButtom">DoCumento</h6>
                         <p></p>
                     </div>
                 </div>
@@ -504,10 +504,10 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorDecadacticar" data-nexttab="#Ficha_fotografica-tab"> Anterior</button>
+                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorDecadacticar" data-nexttab="#Ficha_fotografica-tab"> Anterior</button>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteDecadactilar" data-nexttab="#Digitalizacion_de_documento-tab">Siguiente</button>
+                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteDecadactilar" data-nexttab="#Digitalizacion_de_documento-tab">Siguiente</button>
                         </div>
                     </div>
                 </div>
@@ -599,10 +599,10 @@
                     <div class="col-md-4">
                         <div class="row">
                             <div class="col-md-6">
-                                <button class="btn btn-default" id="anteriorVoz" data-nexttab="#Digitalizacion_de_documento-tab"> Anterior</button>
+                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorVoz" data-nexttab="#Digitalizacion_de_documento-tab"> Anterior</button>
                             </div>
                             <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior siguienteTab endTab" id="finalizarVoz">Finalizar</button>
+                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab endTab" id="finalizarVoz">Finalizar</button>
                             </div>
                         </div>
 
@@ -734,10 +734,10 @@
                         <div class="col-md-4">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorFotografica" data-nexttab="#Senas_particulares-tab"> Anterior</button>
+                                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorFotografica" data-nexttab="#Senas_particulares-tab"> Anterior</button>
                                 </div>
                                 <div class="col-md-6">
-                                    <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteFotografica" data-nexttab="#Registro_decadactilar-tab">Siguiente</button>
+                                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteFotografica" data-nexttab="#Registro_decadactilar-tab">Siguiente</button>
                                 </div>
                             </div>
 
@@ -800,10 +800,10 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorDocumento" data-nexttab="#Registro_decadactilar-tab"> Anterior</button>
+                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorDocumento" data-nexttab="#Registro_decadactilar-tab"> Anterior</button>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteDocumento" data-nexttab="#Identificacion_de_voz-tab">Siguiente</button>
+                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteDocumento" data-nexttab="#Identificacion_de_voz-tab">Siguiente</button>
                         </div>
                     </div>
                 </div>

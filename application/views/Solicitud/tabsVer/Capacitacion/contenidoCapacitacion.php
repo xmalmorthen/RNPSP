@@ -62,10 +62,10 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorIdioma"> Anterior</button>
+                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorIdioma"> Anterior</button>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteIdioma">Siguiente</button>
+                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteIdioma">Siguiente</button>
                         </div>
                     </div>
 
@@ -122,10 +122,10 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorHabilidad" data-nexttab="#Idiomas_dialectos-tab"> Anterior</button>
+                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorHabilidad" data-nexttab="#Idiomas_dialectos-tab"> Anterior</button>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="SiguienteHabilidad">Siguiente</button>
+                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="SiguienteHabilidad">Siguiente</button>
                         </div>
                     </div>
 

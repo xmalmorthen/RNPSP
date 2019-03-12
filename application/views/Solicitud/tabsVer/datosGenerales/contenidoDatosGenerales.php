@@ -135,7 +135,7 @@
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
-                        <center><button class="btn btn-default btnSiguienteAnterior siguienteTab"  id="siguienteDatosPersonales" data-nexttab="#Desarrollo-tab">Siguiente</button></center>
+                        <center><button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab"  id="siguienteDatosPersonales" data-nexttab="#Desarrollo-tab">Siguiente</button></center>
                     </div>
                     <div class="col-md-4"></div>
                 </div>
@@ -216,10 +216,10 @@
                     <div class="col-md-4">
                         <div class="row">
                             <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorDesarrolloacademico" data-nexttab="#Datos_personales-tab"> Anterior</button>
+                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorDesarrolloacademico" data-nexttab="#Datos_personales-tab"> Anterior</button>
                             </div>
                             <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteDesarrolloacademico" data-nexttab="#Domicilio-tab">Siguiente</button>
+                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteDesarrolloacademico" data-nexttab="#Domicilio-tab">Siguiente</button>
                             </div>
                         </div>
                     </div>
@@ -317,10 +317,10 @@
                     <div class="col-md-4">
                         <div class="row">
                             <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorDomicilio" data-nexttab="#Desarrollo-tab"> Anterior</button>
+                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorDomicilio" data-nexttab="#Desarrollo-tab"> Anterior</button>
                             </div>
                             <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteDomicilio" data-nexttab="#Referencias-tab">Siguiente</button>
+                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteDomicilio" data-nexttab="#Referencias-tab">Siguiente</button>
                             </div>
                         </div>
                     </div>
@@ -439,10 +439,10 @@
                     <div class="col-md-4">
                         <div class="row">
                             <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorReferencia" data-nexttab="#Domicilio-tab"> Anterior</button>
+                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorReferencia" data-nexttab="#Domicilio-tab"> Anterior</button>
                             </div>
                             <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteReferencia" data-nexttab="#Socioeconomicos-tab">Siguiente</button>
+                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteReferencia" data-nexttab="#Socioeconomicos-tab">Siguiente</button>
                             </div>
                         </div>
                     </div>
@@ -587,10 +587,10 @@
                     <div class="col-md-4">
                         <div class="row">
                             <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorSocioeconomico" data-nexttab="#Referencias-tab"> Anterior</button>
+                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorSocioeconomico" data-nexttab="#Referencias-tab"> Anterior</button>
                             </div>
                             <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior siguienteTab endTab" id="finalizarDatosGenerales">Finalizar</button>
+                                <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab endTab" id="finalizarDatosGenerales">Finalizar</button>
                             </div>
                         </div>
                     </div>

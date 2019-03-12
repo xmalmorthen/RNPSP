@@ -168,7 +168,7 @@
                         <div class="row">
                             <div class="col-md-4"></div>
                             <div class="col-md-4">
-                                <center><button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteAdscripcion" data-nexttab="#Empleos_diversos-tab">Siguiente</button></centar>
+                                <center><button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteAdscripcion" data-nexttab="#Empleos_diversos-tab">Siguiente</button></centar>
                             </div>
                         </div>
 
@@ -287,10 +287,10 @@
                         <div class="col-md-4">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorEmpleo" data-nexttab="#Adscripcion_actual-tab"> Anterior</button>
+                                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorEmpleo" data-nexttab="#Adscripcion_actual-tab"> Anterior</button>
                                 </div>
                                 <div class="col-md-6">
-                                    <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteEmpleo" data-nexttab="#Actitudes_hacia_el_empleo-tab">Siguiente</button>
+                                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteEmpleo" data-nexttab="#Actitudes_hacia_el_empleo-tab">Siguiente</button>
                                 </div>
                             </div>
 
@@ -382,10 +382,10 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorActitud" data-nexttab="#Empleos_diversos-tab"> Anterior</button>
+                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorActitud" data-nexttab="#Empleos_diversos-tab"> Anterior</button>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteActitud" data-nexttab="#Comisiones-tab">Siguiente</button>
+                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteActitud" data-nexttab="#Comisiones-tab">Siguiente</button>
                         </div>
                     </div>
 
@@ -453,10 +453,10 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorComision" data-nexttab="#Actitudes_hacia_el_empleo-tab"> Anterior</button>
+                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorComision" data-nexttab="#Actitudes_hacia_el_empleo-tab"> Anterior</button>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior siguienteTab endTab" id="FinalizarLaboral">Finalizar</button>
+                            <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab endTab" id="FinalizarLaboral">Finalizar</button>
                         </div>
                     </div>
 
