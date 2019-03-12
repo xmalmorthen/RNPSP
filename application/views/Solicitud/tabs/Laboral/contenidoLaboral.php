@@ -388,7 +388,7 @@
                     </div>
                     <div class="col-md-4" style="margin-top: 21px;">
                         ¿Razones por las que no ha obtenido un reconocimiento?
-                        <input type="text" id="pRAZON_NO_RECON" name="pRAZON_NO_RECON" class="form-control" maxlength="150">
+                        <input type="text" id="pRAZON_NO_ASCENSO" name="pRAZON_NO_ASCENSO" class="form-control" maxlength="150">
                     </div>
                 </div>
                 <br>
