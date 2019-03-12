@@ -25,9 +25,13 @@
                         <span id="err_pCARA"></span>
                     </div>
                 </div>
-                <br><br>
-                <h6 class="titulo">Cabello</h6>
-                <hr>                
+                <br>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Cabello</h3>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-3">
                         Cantidad <!-- Se llena del catálogo CAT_CANTIDADCABELLO -->
@@ -58,9 +62,13 @@
 						<span id="err_pCABELLO_IMPLANTAC"></span>
                     </div>
                 </div>
-                <br><br>
-                <h6 class="titulo">Frente</h6>
+                <br>
                 <hr>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Frente</h3>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-4">
                         Altura <!-- Se llena del catálogo CAT_ALTURAFRENTE -->
@@ -78,9 +86,13 @@
 						<span id="err_pFRENTE_ANCHO"></span>
                     </div>
                 </div>
-                <br><br>
-                <h6 class="titulo">Cejas</h6>
+                <br>
                 <hr>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Cejas</h3>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-3">
                         Dirección <!-- Se llena del catálogo CAT_DIRECCIONCEJAS -->
@@ -104,9 +116,12 @@
                     </div>
                 </div>
                 <br>
-                <br><br>
-                <h6 class="titulo">Ojos</h6>
                 <hr>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Ojos</h3>
+                    </div>
+                </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
@@ -125,10 +140,13 @@
 						<span id="err_pOJOS_TAMANO"></span>
                     </div>
                 </div>
-                <br>
-                <br><br>
-                <h6 class="titulo">Nariz</h6>
+                <br>                
                 <hr>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Nariz</h3>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-3">
                         Raíz <!-- Se llena del catálogo CAT_RAIZNARIZ -->
@@ -150,18 +168,19 @@
                         <select  class="form-control" id="pNARIZ_BASE" name="pNARIZ_BASE" data-error="#err_pNARIZ_BASE" data-query='WDhSeVFtdlVUdm83ZVVDMHFuRzkrbmNaWWZ5TkZsY05kS0M5dFBPUHhFUEx6cU5wSnJZSE1ab1JGWW1Edk4xaTdqN21WRzgxY0pjTjdrVUMrdU9nWC96RnhoNDZ1SWU2VUlvZHhITWxNRGhSakhWQXRrMmg2VVVMMkpaWExZRC8='></select>
 						<span id="err_pNARIZ_BASE"></span>
                     </div>
-                </div>
-                <br>
-                <div class="row">
                     <div class="col-md-3">
                         Altura <!-- Se llena del catálogo CAT_ALTURANARIZ -->
                         <select  class="form-control" id="pNARIZ_ALTURA" name="pNARIZ_ALTURA" data-error="#err_pNARIZ_ALTURA" data-query='azdHb09Wb0c2dS9YQ2x4UkR6bUpaN2pUeElZWlFsMUROOVBLMkw5T3hhODBzZWFIRnB6VEt0SDJtdTlKUWtpSU43eUZVcHFjaFJkRnl4cWZPVDE2eURjTksyYk5hWE9BaXJMdlc3czZ1dGZqdUYxNEhIaWg0ZHR6T1ZiSVgwL3BTcnVod2RHdVM5U1pEOUNWdVM2RkZydGE2ZC9NMHNRVUZLaDIvNzBjOSs0PQ=='></select>
 						<span id="err_pNARIZ_ALTURA"></span>
                     </div>
                 </div>
-                <br><br>
-                <h6 class="titulo"Boca</h6>
+                <br>
                 <hr>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Boca</h3>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-4">
                         Tamaño <!-- Se llena del catálogo CAT_TAMANOBOCA -->
@@ -174,9 +193,13 @@
 						<span id="err_pBOCA_COMISURAS"></span>
                     </div>
                 </div>
-                <br><br>
-                <h6 class="titulo">Labios</h6>
+                <br>
                 <hr>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Labios</h3>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-4">
                         Espesor <!-- Se llena del catálogo CAT_ESPESORLABIOS -->
@@ -194,9 +217,13 @@
 						<span id="err_pLABIOS_PROMINENCIA"></span>
                     </div>
                 </div>
-                <br><br>
-                <h6 class="titulo">Mentón</h6>
+                <br>
                 <hr>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Mentón</h3>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-4">
                         Tipo <!--   se llena del catalogo CAT_TIPOMENTON -->
@@ -214,9 +241,13 @@
 						<span id="err_pMENTON_INCLINACION"></span>
                     </div>
                 </div>
-                <br><br>
-                <h6 class="titulo">Oreja derecha</h6>
+                <br>
                 <hr>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Oreja derecha</h3>
+                    </div>
+                </div>
                 <div class="row">
                 <div class="col-md-4">
                         Forma <!-- Se llena del catálogo CAT_FORMAOREJA -->
@@ -229,9 +260,13 @@
 						<span id="err_pOREJA_ORIGINAL"></span>
                     </div>
                 </div>
-                <br><br>
-                <h6 class="titulo">Helix</h6>
+                <br>
                 <hr>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Helix</h3>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-3">
                         Superior <!-- Se llena del catálogo CAT_OREJAHELSUP -->
@@ -254,9 +289,13 @@
 						<span id="err_pOREJA_HEL_CONTORNO"></span>
                     </div>
                 </div>
-                <br><br>
-                <h6 class="titulo">Lóbulo</h6>
+                <br>
                 <hr>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Lóbulo</h3>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-3">
                             Adherencia <!-- Se llena del catálogo CAT_OREJALOBADHEREN -->
@@ -274,9 +313,13 @@
 						    <span id="err_pOREJA_LOB_DIMEN"></span>
                         </div>
                 </div>
-                <br><br>
-                <h6 class="titulo">Sangre</h6>
+                <br>
                 <hr>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Sangre</h3>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-4">
                         Tipo <!-- Se llena del catálogo CAT_TIPODESANGRE -->
@@ -285,16 +328,17 @@
                     </div>
                     <div class="col-md-4">
                         Factor RH <!-- se llen CAT_FACTORRH -->
-                        <select  class="form-control" id="pFACTOR_RH" name="pFACTOR_RH" data-error="#err_pFACTOR_RH" data-query=''>
-                            <option value="0">-</option>
-                            <option value="1">+</option>
-                        </select>
+                        <select  class="form-control" id="pFACTOR_RH" name="pFACTOR_RH" data-error="#err_pFACTOR_RH" data-query='K0dpTXp3ZGpjaWlBVndlRFVUcTJSanNHSWhUSHlFOFBoT3JnY1E2U0Ntd2lvRVVyYU41YzZZbis1UWUxN3JycnVjdEs3L0w0U3VId2d6QTVkQ0xMQVpRaUlDNnBWSytXYTNaSmdMMmludWVRSitVUlNMVzFjOWx4UEJhdW1VbVA='></select>
 						<span id="err_pFACTOR_RH"></span>
                     </div>
                 </div>
-                <br><br>
-                <h6 class="titulo">Otros</h6>
+                <br>
                 <hr>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Otros</h3>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>¿Usa anteojos? <!-- S/N = SI/NO -->

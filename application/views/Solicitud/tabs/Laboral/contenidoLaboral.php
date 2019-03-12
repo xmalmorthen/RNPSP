@@ -22,13 +22,10 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-4">
-
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Domicilio de la corporación</h3>
                     </div>
-                    <div class="col-md-4">
-                        <strong>Domicilio de la corporación</strong>
-                    </div>
-                </div>
+                </div>                
                 <br>
                 <div class="row">
                     <div class="col-md-4">
