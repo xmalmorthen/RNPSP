@@ -1,8 +1,8 @@
 var iDB = {
-    version: 1,
+    version: 4,
     status : false,
     vars : {
-        db : new Dexie('SGPv3'),
+        db : new Dexie('SGPv4'),
         selects : $('select'),
         toPopulate : 0,
         tablesChecked : 0,
@@ -32,7 +32,10 @@ var iDB = {
             });
         },
         createIDB : function(tables){
-            var dbToDelete = ['SGP','SGPv1','SGPv2']
+            var dbToDelete = ['SGP'];
+            for (let index = 1; index < iDB.version; index++) {
+                dbToDelete.push('SGP' + index);
+            }
             $.each(dbToDelete,function(key, value) {
                 var oldDB = new Dexie(value);
                 oldDB.delete().then(function() {}).catch(function(err) {});

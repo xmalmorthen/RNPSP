@@ -172,11 +172,18 @@ var objViewLaboral = {
                     MyCookie.session.reset();
                 });
                 
+                $('#pPUESTO_ADSCRIPCION_ACTUAL').getCatalog({
+                    query : 'ZUNvUk4yaHVXYWZ2TzAzeEhmc096QnFOdThBUjBmampicFQ3ektoWjdZcDVFMHFHZzZPejdIS2xROHI2MFdYNzNOeExjeWpvWHYvcU04L1MwWHhydWc2bi9hTkZjWGZmVDM3aXJzcXZsZUxoVmtRYnphdXdXUXFnR2p1bWFmcWY1T2VGVlA1NXBOYTAvcGw4aFZSNVBXRml2L2JLMUVzYy9oVDJBaVBFdFlzPQ==',
+                    params :  '[ID_DEPENDENCIA]=' + valDependencia + ' and [ID_INSTITUCION]=' + valInstitucion,
+                    emptyOption : true
+                });
+
                 $('#pID_AREA').getCatalog({
                     query : 'dlIwdE11aDdRNlltQitFQjRFVWd6UXZGbUFDS2xxeFJpNDA2b1pkUi9GMUtabi9ncDZERVVDTnlMLzBEakEwTzAybnVNa0RUUGdlek92bjNmZWozNkVCbU12UG5MdUZZVExjdnZvczdwbm43c0lONnAyeHFSUU96SWlkd3NDZVQ=',
                     params :  '[ID_DEPENDENCIA]=' + valDependencia + ' and [ID_INSTITUCION]=' + valInstitucion,
                     emptyOption : true
                 });
+                
             },
             tableResponsive : function(){
                 $.each( objViewLaboral.vars.laboral.tables, function( key, value ) {

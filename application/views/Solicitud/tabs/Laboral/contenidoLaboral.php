@@ -86,10 +86,9 @@
                         <input type="date" id="pFECHA_INGRESO" name="pFECHA_INGRESO" required class="form-control">
                     </div>
                     <div class="col-md-4">
-                        <span class="clr">*</span>Puesto <!-- pendiente -->
-                        <!-- <select  class="form-control" id="pPUESTO_ADSCRIPCION_ACTUAL" name="pPUESTO_ADSCRIPCION_ACTUAL" required>
-                            <option value="">Seleccione</option>
-                        </select> -->
+                        <span class="clr">*</span>Puesto 
+                        <select  class="form-control" id="pPUESTO_ADSCRIPCION_ACTUAL" name="pPUESTO_ADSCRIPCION_ACTUAL" data-error="#err_pPUESTO_ADSCRIPCION_ACTUAL" data-force-refresh ='true' required></select>
+                        <span id="err_pPUESTO_ADSCRIPCION_ACTUAL"></span>
                     </div>
                     <div class="col-md-4">
                         Especialidad
