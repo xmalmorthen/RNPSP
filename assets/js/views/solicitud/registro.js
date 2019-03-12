@@ -610,9 +610,9 @@ var fillData = {
             });
         },
         actitudesHaciaEmpleo : function(pID_ALTERNA){
-            //TODO : Xmal - Quitar comentarios e implementar cuando se haya creado la acción
+            debugger;
 
-            /*var callUrl = base_url + `Solicitud/getSocioEconomico`;
+            var callUrl = base_url + `Solicitud/getActitud`;
             fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {  
                 if (data) {
@@ -621,7 +621,7 @@ var fillData = {
                     });
 
                     //special
-                    mainFormActions.insertValueInSelect($('#pID_TIPO_DOMICILIO'),data.pID_TIPO_DOMIC);
+                    mainFormActions.insertValueInSelect($('#pPUESTO_ACTITUDES_EMPLEO'),data.pPUESTO);
                 }
             })
             .catch( (err) => {
@@ -631,7 +631,7 @@ var fillData = {
                     header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
                     msg : err.statusText
                 });
-            });*/
+            });
         },
         comisiones : function(pID_ALTERNA){
             var tableRef = $('#' + objViewLaboral.vars.laboral.tables.tableComisiones.obj.tables().nodes().to$().attr('id')),
