@@ -1160,9 +1160,9 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pOREJA_LOB_DIMEN','pOREJA_LOB_DIMEN','',array('name'=>'Dimensión','rule'=>'trim|max_length[10]'));
     $this->addParam('pSANGRE','pSANGRE','',array('name'=>'Tipo','rule'=>'trim|max_length[10]'));
     $this->addParam('pFACTOR_RH','pFACTOR_RH','',array('name'=>'Factor RH','rule'=>'trim|max_length[10]'));//NO SE VE EL COMBO
-    $this->addParam('pLENTES','pLENTES','N',array('name'=>'¿Usa anteojos?','rule'=>'trim|max_length[10]'));
-    $this->addParam('pESTATURA','pESTATURA','',array('name'=>'Estatura (cm)','rule'=>'trim|max_length[10]'));//ESTA DIFERENTE
-    $this->addParam('pPESO','pPESO','',array('name'=>'Peso (kg)','rule'=>'trim|max_length[10]'));//p_PESO
+    $this->addParam('pLENTES','pLENTES','N',array('name'=>'¿Usa anteojos?','rule'=>'trim|required|max_length[10]'));
+    $this->addParam('pESTATURA','pCAT_ESTATURA','',array('name'=>'Estatura (cm)','rule'=>'trim|required|max_length[10]'));//ESTA DIFERENTE
+    $this->addParam('pPESO','p_PESO','',array('name'=>'Peso (kg)','rule'=>'trim|required|max_length[10]'));//p_PESO
 
     if ($this->form_validation->run() === true) {
       $this->procedure('sp_B2_MF_addFiliacion');
