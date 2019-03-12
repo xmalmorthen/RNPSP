@@ -40,7 +40,6 @@ var mainTabMenu = {
                 linkRef.trigger('click');
             }
         );
-
         switch (formMode) {
             case 'edit':
                 mainFormActions.populateData(id);
@@ -63,15 +62,7 @@ var mainTabMenu = {
 
         $('form').on('reset', function(e){
             $(this).find('select').val(null).trigger('change.select2').trigger('change');
-        });
-
-
-        if (selectPrincipalTabId){
-            $('#' + selectPrincipalTabId).trigger('click');
-            if (selectSubTabId){
-                $('#' + selectSubTabId).trigger('click');
-            }
-        }
+        });        
     },
     tab : {
         change : function(e){
@@ -261,7 +252,7 @@ var mainFormActions = {
             });
         }).then(function (data) {
             if (data.results) {
-                mainFormActions.fillData(response.results);
+                mainFormActions.fillData(data);
             } else
                 throw new Error('No se encontró información');
         }).catch(function(err){
@@ -348,6 +339,20 @@ var fillData = {
             fillData.datosGenerales.referencias(mainTabMenu.var.pID_ALTERNA);
             fillData.datosGenerales.socioeconomicos(mainTabMenu.var.pID_ALTERNA);
             fillData.datosGenerales.dependientesEconomicos(mainTabMenu.var.pID_ALTERNA);
+
+            // Si viene de la vista de ver -  posicionar en el tab que se encontraba para su edición
+            if (selectPrincipalTabId){
+                $('#' + selectPrincipalTabId).trigger('click');
+                if (selectSubTabId){
+                    $('#' + selectSubTabId).trigger('click');
+                }
+
+                var intervalTop = setInterval(function(){
+                    clearInterval(intervalTop);
+                    $('html, body').scrollTop(0);
+                },500);
+
+            }
         },
         datosPersonales : function(data){
             //AutoFill
@@ -496,6 +501,8 @@ var fillData = {
             });
         },
         socioeconomicos : function(pID_ALTERNA){
+            $('#Socioeconomicos_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
             var callUrl = base_url + `Solicitud/getSocioEconomico`;
             fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {  
@@ -506,7 +513,10 @@ var fillData = {
 
                     //special
                     mainFormActions.insertValueInSelect($('#pID_TIPO_DOMICILIO'),data.pID_TIPO_DOMIC);
+
+                    $('#Socioeconomicos_form').removeData('hasChanged');
                 }
+                $('#Socioeconomicos_form').LoadingOverlay("hide");
             })
             .catch( (err) => {
                 $('#Socioeconomicos_form').setAlert({
@@ -515,6 +525,7 @@ var fillData = {
                     header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
                     msg : err.statusText
                 });
+                $('#Socioeconomicos_form').LoadingOverlay("hide");
             });
         },
         dependientesEconomicos : function(pID_ALTERNA){

@@ -178,7 +178,6 @@ var objViewDatosGenerales = {
                         function (data) {  
                             objViewDatosGenerales.actions.ajax.callResponseValidations(form,data, from, tabRef, true, function(data){
                                 console.log(data);
-                                debugger;
                                 $.LoadingOverlay("hide");
                             });
                         }).fail(function (err) {
@@ -213,8 +212,6 @@ var objViewDatosGenerales = {
                 guardarSocioeconomico : function(e, from, tabRef){
                     e.preventDefault();
                     objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesSocioeconomico',from, tabRef, false, function(data){
-                        console.log(data);
-                        debugger;
                     });
                 },
                 guardarDependiente : function(e, from, tabRef){

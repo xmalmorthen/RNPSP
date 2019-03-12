@@ -31,7 +31,6 @@ var objViewVer = {
                 subTab = $('#myTabContent li.nav-item a.nav-link.active'),
                 callUrl = `${base_url}Solicitud/Modificar/${id}/${principalTab[0].id}/${subTab[0].id}`;
 
-            debugger;
             window.location.href = callUrl;
         }
     }
