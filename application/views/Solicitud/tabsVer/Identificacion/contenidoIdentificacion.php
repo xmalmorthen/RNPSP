@@ -309,21 +309,14 @@
                        <p></p>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id="modificarMediafiliacion">Modificar</button>
-                    </div>
-                </div>
-            <input type="hidden" id="pID_ALTERNA_Media_filiacion" name="pID_ALTERNA_Media_filiacion" value="" >
-            <input type="hidden" id="pID_ESTADO_EMISOR_Media_filiacion" name="pID_ESTADO_EMISOR_Media_filiacion" value="" >
-            <input type="hidden" id="pID_EMISOR_Media_filiacion" name="pID_EMISOR_Media_filiacion" value="" >
+                <input type="hidden" id="pID_ALTERNA_Media_filiacion" name="pID_ALTERNA_Media_filiacion" value="" >
+                <input type="hidden" id="pID_ESTADO_EMISOR_Media_filiacion" name="pID_ESTADO_EMISOR_Media_filiacion" value="" >
+                <input type="hidden" id="pID_EMISOR_Media_filiacion" name="pID_EMISOR_Media_filiacion" value="" >
             </form>
             <br>
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <center><input type="button" name="next" id="siguienteMediafiliacion" class="btn btn-default btnSiguienteAnterior siguienteTab" style="height:40px;" data-nexttab="#Datos-tab" value="Siguiente"/></center>
+            <div class="row">                
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="siguienteMediafiliacion" data-nexttab="#Senas_particulares-tab">Siguiente Ficha</button>
                 </div>
             </div>
         </div>
@@ -336,7 +329,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <h3 class="titulo">Ficha fotográfica</h3>
+                        <h3 class="titulo">Señas particulares</h3>
                     </div>
                 </div>                
                 <br>
@@ -373,35 +366,16 @@
                         <p></p>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id="modificarDesarrollo">Modificar</button>
-                    </div>
-                </div>
-                <br>
-                <br>
-                <hr>
-                <br>
-            
-                 <input type="hidden" id="pID_ALTERNA_Senas" name="pID_ALTERNA_Senas" value="" >
+                <input type="hidden" id="pID_ALTERNA_Senas" name="pID_ALTERNA_Senas" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Senas" name="pID_ESTADO_EMISOR_Senas" value="" >
                 <input type="hidden" id="pID_EMISOR_Senas" name="pID_EMISOR_Senas" value="" >
-                
             </form>
+            <br>
             <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorSeña" data-nexttab="#Datos-tab"> Anterior</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="SiguienteSeña" data-nexttab="#Ficha_fotografica-tab">Siguiente</button>
-                        </div>
-                    </div>
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorSeña" data-nexttab="#mediafiliacion-tab">Anterior Ficha</button>
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="SiguienteSeña" data-nexttab="#Ficha_fotografica-tab">Siguiente Ficha</button>
                 </div>
-                <div class="col-md-4"></div>
             </div>
         </div>
     </div>
@@ -478,40 +452,20 @@
                         <!-- SPACE -->
                     </div>
                     <div class="col-md-4">
-                        <h6 class="borderButtom">Doumento</h6>
+                        <h6 class="borderButtom">Documento</h6>
                         <p></p>
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id="modificarDecadactilar">Modificar</button>
-                    </div>
-                </div>
-                <br>
-            
-                <br>
-                <hr>
-                <br>
-        
-                 <input type="hidden" id="pID_ALTERNA_Datos" name="pID_ALTERNADecadactilar" value="" >
+                <input type="hidden" id="pID_ALTERNA_Datos" name="pID_ALTERNADecadactilar" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISORDecadactilar" name="pID_ESTADO_EMISORDecadactilar" value="" >
                 <input type="hidden" id="pID_EMISORDecadactilar" name="pID_EMISORDecadactilar" value="" >
-                
             </form>
+            <br>
             <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorDecadacticar" data-nexttab="#Ficha_fotografica-tab"> Anterior</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteDecadactilar" data-nexttab="#Digitalizacion_de_documento-tab">Siguiente</button>
-                        </div>
-                    </div>
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorDecadacticar" data-nexttab="#Ficha_fotografica-tab">Anterior Ficha</button>
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteDecadactilar" data-nexttab="#Digitalizacion_de_documento-tab">Siguiente Ficha</button>
                 </div>
-                <div class="col-md-4"></div>
             </div>
         </div>
     </div>
@@ -571,45 +525,21 @@
                 <br>
                 <hr>
                 <div class="row">                    
-                    <div class="col-md-4">
-                        Audio
-                        <div class="custom-file">
-                            <input type="file" id="vozFile" name="vozFile" class='custom-file-input inputFile' data-renderin='thumb_vozFile' accept="audio/*">
-                            <label class="custom-file-label" for="inputGroupFile01">Archivo</label>
-                        </div>
-                    </div>
-                    <div class="col-md-8 text-center">
+                    <div class="col-md-12 text-center">
+                        <h6 class="borderButtom">Audio</h6>
                         <!-- <audio id="audio" class='ml-5' style='width=90%!Important;' controls><source src="ruta_de_audio">Navegador no compatible con reproductor de audio</audio> -->
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id="modificarDesarrollo">Modificar</button>
-                    </div>
-                </div>
-                <br>
-                 <input type="hidden" id="pID_ALTERNA_Voz" name="pID_ALTERNA_Voz" value="" >
+                <input type="hidden" id="pID_ALTERNA_Voz" name="pID_ALTERNA_Voz" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Voz" name="pID_ESTADO_EMISOR_Voz" value="" >
                 <input type="hidden" id="pID_EMISOR_Voz" name="pID_EMISOR_Voz" value="" >
-                
             </form>
+            <br>
             <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <button class="btn btn-default" id="anteriorVoz" data-nexttab="#Digitalizacion_de_documento-tab"> Anterior</button>
-                            </div>
-                            <div class="col-md-6">
-                                <button class="btn btn-default btnSiguienteAnterior siguienteTab endTab" id="finalizarVoz">Finalizar</button>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-md-4"></div>
-
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior" id="anteriorVoz" data-nexttab="#Digitalizacion_de_documento-tab">Anterior Ficha</button>
                 </div>
+            </div>
         </div>
     </div>
 
@@ -722,41 +652,23 @@
                         <!-- <button class="btn btn-default mt-5">subir</button> -->
                     </div>
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id='modificarFicha'>Modificar</button>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorFotografica" data-nexttab="#Senas_particulares-tab"> Anterior</button>
-                                </div>
-                                <div class="col-md-6">
-                                    <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteFotografica" data-nexttab="#Registro_decadactilar-tab">Siguiente</button>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-md-4"></div>
-
-                </div>
-           
                 <input type="hidden" id="pID_ALTERNA_Fotografica" name="pID_ALTERNA_Fotografica" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Fotografica" name="pID_ESTADO_EMISOR_Fotografica" value="" >
                 <input type="hidden" id="pID_EMISOR_Fotografica" name="pID_EMISOR_Fotografica" value="" >
-               
             </form>
+            <br>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorFotografica" data-nexttab="#Senas_particulares-tab">Anterior Ficha</button>
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteFotografica" data-nexttab="#Registro_decadactilar-tab">Siguiente Ficha</button>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="tab-pane fade" id="Digitalizacion_de_documento" role="tabpanel" aria-labelledby="Digitalizacion_de_documento-tab">
             <form action="#" id="Digitalizacion_de_documento_form" name="Digitalizacion_de_documento_form" autocomplete="off">
-                < <br>
+                <br>
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <h3 class="titulo">Digitalización del documento</h3>
@@ -778,36 +690,16 @@
                         <p></p>
                     </div>
                 </div>
-                <br>
-                <br>
-              
-                <div class="row">
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id="modificarDocumento">Modificar</button>
-                    </div>
-                </div>
-                <br>
-                <hr>
-                <br>
-    
-                 <input type="hidden" id="pID_ALTERNA_Documento" name="pID_ALTERNA_Documento" value="" >
+                <input type="hidden" id="pID_ALTERNA_Documento" name="pID_ALTERNA_Documento" value="" >
                 <input type="hidden" id="pID_ESTADO_EMISOR_Documento" name="pID_ESTADO_EMISOR_Documento" value="" >
                 <input type="hidden" id="pID_EMISOR_Documento" name="pID_EMISOR_Documento" value="" >
-                
             </form>
+            <br>
             <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior anteriorTab" id="anteriorDocumento" data-nexttab="#Registro_decadactilar-tab"> Anterior</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-default btnSiguienteAnterior siguienteTab" id="siguienteDocumento" data-nexttab="#Identificacion_de_voz-tab">Siguiente</button>
-                        </div>
-                    </div>
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior anteriorTab" id="anteriorDocumento" data-nexttab="#Registro_decadactilar-tab">Anterior Ficha</button>
+                    <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab" id="siguienteDocumento" data-nexttab="#Identificacion_de_voz-tab">Siguiente Ficha</button>
                 </div>
-                <div class="col-md-4"></div>
             </div>
         </div>
     </div>

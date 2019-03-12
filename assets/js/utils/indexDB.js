@@ -1,8 +1,8 @@
 var iDB = {
-    version: 4,
+    version: 5,
     status : false,
     vars : {
-        db : new Dexie('SGPv4'),
+        db : null,
         selects : $('select'),
         toPopulate : 0,
         tablesChecked : 0,
@@ -10,6 +10,8 @@ var iDB = {
         tables : []
     },
     init : async function(){
+        iDB.vars.db = new Dexie('SGPv' + iDB.version);
+
         const tablas = await iDB.actions.getTablesNames();
         iDB.actions.createIDB(tablas);
 

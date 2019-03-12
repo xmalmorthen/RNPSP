@@ -92,6 +92,8 @@
 
 <script type="text/javascript">
     var formMode = "<?php echo $this->session->flashdata('formMode'); ?>",
+        selectPrincipalTabId = "<?php echo $this->session->flashdata('selectPrincipalTabId'); ?>",
+        selectSubTabId = "<?php echo $this->session->flashdata('selectSubTabId'); ?>",
         id = "<?php echo isset($id) ? $id : ''; ?>";    
 </script>
 <!-- /JS -->
