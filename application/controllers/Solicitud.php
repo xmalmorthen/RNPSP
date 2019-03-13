@@ -57,9 +57,12 @@
 			$this->load->view('Solicitud/Registro');
         }
 		
-		public function Modificar($id = null, $selectPrincipalTabId = null, $selectSubTabId = null){
+		public function Modificar($id = null){
 			if (!$id)
 				show_error('Parámetros incorrecto', 403, 'Error en la petición');
+
+			$selectPrincipalTabId = $this->input->get('selectPrincipalTabId');
+			$selectSubTabId = $this->input->get('selectSubTabId');
 
 			// BREADCRUMB
 			$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');		
@@ -1050,7 +1053,7 @@
 		* XMAL obtener datos pestaña "DATOS GELERALES" -> "Socioeconómicos"
 		* get getSocioEconomico pID_ALTERNA,pCURP
 		*/
-		public function getSocioEconomico(){
+		public function getSocioEco(){
 			if (! $this->input->is_ajax_request()) {
 				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
 			}

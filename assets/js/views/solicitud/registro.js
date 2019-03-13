@@ -150,15 +150,19 @@ var mainTabMenu = {
             var linkRef = $('#' + linkRefHash);
             linkRef.trigger('click');
         },
-        tableResponsive : function(){
-            if ($.isFunction(objViewDatosGenerales.events.change.tableResponsive))
+        tableResponsive : function(){            
+            try {
                 objViewDatosGenerales.events.change.tableResponsive();
-            if ($.isFunction(objViewLaboral.events.change.tableResponsive))
+            } catch (error) {}
+            try {
                 objViewLaboral.events.change.tableResponsive();
-            if ($.isFunction(objViewCapacitacion.events.change.tableResponsive))
+            } catch (error) {}
+            try {
                 objViewCapacitacion.events.change.tableResponsive();
-            if ($.isFunction(objViewIdentificacion.events.change.tableResponsive))
+            } catch (error) {}
+            try {
                 objViewIdentificacion.events.change.tableResponsive();
+            } catch (error) {}
         }
     },
     mainInit : function(){
@@ -503,7 +507,7 @@ var fillData = {
         socioeconomicos : function(pID_ALTERNA){
             $('#Socioeconomicos_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
-            var callUrl = base_url + `Solicitud/getSocioEconomico`;
+            var callUrl = base_url + `Solicitud/getSocioEco`;
             fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {  
                 if (data) {
