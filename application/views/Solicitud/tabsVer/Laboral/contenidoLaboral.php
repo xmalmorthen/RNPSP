@@ -10,7 +10,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-6">
-                        <h6 class="borderButtom"><span class="clr">*</span>Dependencia</h6> <!-- Se llena del catalogo "CAT_DEPENDENCIA" -->
+                        <h6 class="borderButtom">ependencia</h6> <!-- Se llena del catalogo "CAT_DEPENDENCIA" -->
                         <p></p>
                         <span id="err__dependenciaAdscripcionActual"></span>
                     </div>
@@ -367,7 +367,7 @@
                         <span id="err_pID_MOTIVO"></span>
                     </div>
                     <div class="col-md-4">
-                        <h6 class="borderButtom"><span class="clr">*</span>Destino</h6>
+                        <h6 class="borderButtom">estino</h6>
                         <p></p>
                     </div>
                 </div>

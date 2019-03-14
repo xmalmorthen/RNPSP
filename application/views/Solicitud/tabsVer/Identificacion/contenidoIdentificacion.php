@@ -303,15 +303,15 @@
                 <hr>
                 <div class="row">
                     <div class="col-md-4">
-                        <h6 class="borderButtom"><span class="clr">*</span>¿Usa anteojos?</h6> <!-- S/N = SI/NO -->
+                        <h6 class="borderButtom">¿Usa anteojos?</h6> <!-- S/N = SI/NO -->
                         <p id='pUSA_LENTES'></p>
                     </div>
                     <div class="col-md-4">
-                        <h6 class="borderButtom"><span class="clr">*</span>Estatura (cm)</h6>
+                        <h6 class="borderButtom">Estatura (cm)</h6>
                         <p id='pESTATURA'></p>
                     </div>
                     <div class="col-md-4">
-                        <h6 class="borderButtom"><span class="clr">*</span>Peso (kg)</h6>
+                        <h6 class="borderButtom">Peso (kg)</h6>
                        <p id='pPESO'></p>
                     </div>
                 </div>
@@ -341,26 +341,26 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <h6 class="borderButtom"><span class="clr">*</span>Tipo de seña</h6> <!-- Se llena del catálogo CAT_SENAS -->
+                        <h6 class="borderButtom">Tipo de seña</h6> <!-- Se llena del catálogo CAT_SENAS -->
                         <p id=''></p>
                     </div>
                     <div class="col-md-4">
-                        <h6 class="borderButtom"><span class="clr">*</span>Lado</h6> <!-- Se llena del catalogo CAT_LADO   -->
+                        <h6 class="borderButtom">Lado</h6> <!-- Se llena del catalogo CAT_LADO   -->
                        <p id=''></p>
                     </div>
                     <div class="col-md-4">
-                        <h6 class="borderButtom"><span class="clr">*</span>Región </h6><!-- Se llena del catálogo CAT_REGION -->
+                        <h6 class="borderButtom">Región </h6><!-- Se llena del catálogo CAT_REGION -->
                         <p id=''></p>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                       <h6 class="borderButtom"> <span class="clr">*</span>Vista</h6> <!-- Se llenda del catalogo  CAT_FRONTALDORSAL -->
+                       <h6 class="borderButtom"> Vista</h6> <!-- Se llenda del catalogo  CAT_FRONTALDORSAL -->
                         <p id=''></p>
                     </div>
                     <div class="col-md-4">
-                       <h6 class="borderButtom"> <span class="clr">*</span>Cantidad</h6>
+                       <h6 class="borderButtom"> Cantidad</h6>
                         <p id=''></p>
                     </div>
                     <div class="col-md-4">
