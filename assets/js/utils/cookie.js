@@ -100,8 +100,6 @@ var doExpireInterval = setInterval(function(){
 },1000);
 
 
-
-
 /*if ( MyCookie.singleWindow.get() === undefined) {
     MyCookie.singleWindow.save();
     $(window).unload(MyCookie.singleWindow.remove);
