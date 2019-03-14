@@ -227,7 +227,7 @@
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Original</h6> <!-- Se llena del catálogo CAT_OREJALOBDIMEN -->
-                        <p id=''>Falta la descripción - solo viene el ID</p>
+                        <p id='pDESC_OREJA_ORIGINAL'></p>
                     </div>
                 </div>
                   <br> <br>
@@ -252,7 +252,7 @@
                     </div>
                     <div class="col-md-3">
                         <h6 class="borderButtom">Contorno</h6> <!-- Se llena del catálogo CAT_OREJAHELCONTORNO -->
-                        <p id='pDESC_OREJA_HEL_CONTORNO'>Falta la descripción - solo viene el ID</p>
+                        <p id='pDESC_OREJA_HEL_CONTORNO'></p>
                     </div>
                 </div>
                 <br>

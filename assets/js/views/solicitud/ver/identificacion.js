@@ -50,8 +50,7 @@ var objViewIdentificacion = {
             objViewIdentificacion.fill.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {  
                 if (data) {
-                    console.log(data);
-
+                    //console.log(data);
                     $.each(data,function(key,value){
                         objViewIdentificacion.fill.insertValueInSelect(key,value);
                     });
