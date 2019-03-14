@@ -67,9 +67,12 @@ var iDB = {
                     iDB.actions.getDataFromBD(table).then(() =>{
                         iDB.vars.tablesChecked++;
                         iDB.vars.toPopulate--;
-                        // console.log('Populado tabla ' + table.name);
+                        
+                        $.LoadingOverlay("progress", iDB.vars.tablesChecked);
                     }).catch(function(){
                         iDB.vars.tablesChecked++;
+
+                        $.LoadingOverlay("progress", iDB.vars.tablesChecked);
                     });
                     
                 }).catch(function(err){                    
@@ -122,7 +125,7 @@ var iDB = {
         populatedInterval : function(){
             //console.log('a popular ' + iDB.vars.toPopulate);
             if (iDB.vars.toPopulate > 0) {
-                $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin",text:'Actualizando catálogos'});
+                $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin",text:'Actualizando catálogos',progress : true});
             } else {
                 clearInterval(iDB.vars.iDBSync);
                 $.LoadingOverlay("hide",true);
