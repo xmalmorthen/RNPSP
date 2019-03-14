@@ -110,6 +110,7 @@ class GetChecker {
         }
 
         $CI =& get_instance();
+
         $CI->load->model('Usuarios_model');
         $tieneTabs = $CI->Usuarios_model->PermisosTieneTabs();
         if($tieneTabs == 1){
@@ -121,6 +122,8 @@ class GetChecker {
         $_SESSION[SESSIONVAR]['permisosTab'] = $tieneTabs;
         
         $this->_checkPrivilege();
+
+        $CI->session->set_flashdata('force',$CI->input->get('force'));
     }
 
     /*

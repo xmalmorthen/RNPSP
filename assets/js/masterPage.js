@@ -21,6 +21,8 @@ if ( typeof sess_time_to_update !== 'undefined') {
             swalShow = true;
             timerInterval = null;
 
+            MyCookie.objs.coockieObj.set('sess_time_to_update',sess_time_to_update,{ path : '/' });
+
             var swalPreserve = null;
             if (Swal.isVisible()){
                 swalPreserve = {
@@ -68,7 +70,7 @@ if ( typeof sess_time_to_update !== 'undefined') {
                     clearInterval(timerInterval)
                 }
             }).then(function(result){
-                if (result.value === true){
+                if (result.value === true || result.value === undefined && result.dismiss === undefined){
 
                     if (swalPreserve){
                         if (swalPreserve.preserve){
@@ -87,14 +89,16 @@ if ( typeof sess_time_to_update !== 'undefined') {
                                 $.LoadingOverlay("hide");
                             }
                         }
+                        
+                        MyCookie.objs.coockieObj.set('sess_time_to_update',sess_time_to_update,{ path : '/' });
                     });                    
                 } else if (result.dismiss === 'cancel') {
-                    window.location.href = site_url + 'Sesion/Terminar';
+                    MyCookie.objs.coockieObj.set('sess_time_to_update',1,{ path : '/' });                    
                 }
             });
         }
         if (sess_time_to_update == 1) {
-            window.location.href = site_url + 'Sesion/Terminar';
+            MyCookie.objs.coockieObj.set('sess_time_to_update',1,{ path : '/' });
         }
         sess_time_to_update--;
     }, 1000);
