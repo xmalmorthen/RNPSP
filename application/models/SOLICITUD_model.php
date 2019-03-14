@@ -16,7 +16,7 @@ class SOLICITUD_model extends MY_Model
   }
 
   public function get(){
-    $this->select('FOLIO,NOMBRE,PATERNO,MATERNO,FECHA_REGISTRO,TIPO_OPERACION,DESCRIPCION,ESTATUS,Expr1');
+    $this->select('FOLIO,NOMBRE,PATERNO,MATERNO,FECHA_REGISTRO,TIPO_OPERACION,DESCRIPCION,ESTATUS,DESCRIPCION_ESTATUS');
     return $this->response_list();
   }
 

@@ -29,7 +29,7 @@
 						'ApellidoMaterno' => $value['MATERNO'],
 						'FechadeRegistro' => $value['FECHA_REGISTRO'],
 						'TipodeSolicitud' => $value['TIPO_OPERACION'],
-						'Estatus' => $value['ESTATUS'],
+						'Estatus' => $value['DESCRIPCION_ESTATUS'],
 						'options' => array(
 							'id' => $value['FOLIO']
 						)
