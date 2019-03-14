@@ -93,7 +93,7 @@ var doExpireInterval = setInterval(function(){
 
             sess_time_to_update = sess_time_to_updateCookie; 
             MyCookie.objs.coockieObj.set('sess_time_to_update',sess_time_to_update,{ path : '/' });
-        } else {
+        } else if (swalShow){
             swal.close();
         }
     }
