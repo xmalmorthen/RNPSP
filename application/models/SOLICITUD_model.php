@@ -743,7 +743,6 @@ class SOLICITUD_model extends MY_Model
       $this->iniParam('msg','varchar','80');
       $this->iniParam('tranEstatus','int');
       $build = $this->build_query();
-      // Utils::pre($build);
       $query = $this->db->query($build);
       $response = $this->query_row($query);
       if($response == FALSE){
@@ -1208,6 +1207,32 @@ class SOLICITUD_model extends MY_Model
       $message = $this->form_validation->error_array();
       $this->response['message'] = ul($message);
       $this->response['validation'] = $message;
+    }
+    return $this->response;
+  }
+
+  # Opcion Nueva Solicitud - Ficha Identificación- Pestaña Media Filiacion
+  # sp_B2_MF_getFiliacion - Obtiene la información de la media filiación del elemento.
+  public function sp_B2_MF_getFiliacion($idAlterna = null,$curp = null){
+    $this->procedure('sp_B2_CAPS_getHabilidadAptitud');
+    $this->addParam('pCURP',$curp,'N');
+    $this->addParam('pID_ALTERNA',$idAlterna);
+
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_list($query);
+
+    if($response === FALSE){
+      $this->response['status'] = 0;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    }else{
+      if(count($response) > 0){
+        $this->response['status'] = 1;
+        $this->response['data'] = $this->try_result($response);
+      }else{
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron resultados.';
+      }
     }
     return $this->response;
   }

@@ -1285,4 +1285,31 @@
 			echo json_encode( [ 'results' => $responseModel ] );
 			exit;
 		}
+
+		# XMAL obtener datos pestaña "Identificación" -> "Media filiación"
+		# get sp_B2_MF_getFiliacion pID_ALTERNA,pCURP
+		# EJEMPLO: http://localhost/SGP/Solicitud/sp_B2_MF_getFiliacion?pID_ALTERNA=56
+		# Opcion Nueva Solicitud - Ficha Identificación- Pestaña Media Filiacion
+		# sp_B2_MF_getFiliacion - Obtiene la información de la media filiación del elemento.
+		public function sp_B2_MF_getFiliacion(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+			$idAlterna = $this->input->get('pID_ALTERNA');
+			$curp = $this->input->get('pCURP');
+			try {
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_B2_MF_getFiliacion($idAlterna,$curp);
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
 }
