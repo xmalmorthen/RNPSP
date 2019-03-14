@@ -1214,13 +1214,13 @@ class SOLICITUD_model extends MY_Model
   # Opcion Nueva Solicitud - Ficha Identificación- Pestaña Media Filiacion
   # sp_B2_MF_getFiliacion - Obtiene la información de la media filiación del elemento.
   public function sp_B2_MF_getFiliacion($idAlterna = null,$curp = null){
-    $this->procedure('sp_B2_CAPS_getHabilidadAptitud');
+    $this->procedure('sp_B2_MF_getFiliacion');
     $this->addParam('pCURP',$curp,'N');
     $this->addParam('pID_ALTERNA',$idAlterna);
 
     $buid = $this->build_query();
     $query = $this->db->query($buid);
-    $response = $this->query_list($query);
+    $response = $this->query_row($query);
 
     if($response === FALSE){
       $this->response['status'] = 0;

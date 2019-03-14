@@ -1312,4 +1312,67 @@
 			echo json_encode( [ 'results' => $responseModel ] );
 			exit;
 		}
-}
+
+		# XMAL obtener datos pestaña "Datos generales" -> "Datos personales"
+		# get getPersona pID_ALTERNA,pCURP
+		# EJEMPLO: http://localhost/SGP/Solicitud/getPersona?pID_ALTERNA=56
+		# Opción Nueva Solicitud - GRID de CIB
+		# sp_B1_getPersona
+		public function getPersona(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+			$idAlterna = $this->input->get('pID_ALTERNA');
+			$curp = $this->input->get('pCURP');
+			try {
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_B1_getPersona($idAlterna,$curp);
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+
+# [OBTENER DATOS]
+
+# Datos generales
+	# Datos personales
+		# para: FORMULARIO 			funcion: getPersona 				ejemplo: http://localhost/SGP/Solicitud/getPersona?pID_ALTERNA=56
+		# para: GRID 				funcion: sp_B1_getPersonaCIB 		ejemplo: http://localhost/SGP/Solicitud/getPersonaCIB?pID_ALTERNA=56
+	# Desarrollo académico
+		# para: GRID 				funcion: getPersona 				ejemplo: http://localhost/SGP/Solicitud/getPersona?pID_ALTERNA=56
+	# Domicilio
+		# para: GRID 				funcion: getDomicilio 				ejemplo: http://localhost/SGP/Solicitud/getDomicilio?pID_ALTERNA=56
+	# Referencias
+		# para: GRID 				funcion: getReferencias 			ejemplo: http://localhost/SGP/Solicitud/getReferencias?pID_ALTERNA=56
+	# Socioeconómicos
+		# para: GRID 				funcion: getSocioEco 				ejemplo: http://localhost/SGP/Solicitud/getSocioEco?pID_ALTERNA=56
+
+# Laboral
+	# Adscripción actual
+		# para: GRID 				funcion: getAdscripcion 			ejemplo: http://localhost/SGP/Solicitud/getAdscripcion?pID_ALTERNA=56
+	# Empleos diversos
+		# para: GRID 				funcion: getEmpleoAdicional 		ejemplo: http://localhost/SGP/Solicitud/getEmpleoAdicional?pID_ALTERNA=56
+	# Actitudes hacia el empleo #FATA CORRECCION ESTA RETORNANDO VARIOS
+		# para: FORMULARIO 			funcion: getActitud 				ejemplo: http://localhost/SGP/Solicitud/getActitud?pID_ALTERNA=56
+	# Comisiones
+		# para: GRID 				funcion: getComision 				ejemplo: http://localhost/SGP/Solicitud/getComision?pID_ALTERNA=56
+
+# Capacitación
+	# Idiomas y/o dialectos
+		# para: GRID 				funcion: getIdiomaHablado 			ejemplo: http://localhost/SGP/Solicitud/getIdiomaHablado?pID_ALTERNA=56
+	# Habilidades y/o actitudes
+		# para: GRID 				funcion: getHabilidadAptitud 		ejemplo: http://localhost/SGP/Solicitud/getHabilidadAptitud?pID_ALTERNA=56
+
+# Identificación
+	# Media filiación #FATA CORRECCION ESTA RETORNANDO VARIOS
+		# para: FORMULARIO 			funcion: sp_B2_MF_getFiliacion 		ejemplo: http://localhost/SGP/Solicitud/sp_B2_MF_getFiliacion?pID_ALTERNA=56
+			
+}	

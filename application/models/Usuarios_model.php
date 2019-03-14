@@ -103,7 +103,8 @@ class Usuarios_model extends MY_Model
       ->select('cat_PermisosMetodo.id_PermisoMetodo as id_Permiso,cat_PermisosMetodo.Permiso,(' . $subQuery . ') as acceso')
       ->from('cat_Controladores')
       ->join('cat_Metodos', 'cat_Metodos.id_Controllador = cat_Controladores.id_Controllador')
-      ->join('cat_PermisosMetodo', 'cat_PermisosMetodo.id_Metodo = cat_Metodos.id_Metodo')
+      ->join('Permisos','cat_Metodos.id_Metodo = Permisos.id_Metodo')
+      ->join('cat_PermisosMetodo', 'Permisos.id_PermisoMetodo = cat_PermisosMetodo.id_PermisoMetodo')
       ->where('cat_Controladores.Nombre', $_controlador)
       ->where('cat_Metodos.Nombre', $_metodo);
     return $this->response_list();
@@ -120,7 +121,8 @@ class Usuarios_model extends MY_Model
       ->select('cat_Controladores.id_Controllador,cat_Controladores.Nombre AS Controlador,cat_Metodos.TieneTabs,cat_Metodos.id_Metodo,cat_Metodos.Nombre AS Metodo,cat_TabsMetodo.id_tabMetodo as id_Tab,cat_TabsMetodo.Nombre as Tab,cat_PermisosMetodo.id_PermisoMetodo as id_Permiso,cat_PermisosMetodo.Permiso,(' . $subQuery . ') as acceso')
       ->from('cat_Controladores')
       ->join('cat_Metodos', 'cat_Metodos.id_Controllador = cat_Controladores.id_Controllador')
-      ->join('cat_PermisosMetodo', 'cat_PermisosMetodo.id_Metodo = cat_Metodos.id_Metodo')
+      ->join('Permisos','cat_Metodos.id_Metodo = Permisos.id_Metodo')
+      ->join('cat_PermisosMetodo', 'Permisos.id_PermisoMetodo = cat_PermisosMetodo.id_PermisoMetodo')
       ->join('cat_TabsMetodo', 'cat_PermisosMetodo.id_tabMetodo = cat_TabsMetodo.id_tabMetodo', 'left')
       ->where('cat_Controladores.Nombre', $_controlador)
       ->where('cat_Metodos.Nombre', $_metodo);
