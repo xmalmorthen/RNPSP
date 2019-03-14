@@ -1360,7 +1360,7 @@
 		# para: GRID 				funcion: getAdscripcion 			ejemplo: http://localhost/SGP/Solicitud/getAdscripcion?pID_ALTERNA=56
 	# Empleos diversos
 		# para: GRID 				funcion: getEmpleoAdicional 		ejemplo: http://localhost/SGP/Solicitud/getEmpleoAdicional?pID_ALTERNA=56
-	# Actitudes hacia el empleo #FATA CORRECCION ESTA RETORNANDO VARIOS
+	# Actitudes hacia el empleo #RETORNA EL ULTIMO GUARDADO
 		# para: FORMULARIO 			funcion: getActitud 				ejemplo: http://localhost/SGP/Solicitud/getActitud?pID_ALTERNA=56
 	# Comisiones
 		# para: GRID 				funcion: getComision 				ejemplo: http://localhost/SGP/Solicitud/getComision?pID_ALTERNA=56
@@ -1372,7 +1372,7 @@
 		# para: GRID 				funcion: getHabilidadAptitud 		ejemplo: http://localhost/SGP/Solicitud/getHabilidadAptitud?pID_ALTERNA=56
 
 # Identificación
-	# Media filiación #FATA CORRECCION ESTA RETORNANDO VARIOS
+	# Media filiación #RETORNA EL ULTIMO GUARDADO
 		# para: FORMULARIO 			funcion: sp_B2_MF_getFiliacion 		ejemplo: http://localhost/SGP/Solicitud/sp_B2_MF_getFiliacion?pID_ALTERNA=56
 			
 }	
