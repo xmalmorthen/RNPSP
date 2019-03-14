@@ -1,4 +1,5 @@
 <div class="_container">
+    <a href="#" id='refreshView' title='Actualizar información'><i class="fa fa-refresh fa-3x mb-3" aria-hidden="true"></i></a>
     <!-- LISTA DE TABS DEL MENU PRINCIPAL -->
     <div class="row">
         <div class="col-md-12">
@@ -60,7 +61,11 @@
 </div>
 
 <!-- JS -->
+<script src="<?php echo base_url('assets/js/utils/alerts.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/utils/collectionGenerics.js') ?>"></script>
+
 <script src="<?php echo base_url('assets/js/views/solicitud/ver/datosGeneralesTab.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/views/solicitud/ver/identificacion.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/views/solicitud/ver/ver.js') ?>"></script>
 
 <script>

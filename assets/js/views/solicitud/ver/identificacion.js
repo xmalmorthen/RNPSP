@@ -1,15 +1,15 @@
-var objViewDatosGenerales = {
+var objViewIdentificacion = {
     vars : {
     },
     init : function(){
-        $.each(objViewDatosGenerales.vars,function(key,val){
-            var cmd = "objViewDatosGenerales.vars." + key + "= $('#" + key + "')";
+        $.each(objViewIdentificacion.vars,function(key,val){
+            var cmd = "objViewIdentificacion.vars." + key + "= $('#" + key + "')";
             eval(cmd); // DOM ref
-            cmd = "objViewDatosGenerales.vars." + key + ".on('click',objViewDatosGenerales.events.click." + key + ")";
+            cmd = "objViewIdentificacion.vars." + key + ".on('click',objViewIdentificacion.events.click." + key + ")";
             eval(cmd); // CLICK enent ref
         });
 
-        objViewDatosGenerales.fill.all();
+        objViewIdentificacion.fill.all();
     },
     events : {
         click : {
@@ -41,29 +41,30 @@ var objViewDatosGenerales = {
             });
         },
         all : function(){
-            objViewDatosGenerales.fill.datosPersonales(objViewVer.var.pID_ALTERNA);
+            objViewIdentificacion.fill.mediaFiliacion(objViewVer.var.pID_ALTERNA);
         },
-        datosPersonales : function(pID_ALTERNA){
-            $('#Datos_personales_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+        mediaFiliacion : function(pID_ALTERNA){
+            $('#mediafiliacion_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
-            var callUrl = base_url + `Solicitud/xxx`;
-            objViewDatosGenerales.fill.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            var callUrl = base_url + `Solicitud/vwFiliacion`;
+            objViewIdentificacion.fill.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {  
                 if (data) {
+                    //console.log(data);
                     $.each(data,function(key,value){
-                        objViewDatosGenerales.fill.insertValueInSelect(key,value);
+                        objViewIdentificacion.fill.insertValueInSelect(key,value);
                     });
                 }
-                $('#Datos_personales_form').LoadingOverlay("hide");
+                $('#mediafiliacion_form').LoadingOverlay("hide");
             })
             .catch( (err) => {
-                $('#Datos_personales_form').setAlert({
+                $('#mediafiliacion_form').setAlert({
                     alertType :  'alert-danger',
                     dismissible : true,
                     header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
                     msg : err.statusText
                 });
-                $('#Datos_personales_form').LoadingOverlay("hide");
+                $('#mediafiliacion_form').LoadingOverlay("hide");
             });
         }
     }

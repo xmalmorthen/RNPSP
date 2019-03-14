@@ -1291,7 +1291,7 @@
 		# EJEMPLO: http://localhost/SGP/Solicitud/sp_B2_MF_getFiliacion?pID_ALTERNA=56
 		# Opcion Nueva Solicitud - Ficha Identificación- Pestaña Media Filiacion
 		# sp_B2_MF_getFiliacion - Obtiene la información de la media filiación del elemento.
-		public function sp_B2_MF_getFiliacion(){
+		public function spB2MFgetFiliacion(){
 			if (! $this->input->is_ajax_request()) {
 				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
 			}

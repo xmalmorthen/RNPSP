@@ -382,7 +382,8 @@ var fillData = {
             mainFormActions.insertValueInSelect($('#pCIUDAD_NAC_DATOS_PERSONALES'),data.pCIUDAD_NAC);
             mainFormActions.insertValueInSelect($('#pCREDENCIAL_ELECTOR'),data.pCREDENCIAL_ELECTOR);
             mainFormActions.insertValueInSelect($('#pPASAPORTE'),data.pPASAPORTE);
-            mainFormActions.insertValueInSelect($('#pLICENCIA_DATOS_PERSONALES'),data.pLICENCIA);            
+            mainFormActions.insertValueInSelect($('#pLICENCIA_DATOS_PERSONALES'),data.pLICENCIA);
+            mainFormActions.insertValueInSelect($('#pLICENCIA_VIG'),data.pFECHA_LICENCIA_VIG);
 
             fillData.datosGenerales.CIB(mainTabMenu.var.pID_ALTERNA);
         },
@@ -769,7 +770,7 @@ var fillData = {
         mediaFiliacion : function(pID_ALTERNA){
             $('#mediafiliacion_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
-            var callUrl = base_url + `Solicitud/sp_B2_MF_getFiliacion`;
+            var callUrl = base_url + `Solicitud/spB2MFgetFiliacion`;
             fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {
                 if (data) {
@@ -781,18 +782,17 @@ var fillData = {
                     //mainFormActions.insertValueInSelect($('#pPUESTO_ACTITUDES_EMPLEO'),data.pPUESTO);
 
                     $('#mediafiliacion_form').removeData('hasChanged');
-                    $('#mediafiliacion_form').LoadingOverlay("hide");
                 }
+                $('#mediafiliacion_form').LoadingOverlay("hide");
             })
             .catch( (err) => {
-                $('#mediafiliacion_form').LoadingOverlay("hide");
-
                 $('#mediafiliacion_form').setAlert({
                     alertType :  'alert-danger',
                     dismissible : true,
                     header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
                     msg : err.statusText
                 });
+                $('#mediafiliacion_form').LoadingOverlay("hide");
             });
         },
         seniasParticulares : function(pID_ALTERNA){

@@ -10,7 +10,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                         <h6 class="borderButtom"><span class="clr">*</span>Idioma y/o dialecto</h6>  <!-- Se llena del catalogo "CAT_IDIOMA" -->
+                         <h6 class="borderButtom">Idioma y/o dialecto</h6>  <!-- Se llena del catalogo "CAT_IDIOMA" -->
                         <p></p>
                         <span id="err_pID_IDIOMA"></span>
                     </div>
@@ -68,7 +68,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                         <h6 class="borderButtom"><span class="clr">*</span>Tipo de habilidad y/o aptitud</h6><!-- Se llena con el catalogo "CAT_TIPO_APTITUD" -->
+                         <h6 class="borderButtom">Tipo de habilidad y/o aptitud</h6><!-- Se llena con el catalogo "CAT_TIPO_APTITUD" -->
                         <p></p>
                         <span id="err_ID_TIPO_APTITUD"></span>
                     </div>
@@ -77,7 +77,7 @@
                         <p></p>
                     </div>
                     <div class="col-md-4">
-                         <h6 class="borderButtom"><span class="clr">*</span>Grado de aptitud o dominio </h6><!-- Se rellena con el catalogo "CAT_GRADO_APTITUD_HAB" depende del select "TIPO_ACTITUD" -->
+                         <h6 class="borderButtom">Grado de aptitud o dominio </h6><!-- Se rellena con el catalogo "CAT_GRADO_APTITUD_HAB" depende del select "TIPO_ACTITUD" -->
                         <p></p>
                         <span id="err_ID_GRADO_APT_HAB"></span>
                     </div>

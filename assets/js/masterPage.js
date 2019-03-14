@@ -67,7 +67,7 @@ if ( typeof sess_time_to_update !== 'undefined') {
                     beep();
                 },
                 onClose: () => {
-                    clearInterval(timerInterval)
+                    clearInterval(timerInterval);
                 }
             }).then(function(result){
                 if (result.value === true || result.value === undefined && result.dismiss === undefined){
@@ -92,8 +92,8 @@ if ( typeof sess_time_to_update !== 'undefined') {
                         
                         MyCookie.objs.coockieObj.set('sess_time_to_update',sess_time_to_update,{ path : '/' });
                     });                    
-                } else if (result.dismiss === 'cancel') {
-                    MyCookie.objs.coockieObj.set('sess_time_to_update',1,{ path : '/' });                    
+                } else if (result.dismiss === 'cancel' || result.dismiss === 'timer') {
+                    MyCookie.objs.coockieObj.set('sess_time_to_update',1,{ path : '/' });
                 }
             });
         }

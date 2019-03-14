@@ -10,7 +10,7 @@
             <br>
             <div class="row">
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>CURP</h6>
+                    <h6 class="borderButtom">CURP</h6>
                     <p></p>
                 </div>
                 <div class="col-md-4">
@@ -21,11 +21,11 @@
             <br>
             <div class="row">
             <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Nombre</h6> 
+                    <h6 class="borderButtom">Nombre</h6> 
                     <p></p>
                 </div>
                 <div class="col-md-4">
-                    <h6 class="borderButtom"> <span class="clr">*</span>Apellido paterno</h6>
+                    <h6 class="borderButtom"> Apellido paterno</h6>
                     <p></p>
                 </div>
                 <div class="col-md-4">
@@ -36,26 +36,26 @@
             <br>
             <div class="row">
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Sexo <!-- Se llena de la tabla de CAT_SEXO --></h6>
+                    <h6 class="borderButtom">Sexo <!-- Se llena de la tabla de CAT_SEXO --></h6>
                     <p></p>
                 </div>
                 <div class="col-md-4">
-                    <h6 class="borderButtom"> <span class="clr">*</span>Fecha de nacimiento</h6>
+                    <h6 class="borderButtom"> Fecha de nacimiento</h6>
                     <p></p>
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>País de nacimiento <!-- Se llena del catálogo CAT_PAIS --></h6>
+                    <h6 class="borderButtom">País de nacimiento <!-- Se llena del catálogo CAT_PAIS --></h6>
                     <p></p>
                 </div>
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Estado de nacimiento <!-- Se llena del catálogo CAT_ENTIDAD --></h6>
+                    <h6 class="borderButtom">Estado de nacimiento <!-- Se llena del catálogo CAT_ENTIDAD --></h6>
                     <p></p>
                 </div>
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Municipio de nacimiento <!-- Se llena del catálogo de CAT_MUNICIPIO --></h6>
+                    <h6 class="borderButtom">Municipio de nacimiento <!-- Se llena del catálogo de CAT_MUNICIPIO --></h6>
                     <p></p>
                 </div>
             </div>
@@ -66,11 +66,11 @@
                     <p></p>
                 </div>
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Nacionalidad <!-- Se llena de CAT_PAIS --></h6>
+                    <h6 class="borderButtom">Nacionalidad <!-- Se llena de CAT_PAIS --></h6>
                     <p></p>
                 </div>
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Modo de nacionalidad <!-- se llena con CAT_NACIONALIDAD  --></h6>
+                    <h6 class="borderButtom">Modo de nacionalidad <!-- se llena con CAT_NACIONALIDAD  --></h6>
                     <p></p>
                 </div>
             </div>
@@ -81,11 +81,11 @@
                     <p></p>
                 </div>
                 <!-- <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>RFC</h6>
+                    <h6 class="borderButtom">RFC</h6>
                     <p></p>
                 </div> -->
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Estado civil <!-- Se llena del catálogo CAT_ESTADO_CIVIL --></h6>
+                    <h6 class="borderButtom">Estado civil <!-- Se llena del catálogo CAT_ESTADO_CIVIL --></h6>
                     <p></p>
                 </div>
             </div>
@@ -144,7 +144,7 @@
             <br>
             <div class="row">
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Máxima escolaridad <!-- CAT_GRADO_ESCOLAR --></h6>
+                    <h6 class="borderButtom">Máxima escolaridad <!-- CAT_GRADO_ESCOLAR --></h6>
                     <br>
                     <p></p>
                 </div>
@@ -213,15 +213,15 @@
             <br>
             <div class="row">
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Código postal</h6>
+                    <h6 class="borderButtom">Código postal</h6>
                     <p></p>
                 </div>
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Estado <br><!-- Se  llena del catálogo CAT_ENTIDAD--></h6>
+                    <h6 class="borderButtom">Estado <br><!-- Se  llena del catálogo CAT_ENTIDAD--></h6>
                     <p></p>
                 </div>
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Municipio <br> <!-- Se llena del catálogo CAT_MUNICIPIO --></h6>
+                    <h6 class="borderButtom">Municipio <br> <!-- Se llena del catálogo CAT_MUNICIPIO --></h6>
                     <p></p>
                 </div>
             </div>
@@ -232,18 +232,18 @@
                     <p></p>
                 </div>
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Colonia/Localidad</h6>
+                    <h6 class="borderButtom">Colonia/Localidad</h6>
                     <p></p>
                 </div>
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Calle</h6>
+                    <h6 class="borderButtom">Calle</h6>
                     <p></p>
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Número exterior</h6>
+                    <h6 class="borderButtom">Número exterior</h6>
                     <p></p>
                 </div>
                 <div class="col-md-4">
@@ -254,7 +254,7 @@
             <br>
             <div class="row">
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Entre la calle de</h6>
+                    <h6 class="borderButtom">Entre la calle de</h6>
                     <p></p>
                 </div>
                 <div class="col-md-4">
@@ -262,14 +262,14 @@
                     <p></p>
                 </div>
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Número telefónico</h6>
+                    <h6 class="borderButtom">Número telefónico</h6>
                     <p></p>
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>RFC</h6>
+                    <h6 class="borderButtom">RFC</h6>
                     <p></p>
                 </div>
             </div>
@@ -297,11 +297,11 @@
             <br>
             <div class="row">
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Nombre</h6>
+                    <h6 class="borderButtom">Nombre</h6>
                     <p></p>
                 </div>
                 <div class="col-md-4">
-                <h6 class="borderButtom"><span class="clr">*</span>Apellido paterno</h6>
+                <h6 class="borderButtom">Apellido paterno</h6>
                     <p></p>
                 </div>
                 <div class="col-md-4">
@@ -312,15 +312,15 @@
             <br>
             <div class="row">
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Sexo</h6>
+                    <h6 class="borderButtom">Sexo</h6>
                     <p></p>
                 </div>
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Ocupación</h6>
+                    <h6 class="borderButtom">Ocupación</h6>
                     <p></p>
                 </div>
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Tipo de referencia</h6>
+                    <h6 class="borderButtom">Tipo de referencia</h6>
                     <p></p>
                 </div>
             </div>
@@ -332,11 +332,11 @@
                     <p></p>
                 </div>
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Estado</h6>
+                    <h6 class="borderButtom">Estado</h6>
                     <p></p>
                 </div>
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Municipio</h6>
+                    <h6 class="borderButtom">Municipio</h6>
                     <p></p>
                 </div>
             </div>
@@ -347,18 +347,18 @@
                     <p></p>
                 </div>
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Colonia/Localidad</h6>
+                    <h6 class="borderButtom">Colonia/Localidad</h6>
                     <p></p>
                 </div>
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Calle</h6>
+                    <h6 class="borderButtom">Calle</h6>
                     <p></p>
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Número exterior</h6>
+                    <h6 class="borderButtom">Número exterior</h6>
                     <p></p>
                 </div>
                 <div class="col-md-4">
@@ -470,11 +470,11 @@
             <br>
             <div class="row">
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Nombre</h6>
+                    <h6 class="borderButtom">Nombre</h6>
                     <p></p>
                 </div>
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Apellido paterno</h6>
+                    <h6 class="borderButtom">Apellido paterno</h6>
                     <p></p>
                 </div>
                 <div class="col-md-4">
@@ -485,16 +485,16 @@
             <br>
             <div class="row">
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Sexo <br></h6> <!-- Se llena del catálogo CAT_SEXO -->
+                    <h6 class="borderButtom">Sexo <br></h6> <!-- Se llena del catálogo CAT_SEXO -->
                     <p></p>
                     <span id="err_SEXO"></span>
                 </div>
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Fecha de nacimiento</h6>
+                    <h6 class="borderButtom">Fecha de nacimiento</h6>
                     <p></p>
                 </div>
                 <div class="col-md-4">
-                    <h6 class="borderButtom"><span class="clr">*</span>Parentesco</h6> <br><!-- Se llena del catálogo CAT_RELACION -->
+                    <h6 class="borderButtom">Parentesco</h6> <br><!-- Se llena del catálogo CAT_RELACION -->
                     <p></p>
                     <span id="err_ID_RELACION"></span>
                 </div>
