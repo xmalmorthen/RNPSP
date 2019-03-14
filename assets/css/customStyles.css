@@ -152,6 +152,10 @@ body.adminbody .main-sidebar.left {
     .headerbar .titleHeader{
         font-size: 1.3rem;
     }
+
+    .iconografia{
+        font-size: 12px;
+    }
 }
 
 @media (max-width: 550px){    
@@ -159,11 +163,24 @@ body.adminbody .main-sidebar.left {
         font-size: .8rem;
         width: 60%;
     }
+
+    .iconografia{
+        font-size: 10px;
+    }
 }
 
-@media (max-width: 380px){    
+@media (max-width: 420px){    
     .headerbar .titleHeader{
         display: none;
+    }
+    .breadcrumb-holder {
+        font-size: 14px;
+    }
+    .breadcrumb-holder .main-title {
+        font-size: 1rem; 
+    }
+    .iconografia{
+        font-size: 7px;
     }
 }
 

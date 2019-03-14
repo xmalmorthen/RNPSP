@@ -592,15 +592,15 @@
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Adscripción</h6>
-                        <p></p>
+                        <p class='inAdscripcion'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Dependencia</h6>
-                        <p></p>
+                        <p class='inDependencia'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Institución</h6>
-                        <p></p>
+                        <p class='inInstitucion'></p>
                     </div>
                 </div>
                 <br>

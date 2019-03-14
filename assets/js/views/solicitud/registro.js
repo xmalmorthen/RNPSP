@@ -300,7 +300,7 @@ var mainFormActions = {
                         case 'date':
                         case 'email':
                         case 'hidden':
-                        case 'numeric':
+                        case 'number':
                             ref.val(value);
                         break;                        
                     }
@@ -767,6 +767,8 @@ var fillData = {
             fillData.identificacion.identificacionVoz(mainTabMenu.var.pID_ALTERNA);
         },
         mediaFiliacion : function(pID_ALTERNA){
+            $('#mediafiliacion_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
             var callUrl = base_url + `Solicitud/sp_B2_MF_getFiliacion`;
             fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {
@@ -779,9 +781,12 @@ var fillData = {
                     //mainFormActions.insertValueInSelect($('#pPUESTO_ACTITUDES_EMPLEO'),data.pPUESTO);
 
                     $('#mediafiliacion_form').removeData('hasChanged');
+                    $('#mediafiliacion_form').LoadingOverlay("hide");
                 }
             })
             .catch( (err) => {
+                $('#mediafiliacion_form').LoadingOverlay("hide");
+
                 $('#mediafiliacion_form').setAlert({
                     alertType :  'alert-danger',
                     dismissible : true,
