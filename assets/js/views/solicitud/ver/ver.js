@@ -28,8 +28,8 @@ var objViewVer = {
             e.preventDefault();
 
             var principalTab = $('#mainContainerTab li.nav-item a.nav-link.active'),
-                subTab = $('#myTabContent li.nav-item a.nav-link.active'),
-                callUrl = `${base_url}Solicitud/Modificar/${id}/${principalTab[0].id}/${subTab[0].id}`;
+                subTab = $('#myTabContent .tab-pane.active.show li.nav-item a.nav-link.active'),
+                callUrl = `${base_url}Solicitud/Modificar/${id}?selectPrincipalTabId=${principalTab[0].id}&selectSubTabId=${subTab[0].id}`;
 
             window.location.href = callUrl;
         }

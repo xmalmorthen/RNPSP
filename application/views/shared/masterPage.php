@@ -45,7 +45,8 @@
 					uri_string : JSON.parse('<?php echo json_encode($this->uri->uri_string);  ?>'),
 					segments : JSON.parse('<?php echo json_encode($this->uri->segments);  ?>'),
 					rsegments : JSON.parse('<?php echo json_encode($this->uri->rsegments);  ?>')
-				};
+				},
+				force = '<?php echo $this->session->flashdata('force'); ?>';
 		</script>
 
 		<!-- JS -->

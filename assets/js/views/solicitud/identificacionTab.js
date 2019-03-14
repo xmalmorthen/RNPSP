@@ -125,8 +125,6 @@ var objViewIdentificacion = {
 
         mainTabMenu.actions.changeTab();
 
-        objViewIdentificacion.vars.general.init = true;
-
         $('#myTabContent').LoadingOverlay("hide");
 
         if (callback){
@@ -134,6 +132,8 @@ var objViewIdentificacion = {
                 callback();
             }
         }
+
+        objViewIdentificacion.vars.general.init = true;
     },
     events : {
         click : {

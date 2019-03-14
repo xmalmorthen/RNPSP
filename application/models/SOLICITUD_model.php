@@ -697,7 +697,6 @@ class SOLICITUD_model extends MY_Model
   */
   public function sp_B1_addAdscripcion($model){
     $this->arrayToPost($model);
-    $_POST['pID_PUESTO'] = 1; //TEMPORAL
     $this->load->library('form_validation');
     $this->addParam('pID_ALTERNA','pID_ALTERNA','',array('rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pID_ESTADO_EMISOR','pID_ESTADO_EMISOR_Adscripcion_actual','',array('rule'=>'trim|numeric|max_length[10]'));
@@ -705,8 +704,8 @@ class SOLICITUD_model extends MY_Model
     
     $this->addParam('pID_ENTIDAD','pID_ENTIDAD_ADSCRIPCION_ACTUAL','',array('name'=>'Estado','rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pID_MUNICIPIO','pID_MUNICIPIO_ADSCRIPCION_ACTUAL','',array('name'=>'Municipio','rule'=>'trim|required|numeric|max_length[10]'));
-    $this->addParam('pID_AREA','pID_AREA','',array('name'=>'Área o departamento','rule'=>'trim|numeric|max_length[10]'));
-    $this->addParam('pID_PUESTO','pID_PUESTO','',array('name'=>'Puesto','rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pID_AREA','pID_AREA','',array('name'=>'Área o departamento','rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pID_PUESTO','pPUESTO_ADSCRIPCION_ACTUAL','',array('name'=>'Puesto','rule'=>'trim|numeric|max_length[10]'));
     $this->addParam('pID_DEPENDENCIA','pID_DEPENDENCIA_ADSCRIPCION_ACTUAL','',array('name'=>'Dependencia','rule'=>'trim|numeric|max_length[10]'));
     $this->addParam('pID_INSTITUCION','pID_INSTITUCION','',array('name'=>'','rule'=>'trim|numeric|max_length[10]'));
     $this->addParam('pID_TIPO_CONTRATO','pID_TIPO_CONTRATO_Adscripcion_actual','',array('name'=>'','rule'=>'trim|numeric|max_length[10]'));
@@ -714,7 +713,7 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pESPECIALIDAD','pESPECIALIDAD','N',array('name'=>'Especialidad','rule'=>'trim|max_length[50]'));
     $this->addParam('pRANGO','pRANGO','N',array('name'=>'Rango o categoría','rule'=>'trim|max_length[30]'));
     $this->addParam('pSUELDO_BASE','pSUELDO_BASE','',array('name'=>'Sueldo base (Mensual)','rule'=>'trim|numeric|max_length[10]'));
-    $this->addParam('pID_NIVEL_MANDO','pID_NIVEL_MANDO','',array('name'=>'Nivel de mando','rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pID_NIVEL_MANDO','pID_NIVEL_MANDO','',array('name'=>'Nivel de mando','rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pCOMPENSACION','pCOMPENSACION','',array('name'=>'Compensaciones (Mensuales)','rule'=>'trim|numeric|max_length[10]'));
     $this->addParam('pNUMERO_PLACA','pNUMERO_PLACA','N',array('name'=>'Número de placa','rule'=>'trim|max_length[20]'));
     $this->addParam('pNUMERO_EXPEDIENTE','pNUMERO_EXPEDIENTE','N',array('name'=>'Número de expediente','rule'=>'trim|max_length[20]'));
@@ -743,8 +742,8 @@ class SOLICITUD_model extends MY_Model
       $this->iniParam('txtError','varchar','250');
       $this->iniParam('msg','varchar','80');
       $this->iniParam('tranEstatus','int');
-
-      $query = $this->db->query($this->build_query());
+      $build = $this->build_query();
+      $query = $this->db->query($build);
       $response = $this->query_row($query);
       if($response == FALSE){
         $this->response['status'] = false;
@@ -901,7 +900,7 @@ class SOLICITUD_model extends MY_Model
 
     $buid = $this->build_query();
     $query = $this->db->query($buid);
-    $response = $this->query_list($query);
+    $response = $this->query_row($query);
 
     if($response === FALSE){
       $this->response['status'] = 0;
@@ -1073,9 +1072,9 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pID_ESTADO_EMISOR',null);
     $this->addParam('pID_EMISOR',null);
 
-    $this->addParam('pID_TIPO_APTITUD','ID_TIPO_APTITUD','',array('name'=>'Tipo de habilidad y/o aptitud','rule'=>'trim|required|numeric|max_length[10]'));
-    $this->addParam('pESPECIFIQUE','ESPECIFIQUE','N',array('name'=>'Descripción','rule'=>'trim|max_length[100]'));
-    $this->addParam('pID_GRADO_APT_HAB','ID_GRADO_APT_HAB','',array('name'=>'Grado de aptitud o dominio','rule'=>'trim|numeric|max_length[10]'));
+    $this->addParam('pID_TIPO_APTITUD','pID_TIPO_APTITUD','',array('name'=>'Tipo de habilidad y/o aptitud','rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pESPECIFIQUE','pESPECIFIQUE','N',array('name'=>'Descripción','rule'=>'trim|max_length[100]'));
+    $this->addParam('pID_GRADO_APT_HAB','pID_GRADO_APT_HAB','',array('name'=>'Grado de aptitud o dominio','rule'=>'trim|required|numeric|max_length[10]'));
     if ($this->form_validation->run() === true) {
       $this->procedure('sp_B2_CAPS_addHabilidadAptitud');
       $this->iniParam('txtError','varchar','250');
@@ -1185,8 +1184,8 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pSANGRE','pSANGRE','',array('name'=>'Tipo','rule'=>'trim|max_length[10]'));
     $this->addParam('pFACTOR_RH','pFACTOR_RH','',array('name'=>'Factor RH','rule'=>'trim|max_length[10]'));//NO SE VE EL COMBO
     $this->addParam('pLENTES','pLENTES','N',array('name'=>'¿Usa anteojos?','rule'=>'trim|required|max_length[10]'));
-    $this->addParam('pESTATURA','pCAT_ESTATURA','',array('name'=>'Estatura (cm)','rule'=>'trim|required|max_length[10]'));//ESTA DIFERENTE
-    $this->addParam('pPESO','p_PESO','',array('name'=>'Peso (kg)','rule'=>'trim|required|max_length[10]'));//p_PESO
+    $this->addParam('pESTATURA','pESTATURA','',array('name'=>'Estatura (cm)','rule'=>'trim|required|max_length[10]'));//ESTA DIFERENTE
+    $this->addParam('pPESO','pPESO','',array('name'=>'Peso (kg)','rule'=>'trim|required|max_length[10]'));//p_PESO
 
     if ($this->form_validation->run() === true) {
       $this->procedure('sp_B2_MF_addFiliacion');
@@ -1208,6 +1207,32 @@ class SOLICITUD_model extends MY_Model
       $message = $this->form_validation->error_array();
       $this->response['message'] = ul($message);
       $this->response['validation'] = $message;
+    }
+    return $this->response;
+  }
+
+  # Opcion Nueva Solicitud - Ficha Identificación- Pestaña Media Filiacion
+  # sp_B2_MF_getFiliacion - Obtiene la información de la media filiación del elemento.
+  public function sp_B2_MF_getFiliacion($idAlterna = null,$curp = null){
+    $this->procedure('sp_B2_MF_getFiliacion');
+    $this->addParam('pCURP',$curp,'N');
+    $this->addParam('pID_ALTERNA',$idAlterna);
+
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_row($query);
+
+    if($response === FALSE){
+      $this->response['status'] = 0;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    }else{
+      if(count($response) > 0){
+        $this->response['status'] = 1;
+        $this->response['data'] = $this->try_result($response);
+      }else{
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron resultados.';
+      }
     }
     return $this->response;
   }

@@ -126,7 +126,14 @@ var mainTabMenu = {
                     });
                 break;
                 case 'Identificacion':
-                    objViewIdentificacion.init(function(){ dynTabs.validForm = true; mainTabMenu.actions.inited = true;});
+                    objViewIdentificacion.init(function(){ 
+                        if (dynTabs.mode == 'edit' && !objViewIdentificacion.vars.general.init) { 
+                            fillData.identificacion.all();
+                        }
+
+                        dynTabs.validForm = true; 
+                        mainTabMenu.actions.inited = true;
+                    });
                 break;
             }
             if (callback) {
@@ -150,15 +157,19 @@ var mainTabMenu = {
             var linkRef = $('#' + linkRefHash);
             linkRef.trigger('click');
         },
-        tableResponsive : function(){
-            if ($.isFunction(objViewDatosGenerales.events.change.tableResponsive))
+        tableResponsive : function(){            
+            try {
                 objViewDatosGenerales.events.change.tableResponsive();
-            if ($.isFunction(objViewLaboral.events.change.tableResponsive))
+            } catch (error) {}
+            try {
                 objViewLaboral.events.change.tableResponsive();
-            if ($.isFunction(objViewCapacitacion.events.change.tableResponsive))
+            } catch (error) {}
+            try {
                 objViewCapacitacion.events.change.tableResponsive();
-            if ($.isFunction(objViewIdentificacion.events.change.tableResponsive))
+            } catch (error) {}
+            try {
                 objViewIdentificacion.events.change.tableResponsive();
+            } catch (error) {}
         }
     },
     mainInit : function(){
@@ -371,7 +382,7 @@ var fillData = {
             mainFormActions.insertValueInSelect($('#pCIUDAD_NAC_DATOS_PERSONALES'),data.pCIUDAD_NAC);
             mainFormActions.insertValueInSelect($('#pCREDENCIAL_ELECTOR'),data.pCREDENCIAL_ELECTOR);
             mainFormActions.insertValueInSelect($('#pPASAPORTE'),data.pPASAPORTE);
-            mainFormActions.insertValueInSelect($('#pLICENCIA_DATOS_PERSONALES'),data.pLICENCIA);
+            mainFormActions.insertValueInSelect($('#pLICENCIA_DATOS_PERSONALES'),data.pLICENCIA);            
 
             fillData.datosGenerales.CIB(mainTabMenu.var.pID_ALTERNA);
         },
@@ -503,7 +514,7 @@ var fillData = {
         socioeconomicos : function(pID_ALTERNA){
             $('#Socioeconomicos_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
-            var callUrl = base_url + `Solicitud/getSocioEconomico`;
+            var callUrl = base_url + `Solicitud/getSocioEco`;
             fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {  
                 if (data) {
@@ -745,6 +756,239 @@ var fillData = {
                 tableRef.LoadingOverlay("hide");
             });
         }
+    },
+    identificacion : {
+        all : function(){
+            fillData.identificacion.mediaFiliacion(mainTabMenu.var.pID_ALTERNA);
+            fillData.identificacion.seniasParticulares(mainTabMenu.var.pID_ALTERNA);
+            fillData.identificacion.fichaFotografica(mainTabMenu.var.pID_ALTERNA);
+            fillData.identificacion.registroDecadactilar(mainTabMenu.var.pID_ALTERNA);
+            fillData.identificacion.digitalizacionDocumento(mainTabMenu.var.pID_ALTERNA);
+            fillData.identificacion.identificacionVoz(mainTabMenu.var.pID_ALTERNA);
+        },
+        mediaFiliacion : function(pID_ALTERNA){
+            var callUrl = base_url + `Solicitud/sp_B2_MF_getFiliacion`;
+            fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+                if (data) {
+                    $.each(data,function(key,value){
+                        mainFormActions.insertValueInSelect($('#'+ key),value);
+                    });
+
+                    //special
+                    //mainFormActions.insertValueInSelect($('#pPUESTO_ACTITUDES_EMPLEO'),data.pPUESTO);
+
+                    $('#mediafiliacion_form').removeData('hasChanged');
+                }
+            })
+            .catch( (err) => {
+                $('#mediafiliacion_form').setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.statusText
+                });
+            });
+        },
+        seniasParticulares : function(pID_ALTERNA){
+            var tableRef = $('#' + objViewIdentificacion.vars.identificacion.tables.tableSenasparticulares.obj.tables().nodes().to$().attr('id')),
+                tableObj = objViewIdentificacion.vars.identificacion.tables.tableSenasparticulares.obj,
+                callUrl = base_url + `Solicitud/xxx`;
+
+            tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+            tableObj.clear().draw();
+
+            fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+                if (data) {
+                    $.each( data, function(key,value) {
+                        //TODO: Xmal - Implementar
+                        //var row = [ value.pID_IDIOMA_HABLADO_EXT, value.pIDIOMA, value.pPORCENTAJE_LECTURA, value.pPORCENTAJE_ESCRITURA, value.pPORCENTAJE_CONVERSACION ];
+                        //tableObj.row.add( row ).draw( false );
+                    });
+                }
+
+                //Boton para refrescar datatable
+                var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
+                if (btnRefreshRef.find('.refreshTable').length == 0)
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.capacitacion.idiomasDialectos(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+
+                tableRef.LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                tableRef.setError(err.statusText);
+                tableRef.LoadingOverlay("hide");
+            });
+        },
+        fichaFotografica : function(pID_ALTERNA){
+            //BLOQUE PARA LAS IMÁGENES E INFORMACIÓN
+            //INFORMACIÓN
+            fillData.camposGeneralesInformacion();
+
+            // IMÁGENES
+            var thumb_pIMAGEN_IZQUIERDO = $('#thumb_pIMAGEN_IZQUIERDO'),
+                thumb_pIMAGEN_FRENTE = $('#thumb_pIMAGEN_FRENTE'),
+                thumb_pIMAGEN_DERECHO = $('#thumb_pIMAGEN_DERECHO'),
+                thumb_pIMAGEN_FIRMA = $('#thumb_pIMAGEN_FIRMA'),
+                thumb_pIMAGEN_HUELLA = $('#thumb_pIMAGEN_HUELLA');
+            
+            //TODO: Xmal - Implementar
+            /*******************************************************************************/            
+            //CAMPOS DE IMÁGENES
+            thumb_pIMAGEN_IZQUIERDO.attr("src", base_url + 'assets/images/escudo.jpg');
+            thumb_pIMAGEN_FRENTE.attr("src", base_url + 'assets/images/escudo.jpg');
+            thumb_pIMAGEN_DERECHO.attr("src", base_url + 'assets/images/escudo.jpg');
+            thumb_pIMAGEN_FIRMA.attr("src", base_url + 'assets/images/escudo.jpg');
+            thumb_pIMAGEN_HUELLA.attr("src", base_url + 'assets/images/escudo.jpg');
+            /*******************************************************************************/
+
+            //BLOQUE PARA EL GRID
+            var tableRef = $('#' + objViewIdentificacion.vars.identificacion.tables.tableFichafotografica.obj.tables().nodes().to$().attr('id')),
+                tableObj = objViewIdentificacion.vars.identificacion.tables.tableFichafotografica.obj,
+                callUrl = base_url + `Solicitud/xxx`;
+
+            tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+            tableObj.clear().draw();
+
+            fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+                if (data) {
+                    $.each( data, function(key,value) {
+                        //TODO: Xmal - Implementar
+                        //var row = [ value.pID_IDIOMA_HABLADO_EXT, value.pIDIOMA, value.pPORCENTAJE_LECTURA, value.pPORCENTAJE_ESCRITURA, value.pPORCENTAJE_CONVERSACION ];
+                        //tableObj.row.add( row ).draw( false );
+                    });
+                }
+
+                //Boton para refrescar datatable
+                var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
+                if (btnRefreshRef.find('.refreshTable').length == 0)
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.capacitacion.idiomasDialectos(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+
+                tableRef.LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                tableRef.setError(err.statusText);
+                tableRef.LoadingOverlay("hide");
+            });
+        },
+        registroDecadactilar : function(pID_ALTERNA){
+            //BLOQUE PARA EL LINK AL DOCUMENTO E INFORMACIÓN
+            fillData.camposGeneralesInformacion();
+
+            //BLOQUE PARA EL GRID
+            var tableRef = $('#' + objViewIdentificacion.vars.identificacion.tables.tableRegistrodecadactilar.obj.tables().nodes().to$().attr('id')),
+                tableObj = objViewIdentificacion.vars.identificacion.tables.tableRegistrodecadactilar.obj,
+                callUrl = base_url + `Solicitud/xxx`;
+
+            tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+            tableObj.clear().draw();
+
+            fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+                if (data) {
+                    $.each( data, function(key,value) {
+                        //TODO: Xmal - Implementar
+                        //var row = [ value.pID_IDIOMA_HABLADO_EXT, value.pIDIOMA, value.pPORCENTAJE_LECTURA, value.pPORCENTAJE_ESCRITURA, value.pPORCENTAJE_CONVERSACION ];
+                        //tableObj.row.add( row ).draw( false );
+                    });
+                }
+
+                //Boton para refrescar datatable
+                var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
+                if (btnRefreshRef.find('.refreshTable').length == 0)
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.capacitacion.idiomasDialectos(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+
+                tableRef.LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                tableRef.setError(err.statusText);
+                tableRef.LoadingOverlay("hide");
+            });
+        },
+        digitalizacionDocumento : function(pID_ALTERNA){
+            //BLOQUE PARA EL GRID
+            var tableRef = $('#' + objViewIdentificacion.vars.identificacion.tables.tableDigitalizaciondoc.obj.tables().nodes().to$().attr('id')),
+                tableObj = objViewIdentificacion.vars.identificacion.tables.tableDigitalizaciondoc.obj,
+                callUrl = base_url + `Solicitud/xxx`;
+
+            tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+            tableObj.clear().draw();
+
+            fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+                if (data) {
+                    $.each( data, function(key,value) {
+                        //TODO: Xmal - Implementar
+                        //var row = [ value.pID_IDIOMA_HABLADO_EXT, value.pIDIOMA, value.pPORCENTAJE_LECTURA, value.pPORCENTAJE_ESCRITURA, value.pPORCENTAJE_CONVERSACION ];
+                        //tableObj.row.add( row ).draw( false );
+                    });
+                }
+
+                //Boton para refrescar datatable
+                var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
+                if (btnRefreshRef.find('.refreshTable').length == 0)
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.capacitacion.idiomasDialectos(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+
+                tableRef.LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                tableRef.setError(err.statusText);
+                tableRef.LoadingOverlay("hide");
+            });
+        },
+        identificacionVoz : function(pID_ALTERNA){
+            //BLOQUE PARA INSERTAR EL VÍNCULO AL AUDIO
+            var audioRef = $('#audio'),
+                callUrl = base_url + `Solicitud/xxx`;
+
+            fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+                if (data) {
+                    //audioRef
+                }
+            })
+            .catch( (err) => {
+                $('#Identificacion_de_voz_form').setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.statusText
+                });
+            });
+
+            audioRef.attr("src", base_url + 'assets/files/fichaVoz/01%20Ruin.mp3');
+            audioRef[0].pause();
+            audioRef[0].load();
+        },
+
+    },
+    camposGeneralesInformacion : function(){
+        var inCUIP = $('.inCUIP'),
+            inNombre = $('.inNombre'),
+            inApellidoaPaterno = $('.inApellidoaPaterno'),
+            inApellidoMaterno = $('.inApellidoMaterno'),
+            inFechaNacimiento = $('.inFechaNacimiento'),
+            inAdscripcion = $('.inAdscripcion'),
+            inDependencia = $('.inDependencia'),
+            inInstitucion = $('.inInstitucion');
+            sexo = $('.inSexo')
+            folio = $('.inFolio');
+                
+        inCUIP.html('implementar');
+        inNombre.html('implementar');
+        inApellidoaPaterno.html('implementar');
+        inApellidoMaterno.html('implementar');
+        inFechaNacimiento.html('implementar');
+        inAdscripcion.html('implementar');
+        inDependencia.html('implementar');
+        inInstitucion.html('implementar');
+        sexo.html('implementar');
+        folio.html('implementar');
     }
 }
 
