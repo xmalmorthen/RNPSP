@@ -252,7 +252,7 @@
                     </div>
                     <div class="col-md-3">
                         <h6 class="borderButtom">Contorno</h6> <!-- Se llena del catálogo CAT_OREJAHELCONTORNO -->
-                        <p id=''>Falta la descripción - solo viene el ID</p>
+                        <p id='pDESC_OREJA_HEL_CONTORNO'>Falta la descripción - solo viene el ID</p>
                     </div>
                 </div>
                 <br>

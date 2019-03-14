@@ -1,4 +1,5 @@
 <div class="_container">
+    <a href="#" id='refreshView' title='Actualizar información'><i class="fa fa-refresh fa-3x mb-3" aria-hidden="true"></i></a>
     <!-- LISTA DE TABS DEL MENU PRINCIPAL -->
     <div class="row">
         <div class="col-md-12">
