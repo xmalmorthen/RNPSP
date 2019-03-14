@@ -470,57 +470,37 @@
                 <div class="row">
                     <div class="col-md-4">
                         <h6 class="borderButtom">CUIP</h6>
-                        <p></p>
+                        <p class='inCUIP'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Folio</h6>
-                        <p></p>
+                        <p class='inFolio'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Adscripcion</h6>
-                        <p></p>
+                        <p class='inAdscripcion'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Institución</h6>
-                        <p></p>
+                        <p class='inInstitucion'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Dependencia</h6>
-                        <p></p>
+                        <p class='inDependencia'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Apellido paterno</h6>
-                        <p></p>
+                        <p class='inApellidoPaterno'></p>
                     </div>
 
                     <div class="col-md-4">
                         <h6 class="borderButtom">Fecha de nacimiento</h6>
-                        <p></p>
+                        <p class='inFechaNacimiento'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Sexo</h6>
-                        <p></p>
+                        <p class='inSexo'></p>
                     </div>
-
-                    <!-- <div class="col-md-6">
-                        <ul>
-                            <dd>CUIP:</dd>
-                            <dd>Adscripcion:</dd>
-                            <dd>Dependencia:</dd>
-                            <dd>Nombre(s):</dd>
-                            <dd>Apellido materno:</dd>
-                            <dd>Sexo:</dd>
-                        </ul>
-                    </div>
-                    <div class="col-md-6">
-                        <ul>
-                            <dd>Folio:</dd>
-                            <dd>Institución</dd>
-                            <dd>Apellido paterno</dd>
-                            <dd>Edad:</dd>
-                            <dd>Fecha de nacimiento:</dd>
-                        </ul>
-                    </div> -->
                 </div>
                 <hr>
                 <br>
@@ -536,16 +516,6 @@
                     </div>
                 </div>
                 <br>
-                <!-- <div class="row">
-                    <div class="col-md-4">
-                    </div>
-                    <div class="col-md-4">
-                        <button class="btn btn-default" id="Subir_Imagen">
-                        Subir
-                    </button>
-                    </div>
-                </div>
-                <br> -->
                 <div class="row">
                     <div class="col-md-4">
                         <button class="btn btn-default btnGuardarSection" id="guardarRegistrodecadactilar">Guardar registro</button>
@@ -698,35 +668,35 @@
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">CUIP</h6>
-                        <p></p>
+                        <p class='inCUIP'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Nombre(s)</h6>
-                        <p></p>
+                        <p class='inNombre'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Apellido paterno</h6>
-                        <p></p>
+                        <p class='inApellidoaPaterno'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Apellido materno</h6>
-                        <p></p>
+                        <p class='inApellidoMaterno'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Fecha de nacimiento</h6>
-                        <p></p>
+                        <p class='inFechaNacimiento'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Adscripción</h6>
-                        <p></p>
+                        <p class='inAdscripcion'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Dependencia</h6>
-                        <p></p>
+                        <p class='inDependencia'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Institución</h6>
-                        <p></p>
+                        <p class='inInstitucion'></p>
                     </div>
                 </div>
                 <hr>

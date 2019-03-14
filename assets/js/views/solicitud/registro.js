@@ -382,7 +382,7 @@ var fillData = {
             mainFormActions.insertValueInSelect($('#pCIUDAD_NAC_DATOS_PERSONALES'),data.pCIUDAD_NAC);
             mainFormActions.insertValueInSelect($('#pCREDENCIAL_ELECTOR'),data.pCREDENCIAL_ELECTOR);
             mainFormActions.insertValueInSelect($('#pPASAPORTE'),data.pPASAPORTE);
-            mainFormActions.insertValueInSelect($('#pLICENCIA_DATOS_PERSONALES'),data.pLICENCIA);
+            mainFormActions.insertValueInSelect($('#pLICENCIA_DATOS_PERSONALES'),data.pLICENCIA);            
 
             fillData.datosGenerales.CIB(mainTabMenu.var.pID_ALTERNA);
         },
@@ -760,10 +760,10 @@ var fillData = {
     identificacion : {
         all : function(){
             fillData.identificacion.mediaFiliacion(mainTabMenu.var.pID_ALTERNA);
-            // fillData.identificacion.seniasParticulares(mainTabMenu.var.pID_ALTERNA);
-            // fillData.identificacion.fichaFotografica(mainTabMenu.var.pID_ALTERNA);
-            // fillData.identificacion.registroDecadactilar(mainTabMenu.var.pID_ALTERNA);
-            // fillData.identificacion.digitalizacionDocumento(mainTabMenu.var.pID_ALTERNA);
+            fillData.identificacion.seniasParticulares(mainTabMenu.var.pID_ALTERNA);
+            fillData.identificacion.fichaFotografica(mainTabMenu.var.pID_ALTERNA);
+            fillData.identificacion.registroDecadactilar(mainTabMenu.var.pID_ALTERNA);
+            fillData.identificacion.digitalizacionDocumento(mainTabMenu.var.pID_ALTERNA);
             fillData.identificacion.identificacionVoz(mainTabMenu.var.pID_ALTERNA);
         },
         mediaFiliacion : function(pID_ALTERNA){
@@ -777,6 +777,8 @@ var fillData = {
 
                     //special
                     //mainFormActions.insertValueInSelect($('#pPUESTO_ACTITUDES_EMPLEO'),data.pPUESTO);
+
+                    $('#mediafiliacion_form').removeData('hasChanged');
                 }
             })
             .catch( (err) => {
@@ -821,8 +823,26 @@ var fillData = {
         },
         fichaFotografica : function(pID_ALTERNA){
             //BLOQUE PARA LAS IMÁGENES E INFORMACIÓN
-            //TODO: Xmal - Implementar
+            //INFORMACIÓN
+            fillData.camposGeneralesInformacion();
+
+            // IMÁGENES
+            var thumb_pIMAGEN_IZQUIERDO = $('#thumb_pIMAGEN_IZQUIERDO'),
+                thumb_pIMAGEN_FRENTE = $('#thumb_pIMAGEN_FRENTE'),
+                thumb_pIMAGEN_DERECHO = $('#thumb_pIMAGEN_DERECHO'),
+                thumb_pIMAGEN_FIRMA = $('#thumb_pIMAGEN_FIRMA'),
+                thumb_pIMAGEN_HUELLA = $('#thumb_pIMAGEN_HUELLA');
             
+            //TODO: Xmal - Implementar
+            /*******************************************************************************/            
+            //CAMPOS DE IMÁGENES
+            thumb_pIMAGEN_IZQUIERDO.attr("src", base_url + 'assets/images/escudo.jpg');
+            thumb_pIMAGEN_FRENTE.attr("src", base_url + 'assets/images/escudo.jpg');
+            thumb_pIMAGEN_DERECHO.attr("src", base_url + 'assets/images/escudo.jpg');
+            thumb_pIMAGEN_FIRMA.attr("src", base_url + 'assets/images/escudo.jpg');
+            thumb_pIMAGEN_HUELLA.attr("src", base_url + 'assets/images/escudo.jpg');
+            /*******************************************************************************/
+
             //BLOQUE PARA EL GRID
             var tableRef = $('#' + objViewIdentificacion.vars.identificacion.tables.tableFichafotografica.obj.tables().nodes().to$().attr('id')),
                 tableObj = objViewIdentificacion.vars.identificacion.tables.tableFichafotografica.obj,
@@ -856,8 +876,8 @@ var fillData = {
         },
         registroDecadactilar : function(pID_ALTERNA){
             //BLOQUE PARA EL LINK AL DOCUMENTO E INFORMACIÓN
-            //TODO: Xmal - Implementar
-            
+            fillData.camposGeneralesInformacion();
+
             //BLOQUE PARA EL GRID
             var tableRef = $('#' + objViewIdentificacion.vars.identificacion.tables.tableRegistrodecadactilar.obj.tables().nodes().to$().attr('id')),
                 tableObj = objViewIdentificacion.vars.identificacion.tables.tableRegistrodecadactilar.obj,
@@ -946,6 +966,29 @@ var fillData = {
             audioRef[0].load();
         },
 
+    },
+    camposGeneralesInformacion : function(){
+        var inCUIP = $('.inCUIP'),
+            inNombre = $('.inNombre'),
+            inApellidoaPaterno = $('.inApellidoaPaterno'),
+            inApellidoMaterno = $('.inApellidoMaterno'),
+            inFechaNacimiento = $('.inFechaNacimiento'),
+            inAdscripcion = $('.inAdscripcion'),
+            inDependencia = $('.inDependencia'),
+            inInstitucion = $('.inInstitucion');
+            sexo = $('.inSexo')
+            folio = $('.inFolio');
+                
+        inCUIP.html('implementar');
+        inNombre.html('implementar');
+        inApellidoaPaterno.html('implementar');
+        inApellidoMaterno.html('implementar');
+        inFechaNacimiento.html('implementar');
+        inAdscripcion.html('implementar');
+        inDependencia.html('implementar');
+        inInstitucion.html('implementar');
+        sexo.html('implementar');
+        folio.html('implementar');
     }
 }
 
