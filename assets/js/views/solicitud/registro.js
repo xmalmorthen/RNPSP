@@ -126,7 +126,14 @@ var mainTabMenu = {
                     });
                 break;
                 case 'Identificacion':
-                    objViewIdentificacion.init(function(){ dynTabs.validForm = true; mainTabMenu.actions.inited = true;});
+                    objViewIdentificacion.init(function(){ 
+                        if (dynTabs.mode == 'edit' && !objViewIdentificacion.vars.general.init) { 
+                            fillData.identificacion.all();
+                        }
+
+                        dynTabs.validForm = true; 
+                        mainTabMenu.actions.inited = true;
+                    });
                 break;
             }
             if (callback) {
@@ -749,6 +756,196 @@ var fillData = {
                 tableRef.LoadingOverlay("hide");
             });
         }
+    },
+    identificacion : {
+        all : function(){
+            fillData.identificacion.mediaFiliacion(mainTabMenu.var.pID_ALTERNA);
+            // fillData.identificacion.seniasParticulares(mainTabMenu.var.pID_ALTERNA);
+            // fillData.identificacion.fichaFotografica(mainTabMenu.var.pID_ALTERNA);
+            // fillData.identificacion.registroDecadactilar(mainTabMenu.var.pID_ALTERNA);
+            // fillData.identificacion.digitalizacionDocumento(mainTabMenu.var.pID_ALTERNA);
+            fillData.identificacion.identificacionVoz(mainTabMenu.var.pID_ALTERNA);
+        },
+        mediaFiliacion : function(pID_ALTERNA){
+            var callUrl = base_url + `Solicitud/sp_B2_MF_getFiliacion`;
+            fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+                if (data) {
+                    $.each(data,function(key,value){
+                        mainFormActions.insertValueInSelect($('#'+ key),value);
+                    });
+
+                    //special
+                    //mainFormActions.insertValueInSelect($('#pPUESTO_ACTITUDES_EMPLEO'),data.pPUESTO);
+                }
+            })
+            .catch( (err) => {
+                $('#mediafiliacion_form').setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.statusText
+                });
+            });
+        },
+        seniasParticulares : function(pID_ALTERNA){
+            var tableRef = $('#' + objViewIdentificacion.vars.identificacion.tables.tableSenasparticulares.obj.tables().nodes().to$().attr('id')),
+                tableObj = objViewIdentificacion.vars.identificacion.tables.tableSenasparticulares.obj,
+                callUrl = base_url + `Solicitud/xxx`;
+
+            tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+            tableObj.clear().draw();
+
+            fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+                if (data) {
+                    $.each( data, function(key,value) {
+                        //TODO: Xmal - Implementar
+                        //var row = [ value.pID_IDIOMA_HABLADO_EXT, value.pIDIOMA, value.pPORCENTAJE_LECTURA, value.pPORCENTAJE_ESCRITURA, value.pPORCENTAJE_CONVERSACION ];
+                        //tableObj.row.add( row ).draw( false );
+                    });
+                }
+
+                //Boton para refrescar datatable
+                var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
+                if (btnRefreshRef.find('.refreshTable').length == 0)
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.capacitacion.idiomasDialectos(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+
+                tableRef.LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                tableRef.setError(err.statusText);
+                tableRef.LoadingOverlay("hide");
+            });
+        },
+        fichaFotografica : function(pID_ALTERNA){
+            //BLOQUE PARA LAS IMÁGENES E INFORMACIÓN
+            //TODO: Xmal - Implementar
+            
+            //BLOQUE PARA EL GRID
+            var tableRef = $('#' + objViewIdentificacion.vars.identificacion.tables.tableFichafotografica.obj.tables().nodes().to$().attr('id')),
+                tableObj = objViewIdentificacion.vars.identificacion.tables.tableFichafotografica.obj,
+                callUrl = base_url + `Solicitud/xxx`;
+
+            tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+            tableObj.clear().draw();
+
+            fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+                if (data) {
+                    $.each( data, function(key,value) {
+                        //TODO: Xmal - Implementar
+                        //var row = [ value.pID_IDIOMA_HABLADO_EXT, value.pIDIOMA, value.pPORCENTAJE_LECTURA, value.pPORCENTAJE_ESCRITURA, value.pPORCENTAJE_CONVERSACION ];
+                        //tableObj.row.add( row ).draw( false );
+                    });
+                }
+
+                //Boton para refrescar datatable
+                var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
+                if (btnRefreshRef.find('.refreshTable').length == 0)
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.capacitacion.idiomasDialectos(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+
+                tableRef.LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                tableRef.setError(err.statusText);
+                tableRef.LoadingOverlay("hide");
+            });
+        },
+        registroDecadactilar : function(pID_ALTERNA){
+            //BLOQUE PARA EL LINK AL DOCUMENTO E INFORMACIÓN
+            //TODO: Xmal - Implementar
+            
+            //BLOQUE PARA EL GRID
+            var tableRef = $('#' + objViewIdentificacion.vars.identificacion.tables.tableRegistrodecadactilar.obj.tables().nodes().to$().attr('id')),
+                tableObj = objViewIdentificacion.vars.identificacion.tables.tableRegistrodecadactilar.obj,
+                callUrl = base_url + `Solicitud/xxx`;
+
+            tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+            tableObj.clear().draw();
+
+            fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+                if (data) {
+                    $.each( data, function(key,value) {
+                        //TODO: Xmal - Implementar
+                        //var row = [ value.pID_IDIOMA_HABLADO_EXT, value.pIDIOMA, value.pPORCENTAJE_LECTURA, value.pPORCENTAJE_ESCRITURA, value.pPORCENTAJE_CONVERSACION ];
+                        //tableObj.row.add( row ).draw( false );
+                    });
+                }
+
+                //Boton para refrescar datatable
+                var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
+                if (btnRefreshRef.find('.refreshTable').length == 0)
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.capacitacion.idiomasDialectos(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+
+                tableRef.LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                tableRef.setError(err.statusText);
+                tableRef.LoadingOverlay("hide");
+            });
+        },
+        digitalizacionDocumento : function(pID_ALTERNA){
+            //BLOQUE PARA EL GRID
+            var tableRef = $('#' + objViewIdentificacion.vars.identificacion.tables.tableDigitalizaciondoc.obj.tables().nodes().to$().attr('id')),
+                tableObj = objViewIdentificacion.vars.identificacion.tables.tableDigitalizaciondoc.obj,
+                callUrl = base_url + `Solicitud/xxx`;
+
+            tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+            tableObj.clear().draw();
+
+            fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+                if (data) {
+                    $.each( data, function(key,value) {
+                        //TODO: Xmal - Implementar
+                        //var row = [ value.pID_IDIOMA_HABLADO_EXT, value.pIDIOMA, value.pPORCENTAJE_LECTURA, value.pPORCENTAJE_ESCRITURA, value.pPORCENTAJE_CONVERSACION ];
+                        //tableObj.row.add( row ).draw( false );
+                    });
+                }
+
+                //Boton para refrescar datatable
+                var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
+                if (btnRefreshRef.find('.refreshTable').length == 0)
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.capacitacion.idiomasDialectos(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+
+                tableRef.LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                tableRef.setError(err.statusText);
+                tableRef.LoadingOverlay("hide");
+            });
+        },
+        identificacionVoz : function(pID_ALTERNA){
+            //BLOQUE PARA INSERTAR EL VÍNCULO AL AUDIO
+            var audioRef = $('#audio'),
+                callUrl = base_url + `Solicitud/xxx`;
+
+            fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+                if (data) {
+                    //audioRef
+                }
+            })
+            .catch( (err) => {
+                $('#Identificacion_de_voz_form').setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.statusText
+                });
+            });
+
+            audioRef.attr("src", base_url + 'assets/files/fichaVoz/01%20Ruin.mp3');
+            audioRef[0].pause();
+            audioRef[0].load();
+        },
+
     }
 }
 
