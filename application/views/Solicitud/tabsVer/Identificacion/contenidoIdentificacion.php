@@ -2,311 +2,317 @@
         <div class="_container">
             <form action="#" id="mediafiliacion_form" name="mediafiliacion_form" autocomplete="off">
                 <br>
-                    <div class="row">
+                <div class="row">
                     <div class="col-md-12 text-center">
                         <h3 class="titulo">Media filiación</h3>
                     </div>
-                </div>  
-               
+                </div>                 
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                         <h6 class="borderButtom">Complexión</h6> <!-- Se llena del catálogo CAT_COMPLEXION -->
-                        <p></p>
-                        <span id="err_pCAT_COMPLEXION"></span>
+                        <h6 class="borderButtom">Complexión</h6> <!-- Se llena del catálogo CAT_COMPLEXION -->                        
+                        <p id='pDESC_COMPLEXION'></p>                        
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom"> Color de piel</h6> <!-- Se llena del catálogo CAT_COLORPIEL -->
-                        <p></p>
-                        <span id="err_pCAT_COLOR_PIEL"></span>
+                        <p id='pDESC_COLOR_PIEL'></p>
                     </div>
                     <div class="col-md-4">
                          <h6 class="borderButtom">Cara</h6> <!-- Se llena del catálogo CAT_CARA -->
-                        <p></p>
-                        <span id="err_pCAT_CARA"></span>
+                        <p id='pDESC_CARA'></p>
                     </div>
                 </div>
                 <br> <br>
-                <h6 class="titulo">Cabello</h6>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Cabello</h3>
+                    </div>
+                </div>  
                 <hr>
                 <div class="row">
                     <div class="col-md-3">
                          <h6 class="borderButtom">Cantidad</h6> <!-- Se llena del catálogo CAT_CANTIDADCABELLO -->
-                        <p></p>
-						<span id="err_pCaT_CABELLO_CANTIDAD"></span>
+                        <p id='pDESC_CABELLO_CANTIDAD'></p>
                     </div>
                     <div class="col-md-3">
                          <h6 class="borderButtom">Color</h6> <!-- Se llena del catálogo CAT_COLORCABELLO -->
-                        <p></p>
-                        <span id="err_pCAT_CABELLO_COLOR"></span>
+                        <p id='pDESC_CABELLO_COLOR'></p>
                     </div>
                     <div class="col-md-3">
                          <h6 class="borderButtom">Forma</h6> <!-- Se llena del catálogo CAT_FORMACABELLO -->
-                        <p></p>
-                        <span id="err_pCAT_CABELLO_FORMA"></span>
+                        <p id='pDESC_CABELLO_FORMA'></p>
                     </div>
                     <div class="col-md-3">
                          <h6 class="borderButtom">Calvicie</h6> <!-- Se llena del catálogo CAT_CALVICIECABELLO -->
-                        <p></p>
-                        <span id="err_pCAT_CABELLO_CALVICIE"></span>
+                        <p id='pDESC_CABELLO_CALVICIE'></p>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-3">
                          <h6 class="borderButtom">Implantación</h6> <!-- Se llena del catálogo CAT_IMPLANTACIONCABELLO -->
-                        <p></p>
-                        <span id="err_pCAT_CABELLO_IMPLANTAC"></span>
+                        <p id='pDESC_CABELLO_IMPLANTAC'></p>
                     </div>
                 </div>
                 <br> <br>
-                <h6 class="titulo">Frente</h6>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Frente</h3>
+                    </div>
+                </div>
                 <hr>
                 <div class="row">
                     <div class="col-md-4">
                          <h6 class="borderButtom">Altura</h6> <!-- Se llena del catálogo CAT_ALTURAFRENTE -->
-                        <p></p>
-						<span id="err_pCAT_FRENTE_ALTURA"></span>
+                        <p id='pDESC_FRENTE_ALTURA'></p>
                     </div>
                     <div class="col-md-4">
                          <h6 class="borderButtom">Inclinación</h6> <!-- Se llena del catálogo CAT_INCLINACIONFRENTE -->
-                        <p></p>
-						<span id="err_pCAT_FRENTE_INCLINACION"></span>
+                        <p id='pDESC_FRENTE_INCLINACION'></p>
                     </div>
                     <div class="col-md-4">
                          <h6 class="borderButtom">Ancho</h6> <!-- Se llena del catálogo CAT_ANCHOFRENTE -->
-                        <p></p>
-						<span id="err_pCAT_FRENTE_ANCHO"></span>
+                        <p id='pDESC_FRENTE_ANCHO'></p>
                     </div>
                 </div>
                 <br>
                   <br> <br>
-                <h6 class="titulo">Cejas</h6>
+                  <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Cejas</h3>
+                    </div>
+                </div>  
                 <hr>
                 <div class="row">
                     <div class="col-md-3">
                         <h6 class="borderButtom"> Dirección</h6> <!-- Se llena del catálogo CAT_DIRECCIONCEJAS -->
-                       <p></p>
-						<span id="err_pCAT_CEJAS_DIRECCION"></span>
+                       <p id='pDESC_CEJAS_DIRECCION'></p>
                     </div>
                     <div class="col-md-3">
                          <h6 class="borderButtom">Implantación</h6> <!-- Se llena del catálogo CAT_IMPLANTACIONCEJAS -->
-                        <p></p>
-						<span id="err_pCAT_CEJAS_IMPLANTAC"></span>
+                        <p id='pDESC_CEJAS_IMPLANTACION'></p>
                     </div>
                     <div class="col-md-3">
                          <h6 class="borderButtom">Forma</h6> <!-- Se llena del catálogo CAT_FORMACEJAS -->
-                       <p></p>
-						<span id="err_pCAT_CEJAS_FORMA"></span>
+                       <p id='pDESC_CEJAS_FORMA'></p>
                     </div>
                     <div class="col-md-3">
                          <h6 class="borderButtom">Tamaño</h6> <!-- Se llena del catálogo CAT_TAMANOCEJAS -->
-                       <p></p>
-						<span id="err_pCAT_CEJAS_TAMANO"></span>
+                       <p id='pDESC_CEJAS_TAMANO'></p>
                     </div>
                 </div>
                 <br> <br>
-                <h6 class="titulo">Color</h6>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Ojos</h3>
+                    </div>
+                </div>  
                 <hr>
                 <div class="row">
                     <div class="col-md-4">
                          <h6 class="borderButtom">Color</h6> <!-- Se llena del catálogo CAT_COLOROJOS -->
-                       <p></p>
-						<span id="err_pCAT_OJOS_COLOR"></span>
+                       <p id='pDESC_OJOS_COLOR'></p>
                     </div>
                     <div class="col-md-4">
                          <h6 class="borderButtom">Forma</h6> <!-- Se llena del catálogo CAT_FORMAOJOS -->
-                       <p></p>
-						<span id="err_pCAT_OJOS_FORMA"></span>
+                       <p id='pDESC_OJOS_FORMA'></p>
                     </div>
                     <div class="col-md-4">
                          <h6 class="borderButtom">Tamaño</h6> <!-- Se llena del catálogo CAT_TAMANOOJOS -->
-                        <p></p>
-						<span id="err_pCAT_OJOS_TAMANO"></span>
+                        <p id='pDESC_OJOS_TAMANO'></p>
                     </div>
                 </div>
                  <br> <br>
-                <h6 class="titulo">Nariz</h6>
+                 <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Nariz</h3>
+                    </div>
+                </div>
                 <hr>
                 <div class="row">
                     <div class="col-md-3">
                          <h6 class="borderButtom">Raíz</h6> <!-- Se llena del catálogo CAT_RAIZNARIZ -->
-                        <p></p>
-						<span id="err_pCAT_NARIZ_RAIZ"></span>
+                        <p id='pDESC_NARIZ_RAIZ'></p>
                     </div>
                     <div class="col-md-3">
                         <h6 class="borderButtom">Dorso</h6> <!-- Se llena del catálogo CAT_RAIZNARIZ -->
-                        <p></p> <!-- Se llena del catálogo CAT_DORSONARIZ -->
-                       
-						<span id="err_pCAT_NARIZ_DORSO"></span>
+                        <p id='pDESC_NARIZ_DORSO'></p> <!-- Se llena del catálogo CAT_DORSONARIZ -->                      
                     </div>
                     <div class="col-md-3">
                         <h6 class="borderButtom">Ancho</h6> <!-- Se llena del catálogo CAT_RAIZNARIZ -->
-                        <p></p>
-                        <span id="err_pCAT_NARIZ_ANCHO"></span>
+                        <p id='pDESC_NARIZ_ANCHO'></p>
                     </div>
-                    <div class="col-md-3">
-                        
+                    <div class="col-md-3">                        
                         <h6 class="borderButtom">Base</h6> <!-- Se llena del catálogo CAT_RAIZNARIZ -->
-                        <p></p>
-                        <span id="err_pCAT_NARIZ_BASE"></span>
+                        <p id='pDESC_NARIZ_BASE'></p>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-3">
                         <h6 class="borderButtom">Altura</h6> <!-- Se llena del catálogo CAT_ALTURANARIZ -->
-                       <p></p>
-						<span id="err_pCAT_NARIZ_ALTURA"></span>
+                       <p id='pDESC_NARIZ_ALTURA'></p>
                     </div>
                 </div>
-                 <br> <br>
-                <h6 class="titulo">Boca</h6>
+                <br> <br>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Boca</h3>
+                    </div>
+                </div>
                 <hr>
                 <div class="row">
                     <div class="col-md-4">
                         <h6 class="borderButtom">Tamaño</h6> <!-- Se llena del catálogo CAT_TAMANOBOCA -->
-                        <p></p>
-						<span id="err_pCAT_BOCA_TAMANO"></span>
+                        <p id='pDESC_BOCA_TAMANO'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Comisuras</h6> <!-- Se llena del catálogo CAT_COMISURASBOCA -->
-                        <p></p>
-						<span id="err_pCAT_BOCA_COMISURAS"></span>
+                        <p id='pDESC_BOCA_COMISURAS'></p>
                     </div>
                 </div>
                  <br> <br>
-                <h6 class="titulo">Labios</h6>
+                 <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Labios</h3>
+                    </div>
+                </div>
                 <hr>
                 <div class="row">
                     <div class="col-md-4">
                         <h6 class="borderButtom">Espesor</h6> <!-- Se llena del catálogo CAT_ESPESORLABIOS -->
-                       
-						<span id="err_pCAT_LABIOS_ESPESOR"></span>
+                        <p id='pDESC_LABIOS_ESPESOR'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Altura naso-labial</h6> <!-- Se llena del catálogo CAT_ALTURALABIOS -->
-                        
-						<span id="err_pCAT_LABIOS_ALTURA"></span>
+                        <p id='pDESC_LABIOS_ALTURA'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Prominencia</h6> <!-- Se llena del catálogo CAT_PROMINENCIALABIOS -->
-                        
-						<span id="err_pCAT_LABIOS_PROMINENCIA"></span>
+                        <p id='pDESC_LABIOS_PROMINENCIA'></p>
                     </div>
                 </div>
                  <br> <br>
-                <h6 class="titulo">Mentón</h6>
+                 <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Mentón</h3>
+                    </div>
+                </div>
                 <hr>
                 <div class="row">
                     <div class="col-md-4">
                         <h6 class="borderButtom">Tipo</h6> <!--   se llena del catalogo CAT_TIPOMENTON -->
-                       <p></p>
-						<span id="err_pCAT_MENTON_TIPO"></span>
+                       <p id='pDESC_MENTON_TIPO'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Forma</h6> <!-- Se llena del catálogo CAT_FORMAMENTON -->
-                        <p></p>
-						<span id="err_pCAT_MENTON_FORMA"></span>
+                        <p id='pDESC_MENTON_FORMA'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Inclinación</h6> <!-- Se llena del catálogo CAT_INCLINACIONMENTON -->
-                        <p></p>
-						<span id="err_pCAT_MENTON_INCLINACION"></span>
+                        <p id='pDESC_MENTON_INCLINACION'></p>
                     </div>
                 </div>
                  <br> <br>
-                <h6 class="titulo">Oreja derecha</h6>
+                 <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Oreja derecha</h3>
+                    </div>
+                </div>
                 <hr>
                 <div class="row">
                 <div class="col-md-4">
                         <h6 class="borderButtom">Forma</h6> <!-- Se llena del catálogo CAT_FORMAOREJA -->
-                        <p></p>
-						<span id="err_pCAT_OREJA_FORMA"></span>
+                        <p id='pDESC_OREJA_FORMA'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Original</h6> <!-- Se llena del catálogo CAT_OREJALOBDIMEN -->
-                        <p></p>
-						<span id="err_pCAT_OREJA_ORIGINAL"></span>
+                        <p id=''>Falta la descripción - solo viene el ID</p>
                     </div>
                 </div>
                   <br> <br>
-                <h6 class="titulo">Helix</h6>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Helix</h3>
+                    </div>
+                </div>
                 <hr>
                 <div class="row">
                     <div class="col-md-3">
                         <h6 class="borderButtom">Superior</h6> <!-- Se llena del catálogo CAT_OREJAHELSUP -->
-                        <p></p>
-						<span id="err_pCAT_OREJA_HEL_SUP"></span>
+                        <p id='pDESC_OREJA_HEL_SUP'></p>
                     </div>
                     <div class="col-md-3">
                         <h6 class="borderButtom">Posterior</h6> <!-- Se llena del catálogo CAT_OREJAHELPOST -->
-                        <p></p>
-						<span id="err_pCAT_OREJA_HEL_POST"></span>
+                        <p id='pDESC_OREJA_HEL_POST'></p>
                     </div>
                     <div class="col-md-3">
                         <h6 class="borderButtom">Adherencia</h6> <!-- Se llena del catálogo CAT_OREJAHELADHEREN -->
-                        <p></p>
-						<span id="err_pCAT_OREJA_HEL_ADHEREN"></span>
+                        <p id='pDESC_OREJA_HEL_ADHEREN'></p>
                     </div>
                     <div class="col-md-3">
                         <h6 class="borderButtom">Contorno</h6> <!-- Se llena del catálogo CAT_OREJAHELCONTORNO -->
-                        <p></p>
-						<span id="err_pCAT_OREJA_HEL_CONTORNO"></span>
+                        <p id=''>Falta la descripción - solo viene el ID</p>
                     </div>
                 </div>
                 <br>
                  <br> <br>
-                <h6 class="titulo">Lóbulo</h6>
+                 <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Lóbulo</h3>
+                    </div>
+                </div>
                 <hr>
                 <div class="row">
                     <div class="col-md-3">
                             <h6 class="borderButtom">Adherencia</h6> <!-- Se llena del catálogo CAT_OREJALOBADHEREN -->
-                            <p></p>
-						    <span id="err_pCAT_OREJA_LOB_ADHEREN"></span>
+                            <p id='pDESC_OREJA_LOB_ADHEREN'></p>
                         </div>
                         <div class="col-md-3">
                             <h6 class="borderButtom">Particularidad</h6> <!-- Se llena del catálogo CAT_OREJALOBPARTIC -->
-                            <p></p>
-						    <span id="err_pCAT_OREJA_LOB_PARTIC"></span>
+                            <p id='pDESC_OREJA_LOB_PARTIC'></p>
                         </div>
                         <div class="col-md-3">
                             <h6 class="borderButtom">Dimensión</h6> <!-- Se llena del catálogo CAT_OREJALOBDIMEN -->
-                            <p></p>
-						    <span id="err_pCAT_OREJA_LOB_DIMEN"></span>
+                            <p id='pDESC_OREJA_LOB_DIMEN'></p>
                         </div>
                 </div>
                   <br> <br>
-                <h6 class="titulo">Sangre</h6>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Sangre</h3>
+                    </div>
+                </div>
                 <hr>
                 <div class="row">
                     <div class="col-md-4">
                         <h6 class="borderButtom">Tipo</h6> <!-- Se llena del catálogo CAT_TIPODESANGRE -->
-                        <p></p>
-						<span id="err_pCAT_SANGRE"></span>
+                        <p id='pDESC_SANGRE'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Factor RH</h6> <!-- se llen CAT_FACTORRH -->
-                        <p></p>
-						<span id="err_pCAT_FACTOR_RH"></span>
+                        <p id='pDESC_FACTOR_RH'></p>
                     </div>
                 </div>
                   <br> <br>
-                <h6 class="titulo">Otros</h6>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="titulo">Otros</h3>
+                    </div>
+                </div>
                 <hr>
                 <div class="row">
                     <div class="col-md-4">
                         <h6 class="borderButtom"><span class="clr">*</span>¿Usa anteojos?</h6> <!-- S/N = SI/NO -->
-                        <p></p>
-						<span id="err_pCAT_LENTES"></span>
+                        <p id='pUSA_LENTES'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom"><span class="clr">*</span>Estatura (cm)</h6>
-                        <p></p>
+                        <p id='pESTATURA'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom"><span class="clr">*</span>Peso (kg)</h6>
-                       <p></p>
+                       <p id='pPESO'></p>
                     </div>
                 </div>
                 <input type="hidden" id="pID_ALTERNA_Media_filiacion" name="pID_ALTERNA_Media_filiacion" value="" >
@@ -336,34 +342,30 @@
                 <div class="row">
                     <div class="col-md-4">
                         <h6 class="borderButtom"><span class="clr">*</span>Tipo de seña</h6> <!-- Se llena del catálogo CAT_SENAS -->
-                        <p></p>
-						<span id="err_pID_TIPO_SENAS"></span>
+                        <p id=''></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom"><span class="clr">*</span>Lado</h6> <!-- Se llena del catalogo CAT_LADO   -->
-                       <p></p>
-						<span id="err_pLADO"></span>
+                       <p id=''></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom"><span class="clr">*</span>Región </h6><!-- Se llena del catálogo CAT_REGION -->
-                        <p></p>
-						<span id="err_pID_REGION"></span>
+                        <p id=''></p>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                        <h6 class="borderButtom"> <span class="clr">*</span>Vista</h6> <!-- Se llenda del catalogo  CAT_FRONTALDORSAL -->
-                        <p></p>
-						<span id="err_pVISTA"></span>
+                        <p id=''></p>
                     </div>
                     <div class="col-md-4">
                        <h6 class="borderButtom"> <span class="clr">*</span>Cantidad</h6>
-                        <p></p>
+                        <p id=''></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Descripción</h6>
-                        <p></p>
+                        <p id=''></p>
                     </div>
                 </div>
                 <input type="hidden" id="pID_ALTERNA_Senas" name="pID_ALTERNA_Senas" value="" >
@@ -393,36 +395,36 @@
                 <div class="row">
                     <div class="col-md-4">
                         <h6 class="borderButtom">CUIP</h6>
-                        <p></p>
+                        <p id=''></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Folio</h6>
-                        <p></p>
+                        <p id=''></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Adscripcion</h6>
-                        <p></p>
+                        <p id=''></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Institución</h6>
-                        <p></p>
+                        <p id=''></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Dependencia</h6>
-                        <p></p>
+                        <p id=''></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Apellido paterno</h6>
-                        <p></p>
+                        <p id=''></p>
                     </div>
 
                     <div class="col-md-4">
                         <h6 class="borderButtom">Fecha de nacimiento</h6>
-                        <p></p>
+                        <p id=''></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Sexo</h6>
-                        <p></p>
+                        <p id=''></p>
                     </div>
 
                     <!-- <div class="col-md-6">
@@ -453,7 +455,7 @@
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Documento</h6>
-                        <p></p>
+                        <p id=''></p>
                     </div>
                 </div>
                 <input type="hidden" id="pID_ALTERNA_Datos" name="pID_ALTERNADecadactilar" value="" >
@@ -511,15 +513,15 @@
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Adscripción</h6>
-                        <p></p>
+                        <p id=''></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Dependencia</h6>
-                        <p></p>
+                        <p id=''></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Institución</h6>
-                        <p></p>
+                        <p id=''></p>
                     </div>
                 </div>
                 <br>
@@ -559,35 +561,35 @@
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">CUIP</h6>
-                        <p></p>
+                        <p id=''></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Nombre(s)</h6>
-                        <p></p>
+                        <p id=''></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Apellido paterno</h6>
-                        <p></p>
+                        <p id=''></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Apellido materno</h6>
-                        <p></p>
+                        <p id=''></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Fecha de nacimiento</h6>
-                        <p></p>
+                        <p id=''></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Adscripción</h6>
-                        <p></p>
+                        <p id=''></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Dependencia</h6>
-                        <p></p>
+                        <p id=''></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Institución</h6>
-                        <p></p>
+                        <p id=''></p>
                     </div>
                 </div>
                 <hr>
@@ -678,16 +680,15 @@
                 <div class="row">
                     <div class="col-md-4">
                         <h6 class="borderButtom">Categoría de documento</h6> <!-- CAT_CATEGORIA_DOC -->
-                        <p></p>
-						<span id="err__categoriaDocumento"></span>
+                        <p id=''></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Fecha documento</h6>
-                        <p></p>
+                        <p id=''></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Documento</h6>
-                        <p></p>
+                        <p id=''></p>
                     </div>
                 </div>
                 <input type="hidden" id="pID_ALTERNA_Documento" name="pID_ALTERNA_Documento" value="" >

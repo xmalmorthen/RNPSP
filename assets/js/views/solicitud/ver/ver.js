@@ -6,6 +6,7 @@ var objViewVer = {
         btnEdit : null
     },
     init : function(){
+        objViewVer.var.pID_ALTERNA = id;
 
         objViewVer.objs.btnEdit = $('.btnEdit');
         objViewVer.objs.btnEdit.on('click',objViewVer.actions.btnEdit);
@@ -22,6 +23,7 @@ var objViewVer = {
         });
 
         objViewDatosGenerales.init();
+        objViewIdentificacion.init();
     },
     actions : {
         btnEdit : function(e){
