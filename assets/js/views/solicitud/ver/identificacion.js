@@ -74,7 +74,7 @@ var objViewIdentificacion = {
         seniasParticulares : function(pID_ALTERNA){
             $('#Senas_particulares_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
-            var callUrl = base_url + `Solicitud/xxx`;
+            var callUrl = base_url + `Solicitud/vwSenasParticulares`;
             objViewIdentificacion.fill.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {  
                 if (data) {

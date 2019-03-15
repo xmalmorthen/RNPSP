@@ -315,9 +315,6 @@
                        <p id='pPESO'></p>
                     </div>
                 </div>
-                <input type="hidden" id="pID_ALTERNA_Media_filiacion" name="pID_ALTERNA_Media_filiacion" value="" >
-                <input type="hidden" id="pID_ESTADO_EMISOR_Media_filiacion" name="pID_ESTADO_EMISOR_Media_filiacion" value="" >
-                <input type="hidden" id="pID_EMISOR_Media_filiacion" name="pID_EMISOR_Media_filiacion" value="" >
             </form>
             <br>
             <div class="row">                
@@ -342,35 +339,32 @@
                 <div class="row">
                     <div class="col-md-4">
                         <h6 class="borderButtom">Tipo de seña</h6> <!-- Se llena del catálogo CAT_SENAS -->
-                        <p id=''></p>
+                        <p id='pDESC_TIPO_SENA'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Lado</h6> <!-- Se llena del catalogo CAT_LADO   -->
-                       <p id=''></p>
+                       <p id='pDESC_LADO'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Región </h6><!-- Se llena del catálogo CAT_REGION -->
-                        <p id=''></p>
+                        <p id='pDESC_REGION'></p>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
                        <h6 class="borderButtom"> Vista</h6> <!-- Se llenda del catalogo  CAT_FRONTALDORSAL -->
-                        <p id=''></p>
+                        <p id='pDESC_VISTA'></p>
                     </div>
                     <div class="col-md-4">
                        <h6 class="borderButtom"> Cantidad</h6>
-                        <p id=''></p>
+                        <p id='pCANTIDAD'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Descripción</h6>
-                        <p id=''></p>
+                        <p id='pDESCRIPCION'></p>
                     </div>
                 </div>
-                <input type="hidden" id="pID_ALTERNA_Senas" name="pID_ALTERNA_Senas" value="" >
-                <input type="hidden" id="pID_ESTADO_EMISOR_Senas" name="pID_ESTADO_EMISOR_Senas" value="" >
-                <input type="hidden" id="pID_EMISOR_Senas" name="pID_EMISOR_Senas" value="" >
             </form>
             <br>
             <div class="row">
@@ -425,42 +419,18 @@
                     <div class="col-md-4">
                         <h6 class="borderButtom">Sexo</h6>
                         <p id=''></p>
-                    </div>
-
-                    <!-- <div class="col-md-6">
-                        <ul>
-                            <dd>CUIP:</dd>
-                            <dd>Adscripcion:</dd>
-                            <dd>Dependencia:</dd>
-                            <dd>Nombre(s):</dd>
-                            <dd>Apellido materno:</dd>
-                            <dd>Sexo:</dd>
-                        </ul>
-                    </div>
-                    <div class="col-md-6">
-                        <ul>
-                            <dd>Folio:</dd>
-                            <dd>Institución</dd>
-                            <dd>Apellido paterno</dd>
-                            <dd>Edad:</dd>
-                            <dd>Fecha de nacimiento:</dd>
-                        </ul>
-                    </div> -->
+                    </div>                    
                 </div>
                 <hr>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <!-- SPACE -->
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Documento</h6>
                         <p id=''></p>
                     </div>
                 </div>
-                <input type="hidden" id="pID_ALTERNA_Datos" name="pID_ALTERNADecadactilar" value="" >
-                <input type="hidden" id="pID_ESTADO_EMISORDecadactilar" name="pID_ESTADO_EMISORDecadactilar" value="" >
-                <input type="hidden" id="pID_EMISORDecadactilar" name="pID_EMISORDecadactilar" value="" >
             </form>
             <br>
             <div class="row">
@@ -532,9 +502,6 @@
                         <!-- <audio id="audio" class='ml-5' style='width=90%!Important;' controls><source src="ruta_de_audio">Navegador no compatible con reproductor de audio</audio> -->
                     </div>
                 </div>
-                <input type="hidden" id="pID_ALTERNA_Voz" name="pID_ALTERNA_Voz" value="" >
-                <input type="hidden" id="pID_ESTADO_EMISOR_Voz" name="pID_ESTADO_EMISOR_Voz" value="" >
-                <input type="hidden" id="pID_EMISOR_Voz" name="pID_EMISOR_Voz" value="" >
             </form>
             <br>
             <div class="row">
@@ -603,7 +570,6 @@
                             </div>
                         </div>
                         <br>
-                        <!-- <button class="btn btn-default mt-5" id="subirFotografica">subir</button> -->
                     </div>
                     <div class="col-md-4">
                         <div class="row">
@@ -614,7 +580,6 @@
                             </div>
                         </div>
                         <br>
-                        <!-- <button class="btn btn-default mt-5" id="subirFotografica">subir</button> -->
                     </div>
                     <div class="col-md-4">
                         <div class="row">
@@ -625,7 +590,6 @@
                             </div>
                         </div>
                         <br>
-                        <!-- <button class="btn btn-default mt-5" id="subirFotografica">subir</button> -->
                     </div>
                 </div>
                 <br>
@@ -640,7 +604,6 @@
                             </div>
                         </div>
                         <br>
-                        <!-- <button class="btn btn-default mt-5">subir</button> -->
                     </div>
                     <div class="col-md-4">
                         <div class="row">
@@ -651,12 +614,8 @@
                             </div>
                         </div>
                         <br>
-                        <!-- <button class="btn btn-default mt-5">subir</button> -->
                     </div>
                 </div>
-                <input type="hidden" id="pID_ALTERNA_Fotografica" name="pID_ALTERNA_Fotografica" value="" >
-                <input type="hidden" id="pID_ESTADO_EMISOR_Fotografica" name="pID_ESTADO_EMISOR_Fotografica" value="" >
-                <input type="hidden" id="pID_EMISOR_Fotografica" name="pID_EMISOR_Fotografica" value="" >
             </form>
             <br>
             <div class="row">
@@ -691,9 +650,6 @@
                         <p id=''></p>
                     </div>
                 </div>
-                <input type="hidden" id="pID_ALTERNA_Documento" name="pID_ALTERNA_Documento" value="" >
-                <input type="hidden" id="pID_ESTADO_EMISOR_Documento" name="pID_ESTADO_EMISOR_Documento" value="" >
-                <input type="hidden" id="pID_EMISOR_Documento" name="pID_EMISOR_Documento" value="" >
             </form>
             <br>
             <div class="row">
