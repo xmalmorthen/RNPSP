@@ -616,6 +616,38 @@ class SOLICITUD_model extends MY_Model
     return $this->response;
   }
 
+  # Opcion Ver - Ficha Socieconomico - Datos socioeconomicos
+  # sp_B2_DG_vwSocioEconomico - Muestra el niviel socioeconomico de la persona
+  public function sp_B2_DG_vwSocioEconomico($idAlterna = null,$curp = null){
+    $this->procedure('sp_B2_DG_vwSocioEconomico');
+    $this->addParam('pCURP',$curp,'N');
+    $this->addParam('pID_ALTERNA',$idAlterna);
+
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_list($query);
+
+    if($response === FALSE){
+      $this->response['status'] = 0;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    }else{
+      if(count($response) > 0){
+        $response = end($response);
+        if($response['VIVE_FAMILIA'] == 'N'){
+          $response['VIVE_FAMILIA'] = 'No';
+        }else if($response['VIVE_FAMILIA'] == 'S'){
+          $response['VIVE_FAMILIA'] = 'Si';
+        }
+        $this->response['status'] = 1;
+        $this->response['data'] = $this->try_result($response);
+      }else{
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron resultados.';
+      }
+    }
+    return $this->response;
+  }
+
   /*
   * $this->addParam('method sp_B2_DG_addSocioEconomico - Agraga el niviel socioeconomico de la persona
   * NO SON HIGUALES LOS FORM
@@ -681,6 +713,32 @@ class SOLICITUD_model extends MY_Model
     $buid = $this->build_query();
     $query = $this->db->query($buid);
     $response = $this->query_list($query);
+
+    if($response === FALSE){
+      $this->response['status'] = 0;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    }else{
+      if(count($response) > 0){
+        $this->response['status'] = 1;
+        $this->response['data'] = $this->try_result($response);
+      }else{
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron resultados.';
+      }
+    }
+    return $this->response;
+  }
+
+  # Opcion Ver - Ficha Socieconomico - Datos dependiente
+  # sp_B2_DG_vwDependientes - Muestra los datos de las personas dependientes del elemento 
+  public function sp_B2_DG_vwDependientes($idAlterna = null,$curp = null){
+    $this->procedure('sp_B2_DG_vwDependientes');
+    $this->addParam('pCURP',$curp,'N');
+    $this->addParam('pID_ALTERNA',$idAlterna);
+
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_row($query);
 
     if($response === FALSE){
       $this->response['status'] = 0;
@@ -1038,6 +1096,9 @@ class SOLICITUD_model extends MY_Model
     }
     return $this->response;
   }
+
+  # Opcion VER - Ficha Laboral - Pestaña Actitudes para el empleo
+  # sp_B2_LAB_vwActitud - Muestra la información de la ultima actitude hacia el empleo por parte del elemento.
   public function sp_B2_LAB_vwActitud($idAlterna = null,$curp = null){
     $this->procedure('sp_B2_LAB_vwActitud');
     $this->addParam('pCURP',$curp,'N');
@@ -1057,13 +1118,11 @@ class SOLICITUD_model extends MY_Model
         }else if($response['CONOCE_REG_RECON'] == 'S'){
           $response['CONOCE_REG_RECON'] = 'Si';
         }
-
         if($response['CONOCE_REG_ASCENSO'] == 'N'){
           $response['CONOCE_REG_ASCENSO'] = 'No';
         }else if($response['CONOCE_REG_ASCENSO'] == 'S'){
           $response['CONOCE_REG_ASCENSO'] = 'Si';
         }
-
         $this->response['status'] = 1;
         $this->response['data'] = $this->try_result($response);
       }else{

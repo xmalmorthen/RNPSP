@@ -87,6 +87,7 @@ class MY_Model extends CI_Model
   }
   public function addParam($nombre, $_value = false, $valuePrefix = '', $validation = array())
   {
+    $_value = ($_value != false)? trim($_value) : $_value;
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $value = ($_value !== null && $this->input->post($_value) != false) ? $this->input->post($_value) : null;
       $value = ($value !== null) ? (($value === false) ? "{$nombre} OUTPUT" : "{$valuePrefix}{$this->db->escape($value)}") : 'null';
