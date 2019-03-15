@@ -1,5 +1,17 @@
-#Consideraciones de instalación
+<INSTALACIÓN>
+	- Desempaquetar archivo .rar en la ubicación designada para el proyecto
+	- Otorgar permisos de carpeta
+		{root}/application/cache				[ lectura / escritura ]
+		{root}/logs								[ lectura / escritura ]
+		{root}/assets/files						[ lectura / escritura ]	
+		{root}/assets/files/fichaDecadactilar	[ lectura / escritura ]	
+		{root}/assets/files/fichaDocumento		[ lectura / escritura ]	
+		{root}/assets/files/fichaFotografica	[ lectura / escritura ]	
+		{root}/assets/files/fichaVoz			[ lectura / escritura ]	
+</INSTALACIÓN>
 
-- CACHE
-    . El tipo de cache es por archivos "files", se escriben dentro de la carpeta "application/cache/ci_session",
-    se requiere configurar privilegios de escritura.
+<NOTAS>
+	- El empaquetado del proyecto se configuró para que el sitio responda en un dominio raíz, por ejemplo [ www.dominio.com ], por ningun motivo se debe instalar en una subcarpeta de dominio por ejemplo [ www.dominio.com/SGP ].
+	- El empaquetado del proyecto se configuró para realizar conexión a base de datos SQL Server por medio del conector SQLSRV.
+	- El proyecto requiere que el servidor tenga habilitado la extensión CURL (¡¡¡En caso de que aplique!!!)
+</NOTAS>

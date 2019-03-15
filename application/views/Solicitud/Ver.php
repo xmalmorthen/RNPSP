@@ -65,6 +65,7 @@
 <script src="<?php echo base_url('assets/js/utils/collectionGenerics.js') ?>"></script>
 
 <script src="<?php echo base_url('assets/js/views/solicitud/ver/datosGeneralesTab.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/views/solicitud/ver/laboral.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/views/solicitud/ver/identificacion.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/views/solicitud/ver/ver.js') ?>"></script>
 
