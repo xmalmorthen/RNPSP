@@ -1697,11 +1697,11 @@ class SOLICITUD_model extends MY_Model
       $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
     }else{
       if(count($response) > 0){
-        $response['IMG_PERFILIZQ'] = (Utils::isJSON($response['IMG_PERFILIZQ']))? (array)json_decode($response['IMG_PERFILIZQ']) : array();
-        $response['IMG_FRENTE'] = (Utils::isJSON($response['IMG_FRENTE']))? (array)json_decode($response['IMG_FRENTE']) : array();
-        $response['IMG_PERFILDR'] = (Utils::isJSON($response['IMG_PERFILDR']))? (array)json_decode($response['IMG_PERFILDR']) : array();
-        $response['IMG_FIRMA'] = (Utils::isJSON($response['IMG_FIRMA']))? (array)json_decode($response['IMG_FIRMA']) : array();
-        $response['IMG_HUELLA'] = (Utils::isJSON($response['IMG_HUELLA']))? (array)json_decode($response['IMG_HUELLA']) : array();
+        $response['IMG_PERFILIZQ'] = (Utils::isJSON($response['IMG_PERFILIZQ']))? utils::addPath(STATIC_DOCUMMENTS_PATH,$response['IMG_PERFILIZQ']) : array();
+        $response['IMG_FRENTE'] = (Utils::isJSON($response['IMG_FRENTE']))? utils::addPath(STATIC_DOCUMMENTS_PATH,$response['IMG_FRENTE']) : array();
+        $response['IMG_PERFILDR'] = (Utils::isJSON($response['IMG_PERFILDR']))? utils::addPath(STATIC_DOCUMMENTS_PATH,$response['IMG_PERFILDR']) : array();
+        $response['IMG_FIRMA'] = (Utils::isJSON($response['IMG_FIRMA']))? utils::addPath(STATIC_DOCUMMENTS_PATH,$response['IMG_FIRMA']) : array();
+        $response['IMG_HUELLA'] = (Utils::isJSON($response['IMG_HUELLA']))? utils::addPath(STATIC_DOCUMMENTS_PATH,$response['IMG_HUELLA']) : array();
         
         $this->response['status'] = 1;
         $this->response['data'] = $this->try_result($response);
