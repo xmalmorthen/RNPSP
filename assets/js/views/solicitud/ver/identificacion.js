@@ -115,14 +115,11 @@ var objViewIdentificacion = {
 
                     /*******************************************************************************/            
                     //CAMPOS DE IMÁGENES
-
-                    //TODO: Xmal - Implementar modelo de datos para mostrar imágen...
-                    
-                    thumb_pIMAGEN_IZQUIERDO.attr("src", imageBreak ).attr("alt", '');
-                    thumb_pIMAGEN_FRENTE.attr("src", imageBreak).attr("alt", '');
-                    thumb_pIMAGEN_DERECHO.attr("src", imageBreak).attr("alt", '');
-                    thumb_pIMAGEN_FIRMA.attr("src", imageBreak).attr("alt", '');
-                    thumb_pIMAGEN_HUELLA.attr("src", imageBreak).attr("alt", '');
+                    thumb_pIMAGEN_IZQUIERDO.attr("src", data.pIMG_PERFILIZQ ? data.pIMG_PERFILIZQ.name : imageBreak ).attr("alt", data.pIMG_PERFILIZQ ? data.pIMG_PERFILIZQ.originalName : data.pIMG_PERFILIZQ.name);
+                    thumb_pIMAGEN_FRENTE.attr("src", data.pIMG_FRENTE ? data.pIMG_FRENTE.name : imageBreak ).attr("alt", data.pIMG_FRENTE ? data.pIMG_FRENTE.originalName : data.pIMG_FRENTE.name);
+                    thumb_pIMAGEN_DERECHO.attr("src", data.pIMG_PERFILDR ? data.pIMG_PERFILDR.name : imageBreak ).attr("alt", data.pIMG_PERFILDR ? data.pIMG_PERFILDR.originalName : data.pIMG_PERFILDR.name);
+                    thumb_pIMAGEN_FIRMA.attr("src", data.pIMG_FIRMA ? data.pIMG_FIRMA.name : imageBreak ).attr("alt", data.pIMG_FIRMA ? data.pIMG_FIRMA.originalName : data.pIMG_FIRMA.name);
+                    thumb_pIMAGEN_HUELLA.attr("src", data.pIMG_HUELLA ? data.pIMG_HUELLA.name : imageBreak ).attr("alt", data.pIMG_HUELLA ? data.pIMG_HUELLA.originalName : data.pIMG_HUELLA.name);
                     /*******************************************************************************/
                     
                 }
@@ -141,13 +138,15 @@ var objViewIdentificacion = {
         registroDecadactilar : function(pID_ALTERNA){
             $('#Registro_decadactilar_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
-            var callUrl = base_url + `Solicitud/xxx`;
+            var callUrl = base_url + `Solicitud/vwRegDecadactilar`;
             objViewIdentificacion.fill.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {  
                 if (data) {
                     $.each(data,function(key,value){
                         objViewIdentificacion.fill.insertValueInSelect(key,value,'Registro_decadactilar_form');
                     });
+
+                    $('#documentoLink').append(`<a href="${data.pIMG_DOCUMENTO.name}" target="_blank" rel="noopener noreferrer">${data.pIMG_DOCUMENTO.originalName}</a>`)
                 }
                 $('#Registro_decadactilar_form').LoadingOverlay("hide");
             })

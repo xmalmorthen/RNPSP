@@ -389,36 +389,36 @@
                 <div class="row">
                     <div class="col-md-4">
                         <h6 class="borderButtom">CUIP</h6>
-                        <p id=''></p>
+                        <p id='pCUIP'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Folio</h6>
-                        <p id=''></p>
+                        <p id='pFOLIO_PERSONA'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Adscripcion</h6>
-                        <p id=''></p>
+                        <p id='pAREA_ADSCRIPCION'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Institución</h6>
-                        <p id=''></p>
+                        <p id='pINSTITUCION'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Dependencia</h6>
-                        <p id=''></p>
+                        <p id='pDEPENDENCIA'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Apellido paterno</h6>
-                        <p id=''></p>
+                        <p id='pPATERNO'></p>
                     </div>
 
                     <div class="col-md-4">
                         <h6 class="borderButtom">Fecha de nacimiento</h6>
-                        <p id=''></p>
+                        <p id='pFECHA_NACIMIENTO'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Sexo</h6>
-                        <p id=''></p>
+                        <p id='pSEXO'></p>
                     </div>                    
                 </div>
                 <hr>
@@ -428,7 +428,11 @@
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Documento</h6>
-                        <p id=''></p>
+                        <div class="jumbotron jumbotron-fluid mb-3">
+                            <div class="container">
+                                <h5 id='documentoLink' class='text-center'></h5>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -499,7 +503,11 @@
                 <div class="row">                    
                     <div class="col-md-12 text-center">
                         <h6 class="borderButtom">Audio</h6>
-                        <!-- <audio id="audio" class='ml-5' style='width=90%!Important;' controls><source src="ruta_de_audio">Navegador no compatible con reproductor de audio</audio> -->
+                        <div class="jumbotron jumbotron-fluid mb-3">
+                            <div class="container">
+                                <audio id="audio" style='width=90%!Important;' controls><source src="">Navegador no compatible con reproductor de audio</audio>
+                            </div>
+                        </div>                        
                     </div>
                 </div>
             </form>
