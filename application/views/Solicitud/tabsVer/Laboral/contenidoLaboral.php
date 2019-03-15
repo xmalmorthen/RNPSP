@@ -14,7 +14,7 @@
                         <p id="pNOMBRE_DEPENDENCIA"></p>
                     </div>
                     <div class="col-md-6">
-                        <h6 class="borderButtom"><span class="clr">*</span>Corporación</h6> <!-- Se llena del catalogo "CAT_INSTITUCION" -->
+                        <h6 class="borderButtom">Corporación</h6> <!-- Se llena del catalogo "CAT_INSTITUCION" -->
                         <p id="pCORPORACION"></p>
                     </div>
                 </div>
@@ -28,22 +28,22 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <h6 class="borderButtom"> <span class="clr">*</span>Código postal</h6>
+                        <h6 class="borderButtom"> Código postal</h6>
                         <p id="pCODIGO_POSTAL"></p>
                     </div>
                     <div class="col-md-4">
-                        <h6 class="borderButtom"><span class="clr">*</span>Estado</h6> <!-- Se llena del catalogo "CAT_ENTIDAD" -->
+                        <h6 class="borderButtom">Estado</h6> <!-- Se llena del catalogo "CAT_ENTIDAD" -->
                         <p id="pNOM_ENTIDAD"></p>
                     </div>
                     <div class="col-md-4">
-                        <h6 class="borderButtom"><span class="clr">*</span>Municipio</h6> <!-- Se llena del catalogo "CAT_MUNICIPIO" dependiendo del catalogo de "ENTIDAD" -->
+                        <h6 class="borderButtom">Municipio</h6> <!-- Se llena del catalogo "CAT_MUNICIPIO" dependiendo del catalogo de "ENTIDAD" -->
                         <p id="pNOM_MUNICIPIO"></p>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <h6 class="borderButtom"> <span class="clr">*</span>Número exterior</h6>
+                        <h6 class="borderButtom"> Número exterior</h6>
                         <p id="pNUM_EXTERIOR"></p>
                     </div>
                     <div class="col-md-4">
@@ -51,7 +51,7 @@
                         <p id="pNUM_INTERIOR"></p>
                     </div>
                     <div class="col-md-4">
-                        <h6 class="borderButtom"><span class="clr">*</span>Número telefónico</h6>
+                        <h6 class="borderButtom">Número telefónico</h6>
                         <p id="pTELEFONO"></p>
                     </div>
                 </div>
@@ -60,11 +60,11 @@
                 <br>
                     <div class="row">
                     <div class="col-md-4">
-                        <h6 class="borderButtom"><span class="clr">*</span>Fecha de ingreso</h6>
+                        <h6 class="borderButtom">Fecha de ingreso</h6>
                         <p id="pFECHA_INGRESO"></p>
                     </div>
                     <div class="col-md-4">
-                        <h6 class="borderButtom"><span class="clr">*</span>Puesto</h6> <!-- pendiente -->
+                        <h6 class="borderButtom">Puesto</h6> <!-- pendiente -->
                         <p id="pNOMBRE_PUESTO"></p>
                     </div>
                     <div class="col-md-4">
@@ -150,22 +150,22 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                            <h6 class="borderButtom"><span class="clr">*</span>Empresa</h6>
+                            <h6 class="borderButtom">Empresa</h6>
                         <p id="pEMPRESA"></p>
                     </div>
                     <div class="col-md-4">
-                            <h6 class="borderButtom"><span class="clr">*</span>Código postal</h6>
+                            <h6 class="borderButtom">Código postal</h6>
                         <p id="pCP_EMP"></p>
                     </div>
                     <div class="col-md-4">
-                        <h6 class="borderButtom"> <span class="clr">*</span>Estado </h6><!-- Se llena del catalogo "CAT_ENTIDAD" -->                            
+                        <h6 class="borderButtom"> Estado </h6><!-- Se llena del catalogo "CAT_ENTIDAD" -->                            
                         <p id="pNOM_ENTIDAD"></p>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <h6 class="borderButtom"><span class="clr">*</span>Municipio</h6> <!-- Se llena del catalogo "CAT_MUNICIPIO" dependiendo del catalogo "ENTIDAD" -->
+                        <h6 class="borderButtom">Municipio</h6> <!-- Se llena del catalogo "CAT_MUNICIPIO" dependiendo del catalogo "ENTIDAD" -->
                         <p id="pNOM_MUNICIPIO"></p>
                     </div>
 
@@ -185,7 +185,7 @@
                             <p id="pNUM_TELEFONICO"></p>
                     </div>
                     <div class="col-md-4">
-                            <h6 class="borderButtom"><span class="clr">*</span>Área o departamento </h6>
+                            <h6 class="borderButtom">Área o departamento </h6>
                         <p id="pAREA"></p>
                     </div>
                     <div class="col-md-4">
@@ -200,22 +200,22 @@
                         <p id="pSUELDO"></p>
                     </div>
                     <div class="col-md-4">
-                        <h6 class="borderButtom"><span class="clr">*</span>Fecha de ingreso</h6>
+                        <h6 class="borderButtom">Fecha de ingreso</h6>
                         <p id="pFECHA_INGRESO"></p>
                     </div>
                     <div class="col-md-4">
-                        <h6 class="borderButtom"><span class="clr">*</span>Fecha de separación</h6>
+                        <h6 class="borderButtom">Fecha de separación</h6>
                         <p id="pFECHA_SEPARACION"></p>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <h6 class="borderButtom"><span class="clr">*</span>Motivo de separación</h6> <!-- Se llena del catalogo "MOTIVO_MOB_LAB" -->
+                        <h6 class="borderButtom">Motivo de separación</h6> <!-- Se llena del catalogo "MOTIVO_MOB_LAB" -->
                         <p id="pMOTIVO_SEPARACION"></p>
                     </div>
                     <div class="col-md-4">
-                        <h6 class="borderButtom"> <span class="clr">*</span>Tipo de separación</h6> <!-- Se llena del catalogo "TIPO_MOB_LAB" -->
+                        <h6 class="borderButtom"> Tipo de separación</h6> <!-- Se llena del catalogo "TIPO_MOB_LAB" -->
                         <p id="pTIPO_SEPARACION"></p>
                         
                     </div>
@@ -312,22 +312,22 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                         <h6 class="borderButtom"><span class="clr">*</span>Fecha de inicio</h6>
+                         <h6 class="borderButtom">Fecha de inicio</h6>
                         <p id="pFECHA_INICIO"></p>
                     </div>
                     <div class="col-md-4">
-                         <h6 class="borderButtom"><span class="clr">*</span>Fecha de término</h6>
+                         <h6 class="borderButtom">Fecha de término</h6>
                         <p id="pFECHA_TERMINO"></p>
                     </div>
                     <div class="col-md-4">
-                         <h6 class="borderButtom"><span class="clr">*</span>Tipo de comisión</h6><!-- Se llena del catalogo "CAT_TIPO_COMISION" -->
+                         <h6 class="borderButtom">Tipo de comisión</h6><!-- Se llena del catalogo "CAT_TIPO_COMISION" -->
                         <p id="pTIPO_COMISION"></p>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <h6 class="borderButtom"><span class="clr">*</span>Motivo</h6> <!-- Se llena del catalogo "CAT_MOTIVO" -->
+                        <h6 class="borderButtom">Motivo</h6> <!-- Se llena del catalogo "CAT_MOTIVO" -->
                         <p id="pMOTIVO"></p>
                     </div>
                     <div class="col-md-4">
