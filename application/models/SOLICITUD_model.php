@@ -1748,6 +1748,42 @@ class SOLICITUD_model extends MY_Model
     return $this->response;
   }
   
+  # ****************************************************************************************************************
+  # Registro decadactilar
+  # ****************************************************************************************************************
+  # Opcion Nueva Solicitud - Ficha Identificación- Pestaña Registro decadactilar
+  # Boton Guardar Regsitro
+  # sp_B2_MF_addReg_decadactilar - Agrega el documento con las huellas dactilares, palmares y canto de ambas manos.
+  public function  sp_B2_MF_addReg_decadactilar($idAlterna,$path){
+    $this->arrayToPost(array('pID_ALTERNA'=>$idAlterna,'pPATH_IMAGEN'=>$path));
+    $this->load->library('form_validation');
+
+    $this->addParam('pID_ALTERNA','pID_ALTERNA','',array('rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pPATH_IMAGEN','pPATH_IMAGEN','',array('rule'=>'trim|required|max_length[250]'));
+
+    if ($this->form_validation->run() === true) {
+      $this->procedure('sp_B2_MF_addReg_decadactilar');
+      $this->iniParam('txtError','varchar','250');
+      $this->iniParam('msg','varchar','80');
+      $this->iniParam('tranEstatus','int');
+      $query = $this->db->query($this->build_query());
+      $response = $this->query_row($query);
+      if($response == FALSE){
+        $this->response['status'] = false;
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      }else{
+        $this->response['status'] = (bool)$response['tranEstatus'];
+        $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
+      }
+    } else {
+      $this->load->helper('html');
+      $this->response['status'] = false;
+      $message = $this->form_validation->error_array();
+      $this->response['message'] = ul($message);
+      $this->response['validation'] = $message;
+    }
+    return $this->response;
+  }
 
 
 }

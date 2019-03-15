@@ -801,15 +801,9 @@
 
 				if (count($errors) == 0) {
 					$outputMSG = "";
-
-					//TODO: Tamata - Implementar el guardado de las referencias de archivos.
-					// La variable [ $files ] contiene la lista de archivos subidos
-					// La variable POST $this->input->post("pID_ALTERNA") contiene el ID_ALTERNA
-
-					$responseModel['status'] = false;
-					$responseModel['message'] = 'Método no implementado';
-					$responseModel['data'] = [];
-
+					$this->load->model('SOLICITUD_model');
+					$idAlterna = $this->input->post('pID_ALTERNA');
+					$responseModel = $this->SOLICITUD_model->sp_B2_MF_addReg_decadactilar($idAlterna,json_encode(array('originalName'=>$files[0]['originalName'],'name'=>$files[0]['name'])));
 				} else {
 					$responseModel['message'] = 'Error al intentar guardar';
 					$responseModel['data'] = $errors;
