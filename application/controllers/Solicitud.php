@@ -874,15 +874,11 @@
 				}
 
 				if (count($errors) == 0) {
+
 					$outputMSG = "";
-
-					//TODO: Tamata - Implementar el guardado de las referencias de archivos.
-					// La variable [ $files ] contiene la lista de archivos subidos
-					// La variable POST $this->input->post("pID_ALTERNA") contiene el ID_ALTERNA
-
-					$responseModel['status'] = false;
-					$responseModel['message'] = 'Método no implementado';
-					$responseModel['data'] = [];
+					$files = current($files);
+					$this->load->model('SOLICITUD_model');
+					$responseModel = $this->SOLICITUD_model->sp_B2_MF_addDocumento(json_encode(array('originalName'=>$files['originalName'],'name'=>$files['name'])));
 
 				} else {
 					$responseModel['message'] = 'Error al intentar guardar';
@@ -1801,6 +1797,58 @@
 			try {
 				$this->load->model('SOLICITUD_model');
 				$responseModel = $this->SOLICITUD_model->sp_B2_MF_vwReg_decadactilar($idAlterna,$curp);
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+
+		# OPCION NUEVO (GRID) -- falta probar
+		# Obtiene los datos de la pestaña "Identificación" -> "Digitalización de documento"
+		# Obtiene las imágenes de los documentos pertenecientes al elemento.
+		# EJEMPLO: http://localhost/SGP/Solicitud/getDocumento?pID_ALTERNA=56
+		public function getDocumento(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+			$idAlterna = $this->input->get('pID_ALTERNA');
+			$curp = $this->input->get('pCURP');
+			try {
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_B2_MF_getDocumento($idAlterna,$curp);
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+
+		# OPCION VER -- falta probar
+		# Obtiene los datos de la pestaña "Identificación" -> "Digitalización de documento"
+		# Muestra las imágenes de los documentos pertenecientes al elemento.
+		# EJEMPLO: http://localhost/SGP/Solicitud/vwDocumento?pID_ALTERNA=56
+		public function vwDocumento(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+			$idAlterna = $this->input->get('pID_ALTERNA');
+			$curp = $this->input->get('pCURP');
+			try {
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_B2_MF_vwDocumento($idAlterna,$curp);
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));

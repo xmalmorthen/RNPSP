@@ -1835,5 +1835,101 @@ class SOLICITUD_model extends MY_Model
     return $this->response;
   }
 
+  # ****************************************************************************************************************
+  # Digitalización de documento
+  # ****************************************************************************************************************
+  # Opcion Nueva Solicitud - Ficha Identificación- Pestaña Digitalización de documento
+  # Boton Guardar Documento
+  # sp_B2_MF_addDocumento - Agrega las imágenes de los documentos pertenecientes al elemento.
+  public function  sp_B2_MF_addDocumento($file){
+    $this->arrayToPost(array('pPATH_IMAGEN'=>$file,'pID_CATEGORIA_DOC'=>'10'));
+    $this->load->library('form_validation');
 
+    $this->addParam('pID_ALTERNA','pID_ALTERNA','',array('rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pID_ESTADO_EMISOR',null);
+    $this->addParam('pID_EMISOR',null);
+    $this->addParam('pID_CATEGORIA_DOC','pID_CATEGORIA_DOC','',array('name'=>'Categoría de documento','rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pVALOR',null);
+    $this->addParam('pFECHA_DOCUMENTO','FECHA_DOCUMENTO','',array('name'=>'Fecha documento','rule'=>'trim|max_length[10]'));
+    $this->addParam('pESTATUS',null);
+    $this->addParam('pPATH_IMAGEN','pPATH_IMAGEN','',array('name'=>'Documento','rule'=>'trim|required|max_length[250]'));
+
+    if ($this->form_validation->run() === true) {
+      $this->procedure('sp_B2_MF_addDocumento');
+      $this->iniParam('txtError','varchar','250');
+      $this->iniParam('msg','varchar','80');
+      $this->iniParam('tranEstatus','int');
+      $build = $this->build_query();
+      Utils::pre($build);
+      $query = $this->db->query($build);
+      $response = $this->query_row($query);
+      if($response == FALSE){
+        $this->response['status'] = false;
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      }else{
+        $this->response['status'] = (bool)$response['tranEstatus'];
+        $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
+      }
+    } else {
+      $this->load->helper('html');
+      $this->response['status'] = false;
+      $message = $this->form_validation->error_array();
+      $this->response['message'] = ul($message);
+      $this->response['validation'] = $message;
+    }
+    return $this->response;
+  }
+
+  # Opcion Nueva Solicitud - Ficha Identificación- Pestaña Digitalización de documento
+  # Grid - Registro de Documento
+  # sp_B2_MF_getDocumento - Obtiene las imágenes de los documentos pertenecientes al elemento.
+  public function sp_B2_MF_getDocumento($idAlterna = null,$curp = null){
+    $this->procedure('sp_B2_MF_getDocumento');
+    $this->addParam('pCURP',$curp,'N');
+    $this->addParam('pID_ALTERNA',$idAlterna);
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_list($query);
+    if($response === FALSE){
+      $this->response['status'] = 0;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    }else{
+      if(count($response) > 0){
+        $this->response['status'] = 1;
+        $this->response['data'] = $this->try_result($response);
+      }else{
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron resultados.';
+      }
+    }
+    return $this->response;
+  }
+
+  # Opcion VER - Ficha Identificación- Pestaña Digitalización de documento
+  # sp_B2_MF_vwDocumento - Muestra las imágenes de los documentos pertenecientes al elemento.
+  public function sp_B2_MF_vwDocumento($idAlterna = null,$curp = null){
+    $this->procedure('sp_B2_MF_vwDocumento');
+    $this->addParam('pCURP',$curp,'N');
+    $this->addParam('pID_ALTERNA',$idAlterna);
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_list($query);
+    if($response === FALSE){
+      $this->response['status'] = 0;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    }else{
+      if(count($response) > 0){
+        $this->response['status'] = 1;
+        $this->response['data'] = $this->try_result($response);
+      }else{
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron resultados.';
+      }
+    }
+    return $this->response;
+  }
+
+  # ****************************************************************************************************************
+  # Identificación de voz
+  # ****************************************************************************************************************
 }
