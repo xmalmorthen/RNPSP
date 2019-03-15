@@ -23,7 +23,7 @@
                                 <th>Apellido materno</th>
                                 <th>Adscripción</th>
                                 <th>Estatus</th>
-                                <th>Acciones</th>
+                                <th colspan="2">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,7 +35,10 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                    <a href="http://carlos.zzhype.com/RNPSP/Solicitud/Ver"><i class="fa fa-eye"></i></a>
+                                    <a href=""><i class="fa fa-eye"></i></a>
+                                </td>
+                                <td>
+                                    <input class="form-control" type="checkbox" style="margin-top: -7px;" >
                                 </td>
                             </tr>
                             <tr>
@@ -46,7 +49,10 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                    <a href="http://carlos.zzhype.com/RNPSP/Solicitud/Ver"><i class="fa fa-eye"></i></a>
+                                    <a href=""><i class="fa fa-eye"></i></a>
+                                </td>
+                                <td>
+                                    <input class="form-control" type="checkbox" style="margin-top: -7px;" >
                                 </td>
                             </tr>
                             <tr>
@@ -57,11 +63,26 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                    <a href="http://carlos.zzhype.com/RNPSP/Solicitud/Ver"><i class="fa fa-eye"></i></a>
+                                    <a href=""><i class="fa fa-eye"></i></a>
+                                </td>
+                                <td>
+                                    <input class="form-control" type="checkbox" style="margin-top: -7px;" >
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-6"></div>
+                <div class="col-md-2">
+                    <div class="row">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6">
+                            <button class="btn btn-default">Imprimir</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>
