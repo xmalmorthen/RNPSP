@@ -1658,5 +1658,55 @@ class SOLICITUD_model extends MY_Model
   # Ficha fotográfica
   # ****************************************************************************************************************
   
+  # Opcion Nueva Solicitud - Ficha Identificación- Pestaña Ficha Fotográfica
+  # Mostrar Datos Iniciales de la Pantalla
+  # sp_B2_MF_opcFichaFotografica - Muestra los datos de la pestaña de ficha fotografica
+  public function sp_B2_MF_opcFichaFotografica($idAlterna = null){
+    $this->procedure('sp_B2_MF_opcFichaFotografica');
+    $this->addParam('pID_ALTERNA',$idAlterna);
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_row($query);
+
+    if($response === FALSE){
+      $this->response['status'] = 0;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    }else{
+      if(count($response) > 0){
+        $this->response['status'] = 1;
+        $this->response['data'] = $this->try_result($response);
+      }else{
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron resultados.';
+      }
+    }
+    return $this->response;
+  }
+
+  # Opcion VER - Ficha Identificación- Pestaña Ficha Fotográfica
+  # sp_B2_MF_vwFichaFotografica - Muestra los datos la ficha fotográfica 
+  public function sp_B2_MF_vwFichaFotografica($idAlterna = null,$curp = null){
+    $this->procedure('sp_B2_MF_vwFichaFotografica');
+    $this->addParam('pCURP',$curp,'N');
+    $this->addParam('pID_ALTERNA',$idAlterna);
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_row($query);
+
+    if($response === FALSE){
+      $this->response['status'] = 0;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    }else{
+      if(count($response) > 0){
+        $this->response['status'] = 1;
+        $this->response['data'] = $this->try_result($response);
+      }else{
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron resultados.';
+      }
+    }
+    return $this->response;
+  }
+
 
 }
