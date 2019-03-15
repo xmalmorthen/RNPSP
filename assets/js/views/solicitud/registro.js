@@ -653,6 +653,8 @@ var fillData = {
 
                     //special
                     mainFormActions.insertValueInSelect($('#pPUESTO_ACTITUDES_EMPLEO'),data.pPUESTO);
+
+                    $('#Actitudes_hacia_el_empleo_form').removeData('hasChanged');
                 }
             })
             .catch( (err) => {
