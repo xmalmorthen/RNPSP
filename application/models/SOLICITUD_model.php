@@ -1297,6 +1297,32 @@ class SOLICITUD_model extends MY_Model
     return $this->response;
   }
 
+  # Opcion VER - Ficha Capacitacion - Pestaña Idiomay/o dialecto
+  # sp_B2_CAPS_vwIdiomaHablado - Muestra la información del ultimo idioma que habla el elemento.
+  public function sp_B2_CAPS_vwIdiomaHablado($idAlterna = null,$curp = null){
+    $this->procedure('sp_B2_CAPS_vwIdiomaHablado');
+    $this->addParam('pCURP',$curp,'N');
+    $this->addParam('pID_ALTERNA',$idAlterna);
+
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_row($query);
+
+    if($response === FALSE){
+      $this->response['status'] = 0;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    }else{
+      if(count($response) > 0){
+        $this->response['status'] = 1;
+        $this->response['data'] = $this->try_result($response);
+      }else{
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron resultados.';
+      }
+    }
+    return $this->response;
+  }
+
   # ****************************************************************************************************************
   # Habilidades y/o actitudes
   # ****************************************************************************************************************
@@ -1349,6 +1375,32 @@ class SOLICITUD_model extends MY_Model
     $buid = $this->build_query();
     $query = $this->db->query($buid);
     $response = $this->query_list($query);
+
+    if($response === FALSE){
+      $this->response['status'] = 0;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    }else{
+      if(count($response) > 0){
+        $this->response['status'] = 1;
+        $this->response['data'] = $this->try_result($response);
+      }else{
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron resultados.';
+      }
+    }
+    return $this->response;
+  }
+
+  # Opcion VER - Ficha Capacitacion - Pestaña Habilidad y/o actitud
+  # sp_B2_CAPS_vwHabilidadAptitud - Muestra los datos sobre la ultima habilidad y/o aptitud del elemento.
+  public function sp_B2_CAPS_vwHabilidadAptitud($idAlterna = null,$curp = null){
+    $this->procedure('sp_B2_CAPS_vwHabilidadAptitud');
+    $this->addParam('pCURP',$curp,'N');
+    $this->addParam('pID_ALTERNA',$idAlterna);
+
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_row($query);
 
     if($response === FALSE){
       $this->response['status'] = 0;
@@ -1548,6 +1600,31 @@ class SOLICITUD_model extends MY_Model
     return $this->response;
   }
 
+  # Opcion VER - Ficha Identificación- Pestaña Señas Particulares
+  # sp_B2_MF_vwSenasParticulares - Muestra la ultima seña particular correspondientes al elemento policial.
+  public function sp_B2_MF_vwSenasParticulares($idAlterna = null,$curp = null){
+    $this->procedure('sp_B2_MF_vwSenasParticulares');
+    $this->addParam('pCURP',$curp,'N');
+    $this->addParam('pID_ALTERNA',$idAlterna);
+
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_row($query);
+
+    if($response === FALSE){
+      $this->response['status'] = 0;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    }else{
+      if(count($response) > 0){
+        $this->response['status'] = 1;
+        $this->response['data'] = $this->try_result($response);
+      }else{
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron resultados.';
+      }
+    }
+    return $this->response;
+  }
   
 
   # ****************************************************************************************************************
