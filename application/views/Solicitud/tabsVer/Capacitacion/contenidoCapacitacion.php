@@ -10,42 +10,37 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                         <h6 class="borderButtom">Idioma y/o dialecto</h6>  <!-- Se llena del catalogo "CAT_IDIOMA" -->
-                        <p></p>
-                        <span id="err_pID_IDIOMA"></span>
+                        <h6 class="borderButtom">Idioma y/o dialecto</h6>  <!-- Se llena del catalogo "CAT_IDIOMA" -->
+                        <p id=''></p>
                     </div>
                     <div class="col-md-2">
-                         <h6 class="borderButtom">Lectura</h6>
+                        <h6 class="borderButtom">Lectura</h6>
                         <div class="row">
                             <div class="col-md-10">
-                                <p></p>
+                                <p id=''></p>
                             </div>
                             <div class="col-md-1" style="margin-left: -12px;margin-top: 7px;" >%</div>
                         </div>
                     </div>
                     <div class="col-md-2">
-                         <h6 class="borderButtom">Escritura</h6>
+                        <h6 class="borderButtom">Escritura</h6>
                         <div class="row">
                             <div class="col-md-10">
-                                <p></p>
+                                <p id=''></p>
                             </div>
                             <div class="col-md-1" style="margin-left: -12px;margin-top: 7px;" >%</div>
                         </div>
                     </div>
                     <div class="col-md-2">
-                         <h6 class="borderButtom">Conversación</h6>
+                        <h6 class="borderButtom">Conversación</h6>
                         <div class="row">
                             <div class="col-md-10">
-                                <p></p>
+                                <p id=''></p>
                             </div>
                             <div class="col-md-1" style="margin-left: -12px;margin-top: 7px;" >%</div>
                         </div>
                     </div>
                 </div>
-                <input type="hidden" id="pID_ALTERNA_Idioma" name="pID_ALTERNA_Idioma" value="" >
-                <input type="hidden" id="pID_ESTADO_EMISOR_Idioma" name="pID_ESTADO_EMISOR_Idioma" value="" >
-                <input type="hidden" id="pID_EMISOR_Idioma" name="pID_EMISOR_Idioma" value="" >
-                <input type="hidden" id="pID_IDIOMA_HABLADO_EXT" name="pID_IDIOMA_HABLADO_EXT" value="" >
             </form>
             <br>
             <div class="row">
@@ -68,24 +63,18 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                         <h6 class="borderButtom">Tipo de habilidad y/o aptitud</h6><!-- Se llena con el catalogo "CAT_TIPO_APTITUD" -->
-                        <p></p>
-                        <span id="err_ID_TIPO_APTITUD"></span>
+                        <h6 class="borderButtom">Tipo de habilidad y/o aptitud</h6><!-- Se llena con el catalogo "CAT_TIPO_APTITUD" -->
+                        <p id=''></p>
                     </div>
                     <div class="col-md-4">
                          <h6 class="borderButtom">Descripción</h6>
-                        <p></p>
+                        <p id=''></p>
                     </div>
                     <div class="col-md-4">
-                         <h6 class="borderButtom">Grado de aptitud o dominio </h6><!-- Se rellena con el catalogo "CAT_GRADO_APTITUD_HAB" depende del select "TIPO_ACTITUD" -->
-                        <p></p>
-                        <span id="err_ID_GRADO_APT_HAB"></span>
+                        <h6 class="borderButtom">Grado de aptitud o dominio </h6><!-- Se rellena con el catalogo "CAT_GRADO_APTITUD_HAB" depende del select "TIPO_ACTITUD" -->
+                        <p id=''></p>
                     </div>
                 </div>
-                <input type="hidden" id="pID_ALTERNA_Habilidades" name="pID_ALTERNA_Habilidades" value="">
-                <input type="hidden" id="pID_ESTADO_EMISOR_Habilidades" name="pID_ESTADO_EMISOR_Habilidades" value="">
-                <input type="hidden" id="pID_EMISOR_Habilidades" name="pID_EMISOR_Habilidades" value="">
-                <input type="hidden" id="pID_HABILIDAD_APTIT_EXT" name="pID_HABILIDAD_APTIT_EXT" value="">
             </form>
             <br>
             <div class="row">                    

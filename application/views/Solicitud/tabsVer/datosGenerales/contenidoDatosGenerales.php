@@ -284,30 +284,30 @@
             <div class="row">
                 <div class="col-md-4">
                     <h6 class="borderButtom">Nombre</h6>
-                    <p id=''></p>
+                    <p id='pNOMBRE'></p>
                 </div>
                 <div class="col-md-4">
                 <h6 class="borderButtom">Apellido paterno</h6>
-                    <p id=''></p>
+                    <p id='pPATERNO'></p>
                 </div>
                 <div class="col-md-4">
                 <h6 class="borderButtom">Apellido materno</h6>
-                    <p id=''></p>
+                    <p id='pMATERNO'></p>
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-md-4">
                     <h6 class="borderButtom">Sexo</h6>
-                    <p id=''></p>
+                    <p id='pNOM_SEXO'></p>
                 </div>
                 <div class="col-md-4">
                     <h6 class="borderButtom">Ocupación</h6>
-                    <p id=''></p>
+                    <p id='pNOM_OCUPACION'></p>
                 </div>
                 <div class="col-md-4">
                     <h6 class="borderButtom">Tipo de referencia</h6>
-                    <p id=''></p>
+                    <p id='pTIPO_REFERENCIA'></p>
                 </div>
             </div>
             
@@ -315,52 +315,52 @@
             <div class="row">
                 <div class="col-md-4">
                     <h6 class="borderButtom">Código postal</h6>
-                    <p id=''></p>
+                    <p id='pCODIGO_POSTAL'></p>
                 </div>
                 <div class="col-md-4">
                     <h6 class="borderButtom">Estado</h6>
-                    <p id=''></p>
+                    <p id='pNOM_ENTIDAD'></p>
                 </div>
                 <div class="col-md-4">
                     <h6 class="borderButtom">Municipio</h6>
-                    <p id=''></p>
+                    <p id='pNOM_MUNICIPIO'></p>
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-md-4">
                     <h6 class="borderButtom">Ciudad</h6>
-                    <p id=''></p>
+                    <p id='pCIUDAD'></p>
                 </div>
                 <div class="col-md-4">
                     <h6 class="borderButtom">Colonia/Localidad</h6>
-                    <p id=''></p>
+                    <p id='pCOLONIA'></p>
                 </div>
                 <div class="col-md-4">
                     <h6 class="borderButtom">Calle</h6>
-                    <p id=''></p>
+                    <p id='pCALLE'></p>
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-md-4">
                     <h6 class="borderButtom">Número exterior</h6>
-                    <p id=''></p>
+                    <p id='pNUM_EXTERIOR'></p>
                 </div>
                 <div class="col-md-4">
                     <h6 class="borderButtom">Número interior</h6>
-                    <p id=''></p>
+                    <p id='pNUM_INTERIOR'></p>
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-md-4">
                     <h6 class="borderButtom">Entre la calle de</h6>
-                    <p id=''></p>
+                    <p id='pENTRE_CALLE'></p>
                 </div>
                 <div class="col-md-4">
                     <h6 class="borderButtom">Y la calle de</h6>
-                    <p id=''></p>
+                    <p id='pY_CALLE'></p>
                 </div>
             </div>
         </form>               

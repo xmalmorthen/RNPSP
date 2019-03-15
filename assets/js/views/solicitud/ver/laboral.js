@@ -16,8 +16,8 @@ var objViewLaboral = {
         }        
     }, 
     fill : {
-        insertValueInSelect : function(ref,value){
-            $('#'+ ref).html(value);
+        insertValueInSelect : function(ref,value,form){            
+            $('#'+ form + ' #' + ref).html(value);
         },
         genericPromise : function(callUrl,model){
             return new Promise ( (resolve, reject) => {
@@ -54,12 +54,12 @@ var objViewLaboral = {
             .then( (data) => {  
                 if (data) {
                     $.each(data,function(key,value){
-                        objViewLaboral.fill.insertValueInSelect(key,value);
+                        objViewLaboral.fill.insertValueInSelect(key,value,'Adscripcion_actual_form');
                     });
 
                     //special
                     var nombreCompleto = (data.pMATERNO_JEFE ? data.pMATERNO_JEFE + ' ' : '') + (data.pPATERNO_JEFE ? data.pPATERNO_JEFE + ' ' : '') + (data.pNOMBRE_JEFE ? data.pNOMBRE_JEFE : '');
-                    objViewLaboral.fill.insertValueInSelect('pNOMBRE_JEFE',nombreCompleto);
+                    objViewLaboral.fill.insertValueInSelect('pNOMBRE_JEFE',nombreCompleto,'Adscripcion_actual_form');
                     
                 }
                 $('#Adscripcion_actual_form').LoadingOverlay("hide");
@@ -82,7 +82,7 @@ var objViewLaboral = {
             .then( (data) => {  
                 if (data) {
                     $.each(data,function(key,value){
-                        objViewLaboral.fill.insertValueInSelect(key,value);
+                        objViewLaboral.fill.insertValueInSelect(key,value,'Empleos_diversos_form');
                     });
                 }
                 $('#Empleos_diversos_form').LoadingOverlay("hide");
@@ -105,7 +105,7 @@ var objViewLaboral = {
             .then( (data) => {  
                 if (data) {
                     $.each(data,function(key,value){
-                        objViewLaboral.fill.insertValueInSelect(key,value);
+                        objViewLaboral.fill.insertValueInSelect(key,value,'Actitudes_hacia_el_empleo_form');
                     });
                 }
                 $('#Actitudes_hacia_el_empleo_form').LoadingOverlay("hide");
@@ -128,7 +128,7 @@ var objViewLaboral = {
             .then( (data) => {  
                 if (data) {
                     $.each(data,function(key,value){
-                        objViewLaboral.fill.insertValueInSelect(key,value);
+                        objViewLaboral.fill.insertValueInSelect(key,value,'Comisiones_form');
                     });
                 }
                 $('#Comisiones_form').LoadingOverlay("hide");
@@ -142,7 +142,6 @@ var objViewLaboral = {
                 });
                 $('#Comisiones_form').LoadingOverlay("hide");
             });
-        },
-        
+        }
     }
 }
