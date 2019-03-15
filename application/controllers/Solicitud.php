@@ -1711,10 +1711,35 @@
 				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
 			}
 			$idAlterna = $this->input->get('pID_ALTERNA');
+			try {
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_B2_MF_opcFichaFotografica($idAlterna);
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+
+		# OPCION VER
+		# Obtiene los datos de la pestaña "Identificación" -> "Ficha fotográfica"
+		# Muestra los datos la ficha fotográfica 
+		# EJEMPLO: http://localhost/SGP/Solicitud/vwFichaFotografica?pID_ALTERNA=56
+		public function vwFichaFotografica(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+			$idAlterna = $this->input->get('pID_ALTERNA');
 			$curp = $this->input->get('pCURP');
 			try {
 				$this->load->model('SOLICITUD_model');
-				$responseModel = $this->SOLICITUD_model->sp_B2_MF_opcFichaFotografica($idAlterna,$curp);
+				$responseModel = $this->SOLICITUD_model->sp_B2_MF_vwFichaFotografica($idAlterna,$curp);
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
