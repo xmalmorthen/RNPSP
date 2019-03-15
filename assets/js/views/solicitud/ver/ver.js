@@ -46,6 +46,7 @@ var objViewVer = {
         },
         initAll : function(){
             objViewDatosGenerales.init();
+            objViewLaboral.init();
             objViewIdentificacion.init();
         }
     }
