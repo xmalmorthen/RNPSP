@@ -16,8 +16,8 @@ var objViewIdentificacion = {
         }        
     }, 
     fill : {
-        insertValueInSelect : function(ref,value){
-            $('#'+ ref).html(value);
+        insertValueInSelect : function(ref,value,form){            
+            $('#'+ form + ' #' + ref).html(value);
         },
         genericPromise : function(callUrl,model){
             return new Promise ( (resolve, reject) => {
@@ -42,6 +42,11 @@ var objViewIdentificacion = {
         },
         all : function(){
             objViewIdentificacion.fill.mediaFiliacion(objViewVer.var.pID_ALTERNA);
+            objViewIdentificacion.fill.seniasParticulares(objViewVer.var.pID_ALTERNA);
+            objViewIdentificacion.fill.fichaFotografica(objViewVer.var.pID_ALTERNA);
+            objViewIdentificacion.fill.registroDecadactilar(objViewVer.var.pID_ALTERNA);
+            objViewIdentificacion.fill.registroDocumento(objViewVer.var.pID_ALTERNA);
+            objViewIdentificacion.fill.identificacionVoz(objViewVer.var.pID_ALTERNA);
         },
         mediaFiliacion : function(pID_ALTERNA){
             $('#mediafiliacion_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
@@ -50,9 +55,8 @@ var objViewIdentificacion = {
             objViewIdentificacion.fill.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {  
                 if (data) {
-                    //console.log(data);
                     $.each(data,function(key,value){
-                        objViewIdentificacion.fill.insertValueInSelect(key,value);
+                        objViewIdentificacion.fill.insertValueInSelect(key,value,'mediafiliacion_form');
                     });
                 }
                 $('#mediafiliacion_form').LoadingOverlay("hide");
@@ -65,6 +69,121 @@ var objViewIdentificacion = {
                     msg : err.statusText
                 });
                 $('#mediafiliacion_form').LoadingOverlay("hide");
+            });
+        },
+        seniasParticulares : function(pID_ALTERNA){
+            $('#Senas_particulares_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+            var callUrl = base_url + `Solicitud/xxx`;
+            objViewIdentificacion.fill.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {  
+                if (data) {
+                    $.each(data,function(key,value){
+                        objViewIdentificacion.fill.insertValueInSelect(key,value,'Senas_particulares_form');
+                    });
+                }
+                $('#Senas_particulares_form').LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                $('#Senas_particulares_form').setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.statusText
+                });
+                $('#Senas_particulares_form').LoadingOverlay("hide");
+            });
+        },
+        fichaFotografica : function(pID_ALTERNA){
+            $('#Ficha_fotografica_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+            var callUrl = base_url + `Solicitud/xxx`;
+            objViewIdentificacion.fill.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {  
+                if (data) {
+                    $.each(data,function(key,value){
+                        objViewIdentificacion.fill.insertValueInSelect(key,value,'Ficha_fotografica_form');
+                    });
+                }
+                $('#Ficha_fotografica_form').LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                $('#Ficha_fotografica_form').setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.statusText
+                });
+                $('#Ficha_fotografica_form').LoadingOverlay("hide");
+            });
+        },
+        registroDecadactilar : function(pID_ALTERNA){
+            $('#Registro_decadactilar_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+            var callUrl = base_url + `Solicitud/xxx`;
+            objViewIdentificacion.fill.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {  
+                if (data) {
+                    $.each(data,function(key,value){
+                        objViewIdentificacion.fill.insertValueInSelect(key,value,'Registro_decadactilar_form');
+                    });
+                }
+                $('#Registro_decadactilar_form').LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                $('#Registro_decadactilar_form').setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.statusText
+                });
+                $('#Registro_decadactilar_form').LoadingOverlay("hide");
+            });
+        },
+        registroDocumento : function(pID_ALTERNA){
+            $('#Digitalizacion_de_documento_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+            var callUrl = base_url + `Solicitud/xxx`;
+            objViewIdentificacion.fill.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {  
+                if (data) {
+                    $.each(data,function(key,value){
+                        objViewIdentificacion.fill.insertValueInSelect(key,value,'Digitalizacion_de_documento_form');
+                    });
+                }
+                $('#Digitalizacion_de_documento_form').LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                $('#Digitalizacion_de_documento_form').setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.statusText
+                });
+                $('#Digitalizacion_de_documento_form').LoadingOverlay("hide");
+            });
+        },
+        identificacionVoz : function(pID_ALTERNA){
+            $('#Identificacion_de_voz_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+            var callUrl = base_url + `Solicitud/xxx`;
+            objViewIdentificacion.fill.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {  
+                if (data) {
+                    $.each(data,function(key,value){
+                        objViewIdentificacion.fill.insertValueInSelect(key,value,'Identificacion_de_voz_form');
+                    });
+                }
+                $('#Identificacion_de_voz_form').LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                $('#Identificacion_de_voz_form').setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.statusText
+                });
+                $('#Identificacion_de_voz_form').LoadingOverlay("hide");
             });
         }
     }

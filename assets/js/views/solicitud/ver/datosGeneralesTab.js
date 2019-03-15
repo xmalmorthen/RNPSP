@@ -16,8 +16,8 @@ var objViewDatosGenerales = {
         }        
     }, 
     fill : {
-        insertValueInSelect : function(ref,value){
-            $('#'+ ref).html(value);
+        insertValueInSelect : function(ref,value,form){            
+            $('#'+ form + ' #' + ref).html(value);
         },
         genericPromise : function(callUrl,model){
             return new Promise ( (resolve, reject) => {
@@ -44,6 +44,8 @@ var objViewDatosGenerales = {
             objViewDatosGenerales.fill.datosPersonales(objViewVer.var.pID_ALTERNA);
             objViewDatosGenerales.fill.desarrolloAcademico(objViewVer.var.pID_ALTERNA);
             objViewDatosGenerales.fill.domicilio(objViewVer.var.pID_ALTERNA);
+            objViewDatosGenerales.fill.referencias(objViewVer.var.pID_ALTERNA);
+            objViewDatosGenerales.fill.socioeconomicos(objViewVer.var.pID_ALTERNA);
         },
         datosPersonales : function(pID_ALTERNA){
             $('#Datos_personales_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
@@ -53,7 +55,7 @@ var objViewDatosGenerales = {
             .then( (data) => {  
                 if (data) {
                     $.each(data,function(key,value){
-                        objViewDatosGenerales.fill.insertValueInSelect(key,value);
+                        objViewDatosGenerales.fill.insertValueInSelect(key,value,'Datos_personales_form');
                     });
                 }
                 $('#Datos_personales_form').LoadingOverlay("hide");
@@ -76,7 +78,7 @@ var objViewDatosGenerales = {
             .then( (data) => {  
                 if (data) {
                     $.each(data,function(key,value){
-                        objViewDatosGenerales.fill.insertValueInSelect(key,value);
+                        objViewDatosGenerales.fill.insertValueInSelect(key,value,'Desarrollo_form');
                     });
                 }
                 $('#Desarrollo_form').LoadingOverlay("hide");
@@ -99,7 +101,7 @@ var objViewDatosGenerales = {
             .then( (data) => {  
                 if (data) {
                     $.each(data,function(key,value){
-                        objViewDatosGenerales.fill.insertValueInSelect(key,value);
+                        objViewDatosGenerales.fill.insertValueInSelect(key,value,'Domicilio_form');
                     });
                 }
                 $('#Domicilio_form').LoadingOverlay("hide");
@@ -112,6 +114,52 @@ var objViewDatosGenerales = {
                     msg : err.statusText
                 });
                 $('#Domicilio_form').LoadingOverlay("hide");
+            });
+        },
+        referencias : function(pID_ALTERNA){
+            $('#Referencias_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+            var callUrl = base_url + `Solicitud/vwReferencias`;
+            objViewDatosGenerales.fill.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {  
+                if (data) {
+                    $.each(data,function(key,value){
+                        objViewDatosGenerales.fill.insertValueInSelect(key,value,'Referencias_form');
+                    });
+                }
+                $('#Referencias_form').LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                $('#Referencias_form').setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.statusText
+                });
+                $('#Referencias_form').LoadingOverlay("hide");
+            });
+        },
+        socioeconomicos : function(pID_ALTERNA){
+            $('#Socioeconomicos_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+            var callUrl = base_url + `Solicitud/xxx`;
+            objViewDatosGenerales.fill.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {  
+                if (data) {
+                    $.each(data,function(key,value){
+                        objViewDatosGenerales.fill.insertValueInSelect(key,value,'Socioeconomicos_form');
+                    });
+                }
+                $('#Socioeconomicos_form').LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                $('#Socioeconomicos_form').setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.statusText
+                });
+                $('#Socioeconomicos_form').LoadingOverlay("hide");
             });
         }
     }
