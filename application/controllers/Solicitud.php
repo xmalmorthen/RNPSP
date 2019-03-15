@@ -1340,7 +1340,7 @@
 			exit;
 		}
 
-		# XMAL obtener datos pestaña "Identificación" -> "Datos personales"
+		# XMAL obtener datos pestaña "Identificación" -> "Media filiación"
 		# get vwFiliacion pID_ALTERNA,pCURP
 		# EJEMPLO: http://localhost/SGP/Solicitud/getPersona?pID_ALTERNA=56
 		# Opcion VER - Ficha Identificación- Pestaña Media Filiacion
