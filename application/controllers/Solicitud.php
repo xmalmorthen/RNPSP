@@ -1313,11 +1313,10 @@
 			exit;
 		}
 
-		# XMAL obtener datos pestaña "Datos generales" -> "Datos personales"
+		# OPCION VER
+		# Obtiene los datos de la pestaña "Datos generales" -> "Datos personales"
 		# get getPersona pID_ALTERNA,pCURP
 		# EJEMPLO: http://localhost/SGP/Solicitud/getPersona?pID_ALTERNA=56
-		# Opción Nueva Solicitud - GRID de CIB
-		# sp_B1_getPersona
 		public function getPersona(){
 			if (! $this->input->is_ajax_request()) {
 				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
@@ -1327,6 +1326,34 @@
 			try {
 				$this->load->model('SOLICITUD_model');
 				$responseModel = $this->SOLICITUD_model->sp_B1_getPersona($idAlterna,$curp);
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+
+		# OPCION VER
+		# Obtiene los datos de la pestaña "Datos generales" -> "Desarrollo académico"
+		# get vwNivelEstudios pID_ALTERNA,pCURP
+		# EJEMPLO: http://localhost/SGP/Solicitud/vwNivelEstudios?pID_ALTERNA=56
+		# Opcion Ver - Ficha Desarrollo Académico - Datos Desarrollo Académico
+		# sp_B1_vwNivelEstudios - Muestra la informacion de los niveles de estudios de una persona
+		public function vwNivelEstudios(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+			$idAlterna = $this->input->get('pID_ALTERNA');
+			$curp = $this->input->get('pCURP');
+			try {
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_B1_vwNivelEstudios($idAlterna,$curp);
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));

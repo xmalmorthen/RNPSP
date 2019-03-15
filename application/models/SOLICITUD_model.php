@@ -225,13 +225,11 @@ class SOLICITUD_model extends MY_Model
     return $this->response;
   }
 
-  /**************************************************************************************************************** */
+  #****************************************************************************************************************
   # NivelEstudios
-  /**************************************************************************************************************** */
-  /*
-  * "Opcion Nueva Solicitud - Ficha Desarrollo Académico - Grid de datos Desarrollo Académico
-  * sp_B1_getNivelEstudios - Obtiene los niveles de estudios de una persona"				      
-  */
+  #**************************************************************************************************************** 
+  # "Opcion Nueva Solicitud - Ficha Desarrollo Académico - Grid de datos Desarrollo Académico
+  # sp_B1_getNivelEstudios - Obtiene los niveles de estudios de una persona"
   public function sp_B1_getNivelEstudios($idAlterna = null,$curp = null){
 
     $this->procedure('sp_B1_getNivelEstudios');
@@ -241,6 +239,33 @@ class SOLICITUD_model extends MY_Model
     $buid = $this->build_query();
     $query = $this->db->query($buid);
     $response = $this->query_list($query);
+
+    if($response === FALSE){
+      $this->response['status'] = 0;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    }else{
+      if(count($response) > 0){
+        $this->response['status'] = 1;
+        $this->response['data'] = $this->try_result($response);
+      }else{
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron resultados.';
+      }
+    }
+    return $this->response;
+  }
+
+  # Opcion Ver - Ficha Desarrollo Académico - Datos Desarrollo Académico
+  # sp_B1_vwNivelEstudios - Muestra la informacion de los niveles de estudios de una persona
+  public function sp_B1_vwNivelEstudios($idAlterna = null,$curp = null){
+
+    $this->procedure('sp_B1_vwNivelEstudios');
+    $this->addParam('pCURP',$curp,'N');
+    $this->addParam('pID_ALTERNA',$idAlterna);
+
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_row($query);
 
     if($response === FALSE){
       $this->response['status'] = 0;
