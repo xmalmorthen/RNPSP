@@ -1390,6 +1390,32 @@
 			exit;
 		}
 
+		# OPCION VER
+		# Obtiene los datos de la pestaña "Datos generales" -> "Referencias"
+		# Muestra la informacion de las referencias de la persona
+		# EJEMPLO: http://localhost/SGP/Solicitud/vwReferencias?pID_ALTERNA=56
+		public function vwReferencias(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+			$idAlterna = $this->input->get('pID_ALTERNA');
+			$curp = $this->input->get('pCURP');
+			try {
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_B2_DG_vwReferencias($idAlterna,$curp);
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+
 		# XMAL obtener datos pestaña "Identificación" -> "Media filiación"
 		# get vwFiliacion pID_ALTERNA,pCURP
 		# EJEMPLO: http://localhost/SGP/Solicitud/getPersona?pID_ALTERNA=56

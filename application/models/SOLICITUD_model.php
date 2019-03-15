@@ -386,7 +386,7 @@ class SOLICITUD_model extends MY_Model
 
     $buid = $this->build_query();
     $query = $this->db->query($buid);
-    $response = $this->query_list($query);
+    $response = $this->query_row($query);
 
     if($response === FALSE){
       $this->response['status'] = 0;
@@ -473,14 +473,11 @@ class SOLICITUD_model extends MY_Model
 
   }
 
-  /**************************************************************************************************************** */
+  #****************************************************************************************************************
   # Referencias
-  /**************************************************************************************************************** */
-  /*
-  * "Opcion Nueva Solicitud - Ficha Referencias- Grid de Referencias
-  * sp_B2_DG_getReferencias - Obtiene la informacion de las referencias de la persona "				
-										      
-  */
+  #****************************************************************************************************************
+  # "Opcion Nueva Solicitud - Ficha Referencias- Grid de Referencias
+  # sp_B2_DG_getReferencias - Obtiene la informacion de las referencias de la persona "
   public function sp_B2_DG_getReferencias($idAlterna = null,$curp = null){
 
     $this->procedure('sp_B2_DG_getReferencias');
@@ -490,6 +487,33 @@ class SOLICITUD_model extends MY_Model
     $buid = $this->build_query();
     $query = $this->db->query($buid);
     $response = $this->query_list($query);
+
+    if($response === FALSE){
+      $this->response['status'] = 0;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    }else{
+      if(count($response) > 0){
+        $this->response['status'] = 1;
+        $this->response['data'] = $this->try_result($response);
+      }else{
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron resultados.';
+      }
+    }
+    return $this->response;
+  }
+
+  # Opcion Ver - Ficha Referencias - Datos de referencias
+  # sp_B2_DG_vwReferencias - Muestra la informacion de las referencias de la persona
+  public function sp_B2_DG_vwReferencias($idAlterna = null,$curp = null){
+
+    $this->procedure('sp_B2_DG_vwReferencias');
+    $this->addParam('pCURP',$curp,'N');
+    $this->addParam('pID_ALTERNA',$idAlterna);
+
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_row($query);
 
     if($response === FALSE){
       $this->response['status'] = 0;
