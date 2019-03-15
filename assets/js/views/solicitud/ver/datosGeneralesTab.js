@@ -46,6 +46,7 @@ var objViewDatosGenerales = {
             objViewDatosGenerales.fill.domicilio(objViewVer.var.pID_ALTERNA);
             objViewDatosGenerales.fill.referencias(objViewVer.var.pID_ALTERNA);
             objViewDatosGenerales.fill.socioeconomicos(objViewVer.var.pID_ALTERNA);
+            objViewDatosGenerales.fill.dependientesEconomicos(objViewVer.var.pID_ALTERNA);            
         },
         datosPersonales : function(pID_ALTERNA){
             $('#Datos_personales_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
@@ -142,7 +143,7 @@ var objViewDatosGenerales = {
         socioeconomicos : function(pID_ALTERNA){
             $('#Socioeconomicos_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
-            var callUrl = base_url + `Solicitud/xxx`;
+            var callUrl = base_url + `Solicitud/vwSocioEconomico`;
             objViewDatosGenerales.fill.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {  
                 if (data) {
@@ -161,6 +162,29 @@ var objViewDatosGenerales = {
                 });
                 $('#Socioeconomicos_form').LoadingOverlay("hide");
             });
-        }
+        },
+        dependientesEconomicos : function(pID_ALTERNA){
+            $('#DependientesEconomicos_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+            var callUrl = base_url + `Solicitud/vwDependientes`;
+            objViewDatosGenerales.fill.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {  
+                if (data) {
+                    $.each(data,function(key,value){
+                        objViewDatosGenerales.fill.insertValueInSelect(key,value,'DependientesEconomicos_form');
+                    });
+                }
+                $('#DependientesEconomicos_form').LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                $('#DependientesEconomicos_form').setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.statusText
+                });
+                $('#DependientesEconomicos_form').LoadingOverlay("hide");
+            });
+        },
     }
 }
