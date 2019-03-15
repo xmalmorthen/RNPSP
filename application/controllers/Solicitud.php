@@ -1420,7 +1420,7 @@
 		# Obtiene los datos de la pestaña "Datos generales" -> "Socioeconómicos"
 		# Muestra el niviel socioeconomico de la persona
 		# EJEMPLO: http://localhost/SGP/Solicitud/vwSocioEconomico?pID_ALTERNA=56
-		public function vwSocioEconomico(){
+		public function vwSocioEc(){
 			if (! $this->input->is_ajax_request()) {
 				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
 			}
@@ -1705,7 +1705,7 @@
 		# OPCION NUEVO
 		# Obtiene los datos de la pestaña "Identificación" -> "Ficha fotográfica"
 		# Muestra los datos de la pestaña de ficha fotografica
-		# EJEMPLO: http://localhost/SGP/Solicitud/opcFichaFotografica?pID_ALTERNA=56
+		# EJEMPLO: http://localhost/SGP/Solicitud/opcFichaFotografica?pID_ALTERNA=56		
 		public function opcFichaFotografica(){
 			if (! $this->input->is_ajax_request()) {
 				if (ENVIRONMENT == 'production') redirect('Error/e404','location');

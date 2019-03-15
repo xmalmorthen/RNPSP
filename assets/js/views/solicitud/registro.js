@@ -321,6 +321,9 @@ var mainFormActions = {
 }
 
 var fillData = {
+    insertValueInSelect : function(ref,value,form){            
+        $('#'+ form + ' #' + ref).html(value);
+    },
     genericPromise : function(callUrl,model){
         return new Promise ( (resolve, reject) => {
             generic.ajax.async.get(callUrl,model, 
@@ -650,6 +653,8 @@ var fillData = {
 
                     //special
                     mainFormActions.insertValueInSelect($('#pPUESTO_ACTITUDES_EMPLEO'),data.pPUESTO);
+
+                    $('#Actitudes_hacia_el_empleo_form').removeData('hasChanged');
                 }
             })
             .catch( (err) => {
@@ -826,27 +831,49 @@ var fillData = {
             });
         },
         fichaFotografica : function(pID_ALTERNA){
-            //BLOQUE PARA LAS IMÁGENES E INFORMACIÓN
-            //INFORMACIÓN
-            fillData.camposGeneralesInformacion();
+            $('#Ficha_fotografica_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
-            // IMÁGENES
-            var thumb_pIMAGEN_IZQUIERDO = $('#thumb_pIMAGEN_IZQUIERDO'),
-                thumb_pIMAGEN_FRENTE = $('#thumb_pIMAGEN_FRENTE'),
-                thumb_pIMAGEN_DERECHO = $('#thumb_pIMAGEN_DERECHO'),
-                thumb_pIMAGEN_FIRMA = $('#thumb_pIMAGEN_FIRMA'),
-                thumb_pIMAGEN_HUELLA = $('#thumb_pIMAGEN_HUELLA');
+            var callUrl = base_url + `Solicitud/vwFichaFotografica`;
+            fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {  
+                if (data) {
+                    //BLOQUE PARA LAS IMÁGENES E INFORMACIÓN
+                    //INFORMACIÓN
+                    fillData.camposGeneralesInformacionFichaFotografica(data);
+
+                    // IMÁGENES
+                    var thumb_pIMAGEN_IZQUIERDO = $('#thumb_pIMAGEN_IZQUIERDO'),
+                        thumb_pIMAGEN_FRENTE = $('#thumb_pIMAGEN_FRENTE'),
+                        thumb_pIMAGEN_DERECHO = $('#thumb_pIMAGEN_DERECHO'),
+                        thumb_pIMAGEN_FIRMA = $('#thumb_pIMAGEN_FIRMA'),
+                        thumb_pIMAGEN_HUELLA = $('#thumb_pIMAGEN_HUELLA'),
+                        imageBreak = base_url + 'assets/images/imageError.png';
+
+                    /*******************************************************************************/            
+                    //CAMPOS DE IMÁGENES
+
+                    //TODO: Xmal - Implementar modelo de datos para mostrar imágen...
+                    
+                    thumb_pIMAGEN_IZQUIERDO.attr("src", imageBreak ).attr("alt", '');
+                    thumb_pIMAGEN_FRENTE.attr("src", imageBreak).attr("alt", '');
+                    thumb_pIMAGEN_DERECHO.attr("src", imageBreak).attr("alt", '');
+                    thumb_pIMAGEN_FIRMA.attr("src", imageBreak).attr("alt", '');
+                    thumb_pIMAGEN_HUELLA.attr("src", imageBreak).attr("alt", '');
+                    /*******************************************************************************/
+                    
+                    $('#Ficha_fotografica_form').LoadingOverlay("hide");
+                }
+            })
+            .catch( (err) => {
+                $('#Ficha_fotografica_form').setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.statusText
+                });
+                $('#Ficha_fotografica_form').LoadingOverlay("hide");
+            });
             
-            //TODO: Xmal - Implementar
-            /*******************************************************************************/            
-            //CAMPOS DE IMÁGENES
-            thumb_pIMAGEN_IZQUIERDO.attr("src", base_url + 'assets/images/escudo.jpg');
-            thumb_pIMAGEN_FRENTE.attr("src", base_url + 'assets/images/escudo.jpg');
-            thumb_pIMAGEN_DERECHO.attr("src", base_url + 'assets/images/escudo.jpg');
-            thumb_pIMAGEN_FIRMA.attr("src", base_url + 'assets/images/escudo.jpg');
-            thumb_pIMAGEN_HUELLA.attr("src", base_url + 'assets/images/escudo.jpg');
-            /*******************************************************************************/
-
             //BLOQUE PARA EL GRID
             var tableRef = $('#' + objViewIdentificacion.vars.identificacion.tables.tableFichafotografica.obj.tables().nodes().to$().attr('id')),
                 tableObj = objViewIdentificacion.vars.identificacion.tables.tableFichafotografica.obj,
@@ -880,7 +907,7 @@ var fillData = {
         },
         registroDecadactilar : function(pID_ALTERNA){
             //BLOQUE PARA EL LINK AL DOCUMENTO E INFORMACIÓN
-            fillData.camposGeneralesInformacion();
+            //fillData.camposGeneralesInformacion();
 
             //BLOQUE PARA EL GRID
             var tableRef = $('#' + objViewIdentificacion.vars.identificacion.tables.tableRegistrodecadactilar.obj.tables().nodes().to$().attr('id')),
@@ -970,28 +997,24 @@ var fillData = {
             audioRef[0].load();
         }
     },
-    camposGeneralesInformacion : function(){
-        var inCUIP = $('.inCUIP'),
-            inNombre = $('.inNombre'),
-            inApellidoaPaterno = $('.inApellidoaPaterno'),
-            inApellidoMaterno = $('.inApellidoMaterno'),
-            inFechaNacimiento = $('.inFechaNacimiento'),
-            inAdscripcion = $('.inAdscripcion'),
-            inDependencia = $('.inDependencia'),
-            inInstitucion = $('.inInstitucion');
-            sexo = $('.inSexo')
-            folio = $('.inFolio');
-                
-        inCUIP.html('implementar');
-        inNombre.html('implementar');
-        inApellidoaPaterno.html('implementar');
-        inApellidoMaterno.html('implementar');
-        inFechaNacimiento.html('implementar');
-        inAdscripcion.html('implementar');
-        inDependencia.html('implementar');
-        inInstitucion.html('implementar');
-        sexo.html('implementar');
-        folio.html('implementar');
+    camposGeneralesInformacionFichaFotografica : function(data){
+        var inCUIP = $('#Ficha_fotografica_form .inCUIP'),
+            inNombre = $('#Ficha_fotografica_form  .inNombre'),
+            inApellidoaPaterno = $('#Ficha_fotografica_form  .inApellidoaPaterno'),
+            inApellidoMaterno = $('#Ficha_fotografica_form  .inApellidoMaterno'),
+            inFechaNacimiento = $('#Ficha_fotografica_form  .inFechaNacimiento'),
+            inAdscripcion = $('#Ficha_fotografica_form  .inAdscripcion'),
+            inDependencia = $('#Ficha_fotografica_form  .inDependencia'),
+            inInstitucion = $('#Ficha_fotografica_form  .inInstitucion');
+        
+        inCUIP.html(data.pCUIP);
+        inNombre.html(data.pNOMBRE);
+        inApellidoaPaterno.html(data.pPATERNO);
+        inApellidoMaterno.html(data.pMATERNO);
+        inFechaNacimiento.html(data.pFECHA_NACIMIENTO);
+        inAdscripcion.html(data.pAREA_ADSCRIPCION);
+        inDependencia.html(data.pDEPENDENCIA);
+        inInstitucion.html(data.pINSTITUCION);        
     }
 }
 

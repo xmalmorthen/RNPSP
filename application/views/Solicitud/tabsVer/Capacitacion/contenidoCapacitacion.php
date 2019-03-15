@@ -11,34 +11,20 @@
                 <div class="row">
                     <div class="col-md-4">
                         <h6 class="borderButtom">Idioma y/o dialecto</h6>  <!-- Se llena del catalogo "CAT_IDIOMA" -->
-                        <p id=''></p>
+                        <p id='pIDIOMA'></p>
                     </div>
                     <div class="col-md-2">
                         <h6 class="borderButtom">Lectura</h6>
-                        <div class="row">
-                            <div class="col-md-10">
-                                <p id=''></p>
-                            </div>
-                            <div class="col-md-1" style="margin-left: -12px;margin-top: 7px;" >%</div>
-                        </div>
+                        <span id='pPORCENTAJE_LECTURA'></span> %
+                        
                     </div>
                     <div class="col-md-2">
                         <h6 class="borderButtom">Escritura</h6>
-                        <div class="row">
-                            <div class="col-md-10">
-                                <p id=''></p>
-                            </div>
-                            <div class="col-md-1" style="margin-left: -12px;margin-top: 7px;" >%</div>
-                        </div>
+                        <span id='pPORCENTAJE_ESCRITURA'></span> %
                     </div>
                     <div class="col-md-2">
                         <h6 class="borderButtom">Conversación</h6>
-                        <div class="row">
-                            <div class="col-md-10">
-                                <p id=''></p>
-                            </div>
-                            <div class="col-md-1" style="margin-left: -12px;margin-top: 7px;" >%</div>
-                        </div>
+                        <span id='pPORCENTAJE_CONVERSACION'></span> %                        
                     </div>
                 </div>
             </form>
@@ -64,15 +50,15 @@
                 <div class="row">
                     <div class="col-md-4">
                         <h6 class="borderButtom">Tipo de habilidad y/o aptitud</h6><!-- Se llena con el catalogo "CAT_TIPO_APTITUD" -->
-                        <p id=''></p>
+                        <p id='pTIPO_HABAILIDAD'></p>
                     </div>
                     <div class="col-md-4">
                          <h6 class="borderButtom">Descripción</h6>
-                        <p id=''></p>
+                        <p id='pDESCRIPCION'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Grado de aptitud o dominio </h6><!-- Se rellena con el catalogo "CAT_GRADO_APTITUD_HAB" depende del select "TIPO_ACTITUD" -->
-                        <p id=''></p>
+                        <p id='pGRADO_APTITUD'></p>
                     </div>
                 </div>
             </form>

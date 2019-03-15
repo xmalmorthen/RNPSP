@@ -97,13 +97,34 @@ var objViewIdentificacion = {
         fichaFotografica : function(pID_ALTERNA){
             $('#Ficha_fotografica_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
-            var callUrl = base_url + `Solicitud/xxx`;
+            var callUrl = base_url + `Solicitud/vwFichaFotografica`;
             objViewIdentificacion.fill.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {  
                 if (data) {
                     $.each(data,function(key,value){
                         objViewIdentificacion.fill.insertValueInSelect(key,value,'Ficha_fotografica_form');
                     });
+
+                    // IMÁGENES
+                    var thumb_pIMAGEN_IZQUIERDO = $('#thumb_pIMAGEN_IZQUIERDO'),
+                        thumb_pIMAGEN_FRENTE = $('#thumb_pIMAGEN_FRENTE'),
+                        thumb_pIMAGEN_DERECHO = $('#thumb_pIMAGEN_DERECHO'),
+                        thumb_pIMAGEN_FIRMA = $('#thumb_pIMAGEN_FIRMA'),
+                        thumb_pIMAGEN_HUELLA = $('#thumb_pIMAGEN_HUELLA'),
+                        imageBreak = base_url + 'assets/images/imageError.png';
+
+                    /*******************************************************************************/            
+                    //CAMPOS DE IMÁGENES
+
+                    //TODO: Xmal - Implementar modelo de datos para mostrar imágen...
+                    
+                    thumb_pIMAGEN_IZQUIERDO.attr("src", imageBreak ).attr("alt", '');
+                    thumb_pIMAGEN_FRENTE.attr("src", imageBreak).attr("alt", '');
+                    thumb_pIMAGEN_DERECHO.attr("src", imageBreak).attr("alt", '');
+                    thumb_pIMAGEN_FIRMA.attr("src", imageBreak).attr("alt", '');
+                    thumb_pIMAGEN_HUELLA.attr("src", imageBreak).attr("alt", '');
+                    /*******************************************************************************/
+                    
                 }
                 $('#Ficha_fotografica_form').LoadingOverlay("hide");
             })
