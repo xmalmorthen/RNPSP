@@ -1469,32 +1469,6 @@
 		}
 
 		# OPCION VER
-		# Obtiene los datos de la pestaña "Identificación" -> "Media filiación"
-		# Muestra la información de la media filiación del elemento.
-		# EJEMPLO: http://localhost/SGP/Solicitud/getPersona?pID_ALTERNA=56
-		public function vwFiliacion(){
-			if (! $this->input->is_ajax_request()) {
-				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
-			}
-			$idAlterna = $this->input->get('pID_ALTERNA');
-			$curp = $this->input->get('pCURP');
-			try {
-				$this->load->model('SOLICITUD_model');
-				$responseModel = $this->SOLICITUD_model->sp_B2_MF_vwFiliacion($idAlterna,$curp);
-			} 
-			catch (rulesException $e){	
-				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-			}
-			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
-			}
-			
-			header('Content-type: application/json');
-			echo json_encode( [ 'results' => $responseModel ] );
-			exit;
-		}
-
-		# OPCION VER
 		# Obtiene los datos de la pestaña "Laboral" -> "Adscripción de la persona"
 		# Muestra la ultima adscripcion de la persona 
 		# EJEMPLO: http://localhost/SGP/Solicitud/vwAdscripcion?pID_ALTERNA=56
@@ -1649,4 +1623,31 @@
 			echo json_encode( [ 'results' => $responseModel ] );
 			exit;
 		}
+
+		# OPCION VER
+		# Obtiene los datos de la pestaña "Identificación" -> "Media filiación"
+		# Muestra la información de la media filiación del elemento.
+		# EJEMPLO: http://localhost/SGP/Solicitud/getPersona?pID_ALTERNA=56
+		public function vwFiliacion(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+			$idAlterna = $this->input->get('pID_ALTERNA');
+			$curp = $this->input->get('pCURP');
+			try {
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_B2_MF_vwFiliacion($idAlterna,$curp);
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+
 }	
