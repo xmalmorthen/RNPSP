@@ -798,7 +798,7 @@ var fillData = {
         seniasParticulares : function(pID_ALTERNA){
             var tableRef = $('#' + objViewIdentificacion.vars.identificacion.tables.tableSenasparticulares.obj.tables().nodes().to$().attr('id')),
                 tableObj = objViewIdentificacion.vars.identificacion.tables.tableSenasparticulares.obj,
-                callUrl = base_url + `Solicitud/xxx`;
+                callUrl = base_url + `Solicitud/getSenasParticulares`;
 
             tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
@@ -808,16 +808,15 @@ var fillData = {
             .then( (data) => {
                 if (data) {
                     $.each( data, function(key,value) {
-                        //TODO: Xmal - Implementar
-                        //var row = [ value.pID_IDIOMA_HABLADO_EXT, value.pIDIOMA, value.pPORCENTAJE_LECTURA, value.pPORCENTAJE_ESCRITURA, value.pPORCENTAJE_CONVERSACION ];
-                        //tableObj.row.add( row ).draw( false );
+                        var row = [ value.pID_SENAS_PART_EXT, value.pDESC_TIPO_SENA, value.pDESC_LADO, value.pDESC_REGION, value.pDESC_VISTA, value.pCANTIDAD, value.pDESCRIPCION ];
+                        tableObj.row.add( row ).draw( false );
                     });
                 }
 
                 //Boton para refrescar datatable
                 var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
                 if (btnRefreshRef.find('.refreshTable').length == 0)
-                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.capacitacion.idiomasDialectos(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.identificacion.seniasParticulares(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
 
                 tableRef.LoadingOverlay("hide");
             })
@@ -870,7 +869,7 @@ var fillData = {
                 //Boton para refrescar datatable
                 var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
                 if (btnRefreshRef.find('.refreshTable').length == 0)
-                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.capacitacion.idiomasDialectos(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.identificacion.fichaFotografica(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
 
                 tableRef.LoadingOverlay("hide");
             })
@@ -905,7 +904,7 @@ var fillData = {
                 //Boton para refrescar datatable
                 var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
                 if (btnRefreshRef.find('.refreshTable').length == 0)
-                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.capacitacion.idiomasDialectos(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.identificacion.registroDecadactilar(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
 
                 tableRef.LoadingOverlay("hide");
             })
@@ -937,7 +936,7 @@ var fillData = {
                 //Boton para refrescar datatable
                 var btnRefreshRef = $('#' + tableRef[0].id + '_wrapper .dataTables_length');
                 if (btnRefreshRef.find('.refreshTable').length == 0)
-                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.capacitacion.idiomasDialectos(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
+                    btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.identificacion.digitalizacionDocumento(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
 
                 tableRef.LoadingOverlay("hide");
             })
@@ -969,8 +968,7 @@ var fillData = {
             audioRef.attr("src", base_url + 'assets/files/fichaVoz/01%20Ruin.mp3');
             audioRef[0].pause();
             audioRef[0].load();
-        },
-
+        }
     },
     camposGeneralesInformacion : function(){
         var inCUIP = $('.inCUIP'),
