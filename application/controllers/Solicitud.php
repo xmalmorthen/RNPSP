@@ -705,15 +705,31 @@
 
 				if (count($errors) == 0) {
 					$outputMSG = "";
-
-					//TODO: Tamata - Implementar el guardado de las referencias de archivos.
-					// La variable [ $files ] contiene la lista de archivos subidos
-					// La variable POST $this->input->post("pID_ALTERNA") contiene el ID_ALTERNA
-
-					$responseModel['status'] = false;
-					$responseModel['message'] = 'Método no implementado';
-					$responseModel['data'] = [];
-
+					$this->load->model('SOLICITUD_model');
+					$idAlterna = $this->input->post('pID_ALTERNA');
+					foreach ($files as $key => $value) {
+						switch ($value['idDoc']) {
+							case 'pIMAGEN_IZQUIERDO':
+								$pTIPO_IMAGEN = 'PI';
+								break;
+							case 'pIMAGEN_FRENTE':
+								$pTIPO_IMAGEN = 'FR';
+								break;
+							case 'pIMAGEN_DERECHO':
+								$pTIPO_IMAGEN = 'PD';
+								break;
+							case 'pIMAGEN_FIRMA':
+								$pTIPO_IMAGEN = 'F';
+								break;
+							case 'pIMAGEN_HUELLA':
+								$pTIPO_IMAGEN = 'H';
+								break;
+						}
+						$responseModel = $this->SOLICITUD_model->sp_B2_MF_addFichaFotografica($idAlterna,$pTIPO_IMAGEN,json_encode($value));
+						if($responseModel['status'] != 1){
+							break;
+						}
+					}
 				} else {
 					$responseModel['message'] = 'Error al intentar guardar';
 					$responseModel['data'] = $errors;

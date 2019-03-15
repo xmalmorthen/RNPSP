@@ -1692,12 +1692,17 @@ class SOLICITUD_model extends MY_Model
     $buid = $this->build_query();
     $query = $this->db->query($buid);
     $response = $this->query_row($query);
-
     if($response === FALSE){
       $this->response['status'] = 0;
       $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
     }else{
       if(count($response) > 0){
+        $response['IMG_PERFILIZQ'] = (Utils::isJSON($response['IMG_PERFILIZQ']))? (array)json_decode($response['IMG_PERFILIZQ']) : array();
+        $response['IMG_FRENTE'] = (Utils::isJSON($response['IMG_FRENTE']))? (array)json_decode($response['IMG_FRENTE']) : array();
+        $response['IMG_PERFILDR'] = (Utils::isJSON($response['IMG_PERFILDR']))? (array)json_decode($response['IMG_PERFILDR']) : array();
+        $response['IMG_FIRMA'] = (Utils::isJSON($response['IMG_FIRMA']))? (array)json_decode($response['IMG_FIRMA']) : array();
+        $response['IMG_HUELLA'] = (Utils::isJSON($response['IMG_HUELLA']))? (array)json_decode($response['IMG_HUELLA']) : array();
+        
         $this->response['status'] = 1;
         $this->response['data'] = $this->try_result($response);
       }else{
@@ -1707,6 +1712,42 @@ class SOLICITUD_model extends MY_Model
     }
     return $this->response;
   }
+
+  # Opcion Nueva Solicitud - Ficha Identificación- Pestaña Ficha Fotográfica
+  # Boton Guardar Ficha
+  # sp_B2_MF_addFichaFotografica - Agrega la ficha fotográfica del elemento (fotos, huella, firma).
+  public function  sp_B2_MF_addFichaFotografica($idAlterna,$tipoImagen,$path){
+    $this->arrayToPost(array('pID_ALTERNA'=>$idAlterna,'pTIPO_IMAGEN'=>$tipoImagen,'pPATH_IMAGEN'=>$path));
+    $this->load->library('form_validation');
+
+    $this->addParam('pID_ALTERNA','pID_ALTERNA','',array('rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pTIPO_IMAGEN','pTIPO_IMAGEN','',array('rule'=>'trim|required|max_length[5]'));
+    $this->addParam('pPATH_IMAGEN','pPATH_IMAGEN','',array('rule'=>'trim|required|max_length[250]'));
+
+    if ($this->form_validation->run() === true) {
+      $this->procedure('sp_B2_MF_addFichaFotografica');
+      $this->iniParam('txtError','varchar','250');
+      $this->iniParam('msg','varchar','80');
+      $this->iniParam('tranEstatus','int');
+      $query = $this->db->query($this->build_query());
+      $response = $this->query_row($query);
+      if($response == FALSE){
+        $this->response['status'] = false;
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      }else{
+        $this->response['status'] = (bool)$response['tranEstatus'];
+        $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
+      }
+    } else {
+      $this->load->helper('html');
+      $this->response['status'] = false;
+      $message = $this->form_validation->error_array();
+      $this->response['message'] = ul($message);
+      $this->response['validation'] = $message;
+    }
+    return $this->response;
+  }
+  
 
 
 }
