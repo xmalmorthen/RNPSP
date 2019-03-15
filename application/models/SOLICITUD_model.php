@@ -375,6 +375,33 @@ class SOLICITUD_model extends MY_Model
     }
     return $this->response;
   }
+
+  # Opcion Ver - Ficha Domicilio - Datos del domicilio
+  # sp_B1_vwDomicilio - Muesta los datos de domicilios de una persona
+  public function sp_B1_vwDomicilio($idAlterna = null,$curp = null){
+
+    $this->procedure('sp_B1_vwDomicilio ');
+    $this->addParam('pCURP',$curp,'N');
+    $this->addParam('pID_ALTERNA',$idAlterna);
+
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_list($query);
+
+    if($response === FALSE){
+      $this->response['status'] = 0;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    }else{
+      if(count($response) > 0){
+        $this->response['status'] = 1;
+        $this->response['data'] = $this->try_result($response);
+      }else{
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron resultados.';
+      }
+    }
+    return $this->response;
+  }
   
   /*
   *"Opcion Nueva Solicitud - Ficha Dimiclio - Boton Guardar Domicilio
