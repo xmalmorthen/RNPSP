@@ -1702,5 +1702,31 @@
 			exit;
 		}
 
+		# OPCION NUEVO
+		# Obtiene los datos de la pestaña "Identificación" -> "Ficha fotográfica"
+		# Muestra los datos de la pestaña de ficha fotografica
+		# EJEMPLO: http://localhost/SGP/Solicitud/opcFichaFotografica?pID_ALTERNA=56
+		public function opcFichaFotografica(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+			$idAlterna = $this->input->get('pID_ALTERNA');
+			$curp = $this->input->get('pCURP');
+			try {
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_B2_MF_opcFichaFotografica($idAlterna,$curp);
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+
 		
 }	
