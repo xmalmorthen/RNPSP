@@ -528,35 +528,35 @@
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">CUIP</h6>
-                        <p id=''></p>
+                        <p id='pCUIP'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Nombre(s)</h6>
-                        <p id=''></p>
+                        <p id='pNOMBRE'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Apellido paterno</h6>
-                        <p id=''></p>
+                        <p id='pPATERNO'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Apellido materno</h6>
-                        <p id=''></p>
+                        <p id='pMATERNO'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Fecha de nacimiento</h6>
-                        <p id=''></p>
+                        <p id='pFECHA_NACIMIENTO'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Adscripción</h6>
-                        <p id=''></p>
+                        <p id='pAREA_ADSCRIPCION'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Dependencia</h6>
-                        <p id=''></p>
+                        <p id='pDEPENDENCIA'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Institución</h6>
-                        <p id=''></p>
+                        <p id='pINSTITUCION'></p>
                     </div>
                 </div>
                 <hr>
@@ -566,7 +566,6 @@
                             <div class="col-md-12 text-center">
                                 <h6>Perfil izquierdo</h6>
                                 <img id="thumb_pIMAGEN_IZQUIERDO" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
-                                
                             </div>
                         </div>
                         <br>
@@ -576,7 +575,6 @@
                             <div class="col-md-12 text-center">
                                 <h6>Frente</h6>
                                 <img id="thumb_pIMAGEN_FRENTE" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
-                              
                             </div>
                         </div>
                         <br>
@@ -586,7 +584,6 @@
                             <div class="col-md-12 text-center">
                                 <h6>Perfil derecho</h6>
                                 <img id="thumb_pIMAGEN_DERECHO" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
-                               
                             </div>
                         </div>
                         <br>
@@ -600,7 +597,6 @@
                             <div class="col-md-12 text-center">
                                 <h6>Firma</h6>
                                 <img id="thumb_pIMAGEN_FIRMA" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
-                               
                             </div>
                         </div>
                         <br>
@@ -610,7 +606,6 @@
                             <div class="col-md-12 text-center">
                                 <h6>Huella</h6>
                                 <img id="thumb_pIMAGEN_HUELLA" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
-                              
                             </div>
                         </div>
                         <br>

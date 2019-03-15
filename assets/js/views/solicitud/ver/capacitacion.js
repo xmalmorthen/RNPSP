@@ -47,7 +47,7 @@ var objViewCapacitacion = {
         idiomasDialectos : function(pID_ALTERNA){
             $('#Idiomas_dialectos_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
-            var callUrl = base_url + `Solicitud/xxx`;
+            var callUrl = base_url + `Solicitud/vwIdiomaHablado`;
             objViewCapacitacion.fill.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {  
                 if (data) {
@@ -70,7 +70,7 @@ var objViewCapacitacion = {
         habilidadesAptitudes : function(pID_ALTERNA){
             $('#Habilidades_aptitudes_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
-            var callUrl = base_url + `Solicitud/xxx`;
+            var callUrl = base_url + `Solicitud/vwHabilidadAptitud`;
             objViewCapacitacion.fill.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {  
                 if (data) {
