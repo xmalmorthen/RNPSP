@@ -1415,6 +1415,32 @@
 			echo json_encode( [ 'results' => $responseModel ] );
 			exit;
 		}
+		
+		# OPCION VER
+		# Obtiene los datos de la pestaña "Datos generales" -> "Socioeconómicos"
+		# Muestra el niviel socioeconomico de la persona
+		# EJEMPLO: http://localhost/SGP/Solicitud/vwSocioEconomico?pID_ALTERNA=56
+		public function vwSocioEconomico(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+			$idAlterna = $this->input->get('pID_ALTERNA');
+			$curp = $this->input->get('pCURP');
+			try {
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_B2_DG_vwSocioEconomico($idAlterna,$curp);
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
 
 		# OPCION VER
 		# Obtiene los datos de la pestaña "Identificación" -> "Media filiación"
@@ -1493,7 +1519,7 @@
 			echo json_encode( [ 'results' => $responseModel ] );
 			exit;
 		}
-		
+
 		# OPCION VER
 		# Obtiene los datos de la pestaña "Laboral" -> "Empleos diversos"
 		# Muestra la información de la ultima actitude hacia el empleo por parte del elemento.
