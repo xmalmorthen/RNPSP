@@ -387,61 +387,63 @@
             <div class="row">
                 <div class="col-md-4">
                     <h6 class="borderButtom">¿Vive con su familia?</h6><!-- S/N = SI/NO -->
-                    <p id=''></p>
+                    <p id='pVIVE_FAMILIA'></p>
                 </div>
                 <div class="col-md-4">
                     <h6 class="borderButtom">Ingreso familiar adicional (mensual)</h6>
-                    <p id=''></p>
+                    <p id='pINGRESO_FAMILIAR'></p>
                 </div>
                 <div class="col-md-4">
                     <h6 class="borderButtom">Su domicilio es</h6>  <!-- Se llena del catálogo CAT_TIPO_DOMICILIO -->
-                    <p id=''></p>
+                    <p id='pTIPO_DOMICILIO'></p>
                 </div>
             </div>
         
             <div class="row">
                 <div class="col-md-4" >
                     <h6 class="borderButtom"> Actividades culturales o deportivas que practica</h6>
-                    <p id=''></p>
+                    <p id='pACTIVIDAD_CULTURAL'></p>
                 </div>
                 <div class="col-md-4">
                     <h6 class="borderButtom">Especificación de inmuebles y costos</h6>
-                    <p id=''></p>
+                    <p id='pINMUEBLES'></p>
                 </div>
                 <div class="col-md-4">
                     <h6 class="borderButtom">Inversión y monto aproximado</h6>
-                    <p id=''></p>
+                    <p id='pINVERSIONES'></p>
                 </div>
             </div>  
             <br>
             <div class="row">
                 <div class="col-md-4">
                     <h6 class="borderButtom">Vehículo y costo aproximado</h6>
-                    <p id=''></p>
+                    <p id='pNUMERO_AUTOS'></p>
                 </div>
                 <div class="col-md-4">
                     <h6 class="borderButtom"> Calidad de vida</h6>
-                    <p id=''></p>
+                    <p id='pCALIDAD_VIDA'></p>
                 </div>
                 <div class="col-md-4">
                     <h6 class="borderButtom">Vicios</h6>
-                    <p id=''></p>
+                    <p id='pVICIOS'></p>
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-md-4" >
                     <h6 class="borderButtom">Imágen pública</h6>
-                    <p id=''></p>
+                    <p id='pIMAGEN_PUBLICA'></p>
                 </div>
                 <div class="col-md-4">
                     <h6 class="borderButtom">Comportamiento social</h6>
-                    <p id=''></p>
+                    <p id='pCOMPORTA_SOCIAL'></p>
                 </div>
             </div>             
-            <br>
-            <hr>
-            <br>
+        </form>
+        <br>
+        <hr>
+        <br>
+        <form action="#" id="DependientesEconomicos_form" name="DependientesEconomicos_form" autocomplete="off">
             <div class="row">
                 <div class="col-md-12 text-center">
                     <h3 class="titulo">Dependientes económicos</h3>
@@ -451,37 +453,37 @@
             <div class="row">
                 <div class="col-md-4">
                     <h6 class="borderButtom">Nombre</h6>
-                    <p id=''></p>
+                    <p id='pNOMBRE'></p>
                 </div>
                 <div class="col-md-4">
                     <h6 class="borderButtom">Apellido paterno</h6>
-                    <p id=''></p>
+                    <p id='pPATERNO'></p>
                 </div>
                 <div class="col-md-4">
                     <h6 class="borderButtom">Apellido materno</h6>
-                    <p id=''></p>
+                    <p id='pMATERNO'></p>
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-md-4">
                     <h6 class="borderButtom">Sexo</h6> <!-- Se llena del catálogo CAT_SEXO -->
-                    <p id=''></p>
+                    <p id='pNOMBRE_SEXO'></p>
                 </div>
                 <div class="col-md-4">
                     <h6 class="borderButtom">Fecha de nacimiento</h6>
-                    <p id=''></p>
+                    <p id='pFECHA_NACIMIENTO'></p>
                 </div>
                 <div class="col-md-4">
                     <h6 class="borderButtom">Parentesco</h6>
-                    <p id=''></p>
+                    <p id='pPARENTESCO'></p>
                 </div>
             </div>
     
             <div class="row">
                 <div class="col-md-4">
                     <h6 class="borderButtom">Relación o parentesco</h6>
-                    <p id=''></p>
+                    <p id='pREALCION_PARENTESCO'></p>
                 </div>
             </div>
         </form>
