@@ -725,7 +725,7 @@
 								$pTIPO_IMAGEN = 'H';
 								break;
 						}
-						$responseModel = $this->SOLICITUD_model->sp_B2_MF_addFichaFotografica($idAlterna,$pTIPO_IMAGEN,json_encode($value));
+						$responseModel = $this->SOLICITUD_model->sp_B2_MF_addFichaFotografica($idAlterna,$pTIPO_IMAGEN,json_encode(array('originalName'=>$value['originalName'],'name'=>$value['name'])));
 						if($responseModel['status'] != 1){
 							break;
 						}
