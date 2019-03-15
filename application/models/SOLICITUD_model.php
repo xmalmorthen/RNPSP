@@ -1697,11 +1697,11 @@ class SOLICITUD_model extends MY_Model
       $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
     }else{
       if(count($response) > 0){
-        $response['IMG_PERFILIZQ'] = (Utils::isJSON($response['IMG_PERFILIZQ']))? utils::addPath(STATIC_DOCUMMENTS_PATH.'fichaFotografica/',$response['IMG_PERFILIZQ']) : array();
-        $response['IMG_FRENTE'] = (Utils::isJSON($response['IMG_FRENTE']))? utils::addPath(STATIC_DOCUMMENTS_PATH.'fichaFotografica/',$response['IMG_FRENTE']) : array();
-        $response['IMG_PERFILDR'] = (Utils::isJSON($response['IMG_PERFILDR']))? utils::addPath(STATIC_DOCUMMENTS_PATH.'fichaFotografica/',$response['IMG_PERFILDR']) : array();
-        $response['IMG_FIRMA'] = (Utils::isJSON($response['IMG_FIRMA']))? utils::addPath(STATIC_DOCUMMENTS_PATH.'fichaFotografica/',$response['IMG_FIRMA']) : array();
-        $response['IMG_HUELLA'] = (Utils::isJSON($response['IMG_HUELLA']))? utils::addPath(STATIC_DOCUMMENTS_PATH.'fichaFotografica/',$response['IMG_HUELLA']) : array();
+        $response['IMG_PERFILIZQ'] = (Utils::isJSON($response['IMG_PERFILIZQ']))? utils::addPath(STATIC_DOCUMMENTS_PATH.'fichaFotografica/',$response['IMG_PERFILIZQ']) : null;
+        $response['IMG_FRENTE'] = (Utils::isJSON($response['IMG_FRENTE']))? utils::addPath(STATIC_DOCUMMENTS_PATH.'fichaFotografica/',$response['IMG_FRENTE']) : null;
+        $response['IMG_PERFILDR'] = (Utils::isJSON($response['IMG_PERFILDR']))? utils::addPath(STATIC_DOCUMMENTS_PATH.'fichaFotografica/',$response['IMG_PERFILDR']) : null;
+        $response['IMG_FIRMA'] = (Utils::isJSON($response['IMG_FIRMA']))? utils::addPath(STATIC_DOCUMMENTS_PATH.'fichaFotografica/',$response['IMG_FIRMA']) : null;
+        $response['IMG_HUELLA'] = (Utils::isJSON($response['IMG_HUELLA']))? utils::addPath(STATIC_DOCUMMENTS_PATH.'fichaFotografica/',$response['IMG_HUELLA']) : null;
         
         $this->response['status'] = 1;
         $this->response['data'] = $this->try_result($response);
@@ -1825,7 +1825,7 @@ class SOLICITUD_model extends MY_Model
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
-        $response['IMG_DOCUMENTO'] = (Utils::isJSON($response['IMG_DOCUMENTO']))?  utils::addPath(STATIC_DOCUMMENTS_PATH.'fichaDecadactilar/',$response['IMG_DOCUMENTO']) : array();
+        $response['IMG_DOCUMENTO'] = (Utils::isJSON($response['IMG_DOCUMENTO']))?  utils::addPath(STATIC_DOCUMMENTS_PATH.'fichaDecadactilar/',$response['IMG_DOCUMENTO']) : null;
         $this->response['data'] = $this->try_result($response);
       }else{
         $this->response['status'] = 0;

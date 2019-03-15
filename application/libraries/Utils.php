@@ -39,7 +39,7 @@ class Utils {
 
     public static function addPath($path,$string){
         $jsonDecode = json_decode($string);
-        $jsonDecode->name = $path.$jsonDecode->name;
+        $jsonDecode->name = base_url(trim($path.$jsonDecode->name,'./'));
         return $jsonDecode;
     }
 
