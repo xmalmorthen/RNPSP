@@ -1052,6 +1052,18 @@ class SOLICITUD_model extends MY_Model
       $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
     }else{
       if(count($response) > 0){
+        if($response['CONOCE_REG_RECON'] == 'N'){
+          $response['CONOCE_REG_RECON'] = 'No';
+        }else if($response['CONOCE_REG_RECON'] == 'S'){
+          $response['CONOCE_REG_RECON'] = 'Si';
+        }
+
+        if($response['CONOCE_REG_ASCENSO'] == 'N'){
+          $response['CONOCE_REG_ASCENSO'] = 'No';
+        }else if($response['CONOCE_REG_ASCENSO'] == 'S'){
+          $response['CONOCE_REG_ASCENSO'] = 'Si';
+        }
+
         $this->response['status'] = 1;
         $this->response['data'] = $this->try_result($response);
       }else{
