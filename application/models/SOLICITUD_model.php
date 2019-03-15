@@ -989,7 +989,7 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pAREA','pAREA','N',array('name'=>'¿En qué Área o departamento desearía estar?','rule'=>'trim|max_length[150]'));
     $this->addParam('pCAPACITACION','pCAPACITACION','N',array('name'=>'¿Qué capacitación le gustaría recibir?','rule'=>'trim|max_length[100]'));
     $this->addParam('pCONOCE_REG_ASCENSO','pCONOCE_REG_ASCENSO','N',array('name'=>'¿Conoce la reglamentación de los ascensos?','rule'=>'trim|max_length[1]'));
-    $this->addParam('pRAZON_NO_ASCENSO',null,'N',array('name'=>'¿Razones por las que no ha obtenido un ascenso?','rule'=>'trim|max_length[150]'));//ERROR CAMPO REPETIDO
+    $this->addParam('pRAZON_NO_ASCENSO','pRAZON_NO_ASCENSO','N',array('name'=>'¿Razones por las que no ha obtenido un ascenso?','rule'=>'trim|max_length[150]'));//ERROR CAMPO REPETIDO
     if ($this->form_validation->run() === true) {
       $this->procedure('sp_B2_LAB_addActitud');
       $this->iniParam('txtError','varchar','250');

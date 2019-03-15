@@ -1416,11 +1416,10 @@
 			exit;
 		}
 
-		# XMAL obtener datos pestaña "Identificación" -> "Media filiación"
-		# get vwFiliacion pID_ALTERNA,pCURP
+		# OPCION VER
+		# Obtiene los datos de la pestaña "Identificación" -> "Media filiación"
+		# Muestra la información de la media filiación del elemento.
 		# EJEMPLO: http://localhost/SGP/Solicitud/getPersona?pID_ALTERNA=56
-		# Opcion VER - Ficha Identificación- Pestaña Media Filiacion
-		# sp_B2_MF_vwFiliacion - Muestra la información de la media filiación del elemento.
 		public function vwFiliacion(){
 			if (! $this->input->is_ajax_request()) {
 				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
@@ -1443,8 +1442,9 @@
 			exit;
 		}
 
-		# XMAL obtener datos pestaña "Laboral" -> "Adscripción de la persona"
-		# get vwAdscripcion pID_ALTERNA,pCURP
+		# OPCION VER
+		# Obtiene los datos de la pestaña "Laboral" -> "Adscripción de la persona"
+		# Muestra la ultima adscripcion de la persona 
 		# EJEMPLO: http://localhost/SGP/Solicitud/vwAdscripcion?pID_ALTERNA=56
 		public function vwAdscripcion(){
 			if (! $this->input->is_ajax_request()) {
@@ -1467,8 +1467,10 @@
 			echo json_encode( [ 'results' => $responseModel ] );
 			exit;
 		}
-		# XMAL obtener datos pestaña "Laboral" -> "Empleos diversos"
-		# get vwEmpleoAdicional pID_ALTERNA,pCURP
+
+		# OPCION VER
+		# Obtiene los datos de la pestaña "Laboral" -> "Empleos diversos"
+		# Muestra la información del ultimo empleo del elemento en general
 		# EJEMPLO: http://localhost/SGP/Solicitud/vwEmpleoAdicional?pID_ALTERNA=56
 		public function vwEmpleoAdicional(){
 			if (! $this->input->is_ajax_request()) {
@@ -1491,8 +1493,10 @@
 			echo json_encode( [ 'results' => $responseModel ] );
 			exit;
 		}
-		# XMAL obtener datos pestaña "Laboral" -> "Empleos diversos"
-		# get vwActitud pID_ALTERNA,pCURP
+		
+		# OPCION VER
+		# Obtiene los datos de la pestaña "Laboral" -> "Empleos diversos"
+		# Muestra la información de la ultima actitude hacia el empleo por parte del elemento.
 		# EJEMPLO: http://localhost/SGP/Solicitud/vwActitud?pID_ALTERNA=56
 		public function vwActitud(){
 			if (! $this->input->is_ajax_request()) {
