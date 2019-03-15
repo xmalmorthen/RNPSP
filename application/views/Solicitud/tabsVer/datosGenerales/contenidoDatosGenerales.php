@@ -14,6 +14,10 @@
                     <p id='pCURP'></p>
                 </div>
                 <div class="col-md-4">
+                    <h6 class="borderButtom">RFC</h6>
+                    <p id='pRFC'></p>
+                </div>
+                <div class="col-md-4">
                     <h6 class="borderButtom">Tipo de movimiento</h6>  <!-- Se llena de la tabla CAT_TIPO_OPERACION  -->
                     <p id='pNOMBRE_TIPO_OPERACION'></p>
                 </div>
@@ -253,13 +257,6 @@
                 <div class="col-md-4">
                     <h6 class="borderButtom">Número telefónico</h6>
                     <p id='pTELEFONO'></p>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-md-4">
-                    <h6 class="borderButtom">RFC</h6>
-                    <p id='pRFC'></p>
                 </div>
             </div>
         </form>            
