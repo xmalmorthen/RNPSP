@@ -506,7 +506,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <!-- SPACE -->
+                        <!-- SPACE -->                        
                     </div>
                     <div class="col-md-4 text-center">
                         <div class="custom-file">

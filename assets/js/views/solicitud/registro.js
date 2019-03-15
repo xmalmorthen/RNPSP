@@ -783,9 +783,6 @@ var fillData = {
                         mainFormActions.insertValueInSelect($('#'+ key),value);
                     });
 
-                    //special
-                    //mainFormActions.insertValueInSelect($('#pPUESTO_ACTITUDES_EMPLEO'),data.pPUESTO);
-
                     $('#mediafiliacion_form').removeData('hasChanged');
                 }
                 $('#mediafiliacion_form').LoadingOverlay("hide");
@@ -906,13 +903,45 @@ var fillData = {
             });
         },
         registroDecadactilar : function(pID_ALTERNA){
+            $('#Registro_decadactilar_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
             //BLOQUE PARA EL LINK AL DOCUMENTO E INFORMACIÓN
-            //fillData.camposGeneralesInformacion();
+            var callUrl = base_url + `Solicitud/vwRegDecadactilar`;
+            fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {  
+                if (data) {
+                    //INFORMACIÓN
+                    fillData.camposGeneralesInformacionRegistroDecadactilar(data);
+
+                    if (data.pIMG_DOCUMENTO) {
+                        //DOCUMENTO
+                        $('#Registro_decadactilar_form .custom-file').parent('div').append(`
+                            <div class="jumbotron jumbotron-fluid mb-3">
+                                <div class="container">
+                                    <h6 class="display-4">Documento</h3>
+                                    <h5><a href="${data.pIMG_DOCUMENTO.name}" target="_blank" rel="noopener noreferrer">${data.pIMG_DOCUMENTO.originalName}</a></h5>
+                                </div>
+                            </div>
+                        `);
+                    }
+                    
+                    $('#Registro_decadactilar_form').LoadingOverlay("hide");
+                }
+            })
+            .catch( (err) => {
+                $('#Registro_decadactilar_form').setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.statusText
+                });
+                $('#Registro_decadactilar_form').LoadingOverlay("hide");
+            });
 
             //BLOQUE PARA EL GRID
             var tableRef = $('#' + objViewIdentificacion.vars.identificacion.tables.tableRegistrodecadactilar.obj.tables().nodes().to$().attr('id')),
                 tableObj = objViewIdentificacion.vars.identificacion.tables.tableRegistrodecadactilar.obj,
-                callUrl = base_url + `Solicitud/xxx`;
+                callUrl = base_url + `Solicitud/getRegDecadactilar`;
 
             tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
@@ -922,9 +951,8 @@ var fillData = {
             .then( (data) => {
                 if (data) {
                     $.each( data, function(key,value) {
-                        //TODO: Xmal - Implementar
-                        //var row = [ value.pID_IDIOMA_HABLADO_EXT, value.pIDIOMA, value.pPORCENTAJE_LECTURA, value.pPORCENTAJE_ESCRITURA, value.pPORCENTAJE_CONVERSACION ];
-                        //tableObj.row.add( row ).draw( false );
+                        var row = [ value.pID_REG_DECADACT_EXT, value.pDEPENDENCIA, value.pINSTITUCION, value.pFECHA_REGISTRO ];
+                        tableObj.row.add( row ).draw( false );
                     });
                 }
 
@@ -1015,6 +1043,25 @@ var fillData = {
         inAdscripcion.html(data.pAREA_ADSCRIPCION);
         inDependencia.html(data.pDEPENDENCIA);
         inInstitucion.html(data.pINSTITUCION);        
+    },
+    camposGeneralesInformacionRegistroDecadactilar : function(data){
+        var inCUIP = $('#Registro_decadactilar_form .inCUIP'),
+            inFolio = $('#Registro_decadactilar_form  .inFolio'),
+            inAdscripcion = $('#Registro_decadactilar_form  .inAdscripcion'),
+            inInstitucion = $('#Registro_decadactilar_form  .inInstitucion'),
+            inDependencia = $('#Registro_decadactilar_form  .inDependencia'),
+            inApellidoaPaterno = $('#Registro_decadactilar_form  .inApellidoaPaterno'),
+            inFechaNacimiento = $('#Registro_decadactilar_form  .inFechaNacimiento'),
+            inSexo = $('#Registro_decadactilar_form  .inSexo');
+        
+        inCUIP.html(data.pCUIP);
+        inFolio.html(data.pFOLIO_PERSONA);
+        inAdscripcion.html(data.pAREA_ADSCRIPCION);
+        inInstitucion.html(data.pINSTITUCION);        
+        inDependencia.html(data.pDEPENDENCIA);
+        inApellidoaPaterno.html(data.pPATERNO);
+        inFechaNacimiento.html(data.pFECHA_NACIMIENTO);
+        inSexo.html(data.pSEXO);
     }
 }
 

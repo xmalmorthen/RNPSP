@@ -386,6 +386,8 @@ var objViewIdentificacion = {
                         $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
                         model.append("pID_ALTERNA",  mainTabMenu.var.pID_ALTERNA);
+                        model.append("pID_CATEGORIA_DOC",  $('#pID_CATEGORIA_DOC').val());
+                        model.append("FECHA_DOCUMENTO",  $('#FECHA_DOCUMENTO').val());
                         model.append(csrf.token_name,  csrf.hash);
                         
                         var filesComplete = true;
