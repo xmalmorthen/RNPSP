@@ -1763,5 +1763,58 @@
 			exit;
 		}
 
+		# OPCION NUEVO (GRID)
+		# Obtiene los datos de la pestaña "Identificación" -> "Registro decadactilar"
+		# Obtiene los documentos registrados con las huellas dactilares, palmares y canto de ambas manos.
+		# EJEMPLO: http://localhost/SGP/Solicitud/getRegDecadactilar?pID_ALTERNA=56
+		public function getRegDecadactilar(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+			$idAlterna = $this->input->get('pID_ALTERNA');
+			$curp = $this->input->get('pCURP');
+			try {
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_B2_MF_getReg_decadactilar($idAlterna,$curp);
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+		# OPCION VER
+		# Obtiene los datos de la pestaña "Identificación" -> "Registro decadactilar"
+		# Obtiene los documentos registrados con las huellas dactilares, palmares y canto de ambas manos.
+		# EJEMPLO: http://localhost/SGP/Solicitud/vwRegDecadactilar?pID_ALTERNA=56
+		public function vwRegDecadactilar(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+			$idAlterna = $this->input->get('pID_ALTERNA');
+			$curp = $this->input->get('pCURP');
+			try {
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_B2_MF_vwReg_decadactilar($idAlterna,$curp);
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+
+
+
 		
 }	
