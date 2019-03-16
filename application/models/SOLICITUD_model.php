@@ -1842,7 +1842,7 @@ class SOLICITUD_model extends MY_Model
   # Boton Guardar Documento
   # sp_B2_MF_addDocumento - Agrega las imágenes de los documentos pertenecientes al elemento.
   public function  sp_B2_MF_addDocumento($file){
-    $this->arrayToPost(array('pPATH_IMAGEN'=>$file,'pID_CATEGORIA_DOC'=>'10'));
+    $this->arrayToPost(array('pPATH_IMAGEN'=>$file));
     $this->load->library('form_validation');
 
     $this->addParam('pID_ALTERNA','pID_ALTERNA','',array('rule'=>'trim|required|numeric|max_length[10]'));
@@ -1860,7 +1860,6 @@ class SOLICITUD_model extends MY_Model
       $this->iniParam('msg','varchar','80');
       $this->iniParam('tranEstatus','int');
       $build = $this->build_query();
-      Utils::pre($build);
       $query = $this->db->query($build);
       $response = $this->query_row($query);
       if($response == FALSE){
@@ -1896,6 +1895,9 @@ class SOLICITUD_model extends MY_Model
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
+        foreach ($response as $key => $value) {
+          $response[$key]['VALOR'] = (Utils::isJSON($response[$key]['VALOR']))? utils::addPath(STATIC_DOCUMMENTS_PATH .'fichaDocumento/',$response[$key]['VALOR']) : null;
+        }
         $this->response['data'] = $this->try_result($response);
       }else{
         $this->response['status'] = 0;
@@ -1913,13 +1915,14 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pID_ALTERNA',$idAlterna);
     $buid = $this->build_query();
     $query = $this->db->query($buid);
-    $response = $this->query_list($query);
+    $response = $this->query_row($query);
     if($response === FALSE){
       $this->response['status'] = 0;
       $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
+        $response['NOMBRE_DOCUMENTO'] = (Utils::isJSON($response['NOMBRE_DOCUMENTO']))? utils::addPath(STATIC_DOCUMMENTS_PATH .'fichaDocumento/',$response['NOMBRE_DOCUMENTO']) : null;
         $this->response['data'] = $this->try_result($response);
       }else{
         $this->response['status'] = 0;
