@@ -1935,4 +1935,64 @@ class SOLICITUD_model extends MY_Model
   # ****************************************************************************************************************
   # Identificación de voz
   # ****************************************************************************************************************
+  # Opcion Nueva Solicitud - Ficha Identificación- Pestaña Identificación de voz
+  # Boton Guardar Identificación de voz
+  # sp_B2_MF_addRegistroVoz - Agrega el archivo de voz del elemento.
+  public function  sp_B2_MF_addRegistroVoz($file){
+    $this->arrayToPost(array('pPATH_ARCHIVO'=>$file));
+    $this->load->library('form_validation');
+
+    $this->addParam('pID_ALTERNA','pID_ALTERNA','',array('rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pPATH_ARCHIVO','pPATH_ARCHIVO','',array('name'=>'Nombre del Audio','rule'=>'trim|required|max_length[100]'));
+    if ($this->form_validation->run() === true) {
+      $this->procedure('sp_B2_MF_addRegistroVoz');
+      $this->iniParam('txtError','varchar','250');
+      $this->iniParam('msg','varchar','80');
+      $this->iniParam('tranEstatus','int');
+      $build = $this->build_query();
+      $query = $this->db->query($build);
+      $response = $this->query_row($query);
+      if($response == FALSE){
+        $this->response['status'] = false;
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      }else{
+        $this->response['status'] = (bool)$response['tranEstatus'];
+        $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
+      }
+    } else {
+      $this->load->helper('html');
+      $this->response['status'] = false;
+      $message = $this->form_validation->error_array();
+      $this->response['message'] = ul($message);
+      $this->response['validation'] = $message;
+    }
+    return $this->response;
+  }
+
+  # Opcion Nueva Solicitud  - Ficha Identificación- Pestaña Identificación de voz
+  # Mostrar Datos Iniciales de la Pantalla
+  # sp_B2_MF_opcRegistroVoz - Muestra los datos de la pestaña de ficha Identificación de voz
+  public function sp_B2_MF_opcRegistroVoz($idAlterna = null){
+    $this->procedure('sp_B2_MF_opcRegistroVoz');
+    $this->addParam('pID_ALTERNA',$idAlterna);
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_list($query);
+    if($response === FALSE){
+      $this->response['status'] = 0;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    }else{
+      if(count($response) > 0){
+        $this->response['status'] = 1;
+        foreach ($response as $key => $value) {
+          $response[$key]['PATH_ARCHIVO'] = (Utils::isJSON($response[$key]['PATH_ARCHIVO']))? utils::addPath(STATIC_DOCUMMENTS_PATH.'fichaVoz/',$response[$key]['PATH_ARCHIVO']) : null;
+        }
+        $this->response['data'] = $this->try_result(current($response));
+      }else{
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron resultados.';
+      }
+    }
+    return $this->response;
+  }
 }
