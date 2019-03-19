@@ -16,7 +16,7 @@ class Usuarios extends CI_Controller
     $this->session->set_flashdata('titleBody', '[ Usuarios ] - Usuarios - Administración');
 
     $this->load->model('Usuarios_model');
-
+    $data = array('usuarios'=>array());
     if(verificaPermiso(1) == 1){  #Ver todas las dependencias
       $data['usuarios'] = $this->Usuarios_model->get();
     } else if(verificaPermiso(2) == 1){ #Ver solo de su dependencia	
@@ -24,8 +24,8 @@ class Usuarios extends CI_Controller
       $usuario = $this->Usuarios_model->user();
       $this->Usuarios_model->where('cat_Usuarios.ID_ADSCRIPCION',$usuario['ID_ADSCRIPCION']);
       $data['usuarios'] = $this->Usuarios_model->get();
-    }
 
+    }
     $this->load->library('parser');
     $this->parser->parse('Usuarios/index', $data);
   }
@@ -37,6 +37,10 @@ class Usuarios extends CI_Controller
     $this->session->set_flashdata('titleBody', '[ Usuarios ] - Usuarios - Registro de usuarios - Alta');
 
     $this->load->model('catalogos/CAT_TIPOSUSUARIO_model');
+    $data = array(
+      'tiposUsuario' => array(),
+      'adscripcion' => array()
+    );
     if(verificaPermiso(3) == 1){ # Puede dar de alta de todos los tipos de usuario
       $data['tiposUsuario'] = $this->CAT_TIPOSUSUARIO_model->get();
     } else if(verificaPermiso(4) == 1){ # Pueden dar de alta usuarios capturistas, consulta
@@ -54,7 +58,6 @@ class Usuarios extends CI_Controller
       $this->CAT_ADSCRIPCIONES_model->where('CAT_ADSCRIPCION_TEMP.ID_ADSCRIPCION',$usuario['ID_ADSCRIPCION']);
       $data['adscripcion'] = $this->CAT_ADSCRIPCIONES_model->get();
     }
-    
     $this->load->library('parser');
     $this->parser->parse('Usuarios/Registro', $data);
   }
