@@ -4,7 +4,6 @@ var MyCookie = {
     },
     session : {
         reset : function(){
-            sess_time_to_update = sess_base_time;
             MyCookie.objs.coockieObj.set('sess_time_to_update',sess_time_to_update,{ path : '/' });
 
             // MyCookie.objs.coockieObj.remove('sessionCookie',{ path: ''});
@@ -76,8 +75,6 @@ var MyCookie = {
         }
     }
 };
-
-MyCookie.objs.coockieObj.remove('sess_time_to_update',{ path : '/' });
 
 var doExpireInterval = setInterval(function(){
     var sess_time_to_updateCookie = MyCookie.objs.coockieObj.get('sess_time_to_update',{ path : '/' });

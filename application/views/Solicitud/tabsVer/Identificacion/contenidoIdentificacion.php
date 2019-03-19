@@ -429,8 +429,9 @@
                     <div class="col-md-4">
                         <h6 class="borderButtom">Documento</h6>
                         <div class="jumbotron jumbotron-fluid mb-3">
-                            <div class="container">
-                                <h5 id='documentoLink' class='text-center'></h5>
+                            <div class="container text-center">
+                                <i class="fa fa-file-text-o fa-4x mb-3" aria-hidden="true"></i>
+                                <h5 id='documentoLink' class='text-truncate'></h5>
                             </div>
                         </div>
                     </div>
@@ -504,10 +505,10 @@
                     <div class="col-md-12 text-center">
                         <h6 class="borderButtom">Audio</h6>
                         <div class="jumbotron jumbotron-fluid mb-3">
-                            <div class="container">
+                            <div class="container">                                
                                 <audio id="audio" style='width=90%!Important;' controls><source src="">Navegador no compatible con reproductor de audio</audio>
                             </div>
-                        </div>                        
+                        </div>
                     </div>
                 </div>
             </form>
@@ -574,6 +575,7 @@
                             <div class="col-md-12 text-center">
                                 <h6>Perfil izquierdo</h6>
                                 <img id="thumb_pIMAGEN_IZQUIERDO" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
+                                <span></span>
                             </div>
                         </div>
                         <br>
@@ -583,6 +585,7 @@
                             <div class="col-md-12 text-center">
                                 <h6>Frente</h6>
                                 <img id="thumb_pIMAGEN_FRENTE" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
+                                <span></span>
                             </div>
                         </div>
                         <br>
@@ -592,6 +595,7 @@
                             <div class="col-md-12 text-center">
                                 <h6>Perfil derecho</h6>
                                 <img id="thumb_pIMAGEN_DERECHO" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
+                                <span></span>
                             </div>
                         </div>
                         <br>
@@ -605,6 +609,7 @@
                             <div class="col-md-12 text-center">
                                 <h6>Firma</h6>
                                 <img id="thumb_pIMAGEN_FIRMA" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
+                                <span></span>
                             </div>
                         </div>
                         <br>
@@ -614,6 +619,7 @@
                             <div class="col-md-12 text-center">
                                 <h6>Huella</h6>
                                 <img id="thumb_pIMAGEN_HUELLA" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
+                                <span></span>
                             </div>
                         </div>
                         <br>
@@ -642,15 +648,20 @@
                 <div class="row">
                     <div class="col-md-4">
                         <h6 class="borderButtom">Categoría de documento</h6> <!-- CAT_CATEGORIA_DOC -->
-                        <p id=''></p>
+                        <p id='pDESC_CATEGORIA_DOC'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Fecha documento</h6>
-                        <p id=''></p>
+                        <p id='pFECHA_DOCUMENTO'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Documento</h6>
-                        <p id=''></p>
+                        <div class="jumbotron jumbotron-fluid mb-3">
+                            <div class="container text-center">
+                                <i class="fa fa-file-text-o fa-4x mb-3" aria-hidden="true"></i>
+                                <h5 id='documentoLink' class='text-truncate'></h5>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>

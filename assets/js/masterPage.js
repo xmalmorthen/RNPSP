@@ -13,15 +13,17 @@ var swalShow = false;
 //     volume: 0.9
 // });
 
-if ( typeof sess_time_to_update !== 'undefined') {
+if (typeof MyCookie !== "undefined"){
+    MyCookie.objs.coockieObj.set('sess_time_to_update',sess_base_time,{ path : '/' });
     var timer = setInterval(function() { 
+
+        sess_time_to_update = MyCookie.objs.coockieObj.get('sess_time_to_update',{ path : '/' });
+
         if (parseInt(sess_time_to_update) <= parseInt(sess_time_left_to_confirm) && !swalShow ){
             MyCookie.session.save();
 
             swalShow = true;
             timerInterval = null;
-
-            MyCookie.objs.coockieObj.set('sess_time_to_update',sess_time_to_update,{ path : '/' });
 
             var swalPreserve = null;
             if (Swal.isVisible()){
@@ -81,16 +83,14 @@ if ( typeof sess_time_to_update !== 'undefined') {
                     $.getJSON(site_url + 'UserSession/renovateSession/' + guid(), function(timeRemain) {
                         swalShow = false;
                         sess_base_time = timeRemain;
-                        sess_time_to_update = timeRemain;
+                        MyCookie.objs.coockieObj.set('sess_time_to_update',sess_base_time,{ path : '/' });
 
                         if (swalPreserve){
                             if (swalPreserve.preserve){
                                 eval(swalPreserve.preserveCall + '()');
                                 $.LoadingOverlay("hide");
                             }
-                        }
-                        
-                        MyCookie.objs.coockieObj.set('sess_time_to_update',sess_time_to_update,{ path : '/' });
+                        }                    
                     });                    
                 } else if (result.dismiss === 'cancel' || result.dismiss === 'timer') {
                     MyCookie.objs.coockieObj.set('sess_time_to_update',1,{ path : '/' });
@@ -99,8 +99,12 @@ if ( typeof sess_time_to_update !== 'undefined') {
         }
         if (sess_time_to_update == 1) {
             MyCookie.objs.coockieObj.set('sess_time_to_update',1,{ path : '/' });
+            return false;
         }
+
         sess_time_to_update--;
+        MyCookie.objs.coockieObj.set('sess_time_to_update',sess_time_to_update,{ path : '/' });
+        
     }, 1000);
 }
 

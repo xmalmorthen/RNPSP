@@ -848,18 +848,23 @@ var fillData = {
 
                     /*******************************************************************************/            
                     //CAMPOS DE IMÁGENES
+                    thumb_pIMAGEN_IZQUIERDO.attr("src", data.pIMG_PERFILIZQ ? data.pIMG_PERFILIZQ.name : imageBreak ).attr("alt", data.pIMG_PERFILIZQ ? data.pIMG_PERFILIZQ.originalName : data.pIMG_PERFILIZQ.name);
+                    thumb_pIMAGEN_IZQUIERDO.parent().find('div.custom-file label.custom-file-label').html( data.pIMG_PERFILIZQ ? data.pIMG_PERFILIZQ.originalName : 'Seleccionar imágen' );
 
-                    //TODO: Xmal - Implementar modelo de datos para mostrar imágen...
+                    thumb_pIMAGEN_FRENTE.attr("src", data.pIMG_FRENTE ? data.pIMG_FRENTE.name : imageBreak ).attr("alt", data.pIMG_FRENTE ? data.pIMG_FRENTE.originalName : data.pIMG_FRENTE.name);
+                    thumb_pIMAGEN_FRENTE.parent().find('div.custom-file label.custom-file-label').html( data.pIMG_FRENTE ? data.pIMG_FRENTE.originalName : 'Seleccionar imágen' );
                     
-                    thumb_pIMAGEN_IZQUIERDO.attr("src", imageBreak ).attr("alt", '');
-                    thumb_pIMAGEN_FRENTE.attr("src", imageBreak).attr("alt", '');
-                    thumb_pIMAGEN_DERECHO.attr("src", imageBreak).attr("alt", '');
-                    thumb_pIMAGEN_FIRMA.attr("src", imageBreak).attr("alt", '');
-                    thumb_pIMAGEN_HUELLA.attr("src", imageBreak).attr("alt", '');
+                    thumb_pIMAGEN_DERECHO.attr("src", data.pIMG_PERFILDR ? data.pIMG_PERFILDR.name : imageBreak ).attr("alt", data.pIMG_PERFILDR ? data.pIMG_PERFILDR.originalName : data.pIMG_PERFILDR.name);
+                    thumb_pIMAGEN_DERECHO.parent().find('div.custom-file label.custom-file-label').html( data.pIMG_PERFILDR ? data.pIMG_PERFILDR.originalName : 'Seleccionar imágen' );
+
+                    thumb_pIMAGEN_FIRMA.attr("src", data.pIMG_FIRMA ? data.pIMG_FIRMA.name : imageBreak ).attr("alt", data.pIMG_FIRMA ? data.pIMG_FIRMA.originalName : data.pIMG_FIRMA.name);
+                    thumb_pIMAGEN_FIRMA.parent().find('div.custom-file label.custom-file-label').html( data.pIMG_FIRMA ? data.pIMG_FIRMA.originalName : 'Seleccionar imágen' );
+
+                    thumb_pIMAGEN_HUELLA.attr("src", data.pIMG_HUELLA ? data.pIMG_HUELLA.name : imageBreak ).attr("alt", data.pIMG_HUELLA ? data.pIMG_HUELLA.originalName : data.pIMG_HUELLA.name);
+                    thumb_pIMAGEN_HUELLA.parent().find('div.custom-file label.custom-file-label').html( data.pIMG_HUELLA ? data.pIMG_HUELLA.originalName : 'Seleccionar imágen' );
                     /*******************************************************************************/
-                    
-                    $('#Ficha_fotografica_form').LoadingOverlay("hide");
                 }
+                $('#Ficha_fotografica_form').LoadingOverlay("hide");
             })
             .catch( (err) => {
                 $('#Ficha_fotografica_form').setAlert({
@@ -918,8 +923,8 @@ var fillData = {
                         $('#Registro_decadactilar_form .custom-file').parent('div').append(`
                             <div class="jumbotron jumbotron-fluid mb-3">
                                 <div class="container">
-                                    <h6 class="display-4">Documento</h3>
-                                    <h5><a href="${data.pIMG_DOCUMENTO.name}" target="_blank" rel="noopener noreferrer">${data.pIMG_DOCUMENTO.originalName}</a></h5>
+                                    <i class="fa fa-file-text-o fa-4x mb-3" aria-hidden="true"></i>
+                                    <h5 class='text-truncate'><a href="${data.pIMG_DOCUMENTO.name}" target="_blank" rel="noopener noreferrer">${data.pIMG_DOCUMENTO.originalName}</a></h5>
                                 </div>
                             </div>
                         `);
@@ -972,7 +977,7 @@ var fillData = {
             //BLOQUE PARA EL GRID
             var tableRef = $('#' + objViewIdentificacion.vars.identificacion.tables.tableDigitalizaciondoc.obj.tables().nodes().to$().attr('id')),
                 tableObj = objViewIdentificacion.vars.identificacion.tables.tableDigitalizaciondoc.obj,
-                callUrl = base_url + `Solicitud/xxx`;
+                callUrl = base_url + `Solicitud/getDocumento`;
 
             tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
@@ -982,9 +987,8 @@ var fillData = {
             .then( (data) => {
                 if (data) {
                     $.each( data, function(key,value) {
-                        //TODO: Xmal - Implementar
-                        //var row = [ value.pID_IDIOMA_HABLADO_EXT, value.pIDIOMA, value.pPORCENTAJE_LECTURA, value.pPORCENTAJE_ESCRITURA, value.pPORCENTAJE_CONVERSACION ];
-                        //tableObj.row.add( row ).draw( false );
+                        var row = [ value.pID_DOCUMENTO_EXT, value.pDESC_CATEGORIA_DOC, value.pVALOR ? `<a href="${value.pVALOR.name}" target="_blank" rel="noopener noreferrer"><i class="fa fa-file-text-o fa-2x" aria-hidden="true"></i> ${value.pVALOR.originalName}</a>` : '', value.pFECHA_DOCUMENTO, value.pESTATUS];
+                        tableObj.row.add( row ).draw( false );
                     });
                 }
 
@@ -1023,6 +1027,8 @@ var fillData = {
             audioRef.attr("src", base_url + 'assets/files/fichaVoz/01%20Ruin.mp3');
             audioRef[0].pause();
             audioRef[0].load();
+
+            audioRef.removeClass('d-none');
         }
     },
     camposGeneralesInformacionFichaFotografica : function(data){

@@ -509,6 +509,7 @@
                         <!-- SPACE -->                        
                     </div>
                     <div class="col-md-4 text-center">
+                        <h6>Documento</h6>
                         <div class="custom-file">
                             <input type="file" id="pIMAGEN" name="pIMAGEN" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN' accept="application/pdf,image/*">
                             <label class="custom-file-label" for="inputGroupFile01">Seleccionar documento</label>
@@ -614,7 +615,11 @@
                         </div>
                     </div>
                     <div class="col-md-8 text-center">
-                        <audio id="audio" class='ml-5' style='width=90%!Important;' controls><source src="">Navegador no compatible con reproductor de audio</audio>
+                        <div class="jumbotron jumbotron-fluid mb-3">
+                            <div class="container">                                
+                                <audio id="audio" class='ml-5 d-none' style='width=90%!Important;' controls><source src="">Navegador no compatible con reproductor de audio</audio>
+                            </div>
+                        </div>                        
                     </div>
                 </div>
                 <br>
