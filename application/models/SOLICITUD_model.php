@@ -1666,7 +1666,7 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pID_ALTERNA',$idAlterna);
     $buid = $this->build_query();
     $query = $this->db->query($buid);
-    $response = $this->query_row($query);
+    $response = $this->query_list($query);
 
     if($response === FALSE){
       $this->response['status'] = 0;
