@@ -26,7 +26,7 @@ class MY_Session extends CI_Session
     if($key != false && is_array($session) && array_key_exists($key,$session)){
       return $session[$key];
     }else{
-      return false;
+      return $session;
     }
   }
 
