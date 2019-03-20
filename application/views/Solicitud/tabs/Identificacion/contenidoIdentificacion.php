@@ -617,7 +617,7 @@
                     <div class="col-md-8 text-center">
                         <div class="jumbotron jumbotron-fluid mb-3">
                             <div class="container">                                
-                                <audio id="audio" class='ml-5 d-none' style='width=90%!Important;' controls><source src="">Navegador no compatible con reproductor de audio</audio>
+                                <audio id="audio" class='ml-5 d-none' style="display: block;width: 90%;" preload="auto" controls="controls"><source src="">Navegador no compatible con reproductor de audio</audio>
                             </div>
                         </div>                        
                     </div>

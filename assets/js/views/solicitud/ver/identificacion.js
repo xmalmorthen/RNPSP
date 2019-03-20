@@ -199,13 +199,22 @@ var objViewIdentificacion = {
         identificacionVoz : function(pID_ALTERNA){
             $('#Identificacion_de_voz_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
-            var callUrl = base_url + `Solicitud/xxx`;
+            var callUrl = base_url + `Solicitud/opcRegistroVoz`;
             objViewIdentificacion.fill.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {  
                 if (data) {
                     $.each(data,function(key,value){
                         objViewIdentificacion.fill.insertValueInSelect(key,value,'Identificacion_de_voz_form');
                     });
+                    var audioRef = $('#Identificacion_de_voz_form #audio')
+
+                    if (data.pPATH_ARCHIVO) {
+                        audioRef.attr("src", data.pPATH_ARCHIVO.name);
+                        audioRef[0].pause();
+                        audioRef[0].load();
+                        audioRef.removeClass('d-none');
+                        audioRef.css('width','90%!Important');
+                    }
                 }
                 $('#Identificacion_de_voz_form').LoadingOverlay("hide");
             })

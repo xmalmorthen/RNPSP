@@ -488,15 +488,15 @@
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Adscripción</h6>
-                        <p id=''></p>
+                        <p id='pAREA_ADSCRIPCION'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Dependencia</h6>
-                        <p id=''></p>
+                        <p id='pDEPENDENCIA'></p>
                     </div>
                     <div class="col-md-4">
                         <h6 class="borderButtom">Institución</h6>
-                        <p id=''></p>
+                        <p id='pINSTITUCION'></p>
                     </div>
                 </div>
                 <br>
@@ -506,7 +506,7 @@
                         <h6 class="borderButtom">Audio</h6>
                         <div class="jumbotron jumbotron-fluid mb-3">
                             <div class="container">                                
-                                <audio id="audio" style='width=90%!Important;' controls><source src="">Navegador no compatible con reproductor de audio</audio>
+                                <audio id="audio" preload="auto" style="display: block;width: 100%;" controls="controls"><source src="">Navegador no compatible con reproductor de audio</audio>
                             </div>
                         </div>
                     </div>

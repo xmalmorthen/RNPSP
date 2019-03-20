@@ -1005,15 +1005,31 @@ var fillData = {
             });
         },
         identificacionVoz : function(pID_ALTERNA){
+            $('#Identificacion_de_voz_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
             //BLOQUE PARA INSERTAR EL VÍNCULO AL AUDIO
-            var audioRef = $('#audio'),
-                callUrl = base_url + `Solicitud/xxx`;
+            var callUrl = base_url + `Solicitud/opcRegistroVoz`;
 
             fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {
                 if (data) {
-                    //audioRef
+                    var inAdscripcion = $('#Identificacion_de_voz_form .inAdscripcion'),
+                        inDependencia = $('#Identificacion_de_voz_form .inDependencia'),
+                        inInstitucion = $('#Identificacion_de_voz_form .inInstitucion'),
+                        audioRef = $('#Identificacion_de_voz_form #audio')
+
+                    inAdscripcion.html(data.pAREA_ADSCRIPCION);
+                    inDependencia.html(data.pDEPENDENCIA);
+                    inInstitucion.html(data.pINSTITUCION);
+
+                    if (data.pPATH_ARCHIVO) {
+                        audioRef.attr("src", data.pPATH_ARCHIVO.name);
+                        audioRef[0].pause();
+                        audioRef[0].load();
+                        audioRef.removeClass('d-none');
+                    }
                 }
+                $('#Identificacion_de_voz_form').LoadingOverlay("hide");
             })
             .catch( (err) => {
                 $('#Identificacion_de_voz_form').setAlert({
@@ -1022,13 +1038,8 @@ var fillData = {
                     header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
                     msg : err.statusText
                 });
+                $('#Identificacion_de_voz_form').LoadingOverlay("hide");
             });
-
-            audioRef.attr("src", base_url + 'assets/files/fichaVoz/01%20Ruin.mp3');
-            audioRef[0].pause();
-            audioRef[0].load();
-
-            audioRef.removeClass('d-none');
         }
     },
     camposGeneralesInformacionFichaFotografica : function(data){
@@ -1068,7 +1079,7 @@ var fillData = {
         inApellidoaPaterno.html(data.pPATERNO);
         inFechaNacimiento.html(data.pFECHA_NACIMIENTO);
         inSexo.html(data.pSEXO);
-    }
+    }    
 }
 
 function refreshTable(e,self){
