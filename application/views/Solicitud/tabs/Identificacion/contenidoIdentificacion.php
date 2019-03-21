@@ -798,12 +798,12 @@
                 <div class="col-md-12">
                     <table id="tableFichafotografica" class="table display table-striped dt-responsive" style="width:100%">
                         <thead>
-                                <th>Id evaluación</th>
-                                <th>Tipo de evaluación</th>
-                                <th>Examen</th>
-                                <th>Lugar de aplicación</th>
-                                <th>Fecha de programación</th>
-                                <th>Fecha de resultado</th>
+                                <th>Id ficha fotográfica</th>
+                                <th>Num. folio</th>
+                                <th>Imágenes</th>
+                                <th>Dependencia</th>
+                                <th>Institución</th>
+                                <th>Fecha de registro</th>
                         </thead>
                         <tbody>                               
                         </tbody>
