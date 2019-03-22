@@ -879,7 +879,7 @@ var fillData = {
             //BLOQUE PARA EL GRID
             var tableRef = $('#' + objViewIdentificacion.vars.identificacion.tables.tableFichafotografica.obj.tables().nodes().to$().attr('id')),
                 tableObj = objViewIdentificacion.vars.identificacion.tables.tableFichafotografica.obj,
-                callUrl = base_url + `Solicitud/xxx`;
+                callUrl = base_url + `Solicitud/getFichaFotografica`;
 
             tableRef.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
@@ -889,9 +889,9 @@ var fillData = {
             .then( (data) => {
                 if (data) {
                     $.each( data, function(key,value) {
-                        //TODO: Xmal - Implementar
-                        //var row = [ value.pID_IDIOMA_HABLADO_EXT, value.pIDIOMA, value.pPORCENTAJE_LECTURA, value.pPORCENTAJE_ESCRITURA, value.pPORCENTAJE_CONVERSACION ];
-                        //tableObj.row.add( row ).draw( false );
+                        //TODO: Xmal - Implementar (LISTO)
+                        var row = [ value.pID_FICHA_FOTOGRAF_EXT, value.pNUM_FOLIO, value.pIMAGEN, value.pDEPENDENCIA, value.pINSTITUCION,value.pFECHA_REGISTRO ];
+                        tableObj.row.add( row ).draw( false );
                     });
                 }
 
