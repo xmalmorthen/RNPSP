@@ -232,6 +232,7 @@ var objViewDatosGenerales = {
     },
     actions : { 
         populateCURPData : function(data){
+            console.log(data);
             objViewDatosGenerales.vars.datosGenerales.objs.pCURP.val(data.CURP);
             $('#pNOMBRE_DATOS_PERSONALES').val(data.nombres);
             $('#pPATERNO_DATOS_PERSONALES').val(data.apellido1);

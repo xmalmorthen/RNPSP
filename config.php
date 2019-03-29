@@ -26,8 +26,7 @@ mailtype = ""
 site_key = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
 secret_key = "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"
 [apis]
-wsCURPServer = "http://apisnet.col.gob.mx/wsCURP"
-wsCURPApiVersion = "/apiv1"
-wsCURPGetbyCURPMethod = "/consultar/CURP"
-wsCURPUser = "C4"
-wsCURPPwd = "71dfcfce3cc6ec41bbcc733910f7eb79"
+wsCURPServer = "http://localhost/sgp/emuladorCurp/servicios/wsdl.php?wsdl"
+wsCURPUser = "REPSP"
+wsCURPPwd = "R3p5p*2019"
+

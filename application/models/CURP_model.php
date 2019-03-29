@@ -1,8 +1,10 @@
-<?php  if (! defined('BASEPATH')) {exit('No direct script access allowed');}
+<?php  if (! defined('BASEPATH')) {
+    exit('No direct script access allowed');
+}
 
 class CURP_model extends CI_Model
 {
-  public $response = array();
+    public $response = array();
     public function __construct()
     {
         parent::__construct();
@@ -16,7 +18,8 @@ class CURP_model extends CI_Model
     public function get()
     {
         try {
-            $client = new nusoap_client("http://10.10.20.132/sgp/emuladorCurp/servicios/wsdl.php?wsdl", false, false, false, false, false);
+            $cnfg = (object)json_decode(CNFG);
+            $client = new nusoap_client($cnfg->apis->wsCURPServer, false, false, false, false, false);
             $err = $client->getError();
             if ($err) {
                 throw new Exception(htmlspecialchars($client->getDebug(), ENT_QUOTES));
@@ -24,8 +27,8 @@ class CURP_model extends CI_Model
 
             $params = array(
                 'CURP'=> "AAAA970612MMNLVN09",
-                'Cve_Usuario'=> 'REPSP',
-                'Pass'=> 'R3p5p*2019',
+                'Cve_Usuario'=> $cnfg->apis->wsCURPUser,
+                'Pass'=> $cnfg->apis->wsCURPPwd,
                 'Usuario_Solicita'=> ''
             );
             $result = $client->call('WS_CURP', $params, 'http://localhost', 'http://localhost');
@@ -36,19 +39,18 @@ class CURP_model extends CI_Model
                 if ($err) {
                     throw new Exception((string)$err);
                 } else {
-                  $this->response['status'] = true;
-                  $this->response['data'] = (array_key_exists('WS_CURPResult',$result))? (array)json_decode($result['WS_CURPResult']) : array();
-                  if(empty($this->response['data'])){
-                    throw new Exception('No se logo decodificar la respuesta del ws');
-                  }
+                    $this->response['status'] = true;
+                    $this->response['data'] = (array_key_exists('WS_CURPResult', $result))? (array)json_decode($result['WS_CURPResult']) : array();
+                    if (empty($this->response['data'])) {
+                        throw new Exception('No se logo decodificar la respuesta del ws');
+                    }
                 }
             }
         } catch (Exception $e) {
-          $this->response['status'] = false;
-          $this->response['message'] = $e->getMessage();
-          Msg_reporting::setOutputError($e->getMessage());
+            $this->response['status'] = false;
+            $this->response['message'] = $e->getMessage();
+            Msg_reporting::setOutputError($e->getMessage());
         }
         return $this->response;
-        
     }
 }
