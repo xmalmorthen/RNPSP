@@ -51,8 +51,7 @@ class ajaxAPIs extends CI_Controller {
 				throw new processException($resp['message'],400);
 				$responseModel = [];
 			}else{
-				$resp['Response'] = $resp['data'];
-				$responseModel = $resp;
+				$responseModel = $resp['data'];
 			}
 			// if ($this->curl->error_string){
 			// 	throw new processException($this->curl->error_string,$this->rest->status());

@@ -15,7 +15,7 @@ class CURP_model extends CI_Model
         );
     }
 
-    public function get()
+    public function get($curp)
     {
         try {
             $cnfg = (object)json_decode(CNFG);
@@ -26,7 +26,7 @@ class CURP_model extends CI_Model
             }
 
             $params = array(
-                'CURP'=> "AAAA970612MMNLVN09",
+                'CURP'=> $curp,
                 'Cve_Usuario'=> $cnfg->apis->wsCURPUser,
                 'Pass'=> $cnfg->apis->wsCURPPwd,
                 'Usuario_Solicita'=> ''
@@ -40,7 +40,7 @@ class CURP_model extends CI_Model
                     throw new Exception((string)$err);
                 } else {
                     $this->response['status'] = true;
-                    $this->response['data'] = (array_key_exists('WS_CURPResult', $result))? (array)json_decode($result['WS_CURPResult']) : array();
+                    $this->response['data'] = (array_key_exists('WS_CURPResult', $result))? array(json_decode($result['WS_CURPResult'])) : array();
                     if (empty($this->response['data'])) {
                         throw new Exception('No se logo decodificar la respuesta del ws');
                     }
