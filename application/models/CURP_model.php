@@ -19,7 +19,7 @@ class CURP_model extends CI_Model
     {
         try {
             $cnfg = (object)json_decode(CNFG);
-            $client = new nusoap_client($cnfg->apis->wsCURPServer, false, false, false, false, false);
+            $client = new nusoap_client($cnfg->apis->wsCURPServerSOAP, false, false, false, false, false);
             $err = $client->getError();
             if ($err) {
                 throw new Exception(htmlspecialchars($client->getDebug(), ENT_QUOTES));
@@ -27,8 +27,8 @@ class CURP_model extends CI_Model
 
             $params = array(
                 'CURP'=> $curp,
-                'Cve_Usuario'=> $cnfg->apis->wsCURPUser,
-                'Pass'=> $cnfg->apis->wsCURPPwd,
+                'Cve_Usuario'=> $cnfg->apis->wsCURPUserSOAP,
+                'Pass'=> $cnfg->apis->wsCURPPwdSOAP,
                 'Usuario_Solicita'=> ''
             );
             $result = $client->call('WS_CURP', $params, 'http://localhost', 'http://localhost');
