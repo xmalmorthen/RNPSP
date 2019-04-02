@@ -55,7 +55,7 @@ class Usuarios extends CI_Controller
     } else if(verificaPermiso(24) == 1){ #Ver solo de su dependencia	
       $this->load->model('Usuarios_model');
       $usuario = $this->Usuarios_model->user();
-      $this->CAT_ADSCRIPCIONES_model->where('CAT_ADSCRIPCION_TEMP.ID_ADSCRIPCION',$usuario['ID_ADSCRIPCION']);
+      $this->CAT_ADSCRIPCIONES_model->where('CAT_ADSCRIPCION.clave',$usuario['ID_ADSCRIPCION']);
       $data['adscripcion'] = $this->CAT_ADSCRIPCIONES_model->get();
     }
     $this->load->library('parser');

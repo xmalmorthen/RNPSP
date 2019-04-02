@@ -2,7 +2,7 @@
 
 class CAT_ADSCRIPCIONES_model extends MY_Model
 {
-  public $nombreCatalogo = 'CAT_ADSCRIPCION_TEMP';
+  public $nombreCatalogo = 'CAT_ADSCRIPCION';
   public function __construct()
   {
     parent::__construct();
@@ -12,7 +12,8 @@ class CAT_ADSCRIPCIONES_model extends MY_Model
   {
     $returnResponse = array();
     try {
-      $this->select('ID_ADSCRIPCION,ADSCRIPCION');
+      $this->select('clave as ID_ADSCRIPCION,DESCRIPCION as ADSCRIPCION');
+      $this->db->order_by('DESCRIPCION','ASC');
       $returnResponse = $this->response_list();
     } catch (Exception $e) {
       Msg_reporting::error_log($e);

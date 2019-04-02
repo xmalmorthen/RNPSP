@@ -20,6 +20,7 @@ class Usuarios_model extends MY_Model
     } catch (Exception $e) {
       Msg_reporting::error_log($e);
     }
+    // Utils::pre($this->db->last_query());
     return $returnResponse;
   }
 
