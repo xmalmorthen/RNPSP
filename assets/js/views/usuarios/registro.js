@@ -233,11 +233,15 @@ var _app = Backbone.View.extend({
 	guardar: function () {
 		var that = this;
 		that.hideError();
+
+		var sendData = $('form#Usuarios_form').serializeArray();
+		sendData.push({ name: csrf.token_name, value: csrf.hash });
+		
 		Backbone.ajax({
 			dataType: "json",
 			method: 'POST',
 			url: base_url + 'Usuarios/guardar',
-			data: $('form#Usuarios_form').serialize(),
+			data: sendData,
 			beforeSend: function () {
 				that.starLoader();
 			},
@@ -248,7 +252,9 @@ var _app = Backbone.View.extend({
 					Swal.fire({
 						type: 'success',
 						title: response.message
-					})
+					}).then(result => {
+						location.reload();
+					});
 				} else {
 					that.showError(response.message);
 				}
