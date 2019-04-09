@@ -20,7 +20,13 @@
                 </div>
                 <div class="col-md-4"> <!-- PENDIENTEEEEE -->
                     Tipo de movimiento <!-- Se llena de la tabla CAT_TIPO_OPERACION  -->
-                    <select  class="form-control" name="pTIPO_OPERACION" id="pTIPO_OPERACION" data-error="#err_pTIPO_OPERACION" data-cat='CAT_TIPO_OPERACION' data-query='WEh6TEJUUFROWVFUNWdLYVVqOSt0eE5rRFBwL3NLWFhyY1RBYXNhUlQvMXJkaFN5bVhWNFUwRWJKdG1YQWFtWWl3VTVlQWtQVnp3NmVNOGdZT1hMWmFDczlzZnBNQVhWaGxhS1BibktwdklnckgxNmplYXkvblpVSWhIMWtoNlNIM041THFhTEdvMlQybDA4N1FiSndSWjVlMmRLQndqRTkvTHJrbS9jUkRvPQ==' required></select>
+                    <select  
+                        class="form-control" 
+                        name="pTIPO_OPERACION" 
+                        id="pTIPO_OPERACION" 
+                        data-error="#err_pTIPO_OPERACION" 
+                        
+                        required></select>
                     <span id="err_pTIPO_OPERACION"></span>
                 </div>
             </div>
