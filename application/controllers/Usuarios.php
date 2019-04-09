@@ -55,7 +55,7 @@ class Usuarios extends CI_Controller
     } else if(verificaPermiso(24) == 1){ #Ver solo de su dependencia	
       $this->load->model('Usuarios_model');
       $usuario = $this->Usuarios_model->user();
-      $this->CAT_ADSCRIPCIONES_model->where('CAT_ADSCRIPCION_TEMP.ID_ADSCRIPCION',$usuario['ID_ADSCRIPCION']);
+      $this->CAT_ADSCRIPCIONES_model->where('CAT_ADSCRIPCION.clave',$usuario['ID_ADSCRIPCION']);
       $data['adscripcion'] = $this->CAT_ADSCRIPCIONES_model->get();
     }
     $this->load->library('parser');
@@ -69,15 +69,16 @@ class Usuarios extends CI_Controller
       $response['message'] = 'method get not allowed';
     } else {
       $this->load->library('form_validation');
+      $this->form_validation->set_message('is_unique', 'El campo %s ya se encuentra registrado.');
       $this->form_validation->set_message('required', 'Campo obligatorio');
-      $this->form_validation->set_rules('pCURP', 'CURP', 'required|min_length[18]|max_length[20]');
+      $this->form_validation->set_rules('pCURP', 'CURP', 'trim|required|min_length[18]|max_length[20]|is_unique[cat_Usuarios.CURP]');
       $this->form_validation->set_rules('pNOMBRE', 'Nombre', 'required|min_length[2]|max_length[30]');
       $this->form_validation->set_rules('pPATERNO', 'Apellido paterno', 'required|min_length[1]|max_length[30]');
       $this->form_validation->set_rules('pMATERNO', 'Apellido materno', 'trim|min_length[1]|max_length[30]');
       $this->form_validation->set_rules('pID_ADSCRIPCION', 'Adscripción', 'required');
       $this->form_validation->set_rules('pCONTRASENA', 'Contraseña', 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']');
       $this->form_validation->set_rules('pTIPO_USUARIO', 'Correo electrónico', 'required');
-      $this->form_validation->set_rules('pCORREO', 'Correo electrónico', 'required|valid_email');
+      $this->form_validation->set_rules('pCORREO', 'Correo electrónico', 'trim|required|valid_email|is_unique[cat_Usuarios.username]');
       $this->form_validation->set_rules('pID_JEFE', 'Jefe inmediato', 'trim');
 
       if ($this->form_validation->run() === true) {
@@ -90,7 +91,8 @@ class Usuarios extends CI_Controller
           'NOMBRE' => $this->input->post('pNOMBRE'),
           'PATERNO' => $this->input->post('pPATERNO'),
           'MATERNO' => $this->input->post('pMATERNO'),
-          'ID_ADSCRIPCION' => $this->input->post('pID_ADSCRIPCION')
+          'ID_ADSCRIPCION' => $this->input->post('pID_ADSCRIPCION'),
+          'Jefe' => $this->input->post('pID_JEFE')
         ];
         if ($this->ion_auth->register($identity, $password, $email, $additional_data, array($tipoUsuario))) {
           $response['status'] = true;

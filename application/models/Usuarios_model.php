@@ -13,13 +13,14 @@ class Usuarios_model extends MY_Model
   {
     $returnResponse = array();
     try {
-      $this->select('cat_Usuarios.id,cat_Usuarios.NOMBRE,cat_Usuarios.CURP,cat_Usuarios.PATERNO,cat_Usuarios.MATERNO,cat_EstatusUsuario.Nombre as EstatusUsuario,CAT_ADSCRIPCION_TEMP.ADSCRIPCION', false);
+      $this->select('cat_Usuarios.id,cat_Usuarios.NOMBRE,cat_Usuarios.CURP,cat_Usuarios.PATERNO,cat_Usuarios.MATERNO,cat_EstatusUsuario.Nombre as EstatusUsuario,CAT_ADSCRIPCION.descripcion as ADSCRIPCION,cat_Usuarios.Jefe as JEFE', false);
       $this->join('cat_EstatusUsuario', 'cat_Usuarios.id_EstatusUsuario = cat_EstatusUsuario.id_EstatusUsuario');
-      $this->join('CAT_ADSCRIPCION_TEMP', 'cat_Usuarios.ID_ADSCRIPCION = CAT_ADSCRIPCION_TEMP.ID_ADSCRIPCION');
+      $this->join('CAT_ADSCRIPCION', 'cat_Usuarios.ID_ADSCRIPCION = CAT_ADSCRIPCION.clave');
       $returnResponse = $this->response_list();
     } catch (Exception $e) {
       Msg_reporting::error_log($e);
     }
+    // Utils::pre($this->db->last_query());
     return $returnResponse;
   }
 
