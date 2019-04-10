@@ -1908,6 +1908,30 @@
 		}
 
 
+		# OPCION COMBO
+		# Obtiene la valores para el combo del tipo operacion de acuerdo a las reglas de operacion
+		public function cmbTipoOperacion(){
+			// if (! $this->input->is_ajax_request()) {
+			// 	if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			// }
+			$curp = $this->session->local_userdata('CURP');
+			try {
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_cmbTipoOperacion($curp);
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+
+
 
 		
 }	

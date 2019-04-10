@@ -363,7 +363,19 @@ var objViewDatosGenerales = {
                 }
             },
             populateCmbOperacion: function(){
-                //TODO: Llamar acción ajax y popular combo;
+                var cmbSelect = $('#pTIPO_OPERACION');
+                $.ajax({
+                    type: 'GET',
+                    dataType: "json",
+                    url: site_url+'Solicitud/cmbTipoOperacion',
+                }).then(function (data) {
+                    data.results.data.forEach(element => {
+                        console.log(element);
+                        var option = new Option(element.pdescripcion, element.pclave, true, true);
+                        cmbSelect.append(option);
+                    });
+                    cmbSelect.val(null).trigger("change");
+                });
             }
 
         }
