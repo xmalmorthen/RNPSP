@@ -136,6 +136,8 @@ var objViewDatosGenerales = {
             }
         }
 
+        objViewDatosGenerales.actions.ajax.populateCmbOperacion();
+
         objViewDatosGenerales.vars.general.init = true;
     },
     events : {
@@ -359,7 +361,11 @@ var objViewDatosGenerales = {
                 }catch(err) {
                     objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                        
                 }
+            },
+            populateCmbOperacion: function(){
+                //TODO: Llamar acción ajax y popular combo;
             }
+
         }
     }
 }
