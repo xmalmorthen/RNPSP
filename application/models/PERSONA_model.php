@@ -15,21 +15,12 @@ class PERSONA_model extends MY_Model
     );
   }
 
-  public function getPersona($curp = null,$id_alterna = null)
+  public function sp_getPersonal($curp = null)
   {
-    $this->procedure('sp_B1_getPersona');
+    $this->procedure('sp_getPersonal');
     $this->addParam('pCURP',$curp,'N',array('rule'=>'trim|min_length[16]|max_length[20]'));
-    $this->addParam('pID_ALTERNA',$id_alterna,'',array('rule'=>'trim|numeric'));
     $query = $this->db->query($this->build_query());
-    $response = $this->query_row($query);
-
-    // if($response == FALSE){
-    //   $this->response['status'] = 0;
-    // }else{
-    //   $resp = end($response);
-    //   $this->response['status'] = (count($response)>0)? 1 : 0;
-    //   $this->response['data'] = $response;
-    // }
+    $response = $this->query_list($query);
     return  $this->try_result($response);
   }
 }

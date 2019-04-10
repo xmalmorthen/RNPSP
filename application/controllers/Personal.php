@@ -34,5 +34,33 @@ class Personal extends CI_Controller {
 		$this->load->view('Personal/Ver');
 	}
 
+	# OPCION GRID
+		# Obtiene los datos de la pestaña "Identificación" - "Pestaña Ficha Fotográfica"
+		# Grid - Ficha Fotográfica
+		# EJEMPLO: http://localhost/SGP/Solicitud/getFichaFotografica?pID_ALTERNA=56
+		public function getFichaFotografica(){
+			Utils::pre($_SESSION);
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+			$curp = $this->input->get('curp');
+			try {
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_getPersonal($curp);
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 Internal Server Error");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+
+	
+
 
 }
