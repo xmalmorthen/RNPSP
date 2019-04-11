@@ -10,27 +10,18 @@
                 <th colspan="2">Acciones</th>
         </thead>
         <tbody>
+            {personal}
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><a href="<?php echo site_url('Personal/Ver') ?>"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
-                <td><a href="<?php echo site_url('') ?>"><i class="fa fa-print" aria-hidden="true"></i></a></td>
-             
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{pidPersona}</td>
+                <td>{pnombre} {paterno} {pmaterno}</td>
+                <td>{pNOMBRE_PUESTO}</td>
+                <td>{pNOMBRE_JEFE} {pPATERNO_JEFE} {pMATERNO_JEFE}</td>
+                <td>{pCalsificacion}</td>
+                <td>{pEstatus}</td>
                 <td><a href="<?php echo site_url('Personal/Ver') ?>"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
                 <td><a href="<?php echo site_url('') ?>"><i class="fa fa-print" aria-hidden="true"></i></a></td>
             </tr>
+            {/personal}
         </tbody>
     </table>
 </div>

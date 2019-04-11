@@ -100,51 +100,26 @@ var _app = Backbone.View.extend({
 				try {
 					if (CURP.length < 18 || CURP.length > 20)
 						throw new Error('Formato de CURP incorrecto');
-
-					var callUrl = base_url + `Solicitud/ajaxGetSolicitudByCURP`;
-
-					return new Promise(function (resolve, reject) {
-						$.get(callUrl, {
-								CURP: CURP
-							},
-							function (data) {
-								resolve(data);
-							}).fail(function (err) {
-							reject(err);
-						});
-					}).then(function (data) {
-						if (data.results.status == 0) {
+					
 							return new Promise(function (resolve, reject) {
-								callUrl = base_url + `ajaxAPIs/curp`;
+								callUrl = base_url + `Personal/getFichaFotografica`;
 								$.get(callUrl, {
-										model: {
-											CURP: CURP
-										}
+										CURP: CURP
 									},
 									function (data) {
-
+										console.log(data);
 										resolve(data);
 									}).fail(function (err) {
 									reject(err);
 								});
 
 							}).then(function (data) {
+								console.log(data);
 								return {
 									from: 'query',
-									data: data[0]
+									data: data
 								};
 							});
-						} else if (data.results.status == 1) {
-							return {
-								from: 'bd',
-								data: data
-							};
-						} else {
-							throw new Error(data.results.message);
-						}
-					}).catch(function (err) {
-						Swal.showValidationMessage(err.statusText ? err.statusText : err.message);
-					});
 				} catch (error) {
 					Swal.showValidationMessage(error);
 				}

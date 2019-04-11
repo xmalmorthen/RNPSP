@@ -16,8 +16,11 @@ class Personal extends CI_Controller {
 		// TITLE BODY PAGE
 		$this->session->set_flashdata('titleBody','[ Personal ] - Personal - Administración de personal');
 		// /TITLE BODY PAGE
-	
-		$this->load->view('Personal/index');
+		$curp = $this->session->local_userdata('CURP');
+		$this->load->model('PERSONA_model');
+		$responseModel = $this->PERSONA_model->sp_getPersonal($curp);
+		$this->load->library('parser');
+		$this->parser->parse('Personal/index',array('personal'=>(array)$responseModel));
 	}
 
 	
@@ -39,7 +42,6 @@ class Personal extends CI_Controller {
 		# Grid - Ficha Fotográfica
 		# EJEMPLO: http://localhost/SGP/Solicitud/getFichaFotografica?pID_ALTERNA=56
 		public function getFichaFotografica(){
-			Utils::pre($_SESSION);
 			if (! $this->input->is_ajax_request()) {
 				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
 			}

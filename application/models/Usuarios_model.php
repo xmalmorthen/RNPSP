@@ -13,9 +13,8 @@ class Usuarios_model extends MY_Model
   {
     $returnResponse = array();
     try {
-      $this->select('cat_Usuarios.id,cat_Usuarios.NOMBRE,cat_Usuarios.CURP,cat_Usuarios.PATERNO,cat_Usuarios.MATERNO,cat_EstatusUsuario.Nombre as EstatusUsuario,CAT_ADSCRIPCION.descripcion as ADSCRIPCION,cat_Usuarios.Jefe as JEFE', false);
-      $this->join('cat_EstatusUsuario', 'cat_Usuarios.id_EstatusUsuario = cat_EstatusUsuario.id_EstatusUsuario');
-      $this->join('CAT_ADSCRIPCION', 'cat_Usuarios.ID_ADSCRIPCION = CAT_ADSCRIPCION.clave');
+      $this->db->select("id,NOMBRE,null as CURP,PATERNO,MATERNO,DescEstatus as EstatusUsuario,DescAdscripcion as ADSCRIPCION,CONCAT(NOMBRE_JEFE,' ',PATERNO_JEFE,' ',MATERNO_JEFE) as JEFE", false);
+      $this->db->from('vw_Usuarios');
       $returnResponse = $this->response_list();
     } catch (Exception $e) {
       Msg_reporting::error_log($e);
@@ -29,11 +28,9 @@ class Usuarios_model extends MY_Model
     $idUsuario = ($usuario != false) ? $usuario : $this->currentUser();
     $returnResponse = array();
     try {
-      $this->select('cat_Usuarios.id,cat_Usuarios.id_EstatusUsuario,cat_Usuarios.MotivoInactivo,cat_Usuarios.CURP,cat_Usuarios.email,cat_Usuarios.NOMBRE,cat_Usuarios.PATERNO,cat_Usuarios.MATERNO,cat_EstatusUsuario.Nombre as EstatusUsuario,CAT_ADSCRIPCION_TEMP.ADSCRIPCION,CAT_ADSCRIPCION_TEMP.ID_ADSCRIPCION', false);
-      $this->join('cat_EstatusUsuario', 'cat_Usuarios.id_EstatusUsuario = cat_EstatusUsuario.id_EstatusUsuario','left');
-      $this->join('CAT_ADSCRIPCION_TEMP', 'cat_Usuarios.ID_ADSCRIPCION = CAT_ADSCRIPCION_TEMP.ID_ADSCRIPCION','left');
+      
       $this->where('cat_Usuarios.id', $idUsuario);
-      $returnResponse = $this->response_row();
+      $returnResponse = $this->get();
     } catch (Exception $e) {
       Msg_reporting::error_log($e);
     }
