@@ -1,6 +1,5 @@
 var mainFormActions = {
 	populateCURPFields: function (data) {
-		console.log(data);
 		$('[name=pCURP]').val(data.curp);
 		$('[name=pCURP]').prop('readonly', true);
 		$('[name=pNOMBRE]').val(data.nombre);
@@ -118,34 +117,6 @@ var _app = Backbone.View.extend({
 								name: 'pCURP',
 								value: CURP
 							});
-						// 	var formData = new FormData();
-						// 	formData.append('pCURP', CURP);
-						// 	formData.append(csrf.token_name, csrf.hash);
-						// 	// console.log(formData);
-
-						// 	// var sendData = {'pCURP':CURP};
-						// 	// sendData[csrf.token_name] = csrf.hash;
-							
-						// 	// var data = new FormData(sendData);
-						// 	// console.log(data);
-						// 	return fetch(base_url + 'Usuarios/buscarCurp', {
-						// 		method: 'POST',
-						// 		body: formData,
-						// 		headers:{
-						// 			'Content-Type': 'application/json'
-						// 		}
-						// 	})
-						// 	.then(response => {
-						// 		console.log(response);
-						// 		if (!response.ok) {
-						// 			throw new Error(response.statusText)
-						// 		}
-						// 		return response.json()
-						// 	})
-						// .catch(error => {
-						// 	Swal.showValidationMessage(error);
-						// });
-
 						return new Promise(function (resolve, reject) {
 								callUrl = base_url + 'Usuarios/buscarCurp';
 								$.post(callUrl,sendData,function (data) {
