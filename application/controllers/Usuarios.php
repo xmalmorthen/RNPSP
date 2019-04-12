@@ -151,14 +151,15 @@ class Usuarios extends CI_Controller
     $this->parser->parse('Usuarios/Modificar', $data);
   }
 
-  public function buscarCurp($CURP = null){
-    // $responseModel = $this->SOLICITUD_model->sp_validaCURP($CURP);
-    // $this->output
-    //     ->set_status_header(200)
-    //     ->set_content_type('application/json', 'utf-8')
-    //     ->set_output(json_encode())
-    //     ->_display();
-    // exit;
+  public function buscarCurp(){
+    $this->load->model('Usuarios_model');
+    $response = $this->Usuarios_model->sp_getDatosNewUsr();
+    $this->output
+        ->set_status_header(200)
+        ->set_content_type('application/json', 'utf-8')
+        ->set_output(json_encode($response))
+        ->_display();
+    exit;
   }
 
   public function guardarModificar()

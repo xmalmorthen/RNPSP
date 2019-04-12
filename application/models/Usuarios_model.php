@@ -4,9 +4,17 @@ class Usuarios_model extends MY_Model
 {
 
   public $nombreCatalogo = 'cat_Usuarios';
+  public $response = array();
+
   public function __construct()
   {
     parent::__construct();
+    $this->response = array(
+      'status' => false,
+      'message'=> '',
+      'validation' => false,
+      'data'=> null
+    );
   }
 
   public function get()
@@ -141,5 +149,36 @@ class Usuarios_model extends MY_Model
     //   ->where('cat_Controladores.Nombre', $_controlador)
     //   ->where('cat_Metodos.Nombre', $_metodo);
     // return $this->response_list();
+  }
+
+  # ****************************************************************************************************************
+  # Alta de usuario
+  # ****************************************************************************************************************
+  # Obtiene los datos del a persona que se va a dar de alta como usuario
+  public function  sp_getDatosNewUsr(){
+    
+    $this->load->library('form_validation');
+    $this->addParam('pCURP','pCURP','',array('rule'=>'trim|required'));
+    if ($this->form_validation->run() === true) {
+      $this->procedure('sp_getDatosNewUsr');
+      $build = $this->build_query();
+      $query = $this->db->query($build);
+      $response = $this->query_row($query);
+      if($response == FALSE){
+        $this->response['status'] = false;
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      }else{
+        $this->response['status'] = true;
+        $this->response['message'] = '';
+        $this->response['data'] = $response;
+      }
+    } else {
+      $this->load->helper('html');
+      $this->response['status'] = false;
+      $message = $this->form_validation->error_array();
+      $this->response['message'] = ul($message);
+      $this->response['validation'] = $message;
+    }
+    return $this->response;
   }
 }

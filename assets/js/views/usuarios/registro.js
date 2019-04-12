@@ -1,13 +1,20 @@
 var mainFormActions = {
 	populateCURPFields: function (data) {
-		$('[name=pCURP]').val(data.CURP);
+		console.log(data);
+		$('[name=pCURP]').val(data.curp);
 		$('[name=pCURP]').prop('readonly', true);
-		$('[name=pNOMBRE]').val(data.nombres);
+		$('[name=pNOMBRE]').val(data.nombre);
 		$('[name=pNOMBRE]').prop('readonly', true);
-		$('[name=pPATERNO]').val(data.apellido1);
+		$('[name=pPATERNO]').val(data.paterno);
 		$('[name=pPATERNO]').prop('readonly', true);
-		$('[name=pMATERNO]').val(data.apellido2);
+		$('[name=pMATERNO]').val(data.materno);
 		$('[name=pMATERNO]').prop('readonly', true);
+		$('[name=pCORREO]').val(data.email);
+		$('[name=pCORREO]').prop('readonly', true);
+		$('[name=pID_JEFE]').val(data.NombreJefe);
+		$('[name=pID_JEFE]').prop('readonly', true);
+		$('[name=pID_ADSCRIPCION]').val(data.DescAdscripcion);
+		$('[name=pID_ADSCRIPCION]').prop('readonly', true);
 	},
 	populateData: function (idRef) {
 		$.LoadingOverlay("show", {
@@ -44,10 +51,11 @@ var mainFormActions = {
 	},
 	fillData: function (data) {
 		data = data.results.data;
-		$.each(data, function( index, value ) {
-			$('[name='+index+']').val(value);
-			$('[name='+index+']').prop('readonly', true);		});
-		
+		$.each(data, function (index, value) {
+			$('[name=' + index + ']').val(value);
+			$('[name=' + index + ']').prop('readonly', true);
+		});
+
 	},
 	insertValueInSelect: function (ref, value) {
 
@@ -88,41 +96,74 @@ var _app = Backbone.View.extend({
 		this.generatePassword();
 
 		Swal.fire({
-			title: 'Clave CURP',
-			input: 'text',
-			inputAttributes: {
-				autocapitalize: 'off'
-			},
-			showCancelButton: true,
-			confirmButtonText: 'Aceptar',
-			showLoaderOnConfirm: true,
-			preConfirm: (CURP) => {
-				try {
-					if (CURP.length < 18 || CURP.length > 20)
-						throw new Error('Formato de CURP incorrecto');
-					
-							return new Promise(function (resolve, reject) {
-								callUrl = base_url + `Personal/getFichaFotografica`;
-								$.get(callUrl, {
-										CURP: CURP
-									},
-									function (data) {
-										console.log(data);
+				title: 'Clave CURP',
+				input: 'text',
+				inputAttributes: {
+					autocapitalize: 'off'
+				},
+				showCancelButton: true,
+				confirmButtonText: 'Aceptar',
+				showLoaderOnConfirm: true,
+				preConfirm: (CURP) => {
+						try {
+							if (CURP.length < 18 || CURP.length > 20)
+							throw new Error('Formato de CURP incorrecto');
+
+							var sendData = [];
+							sendData.push({
+								name: csrf.token_name,
+								value: csrf.hash
+							},
+							{
+								name: 'pCURP',
+								value: CURP
+							});
+						// 	var formData = new FormData();
+						// 	formData.append('pCURP', CURP);
+						// 	formData.append(csrf.token_name, csrf.hash);
+						// 	// console.log(formData);
+
+						// 	// var sendData = {'pCURP':CURP};
+						// 	// sendData[csrf.token_name] = csrf.hash;
+							
+						// 	// var data = new FormData(sendData);
+						// 	// console.log(data);
+						// 	return fetch(base_url + 'Usuarios/buscarCurp', {
+						// 		method: 'POST',
+						// 		body: formData,
+						// 		headers:{
+						// 			'Content-Type': 'application/json'
+						// 		}
+						// 	})
+						// 	.then(response => {
+						// 		console.log(response);
+						// 		if (!response.ok) {
+						// 			throw new Error(response.statusText)
+						// 		}
+						// 		return response.json()
+						// 	})
+						// .catch(error => {
+						// 	Swal.showValidationMessage(error);
+						// });
+
+						return new Promise(function (resolve, reject) {
+								callUrl = base_url + 'Usuarios/buscarCurp';
+								$.post(callUrl,sendData,function (data) {
 										resolve(data);
 									}).fail(function (err) {
-									reject(err);
-								});
-
+										reject(err);	
+									});
 							}).then(function (data) {
-								console.log(data);
-								return {
-									from: 'query',
-									data: data
-								};
+								if(data.status == false){
+									throw new Error('No se encontro la CURP en el sistema.');		
+								}
+								return { data: data.data};
+							}).catch(function(err){
+								Swal.showValidationMessage(err.statusText ? err.statusText : err.message);
 							});
-				} catch (error) {
-					Swal.showValidationMessage(error);
-				}
+						} catch (error) {
+							Swal.showValidationMessage(error);
+						}
 			},
 			allowOutsideClick: false,
 			onBeforeOpen: () => {
@@ -130,121 +171,120 @@ var _app = Backbone.View.extend({
 				$('.swal2-container').data('preserve', true).data('preserveCall', 'mainTabMenu.mainInit');
 			}
 		}).then((result) => {
-			if (typeof result.dismiss !== 'undefined') {
-				window.location.href = base_url + 'Usuarios';
-			} else {
-				console.log(result);
-				if (result.value.from == 'query')
-					mainFormActions.populateCURPFields(result.value.data);
-				else
-					mainFormActions.fillData(result.value.data);
-			}
-		});
+		if (typeof result.dismiss !== 'undefined') {
+			window.location.href = base_url + 'Usuarios';
+		} else {
+			mainFormActions.populateCURPFields(result.value.data);
+		}
+	});
 
-	},
-	generarContrasena: function (length, type) {
-		switch (type) {
-			case 'num':
-				characters = "0123456789";
-				break;
-			case 'alf':
-				characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-				break;
-			case 'rand':
-				break;
-			default:
-				characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-				break;
-		}
-		var pass = "";
-		for (i = 0; i < length; i++) {
-			if (type == 'rand') {
-				pass += String.fromCharCode((Math.floor((Math.random() * 100)) % 94) + 33);
-			} else {
-				pass += characters.charAt(Math.floor(Math.random() * characters.length));
-			}
-		}
-		return pass;
-	},
-	starLoader: function () {
-		$.LoadingOverlay("show", {
-			image: "",
-			fontawesome: "fa fa-cog fa-spin"
-		});
-	},
-	stopLoader: function () {
-		$.LoadingOverlay("hide");
-	},
-	hideError: function () {
-		if ($('[error=true]').length > 0) {
-			$('[error=true]').each(function () {
-				$(this).removeError();
-				$(this).attr('error', false);
-			});
-		}
-	},
-	showError: function (message) {
-		var error = '';
-		$.each(message, function (index, value) {
-			if ($('input[name=' + index + ']').length > 0) {
-				$('input[name=' + index + ']').attr('error', true);
-				$('input[name=' + index + ']').setError(value);
-			} else {
-				error += '<small>' + value + '</small><br/>';
-			}
-		});
-		if (error.length > 0) {
-			Swal.fire({
-				type: 'error',
-				html: '<p>' + error + '</p>',
-			});
-		}
-	},
-	generatePassword: function () {
-		var pwd = this.generarContrasena(9);
-		$('input#pCONTRASENA').val(pwd);
-		$('input[name=pCONTRASENA]').val(pwd);
-	},
-	guardar: function () {
-		var that = this;
-		that.hideError();
-
-		var sendData = $('form#Usuarios_form').serializeArray();
-		sendData.push({ name: csrf.token_name, value: csrf.hash });
-		
-		Backbone.ajax({
-			dataType: "json",
-			method: 'POST',
-			url: base_url + 'Usuarios/guardar',
-			data: sendData,
-			beforeSend: function () {
-				that.starLoader();
-			},
-			success: function (response) {
-				if (response.status == true) {
-					$('form').trigger("reset");
-					that.generatePassword();
-					Swal.fire({
-						type: 'success',
-						title: response.message
-					}).then(result => {
-						location.reload();
-					});
-				} else {
-					that.showError(response.message);
-				}
-			},
-			complete: function () {
-				that.stopLoader();
-			}
-		});
-	},
-	regresar: function () {
-		window.location.replace(base_url + 'Usuarios');
-	},
-	render: function () {
-		return this;
+},
+generarContrasena: function (length, type) {
+	switch (type) {
+		case 'num':
+			characters = "0123456789";
+			break;
+		case 'alf':
+			characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+			break;
+		case 'rand':
+			break;
+		default:
+			characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+			break;
 	}
+	var pass = "";
+	for (i = 0; i < length; i++) {
+		if (type == 'rand') {
+			pass += String.fromCharCode((Math.floor((Math.random() * 100)) % 94) + 33);
+		} else {
+			pass += characters.charAt(Math.floor(Math.random() * characters.length));
+		}
+	}
+	return pass;
+},
+starLoader: function () {
+	$.LoadingOverlay("show", {
+		image: "",
+		fontawesome: "fa fa-cog fa-spin"
+	});
+},
+stopLoader: function () {
+	$.LoadingOverlay("hide");
+},
+hideError: function () {
+	if ($('[error=true]').length > 0) {
+		$('[error=true]').each(function () {
+			$(this).removeError();
+			$(this).attr('error', false);
+		});
+	}
+},
+showError: function (message) {
+	var error = '';
+	$.each(message, function (index, value) {
+		if ($('input[name=' + index + ']').length > 0) {
+			$('input[name=' + index + ']').attr('error', true);
+			$('input[name=' + index + ']').setError(value);
+		} else {
+			error += '<small>' + value + '</small><br/>';
+		}
+	});
+	if (error.length > 0) {
+		Swal.fire({
+			type: 'error',
+			html: '<p>' + error + '</p>',
+		});
+	}
+},
+generatePassword: function () {
+	var pwd = this.generarContrasena(9);
+	$('input#pCONTRASENA').val(pwd);
+	$('input[name=pCONTRASENA]').val(pwd);
+},
+guardar: function () {
+	var that = this;
+	that.hideError();
+
+	var sendData = $('form#Usuarios_form').serializeArray();
+	sendData.push({
+		name: csrf.token_name,
+		value: csrf.hash
+	});
+
+	Backbone.ajax({
+		dataType: "json",
+		method: 'POST',
+		url: base_url + 'Usuarios/guardar',
+		data: sendData,
+		beforeSend: function () {
+			that.starLoader();
+		},
+		success: function (response) {
+			if (response.status == true) {
+				$('form').trigger("reset");
+				that.generatePassword();
+				Swal.fire({
+					type: 'success',
+					title: response.message
+				}).then(result => {
+					location.reload();
+				});
+			} else {
+				that.showError(response.message);
+			}
+		},
+		complete: function () {
+			that.stopLoader();
+		}
+	});
+},
+regresar: function () {
+	window.location.replace(base_url + 'Usuarios');
+},
+render: function () {
+	return this;
+}
 });
 var app;
 $(function () {

@@ -1,5 +1,5 @@
 <script src="<?php echo base_url('assets/js/utils/catalogs.js'); ?>"></script>
-<script src="<?php echo base_url('assets/js/views/usuarios/registro.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/views/usuarios/registro.min.js'); ?>"></script>
 <div class="container">
 	<form action="" id="Usuarios_form" name="Usuarios_form" autocomplete="off">
 		<br>
@@ -25,17 +25,20 @@
 			</div>
 			<div class="col-md-4">
 				<span class="clr">*</span>Adscripción
-				<select class="form-control" id="pID_ADSCRIPCION" name="pID_ADSCRIPCION"  >
-				 {adscripcion}
-				 	<option value="{ID_ADSCRIPCION}">{ADSCRIPCION}</option>
-				 {/adscripcion}
-				 </select>
+				<input name="pID_ADSCRIPCION" type="text" class="form-control" id="pID_ADSCRIPCION" readonly />
+				 
 			</div>
 			<div class="col-md-4">
 				<span class="clr">*</span>Contraseña
-				<input readly type="text" class="form-control" id="pCONTRASENA" readonly />
-				<input type="hidden" name="pCONTRASENA" />
+				<div class="input-group mb-3">
+					<input readly type="text" class="form-control" id="pCONTRASENA" readonly value="" />
+					<input type="hidden" name="pCONTRASENA" />
+					<div class="input-group-append">
+						<button onclick="app.generatePassword();" class="btn btn-outline-secondary" type="button">Regenerar contraseña</button>
+					</div>
+				</div>
 			</div>
+
 		</div>
 		<br>
 		<div class="row">
