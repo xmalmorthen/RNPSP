@@ -1,19 +1,16 @@
 var mainFormActions = {
 	populateCURPFields: function (data) {
-		$('[name=pCURP]').val(data.curp);
+		console.log(data);
+		$('[name=pCURP]').val(data.CURP);
 		$('[name=pCURP]').prop('readonly', true);
-		$('[name=pNOMBRE]').val(data.nombre);
+		$('[name=pNOMBRE]').val(data.NOMBRE);
 		$('[name=pNOMBRE]').prop('readonly', true);
-		$('[name=pPATERNO]').val(data.paterno);
+		$('[name=pPATERNO]').val(data.PATERNO);
 		$('[name=pPATERNO]').prop('readonly', true);
-		$('[name=pMATERNO]').val(data.materno);
+		$('[name=pMATERNO]').val(data.MATERNO);
 		$('[name=pMATERNO]').prop('readonly', true);
-		$('[name=pCORREO]').val(data.email);
-		$('[name=pCORREO]').prop('readonly', true);
-		$('[name=pID_JEFE]').val(data.NombreJefe);
+		$('[name=pID_JEFE]').val($.trim(data.NOMBRE_JEFE + data.PATERNO_JEFE + data.MATERNO_JEFE));
 		$('[name=pID_JEFE]').prop('readonly', true);
-		$('[name=pID_ADSCRIPCION]').val(data.DescAdscripcion);
-		$('[name=pID_ADSCRIPCION]').prop('readonly', true);
 	},
 	populateData: function (idRef) {
 		$.LoadingOverlay("show", {

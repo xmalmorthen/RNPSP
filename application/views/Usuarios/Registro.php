@@ -1,5 +1,5 @@
 <script src="<?php echo base_url('assets/js/utils/catalogs.js'); ?>"></script>
-<script src="<?php echo base_url('assets/js/views/usuarios/registro.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/views/usuarios/registro.js'); ?>"></script>
 <div class="container">
 	<form action="" id="Usuarios_form" name="Usuarios_form" autocomplete="off">
 		<br>
@@ -25,8 +25,11 @@
 			</div>
 			<div class="col-md-4">
 				<span class="clr">*</span>Adscripción
-				<input name="pID_ADSCRIPCION" type="text" class="form-control" id="pID_ADSCRIPCION" readonly />
-				 
+				<select id="pID_ADSCRIPCION" name="pID_ADSCRIPCION" class="form-control" >
+					{adscripcion}
+					<option value="{ID_ADSCRIPCION}">{ADSCRIPCION}</option>
+					{/adscripcion}
+				</select>
 			</div>
 			<div class="col-md-4">
 				<span class="clr">*</span>Contraseña

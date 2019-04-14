@@ -74,6 +74,7 @@ class Usuarios extends CI_Controller
       $this->form_validation->set_rules('pCORREO', 'Correo electrónico', 'trim|required|valid_email|is_unique[cat_Usuarios.username]');
       $this->form_validation->set_rules('pCURP', 'CURP', 'trim|required|min_length[18]|max_length[20]|is_unique[cat_Usuarios.CURP]');
       $this->form_validation->set_rules('pCONTRASENA', 'Contraseña', 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']');
+      $this->form_validation->set_rules('pID_ADSCRIPCION', 'Adscripción', 'trim|required');
 
       if ($this->form_validation->run() === true) {
         $email = strtolower($this->input->post('pCORREO'));
@@ -82,10 +83,10 @@ class Usuarios extends CI_Controller
         $tipoUsuario = $this->input->post('pTIPO_USUARIO');
         $additional_data = [
           'CURP' => $this->input->post('pCURP'),
+          'ID_ADSCRIPCION' => $this->input->post('pID_ADSCRIPCION'),
         ];
 
         if ($this->ion_auth->register($identity, $password, $email, $additional_data, array($tipoUsuario))) {
-          Utils::pre($this->db->last_query());
           $response['status'] = true;
           $response['message'] = $this->lang->line('MSJ5');
         } else {
@@ -143,8 +144,18 @@ class Usuarios extends CI_Controller
   }
 
   public function buscarCurp(){
-    $this->load->model('Usuarios_model');
-    $response = $this->Usuarios_model->sp_getDatosNewUsr();
+    
+    $curp = $this->input->post('pCURP',true);
+    $this->db->where('CURP',$curp);
+    $this->db->from('vw_Personas');
+    $query = $this->db->get();
+    $results = $query->row_array();
+
+    $response = array(
+      'status' => ($query->num_rows()>0)? true : false,
+      'data' => $results
+    );
+    
     $this->output
         ->set_status_header(200)
         ->set_content_type('application/json', 'utf-8')
@@ -252,10 +263,9 @@ class Usuarios extends CI_Controller
     $this->load->model('catalogos/CAT_ADSCRIPCIONES_model');
     
     if($user_id != false){
-    $data['user_id'] = $user_id;
-    $data['usuario'] = $this->Usuarios_model->byId($user_id);
+      $data['user_id'] = $user_id;
+      $data['usuario'] = $this->Usuarios_model->byId($user_id);
     }
-    // Utils::pre($data);
     $this->load->view('Usuarios/Ver',$data);
   }
 }
