@@ -18,8 +18,8 @@
                 <td>{pNOMBRE_JEFE} {pPATERNO_JEFE} {pMATERNO_JEFE}</td>
                 <td>{pCalsificacion}</td>
                 <td>{pEstatus}</td>
-                <td><a href="<?php echo site_url('Personal/Ver') ?>"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
-                <td><a href="<?php echo site_url('') ?>"><i class="fa fa-print" aria-hidden="true"></i></a></td>
+                <td><a href="<?php echo site_url('Solicitud/Ver/'); ?>{pidPersona}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                <td><a href="#"><i class="fa fa-print" aria-hidden="true"></i></a></td>
             </tr>
             {/personal}
         </tbody>
