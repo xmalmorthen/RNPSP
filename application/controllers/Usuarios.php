@@ -246,9 +246,6 @@ class Usuarios extends CI_Controller
 
     $this->load->model('Usuarios_model');
     $curp = $this->input->get('curp');
-
-    $this->load->model('Usuarios_model');
-
     $user_id = false;
     if(verificaPermiso(10) == 1){ #Editar usuarios de todas las dependencias	
       $user_id = $this->Usuarios_model->getIdUsuarioByCurp($curp);
@@ -257,14 +254,11 @@ class Usuarios extends CI_Controller
       $this->Usuarios_model->where('ID_ADSCRIPCION',$usuario['ID_ADSCRIPCION']);
       $user_id = $this->Usuarios_model->getIdUsuarioByCurp($curp); 
     }
-
     $data = array();
     $data['user_id'] = $user_id;
     $this->load->model('catalogos/CAT_ADSCRIPCIONES_model');
-    
     if($user_id != false){
-      $data['user_id'] = $user_id;
-      $data['usuario'] = $this->Usuarios_model->byId($user_id);
+      $data['usuario'] = current($this->Usuarios_model->byId($user_id));
     }
     $this->load->view('Usuarios/Ver',$data);
   }
