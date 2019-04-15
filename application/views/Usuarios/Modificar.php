@@ -14,9 +14,6 @@
 				<span class="clr">*</span> CURP
 				<div class="input-group mb-3">
 					<input type="text" class="form-control" name="pCURP" value="<?php echo (isset($usuario))? $usuario['CURP'] : ''; ?>" />
-					<div class="input-group-append">
-						<button onclick="app.buscarCurp();" class="btn btn-outline-secondary" type="button">Buscar</button>
-					</div>
 				</div>
 				<input type="hidden" name="user_id" value="<?php echo $user_id; ?>" />
 				<input type="hidden" name="curp" value="<?php echo (isset($usuario))? $usuario['CURP'] : ''; ?>" />
@@ -38,7 +35,7 @@
 			</div>
 			<div class="col-md-4">
 				<span class="clr">*</span>Adscripción
-				<input type="text" class="form-control"  value="<?php echo (isset($adscripcion))? $adscripcion['ADSCRIPCION'] : ''; ?>" readonly />
+				<input type="text" class="form-control"  value="<?php echo (isset($usuario))? $usuario['ADSCRIPCION'] : ''; ?>" readonly />
 			</div>
 			<div class="col-md-4">
 				<span class="clr">*</span>Contraseña
@@ -60,7 +57,7 @@
 					<option value="{id_EstatusUsuario}">{Nombre}</option>
 					{/estatus}
 				</select>
-				<div id="MotivoInactivo" style="display:<?php echo (isset($usuario) && $usuario['id_EstatusUsuario'] == 2)? 'block':'none'; ?>">
+				<div id="MotivoInactivo" style="display:<?php echo (isset($usuario['id_EstatusUsuario']) && $usuario['id_EstatusUsuario'] == 2)? 'block':'none'; ?>">
 					<hr/>
 					<div class="form-group">
 						<label for="comment"><span class="clr">*</span>Motivo de cambio estatus a Inactivo:</label>
@@ -70,12 +67,12 @@
 			</div>
 			<div class="col-md-4">
 				<span class="clr">*</span>Correo electrónico
-				<input type="email" id="pCORREO" name="pCORREO" class="form-control" value="<?php echo isset($usuario)? $usuario['email'] : ''; ?>" >
+				<input type="email" id="pCORREO" name="pCORREO" class="form-control" value="<?php echo isset($usuario)? $usuario['email'] : ''; ?>" readonly >
 			</div>
-			<!-- <div class="col-md-4">
+			<div class="col-md-4">
 				Jefe inmediato
-				<input type="text" class="form-control" id="pID_JEFE" name="pID_JEFE">
-			</div> -->
+				<input type="text" class="form-control" id="pID_JEFE" name="pID_JEFE" value="<?php echo isset($usuario['NOMBRE_JEFE'])? $usuario['NOMBRE_JEFE'].' '.$usuario['PATERNO_JEFE'].' '.$usuario['MATERNO_JEFE'] : ''; ?>" readonly/>
+			</div>
 		</div>
 		<br>
 		<div class="row">

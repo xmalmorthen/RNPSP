@@ -10,7 +10,6 @@
         <ul class="list-inline float-right mb-0 sessionSection">
             <?php if ($this->session->has_userdata(SESSIONVAR)) {
                 $userData = $this->session->userdata(SESSIONVAR);
-
                 $userName = $userData['PATERNO'] ? $userData['PATERNO'] : '' . ( $userData['MATERNO'] ? $userData['MATERNO'] . ' ' : '') . $userData['NOMBRE'] ? $userData['NOMBRE'] : '';
                 $userName = strlen($userName) == 0 ? $userData['username'] : $userName;
             ?>

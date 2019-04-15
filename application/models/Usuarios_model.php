@@ -21,7 +21,7 @@ class Usuarios_model extends MY_Model
   {
     $returnResponse = array();
     try {
-      $this->db->select("id,NOMBRE,null as CURP,PATERNO,MATERNO,DescEstatus as EstatusUsuario,DescAdscripcion as ADSCRIPCION,CONCAT(NOMBRE_JEFE,' ',PATERNO_JEFE,' ',MATERNO_JEFE) as JEFE", false);
+      $this->db->select("id,NOMBRE,CURP,PATERNO,MATERNO,email,MotivoInactivo,id_EstatusUsuario,DescEstatus as EstatusUsuario,ID_ADSCRIPCION,DescAdscripcion as ADSCRIPCION,CONCAT(NOMBRE_JEFE,' ',PATERNO_JEFE,' ',MATERNO_JEFE) as JEFE", false);
       $this->db->from('vw_Usuarios');
       $returnResponse = $this->response_list();
     } catch (Exception $e) {
@@ -37,7 +37,7 @@ class Usuarios_model extends MY_Model
     $returnResponse = array();
     try {
       
-      $this->where('cat_Usuarios.id', $idUsuario);
+      $this->where('id', $idUsuario);
       $returnResponse = $this->get();
     } catch (Exception $e) {
       Msg_reporting::error_log($e);
@@ -49,9 +49,10 @@ class Usuarios_model extends MY_Model
   {
     $returnResponse = array();
     try {
-      //$this->select('cat_Usuarios.NOMBRE,cat_Usuarios.PATERNO,cat_Usuarios.MATERNO,null AS ADSCRIPCION,null as ID_ADSCRIPCION');
-      $this->select();
-      $this->where('cat_Usuarios.id', $idUsuario);
+      $this->db->select('cat_Usuarios.id,cat_Usuarios.ip_address,cat_Usuarios.username,cat_Usuarios.email,cat_Usuarios.last_login,cat_Usuarios.id_EstatusUsuario,cat_Usuarios.CURP,cat_Usuarios.ID_ADSCRIPCION,vw_Personas.NOMBRE,vw_Personas.PATERNO,vw_Personas.MATERNO');
+      $this->db->from('vw_Personas');
+      $this->db->join('cat_Usuarios','cat_Usuarios.CURP = vw_Personas.CURP','right');
+      $this->db->where('cat_Usuarios.id', $idUsuario);
       $returnResponse = $this->response_row();
     } catch (Exception $e) {
       Msg_reporting::error_log($e);
@@ -70,8 +71,8 @@ class Usuarios_model extends MY_Model
   }
 
   public function getIdUsuarioByCurp($curp){
-    $this->db->select('cat_Usuarios.id')
-      ->from('cat_Usuarios')
+    $this->db->select('id')
+      ->from('vw_Usuarios')
       ->where('CURP', trim($curp));
     $response = $this->response_row();
     return (is_array($response) && count($response) > 0) ? current($response) : $response;
