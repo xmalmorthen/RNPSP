@@ -7,8 +7,8 @@
         function __construct(){
             parent::__construct();
             $this->load->library("FPDF/fpdf");
-
             $this->base = base_url();
+            
         }
 
         //Nomenclaturas:
@@ -174,6 +174,7 @@
         
         }
 
+    
         function aprobacionCursoInicial(){
 
     
@@ -344,7 +345,7 @@
            $pdf->Output();
         
         }
-
+     
         function validacionCursoAprobado(){
 
             $pdf = new FPDF();
@@ -692,7 +693,7 @@
             $pdf->cell(100);
             $pdf->Cell(30,5,'ASUNTO:',0,0,"R");
             $pdf->SetFont('Arial','',10);
-            $pdf->Cell(30,5,utf8_decode(''));
+            $pdf->Cell(30,5,utf8_decode('Se notificará trámite solicitado'));
             $pdf->Ln();
             // $pdf->cell(107);
             // $pdf->Cell(30,5,utf8_decode('Colima, Colima , a 25 de Junio de 2018'));
@@ -819,7 +820,7 @@
             $pdf->cell(100);
             $pdf->Cell(30,5,'ASUNTO:',0,0,"R");
             $pdf->SetFont('Arial','',10);
-            $pdf->Cell(30,5,utf8_decode(''));
+            $pdf->Cell(30,5,utf8_decode('Se notificará trámite solicitado.'));
             $pdf->Ln();
             // $pdf->cell(107);
             // $pdf->Cell(30,5,utf8_decode('Colima, Colima , a 25 de Junio de 2018'));
@@ -957,7 +958,7 @@
             $pdf->cell(100);
             $pdf->Cell(30,5,'ASUNTO:',0,0,"R");
             $pdf->SetFont('Arial','',10);
-            // $pdf->Cell(30,5,utf8_decode('Solicitud de documentación')); Es el asunto
+            $pdf->Cell(30,5,utf8_decode('Se notifica tramite solicitado.')); 
             $pdf->Ln();
             $pdf->cell(128);
             // $pdf->Cell(30,5,utf8_decode('trámite de ingreso al RNPSP')); Parte del asunto
@@ -1086,6 +1087,8 @@
         
            $pdf->Output();
         }
+        
+        // Faltante
 
         function solicitudControlConfianza(){
             $pdf = new FPDF();
@@ -1282,7 +1285,7 @@
     
             $pdf->SetFont('Arial','B',10);
             $pdf->SetXY(20,61);
-            $pdf->Cell(10,10,utf8_decode("")); //Nombre
+            $pdf->Cell(10,10,utf8_decode("Se notifica tramite solicitado.")); //Nombre
     
             $pdf->SetFont('Arial','',10);
             $pdf->SetXY(20,75);
@@ -1360,7 +1363,7 @@
 
 
         }
-
+        // Faltante
         function notificaraTramiteSolicitado(){
 
             $pdf = new FPDF();
@@ -1383,7 +1386,7 @@
             $pdf->cell(100);
             $pdf->Cell(30,5,'ASUNTO:',0,0,"R");
             $pdf->SetFont('Arial','',10);
-            // $pdf->Cell(30,5,utf8_decode('Solicitud de documentación')); Es el asunto
+            $pdf->Cell(30,5,utf8_decode('Se notifica tramite solicitado')); 
             $pdf->Ln();
             $pdf->cell(128);
             // $pdf->Cell(30,5,utf8_decode('trámite de ingreso al RNPSP')); Parte del asunto
@@ -1512,7 +1515,7 @@
         
            $pdf->Output();
         }
-
+        // Faltante
         function Table(){
             $d = new FPDF('L');
             $d->AddPage();
