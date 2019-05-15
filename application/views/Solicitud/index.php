@@ -8,6 +8,7 @@
     <div class="col-md-12 mb-4">
         <button class="btn btn-default btn-lg" id="Nuevo"> Nuevo </button>
     </div>
+	
     <div class="col-md-12">
         <!-- BEGIN TABLE -->
         <table id="tableAdministrarsolicitud" class="d-none table table-striped dt-responsive" style="width:100%">
@@ -54,6 +55,7 @@
         <button class="btn btn-default m-1" id="Replicar">Replicar</button>
     </div>
 </div>
+
 <div class="modal fade" id="imprimir" tabindex="-1" role="dialog" aria-labelledby="Imprimir" aria-hidden="true" data-backdrop="false">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">

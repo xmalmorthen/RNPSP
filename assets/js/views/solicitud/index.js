@@ -101,7 +101,7 @@ var objViewIndex = {
                     // $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
                     $.each( objViewIndex.vars.objs.itemsCheckeds, function( key, value ) {
-                        debugger;
+                        $(value).data().idreg
                     });
 
                     var model = form.serialize();

@@ -98,7 +98,7 @@
 			$this->session->set_flashdata('isSerializedFORM',''); //Destroy isSerializedFORM flashdata 
 		?>
 </head>
-	<body class="adminbody">
+	<body class="adminbody">	
 		<noscript><meta http-equiv="refresh" content="0;url=<?php echo site_url('Error/noScript') ?>"></noscript>
 		<div id="main" class="animated fadeIn faster">
 			<!-- HEADER -->
