@@ -62,7 +62,7 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="imprimirLabel">Ingresar imprimir para oficio</h5>
+				<h5 class="modal-title" id="imprimirLabel">Ingresar datos para oficio</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 				</button>
@@ -75,7 +75,7 @@
 							Número de folio
 						</div>
 						<div class="col-md-6">
-							<input id='noFolio' name='noFolio' type="text" class="form-control" required>
+							<input id='noFolio' name='noFolio' type="text" class="form-control" maxlength="20"  required>
 						</div>
 					</div>
 					<br>	
@@ -84,7 +84,7 @@
 							Nombre del encargado del despacho del secretariado ejecutivo del SESESP
 						</div>
 						<div class="col-md-6">
-							<input id='encargadoDespacho' name='encargadoDespacho' type="text" class="form-control" required>
+							<input id='encargadoDespacho' name='encargadoDespacho' type="text" class="form-control" maxlength="60"  required>
 						</div>
 					</div>
 					<br>
@@ -93,7 +93,7 @@
 							Subcoordinador de sistemas de información SESESP
 						</div>
 						<div class="col-md-6">
-							<input id='subcoordinador' name='subcoordinador' type="text" class="form-control" required>
+							<input id='subcoordinador' name='subcoordinador' type="text" class="form-control" maxlength="60"  required>
 						</div>
 					</div>
 					<br>
@@ -102,7 +102,7 @@
 							Nombre de quien emite el oficio
 						</div>
 						<div class="col-md-6">
-							<input id='nombreEmisor' name='nombreEmisor' type="text" class="form-control" required>
+							<input id='nombreEmisor' name='nombreEmisor' type="text" class="form-control" maxlength="60"  required>
 						</div>
 					</div>
 					<br>
@@ -111,7 +111,7 @@
 							Cargo de quien emite el oficio
 						</div>
 						<div class="col-md-6">
-							<input id='cargoEmisor' name='cargoEmisor' type="text" class="form-control" required>
+							<input id='cargoEmisor' name='cargoEmisor' type="text" class="form-control" maxlength="60"  required>
 						</div>
 					</div>
 					<br>
