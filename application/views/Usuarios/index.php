@@ -49,7 +49,6 @@
                         </div>
                         <div class="row">
                         <div class="col-md-4">
-                                
                                 <button type="button" onclick="app.nuevoUsuario()" class="btn btn-default" id="Nuevo" >Nuevo</button>
                             </div>
                         </div>
@@ -61,6 +60,7 @@
             </div>
         </div>
     </div>
+    
 </div>
 <!-- JS -->
 <script src="<?php echo base_url("assets/vendor/datatable/jquery.dataTables.min.js"); ?>"></script>

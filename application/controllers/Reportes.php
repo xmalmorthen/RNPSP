@@ -8,7 +8,9 @@
             parent::__construct();
             $this->load->library("FPDF/fpdf");
             $this->base = base_url();
+
             
+
         }
 
         //Nomenclaturas:
