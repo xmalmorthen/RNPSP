@@ -66,6 +66,12 @@
 				</button>
 			</div>
 			<div class="modal-body">
+				<div class="alert alert-danger alert-dismissible fade show" role="alert">
+					<strong>Holy guacamole!</strong> You should check in on some of those fields below.
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
 				<form action="#" id="formImprimir" name="formImprimir" autocomplete="off">
 					<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
 					<div class="row">

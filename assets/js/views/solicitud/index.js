@@ -92,6 +92,8 @@ var objViewIndex = {
                 //TODO: Xmal -  Implementar la replicación
             },
             aceptarFrmImprimir : function(e){
+                e.preventDefault();
+
                 var form = $('#formImprimir');
                 try {
                     //VALID FORM
@@ -100,29 +102,36 @@ var objViewIndex = {
 
                     // $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
+                    var ids = []
                     $.each( objViewIndex.vars.objs.itemsCheckeds, function( key, value ) {
-                        $(value).data().idreg
+                        ids.push($(value).data().idreg);
                     });
 
                     var model = form.serialize();
-                    model += '&pID_ALTERNA=' + mainTabMenu.var.pID_ALTERNA;
+                    model += '&ids=' + ids.join(',');
                     model = {model : model};
                     model[csrf.token_name] = csrf.hash;                    
                     
+                    debugger;
 
-                    // var callUrl = base_url + 'Solicitud/ajaxSaveDatosGeneralesGenerarCIB';
+                    var callUrl = base_url + 'Solicitud/ajaxImprimirSolicitudes';
 
-                    // $.post(callUrl,model,
-                    // function (data) {  
-                    //     objViewDatosGenerales.actions.ajax.callResponseValidations(form,data, from, tabRef, true, function(data){
-                    //         console.log(data);
-                    //         $.LoadingOverlay("hide");
-                    //     });
-                    // }).fail(function (err) {
-                    //     objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                            
-                    // }).always(function () {
-                    //     MyCookie.session.reset();
-                    // });
+                    $.post(callUrl,model,
+                    function (data) {  
+                        
+                        $.LoadingOverlay("hide");
+
+                    }).fail(function (err) {
+                        
+                        
+                        //objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);
+                        $.LoadingOverlay("hide");
+
+                    }).always(function () {
+
+                        MyCookie.session.reset();
+
+                    });
 
                 }catch(err) {
                     $.LoadingOverlay("hide");
