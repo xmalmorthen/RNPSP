@@ -79,6 +79,7 @@ var objViewIndex = {
                 .on('hidden.bs.modal', function (e) {
                     
                     $('#formImprimir').trigger("reset");
+                    $('#frmAlert').addClass('d-none');
 
                 })
                 .modal('show');
@@ -100,7 +101,7 @@ var objViewIndex = {
                     if (!form.valid())
                         throw new Error("Formulario incompleto");
 
-                    // $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+                    $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
                     var ids = []
                     $.each( objViewIndex.vars.objs.itemsCheckeds, function( key, value ) {
@@ -112,19 +113,27 @@ var objViewIndex = {
                     model = {model : model};
                     model[csrf.token_name] = csrf.hash;                    
                     
-                    debugger;
 
                     var callUrl = base_url + 'Solicitud/ajaxImprimirSolicitudes';
 
                     $.post(callUrl,model,
                     function (data) {  
                         
+                        if (!data) 
+                            throw new Error("Respuesta inesperada, favor de intentarlo de nuevo.");
+                        if (!data.results.status) 
+                            throw new Error(data.results.message);
+                        
+                        objViewIndex.vars.checkbox.checkAll.trigger('click');
+
+                        $('#imprimir').modal('hide');
+
                         $.LoadingOverlay("hide");
 
                     }).fail(function (err) {
                         
-                        
-                        //objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);
+                        $('#frmAlertMsg').html(err.message ? err.message : err.statusText);
+                        $('#frmAlert').removeClass('d-none');
                         $.LoadingOverlay("hide");
 
                     }).always(function () {
@@ -134,8 +143,11 @@ var objViewIndex = {
                     });
 
                 }catch(err) {
+
+                    $('#frmAlertMsg').html(err.message ? err.message : err.statusText);
+                    $('#frmAlert').removeClass('d-none');
                     $.LoadingOverlay("hide");
-                    //objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);
+
                 }
                 
             }

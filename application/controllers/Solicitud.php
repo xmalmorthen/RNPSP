@@ -1948,11 +1948,17 @@
 
 				$model = [];
 				parse_str($_POST["model"], $model);
-				$this->load->model('SOLICITUD_model');
-
-				die(var_dump($model));
+				$this->load->model('SOLICITUD_model');								
 
 				// $responseModel = $this->SOLICITUD_model->sp_B1_addAdscripcion($model);
+
+				// TODO: Xmal - quitar al implementar
+				$responseModel = [
+					'status' => true,
+					'message'=> '',
+					'data'=> null
+				];
+
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
