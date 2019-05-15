@@ -14,8 +14,6 @@
         //Nomenclaturas:
         // CyC: Control y confianza
        
-
-        
         function validarCyC_AprobadosVigentes(){
             
            
@@ -1603,8 +1601,3 @@
 
 
     }
-
-
-
-
-?>
