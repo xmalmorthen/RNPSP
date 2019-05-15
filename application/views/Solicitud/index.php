@@ -48,6 +48,8 @@
         </table>
         <!-- END TABLE -->
     </div>
+
+
 </div>
 <div class="row pull-right mt-2">
     <div class="col-md-12">
@@ -55,6 +57,76 @@
         <button class="btn btn-default m-1" id="Replicar">Replicar</button>
     </div>
 </div>
+
+
+<div class="modal fade" id="imprimir" tabindex="-1" role="dialog" aria-labelledby="Imprimir" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="imprimirLabel">Ingresar imprimir para oficio</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-6">
+							Número de folio
+						</div>
+						<div class="col-md-6">
+							<input type="text" class="form-control" maxlength="20" >
+						</div>
+					</div>
+					<br>	
+					<div class="row">
+						<div class="col-md-6">
+							Nombre del encargado del despacho del secretariado ejecutivo del SESESP
+						</div>
+						<div class="col-md-6">
+							<input type="text" class="form-control" maxlength="60" >
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-md-6">
+							Subcoordinador de sistemas de información SESESP
+						</div>
+						<div class="col-md-6">
+							<input type="text" class="form-control" maxlength="60" >
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-md-6">
+							Nombre de quien emite el oficio
+						</div>
+						<div class="col-md-6">
+							<input type="text" class="form-control" maxlength="60" >
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-md-6">
+							Cargo de quien emite el oficio
+						</div>
+						<div class="col-md-6">
+							<input type="text" class="form-control" maxlength="60" >
+						</div>
+					</div>
+					<br>
+					<div class="row">	
+						<div class="col-md-4">
+							<button class="btn btn-light" id="Aceptar" data-dismiss="modal">Aceptar</button>
+						</div>
+					</div>
+					<br>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
 
 <!-- JS -->
 <script src="<?php echo base_url("assets/vendor/datatable/jquery.dataTables.min.js"); ?>"></script>
