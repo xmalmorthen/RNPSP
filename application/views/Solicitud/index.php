@@ -53,28 +53,29 @@
 </div>
 <div class="row pull-right mt-2">
     <div class="col-md-12">
-        <button class="btn btn-default m-1" id="Imprimir" data-toggle="modal" data-target="#imprimir">Imprimir</button>
+        <button class="btn btn-default m-1" id="Imprimir">Imprimir</button>
         <button class="btn btn-default m-1" id="Replicar">Replicar</button>
     </div>
 </div>
 
-
-<div class="modal fade" id="imprimir" tabindex="-1" role="dialog" aria-labelledby="Imprimir" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="imprimirLabel">Ingresar imprimir para oficio</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
+<div class="modal fade" id="imprimir" tabindex="-1" role="dialog" aria-labelledby="Imprimir" aria-hidden="true" data-backdrop="false">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="imprimirLabel">Ingresar imprimir para oficio</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form action="#" id="formImprimir" name="formImprimir" autocomplete="off">
+					<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
 					<div class="row">
 						<div class="col-md-6">
 							Número de folio
 						</div>
 						<div class="col-md-6">
-							<input type="text" class="form-control" maxlength="20" >
+							<input id='noFolio' name='noFolio' type="text" class="form-control" required>
 						</div>
 					</div>
 					<br>	
@@ -83,7 +84,7 @@
 							Nombre del encargado del despacho del secretariado ejecutivo del SESESP
 						</div>
 						<div class="col-md-6">
-							<input type="text" class="form-control" maxlength="60" >
+							<input id='encargadoDespacho' name='encargadoDespacho' type="text" class="form-control" required>
 						</div>
 					</div>
 					<br>
@@ -92,7 +93,7 @@
 							Subcoordinador de sistemas de información SESESP
 						</div>
 						<div class="col-md-6">
-							<input type="text" class="form-control" maxlength="60" >
+							<input id='subcoordinador' name='subcoordinador' type="text" class="form-control" required>
 						</div>
 					</div>
 					<br>
@@ -101,7 +102,7 @@
 							Nombre de quien emite el oficio
 						</div>
 						<div class="col-md-6">
-							<input type="text" class="form-control" maxlength="60" >
+							<input id='nombreEmisor' name='nombreEmisor' type="text" class="form-control" required>
 						</div>
 					</div>
 					<br>
@@ -110,24 +111,17 @@
 							Cargo de quien emite el oficio
 						</div>
 						<div class="col-md-6">
-							<input type="text" class="form-control" maxlength="60" >
+							<input id='cargoEmisor' name='cargoEmisor' type="text" class="form-control" required>
 						</div>
 					</div>
 					<br>
-					<div class="row">	
-						<div class="col-md-4">
-							<button class="btn btn-light" id="Aceptar" data-dismiss="modal">Aceptar</button>
-						</div>
-					</div>
-					<br>
-				</div>
+					<button class="btn btn-light" id="aceptarFrmImprimir">Aceptar</button>
+					<button class="btn btn-light" id="cancelarFrmImprimir" data-dismiss="modal">Cancelar</button>				
+				</form>
 			</div>
 		</div>
 	</div>
-
-
-
-
+</div>
 <!-- JS -->
 <script src="<?php echo base_url("assets/vendor/datatable/jquery.dataTables.min.js"); ?>"></script>
 <script src="<?php echo base_url("assets/vendor/datatable/dataTables.bootstrap4.min.js"); ?>"></script>
