@@ -68,17 +68,20 @@ var objViewIndex = {
                 if (!objViewIndex.actions.validSelectedsCheck())
                     return null;
                 
-                //TODO: Xmal -  Implementar la impresión
                 $('#imprimir')
                 .on('shown.bs.modal', function (e) {
 
                     $('#aceptarFrmImprimir').on('click',objViewIndex.events.click.aceptarFrmImprimir);
-                    $('#noFolio').focus();
+                    try {
+                        $('#noFolio').focus();
+                    } catch (error) {}
 
                 })
                 .on('hidden.bs.modal', function (e) {
                     
-                    $('#formImprimir').trigger("reset");
+                    $("#formImprimir").validate().resetForm();
+
+                    $("#formImprimir")[0].reset();
                     $('#frmAlert').addClass('d-none');
 
                 })

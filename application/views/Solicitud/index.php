@@ -79,7 +79,7 @@
 							Número de folio
 						</div>
 						<div class="col-md-6">
-							<input id='noFolio' name='noFolio' type="text" class="form-control" maxlength="20"  required>
+							<input id='noFolio' name='noFolio' type="text" class="form-control" maxlength="20" required>
 						</div>
 					</div>
 					<br>	
@@ -118,7 +118,17 @@
 							<input id='cargoEmisor' name='cargoEmisor' type="text" class="form-control" maxlength="60"  required>
 						</div>
 					</div>
-					<br>
+					<hr>
+					Tipo de reporte
+					<select class="form-control" id="tipoFormato" name="tipoFormato" data-error="#err_tipoFormato" required>
+                        <option disabled selected value>Seleccione una opción</option>
+                        <option value="AE">Alta de Elementos</option>
+                        <option value="AA">Alta de Aspirantes</option>
+						<option value="AC">Aprobacion de Curso Inicial</option>
+						<option value="VE">Vigencia de Examen de CC</option>
+                    </select>
+                    <span id="err_tipoFormato"></span>
+					<hr>
 					<button class="btn btn-light" id="aceptarFrmImprimir">Aceptar</button>
 					<button class="btn btn-light" id="cancelarFrmImprimir" data-dismiss="modal">Cancelar</button>				
 				</form>
