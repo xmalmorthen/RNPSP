@@ -50,7 +50,7 @@
 </div>
 <div class="row pull-right mt-2">
     <div class="col-md-12">
-        <button class="btn btn-default m-1" id="Imprimir" data-toggle="modal" data-target="#imprimir">Imprimir</button>
+        <button class="btn btn-default m-1" id="Imprimir">Imprimir</button>
         <button class="btn btn-default m-1" id="Replicar">Replicar</button>
     </div>
 </div>
@@ -64,57 +64,56 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<div class="row">
-					<div class="col-md-6">
-						Número de folio
+				<form action="#" id="formImprimir" name="formImprimir" autocomplete="off">
+					<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+					<div class="row">
+						<div class="col-md-6">
+							Número de folio
+						</div>
+						<div class="col-md-6">
+							<input id='noFolio' name='noFolio' type="text" class="form-control" required>
+						</div>
 					</div>
-					<div class="col-md-6">
-						<input type="text" class="form-control">
+					<br>	
+					<div class="row">
+						<div class="col-md-6">
+							Nombre del encargado del despacho del secretariado ejecutivo del SESESP
+						</div>
+						<div class="col-md-6">
+							<input id='encargadoDespacho' name='encargadoDespacho' type="text" class="form-control" required>
+						</div>
 					</div>
-				</div>
-				<br>	
-				<div class="row">
-					<div class="col-md-6">
-						Nombre del encargado del despacho del secretariado ejecutivo del SESESP
+					<br>
+					<div class="row">
+						<div class="col-md-6">
+							Subcoordinador de sistemas de información SESESP
+						</div>
+						<div class="col-md-6">
+							<input id='subcoordinador' name='subcoordinador' type="text" class="form-control" required>
+						</div>
 					</div>
-					<div class="col-md-6">
-						<input type="text" class="form-control">
+					<br>
+					<div class="row">
+						<div class="col-md-6">
+							Nombre de quien emite el oficio
+						</div>
+						<div class="col-md-6">
+							<input id='nombreEmisor' name='nombreEmisor' type="text" class="form-control" required>
+						</div>
 					</div>
-				</div>
-				<br>
-				<div class="row">
-					<div class="col-md-6">
-						Subcoordinador de sistemas de información SESESP
+					<br>
+					<div class="row">
+						<div class="col-md-6">
+							Cargo de quien emite el oficio
+						</div>
+						<div class="col-md-6">
+							<input id='cargoEmisor' name='cargoEmisor' type="text" class="form-control" required>
+						</div>
 					</div>
-					<div class="col-md-6">
-						<input type="text" class="form-control">
-					</div>
-				</div>
-				<br>
-				<div class="row">
-					<div class="col-md-6">
-						Nombre de quien emite el oficio
-					</div>
-					<div class="col-md-6">
-						<input type="text" class="form-control">
-					</div>
-				</div>
-				<br>
-				<div class="row">
-					<div class="col-md-6">
-						Cargo de quien emite el oficio
-					</div>
-					<div class="col-md-6">
-						<input type="text" class="form-control">
-					</div>
-				</div>
-				<br>
-				<div class="row">	
-					<div class="col-md-4">
-						<button class="btn btn-light" id="Aceptar" data-dismiss="modal">Aceptar</button>
-					</div>
-				</div>
-				<br>
+					<br>
+					<button class="btn btn-light" id="aceptarFrmImprimir">Aceptar</button>
+					<button class="btn btn-light" id="cancelarFrmImprimir" data-dismiss="modal">Cancelar</button>				
+				</form>
 			</div>
 		</div>
 	</div>
