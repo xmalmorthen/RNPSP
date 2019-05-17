@@ -3,7 +3,6 @@
 <link rel="stylesheet" href="<?php echo base_url("assets/vendor/datatable/responsive.bootstrap4.min.css"); ?>">
 
 <!-- /CSS -->
-
 <div class="row bodyVew">
     <div class="col-md-12 mb-4">
         <button class="btn btn-default btn-lg" id="Nuevo"> Nuevo </button>
@@ -121,11 +120,14 @@
 					<hr>
 					Tipo de reporte
 					<select class="form-control" id="tipoFormato" name="tipoFormato" data-error="#err_tipoFormato" required>
-                        <option disabled selected value>Seleccione una opción</option>
+						<option disabled selected value>Seleccione una opción</option>
+						<?php if(verificaPermiso(32) == true){ ?> <!-- solo c4 en los permisos esta definido como C4 como la adscripcion 5 EN la tabla CA_ADSCRIPCIONPERMISOS, EL LISTADO DE ADSCRIPCIONES ESTAN EN "CAT_ADSCRIPCIONES" -->
                         <option value="AE">Alta de Elementos</option>
-                        <option value="AA">Alta de Aspirantes</option>
+						<option value="AA">Alta de Aspirantes</option>
+						<?php } else { ?>
 						<option value="AC">Aprobacion de Curso Inicial</option>
 						<option value="VE">Vigencia de Examen de CC</option>
+						<?php } ?>
                     </select>
                     <span id="err_tipoFormato"></span>
 					<hr>
