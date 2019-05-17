@@ -1934,45 +1934,6 @@
 			exit;
 		}
 
-		public function ajaxImprimirSolicitudes(){
-			if (! $this->input->is_ajax_request()) {
-				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
-			}
-
-			$responseModel = [
-				'status' => false,
-				'message'=> '',
-				'data'=> null
-			];
-
-			try {
-				if (!$this->input->post())
-					throw new rulesException('Petición inválida');
-
-				$model = [];
-				parse_str($_POST["model"], $model);
-				$this->load->model('SOLICITUD_model');								
-
-				// $responseModel = $this->SOLICITUD_model->sp_B1_addAdscripcion($model);
-
-				// TODO: Xmal - quitar al implementar
-				$responseModel = [
-					'status' => true,
-					'message'=> '',
-					'data'=> null
-				];
-
-			} 
-			catch (rulesException $e){	
-				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-			}
-			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
-			}
-			
-			header('Content-type: application/json');
-			echo json_encode( [ 'results' => $responseModel ] );
-			exit;
-		}			
+				
 		
 }	

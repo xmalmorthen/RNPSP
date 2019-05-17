@@ -9,7 +9,7 @@ class Override {
 
         $cnfg = (object)json_decode(CNFG);
 
-        $superMainModel = [            
+        $superMainModel = [
             "title" => $cnfg->general->title,
             "css"   => '',
             "body"  => $out,

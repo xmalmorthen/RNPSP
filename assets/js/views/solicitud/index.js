@@ -114,36 +114,72 @@ var objViewIndex = {
                     var model = form.serialize();
                     model += '&ids=' + ids.join(',');
                     model = {model : model};
-                    model[csrf.token_name] = csrf.hash;                    
+                    model[csrf.token_name] = csrf.hash;
                     
+                    debugger;
 
-                    var callUrl = base_url + 'Solicitud/ajaxImprimirSolicitudes';
+                    var callUrl = base_url + 'Reportes/ajaxImprimirSolicitudes?' + model.model;
+                    var link = document.createElement('a');
+                    link.target = "_blank";
+                    link.href = callUrl;
+                    // link.download = 'Reporte';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
 
-                    $.post(callUrl,model,
-                    function (data) {  
+
+
+                    // $.post(callUrl,model,{responseType: 'arraybuffer'})
+                    // .success( function (data, status, request) {  
                         
-                        if (!data) 
-                            throw new Error("Respuesta inesperada, favor de intentarlo de nuevo.");
-                        if (!data.results.status) 
-                            throw new Error(data.results.message);
+                    //     try {
+                            
+                    //         if (!data) 
+                    //             throw new Error("Respuesta inesperada, favor de intentarlo de nuevo.");
+                            
+                    //         if (request.getResponseHeader('content-type') === 'application/pdf') {
+                    //             var blob = new Blob([data], { type: 'application/pdf' });
+                    //             var link = document.createElement('a');
+                    //             // link.target = "_blank";
+                    //             link.href = window.URL.createObjectURL(blob);
+                    //             link.download = 'Reporte';
+                    //             document.body.appendChild(link);
+                    //             link.click();
+                    //             document.body.removeChild(link);
+
+                    //             objViewIndex.vars.checkbox.checkAll.trigger('click');
+
+                    //             $('#imprimir').modal('hide');
+                    //         } else {
+                    //             try {
+                    //                 if (!data.results.status) 
+                    //                     throw new Error(data.results.message);    
+                    //             } catch (error) {
+                    //                 throw new Error("Respuesta inesperada, favor de intentarlo de nuevo.");
+                    //             }
+                    //         }
                         
-                        objViewIndex.vars.checkbox.checkAll.trigger('click');
+                    //     } catch (err) {
+                    //         $('#frmAlertMsg').html(err.message ? err.message : err.statusText);
+                    //         $('#frmAlert').removeClass('d-none');
+                    //         $.LoadingOverlay("hide");
+                    //     }
 
-                        $('#imprimir').modal('hide');
+                    //     $.LoadingOverlay("hide");
 
-                        $.LoadingOverlay("hide");
-
-                    }).fail(function (err) {
+                    // })
+                    // .fail(function (err) {
                         
-                        $('#frmAlertMsg').html(err.message ? err.message : err.statusText);
-                        $('#frmAlert').removeClass('d-none');
-                        $.LoadingOverlay("hide");
+                    //     $('#frmAlertMsg').html(err.message ? err.message : err.statusText);
+                    //     $('#frmAlert').removeClass('d-none');
+                    //     $.LoadingOverlay("hide");
 
-                    }).always(function () {
+                    // })
+                    // .always(function () {
 
-                        MyCookie.session.reset();
+                    //     MyCookie.session.reset();
 
-                    });
+                    // });
 
                 }catch(err) {
 
