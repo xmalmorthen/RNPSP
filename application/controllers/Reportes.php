@@ -7,17 +7,11 @@
         function __construct(){
             parent::__construct();
             $this->load->library("FPDF/fpdf");
-            $this->base = base_url();
-
-            $this->session->set_flashdata('noLayout',TRUE);
+            $this->base = base_url();            
         }
 
         // XMAL //
         public function ajaxImprimirSolicitudes(){
-			if (! $this->input->is_ajax_request()) {
-				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
-			}
-
 			$responseModel = [
 				'status' => false,
 				'message'=> '',
@@ -25,47 +19,69 @@
 			];
 
 			try {
-				if (!$this->input->get())
+                if (!$this->input->post())
 					throw new rulesException('Petición inválida');
 
-				$model = $_GET;
-				
-                $data = null;
-                switch ($model['tipoFormato']) {
-                    case 'AE':
-                        $this->altaElemento($model);
-                        break;
-                    case 'AA':
-                        $this->altaAspirantesactivos($model);
-                        break;
-                    case 'AC':
-                        # code...
-                        break;
-                    case 'VE':
-                        break;
-                    default:
-                        throw new rulesException('Formato de oficio incorrecto');
-                        break;
-                }
-				                
+                $model = [];
+                if ($_POST["model"])
+				    parse_str($_POST["model"], $model);
+                else
+                    $model = $_POST;
+
+                $model['ID_ADSCRIPCION'] = $this->session->userdata(SESSIONVAR)['ID_ADSCRIPCION'];
+                if (! $model['ID_ADSCRIPCION'])
+                    throw new rulesException('Adscripción no estalecida');
+
+                $this->load->model('REPORTES_model');
+                $responseModel = $this->REPORTES_model->altaElemento($model);
+
+                if ($responseModel['status'] == 1) {
+
+                    if ($model['valida'] == "false"){
+                    
+                        $model['data']= $responseModel;
+                        
+                        switch ($model['tipoFormato']) {
+                            case 'AE':
+                                $this->altaElemento($model);
+                                exit;
+                                break;
+                            case 'AA':
+                                $this->altaAspirantesactivos($model);                                
+                                exit;
+                                break;
+                            case 'AC':
+                                # code...
+                                break;
+                            case 'VE':
+                                break;
+                            default:
+                                throw new rulesException('Formato de oficio incorrecto');
+                                break;
+                        }
+
+                    }
+
+                } else {
+                    throw new rulesException($responseModel['message']);
+                }			                
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+                header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
 			}
-			
+            
             header('Content-type: application/json');
-            echo json_encode( [ 'results' => $responseModel ] );
+			echo json_encode( [ 'results' => $responseModel ] );
 			exit;
 		}
 
         //REPORTES IMPLEMENTADOS
         function altaElemento($model = null){
-
-            // $this->load->model('SOLICITUD_model');
-            // $responseModel = $this->SOLICITUD_model->sp_B1_addAdscripcion($model);
+            
+            ob_start();
 
             $pdf = new FPDF();
             $pdf->AddPage();
@@ -214,10 +230,12 @@
             $pdf->Cell(60);
             $pdf->Cell(30,5,utf8_decode('https://www.secretariadoejecutivosesp.col.gob.mx'));
         
-            $pdf->Output();
+            $pdf->Output(null, 'ReporteAltaElemento-' . time() . '.pdf');
         }
 
         function altaAspirantesactivos($model){
+            ob_start();
+            
             $pdf = new FPDF();
             $pdf->AddPage();
         
@@ -376,9 +394,7 @@
             $pdf->Cell(69);
             $pdf->Cell(30,4,utf8_decode('https://www.secretariadoejecutivosesp.col.gob.mx'));
         
-        
-            return $pdf->Output();
-        
+            return $pdf->Output(null,'Alta_Aspitante_' . time() . '.pdf');
         }
 
         //REPORTES NO IMPLEMENTADOS

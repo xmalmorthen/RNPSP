@@ -8,9 +8,6 @@
         }
 
 		public function index(){
-
-			// die(var_dump($this->session->userdata(SESSIONVAR)));
-			
 			// BREADCRUMB
 			$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');
 			$this->breadcrumbs->push('[ Solicitudes ]', site_url('Solicitud'));
@@ -23,6 +20,7 @@
 			$solicitudesList = $this->SOLICITUD_model->get();
 			$model = [];
 			$items = [];
+
 			if(is_array($solicitudesList)){
 				foreach ($solicitudesList as $value) {
 					$item = array(
