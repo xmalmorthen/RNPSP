@@ -156,7 +156,7 @@ $(document).ready(function () {
                 error.insertAfter(element);
             }
         }
-    });    
+    });   
 
     $('[data-toggle="tooltip"]').tooltip();
 

@@ -3,7 +3,6 @@
 <link rel="stylesheet" href="<?php echo base_url("assets/vendor/datatable/responsive.bootstrap4.min.css"); ?>">
 
 <!-- /CSS -->
-
 <div class="row bodyVew">
     <div class="col-md-12 mb-4">
         <button class="btn btn-default btn-lg" id="Nuevo"> Nuevo </button>
@@ -40,7 +39,7 @@
                         <td>
                             <a class='m-2' href="<?php echo site_url("Solicitud/Ver/{$value['options']['id']}") ?>" title='Ver'><i class="fa fa-eye fa-2x"></i></a>
                             <a class='m-2' href="<?php echo site_url("Solicitud/Modificar/{$value['options']['id']}") ?>" title='Modificar'><i class="fa fa-pencil-square-o fa-2x"></i></a>
-                            <a class='m-2' href="<?php echo site_url("Solicitud/Eliminar/{$value['options']['id']}") ?>" title='Eliminar'><i class="fa fa-trash fa-2x"></i></a>
+                            <a class='m-2' href="#"  name='eliminarSolicitud' data-id="<?php echo $value['options']['id'] ?>" title='Eliminar'><i class="fa fa-trash fa-2x"></i></a>
                         </td>
                     </tr>
                 <?php } ?>
@@ -68,6 +67,10 @@
 				</button>
 			</div>
 			<div class="modal-body">
+				<div id='frmAlert' class="alert alert-danger alert-dismissible fade show d-none" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<span id='frmAlertMsg'></span>
+				</div>
 				<form action="#" id="formImprimir" name="formImprimir" autocomplete="off">
 					<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
 					<div class="row">
@@ -75,7 +78,7 @@
 							Número de folio
 						</div>
 						<div class="col-md-6">
-							<input id='noFolio' name='noFolio' type="text" class="form-control" maxlength="20"  required>
+							<input id='noFolio' name='noFolio' type="text" class="form-control" maxlength="20" required>
 						</div>
 					</div>
 					<br>	
@@ -114,7 +117,20 @@
 							<input id='cargoEmisor' name='cargoEmisor' type="text" class="form-control" maxlength="60"  required>
 						</div>
 					</div>
-					<br>
+					<hr>
+					Tipo de reporte
+					<select class="form-control" id="tipoFormato" name="tipoFormato" data-error="#err_tipoFormato" required>
+						<option disabled selected value>Seleccione una opción</option>
+						<?php if(verificaPermiso(32) == true){ ?> <!-- solo c4 en los permisos esta definido como C4 como la adscripcion 5 EN la tabla CA_ADSCRIPCIONPERMISOS, EL LISTADO DE ADSCRIPCIONES ESTAN EN "CAT_ADSCRIPCIONES" -->
+                        <option value="AE">Alta de Elementos</option>
+						<option value="AA">Alta de Aspirantes</option>
+						<?php } else { ?>
+						<option value="AC">Aprobacion de Curso Inicial</option>
+						<option value="VE">Vigencia de Examen de CC</option>
+						<?php } ?>
+                    </select>
+                    <span id="err_tipoFormato"></span>
+					<hr>
 					<button class="btn btn-light" id="aceptarFrmImprimir">Aceptar</button>
 					<button class="btn btn-light" id="cancelarFrmImprimir" data-dismiss="modal">Cancelar</button>				
 				</form>

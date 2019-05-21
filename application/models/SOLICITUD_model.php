@@ -16,8 +16,42 @@ class SOLICITUD_model extends MY_Model
   }
 
   public function get(){
-    $this->select('FOLIO,NOMBRE,PATERNO,MATERNO,FECHA_REGISTRO,TIPO_OPERACION,DESCRIPCION,ESTATUS,DESCRIPCION_ESTATUS');
+    $this->select('FOLIO,NOMBRE,PATERNO,MATERNO,FECHA_REGISTRO,TIPO_OPERACION,DESCRIPCION,ESTATUS,DESCRIPCION_ESTATUS,ID_DEPENDENCIA,NOMBRE_DPCIA');
+    //$this->where('ID_DEPENDENCIA', $this->session->userdata(SESSIONVAR)['ID_ADSCRIPCION']);
     return $this->response_list();
+  }
+
+  public function eliminarSolicitud($model){
+
+    // $model['id'];
+    // $model['motivo'];
+
+    throw new Exception('Método no implementado');
+
+    // $this->procedure('sp_validaCURP');
+    // $this->addParam('pCURP',$CURP,'N',array('name'=>'CURP','rule'=>'trim|required|min_length[16]|max_length[20]'));
+    // $this->iniParam('tranEstatus','int');
+    // $this->iniParam('msg','varchar','80');
+    // $response = (array)$this->query_multi($this->build_query());
+
+    // if($response === FALSE){
+    //   $this->response['status'] = 0;
+    //   $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    // }else{
+    //   if(count($response) > 0){
+    //     $responseSelect = current($response);
+    //     $responseOutput = end($response);
+
+    //     $this->response['status'] = $responseOutput['tranEstatus'];
+    //     $this->response['message'] = $responseOutput['msg'];
+    //     $this->response['data'] = $this->try_result($responseSelect);
+    //   }else{
+    //     $responseOutput = current($response);
+    //     $this->response['status'] = $responseOutput['tranEstatus'];
+    //     $this->response['message'] = $responseOutput['msg'];
+    //   }
+    // }
+    // return $this->response;
   }
 
   /*
@@ -52,7 +86,7 @@ class SOLICITUD_model extends MY_Model
     }
     return $this->response;
   }
-
+  
   /*
   * "Opcion Nueva Solicitud - Boton Gurdar CIB sp_B1_addPersonaCIB - Agraga un nuevo CIB a una persona"
   */

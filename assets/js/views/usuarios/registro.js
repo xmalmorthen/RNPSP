@@ -123,7 +123,7 @@ var _app = Backbone.View.extend({
 									});
 							}).then(function (data) {
 								if(data.status == false){
-									throw new Error('No se encontro la CURP en el sistema.');		
+									throw new Error('No se encontró la CURP en el sistema.');		
 								}
 								return { data: data.data};
 							}).catch(function(err){
