@@ -10,7 +10,8 @@ var objViewIndex = {
         btns : {
             Nuevo : null,
             Imprimir : null,
-            Replicar : null
+            Replicar : null,
+            Eliminar : null
         },
         checkbox : {
             checkAll : null
@@ -32,6 +33,8 @@ var objViewIndex = {
         objViewIndex.vars.btns.Imprimir = $('#Imprimir');
         objViewIndex.vars.btns.Replicar = $('#Replicar');
         objViewIndex.vars.checkbox.checkAll = $('#checkAll');
+        objViewIndex.vars.btns.Eliminar = $("a[name='eliminarSolicitud']");
+
 
         // INIT DATATABLE
         objViewIndex.vars.general.table.obj = $('#tableAdministrarsolicitud').DataTable({
@@ -50,6 +53,7 @@ var objViewIndex = {
         objViewIndex.vars.btns.Nuevo.on('click',objViewIndex.events.click.Nuevo);
         objViewIndex.vars.btns.Imprimir.on('click',objViewIndex.events.click.Imprimir);
         objViewIndex.vars.btns.Replicar.on('click',objViewIndex.events.click.Replicar);
+        objViewIndex.vars.btns.Eliminar.on('click',objViewIndex.events.click.Eliminar);
         
         //CHANGE
         objViewIndex.vars.checkbox.checkAll.on('change',objViewIndex.events.change.checkAll);
@@ -104,6 +108,70 @@ var objViewIndex = {
                     return null;
 
                 //TODO: Xmal -  Implementar la replicación
+            },
+            Eliminar : function(e){
+                e.preventDefault();
+
+                /*const {value: text} = await Swal.fire({
+                    input: 'textarea',
+                    inputPlaceholder: 'Type your message here...',
+                    showCancelButton: true
+                  })
+                  
+                  if (text) {
+                    Swal.fire(text)
+                  }*/
+
+                Swal.fire({
+                    title: 'Aviso',
+                    html: "Confirmar cancelación de la solicitud.",                    
+                    type: 'question',
+                    allowOutsideClick : false,
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    input: 'textarea',
+                    inputPlaceholder: 'Motivo de cancelación',
+                    preConfirm: (motivo) => {
+                        try {
+                            if (!motivo)
+                                throw new Error('Es necesario indicar el motivo');
+                        } catch (error) {
+                            Swal.showValidationMessage(error);
+                        }
+                    }
+                }).then(function(result){
+                    if (result.value && !result.dismiss ){
+                        
+                        $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+                        var id = $(e.currentTarget).data('id');
+                        var callUrl = base_url + 'Solicitud/ajaxEliminar';
+                        
+                        var model = [];
+                        model = { id : id, motivo: result.value};
+                        model[csrf.token_name] = csrf.hash;
+        
+                        $.post(callUrl,model,
+                        function (data) {
+                            
+                            if (!data.results.status) 
+                                Swal.fire({ type: 'error', title: 'Error', html: data.results.message});
+                            else 
+                                location.reload();
+
+                        })
+                        .fail(function (err) {
+                            $.LoadingOverlay("hide");
+                            Swal.fire({ type: 'error', title: 'Error', html: err.message ? err.message : err.statusText });
+                        })
+                        .always(function () {
+                            MyCookie.session.reset();
+                        });
+
+                    }
+                });
+
             },
             aceptarFrmImprimir : function(e){
                 e.preventDefault();
