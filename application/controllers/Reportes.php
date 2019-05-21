@@ -397,7 +397,7 @@
             return $pdf->Output(null,'Alta_Aspitante_' . time() . '.pdf');
         }
 
-        function SolicitudAlta(){
+        function solicitudAlta(){
             $pdf = new FPDF();
             $pdf->AddPage();
         
@@ -551,7 +551,121 @@
            $pdf->Output();
         }
 
-        function aprobacionCursoInicial(){
+        function solicitudBaja(){
+            $pdf = new FPDF();
+            $pdf->AddPage();
+            $pdf->Image($this->base."assets/images/logo.png",10,8,185,32);
+
+            $pdf->SetFont('Arial','B',10);
+            $pdf->ln(35);
+            $pdf->cell(105);
+            // Información de cabecera parte derecha
+            $pdf->Ln(10);
+            // Comunicado
+            $pdf->SetFont('Arial','',10);
+            $pdf->MultiCell(185,5,utf8_decode("Por medio del presente y Por instrucciones del FISCAL GENERAL DEL ESTADO, me permito solicitar a Usted de no haber inconveniente alguno, con fecha 29 de ABRIL se haga la BAJA de                                   POR PENSION POR JUBILACIÓN en el Registro Nacional de Personal de Seguridad Pública"));
+            $pdf->Ln(5);
+            $pdf->SetFont('Arial','',10);
+            $pdf->MultiCell(185,5,utf8_decode("PUESTO ANALISTA Y NIVEL DE MANDO ADMINISTRATIVO, EN LA DIRECCIÓN DE SERVICIOS PERICIALES."));
+            $pdf->Ln(5);
+            $pdf->MultiCell(185,5,utf8_decode("Sin otro particular por el momento, le mando un cordial saludo."));
+
+            $pdf->Ln(10);
+            $pdf->SetFont('Arial','B',8);
+            $pdf->cell(82);
+            $pdf->Cell(30,5,utf8_decode('A T E N T A M E N T E'));
+            $pdf->Ln();
+            $pdf->cell(69);
+            $pdf->Cell(30,5,utf8_decode('SUFRAGIO EFECTIVO, NO REELECCIÓN'));
+            $pdf->Ln();
+            $pdf->cell(72);
+            $pdf->Cell(30,5,utf8_decode('COLIMA, COL.,29 DE ABRIL DE 2019'));
+            $pdf->Ln();
+            $pdf->cell(51);
+            $pdf->Cell(30,5,utf8_decode('ENCARGADO DE LA DIRECCIÓN DE SERVICIOS ADMINISTRATIVOS'));
+
+            $pdf->Ln(10);
+            $pdf->Ln(10);
+            $pdf->Cell(40,7,utf8_decode("Elaboró:"),1);
+            $pdf->Cell(40,7,"Amanda Cortez",1);
+            $pdf->SetFont('Arial','',6);
+            $pdf->Ln(20);
+            $pdf->Cell(65);
+            $pdf->SetFont('Arial','',6);
+            $pdf->Cell(30,5,utf8_decode('"Año 2019, 30 años de la convención sobre los derechos del niño"'));
+            $pdf->SetFont('Arial','',6);
+            $pdf->Ln();
+            $pdf->Cell(49);
+            $pdf->Cell(30,4,utf8_decode('Libramiento Ejército Mexicano No. 200 Colonia Los Trabajadores, C.P. 28067 Colima, Colima, México'));
+            $pdf->Ln();
+            $pdf->Cell(58);
+            $pdf->Cell(30,4,utf8_decode('Tel +52 (312) 31 27940, 31 27910, 31 23087, 31 42334. www.colima-estado.gob.mx'));
+            $pdf->Image($this->base."assets/images/Cintillo.png",72,253,65,1);
+            $pdf->Output();
+            
+        }
+
+        function solicitudCambio(){
+            $pdf = new FPDF();
+            $pdf->AddPage();
+            $pdf->Image($this->base."assets/images/logo.png",10,8,185,32);
+
+            $pdf->SetFont('Arial','B',10);
+            $pdf->ln(35);
+            $pdf->cell(105);
+            // Información de cabecera parte derecha
+            $pdf->Ln(10);
+            // Comunicado
+            $pdf->SetFont('Arial','',10);
+            $pdf->MultiCell(185,5,utf8_decode("Por medio del presente y Por instrucciones del FISCAL GENERAL DEL ESTADO, me permito solicitar a Usted de no haber inconveniente alguno, con fecha 29 de ABRIL se haga de haga EL CAMBIO DE ADSCRIPCIÓN DE LA PGJE A LA FISCALÍA GENERAL DEL ESTADO DE COLIMA en el Registro Nacional de Personal de Seguridad Pública, a los elementos que enlisto a continuación:"));
+            $pdf->SetFont('Arial','',10);
+            $pdf->Ln(5);
+            $pdf->SetFont('Arial','B',10);
+            $pdf->Cell(40,7,"");
+            $pdf->Ln();
+            $pdf->Cell(40,7,"");
+            $pdf->Ln();
+            $pdf->Cell(40,7,"");
+            $pdf->Ln();
+            $pdf->Cell(40,7,"");
+            $pdf->Ln();
+            $pdf->Cell(40,7,"");
+            $pdf->Ln(10);
+            $pdf->SetFont('Arial','',10);
+            $pdf->MultiCell(185,5,utf8_decode("TODOS LOS ELEMENTOS CON PUESTO FUNCIONAL DE AGENTE DE MINISTERIO PÚBLICO, NIVEL DE MANDO OPERATIVO, EN LA DIRECCIÓN GENERAL DE PROCEDIMIENTOS PENALES."));
+
+            $pdf->Ln(10);
+            $pdf->SetFont('Arial','B',8);
+            $pdf->cell(82);
+            $pdf->Cell(30,5,utf8_decode('A T E N T A M E N T E'));
+            $pdf->Ln();
+            $pdf->cell(69);
+            $pdf->Cell(30,5,utf8_decode('SUFRAGIO EFECTIVO, NO REELECCIÓN'));
+            $pdf->Ln();
+            $pdf->cell(72);
+            $pdf->Cell(30,5,utf8_decode('COLIMA, COL.,29 DE ABRIL DE 2019'));
+            $pdf->Ln();
+            $pdf->cell(51);
+            $pdf->Cell(30,5,utf8_decode('ENCARGADO DE LA DIRECCIÓN DE SERVICIOS ADMINISTRATIVOS'));
+            $pdf->Ln(10);
+            $pdf->SetFont('Arial','',6);
+            $pdf->Ln(20);
+            $pdf->Cell(65);
+            $pdf->SetFont('Arial','',6);
+            $pdf->Cell(30,5,utf8_decode('"Año 2019, 30 años de la convención sobre los derechos del niño"'));
+            $pdf->SetFont('Arial','',6);
+            $pdf->Ln();
+            $pdf->Cell(49);
+            $pdf->Cell(30,4,utf8_decode('Libramiento Ejército Mexicano No. 200 Colonia Los Trabajadores, C.P. 28067 Colima, Colima, México'));
+            $pdf->Ln();
+            $pdf->Cell(58);
+            $pdf->Cell(30,4,utf8_decode('Tel +52 (312) 31 27940, 31 27910, 31 23087, 31 42334. www.colima-estado.gob.mx'));
+            $pdf->Image($this->base."assets/images/Cintillo.png",72,253,65,1);
+            $pdf->Output();
+
+        }
+
+
 
         //Nomenclaturas:
         // CyC: Control y confianza
