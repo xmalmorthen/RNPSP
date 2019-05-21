@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             parent::__construct();
             $this->load->library("breadcrumbs");
         }
-        function administrarCurso(){
+        function index(){
         // BREADCRUMB
 		$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');		
 		$this->breadcrumbs->push('[ Curso ] - Curso - Administración de curso', site_url('alta/cedula/datosPersonales'));

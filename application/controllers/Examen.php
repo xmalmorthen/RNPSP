@@ -7,7 +7,7 @@ class Examen extends CI_controller {
         $this->load->library("breadcrumbs");
 
     }
-    function administrarExamen(){
+    function index(){
            // BREADCRUMB
 		$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');		
 		$this->breadcrumbs->push('[ Examen ] - Examen - Administración de examen', site_url('alta/cedula/datosPersonales'));
