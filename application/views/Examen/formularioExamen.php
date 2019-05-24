@@ -1,57 +1,89 @@
 
 <body>
+    <style>
+        .borderButtom{border-bottom: 1px solid #cacaca!Important;}
+    </style>
     <div class="container">
         <br>
         <form id="Validar_examen_form" name="Validar_examen_form" action="#">
             <div class="row">
                 <div class="col-md-4">
-                    CURP
-                    <input type="text" class="form-control" id="pCURP" name="pCURP" maxlength="20" required>
+                    <h6 class="borderButtom">
+                        CURP 
+                    </h6>
+                    <p id="pCURP"></p>
                 </div>
                 <div class="col-md-4">
-                    CUIP
-                    <input type="text" id="pCUIP" name="pCUIP" class="form-control" maxlength="40" required>
+                    <h6 class="borderButtom">
+                        CUIP 
+                    </h6>
+                    <p id="pCUIP"></p>
                 </div>
             </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        Nombre
-                    <input type="text" id="pNOMBRE_DATOS_PERSONALES" name="pNOMBRE_DATOS_PERSONALES" class="form-control consultaCURP" maxlength="40" required>
+                        <h6 class="borderButtom">
+                            Nombre 
+                        </h6>
+                        <p id="pNOMBRE_DATOS_PERSONALES"></p>
                     </div>
                     <div class="col-md-4">
-                        Apellido paterno
-                        <input type="text"  id="pPATERNO" name="pPATERNO" class="form-control consultaCURP" maxlength="40" required>
+                        <h6 class="borderButtom">
+                            Apellido paterno 
+                        </h6>
+                        <p id="pPATERNO"></p>
                     </div>
                     <div class="col-md-4">
-                        Apellido materno
-                        <input type="text" id="pMATERNO" name="pMATERNO" class="form-control consultaCURP" maxlength="40">
+                        <h6 class="borderButtom">
+                            Apellido materno 
+                        </h6>
+                        <p id="pMATERNO"></p>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        Fecha de nacimiento
-                        <input type="date"  id="pFECHA_NAC_DATOS_PERSONALES" name="pFECHA_NAC_DATOS_PERSONALES" class="form-control consultaCURP" required>
+                        <h6 class="borderButtom">
+                                Fecha de nacimiento 
+                        </h6>
+                        <p id="pFECHA_NAC_DATOS_PERSONALES"></p>
                     </div>
                     <div class="col-md-4">
-                        RFC
-                        <input type="text" id="pRFC_DATOS_PERSONALES" name="pRFC_DATOS_PERSONALES" class="form-control" minlength="10" maxlength="13" required>
+                        <h6 class="borderButtom">
+                            RFC
+                        </h6>
+                        <p id="pRFC_DATOS_PERSONALES"></p>
                     </div>
                 </div>
                 <br>
                 <div class="row">   
                     <div class="col-md-4">
-                        Fecha en la que presenta examen
-                        <input type="date" class="form-control" name="pFECHA_EXAMEN" id="pFECHA_EXAMEN">
+                        Lugar de aplicación
+                        <input type="text" class="form-control" name="pLUGAR" id="pLUGAR" maxlength="250">
                     </div>
                     <div class="col-md-4">
-                        Fecha de expiración
-                        <input type="date" class="form-control" name="pVIGENCIAEXAMEN" id="pVIGENCIAEXAMEN">
+                        Hora
+                        <input type="time" class="form-control" name="pHORA_EXAMEN" id="pHORA_EXAMEN">
                     </div>
                     <div class="col-md-4">
-                        Estatus
-                        <select name="" id="" class="form-control" id="pESTATUS_Examen" name="pESTATUS_Examen"></select>
+                        Fecha de aplicación 
+                        <input type="date" class="form-control" name="" id="">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        Estatus del examen de confianza
+                        <select type="text" class="form-control" id="pESTATUS_EXAMEN" name="pESTATUS_EXAMEN"> </select>
+                    </div>
+                    <div class="col-md-4">
+                        Fecha del examen
+                        <input type="date" class="form-control" id="pFECHA_EXAMEN" name="pFECHA_EXAMEN">
+                    </div>
+                    <div class="col-md-4">
+                        Vigencia del examen
+                        <input type="date" class="form-control" id="pVIGENCIA_EXAMEN" name="pVIGENCIA_EXAMEN">
                     </div>
                 </div>
                 <br>
