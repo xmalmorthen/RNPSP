@@ -550,9 +550,8 @@
                 </div>
                 <div class="col-md-4">
                     Su domicilio es <br> <!-- Se llena del catálogo CAT_TIPO_DOMICILIO -->
-                    <select style="width:356px;" name="pID_TIPO_DOMICILIO" id="pID_TIPO_DOMICILIO" class="form-control" data-error="#err_pID_TIPO_DOMICILIO" data-query='Y3ZMRjVwQ3hJdU1nVy95Yk15enNSWmpyaXBYbHFmQVdMOHUxTkVlY3RSZ3ZWTElpRVRkZ2V6alpURTQ5WC9ONm9oVnBsTEpSNzdPMDFUUTFUcVBZQzFFL2d2LytMZVFWR1dWS1FKSmt0c2JYWDBOWTd1dW85TTFENjVVYnJadlJuNG5za3kyRkhHMitISmIxTTZlQ2JZaGtqQTdaeHplRE5LNzVrWHp1cW53PQ=='>
+                    <select style="width:356px;" name="pID_TIPO_DOMICILIO" id="pID_TIPO_DOMICILIO" class="form-control" data-error="#err_pID_TIPO_DOMICILIO" data-query='Y3ZMRjVwQ3hJdU1nVy95Yk15enNSWmpyaXBYbHFmQVdMOHUxTkVlY3RSZ3ZWTElpRVRkZ2V6alpURTQ5WC9ONm9oVnBsTEpSNzdPMDFUUTFUcVBZQzFFL2d2LytMZVFWR1dWS1FKSmt0c2JYWDBOWTd1dW85TTFENjVVYnJadlJuNG5za3kyRkhHMitISmIxTTZlQ2JZaGtqQTdaeHplRE5LNzVrWHp1cW53PQ=='></select>
                     <span id="err_pID_TIPO_DOMICILIO"></span>
-                    <option value="">Seleccione</option></select>
                 </div>
             </div>
             <br>

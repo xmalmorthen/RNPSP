@@ -1,86 +1,62 @@
+<!-- CSS -->
+<link rel="stylesheet" href="<?php echo base_url("assets/vendor/datatable/dataTables.bootstrap4.min.css"); ?>">
+<link rel="stylesheet" href="<?php echo base_url("assets/vendor/datatable/responsive.bootstrap4.min.css"); ?>">
 
-<body>
-    <div class="container">
-        <br>
-        <form id="Validar_examen_form" name="Validar_examen_form" action="#">
-            <div class="row">
-                <div class="col-md-12">
-                    <table id="tableExamen" class="table display" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Apellido paterno</th>
-                                <th>Apellido materno</th>
-                                <th>Apellido materno</th>
-                                <th>Adscripción</th>
-                                <th>Estatus</th>
-                                <th colspan="2">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <a href=""><i class="fa fa-eye"></i></a>
-                                </td>
-                                <td>
-                                    <input class="form-control" type="checkbox" style="margin-top: -7px;" >
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <a href=""><i class="fa fa-eye"></i></a>
-                                </td>
-                                <td>
-                                    <input class="form-control" type="checkbox" style="margin-top: -7px;" >
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <a href=""><i class="fa fa-eye"></i></a>
-                                </td>
-                                <td>
-                                    <input class="form-control" type="checkbox" style="margin-top: -7px;" >
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-6"></div>
-                <div class="col-md-2">
-                    <div class="row">
-                        <div class="col-md-6"></div>
-                        <div class="col-md-6">
-                            <button class="btn btn-default">Imprimir</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
+<!-- /CSS -->
+<div class="row bodyVew">
+    <div class="col-md-12">
+        <!-- BEGIN TABLE -->
+        <table id="tableData" class="d-none table table-striped dt-responsive" style="width:100%">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" name='checkAll' id='checkAll' class='checkAll'></th>
+                    <th>Nombre</th>
+                    <th>Apellido paterno</th>
+                    <th>Apellido materno</th>
+                    <th>Adscripción</th>
+                    <th>Estatus</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($items as $key => $value) { ?>
+                    <tr>
+                        <td>
+                            <div class="checkbox">
+                                <input type="checkbox" class="checkItem" data-idReg="<?php echo $value['options']['id']; ?>">
+                            </div>
+                        </td>
+                <?php foreach ($value as $item => $valueItem) {
+                    if (!is_array($valueItem)) {?>
+                        <td><?php echo $valueItem ? $valueItem : ''; ?></td>
+                <?php }} ?>
+                        <td>
+                            <a class='m-2' href="<?php echo site_url("Examen/Validar/{$value['options']['id']}/{$value['options']['ads']}") ?>" title='Validar'><i class="fa fa-eye fa-2x"></i></a>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+        <!-- END TABLE -->
     </div>
 
-</body>
 
-<script type="text/javascript">
+</div>
+<div class="row pull-right mt-2">
+    <div class="col-md-12">
+        <button class="btn btn-default m-1" id="Imprimir">Imprimir</button>
+    </div>
+</div>
+
+<!-- JS -->
+<script src="<?php echo base_url("assets/vendor/datatable/jquery.dataTables.min.js"); ?>"></script>
+<script src="<?php echo base_url("assets/vendor/datatable/dataTables.bootstrap4.min.js"); ?>"></script>
+<script src="<?php echo base_url("assets/vendor/datatable/dataTables.responsive.min.js"); ?>"></script>
+<script src="<?php echo base_url("assets/vendor/datatable/responsive.bootstrap4.min.js"); ?>"></script>
+<script src="<?php echo base_url('assets/js/views/examen/index.js') ?>"></script>
+<script>
+    $(function() {
+        objViewIndex.init();    
+    });
 </script>
-</html>
+<!-- /JS -->
