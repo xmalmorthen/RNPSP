@@ -1,9 +1,9 @@
-var objViewFormularioCurso = {
+var objViewFormularioExamen = {
     vars : {
         general : {
             init : false,
         },
-        FormularioCurso : {
+        FormularioExamen : {
             forms : {
                 Validar_examen_form : null,
             },
@@ -13,20 +13,20 @@ var objViewFormularioCurso = {
         }
     },
     init : function(){
-        if (objViewFormularioCurso.vars.general.init)
+        if (objViewFormularioExamen.vars.general.init)
             return false;
         
         // INIT ELEMENTS
         // FORMS
-        objViewFormularioCurso.vars.FormularioCurso.forms.Validar_examen_form = $('#Validar_examen_form');
+        objViewFormularioExamen.vars.FormularioExamen.forms.Validar_examen_form = $('#Validar_examen_form');
         
-        objViewFormularioCurso.vars.FormularioCurso.forms.Validar_examen_form.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+        objViewFormularioExamen.vars.FormularioExamen.forms.Validar_examen_form.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
         // BUTTONS
-        objViewFormularioCurso.vars.FormularioCurso.btns.guardar = $('#guardar');
+        objViewFormularioExamen.vars.FormularioExamen.btns.guardar = $('#guardar');
 
         // INIT SELECTS
-        objViewFormularioCurso.vars.FormularioCurso.forms.Validar_examen_form.find('select').select2({width : '100%'});
+        objViewFormularioExamen.vars.FormularioExamen.forms.Validar_examen_form.find('select').select2({width : '100%'});
         $(document).on('focus', '.select2.select2-container', function (e) {
             if (e.originalEvent) {
                 if ($(this).siblings('select').is(':enabled'))
@@ -36,33 +36,27 @@ var objViewFormularioCurso = {
 
         //EVENTS
         //SUBMIT
-        objViewFormularioCurso.vars.FormularioCurso.forms.Validar_examen_form.attr('novalidate', 'novalidate');
-        objViewFormularioCurso.vars.FormularioCurso.forms.Validar_examen_form.submit(function(e){
+        objViewFormularioExamen.vars.FormularioExamen.forms.Validar_examen_form.attr('novalidate', 'novalidate');
+        objViewFormularioExamen.vars.FormularioExamen.forms.Validar_examen_form.submit(function(e){
             e.preventDefault();
         });
 
         // CLICK
-        objViewFormularioCurso.vars.FormularioCurso.btns.guardar.on('click',objViewFormularioCurso.events.click.FormularioCurso.guardar);
+        objViewFormularioExamen.vars.FormularioExamen.btns.guardar.on('click',objViewFormularioExamen.events.click.FormularioExamen.guardar);
 
-        //$('#pFECHA_INICIO').prop('min', )
-        
+        objViewFormularioExamen.vars.FormularioExamen.forms.Validar_examen_form.LoadingOverlay("hide");
 
-
-        objViewFormularioCurso.ajax.populateCmbCurso();
-
-        objViewFormularioCurso.vars.FormularioCurso.forms.Validar_examen_form.LoadingOverlay("hide");
-
-        objViewFormularioCurso.vars.general.init = true;
+        objViewFormularioExamen.vars.general.init = true;
     },
     events : {
         click : {
             general : {
             },
-            FormularioCurso : {
+            FormularioExamen : {
                 guardar : function(e){
                     e.preventDefault();
 
-                    var form = objViewFormularioCurso.vars.FormularioCurso.forms.Validar_examen_form;
+                    var form = objViewFormularioExamen.vars.FormularioExamen.forms.Validar_examen_form;
                     form.closeAlert({alertType : 'alert-danger'});
                     
                     try {
@@ -81,7 +75,7 @@ var objViewFormularioCurso = {
 
                         $selectDisabled.prop("disabled", true);
 
-                        var callUrl = base_url + "Curso/ajaxValidar";
+                        var callUrl = base_url + "Examen/ajaxValidar";
 
                         $.post(callUrl,model,
                         function (data) {  
@@ -128,33 +122,5 @@ var objViewFormularioCurso = {
             }
         }
     },
-    ajax:{
-        populateCmbCurso: function(){
-            
-            var cmbSelect = $('#pID_CURSO');
-            var callUrl = base_url + "ajaxCatalogos/index";
-            
-            cmbSelect.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
-            
-            $.get(callUrl,{
-                qry : cmbSelect.data('query')
-            },
-            function (data) {
-                cmbSelect.append('<option disabled selected value>Seleccione una opción</option>');
-                
-                data.results.forEach(item => {
-                    var option = new Option(item.text,item.id);
-                    cmbSelect.append(option);
-                });
-
-                cmbSelect.val(null).trigger("change");
-
-            }).fail(function (err) {
-
-            }).always(function () {   
-                MyCookie.session.reset();
-                cmbSelect.LoadingOverlay("hide");
-            });
-        }
-    }
+    ajax:{}
 }

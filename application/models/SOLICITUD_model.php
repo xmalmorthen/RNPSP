@@ -23,35 +23,32 @@ class SOLICITUD_model extends MY_Model
 
   public function eliminarSolicitud($model){
 
-    // $model['id'];
-    // $model['motivo'];
+    $model['pIdUsr'] = $this->session->userdata(SESSIONVAR)['user_id'];
 
-    throw new Exception('Método no implementado');
+    $this->arrayToPost($model);
+    
+    $this->procedure('sp_cancelaSol');
+    $this->addParam('pID_ALTERNA','id','');    
+    $this->addParam('pMOTIVO','motivo','');
+    $this->addParam('pIdUsr','pIdUsr','');
+    $this->iniParam('txtError','varchar','250');
+    $this->iniParam('msg','varchar','80');
+    $this->iniParam('tranEstatus','int');
+    
+    $call = $this->build_query();
+    $query = $this->db->query($call);
+    $response = $this->query_row($query);
 
-    // $this->procedure('sp_validaCURP');
-    // $this->addParam('pCURP',$CURP,'N',array('name'=>'CURP','rule'=>'trim|required|min_length[16]|max_length[20]'));
-    // $this->iniParam('tranEstatus','int');
-    // $this->iniParam('msg','varchar','80');
-    // $response = (array)$this->query_multi($this->build_query());
+    if($response == FALSE){
+      $this->response['status'] = false;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+    }else{
+      $this->response['status'] = (bool)$response['tranEstatus'];
+      $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : ( strlen($response['txtError']) > 0 ? $response['txtError'] : $response['msg']);
+    }
 
-    // if($response === FALSE){
-    //   $this->response['status'] = 0;
-    //   $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
-    // }else{
-    //   if(count($response) > 0){
-    //     $responseSelect = current($response);
-    //     $responseOutput = end($response);
+    return $this->response;
 
-    //     $this->response['status'] = $responseOutput['tranEstatus'];
-    //     $this->response['message'] = $responseOutput['msg'];
-    //     $this->response['data'] = $this->try_result($responseSelect);
-    //   }else{
-    //     $responseOutput = current($response);
-    //     $this->response['status'] = $responseOutput['tranEstatus'];
-    //     $this->response['message'] = $responseOutput['msg'];
-    //   }
-    // }
-    // return $this->response;
   }
 
   /*

@@ -10,9 +10,15 @@ environment = development ;Se define en development o production
 [databaseDefault] ;Configuración de base de datos
 dbdriver = "sqlsrv" ;mysqli / mssql / sqlsrv
 hostname = "184.168.194.53"
+
 username = "zzhpregpersc4"
 password = "h705m!lD"
 database = "zzhpregpersonalc4"
+
+;username = "zzhpregperc4des"
+;password = "Tc1ij?94"
+;database = "zzhpregperc4des"
+
 [sendMail] ;Configuración de correo electrónico
 protocol = ""
 smtp_host = ""

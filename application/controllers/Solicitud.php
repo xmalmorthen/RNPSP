@@ -8,6 +8,7 @@
         }
 
 		public function index(){
+
 			// BREADCRUMB
 			$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');
 			$this->breadcrumbs->push('[ Solicitudes ]', site_url('Solicitud'));
@@ -32,7 +33,8 @@
 						'TipodeSolicitud' => $value['TIPO_OPERACION'],
 						'Estatus' => $value['DESCRIPCION_ESTATUS'],
 						'options' => array(
-							'id' => $value['FOLIO']
+							'id' => $value['FOLIO'],
+							'idEstatus' => $value['ESTATUS']
 						)
 					);
 					array_push( $items, $item );	

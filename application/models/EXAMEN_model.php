@@ -47,6 +47,7 @@ class EXAMEN_model extends MY_Model
     $this->addParam('pFECHA_EXAMEN','pFECHA_EXAMEN','');
     $this->addParam('pESTATUS_EXAMEN','pESTATUS_EXAMEN','');
     $this->addParam('pVIGENCIA_EXAMEN','pVIGENCIA_EXAMEN','');
+    $this->addParam('pFECHA_APLICACION','pFECHA_APLICACION','');    
     $this->iniParam('txtError','varchar','250');
     $this->iniParam('msg','varchar','80');
     $this->iniParam('tranEstatus','int');

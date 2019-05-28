@@ -160,6 +160,7 @@ var objViewIndex = {
                             else 
                                 location.reload();
 
+                            $.LoadingOverlay("hide");
                         })
                         .fail(function (err) {
                             $.LoadingOverlay("hide");
