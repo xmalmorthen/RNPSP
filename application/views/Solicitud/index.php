@@ -83,13 +83,40 @@
 							<input id='noFolio' name='noFolio' type="text" class="form-control" maxlength="20" required>
 						</div>
 					</div>
-					<br>	
+					<br>
+					<div class="row">
+						<div class="col-md-6">
+							Respuesta al oficio número
+						</div>
+						<div class="col-md-6">
+							<input type="text" id="oficioNumero" name="oficioNumero" class="form-control" maxlength="20">
+						</div>
+					</div>
+					<br>
 					<div class="row">
 						<div class="col-md-6">
 							Nombre del encargado del despacho del secretariado ejecutivo del SESESP
 						</div>
 						<div class="col-md-6">
 							<input id='encargadoDespacho' name='encargadoDespacho' type="text" class="form-control" maxlength="60"  required>
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-md-6">
+							Director del centro estatal de evaluación y control de confianza
+						</div>
+						<div class="col-md-6">
+							<input id='dirCentroest' name='dirCentroest' type="text" class="form-control" maxlength="60"  required>
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-md-6">
+							Coordinador General de administración de tecnologías del SESESP 
+						</div>
+						<div class="col-md-6">
+							<input id='coordinador' name='coordinador' type="text" class="form-control" maxlength="60"  required>
 						</div>
 					</div>
 					<br>
