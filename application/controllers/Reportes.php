@@ -127,7 +127,7 @@
             // Datos del remitente
             $pdf->SetFont('Arial','B',10);
         
-            $pdf->Cell(30,5,utf8_decode($model['cargoEmisor'] . ' ' . $model['dirCentroest']));
+            $pdf->Cell(30,5,utf8_decode($model['dirCentroest']));
             $pdf->Ln();
           
             $pdf->Cell(30,5,utf8_decode('DIRECTOR DEL CENTRO ESTATAL DE EVALUACIÓN Y CONTROL DE CONFIANZA,'));
