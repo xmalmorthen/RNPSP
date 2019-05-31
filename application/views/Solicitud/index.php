@@ -89,7 +89,7 @@
 							Respuesta al oficio número
 						</div>
 						<div class="col-md-6">
-							<input type="text" id="oficioNumero" name="oficioNumero" class="form-control" maxlength="20">
+							<input type="text" id="oficioNumero" name="oficioNumero" class="form-control" maxlength="20" required>
 						</div>
 					</div>
 					<br>
