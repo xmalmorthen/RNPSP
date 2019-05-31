@@ -248,9 +248,10 @@ var objViewIndex = {
                                         link.click();
                                         document.body.removeChild(link);
 
-                                        objViewIndex.vars.checkbox.checkAll.trigger('click');
-                                        
-                                        $('#imprimir').modal('hide');
+                                        // TODO: Xmal - Quitar comentarios al implementar
+                                        // objViewIndex.vars.checkbox.checkAll.trigger('click');                                        
+                                        // $('#imprimir').modal('hide');
+
                                     } else {
 
                                         $('#frmAlertMsg').html(request.statusText);

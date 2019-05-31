@@ -40,8 +40,23 @@
                 if (! $model['ID_ADSCRIPCION'])
                     throw new rulesException('Adscripción no estalecida');
 
+
                 $this->load->model('REPORTES_model');
-                $responseModel = $this->REPORTES_model->altaElemento($model);
+                $responseModel= [ 'status' => 0];
+                switch ($model['tipoFormato']) {
+                    case 'AE':
+                        $responseModel = $this->REPORTES_model->altaElemento($model);
+                        break;
+                    case 'AA':
+                        break;
+                    case 'AC':
+                        break;
+                    case 'VE':
+                        break;
+                    default:
+                        throw new rulesException('Formato de oficio incorrecto');
+                        break;
+                }
 
                 if ($responseModel['status'] == 1) {
 
@@ -90,6 +105,14 @@
         function altaElemento($model = null){
             
             ob_start();
+            
+            //TODO: Xmal - Quitar línea al implementar
+            array_push($model['data']['data'], [ 'nombre' => 'MIGUEL ANGEL', 'paterno' => 'RUEDA', 'materno' => 'AGUILAR' ]);
+            array_push($model['data']['data'], [ 'nombre' => 'NOMBRE PERSONA 1', 'paterno' => 'PATERNO PERSONA 1', 'materno' => 'MATERNO PERSONA 1' ]);
+            array_push($model['data']['data'], [ 'nombre' => 'NOMBRE PERSONA 2', 'paterno' => 'PATERNO PERSONA 2', 'materno' => 'MATERNO PERSONA 2' ]);
+            array_push($model['data']['data'], [ 'nombre' => 'NOMBRE PERSONA 3', 'paterno' => 'PATERNO PERSONA 3', 'materno' => 'MATERNO PERSONA 3' ]);
+            array_push($model['data']['data'], [ 'nombre' => 'NOMBRE PERSONA 5', 'paterno' => 'PATERNO PERSONA 4', 'materno' => 'MATERNO PERSONA 4' ]);
+            // quitar hasta aquí al implementar
 
             $pdf = new FPDF();
             $pdf->AddPage();
@@ -152,23 +175,35 @@
             // Headers
             $pdf->Cell(40,7,"No.",1);
             $pdf->Cell(40,7,"Nombre",1);
-            $pdf->Cell(40,7,"No.",1);
-            $pdf->Cell(40,7,"Nombre",1);
+            
+            if ( count($model['data']['data']) > 1 ) {
+                $pdf->Cell(40,7,"No.",1);
+                $pdf->Cell(40,7,"Nombre",1);
+            }
+
             $pdf->Ln();
             // Data
 
+
+            $pdf->cell(10);
             foreach ($model['data']['data'] as $key => $item) {
 
-                $pdf->cell(10);
                 $pdf->Cell(40,6, ($key + 1) ,1);
-                $pdf->Cell(40,6, ($item['nombre'] . ' ' . $item['paterno'] . + ( $item['materno'] ? ' ' . $item['materno'] : '')) ,1);
+                $pdf->Cell(40,6, utf8_decode( ($item['nombre'] . ' ' . $item['paterno'] . ( $item['materno'] ? ' ' . $item['materno'] : '')) ),1);
 
-                if ( ($key + 1) == 0 ) {
+                if ( (($key + 1) % 2) == 0 ) {
                     $pdf->Ln();
                     $pdf->cell(10);
                 }
 
             }
+
+            // $pdf->cell(10);
+            // $pdf->Cell(40,6,1,1);
+            // $pdf->Cell(40,6,"MIGUEL ANGEL RUEDA AGUILAR",1);
+            // $pdf->Cell(40,6,4,1);
+            // $pdf->Cell(40,6,"MIGUEL ANGEL RUEDA AGUILAR",1);
+
 
             $pdf->Ln(10);
             $pdf->SetFont('Arial','',10);
