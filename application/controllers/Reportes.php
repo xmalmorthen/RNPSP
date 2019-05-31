@@ -8,6 +8,14 @@
             parent::__construct();
             $this->load->library("FPDF/fpdf");
             $this->base = base_url();            
+
+        }
+
+        private function getDate(){
+            $dias = array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sábado");
+            $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+
+            return $dias[date('w')]." ".date('d')." de ".$meses[date('n')-1]. " del ".date('Y') ;
         }
 
         // XMAL //
@@ -112,7 +120,7 @@
             // $pdf->Cell(30,5,utf8_decode('trámite de ingreso al RNPSP')); Parte del asunto
             $pdf->Ln();
             $pdf->cell(90);
-            $pdf->Cell(30,5,utf8_decode('Colima, Colima a ' . date('jS F Y'))); 
+            $pdf->Cell(30,5,utf8_decode('Colima, Colima a ' . $this->getDate() )); 
             $pdf->Ln(10);
          
         
@@ -154,11 +162,10 @@
                 $pdf->cell(10);
                 $pdf->Cell(40,6, ($key + 1) ,1);
                 $pdf->Cell(40,6, ($item['nombre'] . ' ' . $item['paterno'] . + ( $item['materno'] ? ' ' . $item['materno'] : '')) ,1);
-                $pdf->Cell(40,6,4,1);
-                $pdf->Cell(40,6,"",1);
 
-                if ( $numero%2 == 0 ) {
+                if ( ($key + 1) == 0 ) {
                     $pdf->Ln();
+                    $pdf->cell(10);
                 }
 
             }
