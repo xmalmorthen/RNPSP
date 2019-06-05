@@ -143,6 +143,9 @@ var objViewDatosGenerales = {
 
         objViewDatosGenerales.actions.ajax.populateCmbOperacion();
 
+        $('#pFECHA_NACIONALIDAD, #pINICIO_DESARROLLO').attr('max', moment( new Date() ).format('YYYY-MM-DD'));
+        $('#pTERMINO_DESARROLLO').attr('min', moment( new Date() ).add(1,'days').format('YYYY-MM-DD') );
+
         objViewDatosGenerales.vars.general.init = true;
     },
     events : {
@@ -155,12 +158,19 @@ var objViewDatosGenerales = {
                     
                     $.validator.addMethod("validRFCFormat", function(value, element) {
                         return validarInputRFC(value);
-                    }, "Formato de RFC incorrecto");
+                    }, "Formato incorrecto");
+
+                    $.validator.addMethod("validarCveElector", function(value, element) {
+                        return validarCveElector(value);
+                    }, "Formato incorrecto");                    
 
                     objViewDatosGenerales.vars.datosGenerales.forms.Datos_personales_form.validate({
                         rules: {
                             pRFC_DOMICILIO: {
                                 validRFCFormat : true
+                            },
+                            pCREDENCIAL_ELECTOR: {
+                                validarCveElector : true
                             }
                         }
                     });
@@ -252,12 +262,15 @@ var objViewDatosGenerales = {
     },
     actions : { 
         populateCURPData : function(data){
-            console.log(data);
+            
             objViewDatosGenerales.vars.datosGenerales.objs.pCURP.val(data.CURP);
             $('#pNOMBRE_DATOS_PERSONALES').val(data.nombres);
             $('#pPATERNO_DATOS_PERSONALES').val(data.apellido1);
             $('#pMATERNO_DATOS_PERSONALES').val(data.apellido2);
             $('#pSEXO_DATOS_PERSONALES').val(data.sexo).trigger('change.select2').trigger('change');
+
+            if (data.CURP)            
+                $('#pRFC_DOMICILIO').val( data.CURP.substr(0,10));
 
             var dateParts = data.fechNac.split("/");
             var dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]); 

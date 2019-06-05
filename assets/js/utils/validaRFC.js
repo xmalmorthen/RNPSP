@@ -44,5 +44,5 @@ function rfcValido(rfc, aceptarGenerico = true) {
 // -Lleva la RFC a mayúsculas para validarlo
 // -Elimina los espacios que pueda tener antes o después
 function validarInputRFC(valor) {
-    return rfcValido(valor.trim().toUpperCase());
+    return valor ? rfcValido(valor.trim().toUpperCase()) : true;
 }
