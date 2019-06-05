@@ -262,7 +262,7 @@
 			exit;
 		}
 
-		public function ajaxSaveDatosGeneralesDesarrolloacademico(){
+		public function ajaxSaveDatosGeneralesDesAcad(){
 			if (! $this->input->is_ajax_request()) {
 				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
 			}

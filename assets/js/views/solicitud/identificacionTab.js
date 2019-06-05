@@ -115,6 +115,11 @@ var objViewIdentificacion = {
         // INIT TYPE FILES
         objViewIdentificacion.vars.identificacion.files.inputFile.on('change',objViewIdentificacion.events.change.inputFile);
 
+        //FOCUSOUT
+        $('input[type="date"]').on('focusout',function(event){
+            $(this).val( $(this).val() );
+        });
+
         //CAMBIO DE TABS
         objViewIdentificacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewIdentificacion.actions.discartChanges}, e); } );
         objViewIdentificacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('show.bs.tab',dynTabs.showTab);

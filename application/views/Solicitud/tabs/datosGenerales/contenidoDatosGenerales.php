@@ -96,7 +96,7 @@
             <div class="row">
                 <div class="col-md-4">
                     Fecha de nacionalidad
-                    <input type="date" id="pFECHA_NACIONALIDAD" name="pFECHA_NACIONALIDAD" class="form-control">
+                    <input type="date" id="pFECHA_NACIONALIDAD" name="pFECHA_NACIONALIDAD" class="form-control" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}">
                 </div>
                 <!-- <div class="col-md-4">
                     <span class="clr">*</span>RFC

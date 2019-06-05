@@ -122,6 +122,11 @@ var objViewDatosGenerales = {
         objViewDatosGenerales.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewDatosGenerales.actions.discartChanges}, e); } );
         objViewDatosGenerales.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('show.bs.tab',dynTabs.showTab);        
         objViewDatosGenerales.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('shown.bs.tab',objViewDatosGenerales.events.change.tableResponsive);
+
+        //FOCUSOUT
+        $('input[type="date"]').on('focusout',function(event){
+            $(this).val( $(this).val() );
+        });
         
         populate.form($('#Datos_personales_form')); //popular selects del primer tab NOTA: cambiar programación al tab actual si se obtiene por cookie
         dynTabs.setCurrentTab($('#myTabContent'));
@@ -147,6 +152,19 @@ var objViewDatosGenerales = {
             datosGenerales : {
                 guardarDatosPersonales : function(e, from, tabRef){
                     e.preventDefault();
+                    
+                    $.validator.addMethod("validRFCFormat", function(value, element) {
+                        return validarInputRFC(value);
+                    }, "Formato de RFC incorrecto");
+
+                    objViewDatosGenerales.vars.datosGenerales.forms.Datos_personales_form.validate({
+                        rules: {
+                            pRFC_DOMICILIO: {
+                                validRFCFormat : true
+                            }
+                        }
+                    });
+
                     objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDatosPersonales',from, tabRef, false , function(data){
                         mainTabMenu.var.pID_ALTERNA = data.results.data.pID_ALTERNA ? data.results.data.pID_ALTERNA : null;
                     });
@@ -195,7 +213,7 @@ var objViewDatosGenerales = {
                 },
                 guardarDesarrolloacademico : function(e, from, tabRef){
                     e.preventDefault();
-                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDesarrolloacademico',from, tabRef, true, function(data,form){
+                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDesAcad',from, tabRef, true, function(data,form){
                         fillData.datosGenerales.desarrolloAcademico(mainTabMenu.var.pID_ALTERNA);                        
                     });
                 },

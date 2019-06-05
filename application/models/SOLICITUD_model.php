@@ -62,6 +62,9 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pCURP',$CURP,'N',array('name'=>'CURP','rule'=>'trim|required|min_length[16]|max_length[20]'));
     $this->iniParam('tranEstatus','int');
     $this->iniParam('msg','varchar','80');
+
+    //$build = $this->build_query();
+
     $response = (array)$this->query_multi($this->build_query());
 
     if($response === FALSE){
