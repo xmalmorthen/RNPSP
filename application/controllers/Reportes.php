@@ -8,6 +8,14 @@
             parent::__construct();
             $this->load->library("FPDF/fpdf");
             $this->base = base_url();            
+
+        }
+
+        private function getDate(){
+            $dias = array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sábado");
+            $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+
+            return $dias[date('w')]." ".date('d')." de ".$meses[date('n')-1]. " del ".date('Y') ;
         }
 
         // XMAL //
@@ -32,8 +40,23 @@
                 if (! $model['ID_ADSCRIPCION'])
                     throw new rulesException('Adscripción no estalecida');
 
+
                 $this->load->model('REPORTES_model');
-                $responseModel = $this->REPORTES_model->altaElemento($model);
+                $responseModel= [ 'status' => 0];
+                switch ($model['tipoFormato']) {
+                    case 'AE':
+                        $responseModel = $this->REPORTES_model->altaElemento($model);
+                        break;
+                    case 'AA':
+                        break;
+                    case 'AC':
+                        break;
+                    case 'VE':
+                        break;
+                    default:
+                        throw new rulesException('Formato de oficio incorrecto');
+                        break;
+                }
 
                 if ($responseModel['status'] == 1) {
 
@@ -81,6 +104,14 @@
         function /*PETICION*/ altaElemento($model = null){
             
             ob_start();
+            
+            //TODO: Xmal - Quitar línea al implementar
+            array_push($model['data']['data'], [ 'nombre' => 'MIGUEL ANGEL', 'paterno' => 'RUEDA', 'materno' => 'AGUILAR' ]);
+            array_push($model['data']['data'], [ 'nombre' => 'NOMBRE PERSONA 1', 'paterno' => 'PATERNO PERSONA 1', 'materno' => 'MATERNO PERSONA 1' ]);
+            array_push($model['data']['data'], [ 'nombre' => 'NOMBRE PERSONA 2', 'paterno' => 'PATERNO PERSONA 2', 'materno' => 'MATERNO PERSONA 2' ]);
+            array_push($model['data']['data'], [ 'nombre' => 'NOMBRE PERSONA 3', 'paterno' => 'PATERNO PERSONA 3', 'materno' => 'MATERNO PERSONA 3' ]);
+            array_push($model['data']['data'], [ 'nombre' => 'NOMBRE PERSONA 5', 'paterno' => 'PATERNO PERSONA 4', 'materno' => 'MATERNO PERSONA 4' ]);
+            // quitar hasta aquí al implementar
 
             $pdf = new FPDF();
             $pdf->AddPage();
@@ -91,10 +122,11 @@
             $pdf->ln(35);
             $pdf->cell(105);
         
-            // Información de cabecera parte derecha
-            $pdf->Cell(20,5,utf8_decode('OFICIO No.'));
+            // Información de cabecera parte derecha            
+        
+            $pdf->Cell(30,5,utf8_decode('OFICIO No.'),0,0,"R");
             $pdf->SetFont('Arial','',10);
-            $pdf->Cell(35,5,utf8_decode('{Número de folio}'));
+            $pdf->Cell(35,5,utf8_decode($model['noFolio']),0,0,"R");
             // Dato de Número de folio
             $pdf->SetFont('Arial','',10);
         
@@ -110,14 +142,14 @@
             // $pdf->Cell(30,5,utf8_decode('trámite de ingreso al RNPSP')); Parte del asunto
             $pdf->Ln();
             $pdf->cell(90);
-            $pdf->Cell(30,5,utf8_decode('{Fecha y lugar formato:Colima, Colima , a 25 de Junio de 2018}')); 
+            $pdf->Cell(30,5,utf8_decode('Colima, Colima a ' . $this->getDate() )); 
             $pdf->Ln(10);
          
         
             // Datos del remitente
             $pdf->SetFont('Arial','B',10);
         
-            $pdf->Cell(30,5,utf8_decode('{nombre de a quien se dirige}'));
+            $pdf->Cell(30,5,utf8_decode($model['dirCentroest']));
             $pdf->Ln();
           
             $pdf->Cell(30,5,utf8_decode('ENCARGADO DEL SECRETARIO EJECUTIVO DEL SISTEMA,'));
@@ -132,7 +164,7 @@
             //Después de no. viene el número de oficio y la fecha completa.
             //Después de como va el tipo de elememto, como "elemento operativo".
             //Después de en el aplicativo de: va el nombre del .ugar, como el Registro Nacional de Personal de Seguridad Pública
-            $pdf->MultiCell(185,5,utf8_decode("De conformidad a las atribuciones que me confiere el numeral 19,20 y además relativos a la ley del Sistema de Seguridad Pública para el Estado de Colima y en atención al oficio no. {Respuesta al oficio número},{Fecha de oficio} del {año de oficio}, en el cual se solicita realizar los movimientos de alta, como "./*Lo saca del sistema*/"{Tipo de elemento}, en el para el registro de personal al Registro Nacional de Personal de Seguridad Pública (RNPSP)  a los elementos que a continuación se enlistan:"));
+            $pdf->MultiCell(185,5,utf8_decode("De conformidad a las atribuciones que me confiere el numeral 19,20 y además relativos a la ley del Sistema de Seguridad Pública para el Estado de Colima y en atención al oficio no. " . $model['oficioNumero'] . ", " . date('jS F Y') . " del año en curso, en el cual se solicita realizar los movimientos de alta, como ALTA DE ELEMENTO, en el sistema para el registro de personal al Registro Nacional de Personal de Seguridad Pública (RNPSP)  a los elementos que a continuación se enlistan:"));
         
             // Tabla 
         
@@ -142,27 +174,36 @@
             // Headers
             $pdf->Cell(40,7,"No.",1);
             $pdf->Cell(40,7,"Nombre",1);
-            $pdf->Cell(40,7,"No.",1);
-            $pdf->Cell(40,7,"Nombre",1);
+            
+            if ( count($model['data']['data']) > 1 ) {
+                $pdf->Cell(40,7,"No.",1);
+                $pdf->Cell(40,7,"Nombre",1);
+            }
+
             $pdf->Ln();
             // Data
+
+
             $pdf->cell(10);
-            $pdf->Cell(40,6,1,1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Cell(40,6,4,1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Ln();
-            $pdf->cell(10);
-            $pdf->Cell(40,6,2,1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Cell(40,6,5,1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Ln();
-            $pdf->cell(10);
-            $pdf->Cell(40,6,3,1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Cell(40,6,6,1);
-            $pdf->Cell(40,6,"",1);
+            foreach ($model['data']['data'] as $key => $item) {
+
+                $pdf->Cell(40,6, ($key + 1) ,1);
+                $pdf->Cell(40,6, utf8_decode( ($item['nombre'] . ' ' . $item['paterno'] . ( $item['materno'] ? ' ' . $item['materno'] : '')) ),1);
+
+                if ( (($key + 1) % 2) == 0 ) {
+                    $pdf->Ln();
+                    $pdf->cell(10);
+                }
+
+            }
+
+            // $pdf->cell(10);
+            // $pdf->Cell(40,6,1,1);
+            // $pdf->Cell(40,6,"MIGUEL ANGEL RUEDA AGUILAR",1);
+            // $pdf->Cell(40,6,4,1);
+            // $pdf->Cell(40,6,"MIGUEL ANGEL RUEDA AGUILAR",1);
+
+
             $pdf->Ln(10);
             $pdf->SetFont('Arial','',10);
             $pdf->cell(12);
@@ -183,8 +224,8 @@
             // $pdf->Ln(36);
             // $pdf->cell(50);
             $pdf->Ln(20);
-            $pdf->cell(59);
-            $pdf->Cell(30,5,utf8_decode('{Nombre dequien hace la petición}'));
+            $pdf->cell(23);
+            $pdf->Cell(30,5,utf8_decode($model['encargadoDespacho']));
         
             $pdf->Ln();
         
@@ -192,13 +233,13 @@
             $pdf->Cell(30,5,utf8_decode('C.c.p.'));
             $pdf->Ln(10);
             $pdf->SetFont('Arial','',10); //Nombre del CP
-            $pdf->Cell(30,5,utf8_decode('{Nombre del encargado del despacho}'));
+            $pdf->Cell(30,5,utf8_decode($model['encargadoDespacho']));
             $pdf->SetFont('Arial','',10);
             $pdf->Cell(43);
             $pdf->Cell(30,5,utf8_decode('Encargado del despacho del Secretariado Ejecutivo del SESP'));
             $pdf->Ln();
             $pdf->SetFont('Arial','',10); //Nombre del sub coordinador
-            $pdf->Cell(30,5,utf8_decode('{Nombre del subcoordinador}'));
+            $pdf->Cell(30,5,utf8_decode($model['subcoordinador']));
             $pdf->SetFont('Arial','',10);
             $pdf->Cell(43);
             $pdf->Cell(30,5,utf8_decode('Subcoordinador de Sistemas de Información del SESESP.- Igual fin.'));
@@ -277,7 +318,7 @@
             $pdf->SetFont('Arial','',10);
         
         
-            $pdf->MultiCell(185,5,utf8_decode("De conformidad a las atribuciones que me confiere el numeral 19, 20 y demás relativos a la Ley del Sistema de Seguridad Pública para el Estado de Colima y en atención al oficio no. {Respuesta al oficio número} de fecha {Fecha del oficio} del año en curso, en el cual se solicita realizar los movimientos de alta en el aplicativo del para el registro de personal al Registro Nacional de Personal de Seguridad Pública (RNPSP) , como aspirantes Activos a los elementos que a continuación se enlistan:"));
+            $pdf->MultiCell(185,5,utf8_decode("De conformidad a las atribuciones que me confiere el numeral 19, 20 y demás relativos a la Ley del Sistema de Seguridad Pública para el Estado de Colima y en atención al oficio no. " . $model['oficioNumero'] . " de fecha {Fecha actual: 13 de junio} del año en curso, en el cual se solicita realizar los movimientos de alta en el aplicativo del para el registro de personal al Registro Nacional de Personal de Seguridad Pública (RNPSP) , como aspirantes Activos a los elementos que a continuación se enlistan:"));
         
             $pdf->Ln(5);
             $pdf->SetFont('Arial','B',10);

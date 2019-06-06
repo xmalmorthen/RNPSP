@@ -3,3 +3,5 @@
 //TODO: Xmal -  Implementar la replicación [ assets\js\views\solicitud\index.js ]
 //TODO: Xmal - Quitar comentarios en bloque para implementación [ assets\js\views\solicitud\registro.js ]
 //TODO: Xmal - Quitar comentarios en bloque para implementación [ assets\js\utils\dynamicTabs.js ]
+//TODO: Xmal - Quitar comentarios al implementar [ assets\js\views\solicitud\index.js ]
+//TODO: Xmal - Quitar línea al implementar [ application\controllers\Reportes.php ]

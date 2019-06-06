@@ -96,7 +96,7 @@
             <div class="row">
                 <div class="col-md-4">
                     Fecha de nacionalidad
-                    <input type="date" id="pFECHA_NACIONALIDAD" name="pFECHA_NACIONALIDAD" class="form-control">
+                    <input type="date" id="pFECHA_NACIONALIDAD" name="pFECHA_NACIONALIDAD" class="form-control" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}">
                 </div>
                 <!-- <div class="col-md-4">
                     <span class="clr">*</span>RFC
@@ -112,22 +112,22 @@
             <div class="row">
                 <div class="col-md-4">
                     Cartilla del SMN
-                    <input type="text" id="pCARTILLA_SMN" name="pCARTILLA_SMN" class="form-control" maxlength="20">
+                    <input type="text" id="pCARTILLA_SMN" name="pCARTILLA_SMN" class="form-control" minlength="8" maxlength="11">
                 </div>
                 <div class="col-md-4">
                     Clave de elector
-                    <input type="text" id="pCREDENCIAL_ELECTOR" name="pCREDENCIAL_ELECTOR" class="form-control" maxlength="30">
+                    <input type="text" id="pCREDENCIAL_ELECTOR" name="pCREDENCIAL_ELECTOR" class="form-control" minlength="15" maxlength="15">
                 </div>
                 <div class="col-md-4">
                     Pasaporte
-                    <input type="text" id="pPASAPORTE" name="pPASAPORTE" class="form-control" maxlength="20">
+                    <input type="text" id="pPASAPORTE" name="pPASAPORTE" class="form-control" maxlength="11">
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-md-4">
                     Licencia de conducir
-                    <input type="text" id="pLICENCIA_DATOS_PERSONALES" name="pLICENCIA_DATOS_PERSONALES" class="form-control" minlength="20" maxlength="20">
+                    <input type="text" id="pLICENCIA_DATOS_PERSONALES" name="pLICENCIA_DATOS_PERSONALES" class="form-control" minlength="8" maxlength="11">
                 </div>
                 <div class="col-md-4">
                     Vigencia de licencia
@@ -221,7 +221,7 @@
             <div class="row">
                 <div class="col-md-4">
                     Cédula profesional
-                    <input type="text" class="form-control" id="pCEDULA_PROFESIONAL" name="pCEDULA_PROFESIONAL" maxlength="30">
+                    <input type="text" class="form-control" id="pCEDULA_PROFESIONAL" name="pCEDULA_PROFESIONAL" maxlength="8">
                 </div>
                 <div class="col-md-4">
                     Fecha de inicio

@@ -88,6 +88,9 @@ var objViewLaboral = {
         objViewLaboral.vars.laboral.btns.guardarComision.on('click',objViewLaboral.events.click.laboral.guardarComision);
         
         //FOCUSOUT
+        $('input[type="date"]').on('focusout',function(event){
+            $(this).val( $(this).val() );
+        });
         
         //CHANGE
         //objViewLaboral.vars.laboral.cmbs.pID_INSTITUCION.on('select2:select',objViewLaboral.events.change.pID_INSTITUCION);

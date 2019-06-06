@@ -889,7 +889,6 @@ var fillData = {
             .then( (data) => {
                 if (data) {
                     $.each( data, function(key,value) {
-                        //TODO: Xmal - Implementar (LISTO)
                         var row = [ value.pID_FICHA_FOTOGRAF_EXT, value.pNUM_FOLIO, value.pIMAGEN, value.pDEPENDENCIA, value.pINSTITUCION,value.pFECHA_REGISTRO ];
                         tableObj.row.add( row ).draw( false );
                     });

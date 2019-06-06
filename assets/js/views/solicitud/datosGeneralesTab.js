@@ -122,6 +122,11 @@ var objViewDatosGenerales = {
         objViewDatosGenerales.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewDatosGenerales.actions.discartChanges}, e); } );
         objViewDatosGenerales.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('show.bs.tab',dynTabs.showTab);        
         objViewDatosGenerales.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('shown.bs.tab',objViewDatosGenerales.events.change.tableResponsive);
+
+        //FOCUSOUT
+        $('input[type="date"]').on('focusout',function(event){
+            $(this).val( $(this).val() );
+        });
         
         populate.form($('#Datos_personales_form')); //popular selects del primer tab NOTA: cambiar programación al tab actual si se obtiene por cookie
         dynTabs.setCurrentTab($('#myTabContent'));
@@ -138,6 +143,9 @@ var objViewDatosGenerales = {
 
         objViewDatosGenerales.actions.ajax.populateCmbOperacion();
 
+        $('#pFECHA_NACIONALIDAD, #pINICIO_DESARROLLO').attr('max', moment( new Date() ).format('YYYY-MM-DD'));
+        $('#pTERMINO_DESARROLLO').attr('min', moment( new Date() ).add(1,'days').format('YYYY-MM-DD') );
+
         objViewDatosGenerales.vars.general.init = true;
     },
     events : {
@@ -147,6 +155,26 @@ var objViewDatosGenerales = {
             datosGenerales : {
                 guardarDatosPersonales : function(e, from, tabRef){
                     e.preventDefault();
+                    
+                    $.validator.addMethod("validRFCFormat", function(value, element) {
+                        return validarInputRFC(value);
+                    }, "Formato incorrecto");
+
+                    $.validator.addMethod("validarCveElector", function(value, element) {
+                        return validarCveElector(value);
+                    }, "Formato incorrecto");                    
+
+                    objViewDatosGenerales.vars.datosGenerales.forms.Datos_personales_form.validate({
+                        rules: {
+                            pRFC_DOMICILIO: {
+                                validRFCFormat : true
+                            },
+                            pCREDENCIAL_ELECTOR: {
+                                validarCveElector : true
+                            }
+                        }
+                    });
+
                     objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDatosPersonales',from, tabRef, false , function(data){
                         mainTabMenu.var.pID_ALTERNA = data.results.data.pID_ALTERNA ? data.results.data.pID_ALTERNA : null;
                     });
@@ -195,7 +223,7 @@ var objViewDatosGenerales = {
                 },
                 guardarDesarrolloacademico : function(e, from, tabRef){
                     e.preventDefault();
-                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDesarrolloacademico',from, tabRef, true, function(data,form){
+                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDesAcad',from, tabRef, true, function(data,form){
                         fillData.datosGenerales.desarrolloAcademico(mainTabMenu.var.pID_ALTERNA);                        
                     });
                 },
@@ -234,12 +262,15 @@ var objViewDatosGenerales = {
     },
     actions : { 
         populateCURPData : function(data){
-            console.log(data);
+            
             objViewDatosGenerales.vars.datosGenerales.objs.pCURP.val(data.CURP);
             $('#pNOMBRE_DATOS_PERSONALES').val(data.nombres);
             $('#pPATERNO_DATOS_PERSONALES').val(data.apellido1);
             $('#pMATERNO_DATOS_PERSONALES').val(data.apellido2);
             $('#pSEXO_DATOS_PERSONALES').val(data.sexo).trigger('change.select2').trigger('change');
+
+            if (data.CURP)            
+                $('#pRFC_DOMICILIO').val( data.CURP.substr(0,10));
 
             var dateParts = data.fechNac.split("/");
             var dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]); 
