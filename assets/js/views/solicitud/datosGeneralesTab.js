@@ -143,8 +143,62 @@ var objViewDatosGenerales = {
 
         objViewDatosGenerales.actions.ajax.populateCmbOperacion();
 
+        //Rutina para verificar si se hace algún cambio en cualquier forulario
+        $('#Datos_personales_form').find('input, select').change(function(e) {                
+            $('#Datos_personales_form').removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError');
+            $('#Datos_personales_form').data('hasChanged',true);            
+        });
+
+        $('#Datos_personales_CIB_form').find('input, select').change(function(e) {                
+            $('#Datos_personales_CIB_form').removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError');
+            $('#Datos_personales_CIB_form').data('hasChanged',true);            
+        });
+
         $('#pFECHA_NACIONALIDAD, #pINICIO_DESARROLLO').attr('max', moment( new Date() ).format('YYYY-MM-DD'));
         $('#pTERMINO_DESARROLLO').attr('min', moment( new Date() ).add(1,'days').format('YYYY-MM-DD') );
+
+        $.validator.addMethod("validRFCFormat", function(value, element) {
+            return validarInputRFC(value);
+        }, "Formato incorrecto");
+
+        $.validator.addMethod("validarCveElector", function(value, element) {
+            return validarCveElector(value);
+        }, "Formato incorrecto");
+
+        $.validator.addMethod("validCIB", function(value, element) {        
+            if ( $('#CIB').val() )
+                return $('#motivoCIB').val() ? true : false;
+            else
+                return true;            
+        }, "Información obligatoria.");
+
+        $.validator.addMethod("validarMotivoCIB", function(value, element) {
+            if ( $('#motivoCIB').val() )
+                return $('#CIB').val() ? true : false;
+            else
+                return true;            
+        }, "Información obligatoria.");
+                            
+        objViewDatosGenerales.vars.datosGenerales.forms.Datos_personales_form.validate({
+            rules: {
+                pRFC_DOMICILIO: {
+                    validRFCFormat : true
+                },
+                pCREDENCIAL_ELECTOR: {
+                    validarCveElector : true
+                },
+                CIB: {
+                    validarMotivoCIB : true
+                },
+                motivoCIB: {
+                    validCIB : true
+                }
+            }
+        });
+
+        $('#pTELEFONO_DOMICILIO').on('input', function () { 
+            this.value = this.value.replace(/[^0-9\-\(\)]/g,'');
+        });
 
         objViewDatosGenerales.vars.general.init = true;
     },
@@ -154,49 +208,68 @@ var objViewDatosGenerales = {
             },
             datosGenerales : {
                 guardarDatosPersonales : function(e, from, tabRef){
-                    e.preventDefault();
-                    
-                    $.validator.addMethod("validRFCFormat", function(value, element) {
-                        return validarInputRFC(value);
-                    }, "Formato incorrecto");
+                    e.preventDefault();                    
 
-                    $.validator.addMethod("validarCveElector", function(value, element) {
-                        return validarCveElector(value);
-                    }, "Formato incorrecto");                    
-
-                    objViewDatosGenerales.vars.datosGenerales.forms.Datos_personales_form.validate({
-                        rules: {
-                            pRFC_DOMICILIO: {
-                                validRFCFormat : true
-                            },
-                            pCREDENCIAL_ELECTOR: {
-                                validarCveElector : true
-                            }
-                        }
-                    });
-
-                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDatosPersonales',from, tabRef, false , function(data){
+                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDatosPersonales','', tabRef, false , function(data){
+                        
                         mainTabMenu.var.pID_ALTERNA = data.results.data.pID_ALTERNA ? data.results.data.pID_ALTERNA : null;
+
+                        $("#Datos_personales_form").data('hasChanged',true).removeData("hasSaved");
+
+                        objViewDatosGenerales.events.click.datosGenerales.generarCIB(e, from, tabRef);
+                        
                     });
+
                 },
                 generarCIB : function(e, from, tabRef){
+
+                    if ( !from ) {
+                        
+                        $('#CIB,#motivoCIB').removeError();
+
+                        if (  !$('#CIB').val() && !$('#motivoCIB').val() ) { 
+                            $('#CIB,#motivoCIB').setError('Información obligatoria.');
+                            $("#Datos_personales_form").setAlert({
+                                alertType :  'alert-danger',
+                                dismissible : true,
+                                header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                                msg : 'Formulario incompleto'
+                            });
+
+                            $("#Datos_personales_form").removeData('hasSaved').removeData('hasDiscardChanges');
+                            $("#Datos_personales_form").data('withError',true);
+
+                            dynTabs.markTab( $('#Datos_personales-tab'),  '<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');                            
+
+                            return false;
+                        }
+                    }
+
+                    if (  $('#CIB').val() && !$('#motivoCIB').val() ) {
+                        $('#motivoCIB').setError('Información obligatoria.');
+                        objViewDatosGenerales.actions.ajax.throwError('Formulario incompleto',$("#Datos_personales_form"),from,tabRef);
+                        return false;
+                    }
+
+                    if ( $('#motivoCIB').val() && !$('#CIB').val() ) {
+                        $('#CIB').setError('Información obligatoria.');
+                        objViewDatosGenerales.actions.ajax.throwError('Formulario incompleto',$("#Datos_personales_form"),from,tabRef);
+                        return false;
+                    }
+
+                    $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
                     e.preventDefault();
-                    var form = $("#Datos_personales_CIB_form");
+                    var form = $("#Datos_personales_form");
                     try {
-                        //VALID FORM
-                        if (!form.valid())
-                            throw new Error("Formulario incompleto");
-
-                         if (!mainTabMenu.var.pID_ALTERNA)
-                             throw new Error("Debe registrar primero los datos personales");
-
-                        $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+                                                
+                        if (!mainTabMenu.var.pID_ALTERNA)
+                             throw new Error("Debe registrar primero los datos personales");                        
                         
                         $selectDisabled = form.find('select:disabled');
                         $selectDisabled.prop("disabled", false);
 
-                        var model = form.serialize();
-                        model += '&pID_ALTERNA=' + mainTabMenu.var.pID_ALTERNA;
+                        var model = 'CIB=' + $('#CIB').val() + '&motivoCIB=' + $('#motivoCIB').val() + '&pID_ALTERNA=' + mainTabMenu.var.pID_ALTERNA;
                         model = {model : model};
                         model[csrf.token_name] = csrf.hash;
 
@@ -206,18 +279,24 @@ var objViewDatosGenerales = {
 
                         $.post(callUrl,model,
                         function (data) {  
-                            objViewDatosGenerales.actions.ajax.callResponseValidations(form,data, from, tabRef, true, function(data){
-                                console.log(data);
+                            objViewDatosGenerales.actions.ajax.callResponseValidations(form,data, from, tabRef, false, function(data){
+                                $('#CIB,#motivoCIB').val('');
                                 $.LoadingOverlay("hide");
+                                fillData.datosGenerales.CIB(mainTabMenu.var.pID_ALTERNA);
                             });
                         }).fail(function (err) {
-                            objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                            
+                            objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);
                         }).always(function () {
                             MyCookie.session.reset();
                         });
 
                     }catch(err) {
-                        objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                        
+                        
+                        objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);
+                        
+                        if (callback)
+                            callback(false);
+
                     }
                     
                 },
@@ -241,7 +320,7 @@ var objViewDatosGenerales = {
                 },
                 guardarSocioeconomico : function(e, from, tabRef){
                     e.preventDefault();
-                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesSocioeconomico',from, tabRef, false, function(data){
+                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesSocio',from, tabRef, false, function(data){
                     });
                 },
                 guardarDependiente : function(e, from, tabRef){
@@ -324,6 +403,9 @@ var objViewDatosGenerales = {
                         if(from == 'tab') {
                             $(tabRef.relatedTarget).trigger('click');
                             dynTabs.markTab( $(tabRef.currentTarget),  '<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
+                            if (callback) 
+                                if ($.isFunction( callback ))
+                                    callback(data,form); 
                             return null;
                         }
                     }
@@ -358,6 +440,7 @@ var objViewDatosGenerales = {
                     }
                 }
                 dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef,'<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
+                
             },
             generateRequest: function($this,callUrl,from,tabRef, resetForm, callback){                
                 var form = $this.parents('form:first');
@@ -401,7 +484,6 @@ var objViewDatosGenerales = {
                     url: site_url+'Solicitud/cmbTipoOperacion',
                 }).then(function (data) {
                     data.results.data.forEach(element => {
-                        console.log(element);
                         var option = new Option(element.pdescripcion, element.pclave, true, true);
                         cmbSelect.append(option);
                     });

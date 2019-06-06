@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-md-4">
                     <span class="clr">*</span>RFC
-                    <input type="text" class="form-control" id="pRFC_DOMICILIO" name="pRFC_DOMICILIO" maxlength="13" minlength="10" required>
+                    <input type="text" class="form-control" id="pRFC_DOMICILIO" name="pRFC_DOMICILIO" maxlength="13" minlength="13" required>
                 </div>
                 <div class="col-md-4"> <!-- PENDIENTEEEEE -->
                     Tipo de movimiento <!-- Se llena de la tabla CAT_TIPO_OPERACION  -->
@@ -150,25 +150,24 @@
             <input type="hidden" id="PID_ALTERNA_Datos_personales" name="PID_ALTERNA_Datos_personales" value="" >
             <input type="hidden" id="pID_ESTADO_EMISOR_Datos_personales" name="pID_ESTADO_EMISOR_Datos_personales" value="" >
             <input type="hidden" id="pID_EMISOR_Datos_personales" name="pID_EMISOR_Datos_personales" value="" >
-        </form>            
+        <!-- CIB BLOQUE -->
         <?php if (verificaPermiso(14) == true) { ?>
-        <form action="#" id="Datos_personales_CIB_form" name="Datos_personales_CIB_form" autocomplete="off">
-            <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
-            <div class="row ">
-                <div class="col-md-4">
-                    CIB                        
-                    <input type="text" id="CIB" name="CIB" class="form-control" maxlength="30" required>
-                </div>
-                <div class="col-md-4">
-                    Motivo de cambio de CIB 
-                    <input type="text" id="motivoCIB" name="motivoCIB" class="form-control" maxlength="250" required>
-                <br>
-                </div>
-                <div class="col-md-4">
-                    <button class="btn btn-default" id="GUARDAR_CIB" style="margin-top: 16px;"> Guardar CIB</button>
+            <div id="Datos_personales_CIB_form">
+                <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+                <div class="row ">
+                    <div class="col-md-4">
+                        CIB                        
+                        <input type="text" id="CIB" name="CIB" class="form-control" maxlength="30" >
+                    </div>
+                    <div class="col-md-4">
+                        Motivo de cambio de CIB 
+                        <input type="text" id="motivoCIB" name="motivoCIB" class="form-control" maxlength="250" >                    
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-default" id="GUARDAR_CIB" style="margin-top: 16px;"> Guardar CIB</button>
+                    </div>
                 </div>
             </div>
-        </form>
             <br>
             <div class="row">
                 <div class="col-md-12">
@@ -183,6 +182,8 @@
                 </div>
             </div>
         <?php } ?>
+        <!-- /CIB BLOQUE -->
+        </form>
         <div class="row">
             <div class="col-md-12 text-center">
                 <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab"  id="siguienteDatosPersonales" data-nexttab="#Desarrollo-tab">Siguiente Ficha</button>
@@ -299,7 +300,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <span class="clr">*</span>Código postal
-                    <input type="text" class="form-control" id="pCODIGO_POSTAL_DOMICILIO" name="pCODIGO_POSTAL_DOMICILIO" maxlength="10" required>
+                    <input type="number" class="form-control" id="pCODIGO_POSTAL_DOMICILIO" name="pCODIGO_POSTAL_DOMICILIO" maxlength="10" required>
                 </div>
                 <div class="col-md-4">
                     <span class="clr">*</span>Estado <br><!-- Se  llena del catálogo CAT_ENTIDAD-->
@@ -341,8 +342,8 @@
             <br>
             <div class="row">
                 <div class="col-md-4">
-                    <span class="clr">*</span>Entre la calle de
-                    <input type="text" class="form-control" id="pENTRE_CALLE_DOMICILIO" name="pENTRE_CALLE_DOMICILIO" maxlength="60" required>
+                    Entre la calle de
+                    <input type="text" class="form-control" id="pENTRE_CALLE_DOMICILIO" name="pENTRE_CALLE_DOMICILIO" maxlength="60">
                 </div>
                 <div class="col-md-4">
                     Y la calle de
