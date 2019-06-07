@@ -214,9 +214,10 @@ var objViewDatosGenerales = {
                         
                         mainTabMenu.var.pID_ALTERNA = data.results.data.pID_ALTERNA ? data.results.data.pID_ALTERNA : null;
 
-                        $("#Datos_personales_form").data('hasChanged',true).removeData("hasSaved");
-
-                        objViewDatosGenerales.events.click.datosGenerales.generarCIB(e, from, tabRef);
+                        if (from) {
+                            $("#Datos_personales_form").data('hasChanged',true).removeData("hasSaved");
+                            objViewDatosGenerales.events.click.datosGenerales.generarCIB(e, from, tabRef);
+                        }
                         
                     });
 
