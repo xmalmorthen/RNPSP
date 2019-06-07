@@ -39,6 +39,17 @@ class Usuarios_model extends MY_Model
       
       $this->where('id', $idUsuario);
       $returnResponse = $this->get();
+      
+      $this->db->select('idTipoUsuario,TipoUsuario');
+      $this->db->from('vw_Usuarios');
+      $this->db->where('id', $idUsuario);
+      $tipoUsuario = $this->response_row();
+
+      if ($tipoUsuario){
+        $returnResponse[0]['idTipoUsuario'] = $tipoUsuario['idTipoUsuario'];
+        $returnResponse[0]['TipoUsuario'] = $tipoUsuario['TipoUsuario'];
+      }
+
     } catch (Exception $e) {
       Msg_reporting::error_log($e);
     }

@@ -130,6 +130,14 @@ class Usuarios extends CI_Controller
     $data = array();
     $data['user_id'] = $user_id;
     
+    $this->load->model('catalogos/CAT_TIPOSUSUARIO_model');
+    if(verificaPermiso(3) == 1){ # Puede dar de alta de todos los tipos de usuario
+      $data['tiposUsuario'] = $this->CAT_TIPOSUSUARIO_model->get();
+    } else if(verificaPermiso(4) == 1){ # Pueden dar de alta usuarios capturistas, consulta
+      $this->CAT_TIPOSUSUARIO_model->where_in('id',array(3,4));
+      $data['tiposUsuario'] = $this->CAT_TIPOSUSUARIO_model->get();
+    }
+
     if($user_id != false){
     $data['usuario'] = current($this->Usuarios_model->byId($user_id));    
     $this->load->model('catalogos/CAT_ADSCRIPCIONES_model');
@@ -140,6 +148,7 @@ class Usuarios extends CI_Controller
     $data['estatus'] = $this->CAT_ESTATUSUSUARIO_model->get();
     //Utils::pre($data);
     $this->load->library('parser');
+
     $this->parser->parse('Usuarios/Modificar', $data);
   }
 
@@ -166,6 +175,7 @@ class Usuarios extends CI_Controller
 
   public function guardarModificar()
   {
+
     $this->load->model('Usuarios_model');
     $curp = $this->input->get('curp');
 
@@ -192,7 +202,7 @@ class Usuarios extends CI_Controller
       if($this->input->post('Estatus') == 2){
         $this->form_validation->set_rules('MotivoInactivo', 'Motivo de cambio estatus a Inactivo', 'trim|required');
       }
-      $this->form_validation->set_rules('pCORREO', 'Correo electrónico', 'required|valid_email');
+      $this->form_validation->set_rules('pCORREO', 'Correo electrónico', 'required|valid_email|is_unique[cat_Usuarios.username]');
 
       if ($this->form_validation->run() === true) {
         $user_id = $this->input->post('user_id');
@@ -205,7 +215,10 @@ class Usuarios extends CI_Controller
           'id_EstatusUsuario' => $this->input->post('pID_ESTATUS')
         ];
         if($this->ion_auth->update($user_id, $additional_data)){
-        
+
+          $this->ion_auth->remove_from_group(NULL, $user_id);
+          $this->ion_auth->add_to_group($this->input->post('pTIPO_USUARIO'), $user_id);
+
           $this->load->library('uuid');
           $historico = array(
             'id_UsuarioHistorial' => $this->uuid->v4(),
@@ -236,7 +249,6 @@ class Usuarios extends CI_Controller
       ->_display();
     exit;
   }
-
 
   public function Ver()
   {
