@@ -138,6 +138,8 @@ var objViewIdentificacion = {
             }
         }
 
+        $('#FECHA_DOCUMENTO').attr('max', moment( new Date() ).format('YYYY-MM-DD'));
+
         objViewIdentificacion.vars.general.init = true;
     },
     events : {
@@ -148,17 +150,13 @@ var objViewIdentificacion = {
                 guardarMediafiliacion : function(e, from, tabRef){
                     e.preventDefault();
                     objViewIdentificacion.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveIdentificacionMediafiliacion',from, tabRef, false, function(data){
-                        console.log(data);
                         
-                        debugger;
                     });
                 },
                 guardarSenia : function(e, from, tabRef){
                     e.preventDefault();
-                    objViewIdentificacion.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveIdentificacionSenia',from, tabRef, true, function(data){
-                        console.log(data);
-                        
-                        debugger;
+                    objViewIdentificacion.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveIdentificacionSenia',from, tabRef, true, function(data){                        
+                        fillData.identificacion.seniasParticulares(mainTabMenu.var.pID_ALTERNA);
                     });
                 },                
                 guardarFicha : function(e, from, tabRef){

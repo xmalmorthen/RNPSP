@@ -347,6 +347,7 @@
                             <option value="S">SI</option>
                             <option value="N">NO</option>
                         </select>
+                        <span id="err_pLENTES"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estatura (cm)
@@ -610,7 +611,7 @@
                     <div class="col-md-4">
                         Audio
                         <div class="custom-file">
-                            <input type="file" id="vozFile" name="vozFile" class='custom-file-input inputFile' data-renderin='thumb_vozFile' accept="audio/*" required>
+                            <input type="file" id="vozFile" name="vozFile" class='custom-file-input inputFile' data-renderin='thumb_vozFile' accept="audio/*">
                             <label class="custom-file-label" for="inputGroupFile01">Seleccionar archivo</label>
                         </div>
                     </div>
@@ -631,12 +632,12 @@
                     <div class="col-md-4">
                         <div class="row">
                             <div class="col-md-6">
-                                <button class="btn btn-default" id="validarVoz">
+                                <button class="btn btn-default btn-lg" id="validarVoz">
                                     Validar
                                 </button>
                             </div>
                             <div class="col-md-6">
-                                <button class="btn btn-default" id="validarReplicar">
+                                <button class="btn btn-default btn-lg" id="validarReplicar">
                                     Replicar
                                 </button>
                             </div>
@@ -650,7 +651,7 @@
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <button class="btn btn-secondary btn-lg btnSiguienteAnterior" id="anteriorVoz" data-nexttab="#Digitalizacion_de_documento-tab">Anterior Ficha</button>
-                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab endTab" id="finalizarVoz">Finalizar</button>
+                        <!-- <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab endTab" id="finalizarVoz">Finalizar</button> -->
                     </div>
                 </div>
             </form>

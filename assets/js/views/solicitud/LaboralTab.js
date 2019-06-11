@@ -114,6 +114,12 @@ var objViewLaboral = {
             }
         }
 
+        $('#pFECHA_INGRESO,#pFECHA_INICIO_EMPLEOS_DIVERSOS,#pFECHA_TERMINO_EMPLEOS_DIVERSOS,#pFECHA_INICIO_COMISIONES,#pFECHA_TERMINO_COMISIONES').attr('max', moment( new Date() ).format('YYYY-MM-DD'));
+        
+        $('#pTELEFONO,#pNUM_TELEFONICO').on('input', function () { 
+            this.value = this.value.replace(/[^0-9\-\(\)]/g,'');
+        });
+
         objViewLaboral.vars.general.init = true;
     },
     events : {

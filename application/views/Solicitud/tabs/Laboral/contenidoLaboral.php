@@ -1,6 +1,6 @@
     <div class="tab-pane fade show active" id="Adscripcion_actual" role="tabpanel" aria-labelledby="Adscripcion_actual-tab">
         <div class="_container">
-            <form action="#" id="Adscripcion_actual_form" name="Adscripcion_actual_form" autocomplete="off">
+            <form action="#" id="Adscripcion_actual_form" name="Adscripcion_actual_form" autocomplete="off"  data-required=false>
                 <br>
                 <div class="row">
                     <div class="col-md-12 text-center">
@@ -30,7 +30,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Código postal
-                        <input type="text"  id="pCP_EMP_ADSCRIPCION_ACTUAL" name="pCP_EMP_ADSCRIPCION_ACTUAL" class="form-control" class="form-control" required maxlength="5">
+                        <input type="number"  id="pCP_EMP_ADSCRIPCION_ACTUAL" name="pCP_EMP_ADSCRIPCION_ACTUAL" class="form-control" class="form-control" required>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estado <!-- Se llena del catalogo "CAT_ENTIDAD" -->
@@ -63,11 +63,11 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Número exterior
-                        <input type="text" id="pNUM_EXTERIOR" name="pNUM_EXTERIOR" class="form-control" required maxlength="30" minlength="5"  required> 
+                        <input type="text" id="pNUM_EXTERIOR" name="pNUM_EXTERIOR" class="form-control" required> 
                     </div>
                     <div class="col-md-4">
                         Número interior
-                        <input type="text" id="pNUM_INTERIOR" name="pNUM_INTERIOR" class="form-control" maxlength="30" minlength="4">
+                        <input type="text" id="pNUM_INTERIOR" name="pNUM_INTERIOR" class="form-control">
                     </div>
                     <div class="col-md-4">
                     <span class="clr">*</span>Número telefónico
@@ -99,8 +99,8 @@
                     <input type="text" id="pRANGO" name="pRANGO" class="form-control" maxlength="30">
                     </div>
                     <div class="col-md-4">
-                        Nivel de mando <!-- Se llena del catalogo "CAT_NIVEL_MANDO" -->
-                        <select  class="form-control" id="pID_NIVEL_MANDO" name="pID_NIVEL_MANDO" data-error="#err_pID_NIVEL_MANDO" data-query='ZTNHS0t4VzB5TTVIWFRSOTJyTk1EaklOUWNzYm9RZ0FqN1lFQUFuSWpZVWQ4c3FMMEtjNU12TUlxWFJXR2p0R3g4TWx3Q1FBVEI5Q2dLcnVnZldsT1dqaWRIWjZURGFLVGI1S3ZpV2NlZEVMMklJZTM5VmFWNGdjbmFhdit5bkd5ZFE5UkYyRkNuU0kzanNxaGxXM2NnMFlKU0pGaHZFZTkvMTZvVFZwdFNvPQ=='></select>
+                        <span class="clr">*</span>Nivel de mando <!-- Se llena del catalogo "CAT_NIVEL_MANDO" -->
+                        <select  class="form-control" id="pID_NIVEL_MANDO" name="pID_NIVEL_MANDO" data-error="#err_pID_NIVEL_MANDO" data-query='ZTNHS0t4VzB5TTVIWFRSOTJyTk1EaklOUWNzYm9RZ0FqN1lFQUFuSWpZVWQ4c3FMMEtjNU12TUlxWFJXR2p0R3g4TWx3Q1FBVEI5Q2dLcnVnZldsT1dqaWRIWjZURGFLVGI1S3ZpV2NlZEVMMklJZTM5VmFWNGdjbmFhdit5bkd5ZFE5UkYyRkNuU0kzanNxaGxXM2NnMFlKU0pGaHZFZTkvMTZvVFZwdFNvPQ==' required></select>
                         <span id="err_pID_NIVEL_MANDO"></span>
                     </div>
                     <div class="col-md-4">
@@ -126,8 +126,8 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        Área o departamento <!-- Se llena del catalogo "CAT_AREA" -->
-                        <select  class="form-control" id="pID_AREA" name="pID_AREA" data-error="#err_pID_AREA" data-force-refresh ='true'></select>
+                        <span class="clr">*</span>Área o departamento <!-- Se llena del catalogo "CAT_AREA" -->
+                        <select  class="form-control" id="pID_AREA" name="pID_AREA" data-error="#err_pID_AREA" data-force-refresh ='true' required></select>
                         <span id="err_pID_AREA"></span>
                     </div>
                     <div class="col-md-4">
@@ -204,7 +204,7 @@
 
     <div class="tab-pane fade" id="Empleos_diversos" role="tabpanel" aria-labelledby="Empleos_diversos-tab">
         <div class="_container">
-            <form name="Empleos_diversos_form" id="Empleos_diversos_form" action="#"  autocomplete="off">
+            <form name="Empleos_diversos_form" id="Empleos_diversos_form" action="#"  autocomplete="off"  data-required=false>
                 <br>
                 <div class="row">
                     <div class="col-md-12 text-center">
@@ -220,7 +220,7 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Código postal
-                        <input type="text" id="pCP_EMP_EMPLEOS_DIVERSOS" name="pCP_EMP_EMPLEOS_DIVERSOS" required  class="form-control"  maxlength="5">
+                        <input type="number" id="pCP_EMP_EMPLEOS_DIVERSOS" name="pCP_EMP_EMPLEOS_DIVERSOS" required  class="form-control">
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estado <!-- Se llena del catalogo "CAT_ENTIDAD" -->                            
@@ -238,18 +238,18 @@
 
                     <div class="col-md-4">
                         Colonia/Localidad
-                        <input type="text" id="pCOLONIA_EMPLEOS_DIVERSOS" name="pCOLONIA_EMPLEOS_DIVERSOS" required  class="form-control"  maxlength="60">
+                        <input type="text" id="pCOLONIA_EMPLEOS_DIVERSOS" name="pCOLONIA_EMPLEOS_DIVERSOS" class="form-control"  maxlength="60">
                     </div>
                     <div class="col-md-4">
                         Calle y número
-                        <input type="text" id="pCALLE_Y_NUM_EMPLEOS_DIVERSOS" name="pCALLE_Y_NUM_EMPLEOS_DIVERSOS" required  class="form-control"  maxlength="60">
+                        <input type="text" id="pCALLE_Y_NUM_EMPLEOS_DIVERSOS" name="pCALLE_Y_NUM_EMPLEOS_DIVERSOS" class="form-control"  maxlength="60">
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                            Número telefónico
-                        <input type="text" id="pNUM_TELEFONICO" name="pNUM_TELEFONICO"  class="form-control" maxlength="20">
+                        <span class="clr">*</span>Número telefónico
+                        <input type="text" id="pNUM_TELEFONICO" name="pNUM_TELEFONICO"  class="form-control" maxlength="20" required>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Área o departamento 
@@ -337,7 +337,7 @@
  
     <div class="tab-pane fade" id="Actitudes_hacia_el_empleo" role="tabpanel" aria-labelledby="Actitudes_hacia_el_empleo">
         <div class="_container">
-            <form name="Actitudes_hacia_el_empleo_form" id="Actitudes_hacia_el_empleo_form" action="#" autocomplete="off">
+            <form name="Actitudes_hacia_el_empleo_form" id="Actitudes_hacia_el_empleo_form" action="#" autocomplete="off" data-required=true>
                 <br>
                 <div class="row">
                     <div class="col-md-12 text-center">
@@ -428,7 +428,7 @@
 
     <div class="tab-pane fade" id="Comisiones" role="tabpanel" aria-labelledby="Comisiones-tab">
         <div class="_container">
-            <form id="Comisiones_form" name="Comisiones_form" action="#" autocomplete="off">
+            <form id="Comisiones_form" name="Comisiones_form" action="#" autocomplete="off" data-required=false>
                 <br>
                 <div class="row">
                     <div class="col-md-12 text-center">

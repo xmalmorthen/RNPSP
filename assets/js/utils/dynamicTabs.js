@@ -32,23 +32,29 @@ var dynTabs = {
 
             //VALIDATE FORM 
             if (dynTabs.validForm) {
-                if (!form.valid()){
-                    var linkRef = $('#' + e.currentTarget.id);
+
+                if ( (form.data('required') == true && form.data('hasChanged') == true) || mainTabMenu.var.nuevoRegistro) {
                     
-                    if (!linkRef.hasClass('errorValidation')) {
-                        dynTabs.markTab( linkRef,'<span class="text-danger tabMark errorValidation mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i></span>');
-                    }                
-                    form.setAlert({
-                        alertType :  'alert-danger',
-                        dismissible : true,
-                        header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
-                        msg : 'Formulario incompleto'
-                    });
-    
-                    //TODO: Xmal - Quitar comentarios en bloque para implementación
-                    e.preventDefault();
-                    return null;
-                }
+                    if (!form.valid()){
+                        var linkRef = $('#' + e.currentTarget.id);
+                        
+                        if (!linkRef.hasClass('errorValidation')) {
+                            dynTabs.markTab( linkRef,'<span class="text-danger tabMark errorValidation mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i></span>');
+                        }                
+                        form.setAlert({
+                            alertType :  'alert-danger',
+                            dismissible : true,
+                            header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                            msg : 'Formulario incompleto'
+                        });
+        
+                        //TODO: Xmal - Quitar comentarios en bloque para implementación
+                        e.preventDefault();
+                        return null;
+                    }
+
+                }   
+
                 if (form.data('hasChanged') == true){
                     Swal.fire({
                         title: 'Aviso',

@@ -117,6 +117,9 @@ var objViewDatosGenerales = {
         objViewDatosGenerales.vars.datosGenerales.btns.guardarDependiente.on('click',objViewDatosGenerales.events.click.datosGenerales.guardarDependiente);
         
         //CHANGE
+        $('#pID_GRADO_ESCOLAR').on("change", objViewDatosGenerales.events.change.pID_GRADO_ESCOLAR);
+        $('#pID_PAIS_NAC').on("change", objViewDatosGenerales.events.change.pID_PAIS_NAC);
+        $('#pID_NACIONALIDAD').on("change", objViewDatosGenerales.events.change.pID_NACIONALIDAD);
         
         //CAMBIO DE TABS
         objViewDatosGenerales.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewDatosGenerales.actions.discartChanges}, e); } );
@@ -154,7 +157,7 @@ var objViewDatosGenerales = {
             $('#Datos_personales_CIB_form').data('hasChanged',true);            
         });
 
-        $('#pFECHA_NACIONALIDAD, #pINICIO_DESARROLLO').attr('max', moment( new Date() ).format('YYYY-MM-DD'));
+        $('#pFECHA_NACIONALIDAD, #pINICIO_DESARROLLO,#pFECHA_NAC_SOCIOECONOMICOS').attr('max', moment( new Date() ).format('YYYY-MM-DD'));
         $('#pTERMINO_DESARROLLO').attr('min', moment( new Date() ).add(1,'days').format('YYYY-MM-DD') );
 
         $.validator.addMethod("validRFCFormat", function(value, element) {
@@ -195,7 +198,7 @@ var objViewDatosGenerales = {
                 }
             }
         });
-
+        
         $('#pTELEFONO_DOMICILIO').on('input', function () { 
             this.value = this.value.replace(/[^0-9\-\(\)]/g,'');
         });
@@ -321,11 +324,36 @@ var objViewDatosGenerales = {
                 },
                 guardarSocioeconomico : function(e, from, tabRef){
                     e.preventDefault();
-                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesSocio',from, tabRef, false, function(data){
-                    });
+
+                    if ( !$('#pVIVE_FAMILIA').val()
+                        && !$('#pINGRESO_FAMILIAR').val()
+                        && !$('#pID_TIPO_DOMICILIO').val()
+                        && !$('#pACTIVIDAD_CULTURAL').val()
+                        && !$('#pINMUEBLES').val()
+                        && !$('#pINVERSIONES').val()
+                        && !$('#pNUMERO_AUTOS').val()
+                        && !$('#pCALIDAD_VIDA').val()
+                        && !$('#pVICIOS').val()
+                        && !$('#pIMAGEN_PUBLICA').val()
+                        && !$('#pCOMPORTA_SOCIAL').val() ){
+
+                            Swal.fire({ type: 'warning', title: 'Atención', html: 'Debe especificar al menos un dato del formulario' });
+
+                    } else {
+
+
+                        $('#pNOMBRE_SOCIOECONOMICOS,#pPATERNO_SOCIOECONOMICOS,#pSEXO_SOCIOECONOMICOS,#pFECHA_NAC_SOCIOECONOMICOS,#pID_RELACION,#pID_RELACION_SOCIOECONOMICOS').removeAttr('required');
+
+                        objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesSocio',from, tabRef, false, function(data){
+                        });
+
+                    }
                 },
                 guardarDependiente : function(e, from, tabRef){
                     e.preventDefault();
+
+                    $('#pNOMBRE_SOCIOECONOMICOS,#pPATERNO_SOCIOECONOMICOS,#pSEXO_SOCIOECONOMICOS,#pFECHA_NAC_SOCIOECONOMICOS,#pID_RELACION,#pID_RELACION_SOCIOECONOMICOS').prop('required',true);
+
                     objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDependiente',from, tabRef, true, function(data,form){
                         fillData.datosGenerales.dependientesEconomicos(mainTabMenu.var.pID_ALTERNA);
                     });
@@ -337,6 +365,57 @@ var objViewDatosGenerales = {
                 $.each( objViewDatosGenerales.vars.datosGenerales.tables, function( key, value ) {
                     try {value.obj.responsive.rebuild().responsive.recalc();}catch(err){}
                 });                
+            },
+            pID_GRADO_ESCOLAR : function(e){
+                var value = $(this).val(),
+                    inputs = $('#pNOMBRE_ESCUELA,#pESPECIALIDAD_DESARROLLO,#pCEDULA_PROFESIONAL,#pINICIO_DESARROLLO,#pTERMINO_DESARROLLO,#pREGISTRO_SEP,#pFOLIO_CERTIFICADO,#pPROMEDIO');
+                if (value == -1 || value == 1){
+                    inputs.prop( "disabled", true );
+                } else {
+                    inputs.prop( "disabled", false );
+                }
+            },
+            pID_PAIS_NAC : function(e){
+                
+                var value = $(this).val();
+
+                if (value != 82){ // país diferente a méxico
+                    
+                    if ( $('#pID_MUNICIPIO_NAC').val() != value && $('#pID_MUNICIPIO_NAC').data('populated')) {
+                    
+                        if (value == -1) { // sin información
+
+
+                                $('#pID_ENTIDAD_NAC').val(value).trigger('change',[function(){
+
+                                    if ( $('#pID_ENTIDAD_NAC').val() == value)
+                                        $('#pID_MUNICIPIO_NAC').val(-1).trigger('change.select2');
+
+                                }]).trigger('change.select2');
+                                
+                            
+
+                        } else { // cualquier otro país
+
+                            $('#pID_ENTIDAD_NAC').val(99).trigger('change',[function(){
+
+                                if ( $('#pID_ENTIDAD_NAC').val() == 99) {
+                                    $('#pID_MUNICIPIO_NAC').val(999999).trigger('change.select2');
+                                }
+
+                            }]).trigger('change.select2');
+                            
+                        }
+                        
+                    }
+                }
+
+            },
+            pID_NACIONALIDAD : function(e){
+                var value = $(this).val();
+                if (value != 82){
+                    $('#pMODO_NACIONALIDAD').val(3).trigger('change').trigger('change.select2');
+                }
             }
         }
     },

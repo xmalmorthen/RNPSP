@@ -10,7 +10,8 @@ $(function() {
 
 var mainTabMenu = {
     var : {
-        pID_ALTERNA : null
+        pID_ALTERNA : null,
+        nuevoRegistro: true
     },
     fireInit : function(){
         $('._container.d-none').removeClass('d-none');
@@ -71,17 +72,19 @@ var mainTabMenu = {
                 allFormsSaved = true;
 
 
-            forms.each(function( index ) {
-                if ( $(this).data('hasSaved') != true ) {
-                    allFormsSaved = false;
-                    return false;
-                }
-            });
+            if (mainTabMenu.var.nuevoRegistro) {
+                forms.each(function( index ) {
+                    if ( $(this).data('required') && $(this).data('hasSaved') != true ) {
+                        allFormsSaved = false;
+                        return false;
+                    }
+                });
+            }
 
             $(e.relatedTarget).data('finish',allFormsSaved);
 
             // TODO: Xmal - Quitar comentarios en bloque para implementación
-            if (!$(tabRef).data('finish')){
+            if (!$(e.relatedTarget).data('finish')){
                 e.preventDefault();
                 Swal.fire({ type: 'warning', title: 'Aviso', html: 'Debe completar y guardar la información de las pestañas que actualmente se muestran.' });
                 return null;
@@ -235,10 +238,12 @@ var mainTabMenu = {
             if ( typeof result.dismiss !== 'undefined') {
                 window.location.href = base_url + 'Solicitud';
             }else {
-                if (result.value.from == 'query')
+                if (result.value.from == 'query')                    
                     mainFormActions.populateCURPFields(result.value.data);
-                else
+                else {
+                    mainTabMenu.var.nuevoRegistro = false;
                     mainFormActions.fillData(result.value.data);
+                }
             }
         });
     }
@@ -848,19 +853,19 @@ var fillData = {
 
                     /*******************************************************************************/            
                     //CAMPOS DE IMÁGENES
-                    thumb_pIMAGEN_IZQUIERDO.attr("src", data.pIMG_PERFILIZQ ? data.pIMG_PERFILIZQ.name : imageBreak ).attr("alt", data.pIMG_PERFILIZQ ? data.pIMG_PERFILIZQ.originalName : data.pIMG_PERFILIZQ.name);
+                    thumb_pIMAGEN_IZQUIERDO.attr("src", data.pIMG_PERFILIZQ ? data.pIMG_PERFILIZQ.name : imageBreak ).attr("alt", data.pIMG_PERFILIZQ ? data.pIMG_PERFILIZQ.originalName : 'Sin imagen');
                     thumb_pIMAGEN_IZQUIERDO.parent().find('div.custom-file label.custom-file-label').html( data.pIMG_PERFILIZQ ? data.pIMG_PERFILIZQ.originalName : 'Seleccionar imágen' );
 
-                    thumb_pIMAGEN_FRENTE.attr("src", data.pIMG_FRENTE ? data.pIMG_FRENTE.name : imageBreak ).attr("alt", data.pIMG_FRENTE ? data.pIMG_FRENTE.originalName : data.pIMG_FRENTE.name);
+                    thumb_pIMAGEN_FRENTE.attr("src", data.pIMG_FRENTE ? data.pIMG_FRENTE.name : imageBreak ).attr("alt", data.pIMG_FRENTE ? data.pIMG_FRENTE.originalName : 'Sin imagen');
                     thumb_pIMAGEN_FRENTE.parent().find('div.custom-file label.custom-file-label').html( data.pIMG_FRENTE ? data.pIMG_FRENTE.originalName : 'Seleccionar imágen' );
                     
-                    thumb_pIMAGEN_DERECHO.attr("src", data.pIMG_PERFILDR ? data.pIMG_PERFILDR.name : imageBreak ).attr("alt", data.pIMG_PERFILDR ? data.pIMG_PERFILDR.originalName : data.pIMG_PERFILDR.name);
+                    thumb_pIMAGEN_DERECHO.attr("src", data.pIMG_PERFILDR ? data.pIMG_PERFILDR.name : imageBreak ).attr("alt", data.pIMG_PERFILDR ? data.pIMG_PERFILDR.originalName : 'Sin imagen');
                     thumb_pIMAGEN_DERECHO.parent().find('div.custom-file label.custom-file-label').html( data.pIMG_PERFILDR ? data.pIMG_PERFILDR.originalName : 'Seleccionar imágen' );
 
-                    thumb_pIMAGEN_FIRMA.attr("src", data.pIMG_FIRMA ? data.pIMG_FIRMA.name : imageBreak ).attr("alt", data.pIMG_FIRMA ? data.pIMG_FIRMA.originalName : data.pIMG_FIRMA.name);
+                    thumb_pIMAGEN_FIRMA.attr("src", data.pIMG_FIRMA ? data.pIMG_FIRMA.name : imageBreak ).attr("alt", data.pIMG_FIRMA ? data.pIMG_FIRMA.originalName : 'Sin imagen');
                     thumb_pIMAGEN_FIRMA.parent().find('div.custom-file label.custom-file-label').html( data.pIMG_FIRMA ? data.pIMG_FIRMA.originalName : 'Seleccionar imágen' );
 
-                    thumb_pIMAGEN_HUELLA.attr("src", data.pIMG_HUELLA ? data.pIMG_HUELLA.name : imageBreak ).attr("alt", data.pIMG_HUELLA ? data.pIMG_HUELLA.originalName : data.pIMG_HUELLA.name);
+                    thumb_pIMAGEN_HUELLA.attr("src", data.pIMG_HUELLA ? data.pIMG_HUELLA.name : imageBreak ).attr("alt", data.pIMG_HUELLA ? data.pIMG_HUELLA.originalName : 'Sin imagen');
                     thumb_pIMAGEN_HUELLA.parent().find('div.custom-file label.custom-file-label').html( data.pIMG_HUELLA ? data.pIMG_HUELLA.originalName : 'Seleccionar imágen' );
                     /*******************************************************************************/
                 }
@@ -928,9 +933,8 @@ var fillData = {
                             </div>
                         `);
                     }
-                    
-                    $('#Registro_decadactilar_form').LoadingOverlay("hide");
                 }
+                $('#Registro_decadactilar_form').LoadingOverlay("hide");
             })
             .catch( (err) => {
                 $('#Registro_decadactilar_form').setAlert({

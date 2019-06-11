@@ -160,7 +160,7 @@ var iDB = {
                             
                                     //SI SE ASIGNA UN VALOR Y AUN NO ESTA POPULADO
                                     //LO OBTIENE DEL DATA [INSERT]
-                                    if ( obj.data('insert') ) {
+                                    if ( obj.data('insert') ) {                                        
                                         obj.val(obj.data('insert')).trigger('change.select2');
                                         obj.trigger('change');
                                         obj.removeData('insert');
@@ -196,6 +196,7 @@ var iDB = {
                                 //SI SE ASIGNA UN VALOR Y AUN NO ESTA POPULADO
                                 //LO OBTIENE DEL DATA [INSERT]
                                 if ( obj.data('insert') ) {
+
                                     obj.val(obj.data('insert')).trigger('change.select2');
                                     obj.trigger('change');
 
@@ -210,7 +211,9 @@ var iDB = {
                             }).always(function () {
                                 obj.LoadingOverlay("hide");
                                 MyCookie.session.reset();
-                                options.always();
+                                
+                                if ( $.isFunction( options.always ) )
+                                    options.always();
                             });
                         }
                     });

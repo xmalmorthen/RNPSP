@@ -28,7 +28,7 @@ var populate = {
         });
     },
     events : {
-        change :function(e){
+        change :function(e,callback){
             var factory = JSON.parse($(this).data('factory'));
             if (factory.query) {
                 if (factory.params){
@@ -38,7 +38,8 @@ var populate = {
                 $('#' + factory.id ).getCatalog({
                     query : factory.query,
                     params : factory.params,
-                    emptyOption : true
+                    emptyOption : true,
+                    always : $.isFunction( callback ) ? callback : null
                 });
             }
         }
