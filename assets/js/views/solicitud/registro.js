@@ -43,6 +43,7 @@ var mainTabMenu = {
         );
         switch (formMode) {
             case 'edit':
+                mainTabMenu.var.nuevoRegistro = false;
                 mainFormActions.populateData(id);
             break;
             case 'add' : 
@@ -253,7 +254,7 @@ var mainFormActions = {
     populateCURPFields : function (data) {
         objViewDatosGenerales.actions.populateCURPData(data);
     },
-    populateData : function(idRef){
+    populateData : function(idRef){        
         $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
         var callUrl = base_url + 'Solicitud/ajaxGetSolicitudById';
 
@@ -271,8 +272,11 @@ var mainFormActions = {
                 mainFormActions.fillData(data);
             } else
                 throw new Error('No se encontró información');
+
+            $.LoadingOverlay("hide", true);
+
         }).catch(function(err){
-            $.LoadingOverlay("hide");
+            $.LoadingOverlay("hide",true);
             Swal.fire({ type: 'error', title: 'Error', html: err.statusText ? err.statusText : err.message})
             .then(() => {
                 window.location.href = base_url + 'Solicitud';

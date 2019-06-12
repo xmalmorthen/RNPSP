@@ -160,10 +160,10 @@ var objViewIndex = {
                             else 
                                 location.reload();
 
-                            $.LoadingOverlay("hide");
+                            $.LoadingOverlay("hide",true);
                         })
                         .fail(function (err) {
-                            $.LoadingOverlay("hide");
+                            $.LoadingOverlay("hide",true);
                             Swal.fire({ type: 'error', title: 'Error', html: err.message ? err.message : err.statusText });
                         })
                         .always(function () {
@@ -204,7 +204,7 @@ var objViewIndex = {
                         if (data.results.status != 1) {
                             $('#frmAlertMsg').html(data.results.message);
                             $('#frmAlert').removeClass('d-none');
-                            $.LoadingOverlay("hide");
+                            $.LoadingOverlay("hide",true);
                         } else {
 
                             var errorList = '<ul>';
@@ -276,7 +276,7 @@ var objViewIndex = {
                     
                         $('#frmAlertMsg').html(err.message ? err.message : err.statusText);
                         $('#frmAlert').removeClass('d-none');
-                        $.LoadingOverlay("hide");
+                        $.LoadingOverlay("hide",true);
 
                     }).always(function () {
                         MyCookie.session.reset();
@@ -289,7 +289,7 @@ var objViewIndex = {
 
                     $('#frmAlertMsg').html(err.message ? err.message : err.statusText);
                     $('#frmAlert').removeClass('d-none');
-                    $.LoadingOverlay("hide");
+                    $.LoadingOverlay("hide",true);
 
                 }
                 

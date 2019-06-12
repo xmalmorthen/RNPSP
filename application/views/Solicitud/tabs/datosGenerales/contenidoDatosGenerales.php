@@ -116,7 +116,7 @@
                 </div>
                 <div class="col-md-4">
                     Clave de elector
-                    <input type="text" id="pCREDENCIAL_ELECTOR" name="pCREDENCIAL_ELECTOR" class="form-control" minlength="15" maxlength="15">
+                    <input type="text" id="pCREDENCIAL_ELECTOR" name="pCREDENCIAL_ELECTOR" class="form-control" minlength="18" maxlength="18">
                 </div>
                 <div class="col-md-4">
                     Pasaporte

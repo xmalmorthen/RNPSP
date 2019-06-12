@@ -167,7 +167,7 @@ var objViewCapacitacion = {
                 }
             },
             throwError: function(err,form,from,tabRef){
-                $.LoadingOverlay("hide");
+                $.LoadingOverlay("hide",true);
                 
                 form.setAlert({
                     alertType :  'alert-danger',
@@ -214,7 +214,7 @@ var objViewCapacitacion = {
                     }).fail(function (err) {
                         objViewCapacitacion.actions.ajax.throwError(err,form,from,tabRef);                            
                     }).always(function () {
-                        $.LoadingOverlay("hide");
+                        $.LoadingOverlay("hide",true);
                         MyCookie.session.reset();
                     });
 

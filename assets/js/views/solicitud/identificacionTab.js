@@ -221,9 +221,9 @@ var objViewIdentificacion = {
                                         dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef ,'<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
                                         
                                         populate.reset(form);
-                                        $.LoadingOverlay("hide");
+                                        $.LoadingOverlay("hide",true);
                                     }catch(err) {
-                                        $.LoadingOverlay("hide");
+                                        $.LoadingOverlay("hide",true);
                     
                                         form.setAlert({
                                             alertType :  'alert-danger',
@@ -253,7 +253,7 @@ var objViewIdentificacion = {
                                     objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);                                 
                                 },
                                 always : function(){
-                                    $.LoadingOverlay("hide");
+                                    $.LoadingOverlay("hide",true);
                                 }
                             });
                         } else {
@@ -328,9 +328,9 @@ var objViewIdentificacion = {
                                         dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef ,'<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
                                         
                                         populate.reset(form);
-                                        $.LoadingOverlay("hide");
+                                        $.LoadingOverlay("hide",true);
                                     }catch(err) {
-                                        $.LoadingOverlay("hide");
+                                        $.LoadingOverlay("hide",true);
                     
                                         form.setAlert({
                                             alertType :  'alert-danger',
@@ -360,7 +360,7 @@ var objViewIdentificacion = {
                                     objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);                                 
                                 },
                                 always : function(){
-                                    $.LoadingOverlay("hide");
+                                    $.LoadingOverlay("hide",true);
                                 }
                             });
                         } else {
@@ -438,9 +438,9 @@ var objViewIdentificacion = {
 
                                         populate.reset(form);
 
-                                        $.LoadingOverlay("hide");
+                                        $.LoadingOverlay("hide",true);
                                     }catch(err) {
-                                        $.LoadingOverlay("hide");
+                                        $.LoadingOverlay("hide",true);
                     
                                         form.setAlert({
                                             alertType :  'alert-danger',
@@ -470,7 +470,7 @@ var objViewIdentificacion = {
                                     objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);                                 
                                 },
                                 always : function(){
-                                    $.LoadingOverlay("hide");
+                                    $.LoadingOverlay("hide",true);
                                 }
                             });
                         } else {
@@ -545,9 +545,9 @@ var objViewIdentificacion = {
                                         dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef ,'<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
                                         
                                         populate.reset(form);
-                                        $.LoadingOverlay("hide");
+                                        $.LoadingOverlay("hide",true);
                                     }catch(err) {
-                                        $.LoadingOverlay("hide");
+                                        $.LoadingOverlay("hide",true);
                     
                                         form.setAlert({
                                             alertType :  'alert-danger',
@@ -577,7 +577,7 @@ var objViewIdentificacion = {
                                     objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);                                 
                                 },
                                 always : function(){
-                                    $.LoadingOverlay("hide");
+                                    $.LoadingOverlay("hide",true);
                                 }
                             });
                         } else {
@@ -680,7 +680,7 @@ var objViewIdentificacion = {
                 }
             },
             throwError: function(err,form,from,tabRef){
-                $.LoadingOverlay("hide");
+                $.LoadingOverlay("hide",true);
                 
                 form.setAlert({
                     alertType :  'alert-danger',
@@ -727,7 +727,7 @@ var objViewIdentificacion = {
                     }).fail(function (err) {
                         objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);
                     }).always(function () {
-                        $.LoadingOverlay("hide");
+                        $.LoadingOverlay("hide",true);
                         MyCookie.session.reset();
                     });
 

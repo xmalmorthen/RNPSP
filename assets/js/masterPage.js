@@ -88,7 +88,7 @@ if (typeof MyCookie !== "undefined"){
                         if (swalPreserve){
                             if (swalPreserve.preserve){
                                 eval(swalPreserve.preserveCall + '()');
-                                $.LoadingOverlay("hide");
+                                $.LoadingOverlay("hide",true);
                             }
                         }                    
                     });                    

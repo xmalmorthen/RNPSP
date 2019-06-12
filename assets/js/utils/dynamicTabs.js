@@ -1,6 +1,6 @@
 var dynTabs = {
     mode : '',
-    loading : false,
+    loading : null,
     validForm : true,
     tabs : {
         currentTab : {
@@ -135,6 +135,7 @@ var dynTabs = {
                 } else {
                     if (!loaderShow) {
                         loaderShow = true;
+
                         $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
                     }
                 }

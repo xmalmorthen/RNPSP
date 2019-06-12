@@ -153,11 +153,11 @@
 									window.location.href = site_url;
 								}
 							} else {
-								$.LoadingOverlay("hide");
+								$.LoadingOverlay("hide",true);
 								Swal.fire({ type: 'error', title: 'Error', html: data.message ? data.message : 'Error al intentar iniciar sesión, favor de intentarlo.' });
 							}
 						}).fail(function (err) {
-							$.LoadingOverlay("hide");
+							$.LoadingOverlay("hide",true);
 							var msg = err.responseText;
 							Swal.fire({ type: 'error', title: 'Error', html: msg });
 						}).always(function () {
@@ -166,7 +166,7 @@
 						
 					}					
 					catch(err) {
-						$.LoadingOverlay("hide");
+						$.LoadingOverlay("hide",true);
 					}
 				});
 			}); 	

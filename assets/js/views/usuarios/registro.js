@@ -34,7 +34,7 @@ var mainFormActions = {
 			} else
 				throw new Error('No se encontró información');
 		}).catch(function (err) {
-			$.LoadingOverlay("hide");
+			$.LoadingOverlay("hide",true);
 			Swal.fire({
 					type: 'error',
 					title: 'Error',
@@ -178,7 +178,7 @@ starLoader: function () {
 	});
 },
 stopLoader: function () {
-	$.LoadingOverlay("hide");
+	$.LoadingOverlay("hide",true);
 },
 hideError: function () {
 	if ($('[error=true]').length > 0) {

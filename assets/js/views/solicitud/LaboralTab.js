@@ -251,7 +251,7 @@ var objViewLaboral = {
                 }
             },
             throwError: function(err,form,from,tabRef){
-                $.LoadingOverlay("hide");
+                $.LoadingOverlay("hide",true);
                 
                 form.setAlert({
                     alertType :  'alert-danger',
@@ -299,7 +299,7 @@ var objViewLaboral = {
                     }).fail(function (err) {
                         objViewLaboral.actions.ajax.throwError(err,form,from,tabRef);                            
                     }).always(function () {
-                        $.LoadingOverlay("hide");
+                        $.LoadingOverlay("hide",true);
                         MyCookie.session.reset();
                     });
 

@@ -146,16 +146,36 @@ var objViewDatosGenerales = {
 
         objViewDatosGenerales.actions.ajax.populateCmbOperacion();
 
-        //Rutina para verificar si se hace algún cambio en cualquier forulario
-        $('#Datos_personales_form').find('input, select').change(function(e) {                
-            $('#Datos_personales_form').removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError');
-            $('#Datos_personales_form').data('hasChanged',true);            
-        });
+        var initIntervalDatosGenerales = setInterval(function(){
+            
+            if (dynTabs.loading === false) {
+                clearInterval(initIntervalDatosGenerales);
 
-        $('#Datos_personales_CIB_form').find('input, select').change(function(e) {                
-            $('#Datos_personales_CIB_form').removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError');
-            $('#Datos_personales_CIB_form').data('hasChanged',true);            
-        });
+                var form = $('#' + $('#myTabContent .tab-pane.active .nav-item a.nav-link.active').attr('aria-controls')).find('form');
+
+                //Rutina para verificar si se hace algún cambio en cualquier forulario
+                form.find('input, select').change(function(e) {                
+                    form.removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError');
+                    form.data('hasChanged',true);
+                    $(e.target).removeError();
+                });
+                
+                //Rutina para verificar si se hace algún cambio en cualquier forulario
+                $('#Datos_personales_form').find('input, select').change(function(e) {                
+                    $('#Datos_personales_form').removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError');
+                    $('#Datos_personales_form').data('hasChanged',true);            
+                });
+        
+                $('#Datos_personales_CIB_form').find('input, select').change(function(e) {                
+                    $('#Datos_personales_CIB_form').removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError');
+                    $('#Datos_personales_CIB_form').data('hasChanged',true);            
+                });
+
+                form.find('input, select').removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError').removeData('hasChanged');
+                $('#Datos_personales_form,#Datos_personales_CIB_form').removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError').removeData('hasChanged');
+            }
+        }, 100);
+
 
         $('#pFECHA_NACIONALIDAD, #pINICIO_DESARROLLO,#pFECHA_NAC_SOCIOECONOMICOS').attr('max', moment( new Date() ).format('YYYY-MM-DD'));
         $('#pTERMINO_DESARROLLO').attr('min', moment( new Date() ).add(1,'days').format('YYYY-MM-DD') );
@@ -204,6 +224,8 @@ var objViewDatosGenerales = {
         });
 
         objViewDatosGenerales.vars.general.init = true;
+
+        $('#Datos_personales_form').find('input, select').removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError').removeData('hasChanged');
     },
     events : {
         click : {
@@ -218,6 +240,7 @@ var objViewDatosGenerales = {
                         mainTabMenu.var.pID_ALTERNA = data.results.data.pID_ALTERNA ? data.results.data.pID_ALTERNA : null;
 
                         if (from) {
+                            debugger;
                             $("#Datos_personales_form").data('hasChanged',true).removeData("hasSaved");
                             objViewDatosGenerales.events.click.datosGenerales.generarCIB(e, from, tabRef);
                         }
@@ -285,7 +308,7 @@ var objViewDatosGenerales = {
                         function (data) {  
                             objViewDatosGenerales.actions.ajax.callResponseValidations(form,data, from, tabRef, false, function(data){
                                 $('#CIB,#motivoCIB').val('');
-                                $.LoadingOverlay("hide");
+                                $.LoadingOverlay("hide",true);
                                 fillData.datosGenerales.CIB(mainTabMenu.var.pID_ALTERNA);
                             });
                         }).fail(function (err) {
@@ -495,13 +518,13 @@ var objViewDatosGenerales = {
                         if ($.isFunction( callback ))
                             callback(data,form); 
                     
-                    $.LoadingOverlay("hide");
+                    $.LoadingOverlay("hide",true);
                 }catch(err) {
                     objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);
                 }
             },
             throwError: function(err,form,from,tabRef){
-                $.LoadingOverlay("hide");
+                $.LoadingOverlay("hide",true);
                 
                 form.setAlert({
                     alertType :  'alert-danger',

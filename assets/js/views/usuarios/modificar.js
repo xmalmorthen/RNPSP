@@ -73,7 +73,7 @@ var _app = Backbone.View.extend({
 		});
 	},
 	stopLoader: function () {
-		$.LoadingOverlay("hide");
+		$.LoadingOverlay("hide",true);
 	},
 	hideError: function () {
 		if ($('[error=true]').length > 0) {

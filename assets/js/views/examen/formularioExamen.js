@@ -102,7 +102,7 @@ var objViewFormularioExamen = {
 
                         }).always(function () {      
 
-                            $.LoadingOverlay("hide");
+                            $.LoadingOverlay("hide",true);
                             MyCookie.session.reset();
 
                         });
