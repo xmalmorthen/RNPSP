@@ -30,7 +30,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>Código postal
-                        <input type="number"  id="pCP_EMP_ADSCRIPCION_ACTUAL" name="pCP_EMP_ADSCRIPCION_ACTUAL" class="form-control" class="form-control" required>
+                        <input type="number"  id="pCP_EMP_ADSCRIPCION_ACTUAL" name="pCP_EMP_ADSCRIPCION_ACTUAL" class="form-control" class="form-control" minlength=5 maxlength=5 required>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estado <!-- Se llena del catalogo "CAT_ENTIDAD" -->
@@ -220,7 +220,7 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Código postal
-                        <input type="number" id="pCP_EMP_EMPLEOS_DIVERSOS" name="pCP_EMP_EMPLEOS_DIVERSOS" required  class="form-control">
+                        <input type="number" id="pCP_EMP_EMPLEOS_DIVERSOS" name="pCP_EMP_EMPLEOS_DIVERSOS" required  class="form-control" minlength=5 maxlength=5>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estado <!-- Se llena del catalogo "CAT_ENTIDAD" -->                            

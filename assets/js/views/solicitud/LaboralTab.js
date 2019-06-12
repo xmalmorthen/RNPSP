@@ -141,8 +141,26 @@ var objViewLaboral = {
                 },
                 guardarActitud : function(e, from, tabRef){
                     e.preventDefault();
-                    objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralActitud',from, tabRef, false, function(data){
-                    });
+
+                    if ( !$('#pELECCION_EMPLEO').val()
+                        && !$('#pPUESTO_ACTITUDES_EMPLEO').val()
+                        && !$('#pAREA').val()
+                        && !$('#pTIEMPO_ASCENDER').val()
+                        && !$('#pCONOCE_REG_RECON').val()
+                        && !$('#pRAZON_NO_ASCENSO').val()
+                        && !$('#pCONOCE_REG_ASCENSO').val()
+                        && !$('#pRAZON_NO_RECON').val()
+                        && !$('#pCAPACITACION').val() ){
+
+                            Swal.fire({ type: 'warning', title: 'Atención', html: 'Debe especificar al menos un dato del formulario' });
+
+                    } else {
+
+                        objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralActitud',from, tabRef, false, function(data){
+                        });
+
+                    }
+
                 },
                 guardarComision : function(e, from, tabRef){
                     e.preventDefault();

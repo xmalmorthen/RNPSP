@@ -273,8 +273,6 @@ var mainFormActions = {
             } else
                 throw new Error('No se encontró información');
 
-            $.LoadingOverlay("hide", true);
-
         }).catch(function(err){
             $.LoadingOverlay("hide",true);
             Swal.fire({ type: 'error', title: 'Error', html: err.statusText ? err.statusText : err.message})
@@ -315,9 +313,9 @@ var mainFormActions = {
                     }
                 break;
                 case 'select':                
-                    if (ref.find('option:enabled').size() == 0)
+                    if (ref.find('option:enabled').size() == 0 && $(ref).data('query')) {
                         ref.data('insert', value);
-                    else {                
+                    } else {                
                         ref.val(value);
                         ref.trigger('change.select2').trigger('change');
                     }
@@ -396,6 +394,22 @@ var fillData = {
             mainFormActions.insertValueInSelect($('#pPASAPORTE'),data.pPASAPORTE);
             mainFormActions.insertValueInSelect($('#pLICENCIA_DATOS_PERSONALES'),data.pLICENCIA);
             mainFormActions.insertValueInSelect($('#pLICENCIA_VIG'),data.pFECHA_LICENCIA_VIG);
+
+            /*var intervalPopulate = setInterval(function(){
+                
+                ref.find('option:enabled').size() == 0
+
+
+                clearInterval(intervalTop);
+                $('html, body').scrollTop(0);
+
+                mainFormActions.insertValueInSelect($('#pTIPO_OPERACION'),data.pTIPO_OPERACION);
+
+
+            },500);*/
+
+            
+
 
             fillData.datosGenerales.CIB(mainTabMenu.var.pID_ALTERNA);
         },

@@ -20,13 +20,7 @@
                 </div>
                 <div class="col-md-4"> <!-- PENDIENTEEEEE -->
                     Tipo de movimiento <!-- Se llena de la tabla CAT_TIPO_OPERACION  -->
-                    <select  
-                        class="form-control" 
-                        name="pTIPO_OPERACION" 
-                        id="pTIPO_OPERACION" 
-                        data-error="#err_pTIPO_OPERACION" 
-                        
-                        required></select>
+                    <select  class="form-control" name="pTIPO_OPERACION" id="pTIPO_OPERACION" data-error="#err_pTIPO_OPERACION" required></select>
                     <span id="err_pTIPO_OPERACION"></span>
                 </div>
             </div>
@@ -222,7 +216,7 @@
             <div class="row">
                 <div class="col-md-4">
                     Cédula profesional
-                    <input type="text" class="form-control" id="pCEDULA_PROFESIONAL" name="pCEDULA_PROFESIONAL" maxlength="8">
+                    <input type="number" class="form-control" id="pCEDULA_PROFESIONAL" name="pCEDULA_PROFESIONAL" maxlength="8">
                 </div>
                 <div class="col-md-4">
                     Fecha de inicio
@@ -245,7 +239,7 @@
                 </div>
                 <div class="col-md-4">
                     Promedio
-                    <input type="text" class="form-control" id="pPROMEDIO" name="pPROMEDIO" maxlength="5.2">
+                    <input type="number" class="form-control" id="pPROMEDIO" name="pPROMEDIO" min=0>
                 </div>
             </div>
             <br>
@@ -300,7 +294,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <span class="clr">*</span>Código postal
-                    <input type="number" class="form-control" id="pCODIGO_POSTAL_DOMICILIO" name="pCODIGO_POSTAL_DOMICILIO" maxlength="10" required>
+                    <input type="number" class="form-control" id="pCODIGO_POSTAL_DOMICILIO" name="pCODIGO_POSTAL_DOMICILIO" minlength=5 maxlength=5 required>
                 </div>
                 <div class="col-md-4">
                     <span class="clr">*</span>Estado <br><!-- Se  llena del catálogo CAT_ENTIDAD-->
@@ -439,7 +433,7 @@
             <div class="row">
                 <div class="col-md-4">
                     Código postal
-                    <input type="text" id="pCODIGO_POSTAL_REFERENCIAS" name="pCODIGO_POSTAL_REFERENCIAS" class="form-control" maxlength="10">
+                    <input type="text" id="pCODIGO_POSTAL_REFERENCIAS" name="pCODIGO_POSTAL_REFERENCIAS" class="form-control" minlength=5 maxlength=5>
                 </div>
                 <div class="col-md-4">
                     <span class="clr">*</span>Estado <br> <!-- Se llena del catálog CAT_ENTIDAD -->

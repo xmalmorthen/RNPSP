@@ -177,8 +177,8 @@ var objViewDatosGenerales = {
         }, 100);
 
 
-        $('#pFECHA_NACIONALIDAD, #pINICIO_DESARROLLO,#pFECHA_NAC_SOCIOECONOMICOS').attr('max', moment( new Date() ).format('YYYY-MM-DD'));
-        $('#pTERMINO_DESARROLLO').attr('min', moment( new Date() ).add(1,'days').format('YYYY-MM-DD') );
+        $('#pFECHA_NACIONALIDAD, #pINICIO_DESARROLLO,#pFECHA_NAC_SOCIOECONOMICOS,#pTERMINO_DESARROLLO').attr('max', moment( new Date() ).format('YYYY-MM-DD'));
+        // $('#pTERMINO_DESARROLLO').attr('min', moment( new Date() ).add(1,'days').format('YYYY-MM-DD') );
 
         $.validator.addMethod("validRFCFormat", function(value, element) {
             return validarInputRFC(value);
@@ -580,18 +580,36 @@ var objViewDatosGenerales = {
                 }
             },
             populateCmbOperacion: function(){
-                var cmbSelect = $('#pTIPO_OPERACION');
-                $.ajax({
-                    type: 'GET',
-                    dataType: "json",
-                    url: site_url+'Solicitud/cmbTipoOperacion',
-                }).then(function (data) {
-                    data.results.data.forEach(element => {
-                        var option = new Option(element.pdescripcion, element.pclave, true, true);
-                        cmbSelect.append(option);
+                var obj = $('#pTIPO_OPERACION');
+                var callUrl = base_url + "Solicitud/cmbTipoOperacion";
+
+                obj.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+                obj.append('<option disabled selected value><i class="fa fa-refresh fa-spin fa-3x fa-fw"></i> Actualizando, favor de esperar...</option>');
+
+                $.get(callUrl,
+                    function (data) {
+                        if (data) {
+                            obj.find("option").remove();
+                            obj.append('<option disabled selected value>Seleccione una opción</option>');
+                            if (data.results) {
+                                $.each(data.results.data,function(key, value) 
+                                {
+                                    var option = new Option(value.pdescripcion, value.pclave, true, true);
+                                    obj.append(option);
+                                });
+                            }
+                        }
+                        obj.data('populated',true);
+                        obj.prop("disabled", false);
+
+                    }).fail(function (err) {                    
+                        obj.find("option").remove();
+                        obj.setError('ERROR al actualizar');
+                    }).always(function () {
+                        obj.LoadingOverlay("hide");
+                        MyCookie.session.reset();                                            
                     });
-                    cmbSelect.val(null).trigger("change");
-                });
             }
 
         }

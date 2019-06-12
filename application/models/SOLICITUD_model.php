@@ -354,8 +354,8 @@ class SOLICITUD_model extends MY_Model
     $this->form_validation->set_rules('pESPECIALIDAD_DESARROLLO', 'Especialidad o estudio', 'trim|max_length[100]');
     $this->form_validation->set_rules('pNOMBRE_ESCUELA', 'Escuela', 'trim|max_length[100]');
     $this->form_validation->set_rules('pCEDULA_PROFESIONAL', 'Cédula profesional', 'trim|numeric|max_length[10]');
-    $this->form_validation->set_rules('pINICIO', 'Fecha de inicio', 'trim|max_length[10]');
-    $this->form_validation->set_rules('pTERMINO', 'Fecha de término', 'trim|max_length[10]');
+    $this->form_validation->set_rules('pINICIO_DESARROLLO', 'Fecha de inicio', 'trim');
+    $this->form_validation->set_rules('pTERMINO_DESARROLLO', 'Fecha de término', 'trim');
     $this->form_validation->set_rules('pREGISTRO_SEP', 'Registro SEP', 'trim|max_length[1]');
     $this->form_validation->set_rules('pFOLIO_CERTIFICADO', 'Número de folio de certificado', 'trim|max_length[30]');
     $this->form_validation->set_rules('pPROMEDIO', 'Promedio', 'trim|numeric|max_length[10]');
@@ -371,8 +371,8 @@ class SOLICITUD_model extends MY_Model
       $this->addParam('pESPECIALIDAD','pESPECIALIDAD_DESARROLLO','N');
       $this->addParam('pNOMBRE_ESCUELA','pNOMBRE_ESCUELA','N');
       $this->addParam('pCEDULA_PROFESIONAL','pCEDULA_PROFESIONAL');
-      $this->addParam('pINICIO','pINICIO');
-      $this->addParam('pTERMINO','pTERMINO');
+      $this->addParam('pINICIO','pINICIO_DESARROLLO');
+      $this->addParam('pTERMINO','pTERMINO_DESARROLLO');
       $this->addParam('pREGISTRO_SEP','pREGISTRO_SEP','N');
       $this->addParam('pFOLIO_CERTIFICADO','pFOLIO_CERTIFICADO','N');
       $this->addParam('pPROMEDIO','pPROMEDIO');

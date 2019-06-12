@@ -120,10 +120,11 @@ var dynTabs = {
                 }
                 
                 if (objsToInsert == 0) {
+                    dynTabs.loading = false;
+                    
                     clearInterval(initInterval);
 
                     $.LoadingOverlay("hide",true);
-                    dynTabs.loading = false;
 
                     //Rutina para verificar si se hace algún cambio en cualquier forulario
                     form.find('input, select').change(function(e) {                
