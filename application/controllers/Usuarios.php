@@ -22,11 +22,14 @@ class Usuarios extends CI_Controller
     } else if(verificaPermiso(2) == 1){ #Ver solo de su dependencia	
       $this->load->model('Usuarios_model');
       $usuario = $this->Usuarios_model->user();
+
       $this->Usuarios_model->where('cat_Usuarios.ID_ADSCRIPCION',$usuario['ID_ADSCRIPCION']);
       $data['usuarios'] = $this->Usuarios_model->get();
 
     }
+
     //Utils::pre($data);
+
     $this->load->library('parser');
     $this->parser->parse('Usuarios/index', $data);
   }
@@ -273,5 +276,62 @@ class Usuarios extends CI_Controller
       $data['usuario'] = current($this->Usuarios_model->byId($user_id));
     }
     $this->load->view('Usuarios/Ver',$data);
+  }
+
+  public function darBaja($id = null){
+    if (!$id)
+				$id = $this->input->post('id');
+		
+    if (! $this->input->is_ajax_request()) {
+      if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+    }		
+
+    $response = ['status' => false, 'message' => array('No especificado')];
+    try {
+
+      if(!$id){
+        throw new rulesException('Parámetros incorrectos');
+      }
+      
+      $additional_data = [
+        'id_EstatusUsuario' => 2,
+        'MotivoInactivo' => $this->input->post('motivo')
+      ];
+      if($this->ion_auth->update($id, $additional_data)){
+
+        $this->load->library('uuid');
+        $historico = array(
+          'id_UsuarioHistorial' => $this->uuid->v4(),
+          'id_Usuario' => $id,
+          'email' => strtolower($this->input->post('pCORREO')),
+          'MotivoInactivo' => $this->input->post('MotivoInactivo'),
+          'id_EstatusUsuario' => $this->input->post('pID_ESTATUS'),
+          'FechaRegistro' => date('Y-m-d H:i:s'),
+          'id_UsuarioModifico' => $this->ion_auth->get_user_id()
+        );
+        $this->db->insert('cat_UsuarioHistorial',$historico);
+        
+        $response['status'] = true;
+        $response['message'] = $this->lang->line('MSJ5');
+
+      } else {
+        
+        $response['status'] = false;
+        $response['message'] = $this->ion_auth->errors_array();
+
+      }
+
+    } 
+    catch (rulesException $e){	
+      header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+    }
+    catch (Exception $e) {				
+      header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+      log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+    }
+    
+    header('Content-type: application/json');
+    echo json_encode( $response );
+    exit;
   }
 }

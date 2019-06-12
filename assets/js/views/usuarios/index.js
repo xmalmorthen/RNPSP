@@ -35,7 +35,101 @@ var _app = Backbone.View.extend({
 			language: that.tableLenguage()
 		});
 		return this;
-	}
+	},
+	borrarUsuario: function(id){
+
+		var that = this;
+
+		Swal.fire({
+			title: 'Aviso',
+			html: "¿Seguro que desea dar de baja al usuario?",                    
+			type: 'question',
+			allowOutsideClick : false,
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			input: 'textarea',
+			inputPlaceholder: 'Motivo',
+			preConfirm: (motivo) => {
+				try {
+					if (!motivo)
+						throw new Error('Es necesario indicar el motivo');
+				} catch (error) {
+					Swal.showValidationMessage(error);
+				}
+			}
+		}).then(function(result){
+			if (result.value && !result.dismiss ){
+				
+				var sendData = [];
+
+				sendData.push({
+					name: csrf.token_name,
+					value: csrf.hash
+				});
+				sendData.push({
+					name: 'id',
+					value: id
+				});
+				sendData.push({
+					name: 'motivo',
+					value: result.value
+				});
+				
+				Backbone.ajax({
+					dataType: "json",
+					method: 'POST',
+					url: base_url + 'Usuarios/darBaja',
+					data: sendData,
+					beforeSend: function () {
+						that.starLoader();
+					},
+					success: function (response) {
+						if (response){
+							if ( response.status ) {
+								Swal.fire({
+									type: 'success',
+									html: 'Usuario desactivado'
+								})
+								.then(() => {
+									window.location.href = base_url + 'Usuarios';
+								});
+							}
+							return null;
+						}
+
+						Swal.fire({
+							type: 'error',
+							title: 'Error',
+							html: response.message
+						});
+						
+					},
+					complete: function () {
+						that.stopLoader();
+					},
+					error : function( jqXHR, textStatus, errorThrown){
+						Swal.fire({
+							type: 'error',
+							title: 'Error',
+							html: errorThrown
+						});
+					}
+				});
+
+			}
+		});
+
+	},
+	starLoader: function () {
+		$.LoadingOverlay("show", {
+			image: "",
+			fontawesome: "fa fa-cog fa-spin"
+		});
+	},
+	stopLoader: function () {
+		$.LoadingOverlay("hide",true);
+	},
 });
 var app;
 $(function () {

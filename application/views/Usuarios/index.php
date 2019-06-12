@@ -44,7 +44,7 @@
                                             <a class='m-2' href="<?php echo site_url('personaCedula/index?id='); ?>{id}"><i class="fa fa-print fa-2x"></i></a>
                                             <a class='m-2' href="<?php echo site_url('Usuarios/Ver?curp='); ?>{CURP}"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></a>
                                             <a class='m-2' href="<?php echo site_url('Usuarios/Modificar?curp=')?>{CURP}"><i class="fa fa-pencil-square-o fa-2x"></i></a>
-                                            <a class='m-2' href="<?php echo site_url('Usuarios/darBaja?id=')?>{id}"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></a>
+                                            <a class='m-2 borrar' onclick="app.borrarUsuario({id})" href="#" data-id="{id}"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
                                     {/usuarios}
