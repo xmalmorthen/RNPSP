@@ -279,6 +279,7 @@ class SOLICITUD_model extends MY_Model
       $this->response['message'] = ul($message);
       $this->response['validation'] = $message;
     }
+
     return $this->response;
   }
 
@@ -828,8 +829,8 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pID_TIPO_DEPENDIENT','pID_RELACION','',array('name'=>'Relación ','rule'=>'trim|required|numeric|max_length[10]'));
     if ($this->form_validation->run() === true) {
       $this->procedure('sp_B2_DG_addDependiente');
-      $this->iniParam('txtError','varchar','250');
-      $this->iniParam('msg','varchar','90');
+      $this->iniParam('txtError','varchar','500');
+      $this->iniParam('msg','varchar','500');
       $this->iniParam('tranEstatus','int');
       $query = $this->db->query($this->build_query());
       $response = $this->query_row($query);

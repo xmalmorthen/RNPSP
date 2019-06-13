@@ -58,8 +58,84 @@ var mainTabMenu = {
         })
 
         $('.endTab').on('click',function(e){
+
+            /*var linkRef = $('#myTabContent>.tab-pane.show.active .nav-item .nav-link.active.show'),
+                tabRef  = $('#' + linkRef.attr('aria-controls') ),
+                formRef = tabRef.find('form'),
+                btnRef  = tabRef.find('.anteriorTab');
+
+            if ( formRef.length > 0 ) {
+
+                var isRequired = false,
+                    tableDetail = tabRef.find('table.tableDetail');
+
+                if (tableDetail.length) {
+                    isRequired = tableDetail.find('tbody tr[role="row"]').length == 0 ? true : false;                    
+                }
+
+                if ( (formRef.data('required') == true && formRef.data('hasChanged') == true) || mainTabMenu.var.nuevoRegistro || ( isRequired && !formRef.data('requiredexception') ) ) {
+
+                    if (!formRef.valid()) {
+                        
+                        formRef.setAlert({
+                            alertType :  'alert-danger',
+                            dismissible : true,
+                            header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                            msg : 'Formulario incompleto'
+                        });
+                        return false;
+                        
+                    } else  {                    
+
+                        if (formRef.data('hasChanged') == true){
+                            Swal.fire({
+                                title: 'Aviso',
+                                html: "Para continuar, debe guardar los cambios",
+                                footer: mainTabMenu.var.pID_ALTERNA ? "<div><button class='btn btn-warning discartChanges'>Continuar sin guardar</button></div>" : null,
+                                type: 'warning',                        
+                                allowOutsideClick : false,
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33'
+                            }).then(function(result){
+                                if (result.value === true){
+
+
+                                    formRef.find('.btnGuardarSection').trigger('click',['tab',e]);
+                                    
+                                    var nextTab = $('#mainContainerTab li.nav-item a.nav-link.active').closest('li').next('li.nav-item').find('a.nav-link');
+                                    nextTab.tab('show'); 
+
+                                }
+                            });
+                            
+                            $('.discartChanges').on('click',function(evnt) { 
+
+                                formRef.closeAlert({alertType : 'alert-danger'});
+
+                                dynTabs.markTab(linkRef,'<span class="text-warning tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true"></i></span>');
+                                Swal.close();
+                                    
+                                formRef.removeData('hasChanged');
+                                formRef.data('hasDiscardChanges',true);
+
+                                var nextTab = $('#mainContainerTab li.nav-item a.nav-link.active').closest('li').next('li.nav-item').find('a.nav-link');
+                                nextTab.tab('show'); 
+
+                            });
+                        } else {
+                            var nextTab = $('#mainContainerTab li.nav-item a.nav-link.active').closest('li').next('li.nav-item').find('a.nav-link');
+                            nextTab.tab('show'); 
+                        }
+                    }
+                } else {
+                    var nextTab = $('#mainContainerTab li.nav-item a.nav-link.active').closest('li').next('li.nav-item').find('a.nav-link');
+                    nextTab.tab('show');
+                }
+            } */
+            
             var nextTab = $('#mainContainerTab li.nav-item a.nav-link.active').closest('li').next('li.nav-item').find('a.nav-link');
-            nextTab.tab('show'); 
+            nextTab.tab('show');
         });
 
         $('form').on('reset', function(e){
@@ -73,7 +149,8 @@ var mainTabMenu = {
                 allFormsSaved = true;
 
 
-            if (mainTabMenu.var.nuevoRegistro) {
+            // if (mainTabMenu.var.nuevoRegistro) 
+            {
                 forms.each(function( index ) {
                     if ( $(this).data('required') && $(this).data('hasSaved') != true ) {
                         allFormsSaved = false;
@@ -286,6 +363,18 @@ var mainFormActions = {
 
         mainTabMenu.var.pID_ALTERNA = data.pID_ALTERNA;
 
+        if (mainTabMenu.var.pID_ALTERNA == null){
+            Swal.fire({
+                type: 'error',                        
+                title: 'Error',
+                html: "No se recuperó el ID ALTERNA",
+                allowOutsideClick : false,
+            }).then(function(result){
+                window.location.href = base_url + 'Solicitud';
+            });
+            return null;
+        }
+
         fillData.datosGenerales.all(data);
 
         $('.consultaCURP').readOnly();
@@ -470,7 +559,7 @@ var fillData = {
                 if (btnRefreshRef.find('.refreshTable').length == 0)
                     btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.datosGenerales.desarrolloAcademico(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
 
-                tableRef.LoadingOverlay("hide");
+                tableRef.LoadingOverlay("hide");                
             })
             .catch( (err) => {
                 tableRef.setError(err.statusText);

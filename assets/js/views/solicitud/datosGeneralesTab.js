@@ -239,8 +239,19 @@ var objViewDatosGenerales = {
                         
                         mainTabMenu.var.pID_ALTERNA = data.results.data.pID_ALTERNA ? data.results.data.pID_ALTERNA : null;
 
+                        if (mainTabMenu.var.pID_ALTERNA == null){
+                            Swal.fire({
+                                type: 'error',                        
+                                title: 'Error',
+                                html: "No se recuperó el ID ALTERNA",
+                                allowOutsideClick : false,
+                            }).then(function(result){
+                                window.location.href = base_url + 'Solicitud';
+                            });
+                            return null;
+                        }
+
                         if (from) {
-                            debugger;
                             $("#Datos_personales_form").data('hasChanged',true).removeData("hasSaved");
                             objViewDatosGenerales.events.click.datosGenerales.generarCIB(e, from, tabRef);
                         }
@@ -404,7 +415,9 @@ var objViewDatosGenerales = {
 
                 if (value != 82){ // país diferente a méxico
                     
-                    if ( $('#pID_MUNICIPIO_NAC').val() != value && $('#pID_MUNICIPIO_NAC').data('populated')) {
+                    if ( $('#pID_MUNICIPIO_NAC').val() != value 
+                    && $('#pID_MUNICIPIO_NAC').data('populated')
+                    ) {
                     
                         if (value == -1) { // sin información
 
@@ -423,6 +436,7 @@ var objViewDatosGenerales = {
                             $('#pID_ENTIDAD_NAC').val(99).trigger('change',[function(){
 
                                 if ( $('#pID_ENTIDAD_NAC').val() == 99) {
+                                    $('#pID_MUNICIPIO_NAC').data('populated',true);
                                     $('#pID_MUNICIPIO_NAC').val(999999).trigger('change.select2');
                                 }
 
@@ -595,7 +609,7 @@ var objViewDatosGenerales = {
                             if (data.results) {
                                 $.each(data.results.data,function(key, value) 
                                 {
-                                    var option = new Option(value.pdescripcion, value.pclave, true, true);
+                                    var option = new Option(value.pdescripcion, value.pclave);
                                     obj.append(option);
                                 });
                             }

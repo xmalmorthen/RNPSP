@@ -256,8 +256,8 @@
         </form>
         <br><hr><br>
         <div class="row">
-            <div class="col-md-12">
-                <table id="tableDesarrollo" class="table display table-striped dt-responsive" style="width:100%">
+            <div class="col-md-12">                
+                <table id="tableDesarrollo" class="table display table-striped dt-responsive tableDetail" style="width:100%">
                     <thead>
                         <th>Id nivel</th>
                         <th>Máxima escolaridad</th>
@@ -364,7 +364,7 @@
         <br>
         <hr>
         <br>
-        <table id="tableDomicilio" class="table display table-striped dt-responsive" style="width:100%">
+        <table id="tableDomicilio" class="table display table-striped dt-responsive tableDetail" style="width:100%">
             <thead>
                 <th>Id domicilio</th>
                 <th>Código postal</th>
@@ -449,7 +449,7 @@
             <br>
             <div class="row">
                 <div class="col-md-4">
-                    Ciudad
+                    <span class="clr">*</span>Ciudad
                     <input type="text" id="pCIUDAD_REFERENCIAS" name="pCIUDAD_REFERENCIAS" class="form-control" maxlength="50" required>
                 </div>
                 <div class="col-md-4">
@@ -498,7 +498,7 @@
         <br>
         <hr>
         <br>
-        <table id="tableReferencias" class="table display table-striped dt-responsive" style="width:100%">
+        <table id="tableReferencias" class="table display table-striped dt-responsive tableDetail" style="width:100%">
             <thead>
                 <th>Id referencia</th>
                 <th>Nombre</th>
@@ -521,7 +521,7 @@
 
 <div class="tab-pane fade" id="Socioeconomicos" role="tabpanel" arialabelledby="Socioeconomicos-tab" >
     <div class="_container">
-        <form action="#" id="Socioeconomicos_form" name="Socioeconomicos_form" autocomplete="off" data-required=true>
+        <form action="#" id="Socioeconomicos_form" name="Socioeconomicos_form" autocomplete="off" data-required=false data-requiredexception=true>
             <br>
             <div class="Socioeconomicos_form">
                 <div class="row">
@@ -681,7 +681,7 @@
         <br>
         <div class="row">
             <div class="col-md-12">
-                <table id="tableSocioeconomicos" class="table display table-striped dt-responsive" style="width:100%">
+                <table id="tableSocioeconomicos" class="table display table-striped dt-responsive tableDetail" style="width:100%">
                     <thead>
                         <th>Id dependiente</th>
                         <th>Nombre</th>

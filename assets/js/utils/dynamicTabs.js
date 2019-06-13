@@ -33,7 +33,14 @@ var dynTabs = {
             //VALIDATE FORM 
             if (dynTabs.validForm) {
 
-                if ( (form.data('required') == true && form.data('hasChanged') == true) || mainTabMenu.var.nuevoRegistro) {
+                var isRequired = false,
+                    tableDetail = tabRefObj.find('table.tableDetail');
+
+                if (tableDetail.length) {
+                    isRequired = tableDetail.find('tbody tr[role="row"]').length == 0 ? true : false;                    
+                }
+
+                if ( (form.data('required') == true && form.data('hasChanged') == true) || mainTabMenu.var.nuevoRegistro || ( isRequired && !form.data('requiredexception') ) ) {
                     
                     if (!form.valid()){
                         var linkRef = $('#' + e.currentTarget.id);
@@ -59,23 +66,23 @@ var dynTabs = {
                     Swal.fire({
                         title: 'Aviso',
                         html: "Para continuar, debe guardar los cambios",
-                        footer: mainTabMenu.var.pID_ALTERNA ? "<div><button class='btn btn-warning discartChanges'>Continuar sin guardar</button></div>" : null,
+                        // footer: mainTabMenu.var.pID_ALTERNA ? "<div><button class='btn btn-warning discartChanges'>Continuar sin guardar</button></div>" : null,
                         type: 'warning',                        
                         allowOutsideClick : false,
-                        showCancelButton: true,
+                        // showCancelButton: true,
                         confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33'
+                        // cancelButtonColor: '#d33'
                     }).then(function(result){
-                        if (result.value === true){
-                            form.find('.btnGuardarSection').trigger('click',['tab',e]);
-                        }
+                        // if (result.value === true){
+                        //     form.find('.btnGuardarSection').trigger('click',['tab',e]);
+                        // }
                     });
                     e.preventDefault();
-                    if (options.discardFunction){
-                        if ($.isFunction( options.discardFunction )){
-                            $('.discartChanges').on('click',function(evnt) { options.discardFunction(evnt,e); });
-                        }
-                    }                    
+                    // if (options.discardFunction){
+                    //     if ($.isFunction( options.discardFunction )){
+                    //         $('.discartChanges').on('click',function(evnt) { options.discardFunction(evnt,e); });
+                    //     }
+                    // }                    
                 }
             }
     },
