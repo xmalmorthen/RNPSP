@@ -59,83 +59,32 @@ var mainTabMenu = {
 
         $('.endTab').on('click',function(e){
 
-            /*var linkRef = $('#myTabContent>.tab-pane.show.active .nav-item .nav-link.active.show'),
-                tabRef  = $('#' + linkRef.attr('aria-controls') ),
-                formRef = tabRef.find('form'),
-                btnRef  = tabRef.find('.anteriorTab');
+            refFirstTab = $('#myTabContent .tab-pane.show.active .nav.nav-tabs li.nav-item a.nav-link:first');
 
-            if ( formRef.length > 0 ) {
+            refFirstTab.trigger('click');
 
-                var isRequired = false,
-                    tableDetail = tabRef.find('table.tableDetail');
+            var tabChanged = false;
+            var itervalEndTab = setInterval(function() {
 
-                if (tableDetail.length) {
-                    isRequired = tableDetail.find('tbody tr[role="row"]').length == 0 ? true : false;                    
-                }
+                refFirstTab = $('#myTabContent .tab-pane.show.active .nav.nav-tabs li.nav-item a.nav-link:first');
+                refActualTab = $('#myTabContent .tab-pane.show.active .nav.nav-tabs li.nav-item a.nav-link.active');
+                
+                if ( refFirstTab.attr('id') == refActualTab.attr('id') ) {
 
-                if ( (formRef.data('required') == true && formRef.data('hasChanged') == true) || mainTabMenu.var.nuevoRegistro || ( isRequired && !formRef.data('requiredexception') ) ) {
+                    clearInterval(itervalEndTab);
+                    
+                    if (!tabChanged) {
+                        tabChanged = true;
 
-                    if (!formRef.valid()) {
-                        
-                        formRef.setAlert({
-                            alertType :  'alert-danger',
-                            dismissible : true,
-                            header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
-                            msg : 'Formulario incompleto'
-                        });
-                        return false;
-                        
-                    } else  {                    
+                        var nextTab = $('#mainContainerTab li.nav-item a.nav-link.active').closest('li').next('li.nav-item').find('a.nav-link');
+                        nextTab.tab('show');
 
-                        if (formRef.data('hasChanged') == true){
-                            Swal.fire({
-                                title: 'Aviso',
-                                html: "Para continuar, debe guardar los cambios",
-                                footer: mainTabMenu.var.pID_ALTERNA ? "<div><button class='btn btn-warning discartChanges'>Continuar sin guardar</button></div>" : null,
-                                type: 'warning',                        
-                                allowOutsideClick : false,
-                                showCancelButton: true,
-                                confirmButtonColor: '#3085d6',
-                                cancelButtonColor: '#d33'
-                            }).then(function(result){
-                                if (result.value === true){
-
-
-                                    formRef.find('.btnGuardarSection').trigger('click',['tab',e]);
-                                    
-                                    var nextTab = $('#mainContainerTab li.nav-item a.nav-link.active').closest('li').next('li.nav-item').find('a.nav-link');
-                                    nextTab.tab('show'); 
-
-                                }
-                            });
-                            
-                            $('.discartChanges').on('click',function(evnt) { 
-
-                                formRef.closeAlert({alertType : 'alert-danger'});
-
-                                dynTabs.markTab(linkRef,'<span class="text-warning tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true"></i></span>');
-                                Swal.close();
-                                    
-                                formRef.removeData('hasChanged');
-                                formRef.data('hasDiscardChanges',true);
-
-                                var nextTab = $('#mainContainerTab li.nav-item a.nav-link.active').closest('li').next('li.nav-item').find('a.nav-link');
-                                nextTab.tab('show'); 
-
-                            });
-                        } else {
-                            var nextTab = $('#mainContainerTab li.nav-item a.nav-link.active').closest('li').next('li.nav-item').find('a.nav-link');
-                            nextTab.tab('show'); 
-                        }
                     }
-                } else {
-                    var nextTab = $('#mainContainerTab li.nav-item a.nav-link.active').closest('li').next('li.nav-item').find('a.nav-link');
-                    nextTab.tab('show');
+
                 }
-            } */
-            
-            var nextTab = $('#mainContainerTab li.nav-item a.nav-link.active').closest('li').next('li.nav-item').find('a.nav-link');
-            nextTab.tab('show');
+
+            }, 1000);
+
         });
 
         $('form').on('reset', function(e){
@@ -145,31 +94,88 @@ var mainTabMenu = {
     tab : {
         change : function(e){
             var tabRef = $(e.currentTarget),
+                tabRefId = $("#" + e.currentTarget.id),        
                 forms = $('#myTabContent>.tab-pane.show.active form'),
                 allFormsSaved = true;
 
+            e.preventDefault();
 
-            // if (mainTabMenu.var.nuevoRegistro) 
-            {
+            $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+            var intervalLoadingChange = setInterval(function(){
+
+                formsInLoading = false;
                 forms.each(function( index ) {
-                    if ( $(this).data('required') && $(this).data('hasSaved') != true ) {
-                        allFormsSaved = false;
-                        return false;
+                    if ( $(this).data('loading') == true ) {
+                        formsInLoading = true;
                     }
                 });
-            }
 
-            $(e.relatedTarget).data('finish',allFormsSaved);
+                if (!formsInLoading){
 
-            // TODO: Xmal - Quitar comentarios en bloque para implementación
-            if (!$(e.relatedTarget).data('finish')){
-                e.preventDefault();
-                Swal.fire({ type: 'warning', title: 'Aviso', html: 'Debe completar y guardar la información de las pestañas que actualmente se muestran.' });
-                return null;
-            }
+                    window.clearInterval(intervalLoadingChange);
 
-            mainTabMenu.actions.init(tabRef.attr('aria-controls'));
-            MyCookie.tabRef.save(dynTabs.mode + 'MainTab',tabRef.attr('id'));
+                    setTimeout(function(){}, 1000);
+
+                    forms.each(function( index ) {
+                
+                        console.log(this.id, $(this).data());
+
+                        if ( $(this).data('requireddata') != false ) {
+                            allFormsSaved = false;
+                            
+                            idrefForm = $(this).closest('.tab-pane').attr('id');
+
+                            $.each( $("#myTabContent .tab-pane .nav.nav-tabs .nav-item a.nav-link"), function( key, value ) {
+                                if ( $(this).attr('aria-controls') == idrefForm ) {
+                                    
+                                    $(this).find('span.tabMark').remove();
+                                    $(this).prepend('<span class="text-danger tabMark errorValidation mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true" ></i></span>');
+
+                                    var date = moment( new Date() ).format('DD/MM/YYYY'),
+                                        time = moment( new Date() ).format('h:mm:ss a'),
+                                        titleMsg = 'Acción realizada [ ' + time + ' - ' + date + ' ]';
+
+                                    $(this).find('span.tabMark').data('toggle','tooltip').prop('title',titleMsg);
+                                    $('[data-toggle="tooltip"]').tooltip();
+
+                                }
+                            });
+                            $([2])
+
+
+                        }
+
+                    });
+
+                    $(e.relatedTarget).data('finish',allFormsSaved);
+
+                    // TODO: Xmal - Quitar comentarios en bloque para implementación
+                    if (!$(e.relatedTarget).data('finish')){
+                        
+                        $.LoadingOverlay("hide", true);
+                        e.preventDefault();
+                        Swal.fire({ type: 'warning', title: 'Aviso', html: 'Debe completar y guardar la información de las pestañas que actualmente se muestran.' });
+                        return null;
+                        
+                    }
+
+                    mainTabMenu.actions.init(tabRef.attr('aria-controls'));
+                    MyCookie.tabRef.save(dynTabs.mode + 'MainTab',tabRef.attr('id'));
+                    
+                    $('#mainContainerTab.nav li.nav-item a.nav-link.active').removeClass('active');
+                    $('#myTabContent.tab-content>.tab-pane.active.show').removeClass('active show');
+
+                    tabRef.addClass('active');
+                    $(tabRef[0].hash).addClass('active show');
+
+                    dynTabs.loaderTab();
+
+                    return null;
+                }                
+
+            }, 1000);
+            
         }
     },
     actions : {
@@ -317,7 +323,7 @@ var mainTabMenu = {
                 window.location.href = base_url + 'Solicitud';
             }else {
                 if (result.value.from == 'query')                    
-                    mainFormActions.populateCURPFields(result.value.data);
+                    mainFormActions.populateCURPFields(result.value.data);                    
                 else {
                     mainTabMenu.var.nuevoRegistro = false;
                     mainFormActions.fillData(result.value.data);
@@ -484,23 +490,10 @@ var fillData = {
             mainFormActions.insertValueInSelect($('#pLICENCIA_DATOS_PERSONALES'),data.pLICENCIA);
             mainFormActions.insertValueInSelect($('#pLICENCIA_VIG'),data.pFECHA_LICENCIA_VIG);
 
-            /*var intervalPopulate = setInterval(function(){
-                
-                ref.find('option:enabled').size() == 0
-
-
-                clearInterval(intervalTop);
-                $('html, body').scrollTop(0);
-
-                mainFormActions.insertValueInSelect($('#pTIPO_OPERACION'),data.pTIPO_OPERACION);
-
-
-            },500);*/
-
-            
-
-
             fillData.datosGenerales.CIB(mainTabMenu.var.pID_ALTERNA);
+
+            $('#Datos_personales_form').data('requireddata',false);
+
         },
         CIB : function(pID_ALTERNA){
             if (!objViewDatosGenerales.vars.datosGenerales.tables.tableDatospersonales.dom) 
@@ -535,8 +528,14 @@ var fillData = {
                 tableRef.setError(err.statusText);
                 tableRef.LoadingOverlay("hide");
             });
+
+            $('#Datos_personales_CIB_form').data('requireddata',false);
+            
         },
         desarrolloAcademico : function(pID_ALTERNA){
+
+            $('#Desarrollo_form').data('loading',true);
+
             var tableRef = $('#' + objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.obj.tables().nodes().to$().attr('id')),
                 tableObj = objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.obj,
                 callUrl = base_url + `Solicitud/getNivelEstudios`;
@@ -552,6 +551,9 @@ var fillData = {
                         var row = [ value.pID_NIVEL_ESTUDIOS_EXT, value.pMAXIMA_ESCOLARIDAD, value.pESPECIALIDAD, value.pFECHA_INICIO, value.pFECHA_TERMINO, value.pPROMEDIO ];
                         tableObj.row.add( row ).draw( false );
                     });
+                    
+                    $('#Desarrollo_form').data('requireddata',false);
+
                 }
 
                 //Boton para refrescar datatable
@@ -559,14 +561,21 @@ var fillData = {
                 if (btnRefreshRef.find('.refreshTable').length == 0)
                     btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.datosGenerales.desarrolloAcademico(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
 
-                tableRef.LoadingOverlay("hide");                
+                tableRef.LoadingOverlay("hide");
+
+                $('#Desarrollo_form').removeData('loading');
             })
             .catch( (err) => {
                 tableRef.setError(err.statusText);
                 tableRef.LoadingOverlay("hide");
             });
+
+            
+
         },
         domicilio : function(pID_ALTERNA){
+            $('#Domicilio_form').data('loading',true);
+
             var tableRef = $('#' + objViewDatosGenerales.vars.datosGenerales.tables.tableDomicilio.obj.tables().nodes().to$().attr('id')),
                 tableObj = objViewDatosGenerales.vars.datosGenerales.tables.tableDomicilio.obj,
                 callUrl = base_url + `Solicitud/getDomicilio`;
@@ -582,6 +591,9 @@ var fillData = {
                         var row = [ value.pID_DOMICILIO_EXT, value.pCODIGO_POSTAL, value.pNOM_ESTADO, value.pCOLONIA, value.pCALLE, value.pNUM_EXTERIOR, value.pNUM_INTERIOR ];
                         tableObj.row.add( row ).draw( false );
                     });
+
+                    $('#Domicilio_form').data('requireddata',false);
+
                 }
 
                 //Boton para refrescar datatable
@@ -590,11 +602,14 @@ var fillData = {
                     btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.datosGenerales.domicilio(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
 
                 tableRef.LoadingOverlay("hide");
+
+                $('#Domicilio_form').removeData('loading');
             })
             .catch( (err) => {
                 tableRef.setError(err.statusText);
                 tableRef.LoadingOverlay("hide");
             });
+
         },
         referencias : function(pID_ALTERNA){
             var tableRef = $('#' + objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.obj.tables().nodes().to$().attr('id')),
@@ -626,6 +641,9 @@ var fillData = {
                 tableRef.setError(err.statusText);
                 tableRef.LoadingOverlay("hide");
             });
+            
+            $('#Referencias_form').data('requireddata',false);
+
         },
         socioeconomicos : function(pID_ALTERNA){
             $('#Socioeconomicos_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
@@ -642,7 +660,11 @@ var fillData = {
                     mainFormActions.insertValueInSelect($('#pID_TIPO_DOMICILIO'),data.pID_TIPO_DOMIC);
 
                     $('#Socioeconomicos_form').removeData('hasChanged');
+
+                    $('#Socioeconomicos_form').data('requireddata',false);
+                    
                 }
+                
                 $('#Socioeconomicos_form').LoadingOverlay("hide");
             })
             .catch( (err) => {
@@ -671,6 +693,7 @@ var fillData = {
                         var row = [ value.pID_DEPENDIENTE_EXT, value.pNOMBRE, value.pPATERNO, value.pMATERNO, value.pSEXO, value.pFECHA_NACIMIENTO, value.pPARENTESCO ];
                         tableObj.row.add( row ).draw( false );
                     });
+
                 }
 
                 //Boton para refrescar datatable
@@ -684,6 +707,10 @@ var fillData = {
                 tableRef.setError(err.statusText);
                 tableRef.LoadingOverlay("hide");
             });
+
+            $('#Dependientes_form').data('requireddata',false);
+            $('#Socioeconomicos_form').removeData('hasChanged');
+
         }
     },
     laboral : {
@@ -694,6 +721,9 @@ var fillData = {
             fillData.laboral.comisiones(mainTabMenu.var.pID_ALTERNA);
         },
         adscripcionActual : function(pID_ALTERNA){
+            
+            $('#Adscripcion_actual_form').data('loading',true);
+
             var tableRef = $('#' + objViewLaboral.vars.laboral.tables.tableAdscripcionactual.obj.tables().nodes().to$().attr('id')),
                 tableObj = objViewLaboral.vars.laboral.tables.tableAdscripcionactual.obj,
                 callUrl = base_url + `Solicitud/getAdscripcion`;
@@ -709,6 +739,9 @@ var fillData = {
                         var row = [ value.pID_ADSCRIPCION_EXT, value.pNOMBRE_DEPENDENCIA, value.pCORPORACION, value.pNOMBRE_AREA, value.pNOMBRE_PUESTO ? value.pNOMBRE_PUESTO : 'No viene en el modelo de bd', value.pNOM_ENTIDAD, value.pNOM_MUNICIPIO ];
                         tableObj.row.add( row ).draw( false );
                     });
+
+                    $('#Adscripcion_actual_form').data('requireddata',false);
+
                 }
 
                 //Boton para refrescar datatable
@@ -718,6 +751,9 @@ var fillData = {
 
 
                 tableRef.LoadingOverlay("hide");
+
+                $('#Adscripcion_actual_form').removeData('loading');
+
             })
             .catch( (err) => {
                 tableRef.setError(err.statusText);
@@ -885,6 +921,9 @@ var fillData = {
             fillData.identificacion.identificacionVoz(mainTabMenu.var.pID_ALTERNA);
         },
         mediaFiliacion : function(pID_ALTERNA){
+
+            $('#mediafiliacion_form').data('loading',true);
+
             $('#mediafiliacion_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
             var callUrl = base_url + `Solicitud/spB2MFgetFiliacion`;
@@ -896,8 +935,12 @@ var fillData = {
                     });
 
                     $('#mediafiliacion_form').removeData('hasChanged');
+
+                    $('#mediafiliacion_form').data('requireddata',false);
                 }
                 $('#mediafiliacion_form').LoadingOverlay("hide");
+
+                $('#mediafiliacion_form').removeData('loading');
             })
             .catch( (err) => {
                 $('#mediafiliacion_form').setAlert({
@@ -910,6 +953,9 @@ var fillData = {
             });
         },
         seniasParticulares : function(pID_ALTERNA){
+            
+            $('#Senas_particulares_form').data('loading',true);
+
             var tableRef = $('#' + objViewIdentificacion.vars.identificacion.tables.tableSenasparticulares.obj.tables().nodes().to$().attr('id')),
                 tableObj = objViewIdentificacion.vars.identificacion.tables.tableSenasparticulares.obj,
                 callUrl = base_url + `Solicitud/getSenasParticulares`;
@@ -925,6 +971,8 @@ var fillData = {
                         var row = [ value.pID_SENAS_PART_EXT, value.pDESC_TIPO_SENA, value.pDESC_LADO, value.pDESC_REGION, value.pDESC_VISTA, value.pCANTIDAD, value.pDESCRIPCION ];
                         tableObj.row.add( row ).draw( false );
                     });
+
+                    $('#Senas_particulares_form').data('requireddata',false);
                 }
 
                 //Boton para refrescar datatable
@@ -933,6 +981,9 @@ var fillData = {
                     btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.identificacion.seniasParticulares(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
 
                 tableRef.LoadingOverlay("hide");
+
+                $('#Senas_particulares_form').removeData('loading');
+
             })
             .catch( (err) => {
                 tableRef.setError(err.statusText);
@@ -940,6 +991,9 @@ var fillData = {
             });
         },
         fichaFotografica : function(pID_ALTERNA){
+            
+            $('#Ficha_fotografica_form').data('loading',true);
+
             $('#Ficha_fotografica_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
             var callUrl = base_url + `Solicitud/vwFichaFotografica`;
@@ -975,8 +1029,14 @@ var fillData = {
                     thumb_pIMAGEN_HUELLA.attr("src", data.pIMG_HUELLA ? data.pIMG_HUELLA.name : imageBreak ).attr("alt", data.pIMG_HUELLA ? data.pIMG_HUELLA.originalName : 'Sin imagen');
                     thumb_pIMAGEN_HUELLA.parent().find('div.custom-file label.custom-file-label').html( data.pIMG_HUELLA ? data.pIMG_HUELLA.originalName : 'Seleccionar imágen' );
                     /*******************************************************************************/
+
+                    $('#Ficha_fotografica_form').data('requireddata',false);
+
                 }
                 $('#Ficha_fotografica_form').LoadingOverlay("hide");
+
+                $('#Ficha_fotografica_form').removeData('loading');
+
             })
             .catch( (err) => {
                 $('#Ficha_fotografica_form').setAlert({
@@ -1019,6 +1079,9 @@ var fillData = {
             });
         },
         registroDecadactilar : function(pID_ALTERNA){
+            
+            $('#Registro_decadactilar_form').data('loading',true);
+
             $('#Registro_decadactilar_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
             //BLOQUE PARA EL LINK AL DOCUMENTO E INFORMACIÓN
@@ -1040,8 +1103,12 @@ var fillData = {
                             </div>
                         `);
                     }
+
+                    $('#Registro_decadactilar_form').data('requireddata',false);
                 }
                 $('#Registro_decadactilar_form').LoadingOverlay("hide");
+
+                $('#Registro_decadactilar_form').removeData('loading');
             })
             .catch( (err) => {
                 $('#Registro_decadactilar_form').setAlert({
@@ -1084,6 +1151,9 @@ var fillData = {
             });
         },
         digitalizacionDocumento : function(pID_ALTERNA){
+
+            $('#Digitalizacion_de_documento_form').data('loading',true);
+
             //BLOQUE PARA EL GRID
             var tableRef = $('#' + objViewIdentificacion.vars.identificacion.tables.tableDigitalizaciondoc.obj.tables().nodes().to$().attr('id')),
                 tableObj = objViewIdentificacion.vars.identificacion.tables.tableDigitalizaciondoc.obj,
@@ -1100,6 +1170,8 @@ var fillData = {
                         var row = [ value.pID_DOCUMENTO_EXT, value.pDESC_CATEGORIA_DOC, value.pVALOR ? `<a href="${value.pVALOR.name}" target="_blank" rel="noopener noreferrer"><i class="fa fa-file-text-o fa-2x" aria-hidden="true"></i> ${value.pVALOR.originalName}</a>` : '', value.pFECHA_DOCUMENTO, value.pESTATUS];
                         tableObj.row.add( row ).draw( false );
                     });
+
+                     $('#Digitalizacion_de_documento_form').data('requireddata',false);
                 }
 
                 //Boton para refrescar datatable
@@ -1108,6 +1180,8 @@ var fillData = {
                     btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.identificacion.digitalizacionDocumento(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
 
                 tableRef.LoadingOverlay("hide");
+
+                $('#Digitalizacion_de_documento_form').removeData('loading');
             })
             .catch( (err) => {
                 tableRef.setError(err.statusText);
@@ -1115,6 +1189,9 @@ var fillData = {
             });
         },
         identificacionVoz : function(pID_ALTERNA){
+            
+            $('#Identificacion_de_voz_form').data('loading',true);
+
             $('#Identificacion_de_voz_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
             //BLOQUE PARA INSERTAR EL VÍNCULO AL AUDIO
@@ -1138,8 +1215,13 @@ var fillData = {
                         audioRef[0].load();
                         audioRef.removeClass('d-none');
                     }
+
+                    $('#Identificacion_de_voz_form').data('requireddata',false);
                 }
                 $('#Identificacion_de_voz_form').LoadingOverlay("hide");
+
+                $('#Identificacion_de_voz_form').removeData('loading');
+
             })
             .catch( (err) => {
                 $('#Identificacion_de_voz_form').setAlert({

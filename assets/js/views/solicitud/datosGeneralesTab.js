@@ -146,37 +146,6 @@ var objViewDatosGenerales = {
 
         objViewDatosGenerales.actions.ajax.populateCmbOperacion();
 
-        var initIntervalDatosGenerales = setInterval(function(){
-            
-            if (dynTabs.loading === false) {
-                clearInterval(initIntervalDatosGenerales);
-
-                var form = $('#' + $('#myTabContent .tab-pane.active .nav-item a.nav-link.active').attr('aria-controls')).find('form');
-
-                //Rutina para verificar si se hace algún cambio en cualquier forulario
-                form.find('input, select').change(function(e) {                
-                    form.removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError');
-                    form.data('hasChanged',true);
-                    $(e.target).removeError();
-                });
-                
-                //Rutina para verificar si se hace algún cambio en cualquier forulario
-                $('#Datos_personales_form').find('input, select').change(function(e) {                
-                    $('#Datos_personales_form').removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError');
-                    $('#Datos_personales_form').data('hasChanged',true);            
-                });
-        
-                $('#Datos_personales_CIB_form').find('input, select').change(function(e) {                
-                    $('#Datos_personales_CIB_form').removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError');
-                    $('#Datos_personales_CIB_form').data('hasChanged',true);            
-                });
-
-                form.find('input, select').removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError').removeData('hasChanged');
-                $('#Datos_personales_form,#Datos_personales_CIB_form').removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError').removeData('hasChanged');
-            }
-        }, 100);
-
-
         $('#pFECHA_NACIONALIDAD, #pINICIO_DESARROLLO,#pFECHA_NAC_SOCIOECONOMICOS,#pTERMINO_DESARROLLO').attr('max', moment( new Date() ).format('YYYY-MM-DD'));
         // $('#pTERMINO_DESARROLLO').attr('min', moment( new Date() ).add(1,'days').format('YYYY-MM-DD') );
 
@@ -484,6 +453,8 @@ var objViewDatosGenerales = {
             $('.consultaCURP').readOnly();
 
             $('#pSEXO_DATOS_PERSONALES').prop("disabled", true);
+
+            dynTabs.loaderTab();
         },    
         discartChanges : function(e,eTab){
             var form = $('#' + $(eTab.currentTarget).attr('aria-controls')).find('form');

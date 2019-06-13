@@ -1,6 +1,6 @@
 <div class="tab-pane fade show active" id="Datos_personales" role="tab-panel" aria-labelledby="Datos_personales-tab">
     <div class="_container">
-        <form action="#" id="Datos_personales_form" name="Datos_personales_form" autocomplete="off" data-required=true>
+        <form action="#" id="Datos_personales_form" name="Datos_personales_form" autocomplete="off">
             <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
             <br>
             <div class="row">
@@ -138,14 +138,16 @@
                     <button class="btn btn-default btnGuardarSection" id="guardarDatosPersonales"> Guardar datos personales</button>
                 </div>
             </div>
-            <br>
-            <hr>
-            <br>
             <input type="hidden" id="PID_ALTERNA_Datos_personales" name="PID_ALTERNA_Datos_personales" value="" >
             <input type="hidden" id="pID_ESTADO_EMISOR_Datos_personales" name="pID_ESTADO_EMISOR_Datos_personales" value="" >
             <input type="hidden" id="pID_EMISOR_Datos_personales" name="pID_EMISOR_Datos_personales" value="" >
-        <!-- CIB BLOQUE -->
+        </form>
+        <!-- CIB BLOQUE -->        
         <?php if (verificaPermiso(14) == true) { ?>
+        <br>
+        <hr>
+        <br>
+        <form action="#" id="Datos_personales_CIB_form" name="Datos_personales_CIB_form" autocomplete="off" data-requireddata=false>
             <div id="Datos_personales_CIB_form">
                 <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                 <div class="row ">
@@ -162,22 +164,22 @@
                     </div>
                 </div>
             </div>
-            <br>
-            <div class="row">
-                <div class="col-md-12">
-                    <table id="tableDatospersonales" class="table display table-striped dt-responsive" style="width:100%">
-                        <thead>
-                            <th>CIB</th>
-                            <th>Motivo</th>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        <?php } ?>
-        <!-- /CIB BLOQUE -->
         </form>
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <table id="tableDatospersonales" class="table display table-striped dt-responsive" style="width:100%">
+                    <thead>
+                        <th>CIB</th>
+                        <th>Motivo</th>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <?php } ?>        
+        <!-- /CIB BLOQUE -->
         <div class="row">
             <div class="col-md-12 text-center">
                 <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab"  id="siguienteDatosPersonales" data-nexttab="#Desarrollo-tab">Siguiente Ficha</button>
@@ -188,7 +190,7 @@
 
 <div class="tab-pane fade" id="Desarrollo" role="tabpanel" aria-labelledby="Desarrollo-tab">
     <div class="_container">
-        <form action="#" id="Desarrollo_form" name="Desarrollo_form" autocomplete="off" data-required=false>
+        <form action="#" id="Desarrollo_form" name="Desarrollo_form" autocomplete="off">
             <br>
             <div class="row">
                 <div class="col-md-12 text-center">
@@ -283,7 +285,7 @@
 
 <div class="tab-pane fade" id="Domicilio" role="tabpanel" aria-labelledby="Domicilio-tab">
     <div class="_container">
-        <form action="#" id="Domicilio_form" name="Domicilio_form" autocomplete="off" data-required=false>
+        <form action="#" id="Domicilio_form" name="Domicilio_form" autocomplete="off">
             <br>
             <div class="row">
                 <div class="col-md-12 text-center">
@@ -389,7 +391,7 @@
 
 <div class="tab-pane fade" id="Referencias" role="tabpanel" aria-labelledby="Referencias-tab">
     <div class="_container">
-        <form action="#" id="Referencias_form" name="Referencias_form" autocomplete="off" data-required=false>
+        <form action="#" id="Referencias_form" name="Referencias_form" autocomplete="off">
             <br>
             <div class="row">
                 <div class="col-md-12 text-center">
@@ -521,7 +523,7 @@
 
 <div class="tab-pane fade" id="Socioeconomicos" role="tabpanel" arialabelledby="Socioeconomicos-tab" >
     <div class="_container">
-        <form action="#" id="Socioeconomicos_form" name="Socioeconomicos_form" autocomplete="off" data-required=false data-requiredexception=true>
+        <form action="#" id="Socioeconomicos_form" name="Socioeconomicos_form" autocomplete="off">
             <br>
             <div class="Socioeconomicos_form">
                 <div class="row">
@@ -603,9 +605,9 @@
                 <input type="hidden" id="pID_ESTADO_EMISOR_Socioeconomico" name="pID_ESTADO_EMISOR_Socioeconomico" value="" >
                 <input type="hidden" id="pID_EMISOR_Socioeconomico" name="pID_EMISOR_Socioeconomico" value="" >
             </div>
-        <!-- </form> -->
+        </form>
         <hr>
-        <!-- <form action="#" id="Dependientes_form" name="Dependientes_form" autocomplete="off" data-required=false> -->
+        <form action="#" id="Dependientes_form" name="Dependientes_form" autocomplete="off" data-requireddata=false>
             <br>
             <div class="Dependientes_form">
                 <div class="row">

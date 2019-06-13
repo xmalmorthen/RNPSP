@@ -1,6 +1,6 @@
     <div class="tab-pane fade show active" id="Adscripcion_actual" role="tabpanel" aria-labelledby="Adscripcion_actual-tab">
         <div class="_container">
-            <form action="#" id="Adscripcion_actual_form" name="Adscripcion_actual_form" autocomplete="off"  data-required=false>
+            <form action="#" id="Adscripcion_actual_form" name="Adscripcion_actual_form" autocomplete="off">
                 <br>
                 <div class="row">
                     <div class="col-md-12 text-center">
@@ -204,7 +204,7 @@
 
     <div class="tab-pane fade" id="Empleos_diversos" role="tabpanel" aria-labelledby="Empleos_diversos-tab">
         <div class="_container">
-            <form name="Empleos_diversos_form" id="Empleos_diversos_form" action="#"  autocomplete="off"  data-required=false>
+            <form name="Empleos_diversos_form" id="Empleos_diversos_form" action="#"  autocomplete="off" data-requireddata=false>
                 <br>
                 <div class="row">
                     <div class="col-md-12 text-center">
@@ -337,7 +337,7 @@
  
     <div class="tab-pane fade" id="Actitudes_hacia_el_empleo" role="tabpanel" aria-labelledby="Actitudes_hacia_el_empleo">
         <div class="_container">
-            <form name="Actitudes_hacia_el_empleo_form" id="Actitudes_hacia_el_empleo_form" action="#" autocomplete="off" data-required=true>
+            <form name="Actitudes_hacia_el_empleo_form" id="Actitudes_hacia_el_empleo_form" action="#" autocomplete="off" data-required=true data-requireddata=false>
                 <br>
                 <div class="row">
                     <div class="col-md-12 text-center">
@@ -428,7 +428,7 @@
 
     <div class="tab-pane fade" id="Comisiones" role="tabpanel" aria-labelledby="Comisiones-tab">
         <div class="_container">
-            <form id="Comisiones_form" name="Comisiones_form" action="#" autocomplete="off" data-required=false>
+            <form id="Comisiones_form" name="Comisiones_form" action="#" autocomplete="off" data-requireddata=false>
                 <br>
                 <div class="row">
                     <div class="col-md-12 text-center">
