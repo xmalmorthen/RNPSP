@@ -21,7 +21,7 @@
                         </div>
                         <div class="col-md-4">
                             <span class="clr">*</span>Código postal
-                            <input type="text" id="pCP_EMP" name="pCP_EMP" required  class="form-control"  maxlength="5">
+                            <input type="text" id="pCP_EMP" name="pCP_EMP" required  class="form-control"  minlength=5 maxlength=5>
                         </div>
                         <div class="col-md-4">
                             <span class="clr">*</span>Estado <!-- Se llena del catalogo "ENTIDAD" -->
@@ -193,7 +193,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <span class="clr">*</span>Código postal
-                            <input type="text" class="form-control" class="form-control" required maxlength="5">
+                            <input type="text" class="form-control" class="form-control" required minlength=5 maxlength=5>
                         </div>
                         <div class="col-md-4">
                             <span class="clr">*</span>Estado <!-- Se llena del catalogo "ENTIDAD" -->
