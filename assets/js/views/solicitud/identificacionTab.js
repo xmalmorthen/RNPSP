@@ -545,6 +545,9 @@ var objViewIdentificacion = {
                                         dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef ,'<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
                                         
                                         populate.reset(form);
+
+                                        $('#validarVoz').removeAttr("disabled");
+
                                         $.LoadingOverlay("hide",true);
                                     }catch(err) {
                                         $.LoadingOverlay("hide",true);
@@ -590,11 +593,26 @@ var objViewIdentificacion = {
                 },
                 validarVoz : function(e, from, tabRef){
                     e.preventDefault();
-                    alert('implementar');
+
+                    Swal.fire({
+                        type: 'warning',
+                        title: 'Oops...!!!',
+                        text: 'Funcionalidad sin implementar!'                        
+                    });
+
+                    // Descomentar al implementar: es para habilitar el botón de replicar una vez de haya validado el registro de la solicitud
+                    //$('validarReplicar').removeAttr("disabled");
+                    
                 },
                 validarReplicar : function(e, from, tabRef){
                     e.preventDefault();
-                    alert('implementar');
+                    
+                    Swal.fire({
+                        type: 'warning',
+                        title: 'Oops...!!!',
+                        text: 'Funcionalidad sin implementar!'                        
+                    });
+
                 }
             }
         },

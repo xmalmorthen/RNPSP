@@ -29,17 +29,17 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <span class="clr">*</span>Código postal
-                        <input type="number"  id="pCP_EMP_ADSCRIPCION_ACTUAL" name="pCP_EMP_ADSCRIPCION_ACTUAL" class="form-control" class="form-control" minlength=5 maxlength=5 required>
+                        Código postal
+                        <input type="number"  id="pCP_EMP_ADSCRIPCION_ACTUAL" name="pCP_EMP_ADSCRIPCION_ACTUAL" class="form-control" class="form-control" minlength=5 maxlength=5>
                     </div>
                     <div class="col-md-4">
-                        <span class="clr">*</span>Estado <!-- Se llena del catalogo "CAT_ENTIDAD" -->
-                        <select  class="form-control" id="pID_ENTIDAD_ADSCRIPCION_ACTUAL" name="pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-error="#err_pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-query='RG51N2cyVWNFVVp5Rlc5WDYydU0wcm0wbys4dElkSU1uaHBpTTJHMEJqOGVqdmRkUXJRUzB0TVZIa2Y0UldSWGpiMS9xQXhOWE5oVndVN0QzSFpHWHI4NEVzWTRIRU5RTmxjS09EK243V002bi9RV1ZUTU0waGRHdWlHSzFaT04=' required></select>
+                        Estado <!-- Se llena del catalogo "CAT_ENTIDAD" -->
+                        <select  class="form-control" id="pID_ENTIDAD_ADSCRIPCION_ACTUAL" name="pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-error="#err_pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-query='RG51N2cyVWNFVVp5Rlc5WDYydU0wcm0wbys4dElkSU1uaHBpTTJHMEJqOGVqdmRkUXJRUzB0TVZIa2Y0UldSWGpiMS9xQXhOWE5oVndVN0QzSFpHWHI4NEVzWTRIRU5RTmxjS09EK243V002bi9RV1ZUTU0waGRHdWlHSzFaT04='></select>
                         <span id="err_pID_ENTIDAD_ADSCRIPCION_ACTUAL"></span>
                     </div>
                     <div class="col-md-4">
-                        <span class="clr">*</span>Municipio <!-- Se llena del catalogo "CAT_MUNICIPIO" dependiendo del catalogo de "ENTIDAD" -->
-                        <select  class="form-control" id="pID_MUNICIPIO_ADSCRIPCION_ACTUAL" name="pID_MUNICIPIO_ADSCRIPCION_ACTUAL" data-error="#err_pID_MUNICIPIO_ADSCRIPCION_ACTUAL" data-query='c244RWRmblByTDlCWExpTHc0ZnQ3NGUzbWMza1Y5MnZCck9rQmpCQ1hTdlA3dzJyRVNMRjhXTll4WmNmYkplM1BKM1BWckJ3RFdieG55eUNldGZ3N1dyS2taNXhWd2RWczkzT0lsVTk1anZPcVJFclZBN05mTUtwbjJuazJqa0tSaXVENkI2WVErcmUxNlFoVUFNamttMjB1S3RxK0ZjUFA3cEFhM0Fvak53PQ==' data-cascade='true' data-force-refresh='true' data-cascade-id-ref='pID_ENTIDAD_ADSCRIPCION_ACTUAL' data-params='ID_ENTIDAD={0}' required></select>
+                        Municipio <!-- Se llena del catalogo "CAT_MUNICIPIO" dependiendo del catalogo de "ENTIDAD" -->
+                        <select  class="form-control" id="pID_MUNICIPIO_ADSCRIPCION_ACTUAL" name="pID_MUNICIPIO_ADSCRIPCION_ACTUAL" data-error="#err_pID_MUNICIPIO_ADSCRIPCION_ACTUAL" data-query='c244RWRmblByTDlCWExpTHc0ZnQ3NGUzbWMza1Y5MnZCck9rQmpCQ1hTdlA3dzJyRVNMRjhXTll4WmNmYkplM1BKM1BWckJ3RFdieG55eUNldGZ3N1dyS2taNXhWd2RWczkzT0lsVTk1anZPcVJFclZBN05mTUtwbjJuazJqa0tSaXVENkI2WVErcmUxNlFoVUFNamttMjB1S3RxK0ZjUFA3cEFhM0Fvak53PQ==' data-cascade='true' data-force-refresh='true' data-cascade-id-ref='pID_ENTIDAD_ADSCRIPCION_ACTUAL' data-params='ID_ENTIDAD={0}'></select>
                         <span id="err_pID_MUNICIPIO_ADSCRIPCION_ACTUAL"></span>
                     </div>
                 </div>
@@ -50,28 +50,28 @@
                         <input type="text" id="pCIUDAD" name="pCIUDAD" class="form-control" class="form-control" maxlength="50">
                     </div>
                     <div class="col-md-4">
-                        <span class="clr">*</span>Colonia/Localidad
-                        <input type="text" id="Colonia_Adscripcion_actual" name="Colonia_Adscripcion_actual" class="form-control" class="form-control" required maxlength="60">
+                        Colonia/Localidad
+                        <input type="text" id="Colonia_Adscripcion_actual" name="Colonia_Adscripcion_actual" class="form-control" class="form-control" maxlength="60">
                     </div>
                     <div class="col-md-4">
-                        <span class="clr">*</span>Calle
-                        <input type="text" id="Calle" name="Calle" class="form-control" required maxlength="50">
+                        Calle
+                        <input type="text" id="Calle" name="Calle" class="form-control" maxlength="50">
                     </div>
 
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <span class="clr">*</span>Número exterior
-                        <input type="text" id="pNUM_EXTERIOR" name="pNUM_EXTERIOR" class="form-control" required> 
+                        Número exterior
+                        <input type="text" id="pNUM_EXTERIOR" name="pNUM_EXTERIOR" class="form-control"> 
                     </div>
                     <div class="col-md-4">
                         Número interior
                         <input type="text" id="pNUM_INTERIOR" name="pNUM_INTERIOR" class="form-control">
                     </div>
                     <div class="col-md-4">
-                    <span class="clr">*</span>Número telefónico
-                        <input type="text"  id="pTELEFONO" name="pTELEFONO"  class="form-control" required minlength="10" maxlength="13">
+                        Número telefónico
+                        <input type="text"  id="pTELEFONO" name="pTELEFONO"  class="form-control" minlength="10" maxlength="13">
                     </div>
                 </div>
                 <br>
@@ -88,15 +88,15 @@
                         <span id="err_pPUESTO_ADSCRIPCION_ACTUAL"></span>
                     </div>
                     <div class="col-md-4">
-                        Especialidad
-                        <input type="text" id="pESPECIALIDAD" name="pESPECIALIDAD" class="form-control" maxlength="100">
+                        <span class="clr">*</span>Especialidad
+                        <input type="text" id="pESPECIALIDAD" name="pESPECIALIDAD" class="form-control" maxlength="100" required>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        Rango o categoría
-                    <input type="text" id="pRANGO" name="pRANGO" class="form-control" maxlength="30">
+                        <span class="clr">*</span>Rango o categoría
+                    <input type="text" id="pRANGO" name="pRANGO" class="form-control" maxlength="30" required>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Nivel de mando <!-- Se llena del catalogo "CAT_NIVEL_MANDO" -->
@@ -119,15 +119,15 @@
                         <input id="pSUELDO_BASE" name="pSUELDO_BASE" type="text" class="form-control" maxlength="10">
                     </div>
                     <div class="col-md-4">
-                        Compensaciones (Mensuales)
-                        <input id="pCOMPENSACION" name="pCOMPENSACION" type="text" class="form-control" maxlength="10">
+                        <span class="clr">*</span>Compensaciones (Mensuales)
+                        <input id="pCOMPENSACION" name="pCOMPENSACION" type="text" class="form-control" maxlength="10" required>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <span class="clr">*</span>Área o departamento <!-- Se llena del catalogo "CAT_AREA" -->
-                        <select  class="form-control" id="pID_AREA" name="pID_AREA" data-error="#err_pID_AREA" data-force-refresh ='true' required></select>
+                        Área o departamento <!-- Se llena del catalogo "CAT_AREA" -->
+                        <select  class="form-control" id="pID_AREA" name="pID_AREA" data-error="#err_pID_AREA" data-force-refresh ='true'></select>
                         <span id="err_pID_AREA"></span>
                     </div>
                     <div class="col-md-4">
@@ -219,8 +219,8 @@
                         <input type="text" id="pEMPRESA" name="pEMPRESA" required  class="form-control"  maxlength="100" >
                     </div>
                     <div class="col-md-4">
-                        <span class="clr">*</span>Código postal
-                        <input type="number" id="pCP_EMP_EMPLEOS_DIVERSOS" name="pCP_EMP_EMPLEOS_DIVERSOS" required  class="form-control" minlength=5 maxlength=5>
+                        Código postal
+                        <input type="number" id="pCP_EMP_EMPLEOS_DIVERSOS" name="pCP_EMP_EMPLEOS_DIVERSOS" class="form-control" minlength=5 maxlength=5>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estado <!-- Se llena del catalogo "CAT_ENTIDAD" -->                            
@@ -241,15 +241,15 @@
                         <input type="text" id="pCOLONIA_EMPLEOS_DIVERSOS" name="pCOLONIA_EMPLEOS_DIVERSOS" class="form-control"  maxlength="60">
                     </div>
                     <div class="col-md-4">
-                        Calle y número
-                        <input type="text" id="pCALLE_Y_NUM_EMPLEOS_DIVERSOS" name="pCALLE_Y_NUM_EMPLEOS_DIVERSOS" class="form-control"  maxlength="60">
+                        <span class="clr">*</span>Calle y número
+                        <input type="text" id="pCALLE_Y_NUM_EMPLEOS_DIVERSOS" name="pCALLE_Y_NUM_EMPLEOS_DIVERSOS" class="form-control"  maxlength="60" required>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <span class="clr">*</span>Número telefónico
-                        <input type="text" id="pNUM_TELEFONICO" name="pNUM_TELEFONICO"  class="form-control" maxlength="20" required>
+                        Número telefónico
+                        <input type="text" id="pNUM_TELEFONICO" name="pNUM_TELEFONICO"  class="form-control" maxlength="20">
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Área o departamento 

@@ -384,9 +384,7 @@ var objViewDatosGenerales = {
 
                 if (value != 82){ // país diferente a méxico
                     
-                    if ( $('#pID_MUNICIPIO_NAC').val() != value 
-                    && $('#pID_MUNICIPIO_NAC').data('populated')
-                    ) {
+                    if ( ($('#pID_MUNICIPIO_NAC').val() != value && $('#pID_MUNICIPIO_NAC').data('populated') ) || $('#pID_MUNICIPIO_NAC').val() == null) {
                     
                         if (value == -1) { // sin información
 

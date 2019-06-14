@@ -632,12 +632,12 @@
                     <div class="col-md-4">
                         <div class="row">
                             <div class="col-md-6">
-                                <button class="btn btn-default btn-lg" id="validarVoz">
+                                <button class="btn btn-default btn-lg" id="validarVoz" disabled>
                                     Validar
                                 </button>
                             </div>
                             <div class="col-md-6">
-                                <button class="btn btn-default btn-lg" id="validarReplicar">
+                                <button class="btn btn-default btn-lg" id="validarReplicar" disabled>
                                     Replicar
                                 </button>
                             </div>
