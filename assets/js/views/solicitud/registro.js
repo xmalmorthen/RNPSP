@@ -1030,12 +1030,12 @@ var fillData = {
                     thumb_pIMAGEN_HUELLA.parent().find('div.custom-file label.custom-file-label').html( data.pIMG_HUELLA ? data.pIMG_HUELLA.originalName : 'Seleccionar imágen' );
                     /*******************************************************************************/
 
-                    $('#Ficha_fotografica_form').data('requireddata',false);
+                    
 
                 }
                 $('#Ficha_fotografica_form').LoadingOverlay("hide");
 
-                $('#Ficha_fotografica_form').removeData('loading');
+                
 
             })
             .catch( (err) => {
@@ -1064,6 +1064,9 @@ var fillData = {
                         var row = [ value.pID_FICHA_FOTOGRAF_EXT, value.pNUM_FOLIO, value.pIMAGEN, value.pDEPENDENCIA, value.pINSTITUCION,value.pFECHA_REGISTRO ];
                         tableObj.row.add( row ).draw( false );
                     });
+
+                    $('#Ficha_fotografica_form').data('requireddata',false);
+
                 }
 
                 //Boton para refrescar datatable
@@ -1072,6 +1075,9 @@ var fillData = {
                     btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.identificacion.fichaFotografica(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
 
                 tableRef.LoadingOverlay("hide");
+
+                $('#Ficha_fotografica_form').removeData('loading');
+
             })
             .catch( (err) => {
                 tableRef.setError(err.statusText);
@@ -1104,11 +1110,9 @@ var fillData = {
                         `);
                     }
 
-                    $('#Registro_decadactilar_form').data('requireddata',false);
                 }
                 $('#Registro_decadactilar_form').LoadingOverlay("hide");
 
-                $('#Registro_decadactilar_form').removeData('loading');
             })
             .catch( (err) => {
                 $('#Registro_decadactilar_form').setAlert({
@@ -1136,6 +1140,8 @@ var fillData = {
                         var row = [ value.pID_REG_DECADACT_EXT, value.pDEPENDENCIA, value.pINSTITUCION, value.pFECHA_REGISTRO ];
                         tableObj.row.add( row ).draw( false );
                     });
+
+                    $('#Registro_decadactilar_form').data('requireddata',false);
                 }
 
                 //Boton para refrescar datatable
@@ -1144,6 +1150,8 @@ var fillData = {
                     btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.identificacion.registroDecadactilar(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
 
                 tableRef.LoadingOverlay("hide");
+
+                $('#Registro_decadactilar_form').removeData('loading');
             })
             .catch( (err) => {
                 tableRef.setError(err.statusText);
