@@ -77,7 +77,7 @@ var mainFormActions = {
 						ref.data('insert', value);
 					else {
 						ref.val(value);
-						ref.trigger('change.select2').trigger('change');
+						ref.trigger('change').trigger('change.select2');
 					}
 					break;
 				default:

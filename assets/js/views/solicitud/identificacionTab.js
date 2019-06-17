@@ -19,9 +19,7 @@ var objViewIdentificacion = {
                 guardarFicha : null,
                 guardarRegistrodecadactilar : null,
                 guardarDocumento : null,
-                guardarVoz : null,
-                validarVoz : null,
-                validarReplicar : null
+                guardarVoz : null                
             },
             tables : {
                 tableSenasparticulares : {
@@ -83,9 +81,7 @@ var objViewIdentificacion = {
         objViewIdentificacion.vars.identificacion.btns.guardarFicha = $('#guardarFicha');
         objViewIdentificacion.vars.identificacion.btns.guardarRegistrodecadactilar = $('#guardarRegistrodecadactilar');
         objViewIdentificacion.vars.identificacion.btns.guardarDocumento = $('#guardarDocumento');
-        objViewIdentificacion.vars.identificacion.btns.guardarVoz = $('#guardarVoz');
-        objViewIdentificacion.vars.identificacion.btns.validarVoz = $('#validarVoz');
-        objViewIdentificacion.vars.identificacion.btns.validarReplicar = $('#validarReplicar');
+        objViewIdentificacion.vars.identificacion.btns.guardarVoz = $('#guardarVoz');        
 
         // INIT SELECTS
         objViewIdentificacion.vars.general.mainContentTab.find('select').select2({width : '100%'});
@@ -108,9 +104,7 @@ var objViewIdentificacion = {
         objViewIdentificacion.vars.identificacion.btns.guardarFicha.on('click',objViewIdentificacion.events.click.identificacion.guardarFicha);
         objViewIdentificacion.vars.identificacion.btns.guardarRegistrodecadactilar.on('click',objViewIdentificacion.events.click.identificacion.guardarRegistrodecadactilar);
         objViewIdentificacion.vars.identificacion.btns.guardarDocumento.on('click',objViewIdentificacion.events.click.identificacion.guardarDocumento);
-        objViewIdentificacion.vars.identificacion.btns.guardarVoz.on('click',objViewIdentificacion.events.click.identificacion.guardarVoz);
-        objViewIdentificacion.vars.identificacion.btns.validarVoz.on('click',objViewIdentificacion.events.click.identificacion.validarVoz);
-        objViewIdentificacion.vars.identificacion.btns.validarReplicar.on('click',objViewIdentificacion.events.click.identificacion.validarReplicar);
+        objViewIdentificacion.vars.identificacion.btns.guardarVoz.on('click',objViewIdentificacion.events.click.identificacion.guardarVoz);        
         
         // INIT TYPE FILES
         objViewIdentificacion.vars.identificacion.files.inputFile.on('change',objViewIdentificacion.events.change.inputFile);
@@ -573,9 +567,7 @@ var objViewIdentificacion = {
                                             
                                             form.removeData('hasChanged');
 
-                                        });
-
-                                        $('#validarVoz').removeAttr("disabled");
+                                        });                                        
 
                                         $.LoadingOverlay("hide",true);
                                     }catch(err) {
@@ -619,30 +611,7 @@ var objViewIdentificacion = {
                     }catch(err) {
                         objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);                        
                     } 
-                },
-                validarVoz : function(e, from, tabRef){
-                    e.preventDefault();
-
-                    Swal.fire({
-                        type: 'warning',
-                        title: 'Oops...!!!',
-                        text: 'Funcionalidad sin implementar!'                        
-                    });
-
-                    // Descomentar al implementar: es para habilitar el botón de replicar una vez de haya validado el registro de la solicitud
-                    //$('validarReplicar').removeAttr("disabled");
-                    
-                },
-                validarReplicar : function(e, from, tabRef){
-                    e.preventDefault();
-                    
-                    Swal.fire({
-                        type: 'warning',
-                        title: 'Oops...!!!',
-                        text: 'Funcionalidad sin implementar!'                        
-                    });
-
-                }
+                }                
             }
         },
         change : {

@@ -6,7 +6,37 @@ $(function() {
             mainTabMenu.fireInit();
         }
     }, 300);
+
+    validarVoz = $('.validarVoz');
+    validarReplicar = $('.validarReplicar');
+
+    validarVoz.on('click',validarVozFnc);
+    validarReplicar.on('click',validarReplicarFnc);
+
 });
+
+validarVozFnc = function(e){
+    e.preventDefault();
+
+    Swal.fire({
+        type: 'warning',
+        title: 'Oops...!!!',
+        text: 'Funcionalidad sin implementar!'                        
+    });
+
+    // Descomentar al implementar: es para habilitar el botón de replicar una vez de haya validado el registro de la solicitud
+    //$('validarReplicar').removeAttr("disabled");
+}
+
+validarReplicarFnc = function(e){
+    e.preventDefault();
+                    
+    Swal.fire({
+        type: 'warning',
+        title: 'Oops...!!!',
+        text: 'Funcionalidad sin implementar!'                        
+    });
+}
 
 var mainTabMenu = {
     var : {
@@ -88,7 +118,7 @@ var mainTabMenu = {
         });
 
         $('form').on('reset', function(e){
-            $(this).find('select').val(null).trigger('change.select2').trigger('change');
+            $(this).find('select').val(null).trigger('change').trigger('change.select2');
         });        
     },
     tab : {
@@ -404,12 +434,18 @@ var mainFormActions = {
                     }
                 break;
                 case 'select':                
-                    if (ref.find('option:enabled').size() == 0 && $(ref).data('query')) {
-                        ref.data('insert', value);
-                    } else {                
+                    
+                    if (!$(ref).data('query') || $(ref).data('query').trim().length == 0) {
+
                         ref.val(value);
-                        ref.trigger('change.select2').trigger('change');
+                        ref.trigger('change');
+
+                    } else {
+
+                        ref.data('insert', value);
+                        
                     }
+
                 break;                                    
                 default:
                 break;

@@ -447,7 +447,7 @@ var objViewDatosGenerales = {
             $('#pNOMBRE_DATOS_PERSONALES').val(data.nombres);
             $('#pPATERNO_DATOS_PERSONALES').val(data.apellido1);
             $('#pMATERNO_DATOS_PERSONALES').val(data.apellido2);
-            $('#pSEXO_DATOS_PERSONALES').val(data.sexo).trigger('change.select2').trigger('change');
+            $('#pSEXO_DATOS_PERSONALES').val(data.sexo).trigger('change').trigger('change.select2');
 
             if (data.CURP)            
                 $('#pRFC_DOMICILIO').val( data.CURP.substr(0,10));

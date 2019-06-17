@@ -627,22 +627,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <button class="btn btn-default btnGuardarSection" id="guardarVoz">Guardar identificación de voz</button>
-                    </div>
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <button class="btn btn-default btn-lg" id="validarVoz" disabled>
-                                    Validar
-                                </button>
-                            </div>
-                            <div class="col-md-6">
-                                <button class="btn btn-default btn-lg" id="validarReplicar" disabled>
-                                    Replicar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    </div>                    
                 </div>
                 <br>
                 <input type="hidden" id="pID_ALTERNA_Voz" name="pID_ALTERNA_Voz" value="" >

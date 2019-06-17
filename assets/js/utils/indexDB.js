@@ -135,12 +135,14 @@ var iDB = {
             }
         },
         populateObjectFromIDB : function(obj,options){
+
+            var selValueInterval = [];
+
             iDB.vars.db.tables.forEach(function (table) {
                 if (table.name == obj[0].id){
                     var data = table.count().then(function(count){
                         if (count > 0){
                             //FROM INDEXED DB
-                            obj.data('populated',true);
                             obj.prop("disabled", false);
                             if (options.emptyOption){
                                 obj.append('<option disabled selected value>Seleccione una opción</option>');
@@ -153,22 +155,37 @@ var iDB = {
                                 }
                             });
 
-                            var selValueInterval = setInterval(function(){
+                            innerInterval = setInterval(function(){
                                 if (obj.find('option:enabled').length > 0 ) {
-                                    clearInterval(selValueInterval);
-                                    selValueInterval = null;
                             
                                     //SI SE ASIGNA UN VALOR Y AUN NO ESTA POPULADO
                                     //LO OBTIENE DEL DATA [INSERT]
                                     if ( obj.data('insert') ) {                                        
-                                        obj.val(obj.data('insert')).trigger('change.select2');
-                                        obj.trigger('change');                                        
-                                        obj.removeData('insert');
+                                        
+                                        obj.val(obj.data('insert'));
+
+                                        if (obj.val() == obj.data('insert') && obj.data('populated') == true) {
+                                        
+                                            intervalRefObj = selValueInterval.find( refInterval => refInterval.nombre == obj[0].id );
+                                            clearInterval( intervalRefObj.objInterval );
+
+                                            obj.removeData('insert');
+
+                                            obj.trigger('change').trigger('change.select2');
+
+                                            obj.closest('form').removeData('hasChanged')
+
+                                            options.success(data);
+                                        }
                                     }
                                     
-                                    options.success(data);
                                 }
-                            }, 300);                           
+                            }, 300);
+
+                            selValueInterval.push({ nombre: obj[0].id, objInterval : innerInterval });
+                            
+                            obj.data('populated',true);
+
                         } else {
                             //FROM AJAX
                             obj.append('<option disabled selected value><i class="fa fa-refresh fa-spin fa-3x fa-fw"></i> Actualizando, favor de esperar...</option>');                                
@@ -190,18 +207,21 @@ var iDB = {
                                         });
                                     }
                                 }
-                                obj.data('populated',true);
                                 obj.prop("disabled", false);
                                 
                                 //SI SE ASIGNA UN VALOR Y AUN NO ESTA POPULADO
                                 //LO OBTIENE DEL DATA [INSERT]
                                 if ( obj.data('insert') ) {
 
-                                    obj.val(obj.data('insert')).trigger('change.select2');
-                                    obj.trigger('change');
-
+                                    obj.val(obj.data('insert'));
+                                    
                                     obj.removeData('insert');
+
+                                    obj.trigger('change').trigger('change.select2');
+
                                 }
+                                
+                                obj.data('populated',true);
                                 
                                 options.success(data);
                             }).fail(function (err) {                    
