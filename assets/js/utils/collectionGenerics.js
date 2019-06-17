@@ -25,7 +25,7 @@ var generic = {
         } 
         finally {
             if (options.showLoading)
-                $.LoadingOverlay("hide");
+                $.LoadingOverlay("hide",true);
         }
     },
     ajax : {

@@ -25,8 +25,8 @@ class CAT_ADSCRIPCIONES_model extends MY_Model
   {
     $returnResponse = array();
     try {
-      $this->select('ID_ADSCRIPCION,ADSCRIPCION');
-      $this->db->where('ID_ADSCRIPCION', $id);
+      $this->select('clave as ID_ADSCRIPCION,DESCRIPCION as ADSCRIPCION');      
+      $this->db->where('clave', $id);
       $returnResponse = $this->response_row();
     } catch (Exception $e) {
       Msg_reporting::error_log($e);

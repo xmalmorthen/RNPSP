@@ -39,6 +39,17 @@ class Usuarios_model extends MY_Model
       
       $this->where('id', $idUsuario);
       $returnResponse = $this->get();
+      
+      $this->db->select('idTipoUsuario,TipoUsuario');
+      $this->db->from('vw_Usuarios');
+      $this->db->where('id', $idUsuario);
+      $tipoUsuario = $this->response_row();
+
+      if ($tipoUsuario){
+        $returnResponse[0]['idTipoUsuario'] = $tipoUsuario['idTipoUsuario'];
+        $returnResponse[0]['TipoUsuario'] = $tipoUsuario['TipoUsuario'];
+      }
+
     } catch (Exception $e) {
       Msg_reporting::error_log($e);
     }
@@ -49,7 +60,7 @@ class Usuarios_model extends MY_Model
   {
     $returnResponse = array();
     try {
-      $this->db->select('cat_Usuarios.id,cat_Usuarios.ip_address,cat_Usuarios.username,cat_Usuarios.email,cat_Usuarios.last_login,cat_Usuarios.id_EstatusUsuario,cat_Usuarios.CURP,cat_Usuarios.ID_ADSCRIPCION,vw_Personas.NOMBRE,vw_Personas.PATERNO,vw_Personas.MATERNO');
+      $this->db->select('cat_Usuarios.id,cat_Usuarios.ip_address,cat_Usuarios.username,cat_Usuarios.email,cat_Usuarios.last_login,cat_Usuarios.id_EstatusUsuario,cat_Usuarios.CURP,cat_Usuarios.ID_ADSCRIPCION,cat_Usuarios.borrado,vw_Personas.NOMBRE,vw_Personas.PATERNO,vw_Personas.MATERNO');
       $this->db->from('vw_Personas');
       $this->db->join('cat_Usuarios','cat_Usuarios.CURP = vw_Personas.CURP','right');
       $this->db->where('cat_Usuarios.id', $idUsuario);

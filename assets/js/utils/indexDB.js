@@ -1,5 +1,5 @@
 var iDB = {
-    version: 6,
+    version: 7,
     status : false,
     vars : {
         db : null,
@@ -36,7 +36,7 @@ var iDB = {
         createIDB : function(tables){
             var dbToDelete = ['SGP'];
             for (let index = 1; index < iDB.version; index++) {
-                dbToDelete.push('SGP' + index);
+                dbToDelete.push('SGPv' + index);
             }
             $.each(dbToDelete,function(key, value) {
                 var oldDB = new Dexie(value);
@@ -160,9 +160,9 @@ var iDB = {
                             
                                     //SI SE ASIGNA UN VALOR Y AUN NO ESTA POPULADO
                                     //LO OBTIENE DEL DATA [INSERT]
-                                    if ( obj.data('insert') ) {
+                                    if ( obj.data('insert') ) {                                        
                                         obj.val(obj.data('insert')).trigger('change.select2');
-                                        obj.trigger('change');
+                                        obj.trigger('change');                                        
                                         obj.removeData('insert');
                                     }
                                     
@@ -196,6 +196,7 @@ var iDB = {
                                 //SI SE ASIGNA UN VALOR Y AUN NO ESTA POPULADO
                                 //LO OBTIENE DEL DATA [INSERT]
                                 if ( obj.data('insert') ) {
+
                                     obj.val(obj.data('insert')).trigger('change.select2');
                                     obj.trigger('change');
 
@@ -210,7 +211,9 @@ var iDB = {
                             }).always(function () {
                                 obj.LoadingOverlay("hide");
                                 MyCookie.session.reset();
-                                options.always();
+                                
+                                if ( $.isFunction( options.always ) )
+                                    options.always();
                             });
                         }
                     });

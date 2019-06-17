@@ -347,6 +347,7 @@
                             <option value="S">SI</option>
                             <option value="N">NO</option>
                         </select>
+                        <span id="err_pLENTES"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estatura (cm)
@@ -411,7 +412,7 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Cantidad
-                        <input type="text" id="pCANTIDAD" name="pCANTIDAD" class="form-control" id="pCANTIDAD" required minlength="1" maxlength="5">
+                        <input type="number" id="pCANTIDAD" name="pCANTIDAD" class="form-control" id="pCANTIDAD" required minlength="1" maxlength="5">
                     </div>
                     <div class="col-md-4">
                         Descripción
@@ -608,9 +609,9 @@
                 <hr>
                 <div class="row">                    
                     <div class="col-md-4">
-                        Audio
+                        <span class="clr">*</span>Audio
                         <div class="custom-file">
-                            <input type="file" id="vozFile" name="vozFile" class='custom-file-input inputFile' data-renderin='thumb_vozFile' accept="audio/*" required>
+                            <input type="file" id="vozFile" name="vozFile" class='custom-file-input inputFile' data-renderin='thumb_vozFile' accept="audio/*">
                             <label class="custom-file-label" for="inputGroupFile01">Seleccionar archivo</label>
                         </div>
                     </div>
@@ -631,12 +632,12 @@
                     <div class="col-md-4">
                         <div class="row">
                             <div class="col-md-6">
-                                <button class="btn btn-default" id="validarVoz">
+                                <button class="btn btn-default btn-lg" id="validarVoz" disabled>
                                     Validar
                                 </button>
                             </div>
                             <div class="col-md-6">
-                                <button class="btn btn-default" id="validarReplicar">
+                                <button class="btn btn-default btn-lg" id="validarReplicar" disabled>
                                     Replicar
                                 </button>
                             </div>
@@ -650,7 +651,7 @@
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <button class="btn btn-secondary btn-lg btnSiguienteAnterior" id="anteriorVoz" data-nexttab="#Digitalizacion_de_documento-tab">Anterior Ficha</button>
-                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab endTab" id="finalizarVoz">Finalizar</button>
+                        <!-- <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab endTab" id="finalizarVoz">Finalizar</button> -->
                     </div>
                 </div>
             </form>
@@ -832,7 +833,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        Categoría de documento <!-- CAT_CATEGORIA_DOC -->
+                        <span class="clr">*</span>Categoría de documento <!-- CAT_CATEGORIA_DOC -->
                         <select  class="form-control" id="pID_CATEGORIA_DOC" name="pID_CATEGORIA_DOC" data-error="#err_pID_CATEGORIA_DOC" data-query='WkdEc3EycHBEQVhpWmoxRTlWdFV4MHd5NmIycFdRY1JDWU44WHdObU1UQnoyQnVGUGp4WjlLYUFYSWhjY1k3WmpxelM1dEl3eXZXam5KQ3lTckhHOSt2djZQMWsvVEYwalZPRm9ySWRxZVhzazRsd0J6VzhBZXgzU3d1ckJSa2JuaHQ2SFhBMW9NamQ4b2RNaERIODVsZVBBWm9EUlVVM0hVb2JBbXJrdFV3PQ==' required></select>
 						<span id="err_pID_CATEGORIA_DOC"></span>
                     </div>
@@ -841,7 +842,7 @@
                         <input type="date" id="FECHA_DOCUMENTO" name="FECHA_DOCUMENTO" class="form-control">
                     </div>
                     <div class="col-md-4">
-                        Documento
+                        <span class="clr">*</span>Documento
                         <div class="custom-file">
                             <input type="file" id="pIMAGEN" name="pIMAGEN" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN' accept="application/pdf,image/*" required>
                             <label class="custom-file-label" for="inputGroupFile01">Seleccionar documento</label>

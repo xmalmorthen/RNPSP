@@ -138,6 +138,12 @@ var objViewIdentificacion = {
             }
         }
 
+        $('#FECHA_DOCUMENTO').attr('max', moment( new Date() ).format('YYYY-MM-DD'));
+
+        $(':input[type="number"]').on('input', function () { 
+            this.value = this.value.replace(/[^0-9\-\(\)]/g,'');
+        });
+
         objViewIdentificacion.vars.general.init = true;
     },
     events : {
@@ -148,17 +154,13 @@ var objViewIdentificacion = {
                 guardarMediafiliacion : function(e, from, tabRef){
                     e.preventDefault();
                     objViewIdentificacion.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveIdentificacionMediafiliacion',from, tabRef, false, function(data){
-                        console.log(data);
                         
-                        debugger;
                     });
                 },
                 guardarSenia : function(e, from, tabRef){
                     e.preventDefault();
-                    objViewIdentificacion.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveIdentificacionSenia',from, tabRef, true, function(data){
-                        console.log(data);
-                        
-                        debugger;
+                    objViewIdentificacion.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveIdentificacionSenia',from, tabRef, true, function(data){                        
+                        fillData.identificacion.seniasParticulares(mainTabMenu.var.pID_ALTERNA);
                     });
                 },                
                 guardarFicha : function(e, from, tabRef){
@@ -222,10 +224,19 @@ var objViewIdentificacion = {
                                         }
                                         dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef ,'<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
                                         
-                                        populate.reset(form);
-                                        $.LoadingOverlay("hide");
+                                        populate.reset(form, function(){
+                                            
+                                            form.removeData('hasChanged');
+
+                                        });
+
+                                        $.LoadingOverlay("hide",true);
+
+                                        fillData.identificacion.fichaFotografica(mainTabMenu.var.pID_ALTERNA);
+
+
                                     }catch(err) {
-                                        $.LoadingOverlay("hide");
+                                        $.LoadingOverlay("hide",true);
                     
                                         form.setAlert({
                                             alertType :  'alert-danger',
@@ -255,11 +266,12 @@ var objViewIdentificacion = {
                                     objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);                                 
                                 },
                                 always : function(){
-                                    $.LoadingOverlay("hide");
+                                    $.LoadingOverlay("hide",true);
                                 }
                             });
                         } else {
-                            throw new Error("Debe seleccionar al menos una imágen.");
+                            msg = "Debe" + ( form.data('requireddata') == false ? ' remplazar ' : ' seleccionar' ) + ' al menos una imágen.';
+                            throw new Error(msg);
                         }
 
                     }catch(err) {
@@ -329,10 +341,15 @@ var objViewIdentificacion = {
                                         }
                                         dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef ,'<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
                                         
-                                        populate.reset(form);
-                                        $.LoadingOverlay("hide");
+                                        populate.reset(form, function(){
+                                            
+                                            form.removeData('hasChanged');
+
+                                        });
+
+                                        $.LoadingOverlay("hide",true);
                                     }catch(err) {
-                                        $.LoadingOverlay("hide");
+                                        $.LoadingOverlay("hide",true);
                     
                                         form.setAlert({
                                             alertType :  'alert-danger',
@@ -362,7 +379,7 @@ var objViewIdentificacion = {
                                     objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);                                 
                                 },
                                 always : function(){
-                                    $.LoadingOverlay("hide");
+                                    $.LoadingOverlay("hide",true);
                                 }
                             });
                         } else {
@@ -438,11 +455,17 @@ var objViewIdentificacion = {
                                         }
                                         dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef ,'<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
 
-                                        populate.reset(form);
+                                        populate.reset(form, function(){
+                                            
+                                            form.removeData('hasChanged');
 
-                                        $.LoadingOverlay("hide");
+                                        });
+
+                                        fillData.identificacion.digitalizacionDocumento(mainTabMenu.var.pID_ALTERNA);
+
+                                        $.LoadingOverlay("hide",true);
                                     }catch(err) {
-                                        $.LoadingOverlay("hide");
+                                        $.LoadingOverlay("hide",true);
                     
                                         form.setAlert({
                                             alertType :  'alert-danger',
@@ -472,7 +495,7 @@ var objViewIdentificacion = {
                                     objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);                                 
                                 },
                                 always : function(){
-                                    $.LoadingOverlay("hide");
+                                    $.LoadingOverlay("hide",true);
                                 }
                             });
                         } else {
@@ -546,10 +569,17 @@ var objViewIdentificacion = {
                                         }
                                         dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef ,'<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
                                         
-                                        populate.reset(form);
-                                        $.LoadingOverlay("hide");
+                                        populate.reset(form, function(){
+                                            
+                                            form.removeData('hasChanged');
+
+                                        });
+
+                                        $('#validarVoz').removeAttr("disabled");
+
+                                        $.LoadingOverlay("hide",true);
                                     }catch(err) {
-                                        $.LoadingOverlay("hide");
+                                        $.LoadingOverlay("hide",true);
                     
                                         form.setAlert({
                                             alertType :  'alert-danger',
@@ -579,7 +609,7 @@ var objViewIdentificacion = {
                                     objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);                                 
                                 },
                                 always : function(){
-                                    $.LoadingOverlay("hide");
+                                    $.LoadingOverlay("hide",true);
                                 }
                             });
                         } else {
@@ -592,11 +622,26 @@ var objViewIdentificacion = {
                 },
                 validarVoz : function(e, from, tabRef){
                     e.preventDefault();
-                    alert('implementar');
+
+                    Swal.fire({
+                        type: 'warning',
+                        title: 'Oops...!!!',
+                        text: 'Funcionalidad sin implementar!'                        
+                    });
+
+                    // Descomentar al implementar: es para habilitar el botón de replicar una vez de haya validado el registro de la solicitud
+                    //$('validarReplicar').removeAttr("disabled");
+                    
                 },
                 validarReplicar : function(e, from, tabRef){
                     e.preventDefault();
-                    alert('implementar');
+                    
+                    Swal.fire({
+                        type: 'warning',
+                        title: 'Oops...!!!',
+                        text: 'Funcionalidad sin implementar!'                        
+                    });
+
                 }
             }
         },
@@ -663,6 +708,7 @@ var objViewIdentificacion = {
                     
                     form.removeData('hasChanged').removeData('hasDiscardChanges').removeData('withError');
                     form.data('hasSaved',true);
+                    form.data('requireddata',false);
 
                     if (from) {
                         if(from == 'tab') {
@@ -682,7 +728,7 @@ var objViewIdentificacion = {
                 }
             },
             throwError: function(err,form,from,tabRef){
-                $.LoadingOverlay("hide");
+                $.LoadingOverlay("hide",true);
                 
                 form.setAlert({
                     alertType :  'alert-danger',
@@ -729,7 +775,7 @@ var objViewIdentificacion = {
                     }).fail(function (err) {
                         objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);
                     }).always(function () {
-                        $.LoadingOverlay("hide");
+                        $.LoadingOverlay("hide",true);
                         MyCookie.session.reset();
                     });
 

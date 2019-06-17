@@ -123,8 +123,9 @@
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
-			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+			catch (Exception $e) {				
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -153,7 +154,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -188,6 +190,7 @@
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -216,12 +219,14 @@
 				
 				$this->load->model('SOLICITUD_model');
 				$responseModel = $this->SOLICITUD_model->addDatosPersonales($model);
+
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -242,19 +247,29 @@
 
 			try {
 				if (!$this->input->post())
-					throw new rulesException('Petición inválida');
+					throw new rulesException('Petición inválida');				
 
 				$model = [];
 				parse_str($_POST["model"], $model);
-				$this->load->model('SOLICITUD_model');
-				$responseModel = $this->SOLICITUD_model->sp_B1_addPersonaCIB($model);
-				
+
+				if ( $model['CIB'] == '') {
+					
+					$responseModel = [ 'status' => true ];
+
+				} else {
+
+					$this->load->model('SOLICITUD_model');
+					$responseModel = $this->SOLICITUD_model->sp_B1_addPersonaCIB($model);
+
+				}
+
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -290,7 +305,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -323,7 +339,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -357,7 +374,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -365,7 +383,7 @@
 			exit;
 		}
 
-		public function ajaxSaveDatosGeneralesSocioeconomico(){
+		public function ajaxSaveDatosGeneralesSocio(){
 			if (! $this->input->is_ajax_request()) {
 				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
 			}
@@ -389,7 +407,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -421,7 +440,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -454,7 +474,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -486,7 +507,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -519,7 +541,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -551,7 +574,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -584,7 +608,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -616,7 +641,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -649,7 +675,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -681,7 +708,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -776,7 +804,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -850,7 +879,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -926,7 +956,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1001,7 +1032,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1027,7 +1059,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1053,7 +1086,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1079,7 +1113,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1105,7 +1140,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1131,7 +1167,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1158,7 +1195,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1185,7 +1223,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1211,7 +1250,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1237,7 +1277,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1263,7 +1304,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1289,7 +1331,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1316,7 +1359,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1343,7 +1387,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1368,7 +1413,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1394,7 +1440,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1420,7 +1467,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1446,7 +1494,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1472,7 +1521,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1498,7 +1548,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1524,7 +1575,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1550,7 +1602,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1576,7 +1629,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1602,7 +1656,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1628,7 +1683,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1654,7 +1710,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1680,7 +1737,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1706,7 +1764,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1732,7 +1791,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1757,7 +1817,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1783,7 +1844,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1809,7 +1871,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1834,7 +1897,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1860,7 +1924,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1886,7 +1951,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1911,7 +1977,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1936,7 +2003,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');
@@ -1960,7 +2028,8 @@
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			
 			header('Content-type: application/json');

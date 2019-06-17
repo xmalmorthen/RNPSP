@@ -1,4 +1,5 @@
 var _app = Backbone.View.extend({
+	formChanged : false,
 	initialize: function () {
 		if(id_Usuario == false){
 			Swal.fire({
@@ -6,6 +7,37 @@ var _app = Backbone.View.extend({
 				title: id_UsuarioMSG,
 			});
 		}
+
+		$('#pCURP').on('focusout',this.cambiaCurp);
+
+		//Rutina para verificar si se hace algún cambio en cualquier forulario
+        $('#Usuarios_form').find('input, select').change(function(e) {  
+			app.formChanged = true;
+        });
+	},
+	cambiaCurp: function (){
+		
+		var valor = $(this).val();
+
+		$(this).removeError();
+		$('#guardar').prop('disabled', false);
+
+		if ( !valor ) {
+			
+			$(this).setError('Campo obligatorio');
+			$('#guardar').prop('disabled', true);
+
+		} else if ( valor.length < 18 ) {
+			
+			$(this).setError('Formato incorrecto');
+			$('#guardar').prop('disabled', true);
+
+		} else if ( $('#curp').val() != $(this).val() ) {
+
+			window.location.href = base_url+'Usuarios/Modificar?curp='+$.trim($(this).val());
+
+		}
+
 	},
 	buscarCurp: function(){
 		window.location.href = base_url+'Usuarios/Ver?curp='+$.trim($('input[name=pCURP]').val());
@@ -41,7 +73,7 @@ var _app = Backbone.View.extend({
 		});
 	},
 	stopLoader: function () {
-		$.LoadingOverlay("hide");
+		$.LoadingOverlay("hide",true);
 	},
 	hideError: function () {
 		if ($('[error=true]').length > 0) {
@@ -142,7 +174,34 @@ var _app = Backbone.View.extend({
 		});
 	},
 	regresar: function () {
-		window.location.replace(base_url + 'Usuarios');
+		if (app.formChanged){
+					
+			Swal.fire({
+				title: 'Aviso',
+				html: "Desea guardar las modificaciones",
+				footer: "<div><button class='btn btn-warning discartChanges'>Regresar sin guardar</button></div>",
+				type: 'question',
+				allowOutsideClick : false,
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				confirmButtonText: 'Aceptar',
+				cancelButtonColor: '#d33',
+				cancelButtonText: 'Cancelar'
+			}).then(function(result){
+				
+				if (result.value === true){
+					
+					app.guardar();		
+
+				}
+
+			});
+			
+			$('.discartChanges').on('click',function(evnt) { Swal.close(); window.location.replace(base_url + 'Usuarios'); });
+
+		} else {
+			window.location.replace(base_url + 'Usuarios');
+		}
 	},
 	render: function () {
 		$('form#Usuarios_form select').each(function (index) {

@@ -279,6 +279,7 @@ class SOLICITUD_model extends MY_Model
       $this->response['message'] = ul($message);
       $this->response['validation'] = $message;
     }
+
     return $this->response;
   }
 
@@ -354,8 +355,8 @@ class SOLICITUD_model extends MY_Model
     $this->form_validation->set_rules('pESPECIALIDAD_DESARROLLO', 'Especialidad o estudio', 'trim|max_length[100]');
     $this->form_validation->set_rules('pNOMBRE_ESCUELA', 'Escuela', 'trim|max_length[100]');
     $this->form_validation->set_rules('pCEDULA_PROFESIONAL', 'Cédula profesional', 'trim|numeric|max_length[10]');
-    $this->form_validation->set_rules('pINICIO', 'Fecha de inicio', 'trim|max_length[10]');
-    $this->form_validation->set_rules('pTERMINO', 'Fecha de término', 'trim|max_length[10]');
+    $this->form_validation->set_rules('pINICIO_DESARROLLO', 'Fecha de inicio', 'trim');
+    $this->form_validation->set_rules('pTERMINO_DESARROLLO', 'Fecha de término', 'trim');
     $this->form_validation->set_rules('pREGISTRO_SEP', 'Registro SEP', 'trim|max_length[1]');
     $this->form_validation->set_rules('pFOLIO_CERTIFICADO', 'Número de folio de certificado', 'trim|max_length[30]');
     $this->form_validation->set_rules('pPROMEDIO', 'Promedio', 'trim|numeric|max_length[10]');
@@ -371,8 +372,8 @@ class SOLICITUD_model extends MY_Model
       $this->addParam('pESPECIALIDAD','pESPECIALIDAD_DESARROLLO','N');
       $this->addParam('pNOMBRE_ESCUELA','pNOMBRE_ESCUELA','N');
       $this->addParam('pCEDULA_PROFESIONAL','pCEDULA_PROFESIONAL');
-      $this->addParam('pINICIO','pINICIO');
-      $this->addParam('pTERMINO','pTERMINO');
+      $this->addParam('pINICIO','pINICIO_DESARROLLO');
+      $this->addParam('pTERMINO','pTERMINO_DESARROLLO');
       $this->addParam('pREGISTRO_SEP','pREGISTRO_SEP','N');
       $this->addParam('pFOLIO_CERTIFICADO','pFOLIO_CERTIFICADO','N');
       $this->addParam('pPROMEDIO','pPROMEDIO');
@@ -480,7 +481,7 @@ class SOLICITUD_model extends MY_Model
     $this->form_validation->set_rules('pTELEFONO_DOMICILIO', 'Número telefónico', 'trim|required|max_length[20]');
     $this->form_validation->set_rules('pID_ENTIDAD_DOMICILIO', 'Estado', 'trim|required|numeric|max_length[10]');
     $this->form_validation->set_rules('pID_MUNICIPIO_DOMICILIO', 'Municipio', 'trim|required|numeric|max_length[10]');
-    $this->form_validation->set_rules('pENTRE_CALLE_DOMICILIO', 'Entre la calle de', 'trim|required|max_length[60]');
+    // $this->form_validation->set_rules('pENTRE_CALLE_DOMICILIO', 'Entre la calle de', 'trim|required|max_length[60]');
     $this->form_validation->set_rules('pY_CALLE_DOMICILIO', 'Y la calle de', 'trim|max_length[45]');
     $this->form_validation->set_rules('pCODIGO_POSTAL_DOMICILIO', 'Código postal', 'trim|required|max_length[10]');
     $this->form_validation->set_rules('pCIUDAD_DOMICILIO', 'Ciudad', 'trim|max_length[50]');
@@ -612,7 +613,7 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pTELEFONO',NULL); //NO LO ENCONTRE EN EL FORMULARIO
     $this->addParam('pID_ENTIDAD','pID_ENTIDAD_REFERENCIAS','',array('name'=>'Entidad federativa','rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pID_MUNICIPIO','pID_MUNICIPIO_REFERENCIAS','',array('name'=>'Municipio','rule'=>'trim|required|numeric|max_length[10]'));
-    $this->addParam('pENTRE_CALLE','pENTRE_CALLE_REFERENCIAS','N',array('name'=>'Entre calle de ','rule'=>'trim|required|max_length[60]'));
+    $this->addParam('pENTRE_CALLE','pENTRE_CALLE_REFERENCIAS','N',array('name'=>'Entre calle de ','rule'=>'trim|max_length[60]'));
     $this->addParam('pY_CALLE','pY_CALLE_REFERENCIAS','N',array('name'=>'Y la calle de ','rule'=>'trim|max_length[45]'));
     $this->addParam('pCODIGO_POSTAL','pCODIGO_POSTAL_REFERENCIAS','N',array('name'=>'Código postal','rule'=>'trim|numeric|max_length[10]'));
     $this->addParam('pCIUDAD','pCIUDAD_REFERENCIAS','N',array('name'=>'Ciudad','rule'=>'trim|max_length[50]'));
@@ -828,8 +829,8 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pID_TIPO_DEPENDIENT','pID_RELACION','',array('name'=>'Relación ','rule'=>'trim|required|numeric|max_length[10]'));
     if ($this->form_validation->run() === true) {
       $this->procedure('sp_B2_DG_addDependiente');
-      $this->iniParam('txtError','varchar','250');
-      $this->iniParam('msg','varchar','90');
+      $this->iniParam('txtError','varchar','500');
+      $this->iniParam('msg','varchar','500');
       $this->iniParam('tranEstatus','int');
       $query = $this->db->query($this->build_query());
       $response = $this->query_row($query);
@@ -918,7 +919,7 @@ class SOLICITUD_model extends MY_Model
     
     $this->addParam('pID_ENTIDAD','pID_ENTIDAD_ADSCRIPCION_ACTUAL','',array('name'=>'Estado','rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pID_MUNICIPIO','pID_MUNICIPIO_ADSCRIPCION_ACTUAL','',array('name'=>'Municipio','rule'=>'trim|required|numeric|max_length[10]'));
-    $this->addParam('pID_AREA','pID_AREA','',array('name'=>'Área o departamento','rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pID_AREA','pID_AREA','',array('name'=>'Área o departamento','rule'=>'trim|numeric|max_length[10]'));
     $this->addParam('pID_PUESTO','pPUESTO_ADSCRIPCION_ACTUAL','',array('name'=>'Puesto','rule'=>'trim|numeric|max_length[10]'));
     $this->addParam('pID_DEPENDENCIA','pID_DEPENDENCIA_ADSCRIPCION_ACTUAL','',array('name'=>'Dependencia','rule'=>'trim|numeric|max_length[10]'));
     $this->addParam('pID_INSTITUCION','pID_INSTITUCION','',array('name'=>'','rule'=>'trim|numeric|max_length[10]'));
@@ -943,13 +944,13 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pID_TIPO_BAJA',null);//no lo encontre
     $this->addParam('pFECHA_BAJA',null);//no lo encontre
     $this->addParam('pOBSERVACION_BAJA',null);//no lo encontre
-    $this->addParam('pCODIGO_POSTAL','pCP_EMP_ADSCRIPCION_ACTUAL','N',array('name'=>'Código postal','rule'=>'trim|required|max_length[10]'));
+    $this->addParam('pCODIGO_POSTAL','pCP_EMP_ADSCRIPCION_ACTUAL','N',array('name'=>'Código postal','rule'=>'trim|max_length[10]'));
     $this->addParam('pCIUDAD','pCIUDAD','N',array('name'=>'Ciudad','rule'=>'trim|max_length[50]'));
     $this->addParam('pCOLONIA','Colonia/Localidad','N',array('name'=>'Ciudad','rule'=>'trim|max_length[60]'));
-    $this->addParam('pCALLE','Calle','N',array('name'=>'Calle','rule'=>'trim|required|max_length[60]'));
-    $this->addParam('pNUM_EXTERIOR','pNUM_EXTERIOR','N',array('name'=>'Número exterior','rule'=>'trim|required|max_length[30]'));
+    $this->addParam('pCALLE','Calle','N',array('name'=>'Calle','rule'=>'trim|max_length[60]'));
+    $this->addParam('pNUM_EXTERIOR','pNUM_EXTERIOR','N',array('name'=>'Número exterior','rule'=>'trim|max_length[30]'));
     $this->addParam('pNUM_INTERIOR','pNUM_INTERIOR','N',array('name'=>'Número interior','rule'=>'trim|max_length[30]'));
-    $this->addParam('pTELEFONO','pTELEFONO','N',array('name'=>'Número telefónico','rule'=>'trim|required|max_length[20]'));
+    $this->addParam('pTELEFONO','pTELEFONO','N',array('name'=>'Número telefónico','rule'=>'trim|max_length[20]'));
     
     if ($this->form_validation->run() === true) {
       $this->procedure('sp_B1_addAdscripcion');
@@ -1000,8 +1001,8 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pDESCRIP_AREA','pDESCRIP_AREA','N',array('name'=>'Área o departamento','rule'=>'trim|max_length[50]'));
     $this->addParam('pCALLE_Y_NUM_EMP','pCALLE_Y_NUM_EMPLEOS_DIVERSOS','N',array('name'=>'Calle y número','rule'=>'trim|max_length[60]'));
     $this->addParam('pCOLONIA_EMP','pCOLONIA_EMPLEOS_DIVERSOS','',array('name'=>'Colonia/Localidad','rule'=>'trim|max_length[60]'));
-    $this->addParam('pCP_EMP','pCP_EMP_EMPLEOS_DIVERSOS','N',array('name'=>'Código postal','rule'=>'trim|required|numeric|max_length[5]'));
-    $this->addParam('pNUM_TELEFONICO','pNUM_TELEFONICO','N',array('name'=>'Número telefónico','rule'=>'trim|required|max_length[20]'));
+    $this->addParam('pCP_EMP','pCP_EMP_EMPLEOS_DIVERSOS','N',array('name'=>'Código postal','rule'=>'trim|numeric|max_length[5]'));
+    $this->addParam('pNUM_TELEFONICO','pNUM_TELEFONICO','N',array('name'=>'Número telefónico','rule'=>'trim|max_length[20]'));
     $this->addParam('pID_MOTIVO_MOV_LAB','ID_MOTIVO_MOV_LAB','',array('name'=>'Motivo de separación','rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pID_TIPO_MOV_LAB','pID_TIPO_MOV_LAB','',array('name'=>'Tipo de separación','rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pSUELDO','pSUELDO_EMPLEOS_DIVERSOS','',array('name'=>'Ingreso neto (mensual)','rule'=>'trim|numeric|max_length[10]'));

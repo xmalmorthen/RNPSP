@@ -22,11 +22,14 @@ class Usuarios extends CI_Controller
     } else if(verificaPermiso(2) == 1){ #Ver solo de su dependencia	
       $this->load->model('Usuarios_model');
       $usuario = $this->Usuarios_model->user();
+
       $this->Usuarios_model->where('cat_Usuarios.ID_ADSCRIPCION',$usuario['ID_ADSCRIPCION']);
       $data['usuarios'] = $this->Usuarios_model->get();
 
     }
+
     //Utils::pre($data);
+
     $this->load->library('parser');
     $this->parser->parse('Usuarios/index', $data);
   }
@@ -130,6 +133,14 @@ class Usuarios extends CI_Controller
     $data = array();
     $data['user_id'] = $user_id;
     
+    $this->load->model('catalogos/CAT_TIPOSUSUARIO_model');
+    if(verificaPermiso(3) == 1){ # Puede dar de alta de todos los tipos de usuario
+      $data['tiposUsuario'] = $this->CAT_TIPOSUSUARIO_model->get();
+    } else if(verificaPermiso(4) == 1){ # Pueden dar de alta usuarios capturistas, consulta
+      $this->CAT_TIPOSUSUARIO_model->where_in('id',array(3,4));
+      $data['tiposUsuario'] = $this->CAT_TIPOSUSUARIO_model->get();
+    }
+
     if($user_id != false){
     $data['usuario'] = current($this->Usuarios_model->byId($user_id));    
     $this->load->model('catalogos/CAT_ADSCRIPCIONES_model');
@@ -140,6 +151,7 @@ class Usuarios extends CI_Controller
     $data['estatus'] = $this->CAT_ESTATUSUSUARIO_model->get();
     //Utils::pre($data);
     $this->load->library('parser');
+
     $this->parser->parse('Usuarios/Modificar', $data);
   }
 
@@ -166,6 +178,7 @@ class Usuarios extends CI_Controller
 
   public function guardarModificar()
   {
+
     $this->load->model('Usuarios_model');
     $curp = $this->input->get('curp');
 
@@ -192,7 +205,7 @@ class Usuarios extends CI_Controller
       if($this->input->post('Estatus') == 2){
         $this->form_validation->set_rules('MotivoInactivo', 'Motivo de cambio estatus a Inactivo', 'trim|required');
       }
-      $this->form_validation->set_rules('pCORREO', 'Correo electrónico', 'required|valid_email');
+      $this->form_validation->set_rules('pCORREO', 'Correo electrónico', 'required|valid_email|is_unique[cat_Usuarios.username]');
 
       if ($this->form_validation->run() === true) {
         $user_id = $this->input->post('user_id');
@@ -205,7 +218,10 @@ class Usuarios extends CI_Controller
           'id_EstatusUsuario' => $this->input->post('pID_ESTATUS')
         ];
         if($this->ion_auth->update($user_id, $additional_data)){
-        
+
+          $this->ion_auth->remove_from_group(NULL, $user_id);
+          $this->ion_auth->add_to_group($this->input->post('pTIPO_USUARIO'), $user_id);
+
           $this->load->library('uuid');
           $historico = array(
             'id_UsuarioHistorial' => $this->uuid->v4(),
@@ -237,7 +253,6 @@ class Usuarios extends CI_Controller
     exit;
   }
 
-
   public function Ver()
   {
     $this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');
@@ -261,5 +276,62 @@ class Usuarios extends CI_Controller
       $data['usuario'] = current($this->Usuarios_model->byId($user_id));
     }
     $this->load->view('Usuarios/Ver',$data);
+  }
+
+  public function darBaja($id = null){
+    if (!$id)
+				$id = $this->input->post('id');
+		
+    if (! $this->input->is_ajax_request()) {
+      if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+    }		
+
+    $response = ['status' => false, 'message' => array('No especificado')];
+    try {
+
+      if(!$id){
+        throw new rulesException('Parámetros incorrectos');
+      }
+      
+      $additional_data = [
+        'id_EstatusUsuario' => 2,
+        'MotivoInactivo' => $this->input->post('motivo')
+      ];
+      if($this->ion_auth->update($id, $additional_data)){
+
+        $this->load->library('uuid');
+        $historico = array(
+          'id_UsuarioHistorial' => $this->uuid->v4(),
+          'id_Usuario' => $id,
+          'email' => strtolower($this->input->post('pCORREO')),
+          'MotivoInactivo' => $this->input->post('MotivoInactivo'),
+          'id_EstatusUsuario' => $this->input->post('pID_ESTATUS'),
+          'FechaRegistro' => date('Y-m-d H:i:s'),
+          'id_UsuarioModifico' => $this->ion_auth->get_user_id()
+        );
+        $this->db->insert('cat_UsuarioHistorial',$historico);
+        
+        $response['status'] = true;
+        $response['message'] = $this->lang->line('MSJ5');
+
+      } else {
+        
+        $response['status'] = false;
+        $response['message'] = $this->ion_auth->errors_array();
+
+      }
+
+    } 
+    catch (rulesException $e){	
+      header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+    }
+    catch (Exception $e) {				
+      header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+      log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+    }
+    
+    header('Content-type: application/json');
+    echo json_encode( $response );
+    exit;
   }
 }

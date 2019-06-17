@@ -3,22 +3,25 @@
 // Devuelve false si es inválido
 // (debe estar en mayúsculas, guiones y espacios intermedios opcionales)
 function rfcValido(rfc, aceptarGenerico = true) {
-    const re       = /^([A-ZÑ&]{3,4}) ?(?:- ?)?(\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])) ?(?:- ?)?([A-Z\d]{2})([A\d])$/;
+    const re       = /^([A-ZÑ&]{3,4}) ?(?:- ?)?(\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])) ?(?:- ?)? ?(([A-Z\d]{2})([A\d]))?$/;
     var   validado = rfc.match(re);
 
-    if (!validado)  //Coincide con el formato general del regex?
+    return validado;
+
+    /*if (!validado)  //Coincide con el formato general del regex?
         return false;
 
     //Separar el dígito verificador del resto del RFC
     const digitoVerificador = validado.pop(),
           rfcSinDigito      = validado.slice(1).join(''),
           len               = rfcSinDigito.length,
-
-    //Obtener el digito esperado
           diccionario       = "0123456789ABCDEFGHIJKLMN&OPQRSTUVWXYZ Ñ",
           indice            = len + 1;
     var   suma,
           digitoEsperado;
+
+    if (len == 10) 
+        return true;
 
     if (len == 12) suma = 0
     else suma = 481; //Ajuste para persona moral
@@ -36,7 +39,7 @@ function rfcValido(rfc, aceptarGenerico = true) {
         return false;
     else if (!aceptarGenerico && rfcSinDigito + digitoVerificador == "XEXX010101000")
         return false;
-    return rfcSinDigito + digitoVerificador;
+    return rfcSinDigito + digitoVerificador;*/
 }
 
 
