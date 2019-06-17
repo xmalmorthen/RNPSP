@@ -44,9 +44,16 @@ var populate = {
             }
         }
     },
-    reset : function(form){
+    reset : function(form,callback){
         form.trigger('reset');
         form.find('select').trigger('change'); //refrescado para selects2
         form.find('.custom-file-label').html(''); //Contenedor especial para los input file
+
+        if (callback){
+            if ($.isFunction( callback )){
+                callback();
+            }
+        }
+
     }
 }

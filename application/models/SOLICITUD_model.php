@@ -919,7 +919,7 @@ class SOLICITUD_model extends MY_Model
     
     $this->addParam('pID_ENTIDAD','pID_ENTIDAD_ADSCRIPCION_ACTUAL','',array('name'=>'Estado','rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pID_MUNICIPIO','pID_MUNICIPIO_ADSCRIPCION_ACTUAL','',array('name'=>'Municipio','rule'=>'trim|required|numeric|max_length[10]'));
-    $this->addParam('pID_AREA','pID_AREA','',array('name'=>'Área o departamento','rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pID_AREA','pID_AREA','',array('name'=>'Área o departamento','rule'=>'trim|numeric|max_length[10]'));
     $this->addParam('pID_PUESTO','pPUESTO_ADSCRIPCION_ACTUAL','',array('name'=>'Puesto','rule'=>'trim|numeric|max_length[10]'));
     $this->addParam('pID_DEPENDENCIA','pID_DEPENDENCIA_ADSCRIPCION_ACTUAL','',array('name'=>'Dependencia','rule'=>'trim|numeric|max_length[10]'));
     $this->addParam('pID_INSTITUCION','pID_INSTITUCION','',array('name'=>'','rule'=>'trim|numeric|max_length[10]'));
@@ -944,13 +944,13 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pID_TIPO_BAJA',null);//no lo encontre
     $this->addParam('pFECHA_BAJA',null);//no lo encontre
     $this->addParam('pOBSERVACION_BAJA',null);//no lo encontre
-    $this->addParam('pCODIGO_POSTAL','pCP_EMP_ADSCRIPCION_ACTUAL','N',array('name'=>'Código postal','rule'=>'trim|required|max_length[10]'));
+    $this->addParam('pCODIGO_POSTAL','pCP_EMP_ADSCRIPCION_ACTUAL','N',array('name'=>'Código postal','rule'=>'trim|max_length[10]'));
     $this->addParam('pCIUDAD','pCIUDAD','N',array('name'=>'Ciudad','rule'=>'trim|max_length[50]'));
     $this->addParam('pCOLONIA','Colonia/Localidad','N',array('name'=>'Ciudad','rule'=>'trim|max_length[60]'));
-    $this->addParam('pCALLE','Calle','N',array('name'=>'Calle','rule'=>'trim|required|max_length[60]'));
-    $this->addParam('pNUM_EXTERIOR','pNUM_EXTERIOR','N',array('name'=>'Número exterior','rule'=>'trim|required|max_length[30]'));
+    $this->addParam('pCALLE','Calle','N',array('name'=>'Calle','rule'=>'trim|max_length[60]'));
+    $this->addParam('pNUM_EXTERIOR','pNUM_EXTERIOR','N',array('name'=>'Número exterior','rule'=>'trim|max_length[30]'));
     $this->addParam('pNUM_INTERIOR','pNUM_INTERIOR','N',array('name'=>'Número interior','rule'=>'trim|max_length[30]'));
-    $this->addParam('pTELEFONO','pTELEFONO','N',array('name'=>'Número telefónico','rule'=>'trim|required|max_length[20]'));
+    $this->addParam('pTELEFONO','pTELEFONO','N',array('name'=>'Número telefónico','rule'=>'trim|max_length[20]'));
     
     if ($this->form_validation->run() === true) {
       $this->procedure('sp_B1_addAdscripcion');
@@ -1001,8 +1001,8 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pDESCRIP_AREA','pDESCRIP_AREA','N',array('name'=>'Área o departamento','rule'=>'trim|max_length[50]'));
     $this->addParam('pCALLE_Y_NUM_EMP','pCALLE_Y_NUM_EMPLEOS_DIVERSOS','N',array('name'=>'Calle y número','rule'=>'trim|max_length[60]'));
     $this->addParam('pCOLONIA_EMP','pCOLONIA_EMPLEOS_DIVERSOS','',array('name'=>'Colonia/Localidad','rule'=>'trim|max_length[60]'));
-    $this->addParam('pCP_EMP','pCP_EMP_EMPLEOS_DIVERSOS','N',array('name'=>'Código postal','rule'=>'trim|required|numeric|max_length[5]'));
-    $this->addParam('pNUM_TELEFONICO','pNUM_TELEFONICO','N',array('name'=>'Número telefónico','rule'=>'trim|required|max_length[20]'));
+    $this->addParam('pCP_EMP','pCP_EMP_EMPLEOS_DIVERSOS','N',array('name'=>'Código postal','rule'=>'trim|numeric|max_length[5]'));
+    $this->addParam('pNUM_TELEFONICO','pNUM_TELEFONICO','N',array('name'=>'Número telefónico','rule'=>'trim|max_length[20]'));
     $this->addParam('pID_MOTIVO_MOV_LAB','ID_MOTIVO_MOV_LAB','',array('name'=>'Motivo de separación','rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pID_TIPO_MOV_LAB','pID_TIPO_MOV_LAB','',array('name'=>'Tipo de separación','rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pSUELDO','pSUELDO_EMPLEOS_DIVERSOS','',array('name'=>'Ingreso neto (mensual)','rule'=>'trim|numeric|max_length[10]'));

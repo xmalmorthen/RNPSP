@@ -33,13 +33,13 @@
                         <input type="number"  id="pCP_EMP_ADSCRIPCION_ACTUAL" name="pCP_EMP_ADSCRIPCION_ACTUAL" class="form-control" class="form-control" minlength=5 maxlength=5>
                     </div>
                     <div class="col-md-4">
-                        Estado <!-- Se llena del catalogo "CAT_ENTIDAD" -->
-                        <select  class="form-control" id="pID_ENTIDAD_ADSCRIPCION_ACTUAL" name="pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-error="#err_pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-query='RG51N2cyVWNFVVp5Rlc5WDYydU0wcm0wbys4dElkSU1uaHBpTTJHMEJqOGVqdmRkUXJRUzB0TVZIa2Y0UldSWGpiMS9xQXhOWE5oVndVN0QzSFpHWHI4NEVzWTRIRU5RTmxjS09EK243V002bi9RV1ZUTU0waGRHdWlHSzFaT04='></select>
+                        <span class="clr">*</span>Estado <!-- Se llena del catalogo "CAT_ENTIDAD" -->
+                        <select  class="form-control" id="pID_ENTIDAD_ADSCRIPCION_ACTUAL" name="pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-error="#err_pID_ENTIDAD_ADSCRIPCION_ACTUAL" data-query='RG51N2cyVWNFVVp5Rlc5WDYydU0wcm0wbys4dElkSU1uaHBpTTJHMEJqOGVqdmRkUXJRUzB0TVZIa2Y0UldSWGpiMS9xQXhOWE5oVndVN0QzSFpHWHI4NEVzWTRIRU5RTmxjS09EK243V002bi9RV1ZUTU0waGRHdWlHSzFaT04=' required></select>
                         <span id="err_pID_ENTIDAD_ADSCRIPCION_ACTUAL"></span>
                     </div>
                     <div class="col-md-4">
-                        Municipio <!-- Se llena del catalogo "CAT_MUNICIPIO" dependiendo del catalogo de "ENTIDAD" -->
-                        <select  class="form-control" id="pID_MUNICIPIO_ADSCRIPCION_ACTUAL" name="pID_MUNICIPIO_ADSCRIPCION_ACTUAL" data-error="#err_pID_MUNICIPIO_ADSCRIPCION_ACTUAL" data-query='c244RWRmblByTDlCWExpTHc0ZnQ3NGUzbWMza1Y5MnZCck9rQmpCQ1hTdlA3dzJyRVNMRjhXTll4WmNmYkplM1BKM1BWckJ3RFdieG55eUNldGZ3N1dyS2taNXhWd2RWczkzT0lsVTk1anZPcVJFclZBN05mTUtwbjJuazJqa0tSaXVENkI2WVErcmUxNlFoVUFNamttMjB1S3RxK0ZjUFA3cEFhM0Fvak53PQ==' data-cascade='true' data-force-refresh='true' data-cascade-id-ref='pID_ENTIDAD_ADSCRIPCION_ACTUAL' data-params='ID_ENTIDAD={0}'></select>
+                        <span class="clr">*</span>Municipio <!-- Se llena del catalogo "CAT_MUNICIPIO" dependiendo del catalogo de "ENTIDAD" -->
+                        <select  class="form-control" id="pID_MUNICIPIO_ADSCRIPCION_ACTUAL" name="pID_MUNICIPIO_ADSCRIPCION_ACTUAL" data-error="#err_pID_MUNICIPIO_ADSCRIPCION_ACTUAL" data-query='c244RWRmblByTDlCWExpTHc0ZnQ3NGUzbWMza1Y5MnZCck9rQmpCQ1hTdlA3dzJyRVNMRjhXTll4WmNmYkplM1BKM1BWckJ3RFdieG55eUNldGZ3N1dyS2taNXhWd2RWczkzT0lsVTk1anZPcVJFclZBN05mTUtwbjJuazJqa0tSaXVENkI2WVErcmUxNlFoVUFNamttMjB1S3RxK0ZjUFA3cEFhM0Fvak53PQ==' data-cascade='true' data-force-refresh='true' data-cascade-id-ref='pID_ENTIDAD_ADSCRIPCION_ACTUAL' data-params='ID_ENTIDAD={0}' required></select>
                         <span id="err_pID_MUNICIPIO_ADSCRIPCION_ACTUAL"></span>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Compensaciones (Mensuales)
-                        <input id="pCOMPENSACION" name="pCOMPENSACION" type="text" class="form-control" maxlength="10" required>
+                        <input id="pCOMPENSACION" name="pCOMPENSACION" type="number" class="form-control" maxlength="10" required>
                     </div>
                 </div>
                 <br>
@@ -272,7 +272,7 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Fecha de separación
-                        <input type="date" id="pFECHA_TERMINO_EMPLEOS_DIVERSOS" name="pFECHA_TERMINO_EMPLEOS_DIVERSOS" required  class="form-control">
+                        <input type="date" id="pFECHA_TERMINO_EMPLEOS_DIVERSOS" name="pFECHA_TERMINO_EMPLEOS_DIVERSOS" required  class="form-control pFECHA_TERMINO_EMPLEOS_DIVERSOS">
                     </div>
                 </div>
                 <br>
@@ -444,7 +444,7 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Fecha de término
-                        <input type="date"  id="pFECHA_TERMINO_COMISIONES" name="pFECHA_TERMINO_COMISIONES" class="form-control" required>
+                        <input type="date"  id="pFECHA_TERMINO_COMISIONES" name="pFECHA_TERMINO_COMISIONES" class="form-control pFECHA_TERMINO_COMISIONES" required>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Tipo de comisión<!-- Se llena del catalogo "CAT_TIPO_COMISION" -->

@@ -114,15 +114,31 @@ var objViewLaboral = {
             }
         }
 
-        $('#pFECHA_INGRESO,#pFECHA_INICIO_EMPLEOS_DIVERSOS,#pFECHA_TERMINO_EMPLEOS_DIVERSOS,#pFECHA_INICIO_COMISIONES,#pFECHA_TERMINO_COMISIONES').attr('max', moment( new Date() ).format('YYYY-MM-DD'));
+        $('#pFECHA_INGRESO,#pFECHA_INICIO_EMPLEOS_DIVERSOS,#pFECHA_TERMINO_EMPLEOS_DIVERSOS,#pFECHA_INICIO_COMISIONES,#pFECHA_TERMINO_COMISIONES').attr('max', moment( new Date() ).format('YYYY-MM-DD'));        
         
         $('#pTELEFONO,#pNUM_TELEFONICO').on('input', function () { 
+            this.value = this.value.replace(/[^0-9\-\(\)]/g,'');
+        });
+
+        $(':input[type="number"]').on('input', function () { 
             this.value = this.value.replace(/[^0-9\-\(\)]/g,'');
         });
 
         $('.validarNumberSpecial').on('input', function () {
             this.value = this.value.replace(/[^0-9\-\(\)snSN\/]/g,'');
         });
+
+        $.validator.addMethod("pFECHA_TERMINO_EMPLEOS_DIVERSOS", function(value, element) {
+            
+            return value > $('#pFECHA_INICIO_EMPLEOS_DIVERSOS').val() ? false : true;
+
+        }, "La fecha debe ser menor o igual a la fecha de ingreso.");
+
+        $.validator.addMethod("pFECHA_TERMINO_COMISIONES", function(value, element) {
+            
+            return value > $('#pFECHA_INICIO_COMISIONES').val() ? false : true;
+
+        }, "La fecha debe ser menor o igual a la fecha de inicio.");
 
         objViewLaboral.vars.general.init = true;
     },

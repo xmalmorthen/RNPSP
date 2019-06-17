@@ -1026,7 +1026,8 @@ var fillData = {
                     thumb_pIMAGEN_HUELLA.parent().find('div.custom-file label.custom-file-label').html( data.pIMG_HUELLA ? data.pIMG_HUELLA.originalName : 'Seleccionar imágen' );
                     /*******************************************************************************/
 
-                    
+                    if ( thumb_pIMAGEN_IZQUIERDO || thumb_pIMAGEN_FRENTE || thumb_pIMAGEN_DERECHO || thumb_pIMAGEN_FIRMA ||thumb_pIMAGEN_HUELLA ) 
+                        $('#Ficha_fotografica_form').data('requireddata',false);
 
                 }
                 $('#Ficha_fotografica_form').LoadingOverlay("hide");
@@ -1096,6 +1097,8 @@ var fillData = {
 
                     if (data.pIMG_DOCUMENTO) {
                         //DOCUMENTO
+                        $('#Registro_decadactilar_form .custom-file').parent('div').find('.jumbotron').remove();
+                        
                         $('#Registro_decadactilar_form .custom-file').parent('div').append(`
                             <div class="jumbotron jumbotron-fluid mb-3">
                                 <div class="container">

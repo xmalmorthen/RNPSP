@@ -1,6 +1,6 @@
 var MyCookie = {
     objs : {
-        coockieObj : Cookies.noConflict()        
+        coockieObj : Cookies.noConflict()
     },
     session : {
         reset : function(){

@@ -140,6 +140,10 @@ var objViewIdentificacion = {
 
         $('#FECHA_DOCUMENTO').attr('max', moment( new Date() ).format('YYYY-MM-DD'));
 
+        $(':input[type="number"]').on('input', function () { 
+            this.value = this.value.replace(/[^0-9\-\(\)]/g,'');
+        });
+
         objViewIdentificacion.vars.general.init = true;
     },
     events : {
@@ -220,8 +224,17 @@ var objViewIdentificacion = {
                                         }
                                         dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef ,'<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
                                         
-                                        populate.reset(form);
+                                        populate.reset(form, function(){
+                                            
+                                            form.removeData('hasChanged');
+
+                                        });
+
                                         $.LoadingOverlay("hide",true);
+
+                                        fillData.identificacion.fichaFotografica(mainTabMenu.var.pID_ALTERNA);
+
+
                                     }catch(err) {
                                         $.LoadingOverlay("hide",true);
                     
@@ -257,7 +270,8 @@ var objViewIdentificacion = {
                                 }
                             });
                         } else {
-                            throw new Error("Debe seleccionar al menos una imágen.");
+                            msg = "Debe" + ( form.data('requireddata') == false ? ' remplazar ' : ' seleccionar' ) + ' al menos una imágen.';
+                            throw new Error(msg);
                         }
 
                     }catch(err) {
@@ -327,7 +341,12 @@ var objViewIdentificacion = {
                                         }
                                         dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef ,'<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
                                         
-                                        populate.reset(form);
+                                        populate.reset(form, function(){
+                                            
+                                            form.removeData('hasChanged');
+
+                                        });
+
                                         $.LoadingOverlay("hide",true);
                                     }catch(err) {
                                         $.LoadingOverlay("hide",true);
@@ -436,7 +455,13 @@ var objViewIdentificacion = {
                                         }
                                         dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef ,'<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
 
-                                        populate.reset(form);
+                                        populate.reset(form, function(){
+                                            
+                                            form.removeData('hasChanged');
+
+                                        });
+
+                                        fillData.identificacion.digitalizacionDocumento(mainTabMenu.var.pID_ALTERNA);
 
                                         $.LoadingOverlay("hide",true);
                                     }catch(err) {
@@ -544,7 +569,11 @@ var objViewIdentificacion = {
                                         }
                                         dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef ,'<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
                                         
-                                        populate.reset(form);
+                                        populate.reset(form, function(){
+                                            
+                                            form.removeData('hasChanged');
+
+                                        });
 
                                         $('#validarVoz').removeAttr("disabled");
 
