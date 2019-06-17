@@ -93,28 +93,10 @@
 				<div id="divPSB" style="display:none">
 					<div class="row">
 						<div class="col-md-6">
-							Nombre de las persona que elaboró la solicitud
+							Nombre de la persona que elaboró la solicitud
 						</div>
 						<div class="col-md-6">
 							<input type="text" id="PSB_PersonaElaboro" name="PSB_PersonaElaboro" class="form-control">
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Nombre del activo 
-						</div>
-						<div class="col-md-6">
-							<input type="text" id="PSB_NombreActivo" name="PSB_NombreActivo" class="form-control">
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Cargo del activo 
-						</div>
-						<div class="col-md-6">
-							<input type="text" id="PSB_CargoActivo" name="PSB_CargoActivo" class="form-control">
 						</div>
 					</div>
 					<br>
@@ -144,15 +126,6 @@
 						</div>
 						<div class="col-md-6">
 							<input id='PSECNombreDestino' name='PSECNombreDestino' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Cargo a quien va dirigido el oficio
-						</div>
-						<div class="col-md-6">
-							<input id='PSECCargoDestino' name='PSECCargoDestino' type="text" class="form-control" maxlength="20" required>
 						</div>
 					</div>
 					<br>
@@ -222,7 +195,7 @@
 							Nombre de quien solicita
 						</div>
 						<div class="col-md-6">
-							<input id='Nombre_De_Quien_Solicita' name='Nombre_De_Quien_Solicita' type="text" class="form-control" maxlength="20" required>
+							<input id='PSCNombre_De_Quien_Solicita' name='PSCNombre_De_Quien_Solicita' type="text" class="form-control" maxlength="20" required>
 						</div>
 					</div>
 					<br>
@@ -231,16 +204,16 @@
 							Puesto de quien solicita
 						</div>
 						<div class="col-md-6">
-							<input id='Puesto_De_Quien_Solicita' name='Puesto_De_Quien_Solicita' type="text" class="form-control" maxlength="20" required>
+							<input id='PSCPuesto_De_Quien_Solicita' name='PSCPuesto_De_Quien_Solicita' type="text" class="form-control" maxlength="20" required>
 						</div>
 					</div>
 					<br>
 					<div class="row">
 						<div class="col-md-6">
-							Nombre del subcoordinador del SESP
+							Nombre del encargado del SESP
 						</div>
 						<div class="col-md-6">
-							<input id='PSECNombreSubcoordinadorSESP' name='PSECNombreSubcoordinadorSESP' type="text" class="form-control" maxlength="20" required>
+							<input id='PSCNombreEncargadoSESP' name='PSCNombreEncargadoSESP' type="text" class="form-control" maxlength="20" required>
 						</div>
 					</div>
 					<br>
@@ -249,8 +222,18 @@
 							Nombre del subcoordinador del SI
 						</div>
 						<div class="col-md-6">
-							<input id='PSECNombreSubcoordinadorSI' name='PSECNombreSubcoordinadorSI' type="text" class="form-control" maxlength="20" required>
+							<input id='PSCNombreSubcoordinadorSI' name='PSCNombreSubcoordinadorSI' type="text" class="form-control" maxlength="20" required>
 						</div>
+					</div>
+					<br>
+					<div class="row">
+							<div class="col-md-6">
+								Nombre del encargado del despacho	
+							</div>
+							<div class="col-md-6">
+								<input type="text" id="PSCNombreEncargadoDespacho" name="PSCNombreEncargadoDespacho" class="form-control" maxlength="20" required>
+							</div>
+					
 					</div>
 				</div>
 				<!-- Petición de CUIP -->
@@ -333,16 +316,6 @@
 					<br>
 					<div class="row">
 						<div class="col-md-6">
-							Respuesta al oficio 
-						</div>
-						<div class="col-md-6">
-							<input id='PSANoFolioRespuesta' name='PSANoFolioRespuesta' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-			
-					<div class="row">
-						<div class="col-md-6">
 							Nombre de quien hizo la petición
 						</div>
 						<div class="col-md-6">
@@ -359,23 +332,21 @@
 						</div>
 					</div>
 					<br>
-				
-				
 					<div class="row">
 						<div class="col-md-6">
-							Año
+							Nombre a quien va dirigido
 						</div>
 						<div class="col-md-6">
-							<input id='PSA_Año' name='PSA_Año' type="number" class="form-control" required>
+							<input id='PSANombreDestinoPeticion' name='PSANombreDestinoPeticion' type="text" class="form-control" required>
 						</div>
 					</div>
 					<br>
 					<div class="row">
 						<div class="col-md-6">
-							Nombre de quien firma
+							Puesto
 						</div>
 						<div class="col-md-6">
-							<input id='PSANombreFirma' name='PSANombreFirma' type="text" class="form-control" maxlength="20" required>
+							<input id='PSAPuestoDestinoPeticion' name='PSAPuestoDestinoPeticion' type="text" class="form-control" required>
 						</div>
 					</div>
 					<br>
@@ -385,6 +356,15 @@
 						</div>
 						<div class="col-md-6">
 							<input id='PSANombreEncargadoDespachoSESESP' name='PSANombreEncargadoDespachoSESESP' type="text" class="form-control" maxlength="20" required>
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-md-6">
+						 Nombre del encargado del SESESP
+						</div>
+						<div class="col-md-6">
+							<input id='PSANombreEncargadoSESESP' name='PSANombreEncargadoSESESP' type="text" class="form-control" maxlength="20" required>
 						</div>
 					</div>
 					<br>
@@ -499,6 +479,15 @@
 						</div>
 						<div class="col-md-6">
 							<input id='RSANombreDestino' name='RSANombreDestino' type="text" class="form-control" maxlength="20" required>
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-md-6">
+							Cargo a quien va dirigido el oficio
+						</div>
+						<div class="col-md-6">
+							<input id='RSACargoDestino' name='RSACargoDestino' type="text" class="form-control" maxlength="20" required>
 						</div>
 					</div>
 
