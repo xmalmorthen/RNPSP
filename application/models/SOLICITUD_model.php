@@ -2078,4 +2078,38 @@ class SOLICITUD_model extends MY_Model
     }
     return $this->response;
   }
+
+  public function sp_validaRegistro($id){
+
+    //$this->arrayToPost({ 'id' => $id });
+
+    $this->procedure('sp_validaRegistro');
+    $this->addParam('pID_ALTERNA',$id,'');
+  
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_list($query);
+
+    if($response === FALSE){
+
+        $this->response['status'] = 0;
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+        
+    }else{
+      if(count($response) > 0){
+
+        $this->response['status'] = 1;
+        $this->response['message'] = '';
+        $this->response['data'] = $response;
+        
+      }else{
+
+        $responseOutput = current($response);
+        $this->response['status'] = 1;
+        $this->response['message'] = 'No se encontraron resultados.';
+
+      }
+    }
+    return $this->response;
+  }
 }

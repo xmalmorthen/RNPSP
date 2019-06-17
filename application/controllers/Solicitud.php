@@ -2037,6 +2037,34 @@
 			exit;
 		}
 
+		public function ajaxValidar($id = null){
+			if (!$id)
+				$id = $this->input->get('id');
+		
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}		
+
+			$responseModel = NULL;
+			try {
+				if(!$id){
+					throw new rulesException('Parámetros incorrectos');
+				}
 				
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_validaRegistro($id);
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+			}
+			catch (Exception $e) {				
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
 		
 }	

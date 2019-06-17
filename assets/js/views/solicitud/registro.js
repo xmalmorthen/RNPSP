@@ -17,16 +17,43 @@ $(function() {
 
 validarVozFnc = function(e){
     e.preventDefault();
+    
+    var callUrl = base_url + "Solicitud/ajaxValidar";
 
-    Swal.fire({
-        type: 'warning',
-        title: 'Oops...!!!',
-        text: 'Funcionalidad sin implementar!'                        
-    });
+    $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
-    // Descomentar al implementar: es para habilitar el botón de replicar una vez de haya validado el registro de la solicitud
-    //$('validarReplicar').removeAttr("disabled");
-}
+    $.get(callUrl, 
+        { id : mainTabMenu.var.pID_ALTERNA },
+        function (data) {
+            if (data) {
+                if (data.results.status){
+
+                    //data.results.data
+                    
+                    // Descomentar al implementar: es para habilitar el botón de replicar una vez de haya validado el registro de la solicitud                
+                    //$('validarReplicar').removeAttr("disabled");
+                    return null;
+                }
+            }
+
+            Swal.fire({ type: 'error', title: 'Error', html: data.results.message ? data.results.message : 'Error no especificado al intentar validar la solicitud.' });
+
+        }).fail(function (err) {                    
+            
+            $.LoadingOverlay("hide",true);
+            var msg = err.responseText;
+            Swal.fire({ type: 'error', title: 'Error', html: msg });
+
+        }).always(function () {
+            
+            $.LoadingOverlay("hide");
+            MyCookie.session.reset();
+
+        });
+
+    
+    
+};
 
 validarReplicarFnc = function(e){
     e.preventDefault();
@@ -36,7 +63,7 @@ validarReplicarFnc = function(e){
         title: 'Oops...!!!',
         text: 'Funcionalidad sin implementar!'                        
     });
-}
+};
 
 var mainTabMenu = {
     var : {
