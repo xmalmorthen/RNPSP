@@ -120,6 +120,10 @@ var objViewLaboral = {
             this.value = this.value.replace(/[^0-9\-\(\)]/g,'');
         });
 
+        $('.validarNumberSpecial').on('input', function () {
+            this.value = this.value.replace(/[^0-9\-\(\)snSN\/]/g,'');
+        });
+
         objViewLaboral.vars.general.init = true;
     },
     events : {
@@ -250,6 +254,7 @@ var objViewLaboral = {
 
                     form.removeData('hasChanged').removeData('hasDiscardChanges').removeData('withError');
                     form.data('hasSaved',true);
+                    form.data('requireddata',false);
 
                     if (from) {
                         if(from == 'tab') {

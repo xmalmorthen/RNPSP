@@ -613,7 +613,7 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pTELEFONO',NULL); //NO LO ENCONTRE EN EL FORMULARIO
     $this->addParam('pID_ENTIDAD','pID_ENTIDAD_REFERENCIAS','',array('name'=>'Entidad federativa','rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pID_MUNICIPIO','pID_MUNICIPIO_REFERENCIAS','',array('name'=>'Municipio','rule'=>'trim|required|numeric|max_length[10]'));
-    $this->addParam('pENTRE_CALLE','pENTRE_CALLE_REFERENCIAS','N',array('name'=>'Entre calle de ','rule'=>'trim|required|max_length[60]'));
+    $this->addParam('pENTRE_CALLE','pENTRE_CALLE_REFERENCIAS','N',array('name'=>'Entre calle de ','rule'=>'trim|max_length[60]'));
     $this->addParam('pY_CALLE','pY_CALLE_REFERENCIAS','N',array('name'=>'Y la calle de ','rule'=>'trim|max_length[45]'));
     $this->addParam('pCODIGO_POSTAL','pCODIGO_POSTAL_REFERENCIAS','N',array('name'=>'Código postal','rule'=>'trim|numeric|max_length[10]'));
     $this->addParam('pCIUDAD','pCIUDAD_REFERENCIAS','N',array('name'=>'Ciudad','rule'=>'trim|max_length[50]'));

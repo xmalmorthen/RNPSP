@@ -63,7 +63,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         Número exterior
-                        <input type="text" id="pNUM_EXTERIOR" name="pNUM_EXTERIOR" class="form-control"> 
+                        <input type="text" id="pNUM_EXTERIOR" name="pNUM_EXTERIOR" class="form-control validarNumberSpecial"> 
                     </div>
                     <div class="col-md-4">
                         Número interior

@@ -170,6 +170,20 @@ var objViewDatosGenerales = {
             else
                 return true;            
         }, "Información obligatoria.");
+
+        $.validator.addMethod("validarNumberSpecial", function(value, element) {
+            
+            value = value.trim().toUpperCase();
+
+            if ( isNaN(value) ) {
+                if ( value != 'S/N' ) {
+                   return false;
+                }
+            }
+
+            return true;
+
+        }, "Formato incorrecto.");
                             
         objViewDatosGenerales.vars.datosGenerales.forms.Datos_personales_form.validate({
             rules: {
@@ -190,6 +204,15 @@ var objViewDatosGenerales = {
         
         $('#pTELEFONO_DOMICILIO').on('input', function () { 
             this.value = this.value.replace(/[^0-9\-\(\)]/g,'');
+        });
+
+
+        $(':input[type="number"]').on('input', function () { 
+            this.value = this.value.replace(/[^0-9\-\(\)]/g,'');
+        });
+
+        $('.validarNumberSpecial').on('input', function () {
+            this.value = this.value.replace(/[^0-9\-\(\)snSN\/]/g,'');
         });
 
         objViewDatosGenerales.vars.general.init = true;
@@ -219,12 +242,6 @@ var objViewDatosGenerales = {
                             });
                             return null;
                         }
-
-                        if (from) {
-                            $("#Datos_personales_form").data('hasChanged',true).removeData("hasSaved");
-                            objViewDatosGenerales.events.click.datosGenerales.generarCIB(e, from, tabRef);
-                        }
-                        
                     });
 
                 },
@@ -484,6 +501,7 @@ var objViewDatosGenerales = {
 
                     form.removeData('hasChanged').removeData('hasDiscardChanges').removeData('withError');
                     form.data('hasSaved',true);
+                    form.data('requireddata',false);
 
                     if (from) {
                         if(from == 'tab') {

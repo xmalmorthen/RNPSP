@@ -328,7 +328,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <span class="clr">*</span>Número exterior
-                    <input type="text" class="form-control" id="pNUM_EXTERIOR_DOMICILIO" name="pNUM_EXTERIOR_DOMICILIO" required>
+                    <input type="text" class="form-control validarNumberSpecial" id="pNUM_EXTERIOR_DOMICILIO" name="pNUM_EXTERIOR_DOMICILIO" required>
                 </div>
                 <div class="col-md-4">
                     Número interior
@@ -434,8 +434,8 @@
             <br>
             <div class="row">
                 <div class="col-md-4">
-                    Código postal
-                    <input type="text" id="pCODIGO_POSTAL_REFERENCIAS" name="pCODIGO_POSTAL_REFERENCIAS" class="form-control" minlength=5 maxlength=5>
+                    <span class="clr">*</span>Código postal
+                    <input type="number" id="pCODIGO_POSTAL_REFERENCIAS" name="pCODIGO_POSTAL_REFERENCIAS" class="form-control" required minlength=5 maxlength=5>
                 </div>
                 <div class="col-md-4">
                     <span class="clr">*</span>Estado <br> <!-- Se llena del catálog CAT_ENTIDAD -->
@@ -467,18 +467,18 @@
             <div class="row">
                 <div class="col-md-4">
                     <span class="clr">*</span>Número exterior
-                    <input type="number" class="form-control" name="pNUM_EXTERIOR_REFERENCIAS" id="pNUM_EXTERIOR_REFERENCIAS" required>
+                    <input type="text" class="form-control validarNumberSpecial" name="pNUM_EXTERIOR_REFERENCIAS" id="pNUM_EXTERIOR_REFERENCIAS" required>
                 </div>
                 <div class="col-md-4">
                     Número interior
-                    <input type="number" class="form-control" name="pNUM_INTERIOR_REFERENCIAS" id="pNUM_INTERIOR_REFERENCIAS" >
+                    <input type="text" class="form-control" name="pNUM_INTERIOR_REFERENCIAS" id="pNUM_INTERIOR_REFERENCIAS" >
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-md-4">
                     Entre la calle de
-                    <input type="text" class="form-control" id="pENTRE_CALLE_REFERENCIAS" name="pENTRE_CALLE_REFERENCIAS" maxlength="60" required>
+                    <input type="text" class="form-control" id="pENTRE_CALLE_REFERENCIAS" name="pENTRE_CALLE_REFERENCIAS" maxlength="60">
                 </div>
                 <div class="col-md-4">
                     Y la calle de

@@ -679,6 +679,7 @@ var objViewIdentificacion = {
                     
                     form.removeData('hasChanged').removeData('hasDiscardChanges').removeData('withError');
                     form.data('hasSaved',true);
+                    form.data('requireddata',false);
 
                     if (from) {
                         if(from == 'tab') {

@@ -119,8 +119,6 @@ var mainTabMenu = {
 
                     forms.each(function( index ) {
                 
-                        console.log(this.id, $(this).data());
-
                         if ( $(this).data('requireddata') != false ) {
                             allFormsSaved = false;
                             
@@ -141,8 +139,6 @@ var mainTabMenu = {
 
                                 }
                             });
-                            $([2])
-
 
                         }
 
