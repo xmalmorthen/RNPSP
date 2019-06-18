@@ -126,8 +126,8 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        Área o departamento <!-- Se llena del catalogo "CAT_AREA" -->
-                        <select  class="form-control" id="pID_AREA" name="pID_AREA" data-error="#err_pID_AREA" data-force-refresh ='true'></select>
+                        <span class="clr">*</span>Área o departamento <!-- Se llena del catalogo "CAT_AREA" -->
+                        <select  class="form-control" id="pID_AREA" name="pID_AREA" data-error="#err_pID_AREA" data-force-refresh ='true' required></select>
                         <span id="err_pID_AREA"></span>
                     </div>
                     <div class="col-md-4">
@@ -219,8 +219,8 @@
                         <input type="text" id="pEMPRESA" name="pEMPRESA" required  class="form-control"  maxlength="100" >
                     </div>
                     <div class="col-md-4">
-                        Código postal
-                        <input type="number" id="pCP_EMP_EMPLEOS_DIVERSOS" name="pCP_EMP_EMPLEOS_DIVERSOS" class="form-control" minlength=5 maxlength=5>
+                        <span class="clr">*</span>Código postal
+                        <input type="number" id="pCP_EMP_EMPLEOS_DIVERSOS" name="pCP_EMP_EMPLEOS_DIVERSOS" class="form-control" minlength=5 maxlength=5 required>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estado <!-- Se llena del catalogo "CAT_ENTIDAD" -->                            
@@ -237,8 +237,8 @@
                     </div>
 
                     <div class="col-md-4">
-                        Colonia/Localidad
-                        <input type="text" id="pCOLONIA_EMPLEOS_DIVERSOS" name="pCOLONIA_EMPLEOS_DIVERSOS" class="form-control"  maxlength="60">
+                        <span class="clr">*</span>Colonia/Localidad
+                        <input type="text" id="pCOLONIA_EMPLEOS_DIVERSOS" name="pCOLONIA_EMPLEOS_DIVERSOS" class="form-control"  maxlength="60" required>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Calle y número

@@ -72,8 +72,8 @@
             <br>
             <div class="row">
                 <div class="col-md-4">
-                    Descripción ciudad de nacimiento <!--  Campo CIUDAD_NAC-->
-                    <input type="text" class="form-control" id="pCIUDAD_NAC_DATOS_PERSONALES" name="pCIUDAD_NAC_DATOS_PERSONALES" maxlength="50">
+                    <span class="clr">*</span>Ciudad o Población de Nacimiento <!--  Campo CIUDAD_NAC-->
+                    <input type="text" class="form-control" id="pCIUDAD_NAC_DATOS_PERSONALES" name="pCIUDAD_NAC_DATOS_PERSONALES" maxlength="50" required>
                 </div>
                 <div class="col-md-4">
                     <span class="clr">*</span>Nacionalidad <!-- Se llena de CAT_PAIS -->
@@ -401,6 +401,14 @@
             <br>
             <div class="row">
                 <div class="col-md-4">
+                    <span class="clr">*</span>Tipo domicilio <br>
+                    <select style="width:356px;" name="pID_TIPO_DOM" id="pID_TIPO_DOM" class="form-control" data-error="#err_pID_TIPO_DOM" data-query='Y1lyVjUzQWNiNnc2UlN1UGhHbTNLRC9QZFhvelZUSVIxOC9HemtrSzZSdnZBYlpSR1lXU1BQb1VSOTI4a1M2MFBrOWxXL3MxYWhDSG5uMUZMZDIrU3hzNkd6UllzMndnMlExZjNmZUZOblNqQnEwbjQ0bUJ6N0laaEpsTW4xTVVsL2dtczlReTN0emxjTU04ZVFpeUxqYU9CeFgySUY1eUdOVk9aZVI5VlRZPQ==' required></select>
+                    <span id="err_pID_TIPO_DOM"></span>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
                     <span class="clr">*</span>Nombre
                     <input type="text" id="pNOMBRE_REFERENCIAS" name="pNOMBRE_REFERENCIAS" class="form-control" maxlength="30" required>
                 </div>
@@ -593,6 +601,10 @@
                         Comportamiento social
                         <input type="text" class="form-control" id="pCOMPORTA_SOCIAL" name="pCOMPORTA_SOCIAL" maxlength="50">
                     </div>
+                    <!-- <div class="col-md-4">
+                        Ingreso mensual adicional
+                        <input type="number" class="form-control" id="pINGRESO_MENSUAL" name="pINGRESO_MENSUAL" maxlength="50">
+                    </div> -->
                 </div>
                 <br>
                 <div class="row">

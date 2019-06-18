@@ -13,7 +13,7 @@
     </div>
     <div class="text-right"">
         <button class="btn btn-warning btn-lg validarVoz">Validar Solicitud</button>
-        <button class="btn btn-warning btn-lg ml-2 d-none validarReplicar">Replicar Solicitud</button>
+        <button class="btn btn-success btn-lg ml-2 d-none validarReplicar">Replicar Solicitud</button>
     </div>
 
     <!-- LISTA DE TABS DEL MENU PRINCIPAL -->
@@ -69,7 +69,7 @@
 
     <div class="text-right"">
         <button class="btn btn-warning btn-lg validarVoz">Validar Solicitud</button>
-        <button class="btn btn-warning btn-lg ml-2 d-none validarReplicar">Replicar Solicitud</button>
+        <button class="btn btn-success btn-lg ml-2 d-none validarReplicar">Replicar Solicitud</button>
     </div>
     <br>
 </div>

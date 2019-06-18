@@ -52,6 +52,27 @@ validarVozFnc = function(e){
                                 valid = false;
 
                                 //TODO - Xmal - MMarcar pestaña y ficha que contengan error
+                                selectorPestania = '';
+                                switch (item.idPestania) {
+                                    case 1:
+                                        selectorPestania = '#datosGenerales';
+                                    break;
+                                    case 2:
+                                        selectorPestania = '#Laboral';
+                                    break;
+                                    case 3:
+                                        selectorPestania = '#Capacitacion';
+                                    break;
+                                    case 4:
+                                        selectorPestania = '#Identificacion';
+                                    break;
+                                
+                                }
+                                objPestania = $('#mainContainerTab ' + selectorPestania + '-tab')
+                                dynTabs.markTab( objPestania,'<span class="text-danger tabMark errValidSolicitud mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
+                                
+                                objFicha = $('#myTabContent ' + selectorPestania + '.tab-pane .nav.nav-tabs li.nav-item:nth-child(' + item.idFicha + ') a.nav-link');
+                                dynTabs.markTab( objFicha,'<span class="text-danger tabMark errValidSolicitud mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
 
                             }
 
@@ -64,16 +85,22 @@ validarVozFnc = function(e){
                     
                             if (valid){
                                 $('.validarReplicar').removeClass('d-none');
+                                Swal.fire({ 
+                                    type: 'success', 
+                                    title: 'Aviso', 
+                                    html: 'Solicitud válida'});
                             } else {
                                 $('.validarReplicar').addClass('d-none');
+                                Swal.fire({ 
+                                    type: 'warning', 
+                                    title: 'Aviso', 
+                                    html: 'No es válida la solicitud, favor de completar la información necesaria',
+                                    footer: '<div>La información faltante requerida se ha marcado <br/>con el símbolo <span class="text-danger tabMark errValidSolicitud mr-2"><i class="fa fa-exclamation-triangle fa-2x" aria-hidden="true"></i></span>' });
                             }
 
                         }
-
                         
                     });
-                    
-
                     
                     return null;
                 }

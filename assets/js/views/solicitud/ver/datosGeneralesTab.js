@@ -143,25 +143,50 @@ var objViewDatosGenerales = {
         socioeconomicos : function(pID_ALTERNA){
             $('#Socioeconomicos_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
-            var callUrl = base_url + `Solicitud/vwSocioEc`;
+            // var callUrl = base_url + `Solicitud/vwSocioEc`;
+            // objViewDatosGenerales.fill.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            // .then( (data) => {  
+            //     if (data) {
+            //         $.each(data,function(key,value){
+            //             objViewDatosGenerales.fill.insertValueInSelect(key,value,'Socioeconomicos_form');
+            //         });
+            //     }
+            //     $('#Socioeconomicos_form').LoadingOverlay("hide");
+            // })
+            // .catch( (err) => {
+            //     $('#Socioeconomicos_form').setAlert({
+            //         alertType :  'alert-danger',
+            //         dismissible : true,
+            //         header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+            //         msg : err.statusText
+            //     });
+            //     $('#Socioeconomicos_form').LoadingOverlay("hide");
+            // });
+
+            
+            var tableRef = $('#tableSocioeconomicos'),
+                tableObj = $('#tableSocioeconomicos').DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"order": [[ 0, "desc" ]]}),
+                callUrl = base_url + `Solicitud/getDependientes`;
+
+            tableObj.clear().draw();
+
             objViewDatosGenerales.fill.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
-            .then( (data) => {  
+            .then( (data) => {                
                 if (data) {
-                    $.each(data,function(key,value){
-                        objViewDatosGenerales.fill.insertValueInSelect(key,value,'Socioeconomicos_form');
+                    $.each( data, function(key,value) {
+                        var row = [ value.pID_DEPENDIENTE_EXT, value.pNOMBRE, value.pPATERNO, value.pMATERNO, value.pSEXO, value.pFECHA_NACIMIENTO, value.pPARENTESCO ];
+                        tableObj.row.add( row ).draw( false );
                     });
+
                 }
+
                 $('#Socioeconomicos_form').LoadingOverlay("hide");
             })
             .catch( (err) => {
-                $('#Socioeconomicos_form').setAlert({
-                    alertType :  'alert-danger',
-                    dismissible : true,
-                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
-                    msg : err.statusText
-                });
+                tableRef.setError(err.statusText);
                 $('#Socioeconomicos_form').LoadingOverlay("hide");
             });
+
         },
         dependientesEconomicos : function(pID_ALTERNA){
             $('#DependientesEconomicos_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});

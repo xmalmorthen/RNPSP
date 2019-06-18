@@ -1,3 +1,7 @@
+<!-- CSS -->
+<link rel="stylesheet" href="<?php echo base_url("assets/vendor/datatable/dataTables.bootstrap4.min.css"); ?>">
+<link rel="stylesheet" href="<?php echo base_url("assets/vendor/datatable/responsive.bootstrap4.min.css"); ?>">
+
 <div class="_container">
     <a href="#" id='refreshView' title='Actualizar información'><i class="fa fa-refresh fa-3x mb-3" aria-hidden="true"></i></a>
     <!-- LISTA DE TABS DEL MENU PRINCIPAL -->
@@ -63,6 +67,11 @@
 <!-- JS -->
 <script src="<?php echo base_url('assets/js/utils/alerts.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/utils/collectionGenerics.js') ?>"></script>
+
+<script src="<?php echo base_url("assets/vendor/datatable/jquery.dataTables.min.js"); ?>"></script>
+<script src="<?php echo base_url("assets/vendor/datatable/dataTables.bootstrap4.min.js"); ?>"></script>
+<script src="<?php echo base_url("assets/vendor/datatable/dataTables.responsive.min.js"); ?>"></script>
+<script src="<?php echo base_url("assets/vendor/datatable/responsive.bootstrap4.min.js"); ?>"></script>
 
 <script src="<?php echo base_url('assets/js/views/solicitud/ver/datosGeneralesTab.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/views/solicitud/ver/laboral.js') ?>"></script>

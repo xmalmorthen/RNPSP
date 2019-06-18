@@ -131,6 +131,7 @@ var dynTabs = {
     setCurrentTab : function(tabContent){        
     },
     markTab : function(linkRef,content){        
+
         linkRef.find('span.tabMark').remove();
         linkRef.prepend(content);
 

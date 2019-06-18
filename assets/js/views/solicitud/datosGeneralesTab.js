@@ -68,7 +68,7 @@ var objViewDatosGenerales = {
         objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.dom = $('#tableReferencias');
         objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.dom.DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"order": [[ 0, "desc" ]]});        
         objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.dom = $('#tableSocioeconomicos');
-        objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.dom.DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"order": [[ 0, "desc" ]]});                
+        objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.dom.DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"order": [[ 0, "desc" ]]});
 
         // INIT ELEMENTS
         // FORMS
@@ -355,7 +355,9 @@ var objViewDatosGenerales = {
                         && !$('#pCALIDAD_VIDA').val()
                         && !$('#pVICIOS').val()
                         && !$('#pIMAGEN_PUBLICA').val()
-                        && !$('#pCOMPORTA_SOCIAL').val() ){
+                        && !$('#pCOMPORTA_SOCIAL').val()
+                        // && !$('#pINGRESO_MENSUAL').val() 
+                        ){
 
                             Swal.fire({ type: 'warning', title: 'Atención', html: 'Debe especificar al menos un dato del formulario' });
 
