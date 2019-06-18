@@ -1,9 +1,12 @@
-//TODO: Xmal - Sigue pendiente programar combo de puesto [ tab - Laboral/Adscripción actual ]
-//TODO: Xmal -  Implementar la impresión [ assets\js\views\solicitud\index.js ]
-//TODO: Xmal -  Implementar la replicación [ assets\js\views\solicitud\index.js ]
+//IMPLEMENTACIÓN
 //TODO: Xmal - Quitar comentarios en bloque para implementación [ assets\js\views\solicitud\registro.js ]
 //TODO: Xmal - Quitar comentarios en bloque para implementación [ assets\js\utils\dynamicTabs.js ]
 //TODO: Xmal - Quitar comentarios al implementar [ assets\js\views\solicitud\index.js ]
 //TODO: Xmal - Quitar línea al implementar [ application\controllers\Reportes.php ]
 
-//TODO: Xmal - verificar que guarde bien los detalles de los grids [ se detecto un undefined en grid datos generales - referencias ]
+//TODO: Xmal - Implementar la impresión [ assets\js\views\solicitud\index.js ]
+[
+    - Sustituir los campos del modelo [ function altaElemento ]
+]
+//TODO: Xmal -  Implementar la replicación [ assets\js\views\solicitud\index.js ]
+//TODO: Xmal - 

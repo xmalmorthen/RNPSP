@@ -43,15 +43,23 @@
 
                 $this->load->model('REPORTES_model');
                 $responseModel= [ 'status' => 0];
-                switch ($model['tipoFormato']) {
-                    case 'AE':
+                switch ($model['optionPDF']) {
+                    case 'PSB': //Petición Solicitud de baja
+                        break;
+                    case 'PSEC': //Petición Solicitud de examen de confianza
+                        break;
+                    case 'PSC': //Petición Solicitud de curso
+                        break;
+                    case 'PCUIP': //Petición de CUIP
+                        break;
+                    case 'PCA': //Petición de cambio de adscripción
+                        break;
+                    case 'PSA': //Petición solicitud de alta
                         $responseModel = $this->REPORTES_model->altaElemento($model);
                         break;
-                    case 'AA':
+                    case 'RSB': //Respuesta solicitud de baja
                         break;
-                    case 'AC':
-                        break;
-                    case 'VE':
+                    case 'RSA': //Respuesta solicitud de alta
                         break;
                     default:
                         throw new rulesException('Formato de oficio incorrecto');
@@ -64,24 +72,30 @@
                     
                         $model['data']= $responseModel;
                         
-                        switch ($model['tipoFormato']) {
-                            case 'AE':
+                        switch ($model['optionPDF']) {
+                            case 'PSB': //Petición Solicitud de baja
+                                break;
+                            case 'PSEC': //Petición Solicitud de examen de confianza
+                                break;
+                            case 'PSC': //Petición Solicitud de curso
+                                break;
+                            case 'PCUIP': //Petición de CUIP
+                                break;
+                            case 'PCA': //Petición de cambio de adscripción
+                                break;
+                            case 'PSA': //Petición solicitud de alta
                                 $this->altaElemento($model);
-                                exit;
                                 break;
-                            case 'AA':
-                                $this->altaAspirantesactivos($model);                                
-                                exit;
+                            case 'RSB': //Respuesta solicitud de baja
                                 break;
-                            case 'AC':
-                                # code...
-                                break;
-                            case 'VE':
+                            case 'RSA': //Respuesta solicitud de alta
                                 break;
                             default:
                                 throw new rulesException('Formato de oficio incorrecto');
                                 break;
                         }
+                        
+                        // $this->altaAspirantesactivos($model);
 
                     }
 
@@ -100,8 +114,9 @@
 			echo json_encode( [ 'results' => $responseModel ] );
 			exit;
 		}
+        
         //REPORTES IMPLEMENTADOS
-        function /*PETICION*/ altaElemento($model = null){
+        function altaElemento($model = null){
             
             ob_start();
             
@@ -126,7 +141,7 @@
         
             $pdf->Cell(30,5,utf8_decode('OFICIO No.'),0,0,"R");
             $pdf->SetFont('Arial','',10);
-            $pdf->Cell(35,5,utf8_decode($model['noFolio']),0,0,"R");
+            $pdf->Cell(35,5,utf8_decode($model['PSANoFolio']),0,0,"R");
             // Dato de Número de folio
             $pdf->SetFont('Arial','',10);
         
@@ -149,7 +164,7 @@
             // Datos del remitente
             $pdf->SetFont('Arial','B',10);
         
-            $pdf->Cell(30,5,utf8_decode($model['dirCentroest']));
+            $pdf->Cell(30,5,utf8_decode($model['PSANombreEncargadoDespachoSESESP']));
             $pdf->Ln();
           
             $pdf->Cell(30,5,utf8_decode('ENCARGADO DEL SECRETARIO EJECUTIVO DEL SISTEMA,'));

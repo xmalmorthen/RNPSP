@@ -74,477 +74,478 @@
 					<span id='frmAlertMsg'></span>
 				</div>
 				<form action="#" id="formImprimir" name="formImprimir" autocomplete="off">
-
-				<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
-				
-				<select name="optionPDF" id="optionPDF" class="form-control">
-				<option value="">Seleccione una opción</option>
-					<option value="PSB">Petición Solicitud de baja</option>
-					<option value="PSEC">Petición Solicitud de examen de confianza</option>
-					<option value="PSC">Petición Solicitud de curso</option>
-					<option value="PCUIP">Petición de CUIP</option>
-					<option value="PCA">Petición de cambio de adscripción</option>
-					<option value="PSA">Petición solicitud de alta </option>
-					<option value="RSB">Respuesta solicitud de baja</option>
-					<option value="RSA">Respuesta solicitud de alta</option>
-				</select>
-				<br>
-				<!-- Petición Solicitud de baja -->
-				<div id="divPSB" style="display:none">
-					<div class="row">
-						<div class="col-md-6">
-							Nombre de la persona que elaboró la solicitud
-						</div>
-						<div class="col-md-6">
-							<input type="text" id="PSB_PersonaElaboro" name="PSB_PersonaElaboro" class="form-control">
-						</div>
+					<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+					Tipo de reporte
+					<div>
+						<select name="optionPDF" id="optionPDF" class="form-control" required>
+							<option disabled selected value>Seleccione una opción</option>
+							<option value="PSB">Petición Solicitud de baja</option>
+							<option value="PSEC">Petición Solicitud de examen de confianza</option>
+							<option value="PSC">Petición Solicitud de curso</option>
+							<option value="PCUIP">Petición de CUIP</option>
+							<option value="PCA">Petición de cambio de adscripción</option>
+							<option value="PSA">Petición solicitud de alta </option>
+							<option value="RSB">Respuesta solicitud de baja</option>
+							<option value="RSA">Respuesta solicitud de alta</option>
+						</select>
 					</div>
 					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Motivo de baja
-						</div>
-						<div class="col-md-6">
-							<input type="text" id="Motivo_Baja" name="Motivo_Baja" class="form-control">
-						</div>
-					</div>
-				</div>
-				<!-- Petición solicitud de examen de confianza -->
-				<div id="divPSEC" style="display:none">
-					<div class="row">
-						<div class="col-md-6">
-							Número de oficio
-						</div>
-						<div class="col-md-6">
-							<input id='PSECNoFolio' name='PSECNoFolio' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
+					<div id='dynamicallyContent'></div>
 					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Nombre a quien va dirigido el oficio
-						</div>
-						<div class="col-md-6">
-							<input id='PSECNombreDestino' name='PSECNombreDestino' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Nombre de quien solicita
-						</div>
-						<div class="col-md-6">
-							<input id='Nombre_De_Quien_Solicita' name='Nombre_De_Quien_Solicita' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Cargo de quien solicita
-						</div>
-						<div class="col-md-6">
-							<input id='Cargo_De_Quien_Solicita' name='Cargo_De_Quien_Solicita' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Nombre del encargado del SESP
-						</div>
-						<div class="col-md-6">
-							<input id='PSECNombreEncargadoSESESP' name='PSECNombreEncargadoSESESP' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-
-							Nombre del subcoordinador del SESESP
-						</div>
-						<div class="col-md-6">
-							<input id='PSECNombreSubcoordinadorSESESP' name='PSECNombreSubcoordinadorSESESP' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					
-					
-				
-				</div>
-				<!-- Petición Solicitud de curso  -->
-				<div id="divPSC" style="display:none">
-
-					<div class="row">
-						<div class="col-md-6">
-							Número de oficio
-						</div>
-						<div class="col-md-6">
-							<input id='PSCNoFolio' name='PSCNoFolio' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Nombre a quien va dirigido el oficio
-						</div>
-						<div class="col-md-6">
-							<input id='PSCNombreDestino' name='PSCNombreDestino' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Nombre de quien solicita
-						</div>
-						<div class="col-md-6">
-							<input id='PSCNombre_De_Quien_Solicita' name='PSCNombre_De_Quien_Solicita' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Puesto de quien solicita
-						</div>
-						<div class="col-md-6">
-							<input id='PSCPuesto_De_Quien_Solicita' name='PSCPuesto_De_Quien_Solicita' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Nombre del encargado del SESP
-						</div>
-						<div class="col-md-6">
-							<input id='PSCNombreEncargadoSESP' name='PSCNombreEncargadoSESP' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Nombre del subcoordinador del SI
-						</div>
-						<div class="col-md-6">
-							<input id='PSCNombreSubcoordinadorSI' name='PSCNombreSubcoordinadorSI' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-							<div class="col-md-6">
-								Nombre del encargado del despacho	
-							</div>
-							<div class="col-md-6">
-								<input type="text" id="PSCNombreEncargadoDespacho" name="PSCNombreEncargadoDespacho" class="form-control" maxlength="20" required>
-							</div>
-					
-					</div>
-				</div>
-				<!-- Petición de CUIP -->
-				<div id="divPCUIP" style="display:none">
-					<div class="row">
-						<div class="col-md-6">
-							Número de oficio
-						</div>
-						<div class="col-md-6">
-							<input id='CUIPNoFolio' name='CUIPNoFolio' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Nombre a quien va dirigido el oficio
-						</div>
-						<div class="col-md-6">
-							<input id='CUIPNombreDestino' name='CUIPNombreDestino' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Fecha en que inició
-						</div>
-						<div class="col-md-6">
-							<input id='CUIPFechaInicio' name='CUIPFechaInicio' type="date" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Nombre de quien solicita
-						</div>
-						<div class="col-md-6">
-							<input id='CUIPNombreDGPEP' name='CUIPNombreDGPEP' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Cargo de quien solicita
-						</div>
-						<div class="col-md-6">
-							<input id='CargoDeQuienSolicita' name='CargoDeQuienSolicita' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Nombre del Coordinador de Tecnologías y Proyectos Especiales del C4
-						</div>
-						<div class="col-md-6">
-							<input id='CUIPNombreCoordinadorTyPEc4' name='CUIPNombreCoordinadorTyPEc4' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-				</div>
-				<!-- Petición de cambio de adscripción -->
-				<div id="divPCA" style="display:none">
-					<div class="row">
-						<div class="col-md-6">
-							Fecha a dar de baja
-						</div>
-						<div class="col-md-6">
-							<input id='PCAFechaDarBaja' name='PCAFechaDarBaja' type="date" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-				</div>
-				<!-- Petición solicitud de alta -->
-				<div id="divPSA" style="display:none">
-					<div class="row">
-						<div class="col-md-6">
-							Número de oficio
-						</div>
-						<div class="col-md-6">
-							<input id='PSANoFolio' name='PSANoFolio' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Nombre de quien hizo la petición
-						</div>
-						<div class="col-md-6">
-							<input id='PSANombreRemitentePeticion' name='PSANombreRemitentePeticion' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Puesto
-						</div>
-						<div class="col-md-6">
-							<input id='PSAPuesto' name='PSAPuesto' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Nombre a quien va dirigido
-						</div>
-						<div class="col-md-6">
-							<input id='PSANombreDestinoPeticion' name='PSANombreDestinoPeticion' type="text" class="form-control" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Puesto
-						</div>
-						<div class="col-md-6">
-							<input id='PSAPuestoDestinoPeticion' name='PSAPuestoDestinoPeticion' type="text" class="form-control" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-						 Nombre del encargado del despacho del Secretariado Ejecutivo del SESP
-						</div>
-						<div class="col-md-6">
-							<input id='PSANombreEncargadoDespachoSESESP' name='PSANombreEncargadoDespachoSESESP' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-						 Nombre del encargado del SESESP
-						</div>
-						<div class="col-md-6">
-							<input id='PSANombreEncargadoSESESP' name='PSANombreEncargadoSESESP' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-						 Nombre del subcoordinador de SESESP
-						</div>
-						<div class="col-md-6">
-							<input id='PSANombreSubSESESP' name='PSANombreSubSESESP' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-				</div>
-
-				<div id="divRSB" style="display:none">
-					<div class="row">
-						<div class="col-md-6">
-							Número de oficio
-						</div>
-						<div class="col-md-6">
-							<input id='RSBNumeroFolio' name='RSBNumeroFolio' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Nombre a quien va dirigido el oficio
-						</div>
-						<div class="col-md-6">
-							<input id='RSBNombreDestino' name='RSBNombreDestino' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Cargo a quien va dirigido el oficio
-						</div>
-						<div class="col-md-6">
-							<input id='RSBCargoDestinoOficio' name='RSBCargoDestinoOficio' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Respuesta al oficio
-						</div>
-						<div class="col-md-6">
-							<input id='RSBRespuestaOficio' name='RSBRespuestaOficio' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Año
-						</div>
-						<div class="col-md-6">
-							<input id='RSBAño' name='RSBAño' type="number" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-						 Nombre del encargado del despacho del Secretariado Ejecutivo del SESP
-						</div>
-						<div class="col-md-6">
-							<input id='RSBNombreEncargadoDespachoSESP' name='RSBNombreEncargadoDespachoSESP' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Nombre del coordinador de TI SESESP
-						</div>
-						<div class="col-md-6">
-							<input id='RSBNombreCoordinadorTISESESP' name='RSBNombreCoordinadorTISESESP' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Nombre del director general de operaciones e inteligencia SSP
-						</div>
-						<div class="col-md-6">
-							<input id="RSBNombreDirectorGOISSP" name="RSBNombreDirectorGOISSP" type="text" class="form-control">
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Nombre del subcoordinador de SI del SESESP
-						</div>
-						<div class="col-md-6">
-							<input id="RSBNombreSubSISESESP" name="RSBNombreSubSISESESP" type="text" class="form-control">
-						</div>
-					</div>
-
-				</div>
-
-				<div id="divRSA" style="display:none">
-					<div class="row">
-						<div class="col-md-6">
-							Número de oficio
-						</div>
-						<div class="col-md-6">
-							<input id='RSANumeroFolio' name='RSANumeroFolio' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Nombre a quien va dirigido el oficio
-						</div>
-						<div class="col-md-6">
-							<input id='RSANombreDestino' name='RSANombreDestino' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Cargo a quien va dirigido el oficio
-						</div>
-						<div class="col-md-6">
-							<input id='RSACargoDestino' name='RSACargoDestino' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Respuesta al oficio
-						</div>
-						<div class="col-md-6">
-							<input id='RSARespuestaOficio' name='RSARespuestaOficio' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-							Fecha en que se hizo la solicitud
-						</div>
-						<div class="col-md-6">
-							<input id='RSAFechaSolicitud' name='RSAFechaSolicitud' type="date" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-						 Nombre del encargado del Secretariado Ejecutivo del SESESP
-						</div>
-						<div class="col-md-6">
-							<input id='RSANombreEncargadoEjecutivoSESESP' name='RSANombreEncargadoEjecutivoSESESP' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-						 Nombre del encargado del despacho
-						</div>
-						<div class="col-md-6">
-							<input id='RSBNombreEncargadoDespachoSESP' name='RSBNombreEncargadoDespachoSESP' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-6">
-						Nombre del subcoordinador
-						</div>
-						<div class="col-md-6">
-							<input id='RSBNombreSub' name='RSBNombreSub' type="text" class="form-control" maxlength="20" required>
-						</div>
-					</div>
-					<br>
-
-					
-
-				</div>
-				<br>
 					<button class="btn btn-light" id="aceptarFrmImprimir">Aceptar</button>
-					<button class="btn btn-light" id="cancelarFrmImprimir" data-dismiss="modal">Cancelar</button>				
+					<button class="btn btn-light" id="cancelarFrmImprimir" data-dismiss="modal">Cancelar</button>
 				</form>
+
+				<div id='containerForms'>
+					<!-- Petición Solicitud de baja -->
+					<div id="divPSB" class='d-none'>
+						<div class="row">
+							<div class="col-md-6">
+								Nombre de la persona que elaboró la solicitud
+							</div>
+							<div class="col-md-6">
+								<input type="text" id="PSB_PersonaElaboro" name="PSB_PersonaElaboro" class="form-control">
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Motivo de baja
+							</div>
+							<div class="col-md-6">
+								<input type="text" id="Motivo_Baja" name="Motivo_Baja" class="form-control">
+							</div>
+						</div>
+					</div>
+					<!-- Petición solicitud de examen de confianza -->
+					<div id="divPSEC" class='d-none'>
+						<div class="row">
+							<div class="col-md-6">
+								Número de oficio
+							</div>
+							<div class="col-md-6">
+								<input id='PSECNoFolio' name='PSECNoFolio' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Nombre a quien va dirigido el oficio
+							</div>
+							<div class="col-md-6">
+								<input id='PSECNombreDestino' name='PSECNombreDestino' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Nombre de quien solicita
+							</div>
+							<div class="col-md-6">
+								<input id='Nombre_De_Quien_Solicita' name='Nombre_De_Quien_Solicita' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Cargo de quien solicita
+							</div>
+							<div class="col-md-6">
+								<input id='Cargo_De_Quien_Solicita' name='Cargo_De_Quien_Solicita' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Nombre del encargado del SESP
+							</div>
+							<div class="col-md-6">
+								<input id='PSECNombreEncargadoSESESP' name='PSECNombreEncargadoSESESP' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+
+								Nombre del subcoordinador del SESESP
+							</div>
+							<div class="col-md-6">
+								<input id='PSECNombreSubcoordinadorSESESP' name='PSECNombreSubcoordinadorSESESP' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						
+						
+					
+					</div>
+					<!-- Petición Solicitud de curso  -->
+					<div id="divPSC" class='d-none'>
+
+						<div class="row">
+							<div class="col-md-6">
+								Número de oficio
+							</div>
+							<div class="col-md-6">
+								<input id='PSCNoFolio' name='PSCNoFolio' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Nombre a quien va dirigido el oficio
+							</div>
+							<div class="col-md-6">
+								<input id='PSCNombreDestino' name='PSCNombreDestino' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Nombre de quien solicita
+							</div>
+							<div class="col-md-6">
+								<input id='PSCNombre_De_Quien_Solicita' name='PSCNombre_De_Quien_Solicita' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Puesto de quien solicita
+							</div>
+							<div class="col-md-6">
+								<input id='PSCPuesto_De_Quien_Solicita' name='PSCPuesto_De_Quien_Solicita' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Nombre del encargado del SESP
+							</div>
+							<div class="col-md-6">
+								<input id='PSCNombreEncargadoSESP' name='PSCNombreEncargadoSESP' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Nombre del subcoordinador del SI
+							</div>
+							<div class="col-md-6">
+								<input id='PSCNombreSubcoordinadorSI' name='PSCNombreSubcoordinadorSI' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+								<div class="col-md-6">
+									Nombre del encargado del despacho	
+								</div>
+								<div class="col-md-6">
+									<input type="text" id="PSCNombreEncargadoDespacho" name="PSCNombreEncargadoDespacho" class="form-control" maxlength="20" required>
+								</div>
+						
+						</div>
+					</div>
+					<!-- Petición de CUIP -->
+					<div id="divPCUIP" class='d-none'>
+						<div class="row">
+							<div class="col-md-6">
+								Número de oficio
+							</div>
+							<div class="col-md-6">
+								<input id='CUIPNoFolio' name='CUIPNoFolio' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Nombre a quien va dirigido el oficio
+							</div>
+							<div class="col-md-6">
+								<input id='CUIPNombreDestino' name='CUIPNombreDestino' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Fecha en que inició
+							</div>
+							<div class="col-md-6">
+								<input id='CUIPFechaInicio' name='CUIPFechaInicio' type="date" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Nombre de quien solicita
+							</div>
+							<div class="col-md-6">
+								<input id='CUIPNombreDGPEP' name='CUIPNombreDGPEP' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Cargo de quien solicita
+							</div>
+							<div class="col-md-6">
+								<input id='CargoDeQuienSolicita' name='CargoDeQuienSolicita' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Nombre del Coordinador de Tecnologías y Proyectos Especiales del C4
+							</div>
+							<div class="col-md-6">
+								<input id='CUIPNombreCoordinadorTyPEc4' name='CUIPNombreCoordinadorTyPEc4' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+					</div>
+					<!-- Petición de cambio de adscripción -->
+					<div id="divPCA" class='d-none'>
+						<div class="row">
+							<div class="col-md-6">
+								Fecha a dar de baja
+							</div>
+							<div class="col-md-6">
+								<input id='PCAFechaDarBaja' name='PCAFechaDarBaja' type="date" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+					</div>
+					<!-- Petición solicitud de alta -->
+					<div id="divPSA" class='d-none'>
+						<div class="row">
+							<div class="col-md-6">
+								Número de oficio
+							</div>
+							<div class="col-md-6">
+								<input id='PSANoFolio' name='PSANoFolio' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Nombre de quien hizo la petición
+							</div>
+							<div class="col-md-6">
+								<input id='PSANombreRemitentePeticion' name='PSANombreRemitentePeticion' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Puesto
+							</div>
+							<div class="col-md-6">
+								<input id='PSAPuesto' name='PSAPuesto' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Nombre a quien va dirigido
+							</div>
+							<div class="col-md-6">
+								<input id='PSANombreDestinoPeticion' name='PSANombreDestinoPeticion' type="text" class="form-control" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Puesto
+							</div>
+							<div class="col-md-6">
+								<input id='PSAPuestoDestinoPeticion' name='PSAPuestoDestinoPeticion' type="text" class="form-control" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+							Nombre del encargado del despacho del Secretariado Ejecutivo del SESP
+							</div>
+							<div class="col-md-6">
+								<input id='PSANombreEncargadoDespachoSESESP' name='PSANombreEncargadoDespachoSESESP' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+							Nombre del encargado del SESESP
+							</div>
+							<div class="col-md-6">
+								<input id='PSANombreEncargadoSESESP' name='PSANombreEncargadoSESESP' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+							Nombre del subcoordinador de SESESP
+							</div>
+							<div class="col-md-6">
+								<input id='PSANombreSubSESESP' name='PSANombreSubSESESP' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+					</div>
+					<div id="divRSB" class='d-none'>
+						<div class="row">
+							<div class="col-md-6">
+								Número de oficio
+							</div>
+							<div class="col-md-6">
+								<input id='RSBNumeroFolio' name='RSBNumeroFolio' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Nombre a quien va dirigido el oficio
+							</div>
+							<div class="col-md-6">
+								<input id='RSBNombreDestino' name='RSBNombreDestino' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Cargo a quien va dirigido el oficio
+							</div>
+							<div class="col-md-6">
+								<input id='RSBCargoDestinoOficio' name='RSBCargoDestinoOficio' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Respuesta al oficio
+							</div>
+							<div class="col-md-6">
+								<input id='RSBRespuestaOficio' name='RSBRespuestaOficio' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<!-- <div class="row">
+							<div class="col-md-6">
+								Año
+							</div>
+							<div class="col-md-6">
+								<input id='RSBAño' name='RSBAño' type="number" class="form-control" maxlength="20" required>
+							</div>
+						</div> -->
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+							Nombre del encargado del despacho del Secretariado Ejecutivo del SESP
+							</div>
+							<div class="col-md-6">
+								<input id='RSBNombreEncargadoDespachoSESP' name='RSBNombreEncargadoDespachoSESP' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Nombre del coordinador de TI SESESP
+							</div>
+							<div class="col-md-6">
+								<input id='RSBNombreCoordinadorTISESESP' name='RSBNombreCoordinadorTISESESP' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Nombre del director general de operaciones e inteligencia SSP
+							</div>
+							<div class="col-md-6">
+								<input id="RSBNombreDirectorGOISSP" name="RSBNombreDirectorGOISSP" type="text" class="form-control">
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Nombre del subcoordinador de SI del SESESP
+							</div>
+							<div class="col-md-6">
+								<input id="RSBNombreSubSISESESP" name="RSBNombreSubSISESESP" type="text" class="form-control">
+							</div>
+						</div>
+
+					</div>
+					<div id="divRSA" class='d-none'>
+						<div class="row">
+							<div class="col-md-6">
+								Número de oficio
+							</div>
+							<div class="col-md-6">
+								<input id='RSANumeroFolio' name='RSANumeroFolio' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Nombre a quien va dirigido el oficio
+							</div>
+							<div class="col-md-6">
+								<input id='RSANombreDestino' name='RSANombreDestino' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Cargo a quien va dirigido el oficio
+							</div>
+							<div class="col-md-6">
+								<input id='RSACargoDestino' name='RSACargoDestino' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Respuesta al oficio
+							</div>
+							<div class="col-md-6">
+								<input id='RSARespuestaOficio' name='RSARespuestaOficio' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								Fecha en que se hizo la solicitud
+							</div>
+							<div class="col-md-6">
+								<input id='RSAFechaSolicitud' name='RSAFechaSolicitud' type="date" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+							Nombre del encargado del Secretariado Ejecutivo del SESESP
+							</div>
+							<div class="col-md-6">
+								<input id='RSANombreEncargadoEjecutivoSESESP' name='RSANombreEncargadoEjecutivoSESESP' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+							Nombre del encargado del despacho
+							</div>
+							<div class="col-md-6">
+								<input id='RSBNombreEncargadoDespachoSESP' name='RSBNombreEncargadoDespachoSESP' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+							Nombre del subcoordinador
+							</div>
+							<div class="col-md-6">
+								<input id='RSBNombreSub' name='RSBNombreSub' type="text" class="form-control" maxlength="20" required>
+							</div>
+						</div>
+						<br>
+					</div>
+				</div>
+				<br>
 			</div>
 		</div>
 	</div>
@@ -554,6 +555,7 @@
 <script src="<?php echo base_url("assets/vendor/datatable/dataTables.bootstrap4.min.js"); ?>"></script>
 <script src="<?php echo base_url("assets/vendor/datatable/dataTables.responsive.min.js"); ?>"></script>
 <script src="<?php echo base_url("assets/vendor/datatable/responsive.bootstrap4.min.js"); ?>"></script>
+<script src="<?php echo base_url('assets/js/utils/catalogs.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/views/solicitud/index.js') ?>"></script>
 <script>
     $(function() {

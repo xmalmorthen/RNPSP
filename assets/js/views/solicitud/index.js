@@ -16,6 +16,9 @@ var objViewIndex = {
         checkbox : {
             checkAll : null
         },
+        select : {
+            optionPDF : null
+        },
         objs : {
             itemsCheckeds : null
         }
@@ -34,6 +37,9 @@ var objViewIndex = {
         objViewIndex.vars.btns.Replicar = $('#Replicar');
         objViewIndex.vars.checkbox.checkAll = $('#checkAll');
         objViewIndex.vars.btns.Eliminar = $("a[name='eliminarSolicitud']");
+
+        // SELECT
+        objViewIndex.vars.select.optionPDF = $('#optionPDF');
 
 
         // INIT DATATABLE
@@ -57,7 +63,8 @@ var objViewIndex = {
         
         //CHANGE
         objViewIndex.vars.checkbox.checkAll.on('change',objViewIndex.events.change.checkAll);
-        $('.checkItem').on('change',objViewIndex.events.change.checkItem);
+        $('.checkItem').on('change',objViewIndex.events.change.checkItem);        
+        objViewIndex.vars.select.optionPDF.on('change',objViewIndex.events.change.optionPDF);
 
         objViewIndex.vars.general.init = true;
     },
@@ -176,12 +183,13 @@ var objViewIndex = {
             },
             aceptarFrmImprimir : function(e){
                 e.preventDefault();
-                e.stopPropagation();
-                
-                var form = $('#formImprimir');
+                e.stopPropagation();                           
+
                 try {
+                    $form = $('#formImprimir');
+
                     //VALID FORM
-                    if (!form.valid())
+                    if (!$form.valid())
                         throw new Error("Formulario incompleto");
 
                     $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
@@ -191,7 +199,7 @@ var objViewIndex = {
                         ids.push($(value).data().idreg);
                     });
 
-                    var model = form.serialize();
+                    var model = $form.serialize();
                     model += '&ids=' + ids.join(',') + '&valida=true';
                     model = {model : model};
                     model[csrf.token_name] = csrf.hash;
@@ -249,8 +257,8 @@ var objViewIndex = {
                                         document.body.removeChild(link);
 
                                         // TODO: Xmal - Quitar comentarios al implementar
-                                        objViewIndex.vars.checkbox.checkAll.trigger('click');                                        
-                                        $('#imprimir').modal('hide');
+                                        // objViewIndex.vars.checkbox.checkAll.trigger('click');                                        
+                                        // $('#imprimir').modal('hide');
 
                                     } else {
 
@@ -261,16 +269,18 @@ var objViewIndex = {
                                     $.LoadingOverlay("hide", true);
                                 };
 
-                                model = form.serialize();
+                                model = $form.serialize();
                                 model += '&ids=' + ids.join(',') + '&valida=false';
                                 model = {model : model};
                                 model[csrf.token_name] = csrf.hash;
                                 
                                 request.send(model.model);
-                            }
+                            } else {
 
+                                $.LoadingOverlay("hide",true);
+
+                            }
                         }
-                        
                         
                     }).fail(function (err) {
                     
@@ -313,6 +323,30 @@ var objViewIndex = {
                     itemsSelecteds = $('input[type="checkbox"]:checked',rows);
                 objViewIndex.vars.objs.itemsCheckeds = itemsSelecteds;
                 itemsSelecteds.length > 0 ? objViewIndex.actions.setBadgetinButtons(itemsSelecteds.length): objViewIndex.actions.deleteBadgetinButtons();
+            },
+            optionPDF : function(e){
+                
+                try {
+                    //CREATE DYNAMICALLY FORM
+                    
+                    $formRef = $('#div' + $(this).val());
+                    if (!$formRef)
+                        throw new Error("Referencia a formulario no encontrada.");
+
+                    $dynamicallyContent = $('#dynamicallyContent');                    
+                    if ( $dynamicallyContent.html().length > 0 ) {
+                        $dynamicallyContent.find('>div').addClass('d-none').appendTo('#containerForms');
+                    }
+
+                    $formRef.removeClass('d-none').appendTo('#dynamicallyContent');
+                    
+                }catch(err) {
+
+                    $('#frmAlertMsg').html(err.message ? err.message : err.statusText);
+                    $('#frmAlert').removeClass('d-none');
+
+                }
+
             }
         }
     },
