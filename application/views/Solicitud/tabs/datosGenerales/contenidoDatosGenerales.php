@@ -427,7 +427,7 @@
                 </div>
                 <div class="col-md-4">
                     <span class="clr">*</span>Tipo de referencia <br> <!-- Se llena del catálogo CAT_REFERENCIA -->
-                    <select style="width:356px;" id="pID_TIPO_REFERENCIA" name="pID_TIPO_REFERENCIA" class="form-control" data-error="#err_pID_TIPO_REFERENCIA_REFERENCIAS" data-query='d1lEQ2dSOSsrZUtnU2wwVjJWRHBCSE12STBKUElSU2l5bHA4OTRJbzlXc01BVFNvYms3V0lYYm1QWkVPellLdlNsZmNicy83akdkaEVTZDAxTDVGNVRzdnZtK3k5KzRzZFJxYXZCNERJRmhwOCtFb0ZFS0hjNEhaZTd4cWw1U2Y=' required></select>
+                    <select style="width:356px;" id="pID_TIPO_REFERENCIA" name="pID_TIPO_REFERENCIA" class="form-control" data-error="#err_pID_TIPO_REFERENCIA" data-query='d1lEQ2dSOSsrZUtnU2wwVjJWRHBCSE12STBKUElSU2l5bHA4OTRJbzlXc01BVFNvYms3V0lYYm1QWkVPellLdlNsZmNicy83akdkaEVTZDAxTDVGNVRzdnZtK3k5KzRzZFJxYXZCNERJRmhwOCtFb0ZFS0hjNEhaZTd4cWw1U2Y=' required></select>
                     <span id="err_pID_TIPO_REFERENCIA"></span>
                 </div>
             </div>

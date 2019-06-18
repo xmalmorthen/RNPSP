@@ -130,15 +130,15 @@ var objViewLaboral = {
 
         $.validator.addMethod("pFECHA_TERMINO_EMPLEOS_DIVERSOS", function(value, element) {
             
-            return value > $('#pFECHA_INICIO_EMPLEOS_DIVERSOS').val() ? false : true;
+            return value < $('#pFECHA_INICIO_EMPLEOS_DIVERSOS').val() ? false : true;
 
-        }, "La fecha debe ser menor o igual a la fecha de ingreso.");
+        }, "La fecha debe ser mayor o igual a la fecha de ingreso.");
 
         $.validator.addMethod("pFECHA_TERMINO_COMISIONES", function(value, element) {
             
-            return value > $('#pFECHA_INICIO_COMISIONES').val() ? false : true;
+            return value < $('#pFECHA_INICIO_COMISIONES').val() ? false : true;
 
-        }, "La fecha debe ser menor o igual a la fecha de inicio.");
+        }, "La fecha debe ser mayor o igual a la fecha de inicio.");
 
         objViewLaboral.vars.general.init = true;
     },

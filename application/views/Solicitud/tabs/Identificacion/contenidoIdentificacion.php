@@ -555,7 +555,7 @@
 
     <div class="tab-pane fade " id="Identificacion_de_voz" role="tabpanel" aria-labelledby="Identificacion_de_voz-tab">
         <div class="_container">
-            <form action="#" id="Identificacion_de_voz_form" name="Identificacion_de_voz_form" autocomplete="off">
+            <form action="#" id="Identificacion_de_voz_form" name="Identificacion_de_voz_form" autocomplete="off" data-requireddata=false>
                 <br>
                 <div class="row">
                     <div class="col-md-12 text-center">

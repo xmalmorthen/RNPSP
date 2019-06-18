@@ -6,8 +6,4 @@
 //TODO: Xmal - Quitar comentarios al implementar [ assets\js\views\solicitud\index.js ]
 //TODO: Xmal - Quitar línea al implementar [ application\controllers\Reportes.php ]
 
-//TODO: Xmal - {
-    - mensaje de guardado al cambiar de tab padre
-    - disabled en combos se quita antes que el loader
-    - verificar que guarde bien los detalles de los grids [ se detecto un untitle en grid datos generales - referencias ]
-}
+//TODO: Xmal - verificar que guarde bien los detalles de los grids [ se detecto un undefined en grid datos generales - referencias ]

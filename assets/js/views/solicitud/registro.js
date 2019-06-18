@@ -28,10 +28,53 @@ validarVozFnc = function(e){
             if (data) {
                 if (data.results.status){
 
-                    //data.results.data
+                    toIgnore = [ 
+                        { idPestania: 1, idFicha: 4}, // datos generales - referencias
+                        { idPestania: 1, idFicha: 5}, // datos generales - socioeconónico / dependientes económnicos
+                        { idPestania: 2, idFicha: 2}, // laboral - Empleos diversos
+                        { idPestania: 2, idFicha: 3}, // laboral - Actitudes hacia el empleo
+                        { idPestania: 2, idFicha: 4}, // laboral - Comisiones
+                        { idPestania: 3, idFicha: 1}, // capacitación - idiomnas y/o dialecto
+                        { idPestania: 3, idFicha: 2},  // capacitación - habilidades y aptitudes
+                        { idPestania: 4, idFicha: 6}  // identificación - identificación de voz
+                    ]
+
+                    valid = true;
+                    itemsProcessed = 0;
+
+                    data.results.data.forEach( (item, index, array) => {
+                        
+                        if ( !toIgnore.find( qry => qry.idPestania == item.idPestania && qry.idFicha == item.idFicha ) ) {
+                            
+                            if ( item.tranEstatus == 0 ) {
+                                
+                                console.log(item);
+                                valid = false;
+
+                                //TODO - Xmal - MMarcar pestaña y ficha que contengan error
+
+                            }
+
+                        }
+
+                        itemsProcessed++;
+                        if(itemsProcessed === array.length) {
+                            
+                            $.LoadingOverlay("hide");
                     
-                    // Descomentar al implementar: es para habilitar el botón de replicar una vez de haya validado el registro de la solicitud                
-                    //$('validarReplicar').removeAttr("disabled");
+                            if (valid){
+                                $('.validarReplicar').removeClass('d-none');
+                            } else {
+                                $('.validarReplicar').addClass('d-none');
+                            }
+
+                        }
+
+                        
+                    });
+                    
+
+                    
                     return null;
                 }
             }
@@ -45,8 +88,7 @@ validarVozFnc = function(e){
             Swal.fire({ type: 'error', title: 'Error', html: msg });
 
         }).always(function () {
-            
-            $.LoadingOverlay("hide");
+                        
             MyCookie.session.reset();
 
         });
@@ -683,8 +725,8 @@ var fillData = {
             .then( (data) => {                
                 if (data) {
                     $.each( data, function(key,value) {
-                        var domicilio = value.pCALLE + ' ' + value.pNUM_EXTERIOR + ' ' + (value.pNUM_INTERIOR ? value.pNUM_INTERIOR + ' ' : '' ) + (value.pCOLONIA ? value.COLONIA + ' ' : '' ) + value.pMUNICIPIO_DOM;
-                        var row = [ value.pID_REFERENCIA_EXT, value.pNOMBRE, value.pPATERNO, value.pMATERNO, value.pID_TIPO_REFERENCIA, domicilio ];
+                        var domicilio = value.pCALLE + ' ' + value.pNUM_EXTERIOR + ' ' + (value.pNUM_INTERIOR ? value.pNUM_INTERIOR + ' ' : '' ) + (value.pCOLONIA ? value.pCOLONIA + ' ' : '' ) + value.pMUNICIPIO_DOM;
+                        var row = [ value.pID_REFERENCIA_EXT, value.pNOMBRE, value.pPATERNO, value.pMATERNO, value.pTIPO_REFERENCIA, domicilio ];
                         tableObj.row.add( row ).draw( false );
                     });
                 }
@@ -1284,9 +1326,11 @@ var fillData = {
                         audioRef[0].pause();
                         audioRef[0].load();
                         audioRef.removeClass('d-none');
+                        
+                        $('#Identificacion_de_voz_form').data('requireddata',false);
+
                     }
 
-                    $('#Identificacion_de_voz_form').data('requireddata',false);
                 }
                 $('#Identificacion_de_voz_form').LoadingOverlay("hide");
 
