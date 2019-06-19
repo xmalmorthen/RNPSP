@@ -232,6 +232,9 @@ var objViewIndex = {
                                 $('#frmAlert').removeClass('d-none');
                             }
 
+                            //TODO: Xmal - Quitar línea de código al implementar
+                            areValid = true;
+
                             if (areValid) {
 
                                 var request = new XMLHttpRequest();

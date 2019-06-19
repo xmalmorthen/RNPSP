@@ -610,7 +610,7 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pCOLONIA','pCOLONIA_REFERENCIAS','N',array('name'=>'Colonia/localidad','rule'=>'trim|required|max_length[60]'));
     $this->addParam('pNUM_EXTERIOR','pNUM_EXTERIOR_REFERENCIAS','N',array('name'=>'Número exterior','rule'=>'trim|required|max_length[30]'));
     $this->addParam('pNUM_INTERIOR','pNUM_INTERIOR_REFERENCIAS','N',array('name'=>'Número interior','rule'=>'trim|max_length[30]'));
-    $this->addParam('pTELEFONO',NULL); //NO LO ENCONTRE EN EL FORMULARIO
+    $this->addParam('pTELEFONO','pTELEFONO_REFERENCIAS','N',array('name'=>'Número telefónico','rule'=>'trim|required|max_length[20]'));
     $this->addParam('pID_ENTIDAD','pID_ENTIDAD_REFERENCIAS','',array('name'=>'Entidad federativa','rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pID_MUNICIPIO','pID_MUNICIPIO_REFERENCIAS','',array('name'=>'Municipio','rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pENTRE_CALLE','pENTRE_CALLE_REFERENCIAS','N',array('name'=>'Entre calle de ','rule'=>'trim|max_length[60]'));

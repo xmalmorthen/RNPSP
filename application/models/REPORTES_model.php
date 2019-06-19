@@ -14,7 +14,7 @@ class REPORTES_model extends MY_Model
     );
   }
 
-  public function altaElemento($model = null){
+  public function solicitudAlta($model = null){
     $buid = "EXEC [sp_repAltaEleAct] @CAMPO = '" . $model['ids'] . "', @idDep = '" . $model['ID_ADSCRIPCION'] . "';";
     $query = $this->db->query($buid);
     $response = $this->query_list($query);

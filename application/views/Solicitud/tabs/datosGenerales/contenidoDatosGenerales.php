@@ -347,7 +347,6 @@
                 </div>
                 <div class="col-md-4">
                     <span class="clr">*</span>Número telefónico.
-
                     <input type="text" class="form-control" id="pTELEFONO_DOMICILIO" name="pTELEFONO_DOMICILIO" maxlength="13" minlength="10" required>
                 </div>
             </div>
@@ -480,6 +479,10 @@
                 <div class="col-md-4">
                     Número interior
                     <input type="text" class="form-control" name="pNUM_INTERIOR_REFERENCIAS" id="pNUM_INTERIOR_REFERENCIAS" >
+                </div>
+                <div class="col-md-4">
+                    <span class="clr">*</span>Número telefónico.
+                    <input type="text" class="form-control" id="pTELEFONO_REFERENCIAS" name="pTELEFONO_REFERENCIAS" maxlength="13" minlength="10" required>
                 </div>
             </div>
             <br>

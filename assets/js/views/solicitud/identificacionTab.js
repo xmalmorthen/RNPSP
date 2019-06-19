@@ -323,6 +323,8 @@ var objViewIdentificacion = {
                                         if (!data.results.status)
                                             throw new Error(data.results.message ? data.results.message : 'Error desconocido.' );
                                         
+                                        fillData.identificacion.registroDecadactilar(mainTabMenu.var.pID_ALTERNA);
+
                                         form.removeData('hasChanged').removeData('hasDiscardChanges').removeData('withError');
                                         form.data('hasSaved',true);
 
@@ -339,7 +341,7 @@ var objViewIdentificacion = {
                                             
                                             form.removeData('hasChanged');
 
-                                        });
+                                        });                                        
 
                                         $.LoadingOverlay("hide",true);
                                     }catch(err) {

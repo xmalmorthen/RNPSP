@@ -415,8 +415,8 @@
                         <input type="number" id="pCANTIDAD" name="pCANTIDAD" class="form-control" id="pCANTIDAD" required minlength="1" maxlength="5">
                     </div>
                     <div class="col-md-4">
-                        Descripción
-                        <input type="text" id="pDESCRIPCION" name="pDESCRIPCION" class="form-control" minlength="1" maxlength="30">
+                        <span class="clr">*</span>Descripción
+                        <input type="text" id="pDESCRIPCION" name="pDESCRIPCION" class="form-control" minlength="1" maxlength="30" required>
                     </div>
                 </div>
                 <br>

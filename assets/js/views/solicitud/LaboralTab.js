@@ -220,7 +220,7 @@ var objViewLaboral = {
                 });
                 
                 $('#pPUESTO_ADSCRIPCION_ACTUAL').getCatalog({
-                    query : 'ZUNvUk4yaHVXYWZ2TzAzeEhmc096QnFOdThBUjBmampicFQ3ektoWjdZcDVFMHFHZzZPejdIS2xROHI2MFdYNzNOeExjeWpvWHYvcU04L1MwWHhydWc2bi9hTkZjWGZmVDM3aXJzcXZsZUxoVmtRYnphdXdXUXFnR2p1bWFmcWY1T2VGVlA1NXBOYTAvcGw4aFZSNVBXRml2L2JLMUVzYy9oVDJBaVBFdFlzPQ==',
+                    query : 'bmx3WUplaTVhRVFTRVZRdkFLa3AzV3NLTSs4ZmRxRVNaWnNNOXJYOGM3ZUFkeW9uM2VzQ25IeFJ3VjEyUjV0WnVIOFo5cHNING5PR0RQSHpIeU9UYSsvbnUrdXJReXU5cWtWUGQva2kwd1czcVR1WmsvQ2s0bFk3NGxpZmkvNUU=',
                     params :  '[ID_DEPENDENCIA]=' + valDependencia + ' and [ID_INSTITUCION]=' + valInstitucion,
                     emptyOption : true
                 });
