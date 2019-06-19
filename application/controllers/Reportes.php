@@ -515,34 +515,75 @@
         
             // Tabla 
         
+            // $pdf->Ln(10);
+            // $pdf->cell(10);
+        
+            // // Headers
+            // $pdf->Cell(40,7,"No.",1);
+            // $pdf->Cell(40,7,"Nombre",1);
+            // $pdf->Cell(40,7,"No.",1);
+            // $pdf->Cell(40,7,"Nombre",1);
+            // $pdf->Ln();
+            // // Data
+            // $pdf->SetFont('Arial','',10);
+            // $pdf->cell(10);
+            // $pdf->Cell(40,6,1,1);
+            // $pdf->Cell(40,6,"",1);
+            // $pdf->Cell(40,6,4,1);
+            // $pdf->Cell(40,6,"",1);
+            // $pdf->Ln();
+            // $pdf->cell(10);
+            // $pdf->Cell(40,6,2,1);
+            // $pdf->Cell(40,6,"",1);
+            // $pdf->Cell(40,6,5,1);
+            // $pdf->Cell(40,6,"",1);
+            // $pdf->Ln();
+            // $pdf->cell(10);
+            // $pdf->Cell(40,6,3,1);
+            // $pdf->Cell(40,6,"",1);
+            // $pdf->Cell(40,6,6,1);
+            // $pdf->Cell(40,6,"",1);
+
+
+            /*TABLA FOREACH*/
+            
             $pdf->Ln(10);
             $pdf->cell(10);
         
             // Headers
             $pdf->Cell(40,7,"No.",1);
             $pdf->Cell(40,7,"Nombre",1);
-            $pdf->Cell(40,7,"No.",1);
-            $pdf->Cell(40,7,"Nombre",1);
+            
+            if ( count($model['data']['data']) > 1 ) {
+                $pdf->Cell(40,7,"No.",1);
+                $pdf->Cell(40,7,"Nombre",1);
+            }
+
             $pdf->Ln();
             // Data
-            $pdf->SetFont('Arial','',10);
+
             $pdf->cell(10);
-            $pdf->Cell(40,6,1,1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Cell(40,6,4,1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Ln();
-            $pdf->cell(10);
-            $pdf->Cell(40,6,2,1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Cell(40,6,5,1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Ln();
-            $pdf->cell(10);
-            $pdf->Cell(40,6,3,1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Cell(40,6,6,1);
-            $pdf->Cell(40,6,"",1);
+            foreach ($model['data']['data'] as $key => $item) {
+
+                $pdf->Cell(40,6, ($key + 1) ,1);
+                $pdf->Cell(40,6, utf8_decode( ($item['nombre'] . ' ' . $item['paterno'] . ( $item['materno'] ? ' ' . $item['materno'] : '')) ),1);
+
+                if ( (($key + 1) % 2) == 0 ) {
+                    $pdf->Ln();
+                    $pdf->cell(10);
+                }
+
+            }
+
+            // $pdf->cell(10);
+            // $pdf->Cell(40,6,1,1);
+            // $pdf->Cell(40,6,"MIGUEL ANGEL RUEDA AGUILAR",1);
+            // $pdf->Cell(40,6,4,1);
+            // $pdf->Cell(40,6,"MIGUEL ANGEL RUEDA AGUILAR",1);
+
+            /*/TABLA FOREACH */
+
+
             $pdf->Ln(10);
             $pdf->SetFont('Arial','',10);
             $pdf->cell(12);
