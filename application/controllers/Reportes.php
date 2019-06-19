@@ -45,6 +45,7 @@
                 $responseModel= [ 'status' => 0];
                 switch ($model['optionPDF']) {
                     case 'PSB': //Petición Solicitud de baja
+
                         break;
                     case 'PSEC': //Petición Solicitud de examen de confianza
                         break;
@@ -55,7 +56,7 @@
                     case 'PCA': //Petición de cambio de adscripción
                         break;
                     case 'PSA': //Petición solicitud de alta
-                        $responseModel = $this->REPORTES_model->altaElemento($model);
+                        $responseModel = $this->REPORTES_model->solicitudAlta($model);
                         break;
                     case 'RSB': //Respuesta solicitud de baja
                         break;
@@ -74,29 +75,34 @@
                         
                         switch ($model['optionPDF']) {
                             case 'PSB': //Petición Solicitud de baja
+                                $this->solicitudBaja($model);
                                 break;
                             case 'PSEC': //Petición Solicitud de examen de confianza
+                                $this->solicitudControlConfianza($model);
                                 break;
                             case 'PSC': //Petición Solicitud de curso
+                                $this->validacionCursoAprobado($model);
                                 break;
                             case 'PCUIP': //Petición de CUIP
+                                $this->Solicitud_CUIP($model);
                                 break;
                             case 'PCA': //Petición de cambio de adscripción
+                                $this->solicitudCambio($model);
                                 break;
                             case 'PSA': //Petición solicitud de alta
-                                $this->altaElemento($model);
+                                $this->solicitudAlta($model);
+                                // $this->altaElemento($model);
                                 break;
                             case 'RSB': //Respuesta solicitud de baja
+                                $this->RsolicitudBaja($model);
                                 break;
                             case 'RSA': //Respuesta solicitud de alta
+                                $this->altaElemento($model);
                                 break;
                             default:
                                 throw new rulesException('Formato de oficio incorrecto');
                                 break;
                         }
-                        
-                        // $this->altaAspirantesactivos($model);
-
                     }
 
                 } else {
@@ -450,7 +456,9 @@
             return $pdf->Output(null,'Alta_Aspitante_' . time() . '.pdf');
         }
 
-        function solicitudAlta(){
+        function solicitudAlta($model){
+            ob_start();
+
             $pdf = new FPDF();
             $pdf->AddPage();
         
@@ -465,7 +473,7 @@
             $pdf->Cell(30,5,utf8_decode('Oficio No.'),0,0,"R");
             $pdf->SetFont('Arial','',10);
         
-            $pdf->Cell(30,5,utf8_decode('{Número de folio}'));
+            $pdf->Cell(30,5, utf8_decode( $model['PSANoFolio'] /*'{Número de folio}'*/ ) );
             $pdf->Ln();
             $pdf->SetFont('Arial','B',10);
             $pdf->cell(100);
@@ -477,17 +485,17 @@
             $pdf->Cell(30,5,utf8_decode('trámite de ingreso al RNPSP'));
             $pdf->Ln();
             $pdf->cell(107);
-            $pdf->Cell(30,5,utf8_decode('{Fecha formato: Colima, Colima , a 25 de Junio de 2018}'));
+            $pdf->Cell(30,5,utf8_decode('Colima, Colima, a ' . $this->getDate() /*'{Fecha formato: Colima, Colima , a 25 de Junio de 2018}'*/ ));
             $pdf->Ln(10);
          
         
             // Datos del remitente
             $pdf->SetFont('Arial','B',10);
         
-            $pdf->Cell(30,5,utf8_decode('{Nombre a quien va dirigida la petición},'));
+            $pdf->Cell(30,5,utf8_decode( $model['PSANombreDestinoPeticion'] . ',' /*'{Nombre a quien va dirigida la petición},'*/));
             $pdf->Ln();
           
-            $pdf->Cell(30,5,utf8_decode('{Puesto al que va dirigida la petición},'));
+            $pdf->Cell(30,5,utf8_decode( $model['PSAPuestoDestinoPeticion'] . ',' /*'{Puesto al que va dirigida la petición},'*/));
             $pdf->Ln();
           
             $pdf->Cell(30,5,utf8_decode('PRESENTE.'));
@@ -497,7 +505,8 @@
             $pdf->SetFont('Arial','',10);
         
         
-            $pdf->MultiCell(185,5,utf8_decode("Por instrucciones del Encargado del despacho del Secretariado Ejecutivo del Sistema Estatal de Seguridad Pública, el {Nombre del encargado de SESESP}, y con fundamento en el numeral 20 y demás relativos a la Ley del Sistema de Seguridad Pública para el Estado de Colima, y con el objetivo de dar cumplimiento al requisito señalado en los artículos 39, apartado B, fracción VIII, apartado B, fracción VI de la LGSNSP, para el registro de personal al Registro Nacional de Personal de Seguridad Pública (RNPSP) , me permito solicitar la validación que certifique que el personal enlistado posee controles de confianza aprobados y vigentes."));
+            $pdf->MultiCell(185,5,utf8_decode("Por instrucciones del Encargado del despacho del Secretariado Ejecutivo del Sistema Estatal de Seguridad Pública, el " .
+                $model['PSANombreEncargadoSESESP'] . /*{Nombre del encargado de SESESP}*/ ", y con fundamento en el numeral 20 y demás relativos a la Ley del Sistema de Seguridad Pública para el Estado de Colima, y con el objetivo de dar cumplimiento al requisito señalado en los artículos 39, apartado B, fracción VIII, apartado B, fracción VI de la LGSNSP, para el registro de personal al Registro Nacional de Personal de Seguridad Pública (RNPSP) , me permito solicitar la validación que certifique que el personal enlistado posee controles de confianza aprobados y vigentes."));
         
             $pdf->Ln(5);
             $pdf->SetFont('Arial','B',10);
@@ -545,7 +554,7 @@
             $pdf->Cell(30,5,utf8_decode('A T E N T A M E N T E'));
             $pdf->Ln();
             $pdf->cell(76);
-            $pdf->Cell(30,5,utf8_decode('{Puesto de quien hizo la petición}'));
+            $pdf->Cell(30,5,utf8_decode( $model['PSAPuesto'] /*'{Puesto de quien hizo la petición}'*/));
             $pdf->Ln();
             $pdf->cell(78);
             $pdf->Cell(30,5,utf8_decode(''));
@@ -555,7 +564,7 @@
         
             $pdf->Ln(25);
             $pdf->cell(75);
-            $pdf->Cell(30,5,utf8_decode('{Nombre del que hizo la petición}'));
+            $pdf->Cell(30,5,utf8_decode( $model['PSANombreRemitentePeticion'] /*'{Nombre del que hizo la petición}'*/));
         
             $pdf->Ln();
         
@@ -563,13 +572,13 @@
             $pdf->Cell(30,5,utf8_decode('C.c.p.'));
             $pdf->Ln(10);
             $pdf->SetFont('Arial','B',6);
-            $pdf->Cell(30,5,utf8_decode('{cargo y nombre del encargado del SESP}'));
+            $pdf->Cell(30,5,utf8_decode( '{FALTA EL CARGO}' . ' ' . $model['PSANombreEncargadoDespachoSESESP'] /*'{cargo y nombre del encargado del SESP}'*/));
             $pdf->SetFont('Arial','',6);
             $pdf->Cell(25);
             $pdf->Cell(30,5,utf8_decode('Encargado del despacho del Secretariado Ejecutivo del SESP'));
             $pdf->Ln();
             $pdf->SetFont('Arial','B',6);
-            $pdf->Cell(30,5,utf8_decode('{cargo y nombre del Subcoordinador del SESESP}'));
+            $pdf->Cell(30,5,utf8_decode( '{FALTA EL CARGO}' . ' ' . $model['PSANombreSubSESESP'] /*'{cargo y nombre del Subcoordinador del SESESP}'*/));
             $pdf->SetFont('Arial','',6);
             $pdf->Cell(25);
             $pdf->Cell(30,5,utf8_decode('Subcoordinador de Sistemas de Información del SESESP.- Igual fin.'));
@@ -601,8 +610,9 @@
             $pdf->Cell(30,4,utf8_decode('https://www.secretariadoejecutivosesp.col.gob.mx'));
         
         
-           $pdf->Output();
+            $pdf->Output(null, 'PeticionSolicitudAlta-' . time() . '.pdf');
         }
+        
         // Respuesta a solicitud de alta
         function RsolicitudAlta(){
             $pdf = new FPDF();
@@ -809,6 +819,7 @@
             $pdf->Output();
             
         }
+
         // Respuesta a solicitud de baja
         function RsolicitudBaja(){
             $pdf = new FPDF();
@@ -994,6 +1005,7 @@
             $pdf->Output();
 
         }
+
         //Nomenclaturas:
         // CyC: Control y confianza
         function validarCyC_AprobadosVigentes(){
@@ -1146,178 +1158,7 @@
         
         
         }
-
-        // function aprobacionCursoInicial(){
-
-    
-        //     $pdf = new FPDF();
-        //     $pdf->AddPage();
         
-        //     $pdf->Image($this->base."assets/images/logo.png",10,8,185,32);
-        
-        //     $pdf->SetFont('Arial','B',10);
-        //     $pdf->ln(35);
-        //     $pdf->cell(105);
-        
-        //     // Información de cabecera parte derecha
-        
-        //     $pdf->Cell(30,5,utf8_decode('Oficio No.'),0,0,"R");
-        //     $pdf->SetFont('Arial','',10);
-        
-        //     $pdf->Cell(30,5,utf8_decode('{Número de folio}'));
-        //     $pdf->Ln();
-        //     $pdf->SetFont('Arial','B',10);
-        //     $pdf->cell(100);
-        //     $pdf->Cell(30,5,'Asunto:',0,0,"R");
-        //     $pdf->SetFont('Arial','',10);
-        //     $pdf->Cell(30,5,utf8_decode('Solicitud de documentación'));
-        //     $pdf->Ln();
-        //     $pdf->cell(128);
-        //     $pdf->Cell(30,5,utf8_decode('trámite de ingreso al RNPSP'));
-        //     $pdf->Ln();
-        //     $pdf->cell(90);
-        //     $pdf->Cell(30,5,utf8_decode('{Fecha del sistema formato: Colima, Colima , a 25 de Junio de 2018}'));
-        //     $pdf->Ln(10);
-         
-        
-        //     // Datos del remitente
-        //     $pdf->SetFont('Arial','B',10);
-        
-        //     $pdf->Cell(30,5,utf8_decode('{Nombre director}'));
-        //     $pdf->Ln();
-          
-        //     // $pdf->Cell(30,5,utf8_decode('DIRECTOR DEL INSTITUTO DE FORMACIÓN,'));
-        //     // $pdf->Ln();
-        
-        //     $pdf->Cell(30,5,utf8_decode('CAPACITACIÓN DEL INSTITUTO DE FORMACIÓN,'));
-        //     $pdf->Ln();
-            
-        //     $pdf->Cell(30,5,utf8_decode('PRESENTE.'));
-        //     $pdf->Ln(10);
-        
-        //     // Comunicado
-        //     $pdf->SetFont('Arial','',10);
-        
-        
-        //     $pdf->MultiCell(185,5,utf8_decode("Por instrucciones del Encargado del despacho del Secretariado Ejecutivo se Sistema Estatal de Seguridad Pública, el C.P. {Nombre del encargado del despacho}, y con fundamento en el numeral 20 y demás relativos a la Ley del Sistema de Seguridad Pública para el Estado de Colima, y con el objetivo de dar cumplimiento al requisito señalado en los artículos 39, apartado B, fracción VIII Y 88, apartado A, fracción VII, apartado B, fracción VI de la LGSNSP, para el ingreso de personal al Registro Nacional de Personal de Seguridad Pública (RNPSP), me permito solicitar la validación que certifique que el personal enlistado haya aprobado el curso de formación inicial."));
-        
-        //     $pdf->Ln(5);
-        //     $pdf->SetFont('Arial','B',10);
-        
-        //     $pdf->Cell(30,5,utf8_decode('PEP'));
-        
-        //     // Tabla 
-        
-        //     $pdf->Ln(10);
-        //     $pdf->cell(5);
-        
-        //     // Headers
-        //     $pdf->Cell(30,7,"No.",1);
-        //     $pdf->Cell(30,7,"Nombre",1);
-        //     $pdf->Cell(30,7,"Perfil",1);
-        
-        //     $pdf->Cell(30,7,"No.",1);
-        //     $pdf->Cell(30,7,"Nombre",1);
-        //     $pdf->Cell(30,7,"Perfil",1);
-        //     $pdf->Ln();
-        
-        //     $pdf->SetFont('Arial','',10);
-        //     // Data
-        //     $pdf->cell(5);
-        //     $pdf->Cell(30,6,1,1);
-        //     $pdf->Cell(30,6,"",1);
-        //     $pdf->Cell(30,6,"",1);
-        //     $pdf->Cell(30,6,4,1);
-        //     $pdf->Cell(30,6,"",1);
-        //     $pdf->Cell(30,6,"",1);
-        //     $pdf->Ln();
-        //     $pdf->cell(5);
-        //     $pdf->Cell(30,6,2,1);
-        //     $pdf->Cell(30,6,"",1);
-        //     $pdf->Cell(30,6,"",1);
-        //     $pdf->Cell(30,6,5,1);
-        //     $pdf->Cell(30,6,"",1);
-        //     $pdf->Cell(30,6,"",1);
-        //     $pdf->Ln();
-        //     $pdf->cell(5);
-        //     $pdf->Cell(30,6,3,1);
-        //     $pdf->Cell(30,6,"",1);
-        //     $pdf->Cell(30,6,"",1);
-        //     $pdf->Cell(30,6,6,1);
-        //     $pdf->Cell(30,6,"",1);
-        //     $pdf->Cell(30,6,"",1);
-        //     $pdf->Ln(10);
-        //     $pdf->SetFont('Arial','',10);
-        //     $pdf->cell(12);
-        //     $pdf->Cell(30,5,utf8_decode('Sin otro particular hago propicia la ocasión para hacerle llegar un cordial saludo'));
-        
-        
-        //     $pdf->Ln(10);
-        //     $pdf->SetFont('Arial','B',8);
-        //     $pdf->cell(82);
-        //     $pdf->Cell(30,5,utf8_decode('A T E N T A M E N T E'));
-        //     $pdf->Ln();
-        //     $pdf->cell(76);
-        //     $pdf->Cell(30,5,utf8_decode('EL COORDINADOR GENERAL'));
-        //     $pdf->Ln();
-        //     $pdf->cell(78);
-        //     $pdf->Cell(30,5,utf8_decode('DE ADMINISTRACIÓN DE'));
-        //     $pdf->Ln();
-        //     $pdf->cell(76);
-        //     $pdf->Cell(30,5,utf8_decode('TECNOLOGÍAS DEL SESESP'));
-        
-        //     $pdf->Ln(25);
-        //     $pdf->cell(68);
-        //     $pdf->Cell(30,5,utf8_decode('{Nombre del coordinador general de TI}'));
-        
-        //     $pdf->Ln();
-        
-        //     $pdf->SetFont('Arial','',8);
-        //     $pdf->Cell(30,5,utf8_decode('C.c.p.'));
-        //     $pdf->Ln(10);
-        //     $pdf->SetFont('Arial','B',6);
-        //     $pdf->Cell(30,5,utf8_decode('{Nombre del encargado del depacho de SESP}'));
-        //     $pdf->SetFont('Arial','',6);
-        //     $pdf->Cell(18);
-        //     $pdf->Cell(30,5,utf8_decode('Encargado del despacho del Secretariado Ejecutivo del SESP'));
-        //     $pdf->Ln();
-        //     $pdf->SetFont('Arial','B',6);
-        //     $pdf->Cell(30,5,utf8_decode('{Nombre de subcoordinador de SI}'));
-        //     $pdf->SetFont('Arial','',6);
-        //     $pdf->Cell(18);
-        //     $pdf->Cell(30,5,utf8_decode('Subcoordinador de Sistemas de Información del SESESP.- Igual fin.'));
-        //     $pdf->Ln();
-        //     $pdf->SetFont('Arial','',6);
-        //     $pdf->Cell(30,5,utf8_decode('Archivo.'));
-        //     $pdf->Ln();
-        //     $pdf->SetFont('Arial','',6);
-        //     $pdf->Cell(30,5,utf8_decode('JACHG/HHCHD/NAVA'));
-            
-        //     $pdf->Ln();
-        //     $pdf->Ln(5);
-        //     $pdf->Cell(52);
-        //     $pdf->SetFont('Arial','',6);
-        //     $pdf->Cell(30,5,utf8_decode('"Año 2018. Centenario del natalicio del escritor mexicano y universal Juan José Arreola"'));
-        //     $pdf->Ln();
-        //     $pdf->Image($this->base."assets/images/Cintillo.png",72,253,65,1);
-        
-        //     $pdf->SetFont('Arial','',6);
-        //     $pdf->Cell(64);
-        //     $pdf->Cell(30,4,utf8_decode('Secretariado Ejecutivo del Sistema Estatal de Seguridad Pública'));
-        //     $pdf->Ln();
-        //     $pdf->Cell(57);
-        //     $pdf->Cell(30,4,utf8_decode('C. Emilio Carranza Esq. Ejército Nacional S/N, Colonia Centro, C.P. 28000'));
-        //     $pdf->Ln();
-        //     $pdf->Cell(72);
-        //     $pdf->Cell(30,4,utf8_decode('Colima, Colima, México. Tel. (312) 3162603'));
-        //     $pdf->Ln();
-        //     $pdf->Cell(69);
-        //     $pdf->Cell(30,4,utf8_decode('https://www.secretariadoejecutivosesp.col.gob.mx'));
-        
-        
-        //    $pdf->Output();
-        
-        // }
         //  Petición solicitud curso
         function validacionCursoAprobado(){
 
@@ -1866,8 +1707,6 @@
 
         }
 
-        
-
         function notificaraTramiteSolicitado(){
 
             $pdf = new FPDF();
@@ -2094,4 +1933,176 @@
             $d->Output();
         }
         //done
+
+        // function aprobacionCursoInicial(){
+
+    
+        //     $pdf = new FPDF();
+        //     $pdf->AddPage();
+        
+        //     $pdf->Image($this->base."assets/images/logo.png",10,8,185,32);
+        
+        //     $pdf->SetFont('Arial','B',10);
+        //     $pdf->ln(35);
+        //     $pdf->cell(105);
+        
+        //     // Información de cabecera parte derecha
+        
+        //     $pdf->Cell(30,5,utf8_decode('Oficio No.'),0,0,"R");
+        //     $pdf->SetFont('Arial','',10);
+        
+        //     $pdf->Cell(30,5,utf8_decode('{Número de folio}'));
+        //     $pdf->Ln();
+        //     $pdf->SetFont('Arial','B',10);
+        //     $pdf->cell(100);
+        //     $pdf->Cell(30,5,'Asunto:',0,0,"R");
+        //     $pdf->SetFont('Arial','',10);
+        //     $pdf->Cell(30,5,utf8_decode('Solicitud de documentación'));
+        //     $pdf->Ln();
+        //     $pdf->cell(128);
+        //     $pdf->Cell(30,5,utf8_decode('trámite de ingreso al RNPSP'));
+        //     $pdf->Ln();
+        //     $pdf->cell(90);
+        //     $pdf->Cell(30,5,utf8_decode('{Fecha del sistema formato: Colima, Colima , a 25 de Junio de 2018}'));
+        //     $pdf->Ln(10);
+         
+        
+        //     // Datos del remitente
+        //     $pdf->SetFont('Arial','B',10);
+        
+        //     $pdf->Cell(30,5,utf8_decode('{Nombre director}'));
+        //     $pdf->Ln();
+          
+        //     // $pdf->Cell(30,5,utf8_decode('DIRECTOR DEL INSTITUTO DE FORMACIÓN,'));
+        //     // $pdf->Ln();
+        
+        //     $pdf->Cell(30,5,utf8_decode('CAPACITACIÓN DEL INSTITUTO DE FORMACIÓN,'));
+        //     $pdf->Ln();
+            
+        //     $pdf->Cell(30,5,utf8_decode('PRESENTE.'));
+        //     $pdf->Ln(10);
+        
+        //     // Comunicado
+        //     $pdf->SetFont('Arial','',10);
+        
+        
+        //     $pdf->MultiCell(185,5,utf8_decode("Por instrucciones del Encargado del despacho del Secretariado Ejecutivo se Sistema Estatal de Seguridad Pública, el C.P. {Nombre del encargado del despacho}, y con fundamento en el numeral 20 y demás relativos a la Ley del Sistema de Seguridad Pública para el Estado de Colima, y con el objetivo de dar cumplimiento al requisito señalado en los artículos 39, apartado B, fracción VIII Y 88, apartado A, fracción VII, apartado B, fracción VI de la LGSNSP, para el ingreso de personal al Registro Nacional de Personal de Seguridad Pública (RNPSP), me permito solicitar la validación que certifique que el personal enlistado haya aprobado el curso de formación inicial."));
+        
+        //     $pdf->Ln(5);
+        //     $pdf->SetFont('Arial','B',10);
+        
+        //     $pdf->Cell(30,5,utf8_decode('PEP'));
+        
+        //     // Tabla 
+        
+        //     $pdf->Ln(10);
+        //     $pdf->cell(5);
+        
+        //     // Headers
+        //     $pdf->Cell(30,7,"No.",1);
+        //     $pdf->Cell(30,7,"Nombre",1);
+        //     $pdf->Cell(30,7,"Perfil",1);
+        
+        //     $pdf->Cell(30,7,"No.",1);
+        //     $pdf->Cell(30,7,"Nombre",1);
+        //     $pdf->Cell(30,7,"Perfil",1);
+        //     $pdf->Ln();
+        
+        //     $pdf->SetFont('Arial','',10);
+        //     // Data
+        //     $pdf->cell(5);
+        //     $pdf->Cell(30,6,1,1);
+        //     $pdf->Cell(30,6,"",1);
+        //     $pdf->Cell(30,6,"",1);
+        //     $pdf->Cell(30,6,4,1);
+        //     $pdf->Cell(30,6,"",1);
+        //     $pdf->Cell(30,6,"",1);
+        //     $pdf->Ln();
+        //     $pdf->cell(5);
+        //     $pdf->Cell(30,6,2,1);
+        //     $pdf->Cell(30,6,"",1);
+        //     $pdf->Cell(30,6,"",1);
+        //     $pdf->Cell(30,6,5,1);
+        //     $pdf->Cell(30,6,"",1);
+        //     $pdf->Cell(30,6,"",1);
+        //     $pdf->Ln();
+        //     $pdf->cell(5);
+        //     $pdf->Cell(30,6,3,1);
+        //     $pdf->Cell(30,6,"",1);
+        //     $pdf->Cell(30,6,"",1);
+        //     $pdf->Cell(30,6,6,1);
+        //     $pdf->Cell(30,6,"",1);
+        //     $pdf->Cell(30,6,"",1);
+        //     $pdf->Ln(10);
+        //     $pdf->SetFont('Arial','',10);
+        //     $pdf->cell(12);
+        //     $pdf->Cell(30,5,utf8_decode('Sin otro particular hago propicia la ocasión para hacerle llegar un cordial saludo'));
+        
+        
+        //     $pdf->Ln(10);
+        //     $pdf->SetFont('Arial','B',8);
+        //     $pdf->cell(82);
+        //     $pdf->Cell(30,5,utf8_decode('A T E N T A M E N T E'));
+        //     $pdf->Ln();
+        //     $pdf->cell(76);
+        //     $pdf->Cell(30,5,utf8_decode('EL COORDINADOR GENERAL'));
+        //     $pdf->Ln();
+        //     $pdf->cell(78);
+        //     $pdf->Cell(30,5,utf8_decode('DE ADMINISTRACIÓN DE'));
+        //     $pdf->Ln();
+        //     $pdf->cell(76);
+        //     $pdf->Cell(30,5,utf8_decode('TECNOLOGÍAS DEL SESESP'));
+        
+        //     $pdf->Ln(25);
+        //     $pdf->cell(68);
+        //     $pdf->Cell(30,5,utf8_decode('{Nombre del coordinador general de TI}'));
+        
+        //     $pdf->Ln();
+        
+        //     $pdf->SetFont('Arial','',8);
+        //     $pdf->Cell(30,5,utf8_decode('C.c.p.'));
+        //     $pdf->Ln(10);
+        //     $pdf->SetFont('Arial','B',6);
+        //     $pdf->Cell(30,5,utf8_decode('{Nombre del encargado del depacho de SESP}'));
+        //     $pdf->SetFont('Arial','',6);
+        //     $pdf->Cell(18);
+        //     $pdf->Cell(30,5,utf8_decode('Encargado del despacho del Secretariado Ejecutivo del SESP'));
+        //     $pdf->Ln();
+        //     $pdf->SetFont('Arial','B',6);
+        //     $pdf->Cell(30,5,utf8_decode('{Nombre de subcoordinador de SI}'));
+        //     $pdf->SetFont('Arial','',6);
+        //     $pdf->Cell(18);
+        //     $pdf->Cell(30,5,utf8_decode('Subcoordinador de Sistemas de Información del SESESP.- Igual fin.'));
+        //     $pdf->Ln();
+        //     $pdf->SetFont('Arial','',6);
+        //     $pdf->Cell(30,5,utf8_decode('Archivo.'));
+        //     $pdf->Ln();
+        //     $pdf->SetFont('Arial','',6);
+        //     $pdf->Cell(30,5,utf8_decode('JACHG/HHCHD/NAVA'));
+            
+        //     $pdf->Ln();
+        //     $pdf->Ln(5);
+        //     $pdf->Cell(52);
+        //     $pdf->SetFont('Arial','',6);
+        //     $pdf->Cell(30,5,utf8_decode('"Año 2018. Centenario del natalicio del escritor mexicano y universal Juan José Arreola"'));
+        //     $pdf->Ln();
+        //     $pdf->Image($this->base."assets/images/Cintillo.png",72,253,65,1);
+        
+        //     $pdf->SetFont('Arial','',6);
+        //     $pdf->Cell(64);
+        //     $pdf->Cell(30,4,utf8_decode('Secretariado Ejecutivo del Sistema Estatal de Seguridad Pública'));
+        //     $pdf->Ln();
+        //     $pdf->Cell(57);
+        //     $pdf->Cell(30,4,utf8_decode('C. Emilio Carranza Esq. Ejército Nacional S/N, Colonia Centro, C.P. 28000'));
+        //     $pdf->Ln();
+        //     $pdf->Cell(72);
+        //     $pdf->Cell(30,4,utf8_decode('Colima, Colima, México. Tel. (312) 3162603'));
+        //     $pdf->Ln();
+        //     $pdf->Cell(69);
+        //     $pdf->Cell(30,4,utf8_decode('https://www.secretariadoejecutivosesp.col.gob.mx'));
+        
+        
+        //    $pdf->Output();
+        
+        // }
     }
