@@ -43,23 +43,15 @@
 
                 $this->load->model('REPORTES_model');
                 $responseModel= [ 'status' => 0];
-                switch ($model['optionPDF']) {
-                    case 'PSB': //Petición Solicitud de baja
-                        break;
-                    case 'PSEC': //Petición Solicitud de examen de confianza
-                        break;
-                    case 'PSC': //Petición Solicitud de curso
-                        break;
-                    case 'PCUIP': //Petición de CUIP
-                        break;
-                    case 'PCA': //Petición de cambio de adscripción
-                        break;
-                    case 'PSA': //Petición solicitud de alta
+                switch ($model['tipoFormato']) {
+                    case 'AE':
                         $responseModel = $this->REPORTES_model->altaElemento($model);
                         break;
-                    case 'RSB': //Respuesta solicitud de baja
+                    case 'AA':
                         break;
-                    case 'RSA': //Respuesta solicitud de alta
+                    case 'AC':
+                        break;
+                    case 'VE':
                         break;
                     default:
                         throw new rulesException('Formato de oficio incorrecto');
@@ -72,30 +64,24 @@
                     
                         $model['data']= $responseModel;
                         
-                        switch ($model['optionPDF']) {
-                            case 'PSB': //Petición Solicitud de baja
-                                break;
-                            case 'PSEC': //Petición Solicitud de examen de confianza
-                                break;
-                            case 'PSC': //Petición Solicitud de curso
-                                break;
-                            case 'PCUIP': //Petición de CUIP
-                                break;
-                            case 'PCA': //Petición de cambio de adscripción
-                                break;
-                            case 'PSA': //Petición solicitud de alta
+                        switch ($model['tipoFormato']) {
+                            case 'AE':
                                 $this->altaElemento($model);
+                                exit;
                                 break;
-                            case 'RSB': //Respuesta solicitud de baja
+                            case 'AA':
+                                $this->altaAspirantesactivos($model);                                
+                                exit;
                                 break;
-                            case 'RSA': //Respuesta solicitud de alta
+                            case 'AC':
+                                # code...
+                                break;
+                            case 'VE':
                                 break;
                             default:
                                 throw new rulesException('Formato de oficio incorrecto');
                                 break;
                         }
-                        
-                        // $this->altaAspirantesactivos($model);
 
                     }
 
@@ -114,9 +100,8 @@
 			echo json_encode( [ 'results' => $responseModel ] );
 			exit;
 		}
-        
         //REPORTES IMPLEMENTADOS
-        function altaElemento($model = null){
+        function /*PETICION*/ altaElemento($model = null){
             
             ob_start();
             
@@ -141,7 +126,7 @@
         
             $pdf->Cell(30,5,utf8_decode('OFICIO No.'),0,0,"R");
             $pdf->SetFont('Arial','',10);
-            $pdf->Cell(35,5,utf8_decode($model['PSANoFolio']),0,0,"R");
+            $pdf->Cell(35,5,utf8_decode($model['noFolio']),0,0,"R");
             // Dato de Número de folio
             $pdf->SetFont('Arial','',10);
         
@@ -164,7 +149,7 @@
             // Datos del remitente
             $pdf->SetFont('Arial','B',10);
         
-            $pdf->Cell(30,5,utf8_decode($model['PSANombreEncargadoDespachoSESESP']));
+            $pdf->Cell(30,5,utf8_decode($model['dirCentroest']));
             $pdf->Ln();
           
             $pdf->Cell(30,5,utf8_decode('ENCARGADO DEL SECRETARIO EJECUTIVO DEL SISTEMA,'));
@@ -563,13 +548,13 @@
             $pdf->Cell(30,5,utf8_decode('C.c.p.'));
             $pdf->Ln(10);
             $pdf->SetFont('Arial','B',6);
-            $pdf->Cell(30,5,utf8_decode('{cargo y nombre del encargado del SESP}'));
+            $pdf->Cell(30,5,utf8_decode('{Nombre del encargado del SESP}'));
             $pdf->SetFont('Arial','',6);
             $pdf->Cell(25);
             $pdf->Cell(30,5,utf8_decode('Encargado del despacho del Secretariado Ejecutivo del SESP'));
             $pdf->Ln();
             $pdf->SetFont('Arial','B',6);
-            $pdf->Cell(30,5,utf8_decode('{cargo y nombre del Subcoordinador del SESESP}'));
+            $pdf->Cell(30,5,utf8_decode('{Nombre del Subcoordinador del SESESP}'));
             $pdf->SetFont('Arial','',6);
             $pdf->Cell(25);
             $pdf->Cell(30,5,utf8_decode('Subcoordinador de Sistemas de Información del SESESP.- Igual fin.'));
@@ -1126,7 +1111,7 @@
             $pdf->SetFont('Arial','',6);
             $pdf->Cell(30,5,utf8_decode('"Año 2018. Centenario del natalicio del escritor mexicano y universal Juan José Arreola"'));
             $pdf->Ln();
-            $pdf->Image($this->base."assets/images/Cintillo.png",72,253,65,1);
+            $pdf->Image($this->base."assets/images/Cintillo.png",72,238,65,1);
         
             $pdf->SetFont('Arial','',6);
             $pdf->Cell(64);
@@ -1453,7 +1438,7 @@
             $pdf->SetFont('Arial','',6);
             $pdf->Cell(30,5,utf8_decode('"Año 2018. Centenario del natalicio del escritor mexicano y universal Juan José Arreola"'));
             $pdf->Ln();
-            $pdf->Image($this->base."assets/images/Cintillo.png",72,258,65,1);
+            $pdf->Image($this->base."assets/images/Cintillo.png",72,244,65,1);
 
             $pdf->SetFont('Arial','',6);
             $pdf->Cell(64);
@@ -1548,7 +1533,7 @@
             // $pdf->SetFont('Arial','B',10);
             // $pdf->Cell(30,5,utf8_decode('C.P JOSÉ ALFREDO CÁVEZ GONZÁLEZ.-.- '));
             //Nombre del Coordinador General de Administracion de Tecnologias del SESESP
-            $pdf->SetFont('Arial','',10);
+            $pdf->SetFont('Arial','',8);
             $pdf->Cell(30,5,utf8_decode('{Coordinador de TI de SESESP}'));
             $pdf->Cell(25);
             $pdf->Cell(30,5,utf8_decode('Coordinador General de Administración de Tecnologías del SESESP.- Para su conocimiento'));
@@ -1556,7 +1541,7 @@
             // $pdf->SetFont('Arial','B',10);
             // $pdf->Cell(30,5,utf8_decode('ING- JORGE EDUARDO NAVA TADEO.-.- '));
             // Nombre del Director General de Operaciones e Inteligencia de la SSP
-            $pdf->SetFont('Arial','',10);
+            $pdf->SetFont('Arial','',8);
             $pdf->Cell(30,5,utf8_decode('{Director general Op e Int SSP}'));
             $pdf->Cell(25);
             $pdf->Cell(30,5,utf8_decode('Director General de Operaciones e Inteligencia de la SSP.- Igual fin'));
@@ -1564,7 +1549,7 @@
             // $pdf->SetFont('Arial','B',10);
             // $pdf->Cell(30,5,utf8_decode('C.P JOSÉ ALFREDO CÁVEZ GONZÁLEZ.-.- '));
             //Nombre del Subcoordinador de Sistemas de Informacion del SESESP
-            $pdf->SetFont('Arial','',10);
+            $pdf->SetFont('Arial','',8);
             $pdf->Cell(30,5,utf8_decode('{Subcoordinador De SI del SESESP}'));
             $pdf->Cell(30);
             $pdf->Cell(30,5,utf8_decode('Subcoordinador de Sistemas de Información del SESESP.- Mismo fin'));
@@ -1748,7 +1733,7 @@
             $pdf->SetFont('Arial','',6);
             $pdf->Cell(30,5,utf8_decode('"Año 2018. Centenario del natalicio del escritor mexicano y universal Juan José Arreola"'));
             $pdf->Ln();
-            $pdf->Image($this->base."assets/images/Cintillo.png",72,280,65,1);
+            $pdf->Image($this->base."assets/images/Cintillo.png",72,255,65,1);
             $pdf->SetFont('Arial','',6);
             $pdf->Cell(64);
             $pdf->Cell(30,4,utf8_decode('Secretariado Ejecutivo del Sistema Estatal de Seguridad Pública'));
