@@ -1,5 +1,5 @@
 var iDB = {
-    version: 9,
+    version: 10,
     status : false,
     vars : {
         db : null,

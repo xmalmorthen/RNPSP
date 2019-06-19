@@ -1140,6 +1140,9 @@ var fillData = {
                         thumb_pIMAGEN_HUELLA = $('#thumb_pIMAGEN_HUELLA'),
                         imageBreak = base_url + 'assets/images/imageError.png';
 
+                    if ( data.pIMG_PERFILIZQ || data.pIMG_FRENTE || data.pIMG_PERFILDR || data.pIMG_FIRMA || data.pIMG_HUELLA ) 
+                        $('#Ficha_fotografica_form').data('requireddata',false);
+
                     /*******************************************************************************/            
                     //CAMPOS DE IMÁGENES
                     thumb_pIMAGEN_IZQUIERDO.attr("src", data.pIMG_PERFILIZQ ? data.pIMG_PERFILIZQ.name : imageBreak ).attr("alt", data.pIMG_PERFILIZQ ? data.pIMG_PERFILIZQ.originalName : 'Sin imagen');
@@ -1158,13 +1161,8 @@ var fillData = {
                     thumb_pIMAGEN_HUELLA.parent().find('div.custom-file label.custom-file-label').html( data.pIMG_HUELLA ? data.pIMG_HUELLA.originalName : 'Seleccionar imágen' );
                     /*******************************************************************************/
 
-                    if ( thumb_pIMAGEN_IZQUIERDO || thumb_pIMAGEN_FRENTE || thumb_pIMAGEN_DERECHO || thumb_pIMAGEN_FIRMA ||thumb_pIMAGEN_HUELLA ) 
-                        $('#Ficha_fotografica_form').data('requireddata',false);
-
                 }
                 $('#Ficha_fotografica_form').LoadingOverlay("hide");
-
-                
 
             })
             .catch( (err) => {
