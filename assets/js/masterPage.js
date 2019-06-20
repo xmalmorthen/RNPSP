@@ -36,7 +36,7 @@ if (typeof MyCookie !== "undefined"){
 
             Swal.fire({                
                 title: 'Sesión',
-                html: "Está a punto de expirar la sesión por inactividad,<br> ¿desea mantener la sesión activa?<br><br> Tiempo restante: <span class='swalSessionRemainTime'><strong></strong></span>",
+                html: "Está a punto de expirar la sesión por inactividad,<br> ¿Desea mantener la sesión activa?<br><br> Tiempo restante: <span class='swalSessionRemainTime'><strong></strong></span>",
                 footer: "<div>Se perderá cualquier avance no guardado...</div>",
                 type: 'question',
                 allowOutsideClick : false,

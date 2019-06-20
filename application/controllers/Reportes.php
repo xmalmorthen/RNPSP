@@ -614,13 +614,13 @@
             $pdf->Cell(30,5,utf8_decode('C.c.p.'));
             $pdf->Ln(10);
             $pdf->SetFont('Arial','B',6);
-            $pdf->Cell(30,5,utf8_decode( '{FALTA EL CARGO}' . ' ' . $model['PSANombreEncargadoDespachoSESESP'] /*'{cargo y nombre del encargado del SESP}'*/));
+            $pdf->Cell(30,5,utf8_decode( $model['PSANombreEncargadoDespachoSESESP'] /*'{cargo y nombre del encargado del SESP}'*/));
             $pdf->SetFont('Arial','',6);
             $pdf->Cell(25);
             $pdf->Cell(30,5,utf8_decode('Encargado del despacho del Secretariado Ejecutivo del SESP'));
             $pdf->Ln();
             $pdf->SetFont('Arial','B',6);
-            $pdf->Cell(30,5,utf8_decode( '{FALTA EL CARGO}' . ' ' . $model['PSANombreSubSESESP'] /*'{cargo y nombre del Subcoordinador del SESESP}'*/));
+            $pdf->Cell(30,5,utf8_decode( $model['PSANombreSubSESESP'] /*'{cargo y nombre del Subcoordinador del SESESP}'*/));
             $pdf->SetFont('Arial','',6);
             $pdf->Cell(25);
             $pdf->Cell(30,5,utf8_decode('Subcoordinador de Sistemas de Información del SESESP.- Igual fin.'));

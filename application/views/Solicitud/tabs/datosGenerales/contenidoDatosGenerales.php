@@ -534,7 +534,7 @@
 
 <div class="tab-pane fade" id="Socioeconomicos" role="tabpanel" arialabelledby="Socioeconomicos-tab" >
     <div class="_container">
-        <form action="#" id="Socioeconomicos_form" name="Socioeconomicos_form" autocomplete="off">
+        <form action="#" id="Socioeconomicos_form" name="Socioeconomicos_form" autocomplete="off" data-requireddata=false>
             <br>
             <div class="Socioeconomicos_form">
                 <div class="row">

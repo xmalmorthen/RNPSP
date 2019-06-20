@@ -117,6 +117,7 @@ var objViewIdentificacion = {
         //CAMBIO DE TABS
         objViewIdentificacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewIdentificacion.actions.discartChanges}, e); } );
         objViewIdentificacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('show.bs.tab',dynTabs.showTab);
+        objViewIdentificacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('show.bs.tab',objViewIdentificacion.events.change.handleTabShow);
         objViewIdentificacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('shown.bs.tab',objViewIdentificacion.events.change.tableResponsive);
 
         populate.form($('#mediafiliacion_form')); //popular selects del primer tab NOTA: cambiar programación al tab actual si se obtiene por cookie
@@ -571,6 +572,8 @@ var objViewIdentificacion = {
 
                                         });                                        
 
+                                        fillData.identificacion.identificacionVoz(mainTabMenu.var.pID_ALTERNA);
+
                                         $.LoadingOverlay("hide",true);
                                     }catch(err) {
                                         $.LoadingOverlay("hide",true);
@@ -644,10 +647,17 @@ var objViewIdentificacion = {
                 $.each( objViewIdentificacion.vars.identificacion.tables, function( key, value ) {
                     try{value.obj.responsive.rebuild().responsive.recalc();}catch(err){}
                 });                
+            },
+            handleTabShow : function(e){
+
+                if ( $(e.currentTarget).data('callback') )
+                    eval($(e.currentTarget).data('callback') + '()');
+
             }
+
         }
     },
-    actions : {        
+    actions : {
         discartChanges : function(e,eTab){
             var form = $('#' + $(eTab.currentTarget).attr('aria-controls')).find('form');
             form.closeAlert({alertType : 'alert-danger'});
@@ -754,6 +764,25 @@ var objViewIdentificacion = {
                     objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);                        
                 }
             }
+        }
+    },
+    callback : {
+        fichaFotografica : function(){
+            
+            if (mainTabMenu.var.nuevoRegistro)
+                fillData.identificacion.fichaFotografica(mainTabMenu.var.pID_ALTERNA);
+
+        },
+        registroDecadactilar : function(){
+            
+            if (mainTabMenu.var.nuevoRegistro)
+                fillData.identificacion.registroDecadactilar(mainTabMenu.var.pID_ALTERNA);
+        },
+        identificacionVoz : function(){
+            
+            if (mainTabMenu.var.nuevoRegistro)
+                fillData.identificacion.identificacionVoz(mainTabMenu.var.pID_ALTERNA);
+                
         }
     }
 }

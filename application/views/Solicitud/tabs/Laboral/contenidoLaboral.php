@@ -62,12 +62,12 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        Número exterior
-                        <input type="text" id="pNUM_EXTERIOR" name="pNUM_EXTERIOR" class="form-control validarNumberSpecial"> 
+                        <span class="clr">*</span>Número exterior
+                        <input type="text" id="pNUM_EXTERIOR" name="pNUM_EXTERIOR" class="form-control validarNumberSpecial" required>
                     </div>
                     <div class="col-md-4">
-                        <span class="clr">*</span>Número interior
-                        <input type="text" id="pNUM_INTERIOR" name="pNUM_INTERIOR" class="form-control" required>
+                        Número interior
+                        <input type="text" id="pNUM_INTERIOR" name="pNUM_INTERIOR" class="form-control">
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Número telefónico
@@ -443,8 +443,8 @@
                         <input type="date"  id="pFECHA_INICIO_COMISIONES" name="pFECHA_INICIO_COMISIONES" required class="form-control">
                     </div>
                     <div class="col-md-4">
-                        <span class="clr">*</span>Fecha de término
-                        <input type="date"  id="pFECHA_TERMINO_COMISIONES" name="pFECHA_TERMINO_COMISIONES" class="form-control pFECHA_TERMINO_COMISIONES" required>
+                        Fecha de término
+                        <input type="date"  id="pFECHA_TERMINO_COMISIONES" name="pFECHA_TERMINO_COMISIONES" class="form-control pFECHA_TERMINO_COMISIONES">
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Tipo de comisión<!-- Se llena del catalogo "CAT_TIPO_COMISION" -->
