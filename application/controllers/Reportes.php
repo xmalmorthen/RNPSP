@@ -516,6 +516,38 @@
 
             $pdf->SetFont('Arial','',7);
         
+            // Tabla 
+        
+            // $pdf->Ln(10);
+            // $pdf->cell(10);
+        
+            // // Headers
+            // $pdf->Cell(40,7,"No.",1);
+            // $pdf->Cell(40,7,"Nombre",1);
+            // $pdf->Cell(40,7,"No.",1);
+            // $pdf->Cell(40,7,"Nombre",1);
+            // $pdf->Ln();
+            // // Data
+            // $pdf->SetFont('Arial','',10);
+            // $pdf->cell(10);
+            // $pdf->Cell(40,6,1,1);
+            // $pdf->Cell(40,6,"",1);
+            // $pdf->Cell(40,6,4,1);
+            // $pdf->Cell(40,6,"",1);
+            // $pdf->Ln();
+            // $pdf->cell(10);
+            // $pdf->Cell(40,6,2,1);
+            // $pdf->Cell(40,6,"",1);
+            // $pdf->Cell(40,6,5,1);
+            // $pdf->Cell(40,6,"",1);
+            // $pdf->Ln();
+            // $pdf->cell(10);
+            // $pdf->Cell(40,6,3,1);
+            // $pdf->Cell(40,6,"",1);
+            // $pdf->Cell(40,6,6,1);
+            // $pdf->Cell(40,6,"",1);
+
+
             /*TABLA FOREACH*/
             
             $pdf->Ln(10);
