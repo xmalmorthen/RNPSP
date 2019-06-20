@@ -194,12 +194,12 @@
             $pdf->cell(10);
         
             // Headers
-            $pdf->Cell(40,7,"No.",1);
-            $pdf->Cell(40,7,"Nombre",1);
+            $pdf->Cell(10,7,"No.",1);
+            $pdf->Cell(70,7,"Nombre",1);
             
             if ( count($model['data']['data']) > 1 ) {
-                $pdf->Cell(40,7,"No.",1);
-                $pdf->Cell(40,7,"Nombre",1);
+                $pdf->Cell(10,7,"No.",1);
+                $pdf->Cell(70,7,"Nombre",1);
             }
 
             $pdf->Ln();
@@ -209,8 +209,8 @@
             $pdf->cell(10);
             foreach ($model['data']['data'] as $key => $item) {
 
-                $pdf->Cell(40,6, ($key + 1) ,1);
-                $pdf->Cell(40,6, utf8_decode( ($item['nombre'] . ' ' . $item['paterno'] . ( $item['materno'] ? ' ' . $item['materno'] : '')) ),1);
+                $pdf->Cell(10,6, ($key + 1) ,1);
+                $pdf->Cell(70,6, utf8_decode( ($item['nombre'] . ' ' . $item['paterno'] . ( $item['materno'] ? ' ' . $item['materno'] : '')) ),1);
 
                 if ( (($key + 1) % 2) == 0 ) {
                     $pdf->Ln();
@@ -353,30 +353,30 @@
             $pdf->cell(10);
         
             // Headers
-            $pdf->Cell(40,7,"No.",1);
-            $pdf->Cell(40,7,"Nombre",1);
-            $pdf->Cell(40,7,"No.",1);
-            $pdf->Cell(40,7,"Nombre",1);
+            $pdf->Cell(8,7,"No.",1);
+            $pdf->Cell(72,7,"Nombre",1);
+            $pdf->Cell(8,7,"No.",1);
+            $pdf->Cell(72,7,"Nombre",1);
             $pdf->Ln();
             // Data
-            $pdf->SetFont('Arial','',10);
+            $pdf->SetFont('Arial','',7);
             $pdf->cell(10);
-            $pdf->Cell(40,6,1,1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Cell(40,6,4,1);
-            $pdf->Cell(40,6,"",1);
+            $pdf->Cell(8,6,1,1);
+            $pdf->Cell(72,6,"",1);
+            $pdf->Cell(8,6,4,1);
+            $pdf->Cell(72,6,"",1);
             $pdf->Ln();
             $pdf->cell(10);
-            $pdf->Cell(40,6,2,1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Cell(40,6,5,1);
-            $pdf->Cell(40,6,"",1);
+            $pdf->Cell(8,6,1,1);
+            $pdf->Cell(72,6,"",1);
+            $pdf->Cell(8,6,4,1);
+            $pdf->Cell(72,6,"",1);
             $pdf->Ln();
             $pdf->cell(10);
-            $pdf->Cell(40,6,3,1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Cell(40,6,6,1);
-            $pdf->Cell(40,6,"",1);
+            $pdf->Cell(8,6,1,1);
+            $pdf->Cell(72,6,"",1);
+            $pdf->Cell(8,6,4,1);
+            $pdf->Cell(72,6,"",1);
             $pdf->Ln(10);
             $pdf->SetFont('Arial','',10);
           
@@ -513,6 +513,8 @@
             $pdf->SetFont('Arial','B',10);
         
             $pdf->Cell(30,5,utf8_decode('PEP'));
+
+            $pdf->SetFont('Arial','',7);
         
             // Tabla 
         
@@ -552,12 +554,12 @@
             $pdf->cell(10);
         
             // Headers
-            $pdf->Cell(40,7,"No.",1);
-            $pdf->Cell(40,7,"Nombre",1);
+            $pdf->Cell(8,7,"No.",1);
+            $pdf->Cell(72,7,"Nombre",1);
             
             if ( count($model['data']['data']) > 1 ) {
-                $pdf->Cell(40,7,"No.",1);
-                $pdf->Cell(40,7,"Nombre",1);
+                $pdf->Cell(8,7,"No.",1);
+                $pdf->Cell(72,7,"Nombre",1);
             }
 
             $pdf->Ln();
@@ -566,8 +568,8 @@
             $pdf->cell(10);
             foreach ($model['data']['data'] as $key => $item) {
 
-                $pdf->Cell(40,6, ($key + 1) ,1);
-                $pdf->Cell(40,6, utf8_decode( ($item['nombre'] . ' ' . $item['paterno'] . ( $item['materno'] ? ' ' . $item['materno'] : '')) ),1);
+                $pdf->Cell(8,6, ($key + 1) ,1);
+                $pdf->Cell(72,6, utf8_decode( ($item['nombre'] . ' ' . $item['paterno'] . ( $item['materno'] ? ' ' . $item['materno'] : '')) ),1);
 
                 if ( (($key + 1) % 2) == 0 ) {
                     $pdf->Ln();
@@ -614,7 +616,7 @@
             $pdf->Cell(30,5,utf8_decode('C.c.p.'));
             $pdf->Ln(10);
             $pdf->SetFont('Arial','B',6);
-            $pdf->Cell(30,5,utf8_decode( $model['PSANombreEncargadoDespachoSESESP'] /*'{cargo y nombre del encargado del SESP}'*/));
+            $pdf->Cell(30,5,utf8_decode( $model['PSANombreEncargadoDespachoSESESP'] /*'{cargo y nombre del encargado del SESP}'*/));            
             $pdf->SetFont('Arial','',6);
             $pdf->Cell(25);
             $pdf->Cell(30,5,utf8_decode('Encargado del despacho del Secretariado Ejecutivo del SESP'));
@@ -713,30 +715,30 @@
             $pdf->cell(10);
         
             // Headers
-            $pdf->Cell(40,7,"No.",1);
-            $pdf->Cell(40,7,"Nombre",1);
-            $pdf->Cell(40,7,"No.",1);
-            $pdf->Cell(40,7,"Nombre",1);
+            $pdf->Cell(8,7,"No.",1);
+            $pdf->Cell(72,7,"Nombre",1);
+            $pdf->Cell(8,7,"No.",1);
+            $pdf->Cell(72,7,"Nombre",1);
             $pdf->Ln();
             // Data
-            $pdf->SetFont('Arial','',10);
+            $pdf->SetFont('Arial','',7);
             $pdf->cell(10);
-            $pdf->Cell(40,6,1,1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Cell(40,6,4,1);
-            $pdf->Cell(40,6,"",1);
+            $pdf->Cell(8,6,1,1);
+            $pdf->Cell(72,6,"",1);
+            $pdf->Cell(8,6,4,1);
+            $pdf->Cell(72,6,"",1);
             $pdf->Ln();
             $pdf->cell(10);
-            $pdf->Cell(40,6,2,1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Cell(40,6,5,1);
-            $pdf->Cell(40,6,"",1);
+            $pdf->Cell(8,6,1,1);
+            $pdf->Cell(72,6,"",1);
+            $pdf->Cell(8,6,4,1);
+            $pdf->Cell(72,6,"",1);
             $pdf->Ln();
             $pdf->cell(10);
-            $pdf->Cell(40,6,3,1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Cell(40,6,6,1);
-            $pdf->Cell(40,6,"",1);
+            $pdf->Cell(8,6,1,1);
+            $pdf->Cell(72,6,"",1);
+            $pdf->Cell(8,6,4,1);
+            $pdf->Cell(72,6,"",1);
             $pdf->Ln(10);
             $pdf->SetFont('Arial','',10);
             $pdf->MultiCell(185,5,utf8_decode('Al respecto hago de su conocimiento que se han llevado a cabo los trámties solicitados, adjunto constancias de dichos movimientos'));
@@ -843,7 +845,7 @@
 
             $pdf->Ln(10);
             $pdf->Ln(10);
-            $pdf->Cell(40,7,utf8_decode("Elaboró:"),1);
+            $pdf->Cell(20,7,utf8_decode("Elaboró:"),1);
             $pdf->Cell(70,7,utf8_decode("{Nombre de la persona que elaboró la solicitud}"),1);
             $pdf->SetFont('Arial','',6);
             $pdf->Ln(20);
@@ -1110,30 +1112,30 @@
             $pdf->cell(10);
         
             // Headers
-            $pdf->Cell(40,7,"No.",1);
-            $pdf->Cell(40,7,"Nombre",1);
-            $pdf->Cell(40,7,"No.",1);
-            $pdf->Cell(40,7,"Nombre",1);
+            $pdf->Cell(8,7,"No.",1);
+            $pdf->Cell(72,7,"Nombre",1);
+            $pdf->Cell(8,7,"No.",1);
+            $pdf->Cell(72,7,"Nombre",1);
             $pdf->Ln();
             // Data
-            $pdf->SetFont('Arial','',10);
+            $pdf->SetFont('Arial','',7);
             $pdf->cell(10);
-            $pdf->Cell(40,6,1,1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Cell(40,6,4,1);
-            $pdf->Cell(40,6,"",1);
+            $pdf->Cell(8,6,1,1);
+            $pdf->Cell(72,6,"",1);
+            $pdf->Cell(8,6,4,1);
+            $pdf->Cell(72,6,"",1);
             $pdf->Ln();
             $pdf->cell(10);
-            $pdf->Cell(40,6,2,1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Cell(40,6,5,1);
-            $pdf->Cell(40,6,"",1);
+            $pdf->Cell(8,6,1,1);
+            $pdf->Cell(72,6,"",1);
+            $pdf->Cell(8,6,4,1);
+            $pdf->Cell(72,6,"",1);
             $pdf->Ln();
             $pdf->cell(10);
-            $pdf->Cell(40,6,3,1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Cell(40,6,6,1);
-            $pdf->Cell(40,6,"",1);
+            $pdf->Cell(8,6,1,1);
+            $pdf->Cell(72,6,"",1);
+            $pdf->Cell(8,6,4,1);
+            $pdf->Cell(72,6,"",1);
             $pdf->Ln(10);
             $pdf->SetFont('Arial','',10);
             $pdf->cell(12);
@@ -1267,30 +1269,30 @@
             $pdf->cell(10);
 
             // Headers
-            $pdf->Cell(40,7,"No.",1);
-            $pdf->Cell(40,7,"Nombre",1);
-            $pdf->Cell(40,7,"Perfil",1);
-            $pdf->Cell(40,7,"Dependencia",1);
+            $pdf->Cell(8,7,"No.",1);
+            $pdf->Cell(60,7,"Nombre",1);
+            $pdf->Cell(50,7,"Perfil",1);
+            $pdf->Cell(60,7,"Dependencia",1);
             $pdf->Ln();
             // Data
-            $pdf->SetFont('Arial','',10);
+            $pdf->SetFont('Arial','',7);
             $pdf->cell(10);
-            $pdf->Cell(40,6,1,1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Cell(40,6,"",1);
+            $pdf->Cell(8,6,1,1);
+            $pdf->Cell(60,6,"",1);
+            $pdf->Cell(50,6,"",1);
+            $pdf->Cell(60,6,"",1);
             $pdf->Ln();
             $pdf->cell(10);
-            $pdf->Cell(40,6,2,1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Cell(40,6,"",1);
+            $pdf->Cell(8,6,1,1);
+            $pdf->Cell(60,6,"",1);
+            $pdf->Cell(50,6,"",1);
+            $pdf->Cell(60,6,"",1);
             $pdf->Ln();
             $pdf->cell(10);
-            $pdf->Cell(40,6,3,1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Cell(40,6,"",1);
+            $pdf->Cell(8,6,1,1);
+            $pdf->Cell(60,6,"",1);
+            $pdf->Cell(50,6,"",1);
+            $pdf->Cell(60,6,"",1);
             $pdf->Ln(10);
             $pdf->SetFont('Arial','',10);
             $pdf->cell(12);
@@ -1544,20 +1546,20 @@
             $pdf->cell(5);
         
             // Headers
-            $pdf->Cell(20,7,"CONS.",1);
-            $pdf->Cell(60,7,"Nombre",1);
-            $pdf->Cell(20,7,"CONS",1);
-            $pdf->Cell(60,7,"Nombre",1);
+            $pdf->Cell(8,7,"No.",1);
+            $pdf->Cell(72,7,"Nombre",1);
+            $pdf->Cell(8,7,"No.",1);
+            $pdf->Cell(72,7,"Nombre",1);
             $pdf->Ln();
         
-            $pdf->SetFont('Arial','',10);
+            $pdf->SetFont('Arial','',7);
             // Data
            
             $pdf->cell(5);
-            $pdf->Cell(20,6,'',1);
-            $pdf->Cell(60,6,"",1);
-            $pdf->Cell(20,6,"",1);
-            $pdf->Cell(60,6,'',1);
+            $pdf->Cell(8,6,'',1);
+            $pdf->Cell(72,6,utf8_decode(''),1);
+            $pdf->Cell(8,6,"",1);
+            $pdf->Cell(72,6,utf8_decode(''),1);
             $pdf->Ln(10);
             $pdf->SetFont('Arial','',10);
             $pdf->cell(12);
@@ -1566,27 +1568,7 @@
             $pdf->SetFont('Arial','B',10);
             $pdf->Ln(7);
             $pdf->Cell(5);
-            $pdf->Cell(30,5,utf8_decode('Actualización de puestos'));
-            // Tabla 
-            $pdf->Ln(5);
-            $pdf->cell(5);
-        
-            // Headers
-            $pdf->Cell(20,7,"CONS.",1);
-            $pdf->Cell(60,7,"Nombre",1);
-            $pdf->Cell(20,7,"CONS",1);
-            $pdf->Cell(60,7,"Nombre",1);
-            $pdf->Ln();
-        
-            $pdf->SetFont('Arial','',10);
-            // Data
-           
-            $pdf->cell(5);
-            $pdf->Cell(20,6,'',1);
-            $pdf->Cell(60,6,"",1);
-            $pdf->Cell(20,6,"",1);
-            $pdf->Cell(60,6,'',1);
-            $pdf->Ln(10);
+          
             $pdf->SetFont('Arial','',10);
             $pdf->cell(12);
             $pdf->Cell(30,5,utf8_decode('Sin otro particular hago propicia la ocasión para hacerle llegar un cordial saludo'));
@@ -1631,7 +1613,7 @@
             $pdf->SetFont('Arial','',6);
             $pdf->Cell(30,5,utf8_decode('"Año 2018. Centenario del natalicio del escritor mexicano y universal Juan José Arreola"'));
             $pdf->Ln();
-            $pdf->Image($this->base."assets/images/Cintillo.png",72,255,65,1);
+            $pdf->Image($this->base."assets/images/Cintillo.png",72,233,65,1);
             $pdf->SetFont('Arial','',6);
             $pdf->Cell(64);
             $pdf->Cell(30,4,utf8_decode('Secretariado Ejecutivo del Sistema Estatal de Seguridad Pública'));
@@ -1805,31 +1787,35 @@
         
             $pdf->Ln(10);
             $pdf->cell(10);
+
+            $pdf->SetFont('Arial','B',10);
         
             // Headers
-            $pdf->Cell(40,7,"No.",1);
-            $pdf->Cell(40,7,"Nombre",1);
-            $pdf->Cell(40,7,"No.",1);
-            $pdf->Cell(40,7,"Nombre",1);
+            $pdf->Cell(8,7,"No.",1);
+            $pdf->Cell(72,7,"Nombre",1);
+            $pdf->Cell(8,7,"No.",1);
+            $pdf->Cell(72,7,"Nombre",1);
             $pdf->Ln();
+
+            $pdf->SetFont('Arial','',7);
             // Data
             $pdf->cell(10);
-            $pdf->Cell(40,6,1,1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Cell(40,6,4,1);
-            $pdf->Cell(40,6,"",1);
+            $pdf->Cell(8,6,1,1);
+            $pdf->Cell(72,6,"",1);
+            $pdf->Cell(8,6,4,1);
+            $pdf->Cell(72,6,"",1);
             $pdf->Ln();
             $pdf->cell(10);
-            $pdf->Cell(40,6,2,1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Cell(40,6,5,1);
-            $pdf->Cell(40,6,"",1);
+            $pdf->Cell(8,6,1,1);
+            $pdf->Cell(72,6,"",1);
+            $pdf->Cell(8,6,4,1);
+            $pdf->Cell(72,6,"",1);
             $pdf->Ln();
             $pdf->cell(10);
-            $pdf->Cell(40,6,3,1);
-            $pdf->Cell(40,6,"",1);
-            $pdf->Cell(40,6,6,1);
-            $pdf->Cell(40,6,"",1);
+            $pdf->Cell(8,6,1,1);
+            $pdf->Cell(72,6,"",1);
+            $pdf->Cell(8,6,4,1);
+            $pdf->Cell(72,6,"",1);
             $pdf->Ln(10);
             $pdf->SetFont('Arial','',10);
             $pdf->cell(12);
@@ -1896,84 +1882,84 @@
            $pdf->Output();
         }
 
-        function Table(){
-            $d = new FPDF('L');
-            $d->AddPage();
+        // function Table(){
+        //     $d = new FPDF('L');
+        //     $d->AddPage();
         
-            $d->Image($this->base."assets/images/logo.png",55,8,185,32);
+        //     $d->Image($this->base."assets/images/logo.png",55,8,185,32);
         
-            $d->SetFont('Arial','B',10);
-            $d->ln(35);
-            $d->cell(105);
+        //     $d->SetFont('Arial','B',10);
+        //     $d->ln(35);
+        //     $d->cell(105);
         
-            // Información de cabecera parte derecha
-            $d->Cell(72,15,"");
-            $d->Cell(30,15,utf8_decode('ASPIRANTES ENVIADOS A CEECC EN EL MES DE_______________________________'),0,0,"R");
-            $d->SetFont('Arial','',10);
+        //     // Información de cabecera parte derecha
+        //     $d->Cell(72,15,"");
+        //     $d->Cell(30,15,utf8_decode('ASPIRANTES ENVIADOS A CEECC EN EL MES DE_______________________________'),0,0,"R");
+        //     $d->SetFont('Arial','',10);
         
-            // $d->Cell(30,5,utf8_decode('SESP/SE/CGT/241/2018')); Número de oficio
-            $d->Ln();
-            // Tabla 
+        //     // $d->Cell(30,5,utf8_decode('SESP/SE/CGT/241/2018')); Número de oficio
+        //     $d->Ln();
+        //     // Tabla 
         
-            $d->Ln(10);
-            $d->cell(10);
+        //     $d->Ln(10);
+        //     $d->cell(10);
         
-            // Headers
-            $d->Cell(20,30,"Fecha",1,null,"C");
-            $d->Cell(30,30,utf8_decode("Coorporación"),1,null,"C");
-            $d->Cell(40,30,"Nombre",1,null,"C");
-            $d->Cell(40,30,"CURP",1,null,"C");
-            $d->Cell(40,30,"","T L R",null,"C");
-            $d->Cell(40,30,"","T L R",null,"C");
-            $d->Cell(20,30,"Perfil",1,null,"C");
-            $d->Cell(30,30,"","T L R",null,"C");
+        //     // Headers
+        //     $d->Cell(20,30,"Fecha",1,null,"C");
+        //     $d->Cell(30,30,utf8_decode("Coorporación"),1,null,"C");
+        //     $d->Cell(40,30,"Nombre",1,null,"C");
+        //     $d->Cell(40,30,"CURP",1,null,"C");
+        //     $d->Cell(40,30,"","T L R",null,"C");
+        //     $d->Cell(40,30,"","T L R",null,"C");
+        //     $d->Cell(20,30,"Perfil",1,null,"C");
+        //     $d->Cell(30,30,"","T L R",null,"C");
         
         
-            $d->SetXY(150,75);
-            $d->Cell(40,5,utf8_decode("Fecha de examen")," L R",null,"C");
-            $d->SetXY(150,80);
-            $d->Cell(40,5,utf8_decode("de evaluación")," L R",null,"C");
-            $d->SetXY(150,85);
-            $d->Cell(40,5,utf8_decode("de control y")," L R",null,"C");
-            $d->SetXY(150,90);
-            $d->Cell(40,5,utf8_decode("confianza")," L R",null,"C");
-            $d->SetXY(150,95);
-            $d->Cell(40,5,utf8_decode("")," L R B",null,"C");
+        //     $d->SetXY(150,75);
+        //     $d->Cell(40,5,utf8_decode("Fecha de examen")," L R",null,"C");
+        //     $d->SetXY(150,80);
+        //     $d->Cell(40,5,utf8_decode("de evaluación")," L R",null,"C");
+        //     $d->SetXY(150,85);
+        //     $d->Cell(40,5,utf8_decode("de control y")," L R",null,"C");
+        //     $d->SetXY(150,90);
+        //     $d->Cell(40,5,utf8_decode("confianza")," L R",null,"C");
+        //     $d->SetXY(150,95);
+        //     $d->Cell(40,5,utf8_decode("")," L R B",null,"C");
         
-            $d->SetXY(190.2,75);
-            $d->Cell(40,5,utf8_decode("Nivel de mando")," L R",null,"C");
-            $d->SetXY(190.2,80);
-            $d->Cell(40,5,utf8_decode("(operativo-administrativo,")," L R",null,"C");
-            $d->SetXY(190.2,85);
-            $d->Cell(40,5,utf8_decode("mando medio, mando")," L R",null,"C");
-            $d->SetXY(190.2,90);
-            $d->Cell(40,5,utf8_decode("superior o alto mando)")," L R",null,"C");
-            $d->SetXY(190.2,95);
-            $d->Cell(40,5,utf8_decode("")," L R B",null,"C");
+        //     $d->SetXY(190.2,75);
+        //     $d->Cell(40,5,utf8_decode("Nivel de mando")," L R",null,"C");
+        //     $d->SetXY(190.2,80);
+        //     $d->Cell(40,5,utf8_decode("(operativo-administrativo,")," L R",null,"C");
+        //     $d->SetXY(190.2,85);
+        //     $d->Cell(40,5,utf8_decode("mando medio, mando")," L R",null,"C");
+        //     $d->SetXY(190.2,90);
+        //     $d->Cell(40,5,utf8_decode("superior o alto mando)")," L R",null,"C");
+        //     $d->SetXY(190.2,95);
+        //     $d->Cell(40,5,utf8_decode("")," L R B",null,"C");
         
-            $d->SetXY(249.8,75);
-            $d->Cell(30,5,utf8_decode("Fecha de inicio")," L R",null,"C");
-            $d->SetXY(249.8,80);
-            $d->Cell(30,5,utf8_decode("de curso de")," L R",null,"C");
-            $d->SetXY(249.8,85);
-            $d->Cell(30,5,utf8_decode("formación")," L R",null,"C");
-            $d->SetXY(249.8,90);
-            $d->Cell(30,5,utf8_decode("")," L R",null,"C");
-            $d->SetXY(249.8,95);
-            $d->Cell(30,5,utf8_decode("")," L R B",null,"C");
+        //     $d->SetXY(249.8,75);
+        //     $d->Cell(30,5,utf8_decode("Fecha de inicio")," L R",null,"C");
+        //     $d->SetXY(249.8,80);
+        //     $d->Cell(30,5,utf8_decode("de curso de")," L R",null,"C");
+        //     $d->SetXY(249.8,85);
+        //     $d->Cell(30,5,utf8_decode("formación")," L R",null,"C");
+        //     $d->SetXY(249.8,90);
+        //     $d->Cell(30,5,utf8_decode("")," L R",null,"C");
+        //     $d->SetXY(249.8,95);
+        //     $d->Cell(30,5,utf8_decode("")," L R B",null,"C");
         
-            //Data
-            $d->SetXY(20,100);
-            $d->Cell(20,10,"",1,null,"C");
-            $d->Cell(30,10,utf8_decode(""),1,null,"C");
-            $d->Cell(40,10,"",1,null,"C");
-            $d->Cell(40,10,"",1,null,"C");
-            $d->Cell(40,10,"",1,null,"C");
-            $d->Cell(40,10,"",1,null,"C");
-            $d->Cell(20,10,"",1,null,"C");
-            $d->Cell(30,10,"",1,null,"C");
-            $d->Output();
-        }
+        //     //Data
+        //     $d->SetXY(20,100);
+        //     $d->Cell(20,10,"",1,null,"C");
+        //     $d->Cell(30,10,utf8_decode(""),1,null,"C");
+        //     $d->Cell(40,10,"",1,null,"C");
+        //     $d->Cell(40,10,"",1,null,"C");
+        //     $d->Cell(40,10,"",1,null,"C");
+        //     $d->Cell(40,10,"",1,null,"C");
+        //     $d->Cell(20,10,"",1,null,"C");
+        //     $d->Cell(30,10,"",1,null,"C");
+        //     $d->Output();
+        // }
         //done
 
         // function aprobacionCursoInicial(){
