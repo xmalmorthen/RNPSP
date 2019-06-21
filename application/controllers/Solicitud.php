@@ -122,6 +122,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {				
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -152,6 +153,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -187,6 +189,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -223,6 +226,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -266,6 +270,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -303,6 +308,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -337,6 +343,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -372,6 +379,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -405,6 +413,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -438,6 +447,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -472,6 +482,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -505,6 +516,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -539,6 +551,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -572,6 +585,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -606,6 +620,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -639,6 +654,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -673,6 +689,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -706,6 +723,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -745,7 +763,7 @@
 
 					$config['upload_path']          = STATIC_DOCUMMENTS_PATH . 'fichaFotografica';
 					$config['allowed_types']        = 'jpg|jpeg|png';
-					$config['max_size']             = 10240;
+					// $config['max_size']             = 10240;
 					$config['max_width']            = 0;
 					$config['max_height']           = 0;
 					$config['encrypt_name']         = TRUE;
@@ -802,6 +820,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -842,7 +861,7 @@
 
 					$config['upload_path']          = STATIC_DOCUMMENTS_PATH . 'fichaDecadactilar';
 					$config['allowed_types']        = 'jpg|jpeg|png|pdf';
-					$config['max_size']             = 10240;
+					// $config['max_size']             = 10240;
 					$config['max_width']            = 0;
 					$config['max_height']           = 0;
 					$config['encrypt_name']         = TRUE;
@@ -877,6 +896,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -917,7 +937,7 @@
 
 					$config['upload_path']          = STATIC_DOCUMMENTS_PATH . 'fichaDocumento';
 					$config['allowed_types']        = 'jpg|jpeg|png|pdf';
-					$config['max_size']             = 10240;
+					// $config['max_size']             = 10240;
 					$config['max_width']            = 0;
 					$config['max_height']           = 0;
 					$config['encrypt_name']         = TRUE;
@@ -954,6 +974,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -994,7 +1015,7 @@
 
 					$config['upload_path']          = STATIC_DOCUMMENTS_PATH . 'fichaVoz';
 					$config['allowed_types']        = 'mp3';
-					$config['max_size']             = 10240;
+					// $config['max_size']             = 10240;
 					$config['max_width']            = 0;
 					$config['max_height']           = 0;
 					$config['encrypt_name']         = TRUE;
@@ -1030,6 +1051,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1057,6 +1079,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1084,6 +1107,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1111,6 +1135,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1138,6 +1163,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1165,6 +1191,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1193,6 +1220,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1221,6 +1249,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1248,6 +1277,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1275,6 +1305,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1302,6 +1333,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1329,6 +1361,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1357,6 +1390,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1385,6 +1419,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1411,6 +1446,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1438,6 +1474,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1465,6 +1502,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1492,6 +1530,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1519,6 +1558,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1546,6 +1586,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1573,6 +1614,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1600,6 +1642,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1627,6 +1670,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1654,6 +1698,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1681,6 +1726,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1708,6 +1754,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1735,6 +1782,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1762,6 +1810,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1789,6 +1838,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1815,6 +1865,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1842,6 +1893,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1869,6 +1921,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1895,6 +1948,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1922,6 +1976,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1949,6 +2004,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -1975,6 +2031,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -2001,6 +2058,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -2026,6 +2084,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
@@ -2056,6 +2115,7 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
 			}
 			catch (Exception $e) {				
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));

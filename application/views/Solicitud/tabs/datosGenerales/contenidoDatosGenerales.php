@@ -554,8 +554,8 @@
                         <span id="err_pVIVE_FAMILIA"></span>
                     </div>
                     <div class="col-md-4">
-                        Ingreso familiar adicional (mensual)
-                        <input type="number" class="form-control" id="pINGRESO_FAMILIAR" name="pINGRESO_FAMILIAR" maxlength="10.2">
+                        <span class="clr">*</span>Ingreso familiar adicional (mensual)
+                        <input type="number" class="form-control" id="pINGRESO_FAMILIAR" name="pINGRESO_FAMILIAR" required>
                     </div>
                     <div class="col-md-4">
                         Su domicilio es <br> <!-- Se llena del catálogo CAT_TIPO_DOMICILIO -->

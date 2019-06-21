@@ -625,7 +625,42 @@ var objViewIdentificacion = {
                 var $this = this,
                     labelNameFile = $( $this ).closest( ".custom-file" ).find('label.custom-file-label');
                     
-                if ($this.files && $this.files[0]) {   
+                if ($this.files && $this.files[0]) {
+
+                    if ($.inArray( $this.files[0].type, $this.accept.split(',') ) == -1) {
+
+                        $(this).val('');
+                        e.preventDefault();
+                        e.stopPropagation();
+                        e.stopImmediatePropagation();
+
+                        Swal.fire({
+                            type: 'error',
+                            text: 'Formato de archivo incorrecto',
+                            footer: 'Se aceptan imágenes en formato ' + $($this).data('accept')
+                        });
+                        
+                        return false;
+                    }
+
+                    maxFileSize = $($this).data('maxfilesize') | 2097152;
+
+                    if ( $this.files[0].size > maxFileSize ){
+                        
+                        $(this).val('');
+                        e.preventDefault();
+                        e.stopPropagation();
+                        e.stopImmediatePropagation();
+
+                        Swal.fire({
+                            type: 'error',
+                            text: 'Tamaño de archivo superior al límite',
+                            footer: 'Se aceptan imágenes de 2 mb de tamaño máximo'
+                        });
+                        
+                        return false;
+                    }
+
                     var reader = new FileReader();
                     var filename = $($this).val();
                     filename = filename.substring(filename.lastIndexOf('\\')+1);
