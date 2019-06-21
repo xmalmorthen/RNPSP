@@ -637,13 +637,13 @@ var objViewIdentificacion = {
                         Swal.fire({
                             type: 'error',
                             text: 'Formato de archivo incorrecto',
-                            footer: 'Se aceptan imágenes en formato ' + $($this).data('accept')
+                            footer: 'Se aceptan archivos en formato ' + $($this).data('accept')
                         });
                         
                         return false;
                     }
 
-                    maxFileSize = $($this).data('maxfilesize') | 2097152;
+                    maxFileSize = $($this).data('maxfilesize') ? $($this).data('maxfilesize') : 204800;
 
                     if ( $this.files[0].size > maxFileSize ){
                         
@@ -655,7 +655,7 @@ var objViewIdentificacion = {
                         Swal.fire({
                             type: 'error',
                             text: 'Tamaño de archivo superior al límite',
-                            footer: 'Se aceptan imágenes de 2 mb de tamaño máximo'
+                            footer: 'Se aceptan archivos con un tamaño máximo de ' + (maxFileSize / 1024) + ' kb'
                         });
                         
                         return false;

@@ -3,7 +3,9 @@
 //TODO: Xmal - Quitar comentarios en bloque para implementación [ assets\js\utils\dynamicTabs.js ]
 //TODO: Xmal - Quitar comentarios al implementar [ assets\js\views\solicitud\index.js ]
 //TODO: Xmal - Quitar línea al implementar [ application\controllers\Reportes.php ]
-//TODO: Xmal - Quitar línea de código al implementar
+
+//TODO: Xmal - Quitar línea de código al implementar [ assets\js\views\solicitud\index.js ] 
+//TODO: Xmal - Quitar el comentario de la siguiente línea de código al implementar [ application\controllers\Reportes.php ]
 
 //TODO: Xmal - Implementar la impresión [ assets\js\views\solicitud\index.js ]
 [

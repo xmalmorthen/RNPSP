@@ -566,26 +566,35 @@
             // Data
 
             $pdf->cell(10);
+
+            $iter = 1;
             foreach ($model['data']['data'] as $key => $item) {
+                //TODO: Xmal - Quitar el comentario de la siguiente línea de código al implementar
+                // if ($item['estatus'] == 1) 
+                {
 
-                $pdf->Cell(8,6, ($key + 1) ,1);
-                $pdf->Cell(72,6, utf8_decode( ($item['nombre'] . ' ' . $item['paterno'] . ( $item['materno'] ? ' ' . $item['materno'] : '')) ),1);
+                    $pdf->Cell(8,6, $iter ,1);
+                    $pdf->Cell(72,6, utf8_decode( ($item['nombre'] . ' ' . $item['paterno'] . ( $item['materno'] ? ' ' . $item['materno'] : '')) ),1);
 
-                if ( (($key + 1) % 2) == 0 ) {
-                    $pdf->Ln();
-                    $pdf->cell(10);
+                    if ( ( $iter % 2) == 0 ) {
+                        $pdf->Ln();
+                        $pdf->cell(10);
+                    }
+
+                    $iter++;
                 }
 
+                if ($iter == 4)
+                    break;
+                
             }
 
-            // $pdf->cell(10);
-            // $pdf->Cell(40,6,1,1);
-            // $pdf->Cell(40,6,"MIGUEL ANGEL RUEDA AGUILAR",1);
-            // $pdf->Cell(40,6,4,1);
-            // $pdf->Cell(40,6,"MIGUEL ANGEL RUEDA AGUILAR",1);
+            if ( ( ($iter -1) % 2 )  != 0 ){
+                $pdf->Cell(8,6, $iter ,1);
+                $pdf->Cell(72,6, utf8_decode( '----------------------------------------------' ),1);
+            }
 
             /*/TABLA FOREACH */
-
 
             $pdf->Ln(10);
             $pdf->SetFont('Arial','',10);

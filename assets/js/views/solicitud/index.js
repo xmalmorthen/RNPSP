@@ -227,11 +227,6 @@ var objViewIndex = {
                                 }
                             });
 
-                            if (areErrors) {
-                                $('#frmAlertMsg').html('Eror al procesar una o varias de las solicitudes. <br/>' + errorList);
-                                $('#frmAlert').removeClass('d-none');
-                            }
-
                             //TODO: Xmal - Quitar línea de código al implementar
                             areValid = true;
 
@@ -245,6 +240,7 @@ var objViewIndex = {
                                 request.responseType = 'blob';
 
                                 request.onload = function() {
+
                                     if(request.status === 200) {
                                         var disposition = request.getResponseHeader('content-disposition');
                                         var matches = /"([^"]*)"/.exec(disposition);
@@ -255,13 +251,25 @@ var objViewIndex = {
                                         link.href = window.URL.createObjectURL(blob);
                                         link.download = filename;
 
+                                        $( "body" ).bind("DOMNodeRemoved", function(e){
+                                            
+                                            $( "body" ).unbind("DOMNodeRemoved");
+
+                                            if (areErrors) {
+                                                $('#frmAlertSumaryMsg').html('<h5>Eror al procesar una o varias de las solicitudes.</h5> <br/><br/>' + errorList);
+                                                $('#frmAlertSumary').removeClass('d-none');
+                                            }
+
+                                        });
+
                                         document.body.appendChild(link);
                                         link.click();
                                         document.body.removeChild(link);
 
                                         // TODO: Xmal - Quitar comentarios al implementar
-                                        // objViewIndex.vars.checkbox.checkAll.trigger('click');                                        
-                                        // $('#imprimir').modal('hide');
+                                        objViewIndex.vars.checkbox.checkAll.trigger('click');                                        
+                                        $('#imprimir').modal('hide');
+
 
                                     } else {
 
@@ -269,6 +277,7 @@ var objViewIndex = {
                                         $('#frmAlert').removeClass('d-none');
 
                                     }
+
                                     $.LoadingOverlay("hide", true);
                                 };
 
@@ -279,10 +288,19 @@ var objViewIndex = {
                                 
                                 request.send(model.model);
                             } else {
+                                
+                                if (areErrors) {
+                                    $('#frmAlertSumaryMsg').html('<h5>Eror al procesar una o varias de las solicitudes.</h5> <br/><br/>' + errorList);
+                                    $('#frmAlertSumary').removeClass('d-none');
+                                }
 
                                 $.LoadingOverlay("hide",true);
 
                             }
+                            
+                            $('#formImprimir')[0].reset();
+                            $('#optionPDF').val(-1).trigger('change');
+                            
                         }
                         
                     }).fail(function (err) {

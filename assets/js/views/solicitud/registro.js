@@ -958,6 +958,9 @@ var fillData = {
                         var row = [ value.pID_COMISION_EXT, value.pFECHA_INICIO, value.pFECHA_TERMINO, value.pTIPO_COMISION, value.pMOTIVO, value.pDESTINO ];
                         tableObj.row.add( row ).draw( false );
                     });
+
+                    $('#Comisiones_form').data('requireddata',false);
+
                 }
 
                 //Boton para refrescar datatable
@@ -966,6 +969,7 @@ var fillData = {
                     btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.laboral.comisiones(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
 
                 tableRef.LoadingOverlay("hide");
+                
             })
             .catch( (err) => {
                 tableRef.setError(err.statusText);

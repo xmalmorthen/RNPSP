@@ -217,6 +217,19 @@ var objViewDatosGenerales = {
 
         objViewDatosGenerales.vars.general.init = true;
 
+        // $('#CIB,#motivoCIB').on('change',function(e){
+
+        //     if ( $('#CIB').val().length == 0 && $('#motivoCIB').val().length == 0 ){
+        //         $('#Datos_personales_CIB_form').removeData('hasChanged');
+        //         $('#Datos_personales_CIB_form').closeAlert({alertType : 'alert-danger'});
+        //         e.preventDefault();
+        //         e.stopPropagation();
+        //         e.stopImmediatePropagation();
+
+        //     };
+
+        // });
+
         $('#Datos_personales_form').find('input, select').removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError').removeData('hasChanged');
     },
     events : {
@@ -253,15 +266,15 @@ var objViewDatosGenerales = {
 
                         if (  !$('#CIB').val() && !$('#motivoCIB').val() ) { 
                             $('#CIB,#motivoCIB').setError('Información obligatoria.');
-                            $("#Datos_personales_form").setAlert({
+                            $("#Datos_personales_CIB_form").setAlert({
                                 alertType :  'alert-danger',
                                 dismissible : true,
                                 header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
                                 msg : 'Formulario incompleto'
                             });
 
-                            $("#Datos_personales_form").removeData('hasSaved').removeData('hasDiscardChanges');
-                            $("#Datos_personales_form").data('withError',true);
+                            $("#Datos_personales_CIB_form").removeData('hasSaved').removeData('hasDiscardChanges');
+                            $("#Datos_personales_CIB_form").data('withError',true);
 
                             dynTabs.markTab( $('#Datos_personales-tab'),  '<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');                            
 
@@ -271,20 +284,20 @@ var objViewDatosGenerales = {
 
                     if (  $('#CIB').val() && !$('#motivoCIB').val() ) {
                         $('#motivoCIB').setError('Información obligatoria.');
-                        objViewDatosGenerales.actions.ajax.throwError('Formulario incompleto',$("#Datos_personales_form"),from,tabRef);
+                        objViewDatosGenerales.actions.ajax.throwError({message: 'Formulario incompleto'},$("#Datos_personales_CIB_form"),from,tabRef);                        
                         return false;
                     }
 
                     if ( $('#motivoCIB').val() && !$('#CIB').val() ) {
                         $('#CIB').setError('Información obligatoria.');
-                        objViewDatosGenerales.actions.ajax.throwError('Formulario incompleto',$("#Datos_personales_form"),from,tabRef);
+                        objViewDatosGenerales.actions.ajax.throwError({message: 'Formulario incompleto'},$("#Datos_personales_CIB_form"),from,tabRef);
                         return false;
                     }
 
                     $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
                     e.preventDefault();
-                    var form = $("#Datos_personales_form");
+                    var form = $("#Datos_personales_CIB_form");
                     try {
                                                 
                         if (!mainTabMenu.var.pID_ALTERNA)
@@ -305,6 +318,7 @@ var objViewDatosGenerales = {
                         function (data) {  
                             objViewDatosGenerales.actions.ajax.callResponseValidations(form,data, from, tabRef, false, function(data){
                                 $('#CIB,#motivoCIB').val('');
+                                form.removeData('hasChanged');
                                 $.LoadingOverlay("hide",true);
                                 fillData.datosGenerales.CIB(mainTabMenu.var.pID_ALTERNA);
                             });
