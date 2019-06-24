@@ -45,25 +45,29 @@
                 $responseModel= [ 'status' => 0];
                 switch ($model['optionPDF']) {
                     case 'PSB': //Petición Solicitud de baja
-
+                        $responseModel = $this->REPORTES_model->PSB($model);
                         break;
                     case 'PSEC': //Petición Solicitud de examen de confianza
+                        $responseModel = $this->REPORTES_model->PSEC($model);
                         break;
                     case 'PSC': //Petición Solicitud de curso
+                        $responseModel = $this->REPORTES_model->PSC($model);
                         break;
                     case 'PCUIP': //Petición de CUIP
+                        $responseModel = $this->REPORTES_model->PCUIP($model);
                         break;
                     case 'PCA': //Petición de cambio de adscripción
+                        $responseModel = $this->REPORTES_model->PCA($model);
                         break;
                     case 'PSA': //Petición solicitud de alta
-                        $responseModel = $this->REPORTES_model->solicitudAlta($model);
+                        $responseModel = $this->REPORTES_model->PSA($model);
                         break;
-                    case 'AA':
+                    case 'RSB': //Respuesta solicitud de baja
+                        $responseModel = $this->REPORTES_model->RSB($model);
                         break;
-                    case 'AC':
-                        break;
-                    case 'VE':
-                        break;
+                    case 'RSA': //Respuesta solicitud de alta
+                        $responseModel = $this->REPORTES_model->RSA($model);
+                        break;                    
                     default:
                         throw new rulesException('Formato de oficio incorrecto');
                         break;
@@ -122,8 +126,11 @@
 			echo json_encode( [ 'results' => $responseModel ] );
 			exit;
 		}
+
         //REPORTES IMPLEMENTADOS
-        function /*PETICION*/ altaElemento($model = null){
+        
+        //Respuesta solicitud de alta
+        function altaElemento($model = null){
             
             ob_start();
             
@@ -294,169 +301,7 @@
             $pdf->Output(null, 'ReporteAltaElemento-' . time() . '.pdf');
         }
 
-        function altaAspirantesactivos($model){
-            ob_start();
-            
-            $pdf = new FPDF();
-            $pdf->AddPage();
-        
-            $pdf->Image($this->base."assets/images/logo.png",10,8,185,32);
-        
-            $pdf->SetFont('Arial','B',10);
-            $pdf->ln(35);
-            $pdf->cell(105);
-        
-            // Información de cabecera parte derecha
-        
-            $pdf->Cell(30,5,utf8_decode('Oficio No.'),0,0,"R");
-            $pdf->SetFont('Arial','',10);
-            $pdf->Cell(35,5,utf8_decode('{Número de oficio}'),0,0,"R");
-            $pdf->Ln();
-            $pdf->SetFont('Arial','B',10);
-            $pdf->cell(100);
-            $pdf->Cell(30,5,'Asunto:',0,0,"R");
-            $pdf->SetFont('Arial','',10);
-            $pdf->Cell(30,5,utf8_decode('Se notifica trámite solicitado.'));
-            $pdf->Ln();
-        
-            $pdf->cell(107);
-            $pdf->Cell(25,5,utf8_decode('{Fecha formato: Colima, Colima , a 25 de Junio de 2018.}'));
-            $pdf->Ln(10);
-         
-        
-            // Datos del remitente
-            $pdf->SetFont('Arial','B',10);
-        
-            $pdf->Cell(30,5,utf8_decode('{Nombre de quien emite el oficio},'));
-            $pdf->Ln();
-          
-            $pdf->Cell(30,5,utf8_decode('{Cargo de quien emite el oficio},'));
-            $pdf->Ln();
-          
-            $pdf->Cell(30,5,utf8_decode('PRESENTE.'));
-            $pdf->Ln(10);
-        
-            // Comunicado
-            $pdf->SetFont('Arial','',10);
-        
-        
-            $pdf->MultiCell(185,5,utf8_decode("De conformidad a las atribuciones que me confiere el numeral 19, 20 y demás relativos a la Ley del Sistema de Seguridad Pública para el Estado de Colima y en atención al oficio no. " . $model['oficioNumero'] . " de fecha {Fecha actual: 13 de junio} del año en curso, en el cual se solicita realizar los movimientos de alta en el aplicativo del para el registro de personal al Registro Nacional de Personal de Seguridad Pública (RNPSP) , como aspirantes Activos a los elementos que a continuación se enlistan:"));
-        
-            $pdf->Ln(5);
-            $pdf->SetFont('Arial','B',10);
-        
-            $pdf->Cell(30,5,utf8_decode('PEP'));
-        
-            // Tabla 
-        
-            $pdf->Ln(10);
-            $pdf->cell(10);
-        
-            // Headers
-            $pdf->Cell(8,7,"No.",1);
-            $pdf->Cell(72,7,"Nombre",1);
-            $pdf->Cell(8,7,"No.",1);
-            $pdf->Cell(72,7,"Nombre",1);
-            $pdf->Ln();
-            // Data
-            $pdf->SetFont('Arial','',7);
-            $pdf->cell(10);
-            $pdf->Cell(8,6,1,1);
-            $pdf->Cell(72,6,"",1);
-            $pdf->Cell(8,6,4,1);
-            $pdf->Cell(72,6,"",1);
-            $pdf->Ln();
-            $pdf->cell(10);
-            $pdf->Cell(8,6,1,1);
-            $pdf->Cell(72,6,"",1);
-            $pdf->Cell(8,6,4,1);
-            $pdf->Cell(72,6,"",1);
-            $pdf->Ln();
-            $pdf->cell(10);
-            $pdf->Cell(8,6,1,1);
-            $pdf->Cell(72,6,"",1);
-            $pdf->Cell(8,6,4,1);
-            $pdf->Cell(72,6,"",1);
-            $pdf->Ln(10);
-            $pdf->SetFont('Arial','',10);
-          
-            
-            $pdf->MultiCell(185,5,utf8_decode("Al respecto hago de su conocimiento que se han llevado a cabo los trámites solicitados, adjunto constancias de dichos movimientos."));
-            
-            $pdf->Ln();
-          
-            $pdf->MultiCell(185,5,utf8_decode("Es pertinente hacer mención que la {Nombre de la persona a dar de alta}, ya se encuentra registrada en el  como Aspirante Activo desde el año 2016"));
-        
-            
-            $pdf->Ln();
-          
-            $pdf->MultiCell(185,5,utf8_decode("Sin otro particular, hago propicia la ocasión para hacerle llegar un cordial saludo."));
-        
-        
-            $pdf->Ln(8);
-            $pdf->SetFont('Arial','B',8);
-            $pdf->cell(82);
-            $pdf->Cell(30,5,utf8_decode('A T E N T A M E N T E'));
-            $pdf->Ln();
-            $pdf->cell(73);
-            $pdf->Cell(30,5,utf8_decode('EL ENCARGADO DEL DESPACHO'));
-            $pdf->Ln();
-            $pdf->cell(70);
-            $pdf->Cell(30,5,utf8_decode('DEL SECRETARIADO EJECUTIVO DEL'));
-            $pdf->Ln();
-            $pdf->cell(65);
-            $pdf->Cell(30,5,utf8_decode('SISTEMA ESTATAL DE SEGURIDAD PÚBLICA'));
-        
-            $pdf->Ln(13);
-            $pdf->cell(78);
-            $pdf->Cell(30,5,utf8_decode('{Nombre del encargado}'));
-        
-            $pdf->Ln();
-        
-            $pdf->SetFont('Arial','',8);
-            $pdf->Cell(30,5,utf8_decode('C.c.p.'));
-            $pdf->Ln(5);
-            $pdf->SetFont('Arial','B',6);
-            $pdf->Cell(30,5,utf8_decode('{Nombre de coordinador} '));
-            $pdf->SetFont('Arial','',6);
-            $pdf->Cell(18);
-            $pdf->Cell(30,5,utf8_decode('Coordinador General de Administración de Tecnologías del SESESP.- Similar fin.'));
-            $pdf->Ln();
-            $pdf->SetFont('Arial','B',6);
-            $pdf->Cell(30,5,utf8_decode('{Nombre del subcoordinador}'));
-            $pdf->SetFont('Arial','',6);
-            $pdf->Cell(18);
-            $pdf->Cell(30,5,utf8_decode('Subcoordinador de Sistemas de Información del SESESP.- Mismo fin.'));
-            $pdf->Ln();
-            $pdf->SetFont('Arial','',6);
-            $pdf->Cell(30,5,utf8_decode('Archivo.'));
-            $pdf->Ln();
-            $pdf->SetFont('Arial','',6);
-            $pdf->Cell(30,5,utf8_decode('{Clave de archivo}'));
-        
-            $pdf->Ln();
-            $pdf->Cell(52);
-            $pdf->SetFont('Arial','',6);
-            $pdf->Cell(30,5,utf8_decode('"Año 2018. Centenario del natalicio del escritor mexicano y universal Juan José Arreola"'));
-            $pdf->Ln();
-            $pdf->Image($this->base."assets/images/Cintillo.png",72,253,65,1);
-        
-            $pdf->SetFont('Arial','',6);
-            $pdf->Cell(64);
-            $pdf->Cell(30,4,utf8_decode('Secretariado Ejecutivo del Sistema Estatal de Seguridad Pública'));
-            $pdf->Ln();
-            $pdf->Cell(57);
-            $pdf->Cell(30,4,utf8_decode('C. Emilio Carranza Esq. Ejército Nacional S/N, Colonia Centro, C.P. 28000'));
-            $pdf->Ln();
-            $pdf->Cell(72);
-            $pdf->Cell(30,4,utf8_decode('Colima, Colima, México. Tel. (312) 3162603'));
-            $pdf->Ln();
-            $pdf->Cell(69);
-            $pdf->Cell(30,4,utf8_decode('https://www.secretariadoejecutivosesp.col.gob.mx'));
-        
-            return $pdf->Output(null,'Alta_Aspitante_' . time() . '.pdf');
-        }
-
+        //Petición solicitud de alta
         function solicitudAlta($model){
             ob_start();
 
@@ -570,7 +415,7 @@
             $iter = 1;
             foreach ($model['data']['data'] as $key => $item) {
                 //TODO: Xmal - Quitar el comentario de la siguiente línea de código al implementar
-                // if ($item['estatus'] == 1) 
+                if ($item['estatus'] == 1) 
                 {
 
                     $pdf->Cell(8,6, $iter ,1);
@@ -583,15 +428,14 @@
 
                     $iter++;
                 }
-
-                if ($iter == 4)
-                    break;
                 
             }
 
-            if ( ( ($iter -1) % 2 )  != 0 ){
-                $pdf->Cell(8,6, $iter ,1);
-                $pdf->Cell(72,6, utf8_decode( '----------------------------------------------' ),1);
+            if ( count($model['data']['data']) > 1 ) {
+                if ( ( ($iter -1) % 2 )  != 0 ){
+                    $pdf->Cell(8,6, $iter ,1);
+                    $pdf->Cell(72,6, utf8_decode( '----------------------------------------------' ),1);
+                }
             }
 
             /*/TABLA FOREACH */
@@ -667,7 +511,7 @@
         }
         
         // Respuesta a solicitud de alta
-        function RsolicitudAlta(){
+        function RsolicitudAlta($model){
             $pdf = new FPDF();
             $pdf->AddPage();
         
@@ -817,9 +661,11 @@
         
            $pdf->Output();
         }
+        
         // Petición solicitud baja
+        function solicitudBaja($model){
+            ob_start();
 
-        function solicitudBaja(){
             $pdf = new FPDF();
             $pdf->AddPage();
             $pdf->Image($this->base."assets/images/logo.png",10,8,185,32);
@@ -869,8 +715,8 @@
             $pdf->Cell(58);
             $pdf->Cell(30,4,utf8_decode('Tel +52 (312) 31 27940, 31 27910, 31 23087, 31 42334. www.colima-estado.gob.mx'));
             $pdf->Image($this->base."assets/images/Cintillo.png",72,253,65,1);
-            $pdf->Output();
             
+            $pdf->Output(null, 'PeticionSolicitudBaja-' . time() . '.pdf');            
         }
 
         // Respuesta a solicitud de baja
@@ -999,6 +845,7 @@
            $pdf->Output();
         }
 
+        //Petición de cambio de adscripción
         function solicitudCambio(){
             $pdf = new FPDF();
             $pdf->AddPage();

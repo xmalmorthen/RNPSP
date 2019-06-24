@@ -103,6 +103,8 @@ var objViewIndex = {
                     $("#formImprimir").validate().resetForm();
 
                     $("#formImprimir")[0].reset();
+                    $('#optionPDF').val(-1).trigger('change');
+
                     $('#frmAlert').addClass('d-none');
 
                 })
@@ -210,17 +212,19 @@ var objViewIndex = {
                     function (data) {
 
                         if (data.results.status != 1) {
+
                             $('#frmAlertMsg').html(data.results.message);
                             $('#frmAlert').removeClass('d-none');
                             $.LoadingOverlay("hide",true);
+
                         } else {
 
-                            var errorList = '<ul>';
+                            var errorList = '<ul class="list-group">';
                             var areErrors = false;
                             var areValid = false;
                             $.each(data.results.data, function( index, item ) {
                                 if (item.estatus != 1){
-                                    errorList += '<li>' + (item.nombre + ' ' + item.paterno +  ( item.materno ? ' ' + item.materno : '' )) + ' - ' + item.motivo + '</li>';
+                                    errorList += '<li class="list-group-item d-flex justify-content-between align-items-center"><strong>' + (item.nombre + ' ' + item.paterno +  ( item.materno ? ' ' + item.materno : '' )) + '</strong><span class="badge badge-danger" style="font-size: 100%!Important;">' + item.motivo + '</span></li>';
                                     areErrors = true;
                                 } else {
                                     areValid = true;
@@ -266,19 +270,18 @@ var objViewIndex = {
                                         link.click();
                                         document.body.removeChild(link);
 
-                                        // TODO: Xmal - Quitar comentarios al implementar
-                                        objViewIndex.vars.checkbox.checkAll.trigger('click');                                        
-                                        $('#imprimir').modal('hide');
-
-
                                     } else {
-
+                                        
                                         $('#frmAlertMsg').html(request.statusText);
                                         $('#frmAlert').removeClass('d-none');
 
                                     }
 
+                                    // TODO: Xmal - Quitar comentarios al implementar
+                                    // objViewIndex.vars.checkbox.checkAll.trigger('click');                                        
+                                    $('#imprimir').modal('hide');
                                     $.LoadingOverlay("hide", true);
+
                                 };
 
                                 model = $form.serialize();
@@ -289,6 +292,8 @@ var objViewIndex = {
                                 request.send(model.model);
                             } else {
                                 
+                                $('#imprimir').modal('hide');
+
                                 if (areErrors) {
                                     $('#frmAlertSumaryMsg').html('<h5>Eror al procesar una o varias de las solicitudes.</h5> <br/><br/>' + errorList);
                                     $('#frmAlertSumary').removeClass('d-none');
@@ -312,9 +317,6 @@ var objViewIndex = {
                     }).always(function () {
                         MyCookie.session.reset();
                     });
-
-
-                    
 
                 }catch(err) {
 

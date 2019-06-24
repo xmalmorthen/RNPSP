@@ -381,6 +381,10 @@ var objViewDatosGenerales = {
                         $('#pNOMBRE_SOCIOECONOMICOS,#pPATERNO_SOCIOECONOMICOS,#pSEXO_SOCIOECONOMICOS,#pFECHA_NAC_SOCIOECONOMICOS,#pID_RELACION,#pID_RELACION_SOCIOECONOMICOS').removeAttr('required');
 
                         objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesSocio',from, tabRef, false, function(data){
+                            
+                            objViewDatosGenerales.vars.datosGenerales.forms.Dependientes_form.closeAlert({alertType : 'alert-danger'});
+                            objViewDatosGenerales.vars.datosGenerales.forms.Dependientes_form.removeData('withError');
+
                         });
 
                     }
@@ -391,7 +395,9 @@ var objViewDatosGenerales = {
                     $('#pNOMBRE_SOCIOECONOMICOS,#pPATERNO_SOCIOECONOMICOS,#pSEXO_SOCIOECONOMICOS,#pFECHA_NAC_SOCIOECONOMICOS,#pID_RELACION,#pID_RELACION_SOCIOECONOMICOS').prop('required',true);
 
                     objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDependiente',from, tabRef, true, function(data,form){
+                        
                         fillData.datosGenerales.dependientesEconomicos(mainTabMenu.var.pID_ALTERNA);
+
                     });
                 }
             }
