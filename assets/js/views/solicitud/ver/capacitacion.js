@@ -124,7 +124,7 @@ var objViewCapacitacion = {
             .then( (data) => {
                 if (data) {
                     $.each( data, function(key,value) {
-                        var row = [ value.pID_IDIOMA_HABLADO_EXT, value.pIDIOMA, value.pPORCENTAJE_LECTURA, value.pPORCENTAJE_ESCRITURA, value.pPORCENTAJE_CONVERSACION ];
+                        var row = [ value.pID_HABILIDAD_APTIT_EXT, value.pTIPO_HABAILIDAD, value.pGRADO ];                        
                         tableObj.row.add( row ).draw( false );
                     });
                 }
