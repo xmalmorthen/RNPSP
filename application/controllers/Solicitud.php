@@ -951,11 +951,16 @@
 						
 					} else {
 						$fileInfo = $this->upload->data();
+
+						$uploadfile = file_get_contents($_FILES['_fichaDocumento']['tmp_name']);
+
 						$data = array(
 							"originalName" => $_FILES['_fichaDocumento']['name'],
 							"name" => $fileInfo['file_name'], 
-							"idDoc" => $key
+							"idDoc" => $key,
+							"binary" => $uploadfile
 						);
+
 						array_push($files,$data);
 					}
 				}
@@ -965,7 +970,7 @@
 					$outputMSG = "";
 					$files = current($files);
 					$this->load->model('SOLICITUD_model');
-					$responseModel = $this->SOLICITUD_model->sp_B2_MF_addDocumento(json_encode(array('originalName'=>$files['originalName'],'name'=>$files['name'])));
+					$responseModel = $this->SOLICITUD_model->sp_B2_MF_addDocumento(json_encode(array('originalName'=>$files['originalName'],'name'=>$files['name'])),$files['binary']);
 
 				} else {
 					$responseModel['message'] = 'Error al intentar guardar';
