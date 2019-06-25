@@ -43,15 +43,20 @@ var objViewFormularioCurso = {
 
         // CLICK
         objViewFormularioCurso.vars.FormularioCurso.btns.guardar.on('click',objViewFormularioCurso.events.click.FormularioCurso.guardar);
-
-        //$('#pFECHA_INICIO').prop('min', )
-        
-
-
+               
         objViewFormularioCurso.ajax.populateCmbCurso();
+
+        $('#pFECHA_INICIO').attr('max', moment( new Date() ).format('YYYY-MM-DD'));
+
+        $.validator.addMethod("FECHA_FIN", function(value, element) {
+            
+            return value < $('#pFECHA_INICIO').val() ? false : true;
+
+        }, "La fecha debe ser mayor o igual a la fecha de inicio del curso.");
 
         objViewFormularioCurso.vars.FormularioCurso.forms.Validar_examen_form.LoadingOverlay("hide");
 
+        
         objViewFormularioCurso.vars.general.init = true;
     },
     events : {
@@ -70,49 +75,67 @@ var objViewFormularioCurso = {
                         if (!form.valid())
                             throw new Error("Formulario incompleto");
 
-                        $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+                        Swal.fire({
+                            title: 'Confirmación',
+                            html: "¿Seguro que desea guardar el curso?",
+                            type: 'question',
+                            allowOutsideClick : false,
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',                            
+                        }).then(function(result){
+                            if (result.value && !result.dismiss ){
+                                
+                                $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
                         
-                        $selectDisabled = form.find('select:disabled');
-                        $selectDisabled.prop("disabled", false);
+                                $selectDisabled = form.find('select:disabled');
+                                $selectDisabled.prop("disabled", false);
 
-                        var model = form.serialize();
-                        model = {model : model};
-                        model[csrf.token_name] = csrf.hash;
+                                var model = form.serialize();
+                                model = {model : model};
+                                model[csrf.token_name] = csrf.hash;
 
-                        $selectDisabled.prop("disabled", true);
+                                $selectDisabled.prop("disabled", true);
 
-                        var callUrl = base_url + "Curso/ajaxValidar";
+                                var callUrl = base_url + "Curso/ajaxValidar";
 
-                        $.post(callUrl,model,
-                        function (data) {  
-                            
-                            var alertOpt = {
-                                alertType : !data.results.status ? 'alert-danger' : 'alert-success',
-                                dismissible : true,
-                                header : !data.results.status ? '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error' : '<i class="fa fa-check" aria-hidden="true"></i> Guardado',
-                                msg : data.results.message
-                            };
-                            form.setAlert(alertOpt);
-                            form.data('withError',false);
+                                $.post(callUrl,model,
+                                function (data) {  
+                                    
+                                    var alertOpt = {
+                                        alertType : !data.results.status ? 'alert-danger' : 'alert-success',
+                                        dismissible : true,
+                                        header : !data.results.status ? '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error' : '<i class="fa fa-check" aria-hidden="true"></i> Guardado',
+                                        msg : data.results.message
+                                    };
+                                    form.setAlert(alertOpt);
+                                    
+                                    form.trigger('reset');
+                                    $('select').trigger('change');
+                                    
+                                    form.data('withError',false);
 
-                        }).fail(function (err) {
-                            
-                            form.setAlert({
-                                alertType :  'alert-danger',
-                                dismissible : true,
-                                header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
-                                msg : err.message ? err.message : err.statusText
-                            });
-                            
-                            form.data('withError',true);
+                                }).fail(function (err) {
+                                    
+                                    form.setAlert({
+                                        alertType :  'alert-danger',
+                                        dismissible : true,
+                                        header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                                        msg : err.message ? err.message : err.statusText
+                                    });
+                                    
+                                    form.data('withError',true);
 
-                        }).always(function () {      
+                                }).always(function () {      
 
-                            $.LoadingOverlay("hide",true);
-                            MyCookie.session.reset();
+                                    $.LoadingOverlay("hide",true);
+                                    MyCookie.session.reset();
 
+                                });
+
+                            }
                         });
-
+                        
                     }catch(err) {
 
                         form.setAlert({

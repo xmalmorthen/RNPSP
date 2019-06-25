@@ -226,7 +226,7 @@
                 </div>
                 <div class="col-md-4">
                     Fecha de término
-                    <input type="date" class="form-control" id="pTERMINO_DESARROLLO" name="pTERMINO_DESARROLLO">
+                    <input type="date" class="form-control pTERMINO_DESARROLLO" id="pTERMINO_DESARROLLO" name="pTERMINO_DESARROLLO">
                 </div>
             </div>
             <br>

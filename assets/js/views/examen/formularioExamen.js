@@ -44,6 +44,8 @@ var objViewFormularioExamen = {
         // CLICK
         objViewFormularioExamen.vars.FormularioExamen.btns.guardar.on('click',objViewFormularioExamen.events.click.FormularioExamen.guardar);
 
+        $('#pFECHA_APLICACION,#pFECHA_EXAMEN').attr('max', moment( new Date() ).format('YYYY-MM-DD'));
+        
         objViewFormularioExamen.vars.FormularioExamen.forms.Validar_examen_form.LoadingOverlay("hide");
 
         objViewFormularioExamen.vars.general.init = true;
@@ -64,47 +66,65 @@ var objViewFormularioExamen = {
                         if (!form.valid())
                             throw new Error("Formulario incompleto");
 
-                        $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+                        Swal.fire({
+                            title: 'Confirmación',
+                            html: "¿Seguro que desea guardar el examen?",
+                            type: 'question',
+                            allowOutsideClick : false,
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',                            
+                        }).then(function(result){
+                            if (result.value && !result.dismiss ){
+                                
+                                $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
                         
-                        $selectDisabled = form.find('select:disabled');
-                        $selectDisabled.prop("disabled", false);
+                                $selectDisabled = form.find('select:disabled');
+                                $selectDisabled.prop("disabled", false);
 
-                        var model = form.serialize();
-                        model = {model : model};
-                        model[csrf.token_name] = csrf.hash;
+                                var model = form.serialize();
+                                model = {model : model};
+                                model[csrf.token_name] = csrf.hash;
 
-                        $selectDisabled.prop("disabled", true);
+                                $selectDisabled.prop("disabled", true);
 
-                        var callUrl = base_url + "Examen/ajaxValidar";
+                                var callUrl = base_url + "Examen/ajaxValidar";
 
-                        $.post(callUrl,model,
-                        function (data) {  
-                            
-                            var alertOpt = {
-                                alertType : !data.results.status ? 'alert-danger' : 'alert-success',
-                                dismissible : true,
-                                header : !data.results.status ? '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error' : '<i class="fa fa-check" aria-hidden="true"></i> Guardado',
-                                msg : data.results.message
-                            };
-                            form.setAlert(alertOpt);
-                            form.data('withError',false);
+                                $.post(callUrl,model,
+                                function (data) {  
+                                    
+                                    var alertOpt = {
+                                        alertType : !data.results.status ? 'alert-danger' : 'alert-success',
+                                        dismissible : true,
+                                        header : !data.results.status ? '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error' : '<i class="fa fa-check" aria-hidden="true"></i> Guardado',
+                                        msg : data.results.message
+                                    };
+                                    form.setAlert(alertOpt);
 
-                        }).fail(function (err) {
-                            
-                            form.setAlert({
-                                alertType :  'alert-danger',
-                                dismissible : true,
-                                header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
-                                msg : err.message ? err.message : err.statusText
-                            });
-                            
-                            form.data('withError',true);
+                                    form.trigger('reset');
+                                    $('select').trigger('change');
 
-                        }).always(function () {      
+                                    form.data('withError',false);
 
-                            $.LoadingOverlay("hide",true);
-                            MyCookie.session.reset();
+                                }).fail(function (err) {
+                                    
+                                    form.setAlert({
+                                        alertType :  'alert-danger',
+                                        dismissible : true,
+                                        header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                                        msg : err.message ? err.message : err.statusText
+                                    });
+                                    
+                                    form.data('withError',true);
 
+                                }).always(function () {      
+
+                                    $.LoadingOverlay("hide",true);
+                                    MyCookie.session.reset();
+
+                                });
+
+                            }
                         });
 
                     }catch(err) {
