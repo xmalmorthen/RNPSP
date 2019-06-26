@@ -143,7 +143,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         CUIP del jefe inmediato
-                        <input type="text" id="ID_JEFE" name="ID_JEFE" class="form-control" maxlength="10" >
+                        <input type="number" id="ID_JEFE" name="ID_JEFE" class="form-control" maxlength="10" >
                     </div>
                     <div class="col-md-4">
                         Nombre del jefe inmediato

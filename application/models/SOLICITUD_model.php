@@ -940,7 +940,7 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pID_FUNCION_PUESTO',null,'',array('name'=>'','rule'=>'trim|numeric|max_length[10]'));//no lo encontre
     $this->addParam('pID_AMBITO_PUESTO','pID_AMBITO_PUESTO_Adscripcion_actual','',array('rule'=>'trim|numeric|max_length[10]'));//no lo encontre
     $this->addParam('pDIVISION','pDIVISION','N',array('name'=>'','rule'=>'trim|max_length[30]'));
-    $this->addParam('pID_JEFE','ID_JEFE','',array('rule'=>'trim|max_length[10]'));
+    $this->addParam('pID_JEFE','ID_JEFE','',array('rule'=>'trim|numeric|max_length[10]'));
     $this->addParam('pID_MOTIVO_MOV_LAB',null);//no lo encontre
     $this->addParam('pID_TIPO_BAJA',null);//no lo encontre
     $this->addParam('pFECHA_BAJA',null);//no lo encontre
