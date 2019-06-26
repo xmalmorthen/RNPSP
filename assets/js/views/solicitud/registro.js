@@ -620,6 +620,8 @@ var fillData = {
 
             fillData.datosGenerales.CIB(mainTabMenu.var.pID_ALTERNA);
 
+            objViewDatosGenerales.actions.ajax.populateCmbOperacion();
+
             $('#Datos_personales_form').data('requireddata',false);
 
         },

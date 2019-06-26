@@ -2078,14 +2078,23 @@
 
 		# OPCION COMBO
 		# Obtiene la valores para el combo del tipo operacion de acuerdo a las reglas de operacion
-		public function cmbTipoOperacion(){
+		public function cmbTipoOperacion($CURP = null){
 			// if (! $this->input->is_ajax_request()) {
 			// 	if (ENVIRONMENT == 'production') redirect('Error/e404','location');
 			// }
-			$curp = $this->session->local_userdata('CURP');
+
+			if (!$CURP)
+				$CURP = $this->input->get('CURP');
+		
 			try {
+				
+				if(!$CURP){
+					throw new rulesException('Parámetros incorrectos');
+				}
+
+
 				$this->load->model('SOLICITUD_model');
-				$responseModel = $this->SOLICITUD_model->sp_cmbTipoOperacion($curp);
+				$responseModel = $this->SOLICITUD_model->sp_cmbTipoOperacion($CURP);
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));

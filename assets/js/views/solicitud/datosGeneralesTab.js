@@ -144,7 +144,7 @@ var objViewDatosGenerales = {
             }
         }
 
-        objViewDatosGenerales.actions.ajax.populateCmbOperacion();
+        
 
         $('#pFECHA_NACIONALIDAD, #pINICIO_DESARROLLO,#pFECHA_NAC_SOCIOECONOMICOS,#pTERMINO_DESARROLLO').attr('max', moment( new Date() ).format('YYYY-MM-DD'));
         // $('#pTERMINO_DESARROLLO').attr('min', moment( new Date() ).add(1,'days').format('YYYY-MM-DD') );
@@ -220,6 +220,8 @@ var objViewDatosGenerales = {
         $('.validarNumberSpecial').on('input', function () {
             this.value = this.value.replace(/[^0-9\-\(\)snSN\/]/g,'');
         });
+
+        objViewDatosGenerales.actions.ajax.populateCmbOperacion();
 
         objViewDatosGenerales.vars.general.init = true;
 
@@ -504,6 +506,8 @@ var objViewDatosGenerales = {
 
             $('#pSEXO_DATOS_PERSONALES').prop("disabled", true);
 
+            objViewDatosGenerales.actions.ajax.populateCmbOperacion();
+
             dynTabs.loaderTab();
         },    
         discartChanges : function(e,eTab){
@@ -616,14 +620,19 @@ var objViewDatosGenerales = {
                 }
             },
             populateCmbOperacion: function(){
-                var obj = $('#pTIPO_OPERACION');
-                var callUrl = base_url + "Solicitud/cmbTipoOperacion";
 
+                if ( objViewDatosGenerales.vars.datosGenerales.objs.pCURP.val().length == 0)
+                    return false;
+
+                var obj = $('#pTIPO_OPERACION');
+                obj.prop('disabled', true);
                 obj.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+                var callUrl = base_url + "Solicitud/cmbTipoOperacion";
 
                 obj.append('<option disabled selected value><i class="fa fa-refresh fa-spin fa-3x fa-fw"></i> Actualizando, favor de esperar...</option>');
 
-                $.get(callUrl,
+                $.get(callUrl, { CURP : objViewDatosGenerales.vars.datosGenerales.objs.pCURP.val() },
                     function (data) {
                         if (data) {
                             obj.find("option").remove();
