@@ -149,6 +149,12 @@ var objViewDatosGenerales = {
         $('#pFECHA_NACIONALIDAD, #pINICIO_DESARROLLO,#pFECHA_NAC_SOCIOECONOMICOS,#pTERMINO_DESARROLLO').attr('max', moment( new Date() ).format('YYYY-MM-DD'));
         // $('#pTERMINO_DESARROLLO').attr('min', moment( new Date() ).add(1,'days').format('YYYY-MM-DD') );
 
+        $.validator.addMethod("pTERMINO_DESARROLLO", function(value, element) {
+            
+            return value < $('#pINICIO_DESARROLLO').val() ? false : true;
+
+        }, "La fecha debe ser mayor o igual a la fecha de inicio.");
+
         $.validator.addMethod("validRFCFormat", function(value, element) {
             return validarInputRFC(value);
         }, "Formato incorrecto");

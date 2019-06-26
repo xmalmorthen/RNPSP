@@ -7,6 +7,15 @@ class ajaxCatalogos extends CI_Controller {
 		parent::__construct();		
 	}
 	
+	function normaliza ($cadena){
+    	$originales = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
+    	$modificadas = 'aaaaaaaceeeeiiiidnoooooouuuuybsaaaaaaaceeeeiiiidnoooooouuuyybyRr';
+    	$cadena = utf8_decode($cadena);
+	    $cadena = strtr($cadena, utf8_decode($originales), $modificadas);
+    	$cadena = strtolower($cadena);
+	    return utf8_encode($cadena);
+	}
+	
 	public function index(){
 		$query = $this->input->get('qry');
 		$params = $this->input->get('params');
@@ -20,6 +29,7 @@ class ajaxCatalogos extends CI_Controller {
 				throw new Exception('Parámetros incorrectos');
 			}
 
+			// $deCrypt = $this->normaliza(Utils::deCrypt($query));
 			$deCrypt = Utils::deCrypt($query);
 
 			if (!$deCrypt){
@@ -43,7 +53,10 @@ class ajaxCatalogos extends CI_Controller {
 		}
 		
 		header('Content-type: application/json');
-
+		/*if(count($responseModel)==0){
+			Utils::pre($response,false);
+			utils::pre($deCrypt);
+		}*/
         echo json_encode( [ 'results' => $responseModel ] );
         exit;
 	}

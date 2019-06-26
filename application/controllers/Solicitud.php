@@ -951,11 +951,16 @@
 						
 					} else {
 						$fileInfo = $this->upload->data();
+
+						$uploadfile = file_get_contents($_FILES['_fichaDocumento']['tmp_name']);
+
 						$data = array(
 							"originalName" => $_FILES['_fichaDocumento']['name'],
 							"name" => $fileInfo['file_name'], 
-							"idDoc" => $key
+							"idDoc" => $key,
+							"binary" => $uploadfile
 						);
+
 						array_push($files,$data);
 					}
 				}
@@ -965,7 +970,7 @@
 					$outputMSG = "";
 					$files = current($files);
 					$this->load->model('SOLICITUD_model');
-					$responseModel = $this->SOLICITUD_model->sp_B2_MF_addDocumento(json_encode(array('originalName'=>$files['originalName'],'name'=>$files['name'])));
+					$responseModel = $this->SOLICITUD_model->sp_B2_MF_addDocumento(json_encode(array('originalName'=>$files['originalName'],'name'=>$files['name'])),$files['binary']);
 
 				} else {
 					$responseModel['message'] = 'Error al intentar guardar';
@@ -1014,7 +1019,11 @@
 					$_FILES['_fichaVoz']['size']      = $_FILES['fichaVoz']['size'][$key];
 
 					$config['upload_path']          = STATIC_DOCUMMENTS_PATH . 'fichaVoz';
+<<<<<<< HEAD
 					$config['allowed_types']        = '*';
+=======
+					// $config['allowed_types']        = 'mp3';
+>>>>>>> ee7a3ee1bb6374706bf11709d4c2875a2bd8b82a
 					// $config['max_size']             = 10240;
 					$config['max_width']            = 0;
 					$config['max_height']           = 0;
