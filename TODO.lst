@@ -12,3 +12,11 @@
     - Sustituir los campos del modelo [ function altaElemento ]
 ]
 //TODO: Xmal - Implementar la replicación [ assets\js\views\solicitud\index.js ]
+
+
+//BLOQUE DE CÓDIGO PARA DECODIFICAR IMAGEN GUARDADA EN BD Y ESCRIBIRLA EN ARCHIVO
+/*
+ $binHex = prepareImageDBString($binaryFile);
+ $binary = prepareImageString($binHex);
+ file_put_contents('PruebaDeImagenSubidaABD.jpg', $binary); 
+*/

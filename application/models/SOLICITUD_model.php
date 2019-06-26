@@ -1926,108 +1926,60 @@ class SOLICITUD_model extends MY_Model
       return '0x' . $unpacked['hex'];
   }
 
-  private function prepareImageDBString($binaryFile)
-  {
-      $content = bin2hex($binaryFile);
-      $out = "0x".$content;
-      return $out;
-  }
-
   # ****************************************************************************************************************
   # Digitalización de documento
   # ****************************************************************************************************************
   # Opcion Nueva Solicitud - Ficha Identificación- Pestaña Digitalización de documento
   # Boton Guardar Documento
   # sp_B2_MF_addDocumento - Agrega las imágenes de los documentos pertenecientes al elemento.
-  public function  sp_B2_MF_addDocumento($file,$binaryFile){
+  public function  sp_B2_MF_addDocumento($file,$binaryFile){    
     
-    $exec = "BEGIN TRANSACTION 
-              DECLARE 
-                @txtError varchar(250), 
-                @msg varchar(80), 
-                @tranEstatus int;  
-              EXEC [sp_B2_MF_addDocumento] 
-                @pID_ALTERNA = " . $_POST['pID_ALTERNA'] . ", 
-                @pID_ESTADO_EMISOR = null, 
-                @pID_EMISOR = null, 
-                @pID_CATEGORIA_DOC = " . $_POST['pID_CATEGORIA_DOC'] . ", 
-                @pVALOR = null, 
-                @pFECHA_DOCUMENTO = " . ( strlen($_POST['FECHA_DOCUMENTO']) > 0 ? $_POST['FECHA_DOCUMENTO'] : 'null' ) . ", 
-                @pESTATUS = null, 
-                @pPATH_IMAGEN = N'" . $file . "', 
-                @pIMAGEN = N'" . $this->prepareImageDBString($binaryFile) . "',
-                @txtError = @txtError OUTPUT,
-                @msg = @msg OUTPUT,
-                @tranEstatus = @tranEstatus OUTPUT;
-                
-                SELECT  @txtError AS N'txtError', @msg AS N'msg', @tranEstatus AS N'tranEstatus'; 
-            COMMIT TRANSACTION";
+    $this->load->helper('imagesInDB');
+    $this->load->library('form_validation');
 
-    // $exec = "insert into DOCUMENTO(ID_ALTERNA,ID_ESTADO_EMISOR,ID_EMISOR,ID_CATEGORIA_DOC,VALOR,FECHA_DOCUMENTO,ESTATUS,PATH_IMAGEN,IMAGEN)
-    //          values(" . $_POST['pID_ALTERNA'] . ",6,19," . $_POST['pID_CATEGORIA_DOC'] . ",N'" . $file . "'," . ( strlen($_POST['FECHA_DOCUMENTO']) > 0 ? $_POST['FECHA_DOCUMENTO'] : 'null' ) . ",'A',N'" . $file . "',CONVERT(VARBINARY(MAX),N'" . $this->prepareImageDBString($binaryFile) . "'))";
+    $this->arrayToPost(
+      array(
+        'pPATH_IMAGEN'=> $file,
+        'pIMAGEN'=> prepareImageDBString($binaryFile)
+      )
+    );
 
-    $result = $this->db->query($exec);
+    $this->addParam('pID_ALTERNA','pID_ALTERNA','',array('rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pID_ESTADO_EMISOR',null);
+    $this->addParam('pID_EMISOR',null);
+    $this->addParam('pID_CATEGORIA_DOC','pID_CATEGORIA_DOC','',array('name'=>'Categoría de documento','rule'=>'trim|required|numeric|max_length[10]'));
+    $this->addParam('pVALOR',null);
+    $this->addParam('pFECHA_DOCUMENTO','FECHA_DOCUMENTO','',array('name'=>'Fecha documento','rule'=>'trim|max_length[10]'));
+    $this->addParam('pESTATUS',null);
+    $this->addParam('pPATH_IMAGEN','pPATH_IMAGEN','',array('name'=>'Documento','rule'=>'trim|required|max_length[250]'));
+    $this->addParam('pIMAGEN','pIMAGEN','N');
 
-    if (!$result){
-            throw new Exception($this->db->error()['message']);
+
+
+    if ($this->form_validation->run() === true) {
+
+      $this->procedure('sp_B2_MF_addDocumento');
+      $this->iniParam('txtError','varchar','250');
+      $this->iniParam('msg','varchar','80');
+      $this->iniParam('tranEstatus','int');
+      $build = $this->build_query();
+      $query = $this->db->query($build);
+      $response = $this->query_row($query);
+      if($response == FALSE){        
+        $this->response['status'] = false;
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      }else{
+        $this->response['status'] = (bool)$response['tranEstatus'];
+        $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
+      }
+    } else {
+      $this->load->helper('html');
+      $this->response['status'] = false;
+      $message = $this->form_validation->error_array();
+      $this->response['message'] = ul($message);
+      $this->response['validation'] = $message;
     }
-
-    $returnResponse = $result->result();
-
-    /*$returnResponse = $result->result()[0];
-
-    if ($returnResponse->tranEstatus !== 1){
-            throw new rulesException($returnResponse->msg);
-    }*/
-
-    $this->response['status'] = false;
-    $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
     return $this->response;
-
-
-    // $this->arrayToPost(
-    //   array(
-    //     'pPATH_IMAGEN'=> $file,
-    //     'pIMAGEN'=> $unpacked['hex']
-    //   )
-    // );
-    
-    // $this->load->library('form_validation');
-
-    // $this->addParam('pID_ALTERNA','pID_ALTERNA','',array('rule'=>'trim|required|numeric|max_length[10]'));
-    // $this->addParam('pID_ESTADO_EMISOR',null);
-    // $this->addParam('pID_EMISOR',null);
-    // $this->addParam('pID_CATEGORIA_DOC','pID_CATEGORIA_DOC','',array('name'=>'Categoría de documento','rule'=>'trim|required|numeric|max_length[10]'));
-    // $this->addParam('pVALOR',null);
-    // $this->addParam('pFECHA_DOCUMENTO','FECHA_DOCUMENTO','',array('name'=>'Fecha documento','rule'=>'trim|max_length[10]'));
-    // $this->addParam('pESTATUS',null);
-    // $this->addParam('pPATH_IMAGEN','pPATH_IMAGEN','',array('name'=>'Documento','rule'=>'trim|required|max_length[250]'));
-    // $this->addParam('pIMAGEN','pIMAGEN','0x');
-        
-    // if ($this->form_validation->run() === true) {
-
-    //   $this->procedure('sp_B2_MF_addDocumento');
-    //   $this->iniParam('txtError','varchar','250');
-    //   $this->iniParam('msg','varchar','80');
-    //   $this->iniParam('tranEstatus','int');
-    //   $build = $this->build_query();
-    //   $query = $this->db->query($build);
-    //   $response = $this->query_row($query);
-    //   if($response == FALSE){        
-    //     $this->response['status'] = false;
-    //     $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
-    //   }else{
-    //     $this->response['status'] = (bool)$response['tranEstatus'];
-    //     $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
-    //   }
-    // } else {
-    //   $this->load->helper('html');
-    //   $this->response['status'] = false;
-    //   $message = $this->form_validation->error_array();
-    //   $this->response['message'] = ul($message);
-    //   $this->response['validation'] = $message;
-    // }
-    // return $this->response;
   }
 
   # Opcion Nueva Solicitud - Ficha Identificación- Pestaña Digitalización de documento
