@@ -16,8 +16,8 @@
             $this->session->set_flashdata('titleBody','[ Curso ] - Curso - Administración de curso');
             // /TITLE BODY PAGE
 
-            $this->load->model('SOLICITUD_model');
-			$solicitudesList = $this->SOLICITUD_model->get();
+            $this->load->model('CURSO_model');
+			$solicitudesList = $this->CURSO_model->get();
 			
             $model = [];
 			$items = [];

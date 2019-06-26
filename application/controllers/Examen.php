@@ -19,8 +19,8 @@ class Examen extends CI_controller {
 		$this->session->set_flashdata('titleBody','[ Examen ] - Examen - Administración de examen');
         // /TITLE BODY PAGE
         
-        $this->load->model('SOLICITUD_model');
-        $solicitudesList = $this->SOLICITUD_model->get();
+        $this->load->model('EXAMEN_model');
+        $solicitudesList = $this->EXAMEN_model->get();
         
         $model = [];
         $items = [];
