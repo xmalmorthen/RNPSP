@@ -432,54 +432,35 @@ var objViewDatosGenerales = {
                 $('#pID_ENTIDAD_NAC,#pID_MUNICIPIO_NAC').prop( "disabled", false );
 
                 if (value != 82){ // país diferente a méxico
-                    
-                    // if ( ($('#pID_MUNICIPIO_NAC').val() != value && $('#pID_MUNICIPIO_NAC').data('populated') ) || $('#pID_MUNICIPIO_NAC').val() == null) {
-                    if ( $('#pID_MUNICIPIO_NAC').data('populated') || $('#pID_MUNICIPIO_NAC').val() == null) {
-                    
+
+
+                    intervalEstadoMunicipio = setInterval(function(){
+
                         if (value == -1) { // sin información
 
-                            $('#pID_ENTIDAD_NAC').val(value).trigger('change',[function(){
-
-                                if ( $('#pID_ENTIDAD_NAC').val() == value)
-                                    $('#pID_MUNICIPIO_NAC').val(-1).trigger('change.select2');
-
-                                $('#pID_ENTIDAD_NAC,#pID_MUNICIPIO_NAC').prop( "disabled", true );
-
-                            }]).trigger('change.select2');
-                                
-                            $('#pID_ENTIDAD_NAC,#pID_MUNICIPIO_NAC').prop( "disabled", true );
-
+                            if ( !$('#pID_ENTIDAD_NAC').val()  )
+                                $('#pID_ENTIDAD_NAC').val(-1).trigger('change').trigger('change.select2').prop( "disabled", true );
+                            
+                            if ( !$('#pID_MUNICIPIO_NAC').val())
+                                $('#pID_MUNICIPIO_NAC').val(-1).trigger('change').trigger('change.select2').prop( "disabled", true );
+                            
                         } else { // cualquier otro país
 
-                            $('#pID_ENTIDAD_NAC').val(99).trigger('change',[function(){
-
-                                if ( $('#pID_ENTIDAD_NAC').val() == 99) {
-
-                                    pID_ENTIDAD_NACInterval = setInterval(function(){
-
-                                        if ($('#pID_MUNICIPIO_NAC').data('populating') != true ){
-                                            
-                                            clearInterval(pID_ENTIDAD_NACInterval);
-                                            $('#pID_MUNICIPIO_NAC').val(999999).trigger('change.select2');
-                                            $('#pID_ENTIDAD_NAC,#pID_MUNICIPIO_NAC').prop( "disabled", true );
-
-                                        }
-
-                                    }, 300);
-
-                                    $('#pID_MUNICIPIO_NAC').data('populated',true);
-                                    $('#pID_MUNICIPIO_NAC').val(999999).trigger('change.select2');
-
-                                    $('#pID_ENTIDAD_NAC,#pID_MUNICIPIO_NAC').prop( "disabled", true );
-                                    
-                                }
-
-                            }]).trigger('change.select2');
+                            if ( !$('#pID_ENTIDAD_NAC').val()  )
+                                $('#pID_ENTIDAD_NAC').val(99).trigger('change').trigger('change.select2').prop( "disabled", true );
                             
+                            if ( !$('#pID_MUNICIPIO_NAC').val() )
+                                $('#pID_MUNICIPIO_NAC').val(999999).trigger('change').trigger('change.select2').prop( "disabled", true );
+                            
+                        }
+
+                        if ( $('#pID_ENTIDAD_NAC').val() && $('#pID_MUNICIPIO_NAC').val() ) {
+                            clearInterval(intervalEstadoMunicipio);
                             $('#pID_ENTIDAD_NAC,#pID_MUNICIPIO_NAC').prop( "disabled", true );
                         }
-                        
-                    }
+
+                    }, 300);
+
                 }
 
             },

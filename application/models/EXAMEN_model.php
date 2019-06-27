@@ -34,7 +34,7 @@ class EXAMEN_model extends MY_Model
 
     if($response == FALSE){
       $this->response['status'] = false;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       $this->response['status'] = true;
       $this->response['data'] = $response;
@@ -64,7 +64,7 @@ class EXAMEN_model extends MY_Model
 
     if($response == FALSE){
       $this->response['status'] = false;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       $this->response['status'] = (bool)$response['tranEstatus'];
       $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];

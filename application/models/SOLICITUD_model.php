@@ -41,10 +41,10 @@ class SOLICITUD_model extends MY_Model
 
     if($response == FALSE){
       $this->response['status'] = false;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       $this->response['status'] = (bool)$response['tranEstatus'];
-      $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : ( strlen($response['txtError']) > 0 ? $response['txtError'] : $response['msg']);
+      $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : ( strlen($response['txtError']) > 0 ? $response['txtError'] : $response['msg'])  . " [ GUID = {$this->config->item('GUID')} ]";
     }
 
     return $this->response;
@@ -69,7 +69,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $responseSelect = current($response);
@@ -110,7 +110,7 @@ class SOLICITUD_model extends MY_Model
 
       if($response == FALSE){
         $this->response['status'] = false;
-        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
       }else{
         $this->response['status'] = (bool)$response['tranEstatus'];
         $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
@@ -136,7 +136,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -159,7 +159,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -186,7 +186,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -265,7 +265,7 @@ class SOLICITUD_model extends MY_Model
       
       if($response == FALSE){
         $this->response['status'] = false;
-        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
       }else{
         $resp = end($response);
         $this->response['status'] = $resp['tranEstatus'];
@@ -300,7 +300,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -327,7 +327,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -387,7 +387,7 @@ class SOLICITUD_model extends MY_Model
 
       if($response == FALSE){
         $this->response['status'] = false;
-        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
       }else{
         $this->response['status'] = (bool)$response['tranEstatus'];
         $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
@@ -421,7 +421,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -448,7 +448,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -515,7 +515,7 @@ class SOLICITUD_model extends MY_Model
 
       if($response == FALSE){
         $this->response['status'] = false;
-        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
       }else{
         $this->response['status'] = (bool)$response['tranEstatus'];
         $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
@@ -548,7 +548,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -575,7 +575,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -629,7 +629,7 @@ class SOLICITUD_model extends MY_Model
 
       if($response == FALSE){
         $this->response['status'] = false;
-        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
       }else{
         $this->response['status'] = (bool)$response['tranEstatus'];
         $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
@@ -661,7 +661,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -687,7 +687,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $response = end($response);
@@ -743,7 +743,7 @@ class SOLICITUD_model extends MY_Model
 
       if($response == FALSE){
         $this->response['status'] = false;
-        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
       }else{
         $this->response['status'] = (bool)$response['tranEstatus'];
         $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
@@ -775,7 +775,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -801,7 +801,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -838,7 +838,7 @@ class SOLICITUD_model extends MY_Model
 
       if($response == FALSE){
         $this->response['status'] = false;
-        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
       }else{
         $this->response['status'] = (bool)$response['tranEstatus'];
         #PARCHE EL PROCEDIMIENTO ESTA REGRESANDO EL MENSAGE DE ERROR POR MSG NO POR TXTERROR
@@ -871,7 +871,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -894,7 +894,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1047,7 +1047,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1070,7 +1070,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1143,7 +1143,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1169,7 +1169,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         if($response['CONOCE_REG_RECON'] == 'N'){
@@ -1250,7 +1250,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1273,7 +1273,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1343,7 +1343,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1369,7 +1369,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1437,7 +1437,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1463,7 +1463,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1574,7 +1574,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1600,7 +1600,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1672,7 +1672,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1699,7 +1699,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1729,7 +1729,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1753,7 +1753,7 @@ class SOLICITUD_model extends MY_Model
     $response = $this->query_row($query);
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $response['IMG_PERFILIZQ'] = (Utils::isJSON($response['IMG_PERFILIZQ']))? utils::addPath(STATIC_DOCUMMENTS_PATH.'fichaFotografica/',$response['IMG_PERFILIZQ']) : null;
@@ -1784,7 +1784,7 @@ class SOLICITUD_model extends MY_Model
     $response = $this->query_list($query);
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1881,7 +1881,7 @@ class SOLICITUD_model extends MY_Model
     $response = $this->query_list($query);
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1905,7 +1905,7 @@ class SOLICITUD_model extends MY_Model
     $response = $this->query_row($query);
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1994,7 +1994,7 @@ class SOLICITUD_model extends MY_Model
     $response = $this->query_list($query);
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -2021,7 +2021,7 @@ class SOLICITUD_model extends MY_Model
     $response = $this->query_row($query);
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -2083,7 +2083,7 @@ class SOLICITUD_model extends MY_Model
     $response = $this->query_list($query);
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -2113,7 +2113,7 @@ class SOLICITUD_model extends MY_Model
     if($response === FALSE){
 
         $this->response['status'] = 0;
-        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
         
     }else{
       if(count($response) > 0){

@@ -21,7 +21,7 @@ class REPORTES_model extends MY_Model
     $response = $this->query_list($query);
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -41,7 +41,7 @@ class REPORTES_model extends MY_Model
     $response = $this->query_list($query);
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -61,7 +61,7 @@ class REPORTES_model extends MY_Model
     $response = $this->query_list($query);
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -81,7 +81,7 @@ class REPORTES_model extends MY_Model
     $response = $this->query_list($query);
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -101,7 +101,7 @@ class REPORTES_model extends MY_Model
     $response = $this->query_list($query);
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -121,7 +121,7 @@ class REPORTES_model extends MY_Model
     $response = $this->query_list($query);
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -141,7 +141,7 @@ class REPORTES_model extends MY_Model
     $response = $this->query_list($query);
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -161,7 +161,7 @@ class REPORTES_model extends MY_Model
     $response = $this->query_list($query);
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;

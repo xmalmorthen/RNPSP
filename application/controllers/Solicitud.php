@@ -122,11 +122,12 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
+				
 			}
 			catch (Exception $e) {				
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -153,11 +154,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -189,11 +190,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -226,11 +227,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -270,11 +271,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -308,11 +309,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -343,11 +344,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -379,11 +380,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -413,11 +414,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -447,11 +448,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -482,11 +483,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -516,11 +517,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -551,11 +552,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -585,11 +586,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -620,11 +621,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -654,11 +655,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -689,11 +690,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -723,11 +724,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -820,11 +821,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -896,11 +897,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -979,11 +980,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1056,11 +1057,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1084,11 +1085,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1112,11 +1113,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1140,11 +1141,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1168,11 +1169,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1196,11 +1197,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1225,11 +1226,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1254,11 +1255,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1282,11 +1283,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1310,11 +1311,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1338,11 +1339,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1366,11 +1367,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1395,11 +1396,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1424,11 +1425,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1451,11 +1452,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1479,11 +1480,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1507,11 +1508,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1535,11 +1536,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1563,11 +1564,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1591,11 +1592,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1619,11 +1620,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1647,11 +1648,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1675,11 +1676,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1703,11 +1704,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1731,11 +1732,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1759,11 +1760,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1787,11 +1788,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1815,11 +1816,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1843,11 +1844,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1870,11 +1871,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1898,11 +1899,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1926,11 +1927,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1953,11 +1954,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1981,11 +1982,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -2009,11 +2010,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -2036,11 +2037,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -2063,11 +2064,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -2098,11 +2099,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -2129,11 +2130,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {				
 				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-				log_message('error',$e->getMessage() . " [ GUID = {$this->config->item('GUID')} ]");
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
