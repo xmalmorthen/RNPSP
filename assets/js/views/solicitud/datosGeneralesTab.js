@@ -427,9 +427,7 @@ var objViewDatosGenerales = {
             },
             pID_PAIS_NAC : function(e){
                 
-                var value = $(this).val();
-
-                $('#pID_ENTIDAD_NAC,#pID_MUNICIPIO_NAC').prop( "disabled", false );
+                var value = $(this).val();                
 
                 if (value != 82){ // país diferente a méxico
 
@@ -440,16 +438,24 @@ var objViewDatosGenerales = {
 
                             if ( !$('#pID_ENTIDAD_NAC').val()  )
                                 $('#pID_ENTIDAD_NAC').val(-1).trigger('change').trigger('change.select2').prop( "disabled", true );
+                            else if ( $('#pID_ENTIDAD_NAC').val() != -1)
+                                $('#pID_ENTIDAD_NAC').val(-1).trigger('change').trigger('change.select2').prop( "disabled", true );
                             
                             if ( !$('#pID_MUNICIPIO_NAC').val())
+                                $('#pID_MUNICIPIO_NAC').val(-1).trigger('change').trigger('change.select2').prop( "disabled", true );
+                            else if ( $('#pID_MUNICIPIO_NAC').val() != -1)
                                 $('#pID_MUNICIPIO_NAC').val(-1).trigger('change').trigger('change.select2').prop( "disabled", true );
                             
                         } else { // cualquier otro país
 
-                            if ( !$('#pID_ENTIDAD_NAC').val()  )
+                            if ( !$('#pID_ENTIDAD_NAC').val() )                            
+                                $('#pID_ENTIDAD_NAC').val(99).trigger('change').trigger('change.select2').prop( "disabled", true );
+                            else if ( $('#pID_ENTIDAD_NAC').val() != 99)
                                 $('#pID_ENTIDAD_NAC').val(99).trigger('change').trigger('change.select2').prop( "disabled", true );
                             
                             if ( !$('#pID_MUNICIPIO_NAC').val() )
+                                $('#pID_MUNICIPIO_NAC').val(999999).trigger('change').trigger('change.select2').prop( "disabled", true );
+                            else if ( $('#pID_MUNICIPIO_NAC').val() != 999999)
                                 $('#pID_MUNICIPIO_NAC').val(999999).trigger('change').trigger('change.select2').prop( "disabled", true );
                             
                         }
@@ -461,7 +467,8 @@ var objViewDatosGenerales = {
 
                     }, 300);
 
-                }
+                } else if (value)
+                    $('#pID_ENTIDAD_NAC,#pID_MUNICIPIO_NAC').prop( "disabled", false );
 
             },
             pID_NACIONALIDAD : function(e){
