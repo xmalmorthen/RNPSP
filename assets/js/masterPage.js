@@ -13,100 +13,100 @@ var swalShow = false;
 //     volume: 0.9
 // });
 
-if (typeof MyCookie !== "undefined"){
-    MyCookie.objs.coockieObj.set('sess_time_to_update',sess_base_time,{ path : '/' });
-    var timer = setInterval(function() { 
+// if (typeof MyCookie !== "undefined"){
+//     MyCookie.objs.coockieObj.set('sess_time_to_update',sess_base_time,{ path : '/' });
+//     var timer = setInterval(function() { 
 
-        sess_time_to_update = MyCookie.objs.coockieObj.get('sess_time_to_update',{ path : '/' });
+//         sess_time_to_update = MyCookie.objs.coockieObj.get('sess_time_to_update',{ path : '/' });
 
-        if (parseInt(sess_time_to_update) <= parseInt(sess_time_left_to_confirm) && !swalShow ){
-            MyCookie.session.save();
+//         if (parseInt(sess_time_to_update) <= parseInt(sess_time_left_to_confirm) && !swalShow ){
+//             MyCookie.session.save();
 
-            swalShow = true;
-            timerInterval = null;
+//             swalShow = true;
+//             timerInterval = null;
 
-            var swalPreserve = null;
-            if (Swal.isVisible()){
-                swalPreserve = {
-                    preserve : $('.swal2-container').data('preserve'),
-                    preserveCall : $('.swal2-container').data('preserveCall')
-                }                
-            }
+//             var swalPreserve = null;
+//             if (Swal.isVisible()){
+//                 swalPreserve = {
+//                     preserve : $('.swal2-container').data('preserve'),
+//                     preserveCall : $('.swal2-container').data('preserveCall')
+//                 }                
+//             }
 
 
-            Swal.fire({                
-                title: 'Sesión',
-                html: "Está a punto de expirar la sesión por inactividad,<br> ¿Desea mantener la sesión activa?<br><br> Tiempo restante: <span class='swalSessionRemainTime'><strong></strong></span>",
-                footer: "<div>Se perderá cualquier avance no guardado...</div>",
-                type: 'question',
-                allowOutsideClick : false,
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                timer: sess_time_to_update * 1000,
-                onBeforeOpen: function() {
-                    var leftToBeep = 0;
-                    timerInterval = setInterval(function() {
-                        var content = Swal.getContent();
-                        if (content) {
-                            var timeLeft = (Swal.getTimerLeft() / 1000),
-                                mitnutesLeft = Math.trunc(timeLeft / 60),
-                                secondsLeft = Math.trunc(timeLeft % 60),
-                                msgLeft = mitnutesLeft >= 1 ? (  mitnutesLeft.toString() + " minuto" + (mitnutesLeft > 1 ? 's':'') + ' ' + secondsLeft.toString() + " segundo" + (secondsLeft != 1 ? 's':'') ) : (  secondsLeft.toString() + " segundo" + (secondsLeft > 1 ? 's':'') );
+//             Swal.fire({                
+//                 title: 'Sesión',
+//                 html: "Está a punto de expirar la sesión por inactividad,<br> ¿Desea mantener la sesión activa?<br><br> Tiempo restante: <span class='swalSessionRemainTime'><strong></strong></span>",
+//                 footer: "<div>Se perderá cualquier avance no guardado...</div>",
+//                 type: 'question',
+//                 allowOutsideClick : false,
+//                 showCancelButton: true,
+//                 confirmButtonColor: '#3085d6',
+//                 cancelButtonColor: '#d33',
+//                 timer: sess_time_to_update * 1000,
+//                 onBeforeOpen: function() {
+//                     var leftToBeep = 0;
+//                     timerInterval = setInterval(function() {
+//                         var content = Swal.getContent();
+//                         if (content) {
+//                             var timeLeft = (Swal.getTimerLeft() / 1000),
+//                                 mitnutesLeft = Math.trunc(timeLeft / 60),
+//                                 secondsLeft = Math.trunc(timeLeft % 60),
+//                                 msgLeft = mitnutesLeft >= 1 ? (  mitnutesLeft.toString() + " minuto" + (mitnutesLeft > 1 ? 's':'') + ' ' + secondsLeft.toString() + " segundo" + (secondsLeft != 1 ? 's':'') ) : (  secondsLeft.toString() + " segundo" + (secondsLeft > 1 ? 's':'') );
 
-                            content.querySelector('strong')
-                            .textContent = (msgLeft);
-                        }
+//                             content.querySelector('strong')
+//                             .textContent = (msgLeft);
+//                         }
                         
-                        leftToBeep++;
-                        if (leftToBeep == 10){
-                            beep();
-                            leftToBeep = 0;
-                        }
+//                         leftToBeep++;
+//                         if (leftToBeep == 10){
+//                             beep();
+//                             leftToBeep = 0;
+//                         }
 
-                    }, 1000);
+//                     }, 1000);
 
-                    beep();
-                },
-                onClose: () => {
-                    clearInterval(timerInterval);
-                }
-            }).then(function(result){
-                if (result.value === true || result.value === undefined && result.dismiss === undefined){
+//                     beep();
+//                 },
+//                 onClose: () => {
+//                     clearInterval(timerInterval);
+//                 }
+//             }).then(function(result){
+//                 if (result.value === true || result.value === undefined && result.dismiss === undefined){
 
-                    if (swalPreserve){
-                        if (swalPreserve.preserve){
-                            $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
-                        }
-                    }
+//                     if (swalPreserve){
+//                         if (swalPreserve.preserve){
+//                             $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+//                         }
+//                     }
 
-                    $.getJSON(site_url + 'UserSession/renovateSession/' + guid(), function(timeRemain) {
-                        swalShow = false;
-                        sess_base_time = timeRemain;
-                        MyCookie.objs.coockieObj.set('sess_time_to_update',sess_base_time,{ path : '/' });
+//                     $.getJSON(site_url + 'UserSession/renovateSession/' + guid(), function(timeRemain) {
+//                         swalShow = false;
+//                         sess_base_time = timeRemain;
+//                         MyCookie.objs.coockieObj.set('sess_time_to_update',sess_base_time,{ path : '/' });
 
-                        if (swalPreserve){
-                            if (swalPreserve.preserve){
-                                eval(swalPreserve.preserveCall + '()');
-                                $.LoadingOverlay("hide",true);
-                            }
-                        }                    
-                    });                    
-                } else if (result.dismiss === 'cancel' || result.dismiss === 'timer') {
-                    MyCookie.objs.coockieObj.set('sess_time_to_update',1,{ path : '/' });
-                }
-            });
-        }
-        if (sess_time_to_update == 1) {
-            MyCookie.objs.coockieObj.set('sess_time_to_update',1,{ path : '/' });
-            return false;
-        }
+//                         if (swalPreserve){
+//                             if (swalPreserve.preserve){
+//                                 eval(swalPreserve.preserveCall + '()');
+//                                 $.LoadingOverlay("hide",true);
+//                             }
+//                         }                    
+//                     });                    
+//                 } else if (result.dismiss === 'cancel' || result.dismiss === 'timer') {
+//                     MyCookie.objs.coockieObj.set('sess_time_to_update',1,{ path : '/' });
+//                 }
+//             });
+//         }
+//         if (sess_time_to_update == 1) {
+//             MyCookie.objs.coockieObj.set('sess_time_to_update',1,{ path : '/' });
+//             return false;
+//         }
 
-        sess_time_to_update--;
-        MyCookie.objs.coockieObj.set('sess_time_to_update',sess_time_to_update,{ path : '/' });
+//         sess_time_to_update--;
+//         MyCookie.objs.coockieObj.set('sess_time_to_update',sess_time_to_update,{ path : '/' });
         
-    }, 1000);
-}
+//     }, 1000);
+// }
 
 $(document).ready(function () { 
     

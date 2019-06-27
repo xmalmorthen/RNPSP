@@ -644,7 +644,15 @@ var objViewDatosGenerales = {
                                 {
                                     var option = new Option(value.pdescripcion, value.pclave);
                                     obj.append(option);
-                                });
+
+                                    if ( obj.data('insert') )
+                                        if ( obj.data('insert') == value.pclave ) {
+                                            
+                                            obj.removeData('insert');
+                                            obj.val(value.pclave).trigger('change');
+                                            
+                                        }
+                                });                                
                             }
                         }
                         obj.data('populated',true);

@@ -535,6 +535,9 @@ var mainFormActions = {
 
                         ref.val(value);
                         ref.trigger('change');
+                        if (!ref.val())
+                            ref.data('insert', value);                        
+
 
                     } else {
 
