@@ -208,7 +208,7 @@ var objViewDatosGenerales = {
             }
         });
         
-        $('#pTELEFONO_DOMICILIO').on('input', function () { 
+        $('#pTELEFONO_DOMICILIO,#pTELEFONO_REFERENCIAS').on('input', function () { 
             this.value = this.value.replace(/[^0-9\-\(\)]/g,'');
         });
 
@@ -454,10 +454,24 @@ var objViewDatosGenerales = {
                             $('#pID_ENTIDAD_NAC').val(99).trigger('change',[function(){
 
                                 if ( $('#pID_ENTIDAD_NAC').val() == 99) {
+
+                                    pID_ENTIDAD_NACInterval = setInterval(function(){
+
+                                        if ($('#pID_MUNICIPIO_NAC').data('populating') != true ){
+                                            
+                                            clearInterval(pID_ENTIDAD_NACInterval);
+                                            $('#pID_MUNICIPIO_NAC').val(999999).trigger('change.select2');
+                                            $('#pID_ENTIDAD_NAC,#pID_MUNICIPIO_NAC').prop( "disabled", true );
+
+                                        }
+
+                                    }, 300);
+
                                     $('#pID_MUNICIPIO_NAC').data('populated',true);
                                     $('#pID_MUNICIPIO_NAC').val(999999).trigger('change.select2');
 
                                     $('#pID_ENTIDAD_NAC,#pID_MUNICIPIO_NAC').prop( "disabled", true );
+                                    
                                 }
 
                             }]).trigger('change.select2');

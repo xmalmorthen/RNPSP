@@ -233,7 +233,12 @@
             <div class="row">
                 <div class="col-md-4">
                     Registro SEP
-                    <input type="text" class="form-control" id="pREGISTRO_SEP" name="pREGISTRO_SEP" maxlength="1">
+                    <select style="width:356px;" class="form-control" id="pREGISTRO_SEP" name="pREGISTRO_SEP" data-error="#err_pREGISTRO_SEP" data-query=''>
+                        <option disabled selected value>Seleccione una opción</option>
+                        <option value="1">SI</option>
+                        <option value="0">NO</option>
+                    </select>
+                    <span id="err_pREGISTRO_SEP"></span>
                 </div>
                 <div class="col-md-4">
                     Número de folio de certificado

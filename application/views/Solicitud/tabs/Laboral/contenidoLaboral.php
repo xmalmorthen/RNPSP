@@ -428,7 +428,7 @@
 
     <div class="tab-pane fade" id="Comisiones" role="tabpanel" aria-labelledby="Comisiones-tab">
         <div class="_container">
-            <form id="Comisiones_form" name="Comisiones_form" action="#" autocomplete="off">
+            <form id="Comisiones_form" name="Comisiones_form" action="#" autocomplete="off" data-requireddata=false>
                 <br>
                 <div class="row">
                     <div class="col-md-12 text-center">
