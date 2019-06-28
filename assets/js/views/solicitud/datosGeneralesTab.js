@@ -268,6 +268,8 @@ var objViewDatosGenerales = {
                 },
                 generarCIB : function(e, from, tabRef){
 
+                    $("#Datos_personales_CIB_form").closeAlert({alertType : 'alert-danger'});
+
                     if ( !from ) {
                         
                         $('#CIB,#motivoCIB').removeError();
@@ -339,10 +341,7 @@ var objViewDatosGenerales = {
                     }catch(err) {
                         
                         objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);
-                        
-                        if (callback)
-                            callback(false);
-
+                                                
                     }
                     
                 },
