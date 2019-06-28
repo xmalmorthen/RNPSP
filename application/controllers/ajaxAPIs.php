@@ -48,12 +48,9 @@ class ajaxAPIs extends CI_Controller {
 				if (!$wsResponse){
 					Msg_reporting::error_log(json_encode([$this->curl->error_string, $this->rest->status()]));
 					throw new processException('El servicio de consulta CURP no respondió',500);
-				}
-				if ($this->curl->error_string){
+				} else if ($this->curl->error_string){
 					$error = [$this->curl->error_string, $this->rest->status()];
 					throw new processException($this->curl->error_string,$this->rest->status());
-				} else if (!$wsResponse) {
-					throw new processException("El servicio respondió con un estatus [{$this->rest->status()}], no fue posible obtener la información", $this->rest->status());
 				} else {
 					if ($wsResponse->RESTService->StatusCode === '0')
 						throw new processException($wsResponse->RESTService->Message,400);
