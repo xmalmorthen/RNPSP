@@ -2,7 +2,7 @@
 
 class CURSO_model extends MY_Model
 {
-  public $nombreCatalogo = 'vw_SolSinCurso';
+  public $nombreCatalogo = 'vw_Solicitudes'; //'vw_SolSinCurso';
   public $response = array();
   public function __construct()
   {

@@ -2,7 +2,7 @@
 
 class EXAMEN_model extends MY_Model
 {
-  public $nombreCatalogo = 'vw_SolSinExamen';
+  public $nombreCatalogo = 'vw_Solicitudes'; //'vw_SolSinExamen';
   public $response = array();
   public function __construct()
   {
