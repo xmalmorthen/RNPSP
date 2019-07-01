@@ -6,7 +6,7 @@
 	var id_Usuario = "<?php echo $user_id;?>";
 	var id_UsuarioMSG = "<?php echo $this->lang->line('MSJ11');?>";
 </script>
-<div class="container">
+<div class="_container">
 	<form action="" id="Usuarios_form" name="Usuarios_form" autocomplete="off">
 		<br>
 		<div class="row">

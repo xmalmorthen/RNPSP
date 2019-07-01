@@ -28,7 +28,7 @@ class Usuarios extends CI_Controller
 
     }
 
-    //Utils::pre($data);
+    // Utils::pre($data);
 
     $this->load->library('parser');
     $this->parser->parse('Usuarios/index', $data);
@@ -163,10 +163,37 @@ class Usuarios extends CI_Controller
     $query = $this->db->get();
     $results = $query->row_array();
 
-    $response = array(
-      'status' => ($query->num_rows()>0)? true : false,
-      'data' => $results
-    );
+    if ( $query->num_rows() > 0 ) {
+      
+      $this->db->where('CURP',$curp);
+      $this->db->from('vw_Usuarios');
+      $query = $this->db->get();
+      $query->row_array();
+
+      if ( $query->num_rows() > 0 ) {
+
+        $response = array(
+          'status' => false,
+          'message' => 'El usuario ya se encuentra registrado.'
+        );
+
+      } else {
+
+        $response = array(
+          'status' => true,
+          'data' => $results
+        );
+
+      }
+
+    } else {
+
+      $response = array(
+        'status' => false,
+        'message' => 'No se encontró la CURP registrada.'
+      );
+
+    }
     
     $this->output
         ->set_status_header(200)
@@ -174,6 +201,30 @@ class Usuarios extends CI_Controller
         ->set_output(json_encode($response))
         ->_display();
     exit;
+  }
+
+  public function ValidpCORREO($str){
+  
+    $id = $this->input->post('user_id');
+
+    $this->db->select('email');
+    $this->db->from('vw_Usuarios');
+    $this->db->where('email',$str);
+    $this->db->where('id !=',$id);
+    $query = $this->db->get();
+    $query->row_array();
+
+    if ( $query->num_rows() > 0 ) {
+
+      $this->form_validation->set_message('ValidpCORREO', 'El correo electrónico ya se encuentra registrado para otro usuario.');
+      return false;
+
+    } else {
+
+      return true;
+
+    }
+
   }
 
   public function guardarModificar()
@@ -198,15 +249,18 @@ class Usuarios extends CI_Controller
       $response['message'] = 'method get not allowed';
     } else {
       $this->load->library('form_validation');
-      $this->form_validation->set_message('required', 'Campo obligatorio');
+
+      $this->form_validation->set_message('required', 'Campo obligatorio');      
+
       //$this->form_validation->set_rules('pCURP', 'CURP', 'required|min_length[18]|max_length[20]');
       $this->form_validation->set_rules('pCONTRASENA', 'Contraseña', 'trim|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']');
       $this->form_validation->set_rules('pID_ESTATUS', 'Estatus', 'required');
       if($this->input->post('Estatus') == 2){
         $this->form_validation->set_rules('MotivoInactivo', 'Motivo de cambio estatus a Inactivo', 'trim|required');
       }
-      $this->form_validation->set_rules('pCORREO', 'Correo electrónico', 'required|valid_email|is_unique[cat_Usuarios.username]');
-
+      // $this->form_validation->set_rules('pCORREO', 'Correo electrónico', 'required|valid_email|is_unique[cat_Usuarios.username]');
+      $this->form_validation->set_rules('pCORREO', 'Correo electrónico', 'required|valid_email|callback_ValidpCORREO');
+      
       if ($this->form_validation->run() === true) {
         $user_id = $this->input->post('user_id');
         $identity = strtolower($this->input->post('pCORREO'));
