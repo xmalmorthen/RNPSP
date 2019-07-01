@@ -165,7 +165,7 @@ var objViewDatosGenerales = {
 
             
             var tableRef = $('#tableSocioeconomicos'),
-                tableObj = $('#tableSocioeconomicos').DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"order": [[ 0, "desc" ]]}),
+                tableObj = $('#tableSocioeconomicos').DataTable({stateSave: true,destroy: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"order": [[ 0, "desc" ]]}),
                 callUrl = base_url + `Solicitud/getDependientes`;
 
             tableObj.clear().draw();

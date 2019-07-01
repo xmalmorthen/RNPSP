@@ -68,7 +68,7 @@ var objViewCapacitacion = {
             // });
 
             var tableRef = $('#tableIdiomas'),
-                tableObj = $('#tableIdiomas').DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"order": [[ 0, "desc" ]]}),
+                tableObj = $('#tableIdiomas').DataTable({stateSave: true,destroy: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"order": [[ 0, "desc" ]]}),
                 callUrl = base_url + `Solicitud/getIdiomaHablado`;
 
             tableObj.clear().draw();
@@ -115,7 +115,7 @@ var objViewCapacitacion = {
             // });
 
             var tableRef = $('#tableHabilidades'),
-                tableObj = $('#tableHabilidades').DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"order": [[ 0, "desc" ]]}),
+                tableObj = $('#tableHabilidades').DataTable({stateSave: true,destroy: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"order": [[ 0, "desc" ]]}),
                 callUrl = base_url + `Solicitud/getHabilidadAptitud`;
 
             tableObj.clear().draw();
