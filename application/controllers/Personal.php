@@ -19,6 +19,7 @@ class Personal extends CI_Controller {
 		$curp = $this->session->local_userdata('CURP');
 		$this->load->model('PERSONA_model');
 		$responseModel = $this->PERSONA_model->sp_getPersonal($curp);
+		
 		$this->load->library('parser');
 		$this->parser->parse('Personal/index',array('personal'=>(array)$responseModel));
 	}
