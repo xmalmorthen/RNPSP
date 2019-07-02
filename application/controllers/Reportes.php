@@ -236,11 +236,12 @@
         
             $pdf->Ln(10);
             $pdf->SetFont('Arial','B',10);
-            $pdf->cell(67);
-            $pdf->Cell(30,5,utf8_decode('A T E N T A M E N T E'));
+     
+            $pdf->Cell(0, 20, utf8_decode('A T E N T A M E N T E'), 0, 0, 'C');
             $pdf->Ln();
-            $pdf->cell(68);
-            $pdf->Cell(30,5,utf8_decode('EL {Puesto de quien hace la peticion}'));
+            $pdf->Cell(0, 20, utf8_decode('EL {Puesto de quien hace la peticion}' ), 0, 0, 'C');
+
+        
 
             //Nombre del que va a firmar
             // $pdf->Ln(36);
@@ -457,7 +458,7 @@
             return $pdf->Output(null,'Alta_Aspitante_' . time() . '.pdf');
         }
 
-        function solicitudAlta($model){
+        function solicitudAlta($model=null){
             ob_start();
 
             $pdf = new FPDF();
@@ -594,11 +595,9 @@
         
             $pdf->Ln(10);
             $pdf->SetFont('Arial','B',8);
-            $pdf->cell(82);
-            $pdf->Cell(30,5,utf8_decode('A T E N T A M E N T E'));
+            $pdf->Cell(0,20,utf8_decode('A T E N T A M E N T E'),0,0,'C');
             $pdf->Ln();
-            $pdf->cell(76);
-            $pdf->Cell(30,5,utf8_decode( $model['PSAPuesto'] /*'{Puesto de quien hizo la petición}'*/));
+            $pdf->Cell(0, 20, utf8_decode( $model['PSAPuesto']), 0, 0, 'C');
             $pdf->Ln();
             $pdf->cell(78);
             $pdf->Cell(30,5,utf8_decode(''));
@@ -607,8 +606,7 @@
             $pdf->Cell(30,5,utf8_decode(''));
         
             $pdf->Ln(25);
-            $pdf->cell(75);
-            $pdf->Cell(30,5,utf8_decode( $model['PSANombreRemitentePeticion'] /*'{Nombre del que hizo la petición}'*/));
+            $pdf->Cell(0,0,utf8_decode( $model['PSANombreRemitentePeticion'] /*'{Nombre del que hizo la petición}'*/),0,0,'C');
         
             $pdf->Ln();
         
@@ -666,6 +664,7 @@
         
             $pdf->SetFont('Arial','B',10);
             $pdf->ln(35);
+           
             $pdf->cell(105);
         
             // Información de cabecera parte derecha
@@ -746,21 +745,14 @@
             $pdf->Cell(30,5,utf8_decode('Sin otro particular, hago propicia la ocasión para hacerle llegar un cordial saludo'));
             $pdf->Ln(10);
             $pdf->SetFont('Arial','B',8);
-            $pdf->cell(82);
-            $pdf->Cell(30,5,utf8_decode('A T E N T A M E N T E'));
+            $pdf->Cell(0, 10, utf8_decode( 'A T E N T A M E N T E'), 0, 0, 'C');
             $pdf->Ln();
-            $pdf->cell(76);
-            $pdf->Cell(30,5,utf8_decode('EL ENCARGADO DEL DESPACHO'));
-            $pdf->Ln();
-            $pdf->cell(72);
-            $pdf->Cell(30,5,utf8_decode('DEL SECRETARIADO EJECUTIVO DEL'));
-            $pdf->Ln();
-            $pdf->cell(68);
-            $pdf->Cell(30,5,utf8_decode('SISTEMA ESTATAL DE SEGURIDAD PÚBLICA'));
+
+            $pdf->Cell(0, 0, utf8_decode('{Cargo}'), 0, 0, 'C');
         
             $pdf->Ln(15);
-            $pdf->cell(45);
-            $pdf->Cell(30,5,utf8_decode('{Nombre del encargado del despacho del secretariado ejecutivo del SESESP}'));
+            $pdf->Cell(0, 20, utf8_decode( '{Nombre del encargado del despacho del secretariado ejecutivo del SESESP}'), 0, 0, 'C');
+   
         
             $pdf->Ln();
         
@@ -921,21 +913,13 @@
             $pdf->Cell(30,5,utf8_decode('Sin otro particular, hago propicia la ocasión para hacerle llegar un cordial saludo'));
             $pdf->Ln(10);
             $pdf->SetFont('Arial','B',8);
-            $pdf->cell(82);
-            $pdf->Cell(30,5,utf8_decode('A T E N T A M E N T E'));
+            $pdf->Cell(0,0,utf8_decode('A T E N T A M E N T E'),0 ,0 ,'C');
             $pdf->Ln();
-            $pdf->cell(76);
-            $pdf->Cell(30,5,utf8_decode('EL ENCARGADO DEL DESPACHO'));
-            $pdf->Ln();
-            $pdf->cell(72);
-            $pdf->Cell(30,5,utf8_decode('DEL SECRETARIADO EJECUTIVO DEL'));
-            $pdf->Ln();
-            $pdf->cell(68);
-            $pdf->Cell(30,5,utf8_decode('SISTEMA ESTATAL DE SEGURIDAD PÚBLICA'));
-        
+            $pdf->Cell(0,10,utf8_decode('{Cargo}'), 0, 0, 'C');
+
             $pdf->Ln(15);
-            $pdf->cell(45);
-            $pdf->Cell(30,5,utf8_decode('{Nombre del encargado del despacho del secretariado ejecutivo del SESESP}'));
+
+            $pdf->Cell(0,5,utf8_decode('{Nombre del encargado del despacho del secretariado ejecutivo del SESESP}'), 0, 0, 'C');
         
             $pdf->Ln();
         
@@ -1143,16 +1127,15 @@
         
             $pdf->Ln(10);
             $pdf->SetFont('Arial','B',8);
-            $pdf->cell(82);
-            $pdf->Cell(30,5,utf8_decode('A T E N T A M E N T E'));
+      
+            $pdf->Cell(0,5,utf8_decode('A T E N T A M E N T E'), 0, 0, 'C');
             $pdf->Ln();
-            $pdf->cell(77.8);
-            $pdf->Cell(30,5,utf8_decode('EL {Cargo de quien solicita}'));
+
+            $pdf->Cell(0,5,utf8_decode('EL {Cargo de quien solicita}'),0,0, 'C');
 
         
             $pdf->Ln(25);
-            $pdf->cell(78.4);
-            $pdf->Cell(30,5,utf8_decode('{Nombre de quien solicita}'));
+            $pdf->Cell(0,0,utf8_decode('{Nombre de quien solicita}'),0,0, 'C');
         
             $pdf->Ln();
         
@@ -1300,15 +1283,13 @@
             // NUEVO CÓDIGO
             $pdf->Ln(10);
             $pdf->SetFont('Arial','B',8);
-            $pdf->cell(82);
-            $pdf->Cell(30,5,utf8_decode('A T E N T A M E N T E'));
+            $pdf->Cell(0,5,utf8_decode('A T E N T A M E N T E'), 0, 0, 'C');
             $pdf->Ln();
-            $pdf->cell(78);
-            $pdf->Cell(30,5,utf8_decode('EL {Cargo de quien solicita}'));
+            $pdf->Cell(0,5,utf8_decode('EL {Cargo de quien solicita}'), 0, 0, 'C');
 
             $pdf->Ln(25);
-            $pdf->cell(78);
-            $pdf->Cell(30,5,utf8_decode('{Nombre de quien solicita}'));
+        
+            $pdf->Cell(0,0,utf8_decode('{Nombre de quien solicita}'), 0,0, 'C');
 
             $pdf->Ln();
 
@@ -1407,21 +1388,16 @@
             $pdf->Cell(30,5,utf8_decode('Sin otro particular, hago propicia la ocasión para hacerle llegar un cordial saludo'));
 
             $pdf->Ln(10);
-            $pdf->SetFont('Arial','B',10);
-            $pdf->cell(75);
-            $pdf->Cell(30,5,utf8_decode('A T E N T A M E N T E'));
+            $pdf->SetFont('Arial','B',0);
+       
+            $pdf->Cell(0,5,utf8_decode('A T E N T A M E N T E'),0,0,'C');
             $pdf->Ln();
-            $pdf->cell(64);
-            $pdf->Cell(30,5,utf8_decode('EL ENCARGADO DEL DESPACHO'));
-            $pdf->Ln();
-            $pdf->cell(60);
-            $pdf->Cell(30,5,utf8_decode('DEL SECRETARIADO EJECUTIVO DEL'));
-            $pdf->Ln();
-            $pdf->cell(54);
-            $pdf->Cell(30,5,utf8_decode('SISTEMA ESTATAL DE SEGURIDAD PÚBLICA'));
+         
+            $pdf->Cell(0,5,utf8_decode('{Cargo}'), 0, 0, 'C');
+        
             $pdf->Ln(25);
-            $pdf->cell(54);
-            $pdf->Cell(30,5,utf8_decode('{Nombre del encargado del despacho del SESP}'));
+  
+            $pdf->Cell(0,5,utf8_decode('{Nombre del encargado del despacho del SESP}'),0,0,'C');
             $pdf->Ln(10);
             // $pdf->cell(56);
             // $pdf->Cell(30,5,utf8_decode('ING. HUGO HUMBERTO CHAVEZ DELGADO'));
@@ -1576,15 +1552,13 @@
         
             $pdf->Ln(9);
             $pdf->SetFont('Arial','B',8);
-            $pdf->cell(82);
-            $pdf->Cell(30,5,utf8_decode('A T E N T A M E N T E'));
+    
+            $pdf->Cell(0,5,utf8_decode('A T E N T A M E N T E'),0,0,"C");
             $pdf->Ln();
-            $pdf->cell(76);
-            $pdf->Cell(30,5,utf8_decode('EL {Cargo de quien solicita}'));
+            $pdf->Cell(0,5,utf8_decode('EL {Cargo de quien solicita}'),0,0,'C');
         
             $pdf->Ln(20);
-            $pdf->cell(77.5);
-            $pdf->Cell(30,5,utf8_decode('{Nombre de quien solicita}'));
+            $pdf->Cell(0,0,utf8_decode('{Nombre de quien solicita}'),0,0,'C');
         
             $pdf->Ln();
             $pdf->SetFont('Arial','',8);
@@ -1681,7 +1655,7 @@
             $pdf->MultiCell(170,5,utf8_decode("Sin otro particular por el momento, aprovecho la ocasión para hacerle llegar un cordial saludo."));
     
             $pdf->SetXY(85,182);
-            $pdf->SetFont('Arial','',12);
+            $pdf->SetFont('Arial','B',0);
             $pdf->MultiCell(168,5,utf8_decode("ATENTAMENTE"));
             $pdf->SetXY(80,190);
             $pdf->MultiCell(170,5,utf8_decode("{cargo de quien solicita}"));
@@ -1825,21 +1799,17 @@
             $pdf->Cell(30,5,utf8_decode('Sin otro particular, hago propicia la ocasión para hacerle llegar un cordial saludo.'));   
         
             $pdf->Ln(10);
-            $pdf->SetFont('Arial','B',10);
-            $pdf->cell(67);
-            $pdf->Cell(30,5,utf8_decode('A T E N T A M E N T E'));
+            $pdf->SetFont('Arial','B',8);
+         
+            $pdf->Cell(0,5,utf8_decode('A T E N T A M E N T E'), 0, 0, "C");
             $pdf->Ln();
-            $pdf->cell(57);
-            $pdf->Cell(30,5,utf8_decode('EL ENCARGADO DEL DESPACHO'));
+   
+            $pdf->Cell(0,5,utf8_decode('{Cargo}'),0,0,"C");
             $pdf->Ln();
-            $pdf->cell(54);
-            $pdf->Cell(30,5,utf8_decode('DEL SECRETARIADO EJECUTIVO DEL'));
-            $pdf->Ln();
-            $pdf->cell(48);
-            $pdf->Cell(30,5,utf8_decode('SISTEMA ESTATAL DE SEGURIDAD PÚBLICA'));
+
             $pdf->Ln(20);
-            $pdf->cell(67);
-            $pdf->Cell(30,5,utf8_decode('{nombdre de quien firma}'));
+ 
+            $pdf->Cell(0,5,utf8_decode('{nombre de quien firma}'), 0, 0, "C");
         
             $pdf->Ln();
             $pdf->Ln();
@@ -1880,7 +1850,7 @@
             $pdf->Cell(30,5,utf8_decode('https://www.secretariadoejecutivosesp.col.gob.mx'));
         
            $pdf->Output();
-        }
+        }de
 
         // function Table(){
         //     $d = new FPDF('L');
