@@ -29,8 +29,10 @@
 			echo build_filter_link( 'debug', 'DEBUGUEO' );
 			
 			?>
-			<a href="<?php echo build_spark_url( array( 'delete'=>$log_file_name ), TRUE )?>" onclick="return confirm('Are You Sure?');" class="deleteFile" >BORRAR ARCHIVO</a>
-			<a href="<?php echo build_spark_url( array( 'delete_all' => $log_file_name ), TRUE )?>" onclick="return confirm('Are You Sure?');" class="deleteFile" >BORRAR TODOS LOS ARCHIVOS</a>
+			
+			<!-- <a href="<?php echo build_spark_url( array( 'delete'=>$log_file_name ), TRUE )?>" onclick="return confirm('Are You Sure?');" class="deleteFile" >BORRAR ARCHIVO</a>
+			<a href="<?php echo build_spark_url( array( 'delete_all' => $log_file_name ), TRUE )?>" onclick="return confirm('Are You Sure?');" class="deleteFile" >BORRAR TODOS LOS ARCHIVOS</a> -->
+
 			</div>
 			<?php echo str_replace( "&nbsp;", '', $pagination_links ); ?>
 			

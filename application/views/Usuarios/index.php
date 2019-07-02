@@ -32,22 +32,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                {usuarios}
+                                    <?php foreach ($usuarios as $key => $value) { ?>
                                     <tr>
-                                    <td>{EstatusUsuario}</td>
-                                        <td>{NOMBRE}</td>
-                                        <td>{PATERNO}</td>
-                                        <td>{MATERNO}</td>
-                                        <td>{ADSCRIPCION}</td>
-                                        <td>{JEFE}</td>
+                                        <td><?php echo $value['EstatusUsuario']; ?></td>
+                                        <td><?php echo $value['NOMBRE']; ?></td>
+                                        <td><?php echo $value['PATERNO']; ?></td>
+                                        <td><?php echo $value['MATERNO']; ?></td>
+                                        <td><?php echo $value['ADSCRIPCION']; ?></td>
+                                        <td><?php echo $value['JEFE']; ?></td>
                                         <td>
-                                            <a class='m-2' href="<?php echo site_url('personaCedula/index?id='); ?>{id}"><i class="fa fa-print fa-2x"></i></a>
-                                            <a class='m-2' href="<?php echo site_url('Usuarios/Ver?curp='); ?>{CURP}"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></a>
-                                            <a class='m-2' href="<?php echo site_url('Usuarios/Modificar?curp=')?>{CURP}"><i class="fa fa-pencil-square-o fa-2x"></i></a>
-                                            <a class='m-2 borrar' onclick="app.borrarUsuario({id})" href="#" data-id="{id}"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></a>
+                                            <!-- <a class='m-2' href="<?php echo site_url("personaCedula/index?id={$value['id']}"); ?>"><i class="fa fa-print fa-2x"></i></a> -->
+                                            <a class='m-2' href="<?php echo site_url("Usuarios/Ver?curp={$value['CURP']}"); ?>"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></a>
+                                            <a class='m-2' href="<?php echo site_url("Usuarios/Modificar?curp={$value['CURP']}")?>"><i class="fa fa-pencil-square-o fa-2x"></i></a>
+                                            <!-- id_EstatusUsuario = 2 => Inactivo -->
+                                            <?php if ($value['id_EstatusUsuario'] != 2) {?>
+                                                <a class='m-2 borrar' onclick="app.borrarUsuario(<?php echo $value['id']; ?>)" href="#" data-id="<?php echo $value['id']; ?>"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></a>
+                                            <?php } ?>
                                         </td>
                                     </tr>
-                                    {/usuarios}
+                                    <?php } ?>
                                 </tbody>
                             </table>
                             <!-- END TABLE -->

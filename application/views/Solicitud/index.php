@@ -9,6 +9,10 @@
     </div>
 	
     <div class="col-md-12">
+		<div id='frmAlertSumary' class="alert alert-danger alert-dismissible fade show d-none" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<span id='frmAlertSumaryMsg'></span>
+		</div>
         <!-- BEGIN TABLE -->
         <table id="tableAdministrarsolicitud" class="d-none table table-striped dt-responsive" style="width:100%">
             <thead>
@@ -54,7 +58,7 @@
 </div>
 <div class="row pull-right mt-2">
     <div class="col-md-12">
-        <button class="btn btn-default m-1" id="Imprimir">Imprimir</button>
+        <button class="btn btn-default m-1 d-none" id="Imprimir">Imprimir</button>
         <button class="btn btn-default m-1" id="Replicar">Replicar</button>
     </div>
 </div>
@@ -78,7 +82,7 @@
 					Tipo de reporte
 					<div>
 						<select name="optionPDF" id="optionPDF" class="form-control" required>
-							<option disabled selected value>Seleccione una opción</option>
+							<option disabled selected value='-1'>Seleccione una opción</option>
 							<option value="PSB">Petición Solicitud de baja</option>
 							<option value="PSEC">Petición Solicitud de examen de confianza</option>
 							<option value="PSC">Petición Solicitud de curso</option>

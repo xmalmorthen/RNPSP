@@ -2,7 +2,7 @@
 
 class EXAMEN_model extends MY_Model
 {
-  public $nombreCatalogo = 'vw_Solicitudes';
+  public $nombreCatalogo = 'vw_Solicitudes'; //'vw_SolSinExamen';
   public $response = array();
   public function __construct()
   {
@@ -13,6 +13,12 @@ class EXAMEN_model extends MY_Model
       'validation' => false,
       'data'=> null
     );
+  }
+
+  public function get(){
+    $this->select('FOLIO,NOMBRE,PATERNO,MATERNO,FECHA_REGISTRO,TIPO_OPERACION,DESCRIPCION,ESTATUS,DESCRIPCION_ESTATUS,ID_DEPENDENCIA,NOMBRE_DPCIA');
+    //$this->where('ID_DEPENDENCIA', $this->session->userdata(SESSIONVAR)['ID_ADSCRIPCION']);
+    return $this->response_list();
   }
 
   public function getInfo($id){
@@ -28,7 +34,7 @@ class EXAMEN_model extends MY_Model
 
     if($response == FALSE){
       $this->response['status'] = false;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       $this->response['status'] = true;
       $this->response['data'] = $response;
@@ -58,7 +64,7 @@ class EXAMEN_model extends MY_Model
 
     if($response == FALSE){
       $this->response['status'] = false;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       $this->response['status'] = (bool)$response['tranEstatus'];
       $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];

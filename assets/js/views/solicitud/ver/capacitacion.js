@@ -68,7 +68,7 @@ var objViewCapacitacion = {
             // });
 
             var tableRef = $('#tableIdiomas'),
-                tableObj = $('#tableIdiomas').DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"order": [[ 0, "desc" ]]}),
+                tableObj = $('#tableIdiomas').DataTable({stateSave: true,destroy: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"order": [[ 0, "desc" ]]}),
                 callUrl = base_url + `Solicitud/getIdiomaHablado`;
 
             tableObj.clear().draw();
@@ -115,7 +115,7 @@ var objViewCapacitacion = {
             // });
 
             var tableRef = $('#tableHabilidades'),
-                tableObj = $('#tableHabilidades').DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"order": [[ 0, "desc" ]]}),
+                tableObj = $('#tableHabilidades').DataTable({stateSave: true,destroy: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"order": [[ 0, "desc" ]]}),
                 callUrl = base_url + `Solicitud/getHabilidadAptitud`;
 
             tableObj.clear().draw();
@@ -124,7 +124,7 @@ var objViewCapacitacion = {
             .then( (data) => {
                 if (data) {
                     $.each( data, function(key,value) {
-                        var row = [ value.pID_IDIOMA_HABLADO_EXT, value.pIDIOMA, value.pPORCENTAJE_LECTURA, value.pPORCENTAJE_ESCRITURA, value.pPORCENTAJE_CONVERSACION ];
+                        var row = [ value.pID_HABILIDAD_APTIT_EXT, value.pTIPO_HABAILIDAD, value.pGRADO ];                        
                         tableObj.row.add( row ).draw( false );
                     });
                 }

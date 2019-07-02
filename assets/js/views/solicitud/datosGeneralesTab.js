@@ -144,10 +144,16 @@ var objViewDatosGenerales = {
             }
         }
 
-        objViewDatosGenerales.actions.ajax.populateCmbOperacion();
+        
 
         $('#pFECHA_NACIONALIDAD, #pINICIO_DESARROLLO,#pFECHA_NAC_SOCIOECONOMICOS,#pTERMINO_DESARROLLO').attr('max', moment( new Date() ).format('YYYY-MM-DD'));
         // $('#pTERMINO_DESARROLLO').attr('min', moment( new Date() ).add(1,'days').format('YYYY-MM-DD') );
+
+        $.validator.addMethod("pTERMINO_DESARROLLO", function(value, element) {
+            
+            return value < $('#pINICIO_DESARROLLO').val() ? false : true;
+
+        }, "La fecha debe ser mayor o igual a la fecha de inicio.");
 
         $.validator.addMethod("validRFCFormat", function(value, element) {
             return validarInputRFC(value);
@@ -202,7 +208,7 @@ var objViewDatosGenerales = {
             }
         });
         
-        $('#pTELEFONO_DOMICILIO').on('input', function () { 
+        $('#pTELEFONO_DOMICILIO,#pTELEFONO_REFERENCIAS').on('input', function () { 
             this.value = this.value.replace(/[^0-9\-\(\)]/g,'');
         });
 
@@ -215,7 +221,22 @@ var objViewDatosGenerales = {
             this.value = this.value.replace(/[^0-9\-\(\)snSN\/]/g,'');
         });
 
+        objViewDatosGenerales.actions.ajax.populateCmbOperacion();
+
         objViewDatosGenerales.vars.general.init = true;
+
+        // $('#CIB,#motivoCIB').on('change',function(e){
+
+        //     if ( $('#CIB').val().length == 0 && $('#motivoCIB').val().length == 0 ){
+        //         $('#Datos_personales_CIB_form').removeData('hasChanged');
+        //         $('#Datos_personales_CIB_form').closeAlert({alertType : 'alert-danger'});
+        //         e.preventDefault();
+        //         e.stopPropagation();
+        //         e.stopImmediatePropagation();
+
+        //     };
+
+        // });
 
         $('#Datos_personales_form').find('input, select').removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError').removeData('hasChanged');
     },
@@ -247,21 +268,23 @@ var objViewDatosGenerales = {
                 },
                 generarCIB : function(e, from, tabRef){
 
+                    $("#Datos_personales_CIB_form").closeAlert({alertType : 'alert-danger'});
+
                     if ( !from ) {
                         
                         $('#CIB,#motivoCIB').removeError();
 
                         if (  !$('#CIB').val() && !$('#motivoCIB').val() ) { 
                             $('#CIB,#motivoCIB').setError('Información obligatoria.');
-                            $("#Datos_personales_form").setAlert({
+                            $("#Datos_personales_CIB_form").setAlert({
                                 alertType :  'alert-danger',
                                 dismissible : true,
                                 header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
                                 msg : 'Formulario incompleto'
                             });
 
-                            $("#Datos_personales_form").removeData('hasSaved').removeData('hasDiscardChanges');
-                            $("#Datos_personales_form").data('withError',true);
+                            $("#Datos_personales_CIB_form").removeData('hasSaved').removeData('hasDiscardChanges');
+                            $("#Datos_personales_CIB_form").data('withError',true);
 
                             dynTabs.markTab( $('#Datos_personales-tab'),  '<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');                            
 
@@ -271,20 +294,20 @@ var objViewDatosGenerales = {
 
                     if (  $('#CIB').val() && !$('#motivoCIB').val() ) {
                         $('#motivoCIB').setError('Información obligatoria.');
-                        objViewDatosGenerales.actions.ajax.throwError('Formulario incompleto',$("#Datos_personales_form"),from,tabRef);
+                        objViewDatosGenerales.actions.ajax.throwError({message: 'Formulario incompleto'},$("#Datos_personales_CIB_form"),from,tabRef);                        
                         return false;
                     }
 
                     if ( $('#motivoCIB').val() && !$('#CIB').val() ) {
                         $('#CIB').setError('Información obligatoria.');
-                        objViewDatosGenerales.actions.ajax.throwError('Formulario incompleto',$("#Datos_personales_form"),from,tabRef);
+                        objViewDatosGenerales.actions.ajax.throwError({message: 'Formulario incompleto'},$("#Datos_personales_CIB_form"),from,tabRef);
                         return false;
                     }
 
                     $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
                     e.preventDefault();
-                    var form = $("#Datos_personales_form");
+                    var form = $("#Datos_personales_CIB_form");
                     try {
                                                 
                         if (!mainTabMenu.var.pID_ALTERNA)
@@ -305,6 +328,7 @@ var objViewDatosGenerales = {
                         function (data) {  
                             objViewDatosGenerales.actions.ajax.callResponseValidations(form,data, from, tabRef, false, function(data){
                                 $('#CIB,#motivoCIB').val('');
+                                form.removeData('hasChanged');
                                 $.LoadingOverlay("hide",true);
                                 fillData.datosGenerales.CIB(mainTabMenu.var.pID_ALTERNA);
                             });
@@ -317,10 +341,7 @@ var objViewDatosGenerales = {
                     }catch(err) {
                         
                         objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);
-                        
-                        if (callback)
-                            callback(false);
-
+                                                
                     }
                     
                 },
@@ -367,6 +388,10 @@ var objViewDatosGenerales = {
                         $('#pNOMBRE_SOCIOECONOMICOS,#pPATERNO_SOCIOECONOMICOS,#pSEXO_SOCIOECONOMICOS,#pFECHA_NAC_SOCIOECONOMICOS,#pID_RELACION,#pID_RELACION_SOCIOECONOMICOS').removeAttr('required');
 
                         objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesSocio',from, tabRef, false, function(data){
+                            
+                            objViewDatosGenerales.vars.datosGenerales.forms.Dependientes_form.closeAlert({alertType : 'alert-danger'});
+                            objViewDatosGenerales.vars.datosGenerales.forms.Dependientes_form.removeData('withError');
+
                         });
 
                     }
@@ -377,7 +402,9 @@ var objViewDatosGenerales = {
                     $('#pNOMBRE_SOCIOECONOMICOS,#pPATERNO_SOCIOECONOMICOS,#pSEXO_SOCIOECONOMICOS,#pFECHA_NAC_SOCIOECONOMICOS,#pID_RELACION,#pID_RELACION_SOCIOECONOMICOS').prop('required',true);
 
                     objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDependiente',from, tabRef, true, function(data,form){
+                        
                         fillData.datosGenerales.dependientesEconomicos(mainTabMenu.var.pID_ALTERNA);
+
                     });
                 }
             }
@@ -399,39 +426,48 @@ var objViewDatosGenerales = {
             },
             pID_PAIS_NAC : function(e){
                 
-                var value = $(this).val();
+                var value = $(this).val();                
 
                 if (value != 82){ // país diferente a méxico
-                    
-                    if ( ($('#pID_MUNICIPIO_NAC').val() != value && $('#pID_MUNICIPIO_NAC').data('populated') ) || $('#pID_MUNICIPIO_NAC').val() == null) {
-                    
+
+
+                    intervalEstadoMunicipio = setInterval(function(){
+
                         if (value == -1) { // sin información
 
-
-                                $('#pID_ENTIDAD_NAC').val(value).trigger('change',[function(){
-
-                                    if ( $('#pID_ENTIDAD_NAC').val() == value)
-                                        $('#pID_MUNICIPIO_NAC').val(-1).trigger('change.select2');
-
-                                }]).trigger('change.select2');
-                                
+                            if ( !$('#pID_ENTIDAD_NAC').val()  )
+                                $('#pID_ENTIDAD_NAC').val(-1).trigger('change').trigger('change.select2').prop( "disabled", true );
+                            else if ( $('#pID_ENTIDAD_NAC').val() != -1)
+                                $('#pID_ENTIDAD_NAC').val(-1).trigger('change').trigger('change.select2').prop( "disabled", true );
                             
-
+                            if ( !$('#pID_MUNICIPIO_NAC').val())
+                                $('#pID_MUNICIPIO_NAC').val(-1).trigger('change').trigger('change.select2').prop( "disabled", true );
+                            else if ( $('#pID_MUNICIPIO_NAC').val() != -1)
+                                $('#pID_MUNICIPIO_NAC').val(-1).trigger('change').trigger('change.select2').prop( "disabled", true );
+                            
                         } else { // cualquier otro país
 
-                            $('#pID_ENTIDAD_NAC').val(99).trigger('change',[function(){
-
-                                if ( $('#pID_ENTIDAD_NAC').val() == 99) {
-                                    $('#pID_MUNICIPIO_NAC').data('populated',true);
-                                    $('#pID_MUNICIPIO_NAC').val(999999).trigger('change.select2');
-                                }
-
-                            }]).trigger('change.select2');
+                            if ( !$('#pID_ENTIDAD_NAC').val() )                            
+                                $('#pID_ENTIDAD_NAC').val(99).trigger('change').trigger('change.select2').prop( "disabled", true );
+                            else if ( $('#pID_ENTIDAD_NAC').val() != 99)
+                                $('#pID_ENTIDAD_NAC').val(99).trigger('change').trigger('change.select2').prop( "disabled", true );
+                            
+                            if ( !$('#pID_MUNICIPIO_NAC').val() )
+                                $('#pID_MUNICIPIO_NAC').val(999999).trigger('change').trigger('change.select2').prop( "disabled", true );
+                            else if ( $('#pID_MUNICIPIO_NAC').val() != 999999)
+                                $('#pID_MUNICIPIO_NAC').val(999999).trigger('change').trigger('change.select2').prop( "disabled", true );
                             
                         }
-                        
-                    }
-                }
+
+                        if ( $('#pID_ENTIDAD_NAC').val() && $('#pID_MUNICIPIO_NAC').val() ) {
+                            clearInterval(intervalEstadoMunicipio);
+                            $('#pID_ENTIDAD_NAC,#pID_MUNICIPIO_NAC').prop( "disabled", true );
+                        }
+
+                    }, 300);
+
+                } else if (value)
+                    $('#pID_ENTIDAD_NAC,#pID_MUNICIPIO_NAC').prop( "disabled", false );
 
             },
             pID_NACIONALIDAD : function(e){
@@ -470,6 +506,8 @@ var objViewDatosGenerales = {
             $('.consultaCURP').readOnly();
 
             $('#pSEXO_DATOS_PERSONALES').prop("disabled", true);
+
+            objViewDatosGenerales.actions.ajax.populateCmbOperacion();
 
             dynTabs.loaderTab();
         },    
@@ -583,14 +621,19 @@ var objViewDatosGenerales = {
                 }
             },
             populateCmbOperacion: function(){
-                var obj = $('#pTIPO_OPERACION');
-                var callUrl = base_url + "Solicitud/cmbTipoOperacion";
 
+                if ( objViewDatosGenerales.vars.datosGenerales.objs.pCURP.val().length == 0)
+                    return false;
+
+                var obj = $('#pTIPO_OPERACION');
+                obj.prop('disabled', true);
                 obj.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+                var callUrl = base_url + "Solicitud/cmbTipoOperacion";
 
                 obj.append('<option disabled selected value><i class="fa fa-refresh fa-spin fa-3x fa-fw"></i> Actualizando, favor de esperar...</option>');
 
-                $.get(callUrl,
+                $.get(callUrl, { CURP : objViewDatosGenerales.vars.datosGenerales.objs.pCURP.val() },
                     function (data) {
                         if (data) {
                             obj.find("option").remove();
@@ -600,7 +643,15 @@ var objViewDatosGenerales = {
                                 {
                                     var option = new Option(value.pdescripcion, value.pclave);
                                     obj.append(option);
-                                });
+
+                                    if ( obj.data('insert') )
+                                        if ( obj.data('insert') == value.pclave ) {
+                                            
+                                            obj.removeData('insert');
+                                            obj.val(value.pclave).trigger('change');
+                                            
+                                        }
+                                });                                
                             }
                         }
                         obj.data('populated',true);

@@ -117,6 +117,7 @@ var objViewIdentificacion = {
         //CAMBIO DE TABS
         objViewIdentificacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewIdentificacion.actions.discartChanges}, e); } );
         objViewIdentificacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('show.bs.tab',dynTabs.showTab);
+        objViewIdentificacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('show.bs.tab',objViewIdentificacion.events.change.handleTabShow);
         objViewIdentificacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('shown.bs.tab',objViewIdentificacion.events.change.tableResponsive);
 
         populate.form($('#mediafiliacion_form')); //popular selects del primer tab NOTA: cambiar programación al tab actual si se obtiene por cookie
@@ -571,6 +572,8 @@ var objViewIdentificacion = {
 
                                         });                                        
 
+                                        fillData.identificacion.identificacionVoz(mainTabMenu.var.pID_ALTERNA);
+
                                         $.LoadingOverlay("hide",true);
                                     }catch(err) {
                                         $.LoadingOverlay("hide",true);
@@ -622,7 +625,42 @@ var objViewIdentificacion = {
                 var $this = this,
                     labelNameFile = $( $this ).closest( ".custom-file" ).find('label.custom-file-label');
                     
-                if ($this.files && $this.files[0]) {   
+                if ($this.files && $this.files[0]) {
+
+                    if ($.inArray( $this.files[0].type, $this.accept.split(',') ) == -1) {
+
+                        $(this).val('');
+                        e.preventDefault();
+                        e.stopPropagation();
+                        e.stopImmediatePropagation();
+
+                        Swal.fire({
+                            type: 'error',
+                            text: 'Formato de archivo incorrecto',
+                            footer: 'Se aceptan archivos en formato ' + $($this).data('accept')
+                        });
+                        
+                        return false;
+                    }
+
+                    maxFileSize = $($this).data('maxfilesize') ? $($this).data('maxfilesize') : 204800;
+
+                    if ( $this.files[0].size > maxFileSize ){
+                        
+                        $(this).val('');
+                        e.preventDefault();
+                        e.stopPropagation();
+                        e.stopImmediatePropagation();
+
+                        Swal.fire({
+                            type: 'error',
+                            text: 'Tamaño de archivo superior al límite',
+                            footer: 'Se aceptan archivos con un tamaño máximo de ' + (maxFileSize / 1024) + ' kb'
+                        });
+                        
+                        return false;
+                    }
+
                     var reader = new FileReader();
                     var filename = $($this).val();
                     filename = filename.substring(filename.lastIndexOf('\\')+1);
@@ -644,10 +682,17 @@ var objViewIdentificacion = {
                 $.each( objViewIdentificacion.vars.identificacion.tables, function( key, value ) {
                     try{value.obj.responsive.rebuild().responsive.recalc();}catch(err){}
                 });                
+            },
+            handleTabShow : function(e){
+
+                if ( $(e.currentTarget).data('callback') )
+                    eval($(e.currentTarget).data('callback') + '()');
+
             }
+
         }
     },
-    actions : {        
+    actions : {
         discartChanges : function(e,eTab){
             var form = $('#' + $(eTab.currentTarget).attr('aria-controls')).find('form');
             form.closeAlert({alertType : 'alert-danger'});
@@ -754,6 +799,25 @@ var objViewIdentificacion = {
                     objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);                        
                 }
             }
+        }
+    },
+    callback : {
+        fichaFotografica : function(){
+            
+            if (mainTabMenu.var.nuevoRegistro)
+                fillData.identificacion.fichaFotografica(mainTabMenu.var.pID_ALTERNA);
+
+        },
+        registroDecadactilar : function(){
+            
+            if (mainTabMenu.var.nuevoRegistro)
+                fillData.identificacion.registroDecadactilar(mainTabMenu.var.pID_ALTERNA);
+        },
+        identificacionVoz : function(){
+            
+            if (mainTabMenu.var.nuevoRegistro)
+                fillData.identificacion.identificacionVoz(mainTabMenu.var.pID_ALTERNA);
+                
         }
     }
 }

@@ -55,7 +55,7 @@
             </div>
             <div class="col-md-4">
                 Fecha de término del curso
-                <input type="date" class="form-control" name="FECHA_FIN" id="FECHA_FIN" required>
+                <input type="date" class="form-control FECHA_FIN" name="FECHA_FIN" id="FECHA_FIN" required>
             </div>
         </div>
         <br>

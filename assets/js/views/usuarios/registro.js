@@ -1,4 +1,4 @@
-var mainFormActions = {
+var mainFormActions = {	
 	populateCURPFields: function (data) {
 		console.log(data);
 		$('[name=pCURP]').val(data.CURP);
@@ -88,8 +88,9 @@ var mainFormActions = {
 }
 
 var _app = Backbone.View.extend({
-	initialize: function () {
-		this.generatePassword();
+	formChanged : false,
+	initialize: function () {		
+		$('select').select2();
 
 		Swal.fire({
 				title: 'Clave CURP',
@@ -123,7 +124,7 @@ var _app = Backbone.View.extend({
 									});
 							}).then(function (data) {
 								if(data.status == false){
-									throw new Error('No se encontró la CURP en el sistema.');		
+									throw new Error(data.message);		
 								}
 								return { data: data.data};
 							}).catch(function(err){
@@ -144,6 +145,14 @@ var _app = Backbone.View.extend({
 		} else {
 			mainFormActions.populateCURPFields(result.value.data);
 		}
+
+		//Rutina para verificar si se hace algún cambio en cualquier forulario
+        $('#Usuarios_form').find('input, select').change(function(e) {  
+			app.formChanged = true;
+        });
+
+		this.generatePassword();
+
 	});
 
 },
@@ -209,10 +218,21 @@ generatePassword: function () {
 	var pwd = this.generarContrasena(9);
 	$('input#pCONTRASENA').val(pwd);
 	$('input[name=pCONTRASENA]').val(pwd);
+	app.formChanged = true;
 },
 guardar: function () {
 	var that = this;
 	that.hideError();
+
+	if ( !$('form#Usuarios_form').valid() ){
+		$('form#Usuarios_form').setAlert({
+			alertType :  'alert-danger',
+			dismissible : true,
+			header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+			msg : 'Formulario incompleto'
+		});
+		return false;
+	}
 
 	var sendData = $('form#Usuarios_form').serializeArray();
 	sendData.push({
@@ -248,7 +268,35 @@ guardar: function () {
 	});
 },
 regresar: function () {
-	window.location.replace(base_url + 'Usuarios');
+	if (app.formChanged){
+					
+		Swal.fire({
+			title: 'Aviso',
+			html: "Desea guardar las modificaciones",
+			footer: "<div><button class='btn btn-warning discartChanges'>Regresar sin guardar</button></div>",
+			type: 'question',
+			allowOutsideClick : false,
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			confirmButtonText: 'Aceptar',
+			cancelButtonColor: '#d33',
+			cancelButtonText: 'Cancelar'
+		}).then(function(result){
+			
+			if (result.value === true){
+				
+				app.guardar();		
+
+			}
+
+		});
+		
+		$('.discartChanges').on('click',function(evnt) { Swal.close(); window.location.replace(base_url + 'Usuarios'); });
+
+	} else {
+		window.location.replace(base_url + 'Usuarios');
+	}
+
 },
 render: function () {
 	return this;

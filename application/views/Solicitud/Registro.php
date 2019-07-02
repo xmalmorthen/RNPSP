@@ -11,10 +11,10 @@
         <span class="">[ <i class="text-danger fa fa-exclamation-triangle fa-2x" aria-hidden="true"></i> Error en formulario ] -</span>
         <span class="">[ <i class="text-warning fa fa-floppy-o fa-2x" aria-hidden="true"></i> Cambios ignorados ]</span>
     </div>
-    <div class="text-right"">
+    <!-- <div class="text-right"">
         <button class="btn btn-warning btn-lg validarVoz">Validar Solicitud</button>
         <button class="btn btn-success btn-lg ml-2 d-none validarReplicar">Replicar Solicitud</button>
-    </div>
+    </div> -->
 
     <!-- LISTA DE TABS DEL MENU PRINCIPAL -->
     <div class="row">
@@ -67,11 +67,11 @@
         <?php } ?>
     </div>
 
-    <div class="text-right"">
+    <!-- <div class="text-right"">
         <button class="btn btn-warning btn-lg validarVoz">Validar Solicitud</button>
         <button class="btn btn-success btn-lg ml-2 d-none validarReplicar">Replicar Solicitud</button>
-    </div>
-    <br>
+    </div> -->
+    
 </div>
 
 <!-- JS -->

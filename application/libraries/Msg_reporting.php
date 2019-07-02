@@ -32,15 +32,16 @@ class Msg_reporting {
 */
     public static function error_log($e = NULL){        
         if ($e !== NULL) {           
-            if (get_class($e) == 'Exception') {
+            if (@get_class($e) == 'Exception') {
                 $_msg = "Code : {$e->getCode()} | " . 
                         "File : {$e->getFile()} | " .                           
                         "Line : {$e->getLine()} | " .
                         "Message : " . utf8_encode($e->getMessage());
             } else {
-                $_msg = "Ocurrió un error, pero el parámetro enviado no es un objeto de tipo Exception, no es posible desglosar la información del error...!!!";
+                $_msg = (string)$e;
             }
-            log_message('error',$_msg);
+            $ci=& get_instance();
+            log_message('error',$_msg . " [ GUID = {$ci->config->item('GUID')} ]");
         } 
     }
 

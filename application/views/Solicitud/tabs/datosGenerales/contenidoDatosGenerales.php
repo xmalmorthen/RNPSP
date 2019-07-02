@@ -226,14 +226,19 @@
                 </div>
                 <div class="col-md-4">
                     Fecha de término
-                    <input type="date" class="form-control" id="pTERMINO_DESARROLLO" name="pTERMINO_DESARROLLO">
+                    <input type="date" class="form-control pTERMINO_DESARROLLO" id="pTERMINO_DESARROLLO" name="pTERMINO_DESARROLLO">
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-md-4">
                     Registro SEP
-                    <input type="text" class="form-control" id="pREGISTRO_SEP" name="pREGISTRO_SEP" maxlength="1">
+                    <select style="width:356px;" class="form-control" id="pREGISTRO_SEP" name="pREGISTRO_SEP" data-error="#err_pREGISTRO_SEP" data-query=''>
+                        <option disabled selected value>Seleccione una opción</option>
+                        <option value="1">SI</option>
+                        <option value="0">NO</option>
+                    </select>
+                    <span id="err_pREGISTRO_SEP"></span>
                 </div>
                 <div class="col-md-4">
                     Número de folio de certificado
@@ -534,7 +539,7 @@
 
 <div class="tab-pane fade" id="Socioeconomicos" role="tabpanel" arialabelledby="Socioeconomicos-tab" >
     <div class="_container">
-        <form action="#" id="Socioeconomicos_form" name="Socioeconomicos_form" autocomplete="off">
+        <form action="#" id="Socioeconomicos_form" name="Socioeconomicos_form" autocomplete="off" data-requireddata=false>
             <br>
             <div class="Socioeconomicos_form">
                 <div class="row">
@@ -554,8 +559,8 @@
                         <span id="err_pVIVE_FAMILIA"></span>
                     </div>
                     <div class="col-md-4">
-                        Ingreso familiar adicional (mensual)
-                        <input type="number" class="form-control" id="pINGRESO_FAMILIAR" name="pINGRESO_FAMILIAR" maxlength="10.2">
+                        <span class="clr">*</span>Ingreso familiar adicional (mensual)
+                        <input type="number" class="form-control" id="pINGRESO_FAMILIAR" name="pINGRESO_FAMILIAR" required>
                     </div>
                     <div class="col-md-4">
                         Su domicilio es <br> <!-- Se llena del catálogo CAT_TIPO_DOMICILIO -->

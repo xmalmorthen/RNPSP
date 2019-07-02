@@ -35,8 +35,8 @@ validarVozFnc = function(e){
                         { idPestania: 2, idFicha: 3}, // laboral - Actitudes hacia el empleo
                         { idPestania: 2, idFicha: 4}, // laboral - Comisiones
                         { idPestania: 3, idFicha: 1}, // capacitación - idiomnas y/o dialecto
-                        { idPestania: 3, idFicha: 2},  // capacitación - habilidades y aptitudes
-                        { idPestania: 4, idFicha: 6}  // identificación - identificación de voz
+                        { idPestania: 3, idFicha: 2}  // capacitación - habilidades y aptitudes
+                        //{ idPestania: 4, idFicha: 6}  // identificación - identificación de voz
                     ]
 
                     valid = true;
@@ -535,6 +535,9 @@ var mainFormActions = {
 
                         ref.val(value);
                         ref.trigger('change');
+                        if (!ref.val())
+                            ref.data('insert', value);                        
+
 
                     } else {
 
@@ -619,6 +622,8 @@ var fillData = {
             mainFormActions.insertValueInSelect($('#pLICENCIA_VIG'),data.pFECHA_LICENCIA_VIG);
 
             fillData.datosGenerales.CIB(mainTabMenu.var.pID_ALTERNA);
+
+            objViewDatosGenerales.actions.ajax.populateCmbOperacion();
 
             $('#Datos_personales_form').data('requireddata',false);
 
@@ -958,6 +963,9 @@ var fillData = {
                         var row = [ value.pID_COMISION_EXT, value.pFECHA_INICIO, value.pFECHA_TERMINO, value.pTIPO_COMISION, value.pMOTIVO, value.pDESTINO ];
                         tableObj.row.add( row ).draw( false );
                     });
+
+                    $('#Comisiones_form').data('requireddata',false);
+
                 }
 
                 //Boton para refrescar datatable
@@ -966,6 +974,7 @@ var fillData = {
                     btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.laboral.comisiones(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
 
                 tableRef.LoadingOverlay("hide");
+                
             })
             .catch( (err) => {
                 tableRef.setError(err.statusText);

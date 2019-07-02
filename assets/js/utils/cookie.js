@@ -76,25 +76,25 @@ var MyCookie = {
     }
 };
 
-var doExpireInterval = setInterval(function(){
-    var sess_time_to_updateCookie = MyCookie.objs.coockieObj.get('sess_time_to_update',{ path : '/' });
+// var doExpireInterval = setInterval(function(){
+//     var sess_time_to_updateCookie = MyCookie.objs.coockieObj.get('sess_time_to_update',{ path : '/' });
 
-    if (sess_time_to_updateCookie !== undefined) {
-        if (parseInt(sess_time_to_updateCookie) <= parseInt(sess_time_left_to_confirm)){
-            if (parseInt(sess_time_to_updateCookie) == 1) {
-                clearInterval(doExpireInterval);
-                swal.close();
-                $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
-                window.location.href = site_url + 'Sesion/Terminar';                
-            }
+//     if (sess_time_to_updateCookie !== undefined) {
+//         if (parseInt(sess_time_to_updateCookie) <= parseInt(sess_time_left_to_confirm)){
+//             if (parseInt(sess_time_to_updateCookie) == 1) {
+//                 clearInterval(doExpireInterval);
+//                 swal.close();
+//                 $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+//                 window.location.href = site_url + 'Sesion/Terminar';                
+//             }
 
-            sess_time_to_update = sess_time_to_updateCookie; 
-            MyCookie.objs.coockieObj.set('sess_time_to_update',sess_time_to_update,{ path : '/' });
-        } else if (swalShow){
-            swal.close();
-        }
-    }
-},1000);
+//             sess_time_to_update = sess_time_to_updateCookie; 
+//             MyCookie.objs.coockieObj.set('sess_time_to_update',sess_time_to_update,{ path : '/' });
+//         } else if (swalShow){
+//             swal.close();
+//         }
+//     }
+// },1000);
 
 
 /*if ( MyCookie.singleWindow.get() === undefined) {

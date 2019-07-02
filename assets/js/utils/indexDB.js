@@ -1,5 +1,5 @@
 var iDB = {
-    version: 10,
+    version: 11,
     status : false,
     vars : {
         db : null,
@@ -188,6 +188,7 @@ var iDB = {
 
                         } else {
                             //FROM AJAX
+                            obj.data('populating',true);
                             obj.append('<option disabled selected value><i class="fa fa-refresh fa-spin fa-3x fa-fw"></i> Actualizando, favor de esperar...</option>');                                
                             var callUrl = base_url + "ajaxCatalogos/index";
                             $.get(callUrl,{
@@ -221,6 +222,7 @@ var iDB = {
 
                                 }
                                 
+                                obj.removeData('populating');
                                 obj.data('populated',true);
                                 
                                 options.success(data);

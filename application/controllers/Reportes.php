@@ -45,25 +45,29 @@
                 $responseModel= [ 'status' => 0];
                 switch ($model['optionPDF']) {
                     case 'PSB': //Petición Solicitud de baja
-
+                        $responseModel = $this->REPORTES_model->PSB($model);
                         break;
                     case 'PSEC': //Petición Solicitud de examen de confianza
+                        $responseModel = $this->REPORTES_model->PSEC($model);
                         break;
                     case 'PSC': //Petición Solicitud de curso
+                        $responseModel = $this->REPORTES_model->PSC($model);
                         break;
                     case 'PCUIP': //Petición de CUIP
+                        $responseModel = $this->REPORTES_model->PCUIP($model);
                         break;
                     case 'PCA': //Petición de cambio de adscripción
+                        $responseModel = $this->REPORTES_model->PCA($model);
                         break;
                     case 'PSA': //Petición solicitud de alta
-                        $responseModel = $this->REPORTES_model->solicitudAlta($model);
+                        $responseModel = $this->REPORTES_model->PSA($model);
                         break;
-                    case 'AA':
+                    case 'RSB': //Respuesta solicitud de baja
+                        $responseModel = $this->REPORTES_model->RSB($model);
                         break;
-                    case 'AC':
-                        break;
-                    case 'VE':
-                        break;
+                    case 'RSA': //Respuesta solicitud de alta
+                        $responseModel = $this->REPORTES_model->RSA($model);
+                        break;                    
                     default:
                         throw new rulesException('Formato de oficio incorrecto');
                         break;
@@ -122,8 +126,11 @@
 			echo json_encode( [ 'results' => $responseModel ] );
 			exit;
 		}
+
         //REPORTES IMPLEMENTADOS
-        function /*PETICION*/ altaElemento($model = null){
+        
+        //Respuesta solicitud de alta
+        function altaElemento($model = null){
             
             ob_start();
             
@@ -567,26 +574,34 @@
             // Data
 
             $pdf->cell(10);
+
+            $iter = 1;
             foreach ($model['data']['data'] as $key => $item) {
+                //TODO: Xmal - Quitar el comentario de la siguiente línea de código al implementar
+                if ($item['estatus'] == 1) 
+                {
 
-                $pdf->Cell(8,6, ($key + 1) ,1);
-                $pdf->Cell(72,6, utf8_decode( ($item['nombre'] . ' ' . $item['paterno'] . ( $item['materno'] ? ' ' . $item['materno'] : '')) ),1);
+                    $pdf->Cell(8,6, $iter ,1);
+                    $pdf->Cell(72,6, utf8_decode( ($item['nombre'] . ' ' . $item['paterno'] . ( $item['materno'] ? ' ' . $item['materno'] : '')) ),1);
 
-                if ( (($key + 1) % 2) == 0 ) {
-                    $pdf->Ln();
-                    $pdf->cell(10);
+                    if ( ( $iter % 2) == 0 ) {
+                        $pdf->Ln();
+                        $pdf->cell(10);
+                    }
+
+                    $iter++;
                 }
-
+                
             }
 
-            // $pdf->cell(10);
-            // $pdf->Cell(40,6,1,1);
-            // $pdf->Cell(40,6,"MIGUEL ANGEL RUEDA AGUILAR",1);
-            // $pdf->Cell(40,6,4,1);
-            // $pdf->Cell(40,6,"MIGUEL ANGEL RUEDA AGUILAR",1);
+            if ( count($model['data']['data']) > 1 ) {
+                if ( ( ($iter -1) % 2 )  != 0 ){
+                    $pdf->Cell(8,6, $iter ,1);
+                    $pdf->Cell(72,6, utf8_decode( '----------------------------------------------' ),1);
+                }
+            }
 
             /*/TABLA FOREACH */
-
 
             $pdf->Ln(10);
             $pdf->SetFont('Arial','',10);
@@ -614,13 +629,13 @@
             $pdf->Cell(30,5,utf8_decode('C.c.p.'));
             $pdf->Ln(10);
             $pdf->SetFont('Arial','B',6);
-            $pdf->Cell(30,5,utf8_decode(  $model['PSANombreEncargadoDespachoSESESP'] /*'{cargo y nombre del encargado del SESP}'*/));
+            $pdf->Cell(30,5,utf8_decode( $model['PSANombreEncargadoDespachoSESESP'] /*'{cargo y nombre del encargado del SESP}'*/));            
             $pdf->SetFont('Arial','',6);
             $pdf->Cell(25);
             $pdf->Cell(30,5,utf8_decode('Encargado del despacho del Secretariado Ejecutivo del SESP'));
             $pdf->Ln();
             $pdf->SetFont('Arial','B',6);
-            $pdf->Cell(30,5,utf8_decode(  $model['PSANombreSubSESESP'] /*'{cargo y nombre del Subcoordinador del SESESP}'*/));
+            $pdf->Cell(30,5,utf8_decode( $model['PSANombreSubSESESP'] /*'{cargo y nombre del Subcoordinador del SESESP}'*/));
             $pdf->SetFont('Arial','',6);
             $pdf->Cell(25);
             $pdf->Cell(30,5,utf8_decode('Subcoordinador de Sistemas de Información del SESESP.- Igual fin.'));
@@ -656,7 +671,7 @@
         }
         
         // Respuesta a solicitud de alta
-        function RsolicitudAlta(){
+        function RsolicitudAlta($model){
             $pdf = new FPDF();
             $pdf->AddPage();
         
@@ -800,9 +815,11 @@
         
            $pdf->Output();
         }
+        
         // Petición solicitud baja
+        function solicitudBaja($model){
+            ob_start();
 
-        function solicitudBaja(){
             $pdf = new FPDF();
             $pdf->AddPage();
             $pdf->Image($this->base."assets/images/logo.png",10,8,185,32);
@@ -852,8 +869,8 @@
             $pdf->Cell(58);
             $pdf->Cell(30,4,utf8_decode('Tel +52 (312) 31 27940, 31 27910, 31 23087, 31 42334. www.colima-estado.gob.mx'));
             $pdf->Image($this->base."assets/images/Cintillo.png",72,253,65,1);
-            $pdf->Output();
             
+            $pdf->Output(null, 'PeticionSolicitudBaja-' . time() . '.pdf');            
         }
 
         // Respuesta a solicitud de baja
@@ -974,6 +991,7 @@
            $pdf->Output();
         }
 
+        //Petición de cambio de adscripción
         function solicitudCambio(){
             $pdf = new FPDF();
             $pdf->AddPage();
