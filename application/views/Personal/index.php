@@ -1,4 +1,4 @@
-<div class="container">
+<div class="_container">
     <table id="tablePersonal" class="table display">
         <thead>
                 <th>Id persona</th>
