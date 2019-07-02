@@ -8,7 +8,7 @@
         <div class="col-md-1">
             <a href="#" id='refreshView' title='Actualizar información'><i class="fa fa-refresh fa-3x mb-3" aria-hidden="true"></i></a>
         </div>
-        <?php if ( isset($isFromPersonal) == true) {?>
+        <?php if ( isset($isFromPersonal) == true ) {?>
         <div class="col-md-11 text-right">
             <a class="btn btn-secondary btn-lg" href="<?php echo site_url('Personal'); ?>">Regresar</a>
         </div>
@@ -27,7 +27,7 @@
                 <li class="nav-item">
                     <a class="nav-link" id="Capacitacion-tab" data-toggle="tab" href="#Capacitacion" role="tab" aria-controls="Capacitacion" aria-selected="false" data-finish='false'>Capacitación</a>
                 </li>                            
-                <?php //if (verificaPermiso(15) == true) 
+                <?php if (verificaPermiso(15) == true || ( isset($isFromPersonal) == true && verificaPermiso(19) == true )) 
                 { ?>
                 <li class="nav-item">
                     <a class="nav-link" id="Identificacion-tab" data-toggle="tab" href="#Identificacion" role="tab" aria-controls="Identificacion" aria-selected="false" data-finish='false'>Identificación</a>
