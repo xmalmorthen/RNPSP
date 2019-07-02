@@ -3,7 +3,17 @@
 <link rel="stylesheet" href="<?php echo base_url("assets/vendor/datatable/responsive.bootstrap4.min.css"); ?>">
 
 <div class="_container">
-    <a href="#" id='refreshView' title='Actualizar información'><i class="fa fa-refresh fa-3x mb-3" aria-hidden="true"></i></a>
+    
+    <div class="row">
+        <div class="col-md-1">
+            <a href="#" id='refreshView' title='Actualizar información'><i class="fa fa-refresh fa-3x mb-3" aria-hidden="true"></i></a>
+        </div>
+        <?php if ( isset($isFromPersonal) == true) {?>
+        <div class="col-md-11 text-right">
+            <a class="btn btn-secondary btn-lg" href="<?php echo site_url('Personal'); ?>">Regresar</a>
+        </div>
+        <?php } ?>
+    </div>
     <!-- LISTA DE TABS DEL MENU PRINCIPAL -->
     <div class="row">
         <div class="col-md-12">
@@ -28,12 +38,16 @@
     </div>
     <!-- LISTA DE SUBMENUS -->
     <div class="tab-content" id="myTabContent">
+        
+        <?php if ( isset($isFromPersonal) == false) {
+            $this->session->set_flashdata('isFromPersonal',false);?>
         <div class="row mt-2 mr-2">
             <div class="col-md-12 text-right">
                 <button class="btn btn-primary btn-lg btnEdit">Modificar</button>
             </div>
         </div>
-
+        <?php } ?>
+        
         <div class="tab-pane fade show active" id="datosGenerales" role="tabpanel" aria-labelledby="Tab1-tab">
                 <?php echo $this->load->view('Solicitud/tabsVer/datosGenerales/mnuTabDatosGenerales',null,TRUE) ?>
             <div class="tab-content" id="contentDatosGenerales">
@@ -62,6 +76,14 @@
         </div>
         <?php } ?>
     </div>    
+
+    <div class="row">
+        <?php if ( isset($isFromPersonal) == true) {?>
+        <div class="col-md-12 text-right">
+            <a class="btn btn-secondary btn-lg" href="<?php echo site_url('Personal'); ?>">Regresar</a>
+        </div>
+        <?php } ?>
+    </div>
 </div>
 
 <!-- JS -->
