@@ -14,10 +14,10 @@
             {personal}
             <tr>
                 <td>{pidPersona}</td>
-                <td></td>
+                <td>{pFechaReg}</td>
                 <td>{pnombre} {paterno} {pmaterno}</td>
                 <td>{pNOMBRE_JEFE} {pPATERNO_JEFE} {pMATERNO_JEFE}</td>
-                <td></td>
+                <td>{pDependencia}</td>
                 <td>{pNOMBRE_PUESTO}</td>
                 <td>{pEstatus}</td>
                 <td><a class='m-2' href="<?php echo site_url('Personal/Ver/'); ?>{pidPersona}"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></a></td>
