@@ -2132,4 +2132,59 @@ class SOLICITUD_model extends MY_Model
     }
     return $this->response;
   }
+
+  public function sp_enviarBUS($model = null){
+      $buid = "EXEC [sp_enviarBUS] @CAMPO = '" . $model['ids'] . "';";
+      $query = $this->db->query($buid);
+      $response = $this->query_list($query);
+      if($response === FALSE){
+        $this->response['status'] = 0;
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
+      }else{
+        if(count($response) > 0){
+          $this->response['status'] = 1;
+          $this->response['data'] = $response;
+        }else{
+          $this->response['status'] = 0;
+          $this->response['message'] = 'No se encontraron resultados.';
+        }
+      }
+      return $this->response;
+  }
+
+  public function sp_replicarStatus($model = null){
+
+    // $this->response['status'] = 1;
+    // $this->response['data'] = [
+    //   [ 'id_alterna' => 666, 'nombre' => 'asd', 'paterno' => 'asd', 'materno' => 'ads', 'tipo_op' => 'AE', 'motivo' => 'adasdadsadsads', 'estatus' => '0' ],
+    //   [ 'id_alterna' => 666, 'nombre' => 'asd', 'paterno' => 'asd', 'materno' => 'ads', 'tipo_op' => 'AE', 'motivo' => 'adasdadsadsads', 'estatus' => '0' ],
+    //   [ 'id_alterna' => 666, 'nombre' => 'asd', 'paterno' => 'asd', 'materno' => 'ads', 'tipo_op' => 'AE', 'motivo' => 'adasdadsadsads', 'estatus' => '0' ],
+    //   [ 'id_alterna' => 666, 'nombre' => 'asd', 'paterno' => 'asd', 'materno' => 'ads', 'tipo_op' => 'AE', 'motivo' => 'adasdadsadsads', 'estatus' => '0' ],
+    //   [ 'id_alterna' => 666, 'nombre' => 'asd', 'paterno' => 'asd', 'materno' => 'ads', 'tipo_op' => 'AE', 'motivo' => 'adasdadsadsads', 'estatus' => '0' ],
+    //   [ 'id_alterna' => 666, 'nombre' => 'asd', 'paterno' => 'asd', 'materno' => 'ads', 'tipo_op' => 'AE', 'motivo' => 'adasdadsadsads', 'estatus' => '0' ],
+    //   [ 'id_alterna' => 666, 'nombre' => 'asd', 'paterno' => 'asd', 'materno' => 'ads', 'tipo_op' => 'AE', 'motivo' => 'adasdadsadsads', 'estatus' => '0' ],
+    //   [ 'id_alterna' => 666, 'nombre' => 'asd', 'paterno' => 'asd', 'materno' => 'ads', 'tipo_op' => 'AE', 'motivo' => 'adasdadsadsads', 'estatus' => '0' ],
+    //   [ 'id_alterna' => 666, 'nombre' => 'asd', 'paterno' => 'asd', 'materno' => 'ads', 'tipo_op' => 'AE', 'motivo' => 'adasdadsadsads', 'estatus' => '0' ],
+    //   [ 'id_alterna' => 666, 'nombre' => 'asd', 'paterno' => 'asd', 'materno' => 'ads', 'tipo_op' => 'AE', 'motivo' => 'adasdadsadsads', 'estatus' => '0' ]
+    // ];
+
+
+      $buid = "EXEC [sp_resultadosBUS] @guid = '" . $model['guid'] . "';";
+      $query = $this->db->query($buid);
+      $response = $this->query_list($query);
+      if($response === FALSE){
+        $this->response['status'] = 0;
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
+      }else{
+        if(count($response) > 0){
+          $this->response['status'] = 1;
+          $this->response['data'] = $response;
+        }else{
+          $this->response['status'] = 0;
+          $this->response['message'] = 'No se encontraron resultados.';
+        }
+      }
+      return $this->response;
+  }
+
 }

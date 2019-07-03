@@ -5,7 +5,8 @@ var objViewIndex = {
             table : {
                 dom : null,
                 obj : null
-            }
+            },
+            replicationInterval : null            
         },
         btns : {
             Nuevo : null,
@@ -113,23 +114,76 @@ var objViewIndex = {
             },
             Replicar : function(e, from){
                 e.preventDefault();
+                e.stopPropagation();
+
                 if (!objViewIndex.actions.validSelectedsCheck())
                     return null;
 
-                //TODO: Xmal -  Implementar la replicación
+                if ( localStorage.getItem('replicationProc') ){
+                    
+                    Swal.fire({ type: 'warning', title: 'Replicación', html: 'Actualmente se encuentra un proceso de replicación en ejecución, favor de esperar.' });
+                    objViewIndex.actions.doIntervalReplication();
+                    return false;
+
+                }
+
+                try {
+                    
+                    $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+                    var ids = []
+                    $.each( objViewIndex.vars.objs.itemsCheckeds, function( key, value ) {
+                        ids.push($(value).data().idreg);
+                    });
+
+                    var model = 'ids=' + ids.join(',');
+                    model = {model : model};
+                    model[csrf.token_name] = csrf.hash;
+                    
+                    var callUrl = base_url + 'Solicitud/ajaxReplicar';
+
+                    $.post(callUrl,model,
+                    function (data) {
+
+                        if (data.results.status != 1) {
+
+                            $('#frmAlertSumaryMsg').html(data.results.message);
+                            $('#frmAlertSumary').removeClass('d-none');
+                            $.LoadingOverlay("hide",true);
+
+                        } else {
+
+                            guid = data.results.data[0].g_uid;
+                            localStorage.setItem('replicationProc', JSON.stringify( { guid: guid, ids: ids } ) );
+
+                            $('#Replicar').html('<i class="fa fa-cog fa-spin fa-3x fa-fw"></i> Replicando, favor de esperar.').prop('disabled', true);
+                            objViewIndex.actions.doIntervalReplication();
+                            
+                        }
+                        
+                    }).fail(function (err) {
+                    
+                        $('#frmAlertSumaryMsg').html(err.message ? err.message : err.statusText);
+                        $('#frmAlertSumary').removeClass('d-none');
+                        $.LoadingOverlay("hide",true);
+
+                    }).always(function () {
+
+                        MyCookie.session.reset();
+
+                    });
+
+                }catch(err) {
+
+                    $('#frmAlertSumaryMsg').html(err.message ? err.message : err.statusText);
+                    $('#frmAlertSumary').removeClass('d-none');
+                    $.LoadingOverlay("hide",true);
+
+                }
+
             },
             Eliminar : function(e){
                 e.preventDefault();
-
-                /*const {value: text} = await Swal.fire({
-                    input: 'textarea',
-                    inputPlaceholder: 'Type your message here...',
-                    showCancelButton: true
-                  })
-                  
-                  if (text) {
-                    Swal.fire(text)
-                  }*/
 
                 Swal.fire({
                     title: 'Aviso',
@@ -185,7 +239,7 @@ var objViewIndex = {
             },
             aceptarFrmImprimir : function(e){
                 e.preventDefault();
-                e.stopPropagation();                           
+                e.stopPropagation();
 
                 try {
                     $form = $('#formImprimir');
@@ -392,6 +446,152 @@ var objViewIndex = {
                 Swal.fire({ type: 'error', title: 'Error', html: 'Debe seleccionar al menos un registro' });
             }
             return returnResponse;
+        },
+        doIntervalReplication : function(){
+
+            replicationProc = localStorage.getItem('replicationProc');
+
+            if ( !replicationProc )
+                return false;
+
+            replicationProc = JSON.parse(replicationProc);
+            
+            $.LoadingOverlay("hide",true);
+            // $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin",text:'Replicando solicitud(es)',progress : true});            
+            Swal.fire({
+                position: 'bottom-end',
+                type: 'info',
+                title: 'Replicando solicitud(es)',
+                footer: 'favor de esperar',
+                showConfirmButton: false,
+                allowOutsideClick: false
+            });
+
+            iter = 0;
+
+            requestPending = false;
+            objViewIndex.vars.general.replicationInterval = setInterval(function(){                    
+
+                var model = 'guid=' + replicationProc.guid;
+                model = {model : model};
+                model[csrf.token_name] = csrf.hash;
+
+                var callUrl = base_url + 'Solicitud/ajaxReplicarStatus';
+                
+                if (requestPending) 
+                    return false;
+
+                // $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin",text:'Replicando solicitud(es)',progress : true});
+                
+
+                requestPending = true;
+                $.post(callUrl,model,
+                function (data) {
+
+                    if (!data){
+
+                        clearInterval( objViewIndex.vars.general.replicationInterval );
+
+                        $('#frmAlertSumaryMsg').html(data.results.message);
+                        $('#frmAlertSumary').removeClass('d-none');
+                        $.LoadingOverlay("hide",true);
+
+                    } else if (data.results.status != 1) {
+
+                        clearInterval( objViewIndex.vars.general.replicationInterval );
+
+                        $('#frmAlertSumaryMsg').html(data.results.message);
+                        $('#frmAlertSumary').removeClass('d-none');
+                        $.LoadingOverlay("hide",true);
+
+                    } else {
+
+                        // $.LoadingOverlay("progress", ( (iter * 100) / 10 ) );
+                        // $.LoadingOverlay("progress", ( (data.results.data.length * 100) / replicationProc.ids.length ) );
+                        if (!Swal.isVisible())
+                            Swal.fire({
+                                position: 'bottom-end',
+                                type: 'info',
+                                title: 'Replicando solicitud(es)',
+                                footer: 'favor de esperar',
+                                showConfirmButton: false,
+                                allowOutsideClick: false
+                            });
+
+                        if (iter == 10){
+
+                            clearInterval( objViewIndex.vars.general.replicationInterval );
+
+                            localStorage.removeItem('replicationProc');
+
+                            localStorage.setItem( replicationProc.guid, JSON.stringify( data ));
+
+                            window.location.href = site_url + 'Solicitud?replicationResult=' + replicationProc.guid;                            
+
+                        }
+
+                        iter++;
+
+                        $('#Replicar').html('<i class="fa fa-cog fa-spin fa-3x fa-fw"></i> Replicando, favor de esperar.').prop('disabled', true);
+
+                    }
+                    
+                }).fail(function (err) {
+                
+                    clearInterval( objViewIndex.vars.general.replicationInterval );
+
+                    $('#frmAlertSumaryMsg').html(err.message ? err.message : err.statusText);
+                    $('#frmAlertSumary').removeClass('d-none');
+                    $.LoadingOverlay("hide",true);
+                    
+                }).always(function () {
+                    
+                    requestPending = false;
+
+                });
+
+            }, 2000);            
+            
+        },
+        showReplicationResult : function(guid){
+
+            data = localStorage.getItem(guid);
+
+            if (!data) 
+                return false;
+
+            localStorage.removeItem(guid);
+
+            data = JSON.parse(data);
+
+            var errorList = '<ul class="list-group">';
+            var solicitudesError = 0;
+            var solicitudesValidas = 0;
+            $.each(data.results.data, function( index, item ) {
+                if (item.estatus != 1){
+                    errorList += '<li class="list-group-item d-flex justify-content-between align-items-center"><strong>' + (item.nombre + ' ' + item.paterno +  ( item.materno ? ' ' + item.materno : '' )) + '</strong><span class="badge badge-danger" style="font-size: 100%!Important;">' + item.motivo + '</span></li>';
+                    solicitudesError ++;
+                } else {
+                    solicitudesValidas ++;
+                }
+            });
+
+            if (solicitudesError > 0) {
+                $('#frmAlertSumaryMsg').html('<h5>Eror al procesar una o varias de las solicitudes.</h5> <br/><br/>' + errorList);
+                $('#frmAlertSumary').removeClass('d-none');
+            }
+
+            $.LoadingOverlay("hide",true);
+
+            if ( solicitudesValidas > 0) {
+                msg = 'Solicitud' + ( solicitudesValidas > 1  ? 'es' : '' ) + ' enviada' + ( solicitudesValidas > 1  ? 's' : '' ) + ' al RNPSP';
+
+                Swal.fire({
+                    type: 'success',
+                    title: 'Replicación',
+                    text: msg
+                });
+            }
         }
     }
 }

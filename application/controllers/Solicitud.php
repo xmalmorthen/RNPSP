@@ -42,6 +42,8 @@
 			}
 			
 			$model['items'] = $items;
+			$model['replicationResult'] = $this->input->get('replicationResult');
+			
 			$this->load->view('Solicitud/index',$model);
         }
 
@@ -2142,4 +2144,75 @@
 			exit;
 		}
 		
+		public function ajaxReplicar(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+
+			$responseModel = [
+				'status' => false,
+				'message'=> '',
+				'data'=> null
+			];
+
+			try {
+				if (!$this->input->post())
+					throw new rulesException('Petición inválida');
+
+				$model = [];
+				parse_str($_POST["model"], $model);
+				
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_enviarBUS($model);
+
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+
+		public function ajaxReplicarStatus(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+
+			$responseModel = [
+				'status' => false,
+				'message'=> '',
+				'data'=> null
+			];
+
+			try {
+				if (!$this->input->post())
+					throw new rulesException('Petición inválida');
+
+				$model = [];
+				parse_str($_POST["model"], $model);
+				
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_replicarStatus($model);
+				
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
 }	

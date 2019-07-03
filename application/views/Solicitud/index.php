@@ -562,8 +562,16 @@
 <script src="<?php echo base_url('assets/js/utils/catalogs.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/views/solicitud/index.js') ?>"></script>
 <script>
+	var replicationResult = '<?php echo $replicationResult; ?>';
+	
     $(function() {
-        objViewIndex.init();    
+        objViewIndex.init();
+
+		objViewIndex.actions.doIntervalReplication();
+
+		if (replicationResult)
+			objViewIndex.actions.showReplicationResult(replicationResult);
+
 	});
 	
 	$("#optionPDF").change(function(){
