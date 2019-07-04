@@ -15,7 +15,14 @@
 		</div>
 		<div id='frmAlertReplication' class="alert alert-info alert-dismissible fade show d-none" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			<h3><i class="fa fa-cog fa-spin fa-fw"></i> Replicando solicitudes</h3>
+			<div class="row">
+				<div class="col align-self-start">
+					<h3><i class="fa fa-cog fa-spin fa-fw"></i> Replicando solicitudes</h3>
+    			</div>
+				<div class="col align-self-end text-right">
+					<button id='cancelReplication' type="button" class="btn btn-danger mb-1 mr-3"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</button>
+    			</div>
+			</div>
 			<div class="progress" style="height: 20px;">
 				<div class="progress-bar bg-success" role="progressbar" style="width: 0;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 			</div>

@@ -6,13 +6,15 @@ var objViewIndex = {
                 dom : null,
                 obj : null
             },
-            replicationInterval : null            
+            replicationInterval : null,
+            replicationCancel : false
         },
         btns : {
             Nuevo : null,
             Imprimir : null,
             Replicar : null,
-            Eliminar : null
+            Eliminar : null,
+            cancelReplication : null
         },
         checkbox : {
             checkAll : null
@@ -38,6 +40,7 @@ var objViewIndex = {
         objViewIndex.vars.btns.Replicar = $('#Replicar');
         objViewIndex.vars.checkbox.checkAll = $('#checkAll');
         objViewIndex.vars.btns.Eliminar = $("a[name='eliminarSolicitud']");
+        objViewIndex.vars.btns.cancelReplication = $('#cancelReplication');
 
         // SELECT
         objViewIndex.vars.select.optionPDF = $('#optionPDF');
@@ -61,6 +64,7 @@ var objViewIndex = {
         objViewIndex.vars.btns.Imprimir.on('click',objViewIndex.events.click.Imprimir);
         objViewIndex.vars.btns.Replicar.on('click',objViewIndex.events.click.Replicar);
         objViewIndex.vars.btns.Eliminar.on('click',objViewIndex.events.click.Eliminar);
+        objViewIndex.vars.btns.cancelReplication.on('click',objViewIndex.events.click.cancelReplication);
         
         //CHANGE
         objViewIndex.vars.checkbox.checkAll.on('change',objViewIndex.events.change.checkAll);
@@ -180,6 +184,30 @@ var objViewIndex = {
                     $.LoadingOverlay("hide",true);
 
                 }
+
+            },
+            cancelReplication : function(e){
+                e.preventDefault();
+
+                Swal.fire({
+                    type: 'question',
+                    title: 'Confirmar cancelación del proceso de replicación',
+                    showConfirmButton: true,
+                    confirmButtonText: '<i class="fa fa-times" aria-hidden="true"></i> Si',
+                    confirmButtonColor: 'red',
+                    showCancelButton: true,
+                    cancelButtonText: 'No'
+                }).then((result) => {
+                    
+                    if (result.value) {
+                        
+                        $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin",text:'Cancelando proceso de replicación.'});
+                        objViewIndex.vars.general.replicationCancel = true;
+
+                    }
+
+                });
+
 
             },
             Eliminar : function(e){
@@ -476,8 +504,7 @@ var objViewIndex = {
                 if (requestPending) 
                     return false;
 
-                // $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin",text:'Replicando solicitud(es)',progress : true});
-                
+                // $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin",text:'Replicando solicitud(es)',progress : true});                
 
                 requestPending = true;
                 $.post(callUrl,model,
@@ -513,11 +540,13 @@ var objViewIndex = {
                         $('#frmAlertReplication .progress-bar').attr('aria-valuenow', ((data.results.data.length * 100) / replicationProc.ids.length ) ).css('width', ((data.results.data.length * 100) / replicationProc.ids.length ) + '%').html( data.results.data.length + ' de ' + replicationProc.ids.length + ' solicitud(es).');
                         $('#frmAlertReplication').removeClass('d-none');
 
-                        if ( data.results.data.length ==  replicationProc.ids.length){
+                        if ( (data.results.data.length == replicationProc.ids.length) || objViewIndex.vars.general.replicationCancel){
 
                             clearInterval( objViewIndex.vars.general.replicationInterval );
 
                             localStorage.removeItem('replicationProc');
+
+                            data.replicationCancel = objViewIndex.vars.general.replicationCancel;
 
                             localStorage.setItem( replicationProc.guid, JSON.stringify( data ));
 
@@ -580,15 +609,16 @@ var objViewIndex = {
 
             $.LoadingOverlay("hide",true);
 
-            if ( solicitudesValidas > 0) {
-                msg = 'Solicitud' + ( solicitudesValidas > 1  ? 'es' : '' ) + ' enviada' + ( solicitudesValidas > 1  ? 's' : '' ) + ' al RNPSP';
+            msg = 'Proceso de replicación ' + (data.replicationCancel ? '<strong class="text-danger _display-4">cancelado por el usuario.</strong> <br/>' : '<strong class="text-success _display-4">concluido.</strong> <br/>') +
+            'Solicitudes válidas <strong class="text-success _display-4">' + solicitudesValidas + '</strong>' + ', con error <strong class="text-danger _display-4">' + solicitudesError + '</strong> de <strong class="text-info _display-4">' + data.results.data.length + '</strong> enviados.' ;
 
-                Swal.fire({
-                    type: 'success',
-                    title: 'Replicación',
-                    text: msg
-                });
-            }
+            Swal.fire({
+                type: 'success',
+                title: 'Replicación',
+                html: msg,
+                footer: solicitudesError > 0 ? 'Favor de revisar el sumario de errores' : ''
+            });
+
         }
     }
 }
