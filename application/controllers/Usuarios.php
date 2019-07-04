@@ -292,8 +292,13 @@ class Usuarios extends CI_Controller
         $additional_data = [
           'email' => strtolower($this->input->post('pCORREO')),
           'MotivoInactivo' => $this->input->post('MotivoInactivo'),
-          'id_EstatusUsuario' => $this->input->post('pID_ESTATUS')
+          'id_EstatusUsuario' => $this->input->post('pID_ESTATUS'),
         ];
+
+        if ($password) {
+          $additional_data['password'] = $password;
+        }
+
         if($this->ion_auth->update($user_id, $additional_data)){
 
           $this->ion_auth->remove_from_group(NULL, $user_id);
