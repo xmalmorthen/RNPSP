@@ -1,16 +1,15 @@
 var mainFormActions = {	
 	populateCURPFields: function (data) {
-		console.log(data);
+		// console.log(data);
+
 		$('[name=pCURP]').val(data.CURP);
-		$('[name=pCURP]').prop('readonly', true);
 		$('[name=pNOMBRE]').val(data.NOMBRE);
-		$('[name=pNOMBRE]').prop('readonly', true);
 		$('[name=pPATERNO]').val(data.PATERNO);
-		$('[name=pPATERNO]').prop('readonly', true);
 		$('[name=pMATERNO]').val(data.MATERNO);
-		$('[name=pMATERNO]').prop('readonly', true);
+		$('[name=pADSCRIPCION]').val(data.NOMBRE_DPCIA);
+		$('[name=pID_ADSCRIPCION]').val(data.ID_DEPENDENCIA);
 		$('[name=pID_JEFE]').val($.trim(data.NOMBRE_JEFE + data.PATERNO_JEFE + data.MATERNO_JEFE));
-		$('[name=pID_JEFE]').prop('readonly', true);
+
 	},
 	populateData: function (idRef) {
 		$.LoadingOverlay("show", {
@@ -198,20 +197,24 @@ hideError: function () {
 	}
 },
 showError: function (message) {
-	var error = '';
+	var error = 'Error al guardar<br/>';
 	$.each(message, function (index, value) {
 		if ($('input[name=' + index + ']').length > 0) {
 			$('input[name=' + index + ']').attr('error', true);
-			$('input[name=' + index + ']').setError(value);
+			$('input[name=' + index + ']').setError(value);			
 		} else {
-			error += '<small>' + value + '</small><br/>';
+			error += value + '<br/>';
 		}
 	});
 	if (error.length > 0) {
-		Swal.fire({
-			type: 'error',
-			html: '<p>' + error + '</p>',
+
+		$('form#Usuarios_form').setAlert({
+			alertType :  'alert-danger',
+			dismissible : true,
+			header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+			msg : error
 		});
+		
 	}
 },
 generatePassword: function () {
@@ -219,6 +222,38 @@ generatePassword: function () {
 	$('input#pCONTRASENA').val(pwd);
 	$('input[name=pCONTRASENA]').val(pwd);
 	app.formChanged = true;
+},
+confirmar: function(){
+	var that = this;
+	that.hideError();
+
+	if ( !$('form#Usuarios_form').valid() ){
+		$('form#Usuarios_form').setAlert({
+			alertType :  'alert-danger',
+			dismissible : true,
+			header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+			msg : 'Formulario incompleto'
+		});
+		return false;
+	}
+
+	$('form#Usuarios_form').closeAlert({ alertType :  'alert-danger'});
+
+	Swal.fire({
+		type: 'question',
+		title: 'Desea Guardar los cambios',
+		showConfirmButton: true,
+		confirmButtonText: 'Si',
+		showCancelButton: true,
+		cancelButtonText: 'No'
+	}).then((result) => {
+		if (result.value) {
+			
+			app.guardar();
+
+		}
+	});
+
 },
 guardar: function () {
 	var that = this;
@@ -233,6 +268,8 @@ guardar: function () {
 		});
 		return false;
 	}
+
+	$('form#Usuarios_form').closeAlert({ alertType :  'alert-danger'});
 
 	var sendData = $('form#Usuarios_form').serializeArray();
 	sendData.push({
@@ -266,6 +303,8 @@ guardar: function () {
 			that.stopLoader();
 		}
 	});
+
+	
 },
 regresar: function () {
 	if (app.formChanged){

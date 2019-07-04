@@ -75,10 +75,11 @@ class Usuarios extends CI_Controller
       $this->load->library('form_validation');
       $this->form_validation->set_message('is_unique', 'El campo %s ya se encuentra registrado.');
       $this->form_validation->set_message('required', 'Campo obligatorio');
+      
       $this->form_validation->set_rules('pCORREO', 'Correo electrónico', 'trim|required|valid_email|is_unique[cat_Usuarios.username]');
       $this->form_validation->set_rules('pCURP', 'CURP', 'trim|required|min_length[18]|max_length[20]|is_unique[cat_Usuarios.CURP]');
       $this->form_validation->set_rules('pCONTRASENA', 'Contraseña', 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']');
-      $this->form_validation->set_rules('pID_ADSCRIPCION', 'Adscripción', 'trim|required');
+      // $this->form_validation->set_rules('pID_ADSCRIPCION', 'Adscripción', 'trim|required');
 
       if ($this->form_validation->run() === true) {
         $email = strtolower($this->input->post('pCORREO'));
@@ -86,9 +87,12 @@ class Usuarios extends CI_Controller
         $password = $this->input->post('pCONTRASENA');
         $tipoUsuario = $this->input->post('pTIPO_USUARIO');
         $additional_data = [
-          'CURP' => $this->input->post('pCURP'),
-          'ID_ADSCRIPCION' => $this->input->post('pID_ADSCRIPCION'),
+          'CURP' => $this->input->post('pCURP')
         ];
+
+        if ( $this->input->post('pID_ADSCRIPCION') ) {
+          $additional_data['ID_ADSCRIPCION'] = $this->input->post('pID_ADSCRIPCION');
+        }
 
         if ($this->ion_auth->register($identity, $password, $email, $additional_data, array($tipoUsuario))) {
           $response['status'] = true;
@@ -179,18 +183,37 @@ class Usuarios extends CI_Controller
 
       } else {
 
-        $response = array(
-          'status' => true,
-          'data' => $results
-        );
+        $this->db->where('FOLIO',$results['ID_ALTERNA']);
+        $this->db->from('vw_Solicitudes');
 
+        $query = $this->db->get();
+        $resultsVw_Solicitudes = $query->row_array();
+
+        if ( $resultsVw_Solicitudes['ESTATUS'] != 1) {
+          
+          $response = array(
+            'status' => false,
+            'message' => 'Usuario no encontrado.'
+          );
+
+        } else {
+
+          $results['ID_DEPENDENCIA'] = $resultsVw_Solicitudes['ID_DEPENDENCIA'];
+          $results['NOMBRE_DPCIA'] = $resultsVw_Solicitudes['NOMBRE_DPCIA'];
+          
+          $response = array(
+            'status' => true,
+            'data' => $results
+          );
+        }
+        
       }
 
     } else {
 
       $response = array(
         'status' => false,
-        'message' => 'No se encontró la CURP registrada.'
+        'message' => 'Usuario no encontrado.'
       );
 
     }
