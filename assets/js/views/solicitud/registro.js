@@ -11,7 +11,9 @@ $(function() {
     validarReplicar = $('.validarReplicar');
 
     validarVoz.on('click',validarVozFnc);
-    validarReplicar.on('click',validarReplicarFnc);
+    validarReplicar.on('click',validarReplicarFnc.replicar);
+
+    validarReplicarFnc.doIntervalReplication();
 
 });
 
@@ -124,15 +126,181 @@ validarVozFnc = function(e){
     
 };
 
-validarReplicarFnc = function(e){
-    e.preventDefault();
+validarReplicarFnc = { 
+    vars : {
+        replicationInterval : null
+    },
+    replicar : function(e){
+        e.preventDefault();
+
+        $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin",text:'Replicando solicitud'});
+
+        var model = 'ids=' + mainTabMenu.var.pID_ALTERNA;
+        model = {model : model};
+        model[csrf.token_name] = csrf.hash;
+
+        var callUrl = base_url + 'Solicitud/ajaxReplicar';
+
+        $.post(callUrl,model,
+        function (data) {
+
+            if (data.results.status != 1) {
+
+                $('#frmAlertSumaryMsg').html('<h5>Eror al replicar.</h5> <br/>' + data.results.message);
+                $('#frmAlertSumary').removeClass('d-none');
+                $.LoadingOverlay("hide",true);
+
+            } else {
+
+                guid = data.results.data[0].g_uid;
+                localStorage.setItem('replicationSingleProc', JSON.stringify( { guid: guid, ids: mainTabMenu.var.pID_ALTERNA } ) );
+
+                $('.validarReplicar').html('<i class="fa fa-cog fa-spin fa-fw"></i> Replicando, favor de esperar.').prop('disabled', true);
+                validarReplicarFnc.doIntervalReplication();
+                
+            }
+            
+        }).fail(function (err) {
+        
+            $('#frmAlertSumaryMsg').html('<h5>Eror al replicar.</h5> <br/>' + (err.message ? err.message : err.statusText) );
+            $('#frmAlertSumary').removeClass('d-none');
+            $.LoadingOverlay("hide",true);
+
+        }).always(function () {
+
+            MyCookie.session.reset();
+
+        });
+        
+    },
+    doIntervalReplication : function(){
+
+        replicationSingleProc = localStorage.getItem('replicationSingleProc');
+
+        if ( !replicationSingleProc )
+            return false;
+
+        $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin",text:'Replicando solicitud'});
+
+        $('#frmAlertSumary').addClass('d-none');
+        
+        replicationSingleProc = JSON.parse(replicationSingleProc);
+                
+        requestPending = false;
+        validarReplicarFnc.vars.replicationInterval = setInterval(function(){
+
+            var model = 'guid=' + replicationSingleProc.guid;
+            model = {model : model};
+            model[csrf.token_name] = csrf.hash;
+
+            var callUrl = base_url + 'Solicitud/ajaxReplicarStatus';
+            
+            if (requestPending) 
+                return false;
+
+            $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin",text:'Replicando solicitud'});
+            
+            requestPending = true;
+            $.post(callUrl,model,
+            function (data) {
+
+                if (!data){
+
+                    clearInterval( validarReplicarFnc.vars.replicationInterval );
+
+                    localStorage.removeItem('replicationSingleProc');
+
+                    $('#frmAlertSumaryMsg').html('<h5>Eror al replicar.</h5> <br/>' + data.results.message);
+                    $('#frmAlertSumary').removeClass('d-none');                    
+                    $('.validarReplicar').html('Replicar').prop('disabled', false);
+                    $.LoadingOverlay("hide",true);
+
+                } else if (data.results.status != 1) {
+
+                    clearInterval( validarReplicarFnc.vars.replicationInterval );
+
+                    localStorage.removeItem('replicationSingleProc');
+
+                    $('#frmAlertSumaryMsg').html('<h5>Eror al replicar.</h5> <br/>' + data.results.message);
+                    $('#frmAlertSumary').removeClass('d-none');                    
+                    $('.validarReplicar').html('Replicar').prop('disabled', false);
+                    $.LoadingOverlay("hide",true);
+
+                } else {
                     
-    Swal.fire({
-        type: 'warning',
-        title: 'Oops...!!!',
-        text: 'Funcionalidad sin implementar!'                        
-    });
-};
+                    $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin",text:'Replicando solicitud'});                    
+
+                    if ( data.results.data.length ==  replicationSingleProc.ids.length){
+
+                        clearInterval( validarReplicarFnc.vars.replicationInterval );
+
+                        localStorage.removeItem('replicationSingleProc');
+
+                        $('.validarReplicar').html('Replicar');
+
+                        validarReplicarFnc.showReplicationResult(data);
+
+                    }
+
+                    $('#Replicar').html('<i class="fa fa-cog fa-spin fa-fw"></i> Replicando, favor de esperar.').prop('disabled', true);
+
+                }
+                
+            }).fail(function (err) {
+            
+                clearInterval( validarReplicarFnc.vars.replicationInterval );
+
+                localStorage.removeItem('replicationSingleProc');
+
+                $('#frmAlertSumaryMsg').html('<h5>Eror al replicar.</h5> <br/>' + (err.message ? err.message : err.statusText) );
+                $('#frmAlertSumary').removeClass('d-none');
+                $('.validarReplicar').html('Replicar').prop('disabled', false);
+                $.LoadingOverlay("hide",true);
+                
+            }).always(function () {
+                
+                requestPending = false;
+
+            });
+
+        }, 2000);            
+        
+    },
+    showReplicationResult : function(data){
+
+        if (!data) 
+            return false;
+
+        var errorList = '<ul class="list-group">';
+        var solicitudesError = 0;
+        var solicitudesValidas = 0;
+        $.each(data.results.data, function( index, item ) {
+            if (item.estatus != 1){
+                errorList += '<li class="list-group-item d-flex justify-content-between align-items-center"><strong>' + (item.nombre + ' ' + item.paterno +  ( item.materno ? ' ' + item.materno : '' )) + '</strong><span class="badge badge-danger" style="font-size: 100%!Important;">' + item.motivo + '</span></li>';
+                solicitudesError ++;
+            } else {
+                solicitudesValidas ++;
+            }
+        });
+
+        if (solicitudesError > 0) {
+            $('#frmAlertSumaryMsg').html('<h5>Eror al procesar una o varias de las solicitudes.</h5> <br/>' + errorList);
+            $('#frmAlertSumary').removeClass('d-none');
+        }
+
+        $.LoadingOverlay("hide",true);
+
+        if ( solicitudesValidas > 0) {
+            msg = 'Solicitud' + ( solicitudesValidas > 1  ? 'es' : '' ) + ' enviada' + ( solicitudesValidas > 1  ? 's' : '' ) + ' al RNPSP';
+
+            Swal.fire({
+                type: 'success',
+                title: 'Replicación',
+                text: msg
+            });
+        }
+    }
+}
 
 var mainTabMenu = {
     var : {

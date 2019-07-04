@@ -16,6 +16,11 @@
         <button class="btn btn-success btn-lg ml-2 d-none validarReplicar">Replicar Solicitud</button>
     </div> -->
 
+    <div id='frmAlertSumary' class="alert alert-danger alert-dismissible fade show d-none" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <span id='frmAlertSumaryMsg'></span>
+    </div>
+
     <!-- LISTA DE TABS DEL MENU PRINCIPAL -->
     <div class="row">
         <div class="col-md-12">

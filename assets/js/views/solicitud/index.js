@@ -147,7 +147,7 @@ var objViewIndex = {
 
                         if (data.results.status != 1) {
 
-                            $('#frmAlertSumaryMsg').html(data.results.message);
+                            $('#frmAlertSumaryMsg').html('<h5>Eror al replicar.</h5> <br/>' + data.results.message);
                             $('#frmAlertSumary').removeClass('d-none');
                             $.LoadingOverlay("hide",true);
 
@@ -156,14 +156,14 @@ var objViewIndex = {
                             guid = data.results.data[0].g_uid;
                             localStorage.setItem('replicationProc', JSON.stringify( { guid: guid, ids: ids } ) );
 
-                            $('#Replicar').html('<i class="fa fa-cog fa-spin fa-3x fa-fw"></i> Replicando, favor de esperar.').prop('disabled', true);
+                            $('#Replicar').html('<i class="fa fa-cog fa-spin fa-fw"></i> Replicando, favor de esperar.').prop('disabled', true);
                             objViewIndex.actions.doIntervalReplication();
                             
                         }
                         
                     }).fail(function (err) {
                     
-                        $('#frmAlertSumaryMsg').html(err.message ? err.message : err.statusText);
+                        $('#frmAlertSumaryMsg').html('<h5>Eror al replicar.</h5> <br/>' + (err.message ? err.message : err.statusText));
                         $('#frmAlertSumary').removeClass('d-none');
                         $.LoadingOverlay("hide",true);
 
@@ -175,7 +175,7 @@ var objViewIndex = {
 
                 }catch(err) {
 
-                    $('#frmAlertSumaryMsg').html(err.message ? err.message : err.statusText);
+                    $('#frmAlertSumaryMsg').html('<h5>Eror al replicar.</h5> <br/>' + (err.message ? err.message : err.statusText));
                     $('#frmAlertSumary').removeClass('d-none');
                     $.LoadingOverlay("hide",true);
 
@@ -457,20 +457,15 @@ var objViewIndex = {
             replicationProc = JSON.parse(replicationProc);
             
             $.LoadingOverlay("hide",true);
-            // $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin",text:'Replicando solicitud(es)',progress : true});            
-            Swal.fire({
-                position: 'bottom-end',
-                type: 'info',
-                title: 'Replicando solicitud(es)',
-                footer: 'favor de esperar',
-                showConfirmButton: false,
-                allowOutsideClick: false
-            });
+            // $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin",text:'Replicando solicitud(es)',progress : true});
 
-            iter = 0;
+            $('#frmAlertReplication, #frmAlertSumary').addClass('d-none');
+
+            $('#frmAlertReplication .progress-bar').attr('aria-valuenow', 0).css('width', 0);
+            $('#frmAlertReplication').removeClass('d-none');
 
             requestPending = false;
-            objViewIndex.vars.general.replicationInterval = setInterval(function(){                    
+            objViewIndex.vars.general.replicationInterval = setInterval(function(){
 
                 var model = 'guid=' + replicationProc.guid;
                 model = {model : model};
@@ -492,33 +487,33 @@ var objViewIndex = {
 
                         clearInterval( objViewIndex.vars.general.replicationInterval );
 
-                        $('#frmAlertSumaryMsg').html(data.results.message);
+                        localStorage.removeItem('replicationProc');
+
+                        $('#frmAlertSumaryMsg').html('<h5>Eror al replicar.</h5> <br/>' + data.results.message);
                         $('#frmAlertSumary').removeClass('d-none');
-                        $.LoadingOverlay("hide",true);
+                        $('#frmAlertReplication').addClass('d-none');
+                        $('#Replicar').html('Replicar').prop('disabled', false);
+                        // $.LoadingOverlay("hide",true);
 
                     } else if (data.results.status != 1) {
 
                         clearInterval( objViewIndex.vars.general.replicationInterval );
 
-                        $('#frmAlertSumaryMsg').html(data.results.message);
+                        localStorage.removeItem('replicationProc');
+
+                        $('#frmAlertSumaryMsg').html('<h5>Eror al replicar.</h5> <br/>' + data.results.message);
                         $('#frmAlertSumary').removeClass('d-none');
-                        $.LoadingOverlay("hide",true);
+                        $('#frmAlertReplication').addClass('d-none');
+                        $('#Replicar').html('Replicar').prop('disabled', false);
+                        // $.LoadingOverlay("hide",true);
 
                     } else {
-
-                        // $.LoadingOverlay("progress", ( (iter * 100) / 10 ) );
+                        
                         // $.LoadingOverlay("progress", ( (data.results.data.length * 100) / replicationProc.ids.length ) );
-                        if (!Swal.isVisible())
-                            Swal.fire({
-                                position: 'bottom-end',
-                                type: 'info',
-                                title: 'Replicando solicitud(es)',
-                                footer: 'favor de esperar',
-                                showConfirmButton: false,
-                                allowOutsideClick: false
-                            });
+                        $('#frmAlertReplication .progress-bar').attr('aria-valuenow', ((data.results.data.length * 100) / replicationProc.ids.length ) ).css('width', ((data.results.data.length * 100) / replicationProc.ids.length ) + '%').html( data.results.data.length + ' de ' + replicationProc.ids.length + ' solicitud(es).');
+                        $('#frmAlertReplication').removeClass('d-none');
 
-                        if (iter == 10){
+                        if ( data.results.data.length ==  replicationProc.ids.length){
 
                             clearInterval( objViewIndex.vars.general.replicationInterval );
 
@@ -530,9 +525,7 @@ var objViewIndex = {
 
                         }
 
-                        iter++;
-
-                        $('#Replicar').html('<i class="fa fa-cog fa-spin fa-3x fa-fw"></i> Replicando, favor de esperar.').prop('disabled', true);
+                        $('#Replicar').html('<i class="fa fa-cog fa-spin fa-fw"></i> Replicando, favor de esperar.').prop('disabled', true);
 
                     }
                     
@@ -540,9 +533,13 @@ var objViewIndex = {
                 
                     clearInterval( objViewIndex.vars.general.replicationInterval );
 
-                    $('#frmAlertSumaryMsg').html(err.message ? err.message : err.statusText);
+                    localStorage.removeItem('replicationProc');
+
+                    $('#frmAlertSumaryMsg').html('<h5>Eror al replicar.</h5> <br/>' + (err.message ? err.message : err.statusText));
                     $('#frmAlertSumary').removeClass('d-none');
-                    $.LoadingOverlay("hide",true);
+                    $('#frmAlertReplication').addClass('d-none');
+                    $('#Replicar').html('Replicar').prop('disabled', false);
+                    // $.LoadingOverlay("hide",true);
                     
                 }).always(function () {
                     
