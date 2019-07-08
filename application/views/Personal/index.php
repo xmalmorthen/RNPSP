@@ -1,5 +1,9 @@
-<div class="_container">
-    <table id="tablePersonal" class="table display">
+<!-- CSS -->
+<link rel="stylesheet" href="<?php echo base_url("assets/vendor/datatable/dataTables.bootstrap4.min.css"); ?>">
+<link rel="stylesheet" href="<?php echo base_url("assets/vendor/datatable/responsive.bootstrap4.min.css"); ?>">
+
+<div class="_container bodyVew">
+    <table id="tableData" class="table table-striped dt-responsive d-none">
         <thead>
                 <th>Folio</th>
                 <th>Fecha de registro RNPSP</th>
@@ -27,3 +31,30 @@
         </tbody>
     </table>
 </div>
+
+<!-- JS -->
+<script src="<?php echo base_url("assets/vendor/datatable/jquery.dataTables.min.js"); ?>"></script>
+<script src="<?php echo base_url("assets/vendor/datatable/dataTables.bootstrap4.min.js"); ?>"></script>
+<script src="<?php echo base_url("assets/vendor/datatable/dataTables.responsive.min.js"); ?>"></script>
+<script src="<?php echo base_url("assets/vendor/datatable/responsive.bootstrap4.min.js"); ?>"></script>
+<script src="<?php echo base_url('assets/js/views/examen/index.js') ?>"></script>
+<script>
+    $(function() {
+        
+        $('.bodyVew').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+        $('#tableData').DataTable({
+            stateSave: true,
+            "language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},
+            "columnDefs": [{"orderable": false,"targets": [7]}],
+            "order" : [[1]],
+            "initComplete": function(settings, json) {
+                
+                $('#tableData').removeClass('d-none');
+
+                $('.bodyVew').LoadingOverlay("hide", true);
+            }
+        });
+    });
+</script>
+<!-- /JS -->

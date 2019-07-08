@@ -17,6 +17,7 @@ class SOLICITUD_model extends MY_Model
 
   public function get(){
     $this->select('FOLIO,NOMBRE,PATERNO,MATERNO,FECHA_REGISTRO,TIPO_OPERACION,DESCRIPCION,ESTATUS,DESCRIPCION_ESTATUS,ID_DEPENDENCIA,NOMBRE_DPCIA');
+    $this->where('tipo_operacion <> ', 'ce'); // mostrar solo solicitudes que no han sido replicadas
     //$this->where('ID_DEPENDENCIA', $this->session->userdata(SESSIONVAR)['ID_ADSCRIPCION']);
     return $this->response_list();
   }
@@ -75,9 +76,18 @@ class SOLICITUD_model extends MY_Model
         $responseSelect = current($response);
         $responseOutput = end($response);
 
-        $this->response['status'] = $responseOutput['tranEstatus'];
-        $this->response['message'] = $responseOutput['msg'];
-        $this->response['data'] = $this->try_result($responseSelect);
+        if ($responseSelect['TIPO_OPERACION'] == 'CE'){
+
+          $this->response['status'] = 2;
+          $this->response['message'] = 'CURP ya replicada';
+
+        } else {
+
+          $this->response['status'] = $responseOutput['tranEstatus'];
+          $this->response['message'] = $responseOutput['msg'];
+          $this->response['data'] = $this->try_result($responseSelect);
+
+        }
       }else{
         $responseOutput = current($response);
         $this->response['status'] = $responseOutput['tranEstatus'];

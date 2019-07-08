@@ -51,10 +51,10 @@
                                 <input type="checkbox" class="checkItem" data-idReg="<?php echo $value['options']['id']; ?>">
                             </div>
                         </td>
-                <?php foreach ($value as $item => $valueItem) {
-                    if (!is_array($valueItem)) {?>
+                		<?php foreach ($value as $item => $valueItem) {
+                    		if (!is_array($valueItem)) {?>
                         <td><?php echo $valueItem ? $valueItem : ''; ?></td>
-                <?php }} ?>
+                		<?php }} ?>
                         <td>
                             <a class='m-2' href="<?php echo site_url("Solicitud/Ver/{$value['options']['id']}") ?>" title='Ver'><i class="fa fa-eye fa-2x"></i></a>
                             <a class='m-2' href="<?php echo site_url("Solicitud/Modificar/{$value['options']['id']}") ?>" title='Modificar'><i class="fa fa-pencil-square-o fa-2x"></i></a>
