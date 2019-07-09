@@ -19,7 +19,12 @@ class CURP_model extends CI_Model
     {
         try {
             $cnfg = (object)json_decode(CNFG);
-            $client = new nusoap_client($cnfg->apis->wsCURPServerSOAP, false, false, false, false, false);
+
+            $this->load->library('Nu_soap');
+
+            // $client = new nusoap_client($cnfg->apis->wsCURPServerSOAP, false, false, false, false, false);
+            $client = new nusoap_client($cnfg->apis->wsCURPServerSOAP, 'wsdl');
+
             $err = $client->getError();
             if ($err) {
                 throw new Exception(htmlspecialchars($client->getDebug(), ENT_QUOTES));

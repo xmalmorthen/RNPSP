@@ -18,7 +18,7 @@ class Nu_soap {
    function  __construct() {
       // Por si se ejecuta en un servidor Windows
       // require_once(str_replace("\\", "/", APPPATH).'libraries/NuSOAP/lib/nusoap'.EXT);
-      require_once(str_replace("\\", "/", APPPATH).'libraries/NuSOAP/nusoap'.EXT);
+      require_once(str_replace("\\", "/", APPPATH).'libraries/nusoap/nusoap'.EXT);
    } // end Constructor
 
    function index($no_cache) {
