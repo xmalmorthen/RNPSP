@@ -568,7 +568,7 @@ var mainTabMenu = {
 
                     return new Promise(function (resolve, reject) {
                         $.get(callUrl,{
-                            CURP : CURP
+                            CURP : CURP.toUpperCase()
                         },
                         function (data) {
                             resolve(data);
@@ -580,7 +580,7 @@ var mainTabMenu = {
                             return new Promise(function (resolve,reject){
                                 callUrl = base_url + `ajaxAPIs/curp`;
                                 $.get(callUrl,{
-                                    model : {CURP : CURP }
+                                    model : {CURP : CURP.toUpperCase() }
                                 },
                                 function (data) {
                                     resolve(data);
