@@ -148,9 +148,9 @@
 						function (data) {					
 							if (data.status == true){
 								if (data.toGo.length > 0) {
-									window.location.href = data.toGo;
+									window.location.href = site_url+'preguntas';
 								} else {
-									window.location.href = site_url;
+									window.location.href = site_url+'preguntas';
 								}
 							} else {
 								$.LoadingOverlay("hide",true);
