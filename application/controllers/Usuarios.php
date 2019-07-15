@@ -204,6 +204,11 @@ class Usuarios extends CI_Controller
           'MotivoInactivo' => $this->input->post('MotivoInactivo'),
           'id_EstatusUsuario' => $this->input->post('pID_ESTATUS')
         ];
+
+        if(strlen(trim($password))>0){
+          $additional_data['password'] = $password;
+          $additional_data['contrasenaModificada'] = '1';
+        }
         if($this->ion_auth->update($user_id, $additional_data)){
         
           $this->load->library('uuid');
