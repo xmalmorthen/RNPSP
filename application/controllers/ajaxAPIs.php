@@ -45,10 +45,12 @@ class ajaxAPIs extends CI_Controller {
 				$this->rest->initialize($config);
 				$wsResponse = $this->rest->get($cnfg->apis->wsCURPApiVersion . $cnfg->apis->wsCURPGetbyCURPMethod, $parameters, 'json');
 
-				if ($this->curl->error_string){
+				if (!$wsResponse){
+					Msg_reporting::error_log(json_encode([$this->curl->error_string, $this->rest->status()]));
+					throw new processException('El servicio de consulta CURP no respondió',500);
+				} else if ($this->curl->error_string){
+					$error = [$this->curl->error_string, $this->rest->status()];
 					throw new processException($this->curl->error_string,$this->rest->status());
-				} else if (!$wsResponse) {
-					throw new processException("El servicio respondió con un estatus [{$this->rest->status()}], no fue posible obtener la información", $this->rest->status());
 				} else {
 					if ($wsResponse->RESTService->StatusCode === '0')
 						throw new processException($wsResponse->RESTService->Message,400);
@@ -68,12 +70,15 @@ class ajaxAPIs extends CI_Controller {
 		} 
 		catch (rulesException $e){	
 			header("HTTP/1.0 400 Bad Request");
+			Msg_reporting::error_log($e);
 		}
-		catch (processException $e){	
-			header("HTTP/1.0 " . $e->getCode() . " " . utf8_decode($e->getMessage()));
+		catch (processException $e){
+			header("HTTP/1.0 " . ($e->getCode() != 0 ? $e->getCode() : 500) . " " . utf8_decode($e->getMessage()));
+			Msg_reporting::error_log($e);
 		}
 		catch (Exception $e) {
 			header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+			Msg_reporting::error_log($e);
 			$responseModel = [];
 		}
 		header('Content-type: application/json');

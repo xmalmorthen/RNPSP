@@ -57,6 +57,12 @@ class UserSession extends CI_Controller
           $user_id = $this->ion_auth->get_user_id();
           $this->load->model('Usuarios_model');
           $user = $this->Usuarios_model->SessionById($user_id);
+
+          if ($user['borrado'] == 1){
+            $response['status'] = false;
+            $response['message'] = array("No se ha podido iniciar sesión");
+          }
+
           $session = $this->session->local_userdata();
           $this->session->local_set_userdata($user);
           $this->session->local_set_userdata(array_merge($session, $user));

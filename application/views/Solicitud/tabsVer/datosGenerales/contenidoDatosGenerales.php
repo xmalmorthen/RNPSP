@@ -450,7 +450,7 @@
                 </div>
             </div>
             <br>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-md-4">
                     <h6 class="borderButtom">Nombre</h6>
                     <p id='pNOMBRE'></p>
@@ -467,7 +467,7 @@
             <br>
             <div class="row">
                 <div class="col-md-4">
-                    <h6 class="borderButtom">Sexo</h6> <!-- Se llena del catálogo CAT_SEXO -->
+                    <h6 class="borderButtom">Sexo</h6>
                     <p id='pNOMBRE_SEXO'></p>
                 </div>
                 <div class="col-md-4">
@@ -485,7 +485,35 @@
                     <h6 class="borderButtom">Relación o parentesco</h6>
                     <p id='pREALCION_PARENTESCO'></p>
                 </div>
+            </div> -->
+
+            <div class="row">
+                <div class="col-md-12">
+                    <table id="tableSocioeconomicos" class="table display" style="width:100%">
+                        <thead>
+                            <th>Id dependiente</th>
+                            <th>Nombre</th>
+                            <th>Apellido paterno</th>
+                            <th>Apellido materno</th>
+                            <th>Sexo</th>
+                            <th>Fecha de nacimiento</th>
+                            <th>Parentesco</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
+
         </form>
         <br>
         <div class="row">

@@ -88,6 +88,9 @@ var objViewLaboral = {
         objViewLaboral.vars.laboral.btns.guardarComision.on('click',objViewLaboral.events.click.laboral.guardarComision);
         
         //FOCUSOUT
+        $('input[type="date"]').on('focusout',function(event){
+            $(this).val( $(this).val() );
+        });
         
         //CHANGE
         //objViewLaboral.vars.laboral.cmbs.pID_INSTITUCION.on('select2:select',objViewLaboral.events.change.pID_INSTITUCION);
@@ -111,6 +114,32 @@ var objViewLaboral = {
             }
         }
 
+        $('#pFECHA_INGRESO,#pFECHA_INICIO_EMPLEOS_DIVERSOS,#pFECHA_TERMINO_EMPLEOS_DIVERSOS,#pFECHA_INICIO_COMISIONES,#pFECHA_TERMINO_COMISIONES').attr('max', moment( new Date() ).format('YYYY-MM-DD'));        
+        
+        $('#pTELEFONO,#pNUM_TELEFONICO').on('input', function () { 
+            this.value = this.value.replace(/[^0-9\-\(\)]/g,'');
+        });
+
+        $(':input[type="number"]').on('input', function () { 
+            this.value = this.value.replace(/[^0-9\-\(\)]/g,'');
+        });
+
+        $('.validarNumberSpecial').on('input', function () {
+            this.value = this.value.replace(/[^0-9\-\(\)snSN\/]/g,'');
+        });
+
+        $.validator.addMethod("pFECHA_TERMINO_EMPLEOS_DIVERSOS", function(value, element) {
+            
+            return value < $('#pFECHA_INICIO_EMPLEOS_DIVERSOS').val() ? false : true;
+
+        }, "La fecha debe ser mayor o igual a la fecha de ingreso.");
+
+        $.validator.addMethod("pFECHA_TERMINO_COMISIONES", function(value, element) {
+            
+            return value < $('#pFECHA_INICIO_COMISIONES').val() ? false : true;
+
+        }, "La fecha debe ser mayor o igual a la fecha de inicio.");
+
         objViewLaboral.vars.general.init = true;
     },
     events : {
@@ -132,8 +161,26 @@ var objViewLaboral = {
                 },
                 guardarActitud : function(e, from, tabRef){
                     e.preventDefault();
-                    objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralActitud',from, tabRef, false, function(data){
-                    });
+
+                    if ( !$('#pELECCION_EMPLEO').val()
+                        && !$('#pPUESTO_ACTITUDES_EMPLEO').val()
+                        && !$('#pAREA').val()
+                        && !$('#pTIEMPO_ASCENDER').val()
+                        && !$('#pCONOCE_REG_RECON').val()
+                        && !$('#pRAZON_NO_ASCENSO').val()
+                        && !$('#pCONOCE_REG_ASCENSO').val()
+                        && !$('#pRAZON_NO_RECON').val()
+                        && !$('#pCAPACITACION').val() ){
+
+                            Swal.fire({ type: 'warning', title: 'Atención', html: 'Debe especificar al menos un dato del formulario' });
+
+                    } else {
+
+                        objViewLaboral.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveLaboralActitud',from, tabRef, false, function(data){
+                        });
+
+                    }
+
                 },
                 guardarComision : function(e, from, tabRef){
                     e.preventDefault();
@@ -173,7 +220,7 @@ var objViewLaboral = {
                 });
                 
                 $('#pPUESTO_ADSCRIPCION_ACTUAL').getCatalog({
-                    query : 'ZUNvUk4yaHVXYWZ2TzAzeEhmc096QnFOdThBUjBmampicFQ3ektoWjdZcDVFMHFHZzZPejdIS2xROHI2MFdYNzNOeExjeWpvWHYvcU04L1MwWHhydWc2bi9hTkZjWGZmVDM3aXJzcXZsZUxoVmtRYnphdXdXUXFnR2p1bWFmcWY1T2VGVlA1NXBOYTAvcGw4aFZSNVBXRml2L2JLMUVzYy9oVDJBaVBFdFlzPQ==',
+                    query : 'bmx3WUplaTVhRVFTRVZRdkFLa3AzV3NLTSs4ZmRxRVNaWnNNOXJYOGM3ZUFkeW9uM2VzQ25IeFJ3VjEyUjV0WnVIOFo5cHNING5PR0RQSHpIeU9UYSsvbnUrdXJReXU5cWtWUGQva2kwd1czcVR1WmsvQ2s0bFk3NGxpZmkvNUU=',
                     params :  '[ID_DEPENDENCIA]=' + valDependencia + ' and [ID_INSTITUCION]=' + valInstitucion,
                     emptyOption : true
                 });
@@ -223,6 +270,7 @@ var objViewLaboral = {
 
                     form.removeData('hasChanged').removeData('hasDiscardChanges').removeData('withError');
                     form.data('hasSaved',true);
+                    form.data('requireddata',false);
 
                     if (from) {
                         if(from == 'tab') {
@@ -242,7 +290,7 @@ var objViewLaboral = {
                 }
             },
             throwError: function(err,form,from,tabRef){
-                $.LoadingOverlay("hide");
+                $.LoadingOverlay("hide",true);
                 
                 form.setAlert({
                     alertType :  'alert-danger',
@@ -290,7 +338,7 @@ var objViewLaboral = {
                     }).fail(function (err) {
                         objViewLaboral.actions.ajax.throwError(err,form,from,tabRef);                            
                     }).always(function () {
-                        $.LoadingOverlay("hide");
+                        $.LoadingOverlay("hide",true);
                         MyCookie.session.reset();
                     });
 

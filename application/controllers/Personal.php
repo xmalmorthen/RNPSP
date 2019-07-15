@@ -19,50 +19,26 @@ class Personal extends CI_Controller {
 		$curp = $this->session->local_userdata('CURP');
 		$this->load->model('PERSONA_model');
 		$responseModel = $this->PERSONA_model->sp_getPersonal($curp);
+		
 		$this->load->library('parser');
 		$this->parser->parse('Personal/index',array('personal'=>(array)$responseModel));
 	}
 
 	
-	public function Ver(){
+	public function Ver($id = null){
+		if (!$id)
+			show_error('Parámetros incorrecto', 403, 'Error en la petición');
+
 		// BREADCRUMB
 		$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');		
-		$this->breadcrumbs->push('[ Personal ] - Personal - Consulta personal', site_url('alta/cedula/datosPersonales'));
+		$this->breadcrumbs->push('[ Solicitudes ] - Solicitudes  - Ver', site_url('ver/cedula/datosPersonales'));
 		// /BREADCRUMB
 	
 		// TITLE BODY PAGE
-		$this->session->set_flashdata('titleBody','[ Personal ] - Personal - Consulta personal');
+		$this->session->set_flashdata('titleBody','[ Solicitudes ] - Solicitudes - Ver');
 		// /TITLE BODY PAGE
 	
-		$this->load->view('Personal/Ver');
+		$this->load->view('Solicitud/Ver',array('id' => $id, 'isFromPersonal' => true));
 	}
-
-	# OPCION GRID
-		# Obtiene los datos de la pestaña "Identificación" - "Pestaña Ficha Fotográfica"
-		# Grid - Ficha Fotográfica
-		# EJEMPLO: http://localhost/SGP/Solicitud/getFichaFotografica?pID_ALTERNA=56
-		public function getFichaFotografica(){
-			if (! $this->input->is_ajax_request()) {
-				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
-			}
-			$curp = $this->input->get('curp');
-			try {
-				$this->load->model('SOLICITUD_model');
-				$responseModel = $this->SOLICITUD_model->sp_getPersonal($curp);
-			} 
-			catch (rulesException $e){	
-				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-			}
-			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
-			}
-			
-			header('Content-type: application/json');
-			echo json_encode( [ 'results' => $responseModel ] );
-			exit;
-		}
-
-	
-
 
 }

@@ -28,7 +28,7 @@ var populate = {
         });
     },
     events : {
-        change :function(e){
+        change :function(e,callback){
             var factory = JSON.parse($(this).data('factory'));
             if (factory.query) {
                 if (factory.params){
@@ -38,14 +38,22 @@ var populate = {
                 $('#' + factory.id ).getCatalog({
                     query : factory.query,
                     params : factory.params,
-                    emptyOption : true
+                    emptyOption : true,
+                    always : $.isFunction( callback ) ? callback : null
                 });
             }
         }
     },
-    reset : function(form){
+    reset : function(form,callback){
         form.trigger('reset');
         form.find('select').trigger('change'); //refrescado para selects2
         form.find('.custom-file-label').html(''); //Contenedor especial para los input file
+
+        if (callback){
+            if ($.isFunction( callback )){
+                callback();
+            }
+        }
+
     }
 }

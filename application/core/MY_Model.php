@@ -281,7 +281,7 @@ class MY_Model extends CI_Model
     $query = $this->db->get();
     try {
       if ($query == false) {
-        throw new Exception('Error response_list');
+        throw new Exception('Error in response_list => [ ' . $this->db->last_query() . ' ]');
       }
       $result = $query->result_array();
       $query->free_result();
@@ -297,7 +297,7 @@ class MY_Model extends CI_Model
     $query = $this->db->get();
     try {
       if ($query == false) {
-        throw new Exception('Error response_row');
+        throw new Exception('Error in response_row => [ ' . $this->db->last_query() . ' ]');
       }
       $result = $query->row_array();
       $query->free_result();
@@ -312,6 +312,10 @@ class MY_Model extends CI_Model
     try {
       $result = array();
       $stmt = sqlsrv_query($this->db->conn_id, $query);
+
+      if (!$stmt || sqlsrv_errors())
+        throw new Exception('Error in query_multi => [ ' . $query . ' ]');
+
       while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
         $result[] = $row;
         $next_result = sqlsrv_next_result($stmt);
@@ -322,7 +326,8 @@ class MY_Model extends CI_Model
     } catch (Exception $th) {
       $result = false;
       Msg_reporting::error_log($th);
-      Msg_reporting::error_log(sqlsrv_errors());
+      if ( sqlsrv_errors() )
+        Msg_reporting::error_log( json_encode( sqlsrv_errors() ) );
     }
     return $result;
   }
@@ -332,7 +337,7 @@ class MY_Model extends CI_Model
     $result = false;
     try {
       if ($query == false) {
-        throw new Exception('Error query_row');
+        throw new Exception('Error in query_row => [ ' . $query . ' ]');
       }
       $result = $query->row_array();
       $query->free_result();
@@ -346,7 +351,7 @@ class MY_Model extends CI_Model
     $result = false;
     try {
       if ($query == false) {
-        throw new Exception('Error query_list');
+        throw new Exception('Error in query_list => [ ' . $query . ' ]');
       }
       $result = $query->result_array();
       $query->free_result();

@@ -91,9 +91,9 @@ var objView = {
                     } else {
                         throw data.message;
                     }
-                    $.LoadingOverlay("hide");
+                    $.LoadingOverlay("hide",true);
                 }, function(err){
-                    $.LoadingOverlay("hide");
+                    $.LoadingOverlay("hide",true);
                     Swal.fire({ type: 'error', title: 'Error', html: err.status + ' - ' + err.statusText });
                 });
             },
@@ -109,7 +109,7 @@ var objView = {
                     var callUrl = 'not end point', //base_url
                     model = objView.vars.form.serialize();
 
-                    $.LoadingOverlay("hide");
+                    $.LoadingOverlay("hide",true);
                     Swal.fire({ type: 'success', title: 'Post Form', html: 'Formulario enviado [ ' + model + ' ]' });
 
                     /*$.post(callUrl,{
@@ -123,18 +123,18 @@ var objView = {
                                 window.location.href = site_url;
                             }
                         } else {
-                            $.LoadingOverlay("hide");
+                            $.LoadingOverlay("hide",true);
                             Swal.fire({ type: 'error', title: 'Error', html: data.message });
                         }
                     }).fail(function (err) {
-                        $.LoadingOverlay("hide");
+                        $.LoadingOverlay("hide",true);
                         var msg = err.status + ' - ' + err.statusText;
                         Swal.fire({ type: 'error', title: 'Error', html: msg });
                     }).always(function () {
                     });*/
                 }
                 catch(err) {
-                    $.LoadingOverlay("hide");
+                    $.LoadingOverlay("hide",true);
                 }
             }
         }
@@ -151,10 +151,10 @@ var objView = {
                 } else {
                     throw data.message;
                 }
-                $.LoadingOverlay("hide");
+                $.LoadingOverlay("hide",true);
                 callback(true);
             }, function(err){
-                $.LoadingOverlay("hide");
+                $.LoadingOverlay("hide",true);
                 Swal.fire({ type: 'error', title: 'Error', html: err.status + ' - ' + err.statusText });
                 callback(false);
             });            

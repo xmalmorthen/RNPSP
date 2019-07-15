@@ -347,6 +347,7 @@
                             <option value="S">SI</option>
                             <option value="N">NO</option>
                         </select>
+                        <span id="err_pLENTES"></span>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estatura (cm)
@@ -411,11 +412,11 @@
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Cantidad
-                        <input type="text" id="pCANTIDAD" name="pCANTIDAD" class="form-control" id="pCANTIDAD" required minlength="1" maxlength="5">
+                        <input type="number" id="pCANTIDAD" name="pCANTIDAD" class="form-control" id="pCANTIDAD" required minlength="1" maxlength="5">
                     </div>
                     <div class="col-md-4">
-                        Descripción
-                        <input type="text" id="pDESCRIPCION" name="pDESCRIPCION" class="form-control" minlength="1" maxlength="30">
+                        <span class="clr">*</span>Descripción
+                        <input type="text" id="pDESCRIPCION" name="pDESCRIPCION" class="form-control" minlength="1" maxlength="30" required>
                     </div>
                 </div>
                 <br>
@@ -511,7 +512,7 @@
                     <div class="col-md-4 text-center">
                         <h6>Documento</h6>
                         <div class="custom-file">
-                            <input type="file" id="pIMAGEN" name="pIMAGEN" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN' accept="application/pdf,image/*">
+                            <input type="file" id="pIMAGEN" name="pIMAGEN" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN' accept="image/jpg,image/jpeg" data-accept= "jpg" data-maxfilesize='122880'>
                             <label class="custom-file-label" for="inputGroupFile01">Seleccionar documento</label>
                         </div>
                     </div>
@@ -554,7 +555,7 @@
 
     <div class="tab-pane fade " id="Identificacion_de_voz" role="tabpanel" aria-labelledby="Identificacion_de_voz-tab">
         <div class="_container">
-            <form action="#" id="Identificacion_de_voz_form" name="Identificacion_de_voz_form" autocomplete="off">
+            <form action="#" id="Identificacion_de_voz_form" name="Identificacion_de_voz_form" autocomplete="off" data-requireddata=false>
                 <br>
                 <div class="row">
                     <div class="col-md-12 text-center">
@@ -608,9 +609,9 @@
                 <hr>
                 <div class="row">                    
                     <div class="col-md-4">
-                        Audio
+                        <span class="clr">*</span>Audio
                         <div class="custom-file">
-                            <input type="file" id="vozFile" name="vozFile" class='custom-file-input inputFile' data-renderin='thumb_vozFile' accept="audio/*" required>
+                            <input type="file" id="vozFile" name="vozFile" class='custom-file-input inputFile' data-renderin='thumb_vozFile' accept="audio/wav,audio/L16,audio/L8,audio/L20,audio/L24" data-accept="wav, pcm" data-maxfilesize='2097152'>
                             <label class="custom-file-label" for="inputGroupFile01">Seleccionar archivo</label>
                         </div>
                     </div>
@@ -627,20 +628,9 @@
                     <div class="col-md-4">
                         <button class="btn btn-default btnGuardarSection" id="guardarVoz">Guardar identificación de voz</button>
                     </div>
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <button class="btn btn-default" id="validarVoz">
-                                    Validar
-                                </button>
-                            </div>
-                            <div class="col-md-6">
-                                <button class="btn btn-default" id="validarReplicar">
-                                    Replicar
-                                </button>
-                            </div>
-                        </div>
+                    <div class="col-md-8 text-right">
+                        <button class="btn btn-warning btn-lg validarVoz">Validar Solicitud</button>
+                        <button class="btn btn-success btn-lg ml-2 d-none validarReplicar">Replicar Solicitud</button>
                     </div>
                 </div>
                 <br>
@@ -650,7 +640,7 @@
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <button class="btn btn-secondary btn-lg btnSiguienteAnterior" id="anteriorVoz" data-nexttab="#Digitalizacion_de_documento-tab">Anterior Ficha</button>
-                        <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab endTab" id="finalizarVoz">Finalizar</button>
+                        <!-- <button class="btn btn-secondary btn-lg btnSiguienteAnterior siguienteTab endTab" id="finalizarVoz">Finalizar</button> -->
                     </div>
                 </div>
             </form>
@@ -709,10 +699,10 @@
                     <div class="col-md-4">
                         <div class="row">
                             <div class="col-md-12 text-center">
-                                <h6>Perfil izquierdo</h6>
+                                <h6><span class="clr">*</span>Perfil izquierdo</h6>
                                 <img id="thumb_pIMAGEN_IZQUIERDO" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
                                 <div class="custom-file">
-                                    <input type="file" id="pIMAGEN_IZQUIERDO" name="pIMAGEN_IZQUIERDO" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_IZQUIERDO' accept="image/*">
+                                    <input type="file" id="pIMAGEN_IZQUIERDO" name="pIMAGEN_IZQUIERDO" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_IZQUIERDO' accept="image/jpg,image/jpeg" data-accept= "jpg" data-maxfilesize='204800' required>
                                     <label class="custom-file-label" for="inputGroupFile01">Seleccionar imágen</label>
                                 </div>
                             </div>
@@ -723,10 +713,10 @@
                     <div class="col-md-4">
                         <div class="row">
                             <div class="col-md-12 text-center">
-                                <h6>Frente</h6>
+                                <h6><span class="clr">*</span>Frente</h6>
                                 <img id="thumb_pIMAGEN_FRENTE" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
                                 <div class="custom-file">
-                                    <input type="file" id="pIMAGEN_FRENTE" name="pIMAGEN_FRENTE" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_FRENTE' accept="image/*">
+                                    <input type="file" id="pIMAGEN_FRENTE" name="pIMAGEN_FRENTE" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_FRENTE' accept="image/jpg,image/jpeg" data-accept= "jpg" data-maxfilesize='204800' required>
                                     <label class="custom-file-label" for="inputGroupFile01">Seleccionar imágen</label>
                                 </div>
                             </div>
@@ -737,10 +727,10 @@
                     <div class="col-md-4">
                         <div class="row">
                             <div class="col-md-12 text-center">
-                                <h6>Perfil derecho</h6>
+                                <h6><span class="clr">*</span>Perfil derecho</h6>
                                 <img id="thumb_pIMAGEN_DERECHO" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
                                 <div class="custom-file">
-                                    <input type="file" id="pIMAGEN_DERECHO" name="pIMAGEN_DERECHO" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_DERECHO' accept="image/*">
+                                    <input type="file" id="pIMAGEN_DERECHO" name="pIMAGEN_DERECHO" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_DERECHO' accept="image/jpg,image/jpeg" data-accept= "jpg" data-maxfilesize='204800' required>
                                     <label class="custom-file-label" for="inputGroupFile01">Seleccionar imágen</label>
                                 </div>
                             </div>
@@ -758,7 +748,7 @@
                                 <h6>Firma</h6>
                                 <img id="thumb_pIMAGEN_FIRMA" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
                                 <div class="custom-file">
-                                    <input type="file" id="pIMAGEN_FIRMA" name="pIMAGEN_FIRMA" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_FIRMA' accept="image/*">
+                                    <input type="file" id="pIMAGEN_FIRMA" name="pIMAGEN_FIRMA" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_FIRMA' accept="image/jpg,image/jpeg" data-accept= "jpg" data-maxfilesize='204800'>
                                     <label class="custom-file-label" for="inputGroupFile01">Seleccionar imágen</label>
                                 </div>
                             </div>
@@ -772,7 +762,7 @@
                                 <h6>Huella</h6>
                                 <img id="thumb_pIMAGEN_HUELLA" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
                                 <div class="custom-file">
-                                    <input type="file" id="pIMAGEN_HUELLA" name="pIMAGEN_HUELLA" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_HUELLA' accept="image/*">
+                                    <input type="file" id="pIMAGEN_HUELLA" name="pIMAGEN_HUELLA" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_HUELLA' accept="image/jpg,image/jpeg" data-accept= "jpg" data-maxfilesize='204800'>
                                     <label class="custom-file-label" for="inputGroupFile01">Seleccionar imágen</label>
                                 </div>
                             </div>
@@ -832,7 +822,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        Categoría de documento <!-- CAT_CATEGORIA_DOC -->
+                        <span class="clr">*</span>Categoría de documento <!-- CAT_CATEGORIA_DOC -->
                         <select  class="form-control" id="pID_CATEGORIA_DOC" name="pID_CATEGORIA_DOC" data-error="#err_pID_CATEGORIA_DOC" data-query='WkdEc3EycHBEQVhpWmoxRTlWdFV4MHd5NmIycFdRY1JDWU44WHdObU1UQnoyQnVGUGp4WjlLYUFYSWhjY1k3WmpxelM1dEl3eXZXam5KQ3lTckhHOSt2djZQMWsvVEYwalZPRm9ySWRxZVhzazRsd0J6VzhBZXgzU3d1ckJSa2JuaHQ2SFhBMW9NamQ4b2RNaERIODVsZVBBWm9EUlVVM0hVb2JBbXJrdFV3PQ==' required></select>
 						<span id="err_pID_CATEGORIA_DOC"></span>
                     </div>
@@ -841,9 +831,9 @@
                         <input type="date" id="FECHA_DOCUMENTO" name="FECHA_DOCUMENTO" class="form-control">
                     </div>
                     <div class="col-md-4">
-                        Documento
+                        <span class="clr">*</span>Documento
                         <div class="custom-file">
-                            <input type="file" id="pIMAGEN" name="pIMAGEN" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN' accept="application/pdf,image/*" required>
+                            <input type="file" id="pIMAGEN" name="pIMAGEN" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN' accept="image/jpg,image/jpeg" data-accept= "jpg" data-maxfilesize='204800' required>
                             <label class="custom-file-label" for="inputGroupFile01">Seleccionar documento</label>
                         </div>
                     </div>

@@ -8,9 +8,9 @@
                     </div>
                 </div>
                 <br>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-4">
-                        <h6 class="borderButtom">Idioma y/o dialecto</h6>  <!-- Se llena del catalogo "CAT_IDIOMA" -->
+                        <h6 class="borderButtom">Idioma y/o dialecto</h6>
                         <p id='pIDIOMA'></p>
                     </div>
                     <div class="col-md-2">
@@ -26,7 +26,20 @@
                         <h6 class="borderButtom">Conversación</h6>
                         <span id='pPORCENTAJE_CONVERSACION'></span> %                        
                     </div>
-                </div>
+                </div> -->
+
+                <table id="tableIdiomas" class="table display table-striped dt-responsive" style="width:100%">
+                    <thead>
+                        <th>Id idioma y/o dialecto</th>
+                        <th>Idioma</th>
+                        <th>Porcentaje de lectura</th>
+                        <th>Porcentaje de escritura</th>
+                        <th>Porcentaje de conversación</th>
+                    </thead>
+                    <tbody>                        
+                    </tbody>
+                </table>
+
             </form>
             <br>
             <div class="row">
@@ -47,9 +60,9 @@
                     </div>
                 </div>
                 <br>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-4">
-                        <h6 class="borderButtom">Tipo de habilidad y/o aptitud</h6><!-- Se llena con el catalogo "CAT_TIPO_APTITUD" -->
+                        <h6 class="borderButtom">Tipo de habilidad y/o aptitud</h6>
                         <p id='pTIPO_HABAILIDAD'></p>
                     </div>
                     <div class="col-md-4">
@@ -57,10 +70,21 @@
                         <p id='pDESCRIPCION'></p>
                     </div>
                     <div class="col-md-4">
-                        <h6 class="borderButtom">Grado de aptitud o dominio </h6><!-- Se rellena con el catalogo "CAT_GRADO_APTITUD_HAB" depende del select "TIPO_ACTITUD" -->
+                        <h6 class="borderButtom">Grado de aptitud o dominio </h6>
                         <p id='pGRADO_APTITUD'></p>
                     </div>
-                </div>
+                </div> -->
+
+                <table id="tableHabilidades" class="table display table-striped dt-responsive" style="width:100%">
+                    <thead>
+                        <th>Id habilidad y/o aptitud</th>
+                        <th>Tipo de habilidad y/o aptitud</th>
+                        <th>Grado</th>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                
             </form>
             <br>
             <div class="row">                    

@@ -68,7 +68,7 @@ var objViewDatosGenerales = {
         objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.dom = $('#tableReferencias');
         objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.dom.DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"order": [[ 0, "desc" ]]});        
         objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.dom = $('#tableSocioeconomicos');
-        objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.dom.DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"order": [[ 0, "desc" ]]});                
+        objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.obj = objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.dom.DataTable({stateSave: true,"language": {"url": base_url + "assets/vendor/datatable/Spanish.txt"},"order": [[ 0, "desc" ]]});
 
         // INIT ELEMENTS
         // FORMS
@@ -117,11 +117,19 @@ var objViewDatosGenerales = {
         objViewDatosGenerales.vars.datosGenerales.btns.guardarDependiente.on('click',objViewDatosGenerales.events.click.datosGenerales.guardarDependiente);
         
         //CHANGE
+        $('#pID_GRADO_ESCOLAR').on("change", objViewDatosGenerales.events.change.pID_GRADO_ESCOLAR);
+        $('#pID_PAIS_NAC').on("change", objViewDatosGenerales.events.change.pID_PAIS_NAC);
+        $('#pID_NACIONALIDAD').on("change", objViewDatosGenerales.events.change.pID_NACIONALIDAD);
         
         //CAMBIO DE TABS
         objViewDatosGenerales.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewDatosGenerales.actions.discartChanges}, e); } );
         objViewDatosGenerales.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('show.bs.tab',dynTabs.showTab);        
         objViewDatosGenerales.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('shown.bs.tab',objViewDatosGenerales.events.change.tableResponsive);
+
+        //FOCUSOUT
+        $('input[type="date"]').on('focusout',function(event){
+            $(this).val( $(this).val() );
+        });
         
         populate.form($('#Datos_personales_form')); //popular selects del primer tab NOTA: cambiar programación al tab actual si se obtiene por cookie
         dynTabs.setCurrentTab($('#myTabContent'));
@@ -136,9 +144,101 @@ var objViewDatosGenerales = {
             }
         }
 
+        
+
+        $('#pFECHA_NACIONALIDAD, #pINICIO_DESARROLLO,#pFECHA_NAC_SOCIOECONOMICOS,#pTERMINO_DESARROLLO').attr('max', moment( new Date() ).format('YYYY-MM-DD'));
+        // $('#pTERMINO_DESARROLLO').attr('min', moment( new Date() ).add(1,'days').format('YYYY-MM-DD') );
+
+        $.validator.addMethod("pTERMINO_DESARROLLO", function(value, element) {
+            
+            return value < $('#pINICIO_DESARROLLO').val() ? false : true;
+
+        }, "La fecha debe ser mayor o igual a la fecha de inicio.");
+
+        $.validator.addMethod("validRFCFormat", function(value, element) {
+            return validarInputRFC(value);
+        }, "Formato incorrecto");
+
+        $.validator.addMethod("validarCveElector", function(value, element) {
+            return validarCveElector(value);
+        }, "Formato incorrecto");
+
+        $.validator.addMethod("validCIB", function(value, element) {        
+            if ( $('#CIB').val() )
+                return $('#motivoCIB').val() ? true : false;
+            else
+                return true;            
+        }, "Información obligatoria.");
+
+        $.validator.addMethod("validarMotivoCIB", function(value, element) {
+            if ( $('#motivoCIB').val() )
+                return $('#CIB').val() ? true : false;
+            else
+                return true;            
+        }, "Información obligatoria.");
+
+        $.validator.addMethod("validarNumberSpecial", function(value, element) {
+            
+            value = value.trim().toUpperCase();
+
+            if ( isNaN(value) ) {
+                if ( value != 'S/N' ) {
+                   return false;
+                }
+            }
+
+            return true;
+
+        }, "Formato incorrecto.");
+                            
+        objViewDatosGenerales.vars.datosGenerales.forms.Datos_personales_form.validate({
+            rules: {
+                pRFC_DOMICILIO: {
+                    validRFCFormat : true
+                },
+                pCREDENCIAL_ELECTOR: {
+                    validarCveElector : true
+                },
+                CIB: {
+                    validarMotivoCIB : true
+                },
+                motivoCIB: {
+                    validCIB : true
+                }
+            }
+        });
+        
+        $('#pTELEFONO_DOMICILIO,#pTELEFONO_REFERENCIAS').on('input', function () { 
+            this.value = this.value.replace(/[^0-9\-\(\)]/g,'');
+        });
+
+
+        $(':input[type="number"]').on('input', function () { 
+            this.value = this.value.replace(/[^0-9\-\(\)]/g,'');
+        });
+
+        $('.validarNumberSpecial').on('input', function () {
+            this.value = this.value.replace(/[^0-9\-\(\)snSN\/]/g,'');
+        });
+
         objViewDatosGenerales.actions.ajax.populateCmbOperacion();
 
         objViewDatosGenerales.vars.general.init = true;
+
+        // $('#CIB,#motivoCIB').on('change',function(e){
+
+        //     if ( $('#CIB').val().length == 0 && $('#motivoCIB').val().length == 0 ){
+        //         $('#Datos_personales_CIB_form').removeData('hasChanged');
+        //         $('#Datos_personales_CIB_form').closeAlert({alertType : 'alert-danger'});
+        //         e.preventDefault();
+        //         e.stopPropagation();
+        //         e.stopImmediatePropagation();
+
+        //     };
+
+        // });
+
+        $('#Datos_personales_form').find('input, select').removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError').removeData('hasChanged');
     },
     events : {
         click : {
@@ -146,29 +246,77 @@ var objViewDatosGenerales = {
             },
             datosGenerales : {
                 guardarDatosPersonales : function(e, from, tabRef){
-                    e.preventDefault();
-                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDatosPersonales',from, tabRef, false , function(data){
+                    e.preventDefault();                    
+
+                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDatosPersonales','', tabRef, false , function(data){
+                        
                         mainTabMenu.var.pID_ALTERNA = data.results.data.pID_ALTERNA ? data.results.data.pID_ALTERNA : null;
+
+                        if (mainTabMenu.var.pID_ALTERNA == null){
+                            Swal.fire({
+                                type: 'error',                        
+                                title: 'Error',
+                                html: "No se recuperó el ID ALTERNA",
+                                allowOutsideClick : false,
+                            }).then(function(result){
+                                window.location.href = base_url + 'Solicitud';
+                            });
+                            return null;
+                        }
                     });
+
                 },
                 generarCIB : function(e, from, tabRef){
+
+                    $("#Datos_personales_CIB_form").closeAlert({alertType : 'alert-danger'});
+
+                    if ( !from ) {
+                        
+                        $('#CIB,#motivoCIB').removeError();
+
+                        if (  !$('#CIB').val() && !$('#motivoCIB').val() ) { 
+                            $('#CIB,#motivoCIB').setError('Información obligatoria.');
+                            $("#Datos_personales_CIB_form").setAlert({
+                                alertType :  'alert-danger',
+                                dismissible : true,
+                                header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                                msg : 'Formulario incompleto'
+                            });
+
+                            $("#Datos_personales_CIB_form").removeData('hasSaved').removeData('hasDiscardChanges');
+                            $("#Datos_personales_CIB_form").data('withError',true);
+
+                            dynTabs.markTab( $('#Datos_personales-tab'),  '<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');                            
+
+                            return false;
+                        }
+                    }
+
+                    if (  $('#CIB').val() && !$('#motivoCIB').val() ) {
+                        $('#motivoCIB').setError('Información obligatoria.');
+                        objViewDatosGenerales.actions.ajax.throwError({message: 'Formulario incompleto'},$("#Datos_personales_CIB_form"),from,tabRef);                        
+                        return false;
+                    }
+
+                    if ( $('#motivoCIB').val() && !$('#CIB').val() ) {
+                        $('#CIB').setError('Información obligatoria.');
+                        objViewDatosGenerales.actions.ajax.throwError({message: 'Formulario incompleto'},$("#Datos_personales_CIB_form"),from,tabRef);
+                        return false;
+                    }
+
+                    $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
                     e.preventDefault();
                     var form = $("#Datos_personales_CIB_form");
                     try {
-                        //VALID FORM
-                        if (!form.valid())
-                            throw new Error("Formulario incompleto");
-
-                         if (!mainTabMenu.var.pID_ALTERNA)
-                             throw new Error("Debe registrar primero los datos personales");
-
-                        $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+                                                
+                        if (!mainTabMenu.var.pID_ALTERNA)
+                             throw new Error("Debe registrar primero los datos personales");                        
                         
                         $selectDisabled = form.find('select:disabled');
                         $selectDisabled.prop("disabled", false);
 
-                        var model = form.serialize();
-                        model += '&pID_ALTERNA=' + mainTabMenu.var.pID_ALTERNA;
+                        var model = 'CIB=' + $('#CIB').val() + '&motivoCIB=' + $('#motivoCIB').val() + '&pID_ALTERNA=' + mainTabMenu.var.pID_ALTERNA;
                         model = {model : model};
                         model[csrf.token_name] = csrf.hash;
 
@@ -178,24 +326,28 @@ var objViewDatosGenerales = {
 
                         $.post(callUrl,model,
                         function (data) {  
-                            objViewDatosGenerales.actions.ajax.callResponseValidations(form,data, from, tabRef, true, function(data){
-                                console.log(data);
-                                $.LoadingOverlay("hide");
+                            objViewDatosGenerales.actions.ajax.callResponseValidations(form,data, from, tabRef, false, function(data){
+                                $('#CIB,#motivoCIB').val('');
+                                form.removeData('hasChanged');
+                                $.LoadingOverlay("hide",true);
+                                fillData.datosGenerales.CIB(mainTabMenu.var.pID_ALTERNA);
                             });
                         }).fail(function (err) {
-                            objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                            
+                            objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);
                         }).always(function () {
                             MyCookie.session.reset();
                         });
 
                     }catch(err) {
-                        objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                        
+                        
+                        objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);
+                                                
                     }
                     
                 },
                 guardarDesarrolloacademico : function(e, from, tabRef){
                     e.preventDefault();
-                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDesarrolloacademico',from, tabRef, true, function(data,form){
+                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDesAcad',from, tabRef, true, function(data,form){
                         fillData.datosGenerales.desarrolloAcademico(mainTabMenu.var.pID_ALTERNA);                        
                     });
                 },
@@ -213,13 +365,46 @@ var objViewDatosGenerales = {
                 },
                 guardarSocioeconomico : function(e, from, tabRef){
                     e.preventDefault();
-                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesSocioeconomico',from, tabRef, false, function(data){
-                    });
+
+                    if ( !$('#pVIVE_FAMILIA').val()
+                        && !$('#pINGRESO_FAMILIAR').val()
+                        && !$('#pID_TIPO_DOMICILIO').val()
+                        && !$('#pACTIVIDAD_CULTURAL').val()
+                        && !$('#pINMUEBLES').val()
+                        && !$('#pINVERSIONES').val()
+                        && !$('#pNUMERO_AUTOS').val()
+                        && !$('#pCALIDAD_VIDA').val()
+                        && !$('#pVICIOS').val()
+                        && !$('#pIMAGEN_PUBLICA').val()
+                        && !$('#pCOMPORTA_SOCIAL').val()
+                        // && !$('#pINGRESO_MENSUAL').val() 
+                        ){
+
+                            Swal.fire({ type: 'warning', title: 'Atención', html: 'Debe especificar al menos un dato del formulario' });
+
+                    } else {
+
+
+                        $('#pNOMBRE_SOCIOECONOMICOS,#pPATERNO_SOCIOECONOMICOS,#pSEXO_SOCIOECONOMICOS,#pFECHA_NAC_SOCIOECONOMICOS,#pID_RELACION,#pID_RELACION_SOCIOECONOMICOS').removeAttr('required');
+
+                        objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesSocio',from, tabRef, false, function(data){
+                            
+                            objViewDatosGenerales.vars.datosGenerales.forms.Dependientes_form.closeAlert({alertType : 'alert-danger'});
+                            objViewDatosGenerales.vars.datosGenerales.forms.Dependientes_form.removeData('withError');
+
+                        });
+
+                    }
                 },
                 guardarDependiente : function(e, from, tabRef){
                     e.preventDefault();
+
+                    $('#pNOMBRE_SOCIOECONOMICOS,#pPATERNO_SOCIOECONOMICOS,#pSEXO_SOCIOECONOMICOS,#pFECHA_NAC_SOCIOECONOMICOS,#pID_RELACION,#pID_RELACION_SOCIOECONOMICOS').prop('required',true);
+
                     objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDependiente',from, tabRef, true, function(data,form){
+                        
                         fillData.datosGenerales.dependientesEconomicos(mainTabMenu.var.pID_ALTERNA);
+
                     });
                 }
             }
@@ -229,17 +414,81 @@ var objViewDatosGenerales = {
                 $.each( objViewDatosGenerales.vars.datosGenerales.tables, function( key, value ) {
                     try {value.obj.responsive.rebuild().responsive.recalc();}catch(err){}
                 });                
+            },
+            pID_GRADO_ESCOLAR : function(e){
+                var value = $(this).val(),
+                    inputs = $('#pNOMBRE_ESCUELA,#pESPECIALIDAD_DESARROLLO,#pCEDULA_PROFESIONAL,#pINICIO_DESARROLLO,#pTERMINO_DESARROLLO,#pREGISTRO_SEP,#pFOLIO_CERTIFICADO,#pPROMEDIO');
+                if (value == -1 || value == 1){
+                    inputs.prop( "disabled", true );
+                } else {
+                    inputs.prop( "disabled", false );
+                }
+            },
+            pID_PAIS_NAC : function(e){
+                
+                var value = $(this).val();                
+
+                if (value != 82){ // país diferente a méxico
+
+
+                    intervalEstadoMunicipio = setInterval(function(){
+
+                        if (value == -1) { // sin información
+
+                            if ( !$('#pID_ENTIDAD_NAC').val()  )
+                                $('#pID_ENTIDAD_NAC').val(-1).trigger('change').trigger('change.select2').prop( "disabled", true );
+                            else if ( $('#pID_ENTIDAD_NAC').val() != -1)
+                                $('#pID_ENTIDAD_NAC').val(-1).trigger('change').trigger('change.select2').prop( "disabled", true );
+                            
+                            if ( !$('#pID_MUNICIPIO_NAC').val())
+                                $('#pID_MUNICIPIO_NAC').val(-1).trigger('change').trigger('change.select2').prop( "disabled", true );
+                            else if ( $('#pID_MUNICIPIO_NAC').val() != -1)
+                                $('#pID_MUNICIPIO_NAC').val(-1).trigger('change').trigger('change.select2').prop( "disabled", true );
+                            
+                        } else { // cualquier otro país
+
+                            if ( !$('#pID_ENTIDAD_NAC').val() )                            
+                                $('#pID_ENTIDAD_NAC').val(99).trigger('change').trigger('change.select2').prop( "disabled", true );
+                            else if ( $('#pID_ENTIDAD_NAC').val() != 99)
+                                $('#pID_ENTIDAD_NAC').val(99).trigger('change').trigger('change.select2').prop( "disabled", true );
+                            
+                            if ( !$('#pID_MUNICIPIO_NAC').val() )
+                                $('#pID_MUNICIPIO_NAC').val(999999).trigger('change').trigger('change.select2').prop( "disabled", true );
+                            else if ( $('#pID_MUNICIPIO_NAC').val() != 999999)
+                                $('#pID_MUNICIPIO_NAC').val(999999).trigger('change').trigger('change.select2').prop( "disabled", true );
+                            
+                        }
+
+                        if ( $('#pID_ENTIDAD_NAC').val() && $('#pID_MUNICIPIO_NAC').val() ) {
+                            clearInterval(intervalEstadoMunicipio);
+                            $('#pID_ENTIDAD_NAC,#pID_MUNICIPIO_NAC').prop( "disabled", true );
+                        }
+
+                    }, 300);
+
+                } else if (value)
+                    $('#pID_ENTIDAD_NAC,#pID_MUNICIPIO_NAC').prop( "disabled", false );
+
+            },
+            pID_NACIONALIDAD : function(e){
+                var value = $(this).val();
+                if (value != 82){
+                    $('#pMODO_NACIONALIDAD').val(3).trigger('change').trigger('change.select2');
+                }
             }
         }
     },
     actions : { 
         populateCURPData : function(data){
-            console.log(data);
+            
             objViewDatosGenerales.vars.datosGenerales.objs.pCURP.val(data.CURP);
             $('#pNOMBRE_DATOS_PERSONALES').val(data.nombres);
             $('#pPATERNO_DATOS_PERSONALES').val(data.apellido1);
             $('#pMATERNO_DATOS_PERSONALES').val(data.apellido2);
-            $('#pSEXO_DATOS_PERSONALES').val(data.sexo).trigger('change.select2').trigger('change');
+            $('#pSEXO_DATOS_PERSONALES').val(data.sexo).trigger('change').trigger('change.select2');
+
+            if (data.CURP)            
+                $('#pRFC_DOMICILIO').val( data.CURP.substr(0,10));
 
             var dateParts = data.fechNac.split("/");
             var dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]); 
@@ -257,6 +506,10 @@ var objViewDatosGenerales = {
             $('.consultaCURP').readOnly();
 
             $('#pSEXO_DATOS_PERSONALES').prop("disabled", true);
+
+            objViewDatosGenerales.actions.ajax.populateCmbOperacion();
+
+            dynTabs.loaderTab();
         },    
         discartChanges : function(e,eTab){
             var form = $('#' + $(eTab.currentTarget).attr('aria-controls')).find('form');
@@ -288,11 +541,15 @@ var objViewDatosGenerales = {
 
                     form.removeData('hasChanged').removeData('hasDiscardChanges').removeData('withError');
                     form.data('hasSaved',true);
+                    form.data('requireddata',false);
 
                     if (from) {
                         if(from == 'tab') {
                             $(tabRef.relatedTarget).trigger('click');
                             dynTabs.markTab( $(tabRef.currentTarget),  '<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
+                            if (callback) 
+                                if ($.isFunction( callback ))
+                                    callback(data,form); 
                             return null;
                         }
                     }
@@ -302,13 +559,13 @@ var objViewDatosGenerales = {
                         if ($.isFunction( callback ))
                             callback(data,form); 
                     
-                    $.LoadingOverlay("hide");
+                    $.LoadingOverlay("hide",true);
                 }catch(err) {
                     objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);
                 }
             },
             throwError: function(err,form,from,tabRef){
-                $.LoadingOverlay("hide");
+                $.LoadingOverlay("hide",true);
                 
                 form.setAlert({
                     alertType :  'alert-danger',
@@ -327,6 +584,7 @@ var objViewDatosGenerales = {
                     }
                 }
                 dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef,'<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
+                
             },
             generateRequest: function($this,callUrl,from,tabRef, resetForm, callback){                
                 var form = $this.parents('form:first');
@@ -363,19 +621,49 @@ var objViewDatosGenerales = {
                 }
             },
             populateCmbOperacion: function(){
-                var cmbSelect = $('#pTIPO_OPERACION');
-                $.ajax({
-                    type: 'GET',
-                    dataType: "json",
-                    url: site_url+'Solicitud/cmbTipoOperacion',
-                }).then(function (data) {
-                    data.results.data.forEach(element => {
-                        console.log(element);
-                        var option = new Option(element.pdescripcion, element.pclave, true, true);
-                        cmbSelect.append(option);
+
+                if ( objViewDatosGenerales.vars.datosGenerales.objs.pCURP.val().length == 0)
+                    return false;
+
+                var obj = $('#pTIPO_OPERACION');
+                obj.prop('disabled', true);
+                obj.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+                var callUrl = base_url + "Solicitud/cmbTipoOperacion";
+
+                obj.append('<option disabled selected value><i class="fa fa-refresh fa-spin fa-3x fa-fw"></i> Actualizando, favor de esperar...</option>');
+
+                $.get(callUrl, { CURP : objViewDatosGenerales.vars.datosGenerales.objs.pCURP.val() },
+                    function (data) {
+                        if (data) {
+                            obj.find("option").remove();
+                            obj.append('<option disabled selected value>Seleccione una opción</option>');
+                            if (data.results) {
+                                $.each(data.results.data,function(key, value) 
+                                {
+                                    var option = new Option(value.pdescripcion, value.pclave);
+                                    obj.append(option);
+
+                                    if ( obj.data('insert') )
+                                        if ( obj.data('insert') == value.pclave ) {
+                                            
+                                            obj.removeData('insert');
+                                            obj.val(value.pclave).trigger('change');
+                                            
+                                        }
+                                });                                
+                            }
+                        }
+                        obj.data('populated',true);
+                        obj.prop("disabled", false);
+
+                    }).fail(function (err) {                    
+                        obj.find("option").remove();
+                        obj.setError('ERROR al actualizar');
+                    }).always(function () {
+                        obj.LoadingOverlay("hide");
+                        MyCookie.session.reset();                                            
                     });
-                    cmbSelect.val(null).trigger("change");
-                });
             }
 
         }

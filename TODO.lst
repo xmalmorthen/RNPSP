@@ -1,5 +1,22 @@
-//TODO: Xmal - Sigue pendiente programar combo de puesto [ tab - Laboral/Adscripción actual ]
-//TODO: Xmal -  Implementar la impresión [ assets\js\views\solicitud\index.js ]
-//TODO: Xmal -  Implementar la replicación [ assets\js\views\solicitud\index.js ]
+//IMPLEMENTACIÓN
 //TODO: Xmal - Quitar comentarios en bloque para implementación [ assets\js\views\solicitud\registro.js ]
 //TODO: Xmal - Quitar comentarios en bloque para implementación [ assets\js\utils\dynamicTabs.js ]
+//TODO: Xmal - Quitar comentarios al implementar [ assets\js\views\solicitud\index.js ]
+//TODO: Xmal - Quitar línea al implementar [ application\controllers\Reportes.php ]
+
+//TODO: Xmal - Quitar línea de código al implementar [ assets\js\views\solicitud\index.js ] 
+//TODO: Xmal - Quitar el comentario de la siguiente línea de código al implementar [ application\controllers\Reportes.php ]
+
+//TODO: Xmal - Implementar la impresión [ assets\js\views\solicitud\index.js ]
+[
+    - Sustituir los campos del modelo [ function altaElemento ]
+]
+//TODO: Xmal - Implementar la replicación [ assets\js\views\solicitud\index.js ]
+
+
+//BLOQUE DE CÓDIGO PARA DECODIFICAR IMAGEN GUARDADA EN BD Y ESCRIBIRLA EN ARCHIVO
+/*
+ $binHex = prepareImageDBString($binaryFile);
+ $binary = prepareImageString($binHex);
+ file_put_contents('PruebaDeImagenSubidaABD.jpg', $binary); 
+*/

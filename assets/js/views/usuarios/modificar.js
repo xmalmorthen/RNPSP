@@ -1,4 +1,5 @@
 var _app = Backbone.View.extend({
+	formChanged : false,
 	initialize: function () {
 		if(id_Usuario == false){
 			Swal.fire({
@@ -6,6 +7,47 @@ var _app = Backbone.View.extend({
 				title: id_UsuarioMSG,
 			});
 		}
+
+		$('#pCURP').on('focusout',function(){
+
+			this.cambiaCurp();
+
+		});
+		$('#pCURP').on('keypress',function(event){
+
+			if (event.which == 13) 
+				app.cambiaCurp();
+		});
+		
+
+		//Rutina para verificar si se hace algún cambio en cualquier forulario
+        $('#Usuarios_form').find('input, select').change(function(e) {  
+			app.formChanged = true;
+        });
+	},
+	cambiaCurp: function (){
+		
+		var valor = $('#pCURP').val();
+
+		$('#pCURP').removeError();
+		$('#guardar').prop('disabled', false);
+
+		if ( !valor ) {
+			
+			$('#pCURP').setError('Campo obligatorio');
+			$('#guardar').prop('disabled', true);
+
+		} else if ( valor.length < 18 ) {
+			
+			$('#pCURP').setError('Formato incorrecto');
+			$('#guardar').prop('disabled', true);
+
+		} else if ( $('#curp').val() != $('#pCURP').val() ) {
+
+			window.location.href = base_url+'Usuarios/Modificar?curp='+$.trim($('#pCURP').val());
+
+		}
+
 	},
 	buscarCurp: function(){
 		window.location.href = base_url+'Usuarios/Ver?curp='+$.trim($('input[name=pCURP]').val());
@@ -41,7 +83,7 @@ var _app = Backbone.View.extend({
 		});
 	},
 	stopLoader: function () {
-		$.LoadingOverlay("hide");
+		$.LoadingOverlay("hide",true);
 	},
 	hideError: function () {
 		if ($('[error=true]').length > 0) {
@@ -72,6 +114,7 @@ var _app = Backbone.View.extend({
 		var pwd = this.generarContrasena(9);
 		$('input#pCONTRASENA').val(pwd);
 		$('input[name=pCONTRASENA]').val(pwd);
+		app.formChanged = true;
 	},
 
 	mostarMotivo: function(idEstatus){
@@ -83,6 +126,24 @@ var _app = Backbone.View.extend({
 	},
 
 	confirmar: function () {
+
+		$.validator.addMethod("comment", function(value, element) {
+            
+            return (value.length == 0 && $('#pID_ESTATUS').val() == 2) ? false : true;
+
+        }, "Información obligatoria.");
+
+
+		if ( !$('form#Usuarios_form').valid() ){
+			$('form#Usuarios_form').setAlert({
+				alertType :  'alert-danger',
+				dismissible : true,
+				header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+				msg : 'Formulario incompleto'
+			});
+			return false;
+		}
+
 		var status_new = $('select#pID_ESTATUS option:selected').val();
 		var status_old = $('select#pID_ESTATUS').attr('selector');
 		var that = this;
@@ -109,6 +170,23 @@ var _app = Backbone.View.extend({
 		var that = this;
 		that.hideError();
 
+		$.validator.addMethod("comment", function(value, element) {
+            
+            return (value.length == 0 && $('#pID_ESTATUS').val() == 2) ? false : true;
+
+        }, "Información obligatoria.");
+
+
+		if ( !$('form#Usuarios_form').valid() ){
+			$('form#Usuarios_form').setAlert({
+				alertType :  'alert-danger',
+				dismissible : true,
+				header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+				msg : 'Formulario incompleto'
+			});
+			return false;
+		}
+
 		var sendData = $('form#Usuarios_form').serializeArray();
 		sendData.push({
 			name: csrf.token_name,
@@ -130,7 +208,8 @@ var _app = Backbone.View.extend({
 						type: 'success',
 						title: response.message
 					}).then((result) => {
-						window.location.href = base_url+'Usuarios/Ver?curp='+$.trim($('input[name=curp]').val());
+						// window.location.href = base_url+'Usuarios/Ver?curp='+$.trim($('input[name=curp]').val());
+						window.location.href = base_url + 'Usuarios';
 					})
 				} else {
 					that.showError(response.message);
@@ -142,7 +221,34 @@ var _app = Backbone.View.extend({
 		});
 	},
 	regresar: function () {
-		window.location.replace(base_url + 'Usuarios');
+		if (app.formChanged){
+					
+			Swal.fire({
+				title: 'Aviso',
+				html: "Desea guardar las modificaciones",
+				footer: "<div><button class='btn btn-warning discartChanges'>Regresar sin guardar</button></div>",
+				type: 'question',
+				allowOutsideClick : false,
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				confirmButtonText: 'Aceptar',
+				cancelButtonColor: '#d33',
+				cancelButtonText: 'Cancelar'
+			}).then(function(result){
+				
+				if (result.value === true){
+					
+					app.guardar();		
+
+				}
+
+			});
+			
+			$('.discartChanges').on('click',function(evnt) { Swal.close(); window.location.replace(base_url + 'Usuarios'); });
+
+		} else {
+			window.location.replace(base_url + 'Usuarios');
+		}
 	},
 	render: function () {
 		$('form#Usuarios_form select').each(function (index) {

@@ -6,63 +6,65 @@
 	var id_Usuario = "<?php echo $user_id;?>";
 	var id_UsuarioMSG = "<?php echo $this->lang->line('MSJ11');?>";
 </script>
-<div class="container">
+<div class="_container">
 	<form action="" id="Usuarios_form" name="Usuarios_form" autocomplete="off">
 		<br>
 		<div class="row">
 			<div class="col-md-4">
-				<span class="clr">*</span> CURP
-                <input type="text" class="form-control" name="pCURP" value="<?php echo (isset($usuario))? $usuario['CURP'] : ''; ?>" readonly />
+				<h6 class="borderButtom">CURP</h6>
+				<p><?php echo (isset($usuario))? $usuario['CURP'] : ''; ?></p>				
 			</div>
 			<div class="col-md-4">
-				<span class="clr">*</span>Nombre
-				<input type="text" class="form-control" value="<?php echo (isset($usuario))? $usuario['NOMBRE'] : ''; ?>" readonly />
+				<h6 class="borderButtom">Nombre</h6>
+				<p><?php echo (isset($usuario))? $usuario['NOMBRE'] : ''; ?></p>
 			</div>
 			<div class="col-md-4">
-				<span class="clr">*</span>Apellido paterno
-				<input type="text" class="form-control" value="<?php echo (isset($usuario))? $usuario['PATERNO'] : ''; ?>" readonly />
-			</div>
-		</div>
-		<br>
-		<div class="row">
-			<div class="col-md-4">
-				<span class="clr">*</span>Apellido materno
-				<input type="text" class="form-control" value="<?php echo (isset($usuario))? $usuario['MATERNO'] : ''; ?>" readonly />
-			</div>
-			<div class="col-md-4">
-				<span class="clr">*</span>Adscripción
-				<input type="text" class="form-control"  value="<?php echo (isset($usuario))? $usuario['ADSCRIPCION'] : ''; ?>" readonly />
-			</div>
-			<div class="col-md-4">
-				<span class="clr">*</span>Contraseña
-				<div class="input-group mb-3">
-					<input readly type="text" class="form-control" id="pCONTRASENA" readonly value="******" />
-				</div>
+				<h6 class="borderButtom">Apellido paterno</h6>
+				<p><?php echo (isset($usuario))? $usuario['PATERNO'] : ''; ?></p>
 			</div>
 		</div>
 		<br>
 		<div class="row">
 			<div class="col-md-4">
-				<span class="clr">*</span>Estatus
-                <input type="text" class="form-control" value="<?php echo (isset($usuario))? $usuario['EstatusUsuario'] : ''; ?>" readonly />
+				<h6 class="borderButtom">Apellido materno</h6>
+				<p><?php echo (isset($usuario))? $usuario['MATERNO'] : ''; ?></p>
+			</div>
+			<div class="col-md-4">
+				<h6 class="borderButtom">Adscripción</h6>
+				<p><?php echo (isset($usuario))? $usuario['ADSCRIPCION'] : ''; ?></p>
+			</div>
+			<div class="col-md-4">
+				<h6 class="borderButtom">Contraseña</h6>
+				<p>******</p>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-md-4">
+				<h6 class="borderButtom">Estatus</h6>
+				<p><?php echo (isset($usuario))? $usuario['EstatusUsuario'] : ''; ?></p>
 				<div id="MotivoInactivo" style="display:<?php echo (isset($usuario) && strlen($usuario['MotivoInactivo'])>0)? 'block':'none'; ?>">
 					<hr/>
-					<div class="form-group">
-						<label for="comment"><span class="clr">*</span>Motivo de cambio estatus a Inactivo:</label>
-						<textarea name="MotivoInactivo" class="form-control" rows="5" readonly><?php echo isset($usuario)? trim($usuario['MotivoInactivo']) : ''; ?></textarea>
-					</div> 
+					<h6 class="borderButtom">Motivo de cambio estatus a Inactivo</h6>
+					<p><?php echo isset($usuario)? trim($usuario['MotivoInactivo']) : ''; ?></p>
 				</div>
 			</div>
 			<div class="col-md-4">
-				<span class="clr">*</span>Correo electrónico
-				<input type="email" id="pCORREO" name="pCORREO" class="form-control" value="<?php echo isset($usuario)? $usuario['email'] : ''; ?>" readonly/>
+				<h6 class="borderButtom">Correo electrónico</h6>
+				<p><?php echo isset($usuario)? $usuario['email'] : ''; ?></p>
 			</div>
-			<!-- <div class="col-md-4">
-				Jefe inmediato
-				<input type="text" class="form-control" id="pID_JEFE" name="pID_JEFE">
-			</div> -->
+			<div class="col-md-4">
+				<h6 class="borderButtom">Jefe inmediato</h6>
+				<p><?php echo isset($usuario)? $usuario['JEFE'] : ''; ?></p>
+			</div>
 		</div>
 		<br>
+		<div class="row">
+			<div class="col-md-4">
+				<h6 class="borderButtom">Tipo de usuario</h6>
+				<p><?php echo (isset($usuario))? $usuario['TipoUsuario'] : ''; ?></p>
+			</div>			
+		</div>
 		<div class="row">
 			<div class="col-md-4"></div>
 			<div class="col-md-4">

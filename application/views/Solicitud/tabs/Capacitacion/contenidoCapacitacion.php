@@ -1,6 +1,6 @@
      <div class="tab-pane fade show active" id="Idiomas_dialectos" role="tabpanel" aria-labelledby="Idiomas_dialectos-tab">
         <div class="_container">
-            <form action="#" name="Idiomas_dialectos_form" id="Idiomas_dialectos_form" autocomplete="off">
+            <form action="#" name="Idiomas_dialectos_form" id="Idiomas_dialectos_form" autocomplete="off" data-requireddata=false>
                  <br>
                 <div class="row">
                     <div class="col-md-12 text-center">
@@ -81,7 +81,7 @@
 
      <div class="tab-pane fade" id="Habilidades_aptitudes" role="tabpanel" aria-labelledby="Habilidades_aptitudes-tab">
         <div class="_container">
-            <form action="#" id="Habilidades_aptitudes_form" name="Habilidades_aptitudes_form" autocomplete="off">
+            <form action="#" id="Habilidades_aptitudes_form" name="Habilidades_aptitudes_form" autocomplete="off" data-requireddata=false>
                 <br>
                 <div class="row">
                     <div class="col-md-12 text-center">

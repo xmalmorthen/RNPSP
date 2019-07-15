@@ -234,8 +234,6 @@ input:focus, select:focus, .select2-selection:focus {
     font-size: 1.5em;
     color: red;
 }
-.tabMark{    
-}
 
 .borderButtom {
     border-bottom: 1px solid #cacaca!Important;

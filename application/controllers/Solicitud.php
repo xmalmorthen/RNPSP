@@ -9,8 +9,6 @@
 
 		public function index(){
 
-			// die(var_dump($this->session->userdata(SESSIONVAR)));
-			
 			// BREADCRUMB
 			$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');
 			$this->breadcrumbs->push('[ Solicitudes ]', site_url('Solicitud'));
@@ -23,6 +21,7 @@
 			$solicitudesList = $this->SOLICITUD_model->get();
 			$model = [];
 			$items = [];
+
 			if(is_array($solicitudesList)){
 				foreach ($solicitudesList as $value) {
 					$item = array(
@@ -34,7 +33,8 @@
 						'TipodeSolicitud' => $value['TIPO_OPERACION'],
 						'Estatus' => $value['DESCRIPCION_ESTATUS'],
 						'options' => array(
-							'id' => $value['FOLIO']
+							'id' => $value['FOLIO'],
+							'idEstatus' => $value['ESTATUS']
 						)
 					);
 					array_push( $items, $item );	
@@ -42,6 +42,8 @@
 			}
 			
 			$model['items'] = $items;
+			$model['replicationResult'] = $this->input->get('replicationResult');
+			
 			$this->load->view('Solicitud/index',$model);
         }
 
@@ -122,9 +124,12 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
+				
 			}
-			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+			catch (Exception $e) {				
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -151,9 +156,47 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+		
+		//ELIMINAR
+		public function ajaxEliminar(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+
+			$responseModel = [
+				'status' => false,
+				'message'=> '',
+				'data'=> null
+			];
+
+			try {
+				if (!$this->input->post())
+					throw new rulesException('Petición inválida');
+
+				$model = $_POST;
+
+				$this->load->model('SOLICITUD_model');				
+				$responseModel = $this->SOLICITUD_model->eliminarSolicitud($model);
+
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -182,12 +225,15 @@
 				
 				$this->load->model('SOLICITUD_model');
 				$responseModel = $this->SOLICITUD_model->addDatosPersonales($model);
+
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -208,19 +254,30 @@
 
 			try {
 				if (!$this->input->post())
-					throw new rulesException('Petición inválida');
+					throw new rulesException('Petición inválida');				
 
 				$model = [];
 				parse_str($_POST["model"], $model);
-				$this->load->model('SOLICITUD_model');
-				$responseModel = $this->SOLICITUD_model->sp_B1_addPersonaCIB($model);
-				
+
+				if ( $model['CIB'] == '') {
+					
+					$responseModel = [ 'status' => true ];
+
+				} else {
+
+					$this->load->model('SOLICITUD_model');
+					$responseModel = $this->SOLICITUD_model->sp_B1_addPersonaCIB($model);
+
+				}
+
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -228,7 +285,7 @@
 			exit;
 		}
 
-		public function ajaxSaveDatosGeneralesDesarrolloacademico(){
+		public function ajaxSaveDatosGeneralesDesAcad(){
 			if (! $this->input->is_ajax_request()) {
 				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
 			}
@@ -254,9 +311,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -287,9 +346,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -321,9 +382,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -331,7 +394,7 @@
 			exit;
 		}
 
-		public function ajaxSaveDatosGeneralesSocioeconomico(){
+		public function ajaxSaveDatosGeneralesSocio(){
 			if (! $this->input->is_ajax_request()) {
 				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
 			}
@@ -353,9 +416,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -385,9 +450,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -418,9 +485,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -450,9 +519,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -483,9 +554,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -515,9 +588,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -548,9 +623,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -580,9 +657,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -613,9 +692,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -645,9 +726,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -683,7 +766,7 @@
 
 					$config['upload_path']          = STATIC_DOCUMMENTS_PATH . 'fichaFotografica';
 					$config['allowed_types']        = 'jpg|jpeg|png';
-					$config['max_size']             = 10240;
+					// $config['max_size']             = 10240;
 					$config['max_width']            = 0;
 					$config['max_height']           = 0;
 					$config['encrypt_name']         = TRUE;
@@ -740,9 +823,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -779,7 +864,7 @@
 
 					$config['upload_path']          = STATIC_DOCUMMENTS_PATH . 'fichaDecadactilar';
 					$config['allowed_types']        = 'jpg|jpeg|png|pdf';
-					$config['max_size']             = 10240;
+					// $config['max_size']             = 10240;
 					$config['max_width']            = 0;
 					$config['max_height']           = 0;
 					$config['encrypt_name']         = TRUE;
@@ -814,9 +899,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -853,7 +940,7 @@
 
 					$config['upload_path']          = STATIC_DOCUMMENTS_PATH . 'fichaDocumento';
 					$config['allowed_types']        = 'jpg|jpeg|png|pdf';
-					$config['max_size']             = 10240;
+					// $config['max_size']             = 10240;
 					$config['max_width']            = 0;
 					$config['max_height']           = 0;
 					$config['encrypt_name']         = TRUE;
@@ -867,11 +954,16 @@
 						
 					} else {
 						$fileInfo = $this->upload->data();
+
+						$uploadfile = file_get_contents($_FILES['_fichaDocumento']['tmp_name']);
+
 						$data = array(
 							"originalName" => $_FILES['_fichaDocumento']['name'],
 							"name" => $fileInfo['file_name'], 
-							"idDoc" => $key
+							"idDoc" => $key,
+							"binary" => $uploadfile
 						);
+
 						array_push($files,$data);
 					}
 				}
@@ -881,7 +973,7 @@
 					$outputMSG = "";
 					$files = current($files);
 					$this->load->model('SOLICITUD_model');
-					$responseModel = $this->SOLICITUD_model->sp_B2_MF_addDocumento(json_encode(array('originalName'=>$files['originalName'],'name'=>$files['name'])));
+					$responseModel = $this->SOLICITUD_model->sp_B2_MF_addDocumento(json_encode(array('originalName'=>$files['originalName'],'name'=>$files['name'])),$files['binary']);
 
 				} else {
 					$responseModel['message'] = 'Error al intentar guardar';
@@ -890,9 +982,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -928,8 +1022,8 @@
 					$_FILES['_fichaVoz']['size']      = $_FILES['fichaVoz']['size'][$key];
 
 					$config['upload_path']          = STATIC_DOCUMMENTS_PATH . 'fichaVoz';
-					$config['allowed_types']        = 'mp3';
-					$config['max_size']             = 10240;
+					$config['allowed_types']        = '*';
+					// $config['max_size']             = 10240;
 					$config['max_width']            = 0;
 					$config['max_height']           = 0;
 					$config['encrypt_name']         = TRUE;
@@ -965,9 +1059,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -991,9 +1087,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1017,9 +1115,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1043,9 +1143,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1069,9 +1171,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1095,9 +1199,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1122,9 +1228,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1149,9 +1257,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1175,9 +1285,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1201,9 +1313,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1227,9 +1341,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1253,9 +1369,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1280,9 +1398,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1307,9 +1427,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1332,9 +1454,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1358,9 +1482,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1384,9 +1510,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1410,9 +1538,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1436,9 +1566,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1462,9 +1594,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1488,9 +1622,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1514,9 +1650,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1540,9 +1678,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1566,9 +1706,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1592,9 +1734,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1618,9 +1762,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1644,9 +1790,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1670,9 +1818,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1696,9 +1846,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1721,9 +1873,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1747,9 +1901,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1773,9 +1929,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1798,9 +1956,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1824,9 +1984,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1850,9 +2012,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1875,9 +2039,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1900,9 +2066,11 @@
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1913,20 +2081,31 @@
 
 		# OPCION COMBO
 		# Obtiene la valores para el combo del tipo operacion de acuerdo a las reglas de operacion
-		public function cmbTipoOperacion(){
+		public function cmbTipoOperacion($CURP = null){
 			// if (! $this->input->is_ajax_request()) {
 			// 	if (ENVIRONMENT == 'production') redirect('Error/e404','location');
 			// }
-			$curp = $this->session->local_userdata('CURP');
+
+			if (!$CURP)
+				$CURP = $this->input->get('CURP');
+		
 			try {
+				
+				if(!$CURP){
+					throw new rulesException('Parámetros incorrectos');
+				}
+
+
 				$this->load->model('SOLICITUD_model');
-				$responseModel = $this->SOLICITUD_model->sp_cmbTipoOperacion($curp);
+				$responseModel = $this->SOLICITUD_model->sp_cmbTipoOperacion($CURP);
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			catch (Exception $e) {
-				header("HTTP/1.0 500 Internal Server Error");
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
 			}
 			
 			header('Content-type: application/json');
@@ -1934,6 +2113,106 @@
 			exit;
 		}
 
-				
+		public function ajaxValidar($id = null){
+			if (!$id)
+				$id = $this->input->get('id');
 		
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}		
+
+			$responseModel = NULL;
+			try {
+				if(!$id){
+					throw new rulesException('Parámetros incorrectos');
+				}
+				
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_validaRegistro($id);
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
+			}
+			catch (Exception $e) {				
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+		
+		public function ajaxReplicar(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+
+			$responseModel = [
+				'status' => false,
+				'message'=> '',
+				'data'=> null
+			];
+
+			try {
+				if (!$this->input->post())
+					throw new rulesException('Petición inválida');
+
+				$model = [];
+				parse_str($_POST["model"], $model);
+				
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_enviarBUS($model);
+
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+
+		public function ajaxReplicarStatus(){
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}
+
+			$responseModel = [
+				'status' => false,
+				'message'=> '',
+				'data'=> null
+			];
+
+			try {
+				if (!$this->input->post())
+					throw new rulesException('Petición inválida');
+
+				$model = [];
+				parse_str($_POST["model"], $model);
+				
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_replicarStatus($model);
+				
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
 }	

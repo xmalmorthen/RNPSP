@@ -1,16 +1,15 @@
-var mainFormActions = {
+var mainFormActions = {	
 	populateCURPFields: function (data) {
-		console.log(data);
+		// console.log(data);
+
 		$('[name=pCURP]').val(data.CURP);
-		$('[name=pCURP]').prop('readonly', true);
 		$('[name=pNOMBRE]').val(data.NOMBRE);
-		$('[name=pNOMBRE]').prop('readonly', true);
 		$('[name=pPATERNO]').val(data.PATERNO);
-		$('[name=pPATERNO]').prop('readonly', true);
 		$('[name=pMATERNO]').val(data.MATERNO);
-		$('[name=pMATERNO]').prop('readonly', true);
+		$('[name=pADSCRIPCION]').val(data.NOMBRE_DPCIA);
+		$('[name=pID_ADSCRIPCION]').val(data.ID_DEPENDENCIA);
 		$('[name=pID_JEFE]').val($.trim(data.NOMBRE_JEFE + data.PATERNO_JEFE + data.MATERNO_JEFE));
-		$('[name=pID_JEFE]').prop('readonly', true);
+
 	},
 	populateData: function (idRef) {
 		$.LoadingOverlay("show", {
@@ -34,7 +33,7 @@ var mainFormActions = {
 			} else
 				throw new Error('No se encontró información');
 		}).catch(function (err) {
-			$.LoadingOverlay("hide");
+			$.LoadingOverlay("hide",true);
 			Swal.fire({
 					type: 'error',
 					title: 'Error',
@@ -77,7 +76,7 @@ var mainFormActions = {
 						ref.data('insert', value);
 					else {
 						ref.val(value);
-						ref.trigger('change.select2').trigger('change');
+						ref.trigger('change').trigger('change.select2');
 					}
 					break;
 				default:
@@ -88,8 +87,9 @@ var mainFormActions = {
 }
 
 var _app = Backbone.View.extend({
-	initialize: function () {
-		this.generatePassword();
+	formChanged : false,
+	initialize: function () {		
+		$('select').select2();
 
 		Swal.fire({
 				title: 'Clave CURP',
@@ -123,7 +123,7 @@ var _app = Backbone.View.extend({
 									});
 							}).then(function (data) {
 								if(data.status == false){
-									throw new Error('No se encontro la CURP en el sistema.');		
+									throw new Error(data.message);		
 								}
 								return { data: data.data};
 							}).catch(function(err){
@@ -144,6 +144,14 @@ var _app = Backbone.View.extend({
 		} else {
 			mainFormActions.populateCURPFields(result.value.data);
 		}
+
+		//Rutina para verificar si se hace algún cambio en cualquier forulario
+        $('#Usuarios_form').find('input, select').change(function(e) {  
+			app.formChanged = true;
+        });
+
+		this.generatePassword();
+
 	});
 
 },
@@ -178,7 +186,7 @@ starLoader: function () {
 	});
 },
 stopLoader: function () {
-	$.LoadingOverlay("hide");
+	$.LoadingOverlay("hide",true);
 },
 hideError: function () {
 	if ($('[error=true]').length > 0) {
@@ -189,30 +197,79 @@ hideError: function () {
 	}
 },
 showError: function (message) {
-	var error = '';
+	var error = 'Error al guardar<br/>';
 	$.each(message, function (index, value) {
 		if ($('input[name=' + index + ']').length > 0) {
 			$('input[name=' + index + ']').attr('error', true);
-			$('input[name=' + index + ']').setError(value);
+			$('input[name=' + index + ']').setError(value);			
 		} else {
-			error += '<small>' + value + '</small><br/>';
+			error += value + '<br/>';
 		}
 	});
 	if (error.length > 0) {
-		Swal.fire({
-			type: 'error',
-			html: '<p>' + error + '</p>',
+
+		$('form#Usuarios_form').setAlert({
+			alertType :  'alert-danger',
+			dismissible : true,
+			header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+			msg : error
 		});
+		
 	}
 },
 generatePassword: function () {
 	var pwd = this.generarContrasena(9);
 	$('input#pCONTRASENA').val(pwd);
 	$('input[name=pCONTRASENA]').val(pwd);
+	app.formChanged = true;
+},
+confirmar: function(){
+	var that = this;
+	that.hideError();
+
+	if ( !$('form#Usuarios_form').valid() ){
+		$('form#Usuarios_form').setAlert({
+			alertType :  'alert-danger',
+			dismissible : true,
+			header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+			msg : 'Formulario incompleto'
+		});
+		return false;
+	}
+
+	$('form#Usuarios_form').closeAlert({ alertType :  'alert-danger'});
+
+	Swal.fire({
+		type: 'question',
+		title: 'Desea Guardar los cambios',
+		showConfirmButton: true,
+		confirmButtonText: 'Si',
+		showCancelButton: true,
+		cancelButtonText: 'No'
+	}).then((result) => {
+		if (result.value) {
+			
+			app.guardar();
+
+		}
+	});
+
 },
 guardar: function () {
 	var that = this;
 	that.hideError();
+
+	if ( !$('form#Usuarios_form').valid() ){
+		$('form#Usuarios_form').setAlert({
+			alertType :  'alert-danger',
+			dismissible : true,
+			header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+			msg : 'Formulario incompleto'
+		});
+		return false;
+	}
+
+	$('form#Usuarios_form').closeAlert({ alertType :  'alert-danger'});
 
 	var sendData = $('form#Usuarios_form').serializeArray();
 	sendData.push({
@@ -246,9 +303,39 @@ guardar: function () {
 			that.stopLoader();
 		}
 	});
+
+	
 },
 regresar: function () {
-	window.location.replace(base_url + 'Usuarios');
+	if (app.formChanged){
+					
+		Swal.fire({
+			title: 'Aviso',
+			html: "Desea guardar las modificaciones",
+			footer: "<div><button class='btn btn-warning discartChanges'>Regresar sin guardar</button></div>",
+			type: 'question',
+			allowOutsideClick : false,
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			confirmButtonText: 'Aceptar',
+			cancelButtonColor: '#d33',
+			cancelButtonText: 'Cancelar'
+		}).then(function(result){
+			
+			if (result.value === true){
+				
+				app.guardar();		
+
+			}
+
+		});
+		
+		$('.discartChanges').on('click',function(evnt) { Swal.close(); window.location.replace(base_url + 'Usuarios'); });
+
+	} else {
+		window.location.replace(base_url + 'Usuarios');
+	}
+
 },
 render: function () {
 	return this;

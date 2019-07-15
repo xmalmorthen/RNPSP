@@ -66,6 +66,9 @@ var objViewCapacitacion = {
         objViewCapacitacion.vars.capacitacion.btns.guardarHabilidad.on('click',objViewCapacitacion.events.click.capacitacion.guardarHabilidad);
         
         //FOCUSOUT
+        $('input[type="date"]').on('focusout',function(event){
+            $(this).val( $(this).val() );
+        });
         
         //CAMBIO DE TABS
         objViewCapacitacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewCapacitacion.actions.discartChanges}, e); } );
@@ -145,6 +148,7 @@ var objViewCapacitacion = {
                     
                     form.removeData('hasChanged').removeData('hasDiscardChanges').removeData('withError');
                     form.data('hasSaved',true);
+                    form.data('requireddata',false);
 
                     if (from) {
                         if(from == 'tab') {
@@ -164,7 +168,7 @@ var objViewCapacitacion = {
                 }
             },
             throwError: function(err,form,from,tabRef){
-                $.LoadingOverlay("hide");
+                $.LoadingOverlay("hide",true);
                 
                 form.setAlert({
                     alertType :  'alert-danger',
@@ -211,7 +215,7 @@ var objViewCapacitacion = {
                     }).fail(function (err) {
                         objViewCapacitacion.actions.ajax.throwError(err,form,from,tabRef);                            
                     }).always(function () {
-                        $.LoadingOverlay("hide");
+                        $.LoadingOverlay("hide",true);
                         MyCookie.session.reset();
                     });
 

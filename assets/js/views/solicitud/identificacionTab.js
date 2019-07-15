@@ -19,9 +19,7 @@ var objViewIdentificacion = {
                 guardarFicha : null,
                 guardarRegistrodecadactilar : null,
                 guardarDocumento : null,
-                guardarVoz : null,
-                validarVoz : null,
-                validarReplicar : null
+                guardarVoz : null                
             },
             tables : {
                 tableSenasparticulares : {
@@ -83,9 +81,7 @@ var objViewIdentificacion = {
         objViewIdentificacion.vars.identificacion.btns.guardarFicha = $('#guardarFicha');
         objViewIdentificacion.vars.identificacion.btns.guardarRegistrodecadactilar = $('#guardarRegistrodecadactilar');
         objViewIdentificacion.vars.identificacion.btns.guardarDocumento = $('#guardarDocumento');
-        objViewIdentificacion.vars.identificacion.btns.guardarVoz = $('#guardarVoz');
-        objViewIdentificacion.vars.identificacion.btns.validarVoz = $('#validarVoz');
-        objViewIdentificacion.vars.identificacion.btns.validarReplicar = $('#validarReplicar');
+        objViewIdentificacion.vars.identificacion.btns.guardarVoz = $('#guardarVoz');        
 
         // INIT SELECTS
         objViewIdentificacion.vars.general.mainContentTab.find('select').select2({width : '100%'});
@@ -108,16 +104,20 @@ var objViewIdentificacion = {
         objViewIdentificacion.vars.identificacion.btns.guardarFicha.on('click',objViewIdentificacion.events.click.identificacion.guardarFicha);
         objViewIdentificacion.vars.identificacion.btns.guardarRegistrodecadactilar.on('click',objViewIdentificacion.events.click.identificacion.guardarRegistrodecadactilar);
         objViewIdentificacion.vars.identificacion.btns.guardarDocumento.on('click',objViewIdentificacion.events.click.identificacion.guardarDocumento);
-        objViewIdentificacion.vars.identificacion.btns.guardarVoz.on('click',objViewIdentificacion.events.click.identificacion.guardarVoz);
-        objViewIdentificacion.vars.identificacion.btns.validarVoz.on('click',objViewIdentificacion.events.click.identificacion.validarVoz);
-        objViewIdentificacion.vars.identificacion.btns.validarReplicar.on('click',objViewIdentificacion.events.click.identificacion.validarReplicar);
+        objViewIdentificacion.vars.identificacion.btns.guardarVoz.on('click',objViewIdentificacion.events.click.identificacion.guardarVoz);        
         
         // INIT TYPE FILES
         objViewIdentificacion.vars.identificacion.files.inputFile.on('change',objViewIdentificacion.events.change.inputFile);
 
+        //FOCUSOUT
+        $('input[type="date"]').on('focusout',function(event){
+            $(this).val( $(this).val() );
+        });
+
         //CAMBIO DE TABS
         objViewIdentificacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('hide.bs.tab',function(e){ dynTabs.change({ discardFunction: objViewIdentificacion.actions.discartChanges}, e); } );
         objViewIdentificacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('show.bs.tab',dynTabs.showTab);
+        objViewIdentificacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('show.bs.tab',objViewIdentificacion.events.change.handleTabShow);
         objViewIdentificacion.vars.general.mainContentTab.find('a[data-toggle="tab"]').on('shown.bs.tab',objViewIdentificacion.events.change.tableResponsive);
 
         populate.form($('#mediafiliacion_form')); //popular selects del primer tab NOTA: cambiar programación al tab actual si se obtiene por cookie
@@ -133,6 +133,12 @@ var objViewIdentificacion = {
             }
         }
 
+        $('#FECHA_DOCUMENTO').attr('max', moment( new Date() ).format('YYYY-MM-DD'));
+
+        $(':input[type="number"]').on('input', function () { 
+            this.value = this.value.replace(/[^0-9\-\(\)]/g,'');
+        });
+
         objViewIdentificacion.vars.general.init = true;
     },
     events : {
@@ -143,17 +149,13 @@ var objViewIdentificacion = {
                 guardarMediafiliacion : function(e, from, tabRef){
                     e.preventDefault();
                     objViewIdentificacion.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveIdentificacionMediafiliacion',from, tabRef, false, function(data){
-                        console.log(data);
                         
-                        debugger;
                     });
                 },
                 guardarSenia : function(e, from, tabRef){
                     e.preventDefault();
-                    objViewIdentificacion.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveIdentificacionSenia',from, tabRef, true, function(data){
-                        console.log(data);
-                        
-                        debugger;
+                    objViewIdentificacion.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveIdentificacionSenia',from, tabRef, true, function(data){                        
+                        fillData.identificacion.seniasParticulares(mainTabMenu.var.pID_ALTERNA);
                     });
                 },                
                 guardarFicha : function(e, from, tabRef){
@@ -217,10 +219,19 @@ var objViewIdentificacion = {
                                         }
                                         dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef ,'<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
                                         
-                                        populate.reset(form);
-                                        $.LoadingOverlay("hide");
+                                        populate.reset(form, function(){
+                                            
+                                            form.removeData('hasChanged');
+
+                                        });
+
+                                        $.LoadingOverlay("hide",true);
+
+                                        fillData.identificacion.fichaFotografica(mainTabMenu.var.pID_ALTERNA);
+
+
                                     }catch(err) {
-                                        $.LoadingOverlay("hide");
+                                        $.LoadingOverlay("hide",true);
                     
                                         form.setAlert({
                                             alertType :  'alert-danger',
@@ -250,11 +261,12 @@ var objViewIdentificacion = {
                                     objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);                                 
                                 },
                                 always : function(){
-                                    $.LoadingOverlay("hide");
+                                    $.LoadingOverlay("hide",true);
                                 }
                             });
                         } else {
-                            throw new Error("Debe seleccionar al menos una imágen.");
+                            msg = "Debe" + ( form.data('requireddata') == false ? ' remplazar ' : ' seleccionar' ) + ' al menos una imágen.';
+                            throw new Error(msg);
                         }
 
                     }catch(err) {
@@ -312,6 +324,8 @@ var objViewIdentificacion = {
                                         if (!data.results.status)
                                             throw new Error(data.results.message ? data.results.message : 'Error desconocido.' );
                                         
+                                        fillData.identificacion.registroDecadactilar(mainTabMenu.var.pID_ALTERNA);
+
                                         form.removeData('hasChanged').removeData('hasDiscardChanges').removeData('withError');
                                         form.data('hasSaved',true);
 
@@ -324,10 +338,15 @@ var objViewIdentificacion = {
                                         }
                                         dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef ,'<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
                                         
-                                        populate.reset(form);
-                                        $.LoadingOverlay("hide");
+                                        populate.reset(form, function(){
+                                            
+                                            form.removeData('hasChanged');
+
+                                        });                                        
+
+                                        $.LoadingOverlay("hide",true);
                                     }catch(err) {
-                                        $.LoadingOverlay("hide");
+                                        $.LoadingOverlay("hide",true);
                     
                                         form.setAlert({
                                             alertType :  'alert-danger',
@@ -357,7 +376,7 @@ var objViewIdentificacion = {
                                     objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);                                 
                                 },
                                 always : function(){
-                                    $.LoadingOverlay("hide");
+                                    $.LoadingOverlay("hide",true);
                                 }
                             });
                         } else {
@@ -433,11 +452,17 @@ var objViewIdentificacion = {
                                         }
                                         dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef ,'<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
 
-                                        populate.reset(form);
+                                        populate.reset(form, function(){
+                                            
+                                            form.removeData('hasChanged');
 
-                                        $.LoadingOverlay("hide");
+                                        });
+
+                                        fillData.identificacion.digitalizacionDocumento(mainTabMenu.var.pID_ALTERNA);
+
+                                        $.LoadingOverlay("hide",true);
                                     }catch(err) {
-                                        $.LoadingOverlay("hide");
+                                        $.LoadingOverlay("hide",true);
                     
                                         form.setAlert({
                                             alertType :  'alert-danger',
@@ -467,7 +492,7 @@ var objViewIdentificacion = {
                                     objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);                                 
                                 },
                                 always : function(){
-                                    $.LoadingOverlay("hide");
+                                    $.LoadingOverlay("hide",true);
                                 }
                             });
                         } else {
@@ -541,10 +566,17 @@ var objViewIdentificacion = {
                                         }
                                         dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef ,'<span class="text-success tabMark mr-2"><i class="fa fa-floppy-o" aria-hidden="true" ></i></span>');
                                         
-                                        populate.reset(form);
-                                        $.LoadingOverlay("hide");
+                                        populate.reset(form, function(){
+                                            
+                                            form.removeData('hasChanged');
+
+                                        });                                        
+
+                                        fillData.identificacion.identificacionVoz(mainTabMenu.var.pID_ALTERNA);
+
+                                        $.LoadingOverlay("hide",true);
                                     }catch(err) {
-                                        $.LoadingOverlay("hide");
+                                        $.LoadingOverlay("hide",true);
                     
                                         form.setAlert({
                                             alertType :  'alert-danger',
@@ -574,7 +606,7 @@ var objViewIdentificacion = {
                                     objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);                                 
                                 },
                                 always : function(){
-                                    $.LoadingOverlay("hide");
+                                    $.LoadingOverlay("hide",true);
                                 }
                             });
                         } else {
@@ -584,15 +616,7 @@ var objViewIdentificacion = {
                     }catch(err) {
                         objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);                        
                     } 
-                },
-                validarVoz : function(e, from, tabRef){
-                    e.preventDefault();
-                    alert('implementar');
-                },
-                validarReplicar : function(e, from, tabRef){
-                    e.preventDefault();
-                    alert('implementar');
-                }
+                }                
             }
         },
         change : {
@@ -601,7 +625,42 @@ var objViewIdentificacion = {
                 var $this = this,
                     labelNameFile = $( $this ).closest( ".custom-file" ).find('label.custom-file-label');
                     
-                if ($this.files && $this.files[0]) {   
+                if ($this.files && $this.files[0]) {
+
+                    if ($.inArray( $this.files[0].type, $this.accept.split(',') ) == -1) {
+
+                        $(this).val('');
+                        e.preventDefault();
+                        e.stopPropagation();
+                        e.stopImmediatePropagation();
+
+                        Swal.fire({
+                            type: 'error',
+                            text: 'Formato de archivo incorrecto',
+                            footer: 'Se aceptan archivos en formato ' + $($this).data('accept')
+                        });
+                        
+                        return false;
+                    }
+
+                    maxFileSize = $($this).data('maxfilesize') ? $($this).data('maxfilesize') : 204800;
+
+                    if ( $this.files[0].size > maxFileSize ){
+                        
+                        $(this).val('');
+                        e.preventDefault();
+                        e.stopPropagation();
+                        e.stopImmediatePropagation();
+
+                        Swal.fire({
+                            type: 'error',
+                            text: 'Tamaño de archivo superior al límite',
+                            footer: 'Se aceptan archivos con un tamaño máximo de ' + (maxFileSize / 1024) + ' kb'
+                        });
+                        
+                        return false;
+                    }
+
                     var reader = new FileReader();
                     var filename = $($this).val();
                     filename = filename.substring(filename.lastIndexOf('\\')+1);
@@ -623,10 +682,17 @@ var objViewIdentificacion = {
                 $.each( objViewIdentificacion.vars.identificacion.tables, function( key, value ) {
                     try{value.obj.responsive.rebuild().responsive.recalc();}catch(err){}
                 });                
+            },
+            handleTabShow : function(e){
+
+                if ( $(e.currentTarget).data('callback') )
+                    eval($(e.currentTarget).data('callback') + '()');
+
             }
+
         }
     },
-    actions : {        
+    actions : {
         discartChanges : function(e,eTab){
             var form = $('#' + $(eTab.currentTarget).attr('aria-controls')).find('form');
             form.closeAlert({alertType : 'alert-danger'});
@@ -658,6 +724,7 @@ var objViewIdentificacion = {
                     
                     form.removeData('hasChanged').removeData('hasDiscardChanges').removeData('withError');
                     form.data('hasSaved',true);
+                    form.data('requireddata',false);
 
                     if (from) {
                         if(from == 'tab') {
@@ -677,7 +744,7 @@ var objViewIdentificacion = {
                 }
             },
             throwError: function(err,form,from,tabRef){
-                $.LoadingOverlay("hide");
+                $.LoadingOverlay("hide",true);
                 
                 form.setAlert({
                     alertType :  'alert-danger',
@@ -724,7 +791,7 @@ var objViewIdentificacion = {
                     }).fail(function (err) {
                         objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);
                     }).always(function () {
-                        $.LoadingOverlay("hide");
+                        $.LoadingOverlay("hide",true);
                         MyCookie.session.reset();
                     });
 
@@ -732,6 +799,25 @@ var objViewIdentificacion = {
                     objViewIdentificacion.actions.ajax.throwError(err,form,from,tabRef);                        
                 }
             }
+        }
+    },
+    callback : {
+        fichaFotografica : function(){
+            
+            if (mainTabMenu.var.nuevoRegistro)
+                fillData.identificacion.fichaFotografica(mainTabMenu.var.pID_ALTERNA);
+
+        },
+        registroDecadactilar : function(){
+            
+            if (mainTabMenu.var.nuevoRegistro)
+                fillData.identificacion.registroDecadactilar(mainTabMenu.var.pID_ALTERNA);
+        },
+        identificacionVoz : function(){
+            
+            if (mainTabMenu.var.nuevoRegistro)
+                fillData.identificacion.identificacionVoz(mainTabMenu.var.pID_ALTERNA);
+                
         }
     }
 }

@@ -16,8 +16,40 @@ class SOLICITUD_model extends MY_Model
   }
 
   public function get(){
-    $this->select('FOLIO,NOMBRE,PATERNO,MATERNO,FECHA_REGISTRO,TIPO_OPERACION,DESCRIPCION,ESTATUS,DESCRIPCION_ESTATUS');
+    $this->select('FOLIO,NOMBRE,PATERNO,MATERNO,FECHA_REGISTRO,TIPO_OPERACION,DESCRIPCION,ESTATUS,DESCRIPCION_ESTATUS,ID_DEPENDENCIA,NOMBRE_DPCIA');
+    $this->where('tipo_operacion <> ', 'ce'); // mostrar solo solicitudes que no han sido replicadas
+    //$this->where('ID_DEPENDENCIA', $this->session->userdata(SESSIONVAR)['ID_ADSCRIPCION']);
     return $this->response_list();
+  }
+
+  public function eliminarSolicitud($model){
+
+    $model['pIdUsr'] = $this->session->userdata(SESSIONVAR)['user_id'];
+
+    $this->arrayToPost($model);
+    
+    $this->procedure('sp_cancelaSol');
+    $this->addParam('pID_ALTERNA','id','');    
+    $this->addParam('pMOTIVO','motivo','');
+    $this->addParam('pIdUsr','pIdUsr','');
+    $this->iniParam('txtError','varchar','250');
+    $this->iniParam('msg','varchar','80');
+    $this->iniParam('tranEstatus','int');
+    
+    $call = $this->build_query();
+    $query = $this->db->query($call);
+    $response = $this->query_row($query);
+
+    if($response == FALSE){
+      $this->response['status'] = false;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
+    }else{
+      $this->response['status'] = (bool)$response['tranEstatus'];
+      $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : ( strlen($response['txtError']) > 0 ? $response['txtError'] : $response['msg'])  . " [ GUID = {$this->config->item('GUID')} ]";
+    }
+
+    return $this->response;
+
   }
 
   /*
@@ -31,19 +63,40 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pCURP',$CURP,'N',array('name'=>'CURP','rule'=>'trim|required|min_length[16]|max_length[20]'));
     $this->iniParam('tranEstatus','int');
     $this->iniParam('msg','varchar','80');
+
+    //$build = $this->build_query();
+
     $response = (array)$this->query_multi($this->build_query());
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $responseSelect = current($response);
         $responseOutput = end($response);
 
-        $this->response['status'] = $responseOutput['tranEstatus'];
-        $this->response['message'] = $responseOutput['msg'];
-        $this->response['data'] = $this->try_result($responseSelect);
+        if ($responseOutput['tranEstatus'] != 0) {
+
+          if ($responseSelect['TIPO_OPERACION'] == 'CE'){
+
+            $this->response['status'] = 2;
+            $this->response['message'] = 'CURP ya replicada';
+          } else {
+
+            $this->response['status'] = $responseOutput['tranEstatus'];
+            $this->response['message'] = $responseOutput['msg'];
+            $this->response['data'] = $this->try_result($responseSelect);  
+
+          }
+
+        } else {
+
+          $this->response['status'] = $responseOutput['tranEstatus'];
+          $this->response['message'] = $responseOutput['msg'];
+          $this->response['data'] = $this->try_result($responseSelect);
+
+        }
       }else{
         $responseOutput = current($response);
         $this->response['status'] = $responseOutput['tranEstatus'];
@@ -52,7 +105,7 @@ class SOLICITUD_model extends MY_Model
     }
     return $this->response;
   }
-
+  
   /*
   * "Opcion Nueva Solicitud - Boton Gurdar CIB sp_B1_addPersonaCIB - Agraga un nuevo CIB a una persona"
   */
@@ -76,7 +129,7 @@ class SOLICITUD_model extends MY_Model
 
       if($response == FALSE){
         $this->response['status'] = false;
-        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
       }else{
         $this->response['status'] = (bool)$response['tranEstatus'];
         $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
@@ -102,7 +155,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -125,7 +178,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -152,7 +205,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -189,7 +242,7 @@ class SOLICITUD_model extends MY_Model
     $this->form_validation->set_rules('pID_NACIONALIDAD', 'Nacionalidad', 'trim|required|numeric');
     //$this->form_validation->set_rules('pNIDEPERSON', '', 'numeric'); //envial NULL
     $this->form_validation->set_rules('pLICENCIA_VIG', 'Vigencia de licencia', 'trim');
-    $this->form_validation->set_rules('pCIUDAD_NAC_DATOS_PERSONALES', 'Descripción ciudad de nacimiento', 'trim|max_length[50]');
+    $this->form_validation->set_rules('pCIUDAD_NAC_DATOS_PERSONALES', 'Descripción ciudad de nacimiento', 'trim|required|max_length[50]');
     $this->form_validation->set_rules('pFECHA_NACIONALIDAD', 'Fecha de nacionalidad', 'trim');
     $this->form_validation->set_rules('pCUIP', 'CUIP', 'trim|max_length[50]');
 
@@ -231,7 +284,7 @@ class SOLICITUD_model extends MY_Model
       
       if($response == FALSE){
         $this->response['status'] = false;
-        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
       }else{
         $resp = end($response);
         $this->response['status'] = $resp['tranEstatus'];
@@ -245,6 +298,7 @@ class SOLICITUD_model extends MY_Model
       $this->response['message'] = ul($message);
       $this->response['validation'] = $message;
     }
+
     return $this->response;
   }
 
@@ -265,7 +319,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -292,7 +346,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -320,8 +374,8 @@ class SOLICITUD_model extends MY_Model
     $this->form_validation->set_rules('pESPECIALIDAD_DESARROLLO', 'Especialidad o estudio', 'trim|max_length[100]');
     $this->form_validation->set_rules('pNOMBRE_ESCUELA', 'Escuela', 'trim|max_length[100]');
     $this->form_validation->set_rules('pCEDULA_PROFESIONAL', 'Cédula profesional', 'trim|numeric|max_length[10]');
-    $this->form_validation->set_rules('pINICIO', 'Fecha de inicio', 'trim|max_length[10]');
-    $this->form_validation->set_rules('pTERMINO', 'Fecha de término', 'trim|max_length[10]');
+    $this->form_validation->set_rules('pINICIO_DESARROLLO', 'Fecha de inicio', 'trim');
+    $this->form_validation->set_rules('pTERMINO_DESARROLLO', 'Fecha de término', 'trim');
     $this->form_validation->set_rules('pREGISTRO_SEP', 'Registro SEP', 'trim|max_length[1]');
     $this->form_validation->set_rules('pFOLIO_CERTIFICADO', 'Número de folio de certificado', 'trim|max_length[30]');
     $this->form_validation->set_rules('pPROMEDIO', 'Promedio', 'trim|numeric|max_length[10]');
@@ -337,8 +391,8 @@ class SOLICITUD_model extends MY_Model
       $this->addParam('pESPECIALIDAD','pESPECIALIDAD_DESARROLLO','N');
       $this->addParam('pNOMBRE_ESCUELA','pNOMBRE_ESCUELA','N');
       $this->addParam('pCEDULA_PROFESIONAL','pCEDULA_PROFESIONAL');
-      $this->addParam('pINICIO','pINICIO');
-      $this->addParam('pTERMINO','pTERMINO');
+      $this->addParam('pINICIO','pINICIO_DESARROLLO');
+      $this->addParam('pTERMINO','pTERMINO_DESARROLLO');
       $this->addParam('pREGISTRO_SEP','pREGISTRO_SEP','N');
       $this->addParam('pFOLIO_CERTIFICADO','pFOLIO_CERTIFICADO','N');
       $this->addParam('pPROMEDIO','pPROMEDIO');
@@ -352,7 +406,7 @@ class SOLICITUD_model extends MY_Model
 
       if($response == FALSE){
         $this->response['status'] = false;
-        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
       }else{
         $this->response['status'] = (bool)$response['tranEstatus'];
         $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
@@ -386,7 +440,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -413,7 +467,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -446,7 +500,7 @@ class SOLICITUD_model extends MY_Model
     $this->form_validation->set_rules('pTELEFONO_DOMICILIO', 'Número telefónico', 'trim|required|max_length[20]');
     $this->form_validation->set_rules('pID_ENTIDAD_DOMICILIO', 'Estado', 'trim|required|numeric|max_length[10]');
     $this->form_validation->set_rules('pID_MUNICIPIO_DOMICILIO', 'Municipio', 'trim|required|numeric|max_length[10]');
-    $this->form_validation->set_rules('pENTRE_CALLE_DOMICILIO', 'Entre la calle de', 'trim|required|max_length[60]');
+    // $this->form_validation->set_rules('pENTRE_CALLE_DOMICILIO', 'Entre la calle de', 'trim|required|max_length[60]');
     $this->form_validation->set_rules('pY_CALLE_DOMICILIO', 'Y la calle de', 'trim|max_length[45]');
     $this->form_validation->set_rules('pCODIGO_POSTAL_DOMICILIO', 'Código postal', 'trim|required|max_length[10]');
     $this->form_validation->set_rules('pCIUDAD_DOMICILIO', 'Ciudad', 'trim|max_length[50]');
@@ -480,7 +534,7 @@ class SOLICITUD_model extends MY_Model
 
       if($response == FALSE){
         $this->response['status'] = false;
-        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
       }else{
         $this->response['status'] = (bool)$response['tranEstatus'];
         $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
@@ -513,7 +567,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -540,7 +594,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -569,16 +623,16 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pMATERNO','pMATERNO_REFERENCIAS','N',array('name'=>'Apellido materno','rule'=>'trim|max_length[30]'));
     $this->addParam('pSEXO','pSEXO_REFERENCIAS','N',array('name'=>'Sexo','rule'=>'trim|required|max_length[1]'));
     $this->addParam('pID_RELACION',null,'',array('name'=>'','rule'=>'trim|numeric|max_length[10]'));//NO LO ENCONTRE EN EL FORMULARIO
-    $this->addParam('pID_TIPO_DOM',NULL); //NO LO ENCONTRE EN EL FORMULARIO
+    $this->addParam('pID_TIPO_DOM','pID_TIPO_DOM','',array('name'=>'Tipo domicilio','rule'=>'trim|required|numeric|max_length[10]')); 
     $this->addParam('pID_PAIS',NULL); //NO LO ENCONTRE EN EL FORMULARIO
     $this->addParam('pCALLE','pCALLE_REFERENCIAS','N',array('name'=>'Calle','rule'=>'trim|max_length[60]'));
     $this->addParam('pCOLONIA','pCOLONIA_REFERENCIAS','N',array('name'=>'Colonia/localidad','rule'=>'trim|required|max_length[60]'));
     $this->addParam('pNUM_EXTERIOR','pNUM_EXTERIOR_REFERENCIAS','N',array('name'=>'Número exterior','rule'=>'trim|required|max_length[30]'));
     $this->addParam('pNUM_INTERIOR','pNUM_INTERIOR_REFERENCIAS','N',array('name'=>'Número interior','rule'=>'trim|max_length[30]'));
-    $this->addParam('pTELEFONO',NULL); //NO LO ENCONTRE EN EL FORMULARIO
+    $this->addParam('pTELEFONO','pTELEFONO_REFERENCIAS','N',array('name'=>'Número telefónico','rule'=>'trim|required|max_length[20]'));
     $this->addParam('pID_ENTIDAD','pID_ENTIDAD_REFERENCIAS','',array('name'=>'Entidad federativa','rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pID_MUNICIPIO','pID_MUNICIPIO_REFERENCIAS','',array('name'=>'Municipio','rule'=>'trim|required|numeric|max_length[10]'));
-    $this->addParam('pENTRE_CALLE','pENTRE_CALLE_REFERENCIAS','N',array('name'=>'Entre calle de ','rule'=>'trim|required|max_length[60]'));
+    $this->addParam('pENTRE_CALLE','pENTRE_CALLE_REFERENCIAS','N',array('name'=>'Entre calle de ','rule'=>'trim|max_length[60]'));
     $this->addParam('pY_CALLE','pY_CALLE_REFERENCIAS','N',array('name'=>'Y la calle de ','rule'=>'trim|max_length[45]'));
     $this->addParam('pCODIGO_POSTAL','pCODIGO_POSTAL_REFERENCIAS','N',array('name'=>'Código postal','rule'=>'trim|numeric|max_length[10]'));
     $this->addParam('pCIUDAD','pCIUDAD_REFERENCIAS','N',array('name'=>'Ciudad','rule'=>'trim|max_length[50]'));
@@ -594,7 +648,7 @@ class SOLICITUD_model extends MY_Model
 
       if($response == FALSE){
         $this->response['status'] = false;
-        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
       }else{
         $this->response['status'] = (bool)$response['tranEstatus'];
         $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
@@ -626,7 +680,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -652,7 +706,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $response = end($response);
@@ -693,6 +747,7 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pVICIOS','pVICIOS','N',array('name'=>'Vicios','rule'=>'trim|max_length[100]'));
     $this->addParam('pIMAGEN_PUBLICA','pIMAGEN_PUBLICA','N',array('name'=>'Imágen pública','rule'=>'trim|max_length[50]'));
     $this->addParam('pCOMPORTA_SOCIAL','pCOMPORTA_SOCIAL','N',array('name'=>'Comportamiento social ','rule'=>'trim|max_length[40]'));
+    // $this->addParam('pINGRESO_MENSUAL','pINGRESO_MENSUAL','N',array('name'=>'Ingreso mensual adicional','rule'=>'trim|max_length[30]'));
     $this->addParam('pRESPONSABLE_CORP',null); // no se encontro en el formulario
     
     if ($this->form_validation->run() === true) {
@@ -707,7 +762,7 @@ class SOLICITUD_model extends MY_Model
 
       if($response == FALSE){
         $this->response['status'] = false;
-        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
       }else{
         $this->response['status'] = (bool)$response['tranEstatus'];
         $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
@@ -739,7 +794,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -765,7 +820,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -794,15 +849,15 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pID_TIPO_DEPENDIENT','pID_RELACION','',array('name'=>'Relación ','rule'=>'trim|required|numeric|max_length[10]'));
     if ($this->form_validation->run() === true) {
       $this->procedure('sp_B2_DG_addDependiente');
-      $this->iniParam('txtError','varchar','250');
-      $this->iniParam('msg','varchar','90');
+      $this->iniParam('txtError','varchar','500');
+      $this->iniParam('msg','varchar','500');
       $this->iniParam('tranEstatus','int');
       $query = $this->db->query($this->build_query());
       $response = $this->query_row($query);
 
       if($response == FALSE){
         $this->response['status'] = false;
-        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
       }else{
         $this->response['status'] = (bool)$response['tranEstatus'];
         #PARCHE EL PROCEDIMIENTO ESTA REGRESANDO EL MENSAGE DE ERROR POR MSG NO POR TXTERROR
@@ -835,7 +890,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -858,7 +913,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -909,13 +964,13 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pID_TIPO_BAJA',null);//no lo encontre
     $this->addParam('pFECHA_BAJA',null);//no lo encontre
     $this->addParam('pOBSERVACION_BAJA',null);//no lo encontre
-    $this->addParam('pCODIGO_POSTAL','pCP_EMP_ADSCRIPCION_ACTUAL','N',array('name'=>'Código postal','rule'=>'trim|required|max_length[10]'));
+    $this->addParam('pCODIGO_POSTAL','pCP_EMP_ADSCRIPCION_ACTUAL','N',array('name'=>'Código postal','rule'=>'trim|max_length[10]'));
     $this->addParam('pCIUDAD','pCIUDAD','N',array('name'=>'Ciudad','rule'=>'trim|max_length[50]'));
     $this->addParam('pCOLONIA','Colonia/Localidad','N',array('name'=>'Ciudad','rule'=>'trim|max_length[60]'));
-    $this->addParam('pCALLE','Calle','N',array('name'=>'Calle','rule'=>'trim|required|max_length[60]'));
-    $this->addParam('pNUM_EXTERIOR','pNUM_EXTERIOR','N',array('name'=>'Número exterior','rule'=>'trim|required|max_length[30]'));
+    $this->addParam('pCALLE','Calle','N',array('name'=>'Calle','rule'=>'trim|max_length[60]'));
+    $this->addParam('pNUM_EXTERIOR','pNUM_EXTERIOR','N',array('name'=>'Número exterior','rule'=>'trim|max_length[30]'));
     $this->addParam('pNUM_INTERIOR','pNUM_INTERIOR','N',array('name'=>'Número interior','rule'=>'trim|max_length[30]'));
-    $this->addParam('pTELEFONO','pTELEFONO','N',array('name'=>'Número telefónico','rule'=>'trim|required|max_length[20]'));
+    $this->addParam('pTELEFONO','pTELEFONO','N',array('name'=>'Número telefónico','rule'=>'trim|max_length[20]'));
     
     if ($this->form_validation->run() === true) {
       $this->procedure('sp_B1_addAdscripcion');
@@ -965,9 +1020,9 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pDESCRIP_FUNCION','pDESCRIP_FUNCION','N',array('name'=>'Funciones','rule'=>'trim|max_length[100]'));
     $this->addParam('pDESCRIP_AREA','pDESCRIP_AREA','N',array('name'=>'Área o departamento','rule'=>'trim|max_length[50]'));
     $this->addParam('pCALLE_Y_NUM_EMP','pCALLE_Y_NUM_EMPLEOS_DIVERSOS','N',array('name'=>'Calle y número','rule'=>'trim|max_length[60]'));
-    $this->addParam('pCOLONIA_EMP','pCOLONIA_EMPLEOS_DIVERSOS','',array('name'=>'Colonia/Localidad','rule'=>'trim|max_length[60]'));
+    $this->addParam('pCOLONIA_EMP','pCOLONIA_EMPLEOS_DIVERSOS','',array('name'=>'Colonia/Localidad','rule'=>'trim|required|max_length[60]'));
     $this->addParam('pCP_EMP','pCP_EMP_EMPLEOS_DIVERSOS','N',array('name'=>'Código postal','rule'=>'trim|required|numeric|max_length[5]'));
-    $this->addParam('pNUM_TELEFONICO','pNUM_TELEFONICO','N',array('name'=>'Número telefónico','rule'=>'trim|required|max_length[20]'));
+    $this->addParam('pNUM_TELEFONICO','pNUM_TELEFONICO','N',array('name'=>'Número telefónico','rule'=>'trim|max_length[20]'));
     $this->addParam('pID_MOTIVO_MOV_LAB','ID_MOTIVO_MOV_LAB','',array('name'=>'Motivo de separación','rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pID_TIPO_MOV_LAB','pID_TIPO_MOV_LAB','',array('name'=>'Tipo de separación','rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pSUELDO','pSUELDO_EMPLEOS_DIVERSOS','',array('name'=>'Ingreso neto (mensual)','rule'=>'trim|numeric|max_length[10]'));
@@ -1011,7 +1066,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1034,7 +1089,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1107,7 +1162,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1133,7 +1188,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         if($response['CONOCE_REG_RECON'] == 'N'){
@@ -1214,7 +1269,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1237,7 +1292,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1307,7 +1362,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1333,7 +1388,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1401,7 +1456,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1427,7 +1482,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1538,7 +1593,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1564,7 +1619,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1636,7 +1691,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1663,7 +1718,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1693,7 +1748,7 @@ class SOLICITUD_model extends MY_Model
 
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1717,7 +1772,7 @@ class SOLICITUD_model extends MY_Model
     $response = $this->query_row($query);
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $response['IMG_PERFILIZQ'] = (Utils::isJSON($response['IMG_PERFILIZQ']))? utils::addPath(STATIC_DOCUMMENTS_PATH.'fichaFotografica/',$response['IMG_PERFILIZQ']) : null;
@@ -1748,7 +1803,7 @@ class SOLICITUD_model extends MY_Model
     $response = $this->query_list($query);
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1845,7 +1900,7 @@ class SOLICITUD_model extends MY_Model
     $response = $this->query_list($query);
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1869,7 +1924,7 @@ class SOLICITUD_model extends MY_Model
     $response = $this->query_row($query);
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1883,15 +1938,30 @@ class SOLICITUD_model extends MY_Model
     return $this->response;
   }
 
+  private function mssql_escape($data) {
+      if(is_numeric($data))
+          return $data;
+      $unpacked = unpack('H*hex', $data);
+      return '0x' . $unpacked['hex'];
+  }
+
   # ****************************************************************************************************************
   # Digitalización de documento
   # ****************************************************************************************************************
   # Opcion Nueva Solicitud - Ficha Identificación- Pestaña Digitalización de documento
   # Boton Guardar Documento
   # sp_B2_MF_addDocumento - Agrega las imágenes de los documentos pertenecientes al elemento.
-  public function  sp_B2_MF_addDocumento($file){
-    $this->arrayToPost(array('pPATH_IMAGEN'=>$file));
+  public function  sp_B2_MF_addDocumento($file,$binaryFile){    
+    
+    $this->load->helper('imagesInDB');
     $this->load->library('form_validation');
+
+    $this->arrayToPost(
+      array(
+        'pPATH_IMAGEN'=> $file,
+        'pIMAGEN'=> prepareImageDBString($binaryFile)
+      )
+    );
 
     $this->addParam('pID_ALTERNA','pID_ALTERNA','',array('rule'=>'trim|required|numeric|max_length[10]'));
     $this->addParam('pID_ESTADO_EMISOR',null);
@@ -1901,8 +1971,12 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pFECHA_DOCUMENTO','FECHA_DOCUMENTO','',array('name'=>'Fecha documento','rule'=>'trim|max_length[10]'));
     $this->addParam('pESTATUS',null);
     $this->addParam('pPATH_IMAGEN','pPATH_IMAGEN','',array('name'=>'Documento','rule'=>'trim|required|max_length[250]'));
+    $this->addParam('pIMAGEN','pIMAGEN','N');
+
+
 
     if ($this->form_validation->run() === true) {
+
       $this->procedure('sp_B2_MF_addDocumento');
       $this->iniParam('txtError','varchar','250');
       $this->iniParam('msg','varchar','80');
@@ -1910,7 +1984,7 @@ class SOLICITUD_model extends MY_Model
       $build = $this->build_query();
       $query = $this->db->query($build);
       $response = $this->query_row($query);
-      if($response == FALSE){
+      if($response == FALSE){        
         $this->response['status'] = false;
         $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
       }else{
@@ -1939,7 +2013,7 @@ class SOLICITUD_model extends MY_Model
     $response = $this->query_list($query);
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -1966,7 +2040,7 @@ class SOLICITUD_model extends MY_Model
     $response = $this->query_row($query);
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -2028,7 +2102,7 @@ class SOLICITUD_model extends MY_Model
     $response = $this->query_list($query);
     if($response === FALSE){
       $this->response['status'] = 0;
-      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.';
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
     }else{
       if(count($response) > 0){
         $this->response['status'] = 1;
@@ -2043,4 +2117,93 @@ class SOLICITUD_model extends MY_Model
     }
     return $this->response;
   }
+
+  public function sp_validaRegistro($id){
+
+    //$this->arrayToPost({ 'id' => $id });
+
+    $this->procedure('sp_validaRegistro');
+    $this->addParam('pID_ALTERNA',$id,'');
+  
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_list($query);
+
+    if($response === FALSE){
+
+        $this->response['status'] = 0;
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
+        
+    }else{
+      if(count($response) > 0){
+
+        $this->response['status'] = 1;
+        $this->response['message'] = '';
+        $this->response['data'] = $response;
+        
+      }else{
+
+        $responseOutput = current($response);
+        $this->response['status'] = 1;
+        $this->response['message'] = 'No se encontraron resultados.';
+
+      }
+    }
+    return $this->response;
+  }
+
+  public function sp_enviarBUS($model = null){
+      $buid = "EXEC [sp_enviarBUS] @CAMPO = '" . $model['ids'] . "';";
+      $query = $this->db->query($buid);
+      $response = $this->query_list($query);
+      if($response === FALSE){
+        $this->response['status'] = 0;
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
+      }else{
+        if(count($response) > 0){
+          $this->response['status'] = 1;
+          $this->response['data'] = $response;
+        }else{
+          $this->response['status'] = 0;
+          $this->response['message'] = 'No se encontraron resultados.';
+        }
+      }
+      return $this->response;
+  }
+
+  public function sp_replicarStatus($model = null){
+
+    // $this->response['status'] = 1;
+    // $this->response['data'] = [
+    //   [ 'id_alterna' => 666, 'nombre' => 'asd', 'paterno' => 'asd', 'materno' => 'ads', 'tipo_op' => 'AE', 'motivo' => 'adasdadsadsads', 'estatus' => '0' ],
+    //   [ 'id_alterna' => 666, 'nombre' => 'asd', 'paterno' => 'asd', 'materno' => 'ads', 'tipo_op' => 'AE', 'motivo' => 'adasdadsadsads', 'estatus' => '0' ],
+    //   [ 'id_alterna' => 666, 'nombre' => 'asd', 'paterno' => 'asd', 'materno' => 'ads', 'tipo_op' => 'AE', 'motivo' => 'adasdadsadsads', 'estatus' => '0' ],
+    //   [ 'id_alterna' => 666, 'nombre' => 'asd', 'paterno' => 'asd', 'materno' => 'ads', 'tipo_op' => 'AE', 'motivo' => 'adasdadsadsads', 'estatus' => '0' ],
+    //   [ 'id_alterna' => 666, 'nombre' => 'asd', 'paterno' => 'asd', 'materno' => 'ads', 'tipo_op' => 'AE', 'motivo' => 'adasdadsadsads', 'estatus' => '0' ],
+    //   [ 'id_alterna' => 666, 'nombre' => 'asd', 'paterno' => 'asd', 'materno' => 'ads', 'tipo_op' => 'AE', 'motivo' => 'adasdadsadsads', 'estatus' => '0' ],
+    //   [ 'id_alterna' => 666, 'nombre' => 'asd', 'paterno' => 'asd', 'materno' => 'ads', 'tipo_op' => 'AE', 'motivo' => 'adasdadsadsads', 'estatus' => '0' ],
+    //   [ 'id_alterna' => 666, 'nombre' => 'asd', 'paterno' => 'asd', 'materno' => 'ads', 'tipo_op' => 'AE', 'motivo' => 'adasdadsadsads', 'estatus' => '0' ],
+    //   [ 'id_alterna' => 666, 'nombre' => 'asd', 'paterno' => 'asd', 'materno' => 'ads', 'tipo_op' => 'AE', 'motivo' => 'adasdadsadsads', 'estatus' => '0' ],
+    //   [ 'id_alterna' => 666, 'nombre' => 'asd', 'paterno' => 'asd', 'materno' => 'ads', 'tipo_op' => 'AE', 'motivo' => 'adasdadsadsads', 'estatus' => '0' ]
+    // ];
+
+
+      $buid = "EXEC [sp_resultadosBUS] @guid = '" . $model['guid'] . "';";
+      $query = $this->db->query($buid);
+      $response = $this->query_list($query);
+      if($response === FALSE){
+        $this->response['status'] = 0;
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
+      }else{
+        if(count($response) > 0){
+          $this->response['status'] = 1;
+          $this->response['data'] = $response;
+        }else{
+          $this->response['status'] = 0;
+          $this->response['message'] = 'No se encontraron resultados.';
+        }
+      }
+      return $this->response;
+  }
+
 }

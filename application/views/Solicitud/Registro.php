@@ -11,6 +11,15 @@
         <span class="">[ <i class="text-danger fa fa-exclamation-triangle fa-2x" aria-hidden="true"></i> Error en formulario ] -</span>
         <span class="">[ <i class="text-warning fa fa-floppy-o fa-2x" aria-hidden="true"></i> Cambios ignorados ]</span>
     </div>
+    <!-- <div class="text-right"">
+        <button class="btn btn-warning btn-lg validarVoz">Validar Solicitud</button>
+        <button class="btn btn-success btn-lg ml-2 d-none validarReplicar">Replicar Solicitud</button>
+    </div> -->
+
+    <div id='frmAlertSumary' class="alert alert-danger alert-dismissible fade show d-none" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <span id='frmAlertSumaryMsg'></span>
+    </div>
 
     <!-- LISTA DE TABS DEL MENU PRINCIPAL -->
     <div class="row">
@@ -62,6 +71,12 @@
         </div>
         <?php } ?>
     </div>
+
+    <!-- <div class="text-right"">
+        <button class="btn btn-warning btn-lg validarVoz">Validar Solicitud</button>
+        <button class="btn btn-success btn-lg ml-2 d-none validarReplicar">Replicar Solicitud</button>
+    </div> -->
+    
 </div>
 
 <!-- JS -->
@@ -79,6 +94,8 @@
 <script src="<?php echo base_url('assets/js/utils/indexDB.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/utils/catalogs.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/utils/serialized.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/utils/validaRFC.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/utils/validaCveElector.js') ?>"></script>
 
 <script src="<?php echo base_url('assets/js/views/solicitud/datosGeneralesTab.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/views/solicitud/laboralTab.js') ?>"></script>
