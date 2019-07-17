@@ -102,7 +102,7 @@ class UserSession extends CI_Controller
           $DB1->where(array('id_Usuario'=>$user['id']));
           //utils::pre($this->db->last_query());
           $responseDB = $DB1->count_all_results();
-          utils::pre($DB1->last_query());
+          // utils::pre($DB1->last_query());
           $DB1->close();
 
 

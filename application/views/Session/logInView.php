@@ -210,7 +210,7 @@
 				$.LoadingOverlay("hide",true);
 				$('div#modalPregunta').show();
 				if (response.status == 'ok') {
-					window.locationf=site_url+'preguntas';
+					window.location.href=site_url;
 				} else {
 					if(response.contadorIntentos != undefined){
 						$('small#numeroIntento').html('Intento: '+response.contadorIntentos+'/3');
