@@ -1,3 +1,10 @@
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000
+});
+
 var _app = Backbone.View.extend({
 	formChanged: false,
 	initialize: function () {
@@ -30,14 +37,14 @@ var _app = Backbone.View.extend({
 				that.starLoader();
 			},
 			success: function (response) {
+				that.stopLoader();
 				if (response.status == 'ok') {
-					window.locationf=site_url;
+					window.location.href=site_url;
 				} else {
 					that.showError(response.message);
 				}
 			},
 			complete: function () {
-				that.stopLoader();
 			}
 		});
 
@@ -59,6 +66,8 @@ var _app = Backbone.View.extend({
 				that.starLoader();
 			},
 			success: function (response) {
+				that.stopLoader();
+				console.log(response);
 				if (response.status == 'ok') {
 					window.locationf=site_url;
 				} else {
@@ -66,31 +75,40 @@ var _app = Backbone.View.extend({
 				}
 			},
 			complete: function () {
-				that.stopLoader();
+				
 			}
 		});
 
 	},
 	showError: function (message) {
 		var error = 'Error al guardar<br/>';
+		var errors = '<ul>';
 		$.each(message, function (index, value) {
+			errors += '<li>'+value+'</li>';
+			// console.log('input[name=' + index + ']');
 			if ($('input[name=' + index + ']').length > 0) {
+				
 				$('input[name=' + index + ']').attr('error', true);
-				$('input[name=' + index + ']').setError(value);			
-			} else {
-				error += value + '<br/>';
+			// 	$('input[name=' + index + ']').setError(value);			
+			// } else {
+			// 	error += value + '<br/>';
 			}
 		});
-		if (error.length > 0) {
+		errors += '</ul>';
+		Toast.fire({
+			type: 'error',
+			title: errors
+		});
+		// if (error.length > 0) {
 	
-			$('form#Usuarios_form').setAlert({
-				alertType :  'alert-danger',
-				dismissible : true,
-				header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
-				msg : error
-			});
+		// 	$('form#Usuarios_form').setAlert({
+		// 		alertType :  'alert-danger',
+		// 		dismissible : true,
+		// 		header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+		// 		msg : error
+		// 	});
 			
-		}
+		// }
 	},
 	render: function () {
 		return this;

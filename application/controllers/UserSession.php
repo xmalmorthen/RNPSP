@@ -86,9 +86,29 @@ class UserSession extends CI_Controller
               9=>'¿Cuál es el segundo nombre de tu hijo menor?',
               10=>'¿Cuál es el nombre de tu hermano mayor?'
           );
+
+          $DB1 = $this->load->database('default', TRUE);
+          $DB1->from('de_RespuestasPreguntas');
+          $idPregunta = 'Pregunta'.$this->input->post('idPreguntaSeguridad');
+          $respuestaPreg = $this->input->post('preguntaSeguridad');
+          
+          // echo "<pre>";
+          // var_dump (array($idPregunta => $respuestaPreg,'id_Usuario'=>$idUsuario));
+          // echo "</pre>";
+          // exit();
+          
+          // $this->db->where('Pregunta'.$this->input->post('idPreguntaSeguridad'),$this->input->post('preguntaSeguridad'));
+          // $this->db->where(array($idPregunta => $respuestaPreg));
+          $DB1->where(array('id_Usuario'=>$user['id']));
+          //utils::pre($this->db->last_query());
+          $responseDB = $DB1->count_all_results();
+          utils::pre($DB1->last_query());
+          $DB1->close();
+
+
           $numPregunta = rand(1, 10);
           $response['pregunta'] = array(
-              'cambioContrasena' => $responsesSel['contrasenaModificada'],
+              'cambioContrasena' => ($responseDB == 0)? 1: $responsesSel['contrasenaModificada'],
               'pregunta' => $preguntas[$numPregunta],
               'idPregunta' => $numPregunta,
               'modal' => $this->load->view('Session/preguntas',array(

@@ -38,7 +38,7 @@
             );
             $numPregunta = rand(1, 10);
             $data = array(
-                'cambioContrasena' => $response['contrasenaModificada'],
+                'cambioContrasena' => 1,//$response['contrasenaModificada'],
                 'pregunta' => $preguntas[$numPregunta],
                 'idPregunta' => $numPregunta
             );
@@ -94,6 +94,7 @@
 
                 
             } else {
+                $dataResponse['status'] = 'error';
                 $dataResponse['message'] = $this->form_validation->error_array();    
             }
 
