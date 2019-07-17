@@ -127,6 +127,14 @@
 				debug: true
 			});
 
+			const Toast = Swal.mixin({
+				toast: true,
+				position: 'top-end',
+				showConfirmButton: false,
+				timer: 15000
+			});
+
+
 			$(function() {
 				$('.submit').on('click',function(e){					
 					e.preventDefault();
@@ -147,17 +155,28 @@
 						},
 						function (data) {					
 							if (data.status == true){
-								if (data.toGo.length > 0) {
-									window.location.href = site_url+'preguntas';
-								} else {
+								if(data.pregunta.cambioContrasena == '0'){
+									$.LoadingOverlay("hide",true);
+
+									$('div#modalPregunta').html(data.pregunta.modal).appendTo("body").modal('show');
+									// $('div#modalPregunta').modal();
+									// $('div#modalPregunta').appendTo();
+								}else{
 									window.location.href = site_url+'preguntas';
 								}
+								
+								// return false;
+								// if (data.toGo.length > 0) {
+								// 	window.location.href = site_url+'preguntas';
+								// } else {
+								// 	window.location.href = site_url+'preguntas';
+								// }
 							} else {
 								$.LoadingOverlay("hide",true);
 								Swal.fire({ type: 'error', title: 'Error', html: data.message ? data.message : 'Error al intentar iniciar sesión, favor de intentarlo.' });
 							}
 						}).fail(function (err) {
-							$.LoadingOverlay("hide",true);
+							
 							var msg = err.responseText;
 							Swal.fire({ type: 'error', title: 'Error', html: msg });
 						}).always(function () {
@@ -170,7 +189,80 @@
 					}
 				});
 			}); 	
+
+			function verificarRegistro(){
+				
+		var sendData = $('form#formContenedorVeri').serializeArray();
+		sendData.push({
+			name: "<?php echo $this->security->get_csrf_token_name(); ?>",
+			value: "<?php echo $this->security->get_csrf_hash(); ?>"
+		});
+		$.ajax({
+			dataType: "json",
+			method: 'POST',
+			url: base_url + 'Preguntas/registroSaveVerifica',
+			data: sendData,
+			beforeSend: function () {
+				$('div#modalPregunta').hide();
+				$.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+			},
+			success: function (response) {
+				$.LoadingOverlay("hide",true);
+				$('div#modalPregunta').show();
+				if (response.status == 'ok') {
+					window.locationf=site_url+'preguntas';
+				} else {
+					if(response.contadorIntentos != undefined){
+						$('small#numeroIntento').html('Intento: '+response.contadorIntentos+'/3');
+					}
+					
+					if (response.status == 'failer') {
+						$('div#modalPregunta').hide();
+						swal({
+								type: 'error',
+								title: 'Cuenta de usuario bloqueado'
+							}).then(function() {
+								location.reload(); 
+							});
+					}else if(response.status == 'fail'){
+						Toast.fire({
+							type: 'error',
+							title: 'Respuesta no válida'
+						});
+					}else{
+						fnsshowError(response.message);
+					}
+				}
+			},
+			complete: function () {
+				$.LoadingOverlay("hide",true);
+			}
+		});
+
+	}
+
+	function fnsshowError(message) {
+		
+		$.each(message, function (index, value) {
+			Toast.fire({
+				type: 'error',
+				title: value
+			});
+			// if ($('input[name=' + index + ']').length > 0) {
+			// 	$('input[name=' + index + ']').attr('error', true);
+			// 	$('input[name=' + index + ']').setError(value);			
+			// } else {
+			// 	error += value + '<br/>';
+			// }
+		});
+	}
+
 		</script>
 		<!-- /JS -->
 	</body>
+
+	<div id="modalPregunta" class="modal fade" tabindex="-1" role="dialog">
+	
+	</div>
+
 </html>

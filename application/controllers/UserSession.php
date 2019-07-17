@@ -20,7 +20,7 @@ class UserSession extends CI_Controller
 
   public function ajaxLogIn()
   {
-    $response = array('status' => false, 'message' => array('No especificado'));
+    $response = array('status' => false, 'message' => array('No especificado'),'pregunta'=>array());
 
     if (!$this->input->is_ajax_request()) {
       redirect('Error/e404', 'location');
@@ -66,6 +66,39 @@ class UserSession extends CI_Controller
           $session = $this->session->local_userdata();
           $this->session->local_set_userdata($user);
           $this->session->local_set_userdata(array_merge($session, $user));
+
+          $this->db->select('contrasenaModificada');
+          $this->db->from('cat_Usuarios');
+          $this->db->where('id',$user['id']);
+
+          $query = $this->db->get();
+          $responsesSel = $query->row_array();
+          $this->session->set_userdata('contadorIntentos',0);
+          $preguntas = array(
+              1=>'¿Cuál es el nombre de la mamá de tu mamá?',
+              2=>'¿Cuál es el nombre del papá de tu papá?',
+              3=>'¿Cuál es el nombre de tu mamá?',
+              4=>'¿Cómo te llamaban en tu familia cuando eras niño?',
+              5=>'¿En qué ciudad conociste a tu esposo(a), novio(a)?',
+              6=>'¿Quién era el mejor amigo en infancia?',
+              7=>'¿Porque calle vivías cuando tenías 10 años?',
+              8=>'¿Cuál es la fecha de nacimiento de tu hermano mayor?',
+              9=>'¿Cuál es el segundo nombre de tu hijo menor?',
+              10=>'¿Cuál es el nombre de tu hermano mayor?'
+          );
+          $numPregunta = rand(1, 10);
+          $response['pregunta'] = array(
+              'cambioContrasena' => $responsesSel['contrasenaModificada'],
+              'pregunta' => $preguntas[$numPregunta],
+              'idPregunta' => $numPregunta,
+              'modal' => $this->load->view('Session/preguntas',array(
+                'pregunta' => $preguntas[$numPregunta],
+                'idPregunta' => $numPregunta
+              ),true)
+          );
+
+
+
         } else {
           $response['message'] = array($this->ion_auth->errors());
         }

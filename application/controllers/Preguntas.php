@@ -68,6 +68,8 @@
                 $uuid = $this->uuid->v4();
                 $idUsuario = $this->ion_auth->user()->row()->id;
 
+                $this->db->where('id_Usuario',$idUsuario);
+                $this->db->delete('de_RespuestasPreguntas');
                 $dataInsert = array(
                     'id' => $uuid,
                     'id_Usuario' => $idUsuario,
@@ -81,6 +83,7 @@
                     'pregunta8' => $this->input->post('pregunta8'),
                     'pregunta9' => $this->input->post('pregunta9'),
                     'pregunta10' => $this->input->post('pregunta10'),
+                    'FechaRegistro' => date("Y-m-d H:i:s")
                 );
                 $this->db->insert('de_RespuestasPreguntas',$dataInsert);
 
@@ -112,47 +115,51 @@
 
             if ($this->form_validation->run($this) != false) {
                 $idUsuario = $this->ion_auth->user()->row()->id;
+                // $this->db->close();
+                // $this->db->reconnect();
+
                 //$this->db->flush_cache();
                 // $this->db->select('contrasenaModificada');
-                $this->db->from('de_RespuestasPreguntas');
-
-                // $this->db->where('Pregunta'.$this->input->post('idPreguntaSeguridad'),$this->input->post('preguntaSeguridad'));
-                $this->db->where('Pregunta1',$this->input->post('preguntaSeguridad'));
-                $this->db->where('id_Usuario',$idUsuario);
-                //utils::pre($this->db->last_query());
-                $query = $this->db->get();
-                $response = (array)$query->row_array();
-                $responseCount =count($response);
-                utils::pre($responseCount);
-
-
-                $this->load->library('uuid');
-                $uuid = $this->uuid->v4();
-                $idUsuario = $this->ion_auth->user()->row()->id;
-
-                $dataInsert = array(
-                    'id' => $uuid,
-                    'id_Usuario' => $idUsuario,
-                    'pregunta1' => $this->input->post('pregunta1'),
-                    'pregunta2' => $this->input->post('pregunta2'),
-                    'pregunta3' => $this->input->post('pregunta3'),
-                    'pregunta4' => $this->input->post('pregunta4'),
-                    'pregunta5' => $this->input->post('pregunta5'),
-                    'pregunta6' => $this->input->post('pregunta6'),
-                    'pregunta7' => $this->input->post('pregunta7'),
-                    'pregunta8' => $this->input->post('pregunta8'),
-                    'pregunta9' => $this->input->post('pregunta9'),
-                    'pregunta10' => $this->input->post('pregunta10'),
-                );
-                $this->db->insert('de_RespuestasPreguntas',$dataInsert);
-
-                $dataUpdate = array(
-                    'contrasenaModificada' => 0
-                );
-                $this->db->update('cat_Usuarios',$dataUpdate);
-
+                $DB1 = $this->load->database('default', TRUE);
+                $DB1->from('de_RespuestasPreguntas');
+                $idPregunta = 'Pregunta'.$this->input->post('idPreguntaSeguridad');
+                $respuestaPreg = $this->input->post('preguntaSeguridad');
                 
+                // echo "<pre>";
+                // var_dump (array($idPregunta => $respuestaPreg,'id_Usuario'=>$idUsuario));
+                // echo "</pre>";
+                // exit();
+                
+                // $this->db->where('Pregunta'.$this->input->post('idPreguntaSeguridad'),$this->input->post('preguntaSeguridad'));
+                // $this->db->where(array($idPregunta => $respuestaPreg));
+                $DB1->where(array('id_Usuario'=>$idUsuario));
+                $DB1->like($idPregunta,$this->input->post('preguntaSeguridad'));
+                $DB1->order_by('FechaRegistro','desc');
+                //utils::pre($this->db->last_query());
+                $responseDB = $DB1->count_all_results();
+                $DB1->close();
+
+                $contadorIntentos = $this->session->userdata('contadorIntentos');
+                if($responseDB == 0){
+                    $dataResponse['status'] = 'fail';
+                    $dataResponse['contadorIntentos'] = ($contadorIntentos == null? 2 : $contadorIntentos+1);
+                }else{
+                    $dataResponse['contadorIntentos'] = 0;
+                }
+
+                if($dataResponse['contadorIntentos'] == 4){
+                    $upodate = array(
+                        'active' => 0
+                    );
+                    $this->db->where('id',$idUsuario);
+                    $this->db->update('cat_Usuarios',$upodate);
+                    $dataResponse['status'] = 'failer';
+                }
+                $this->session->set_userdata('contadorIntentos',$dataResponse['contadorIntentos']);
+                
+                // $dataResponse['data'] = $this->db->
             } else {
+                $dataResponse['status'] = 'error';
                 $dataResponse['message'] = $this->form_validation->error_array();    
             }
 
