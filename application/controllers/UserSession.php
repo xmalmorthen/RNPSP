@@ -117,8 +117,6 @@ class UserSession extends CI_Controller
               ),true)
           );
 
-
-
         } else {
           $response['message'] = array($this->ion_auth->errors());
         }

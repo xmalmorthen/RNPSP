@@ -48,6 +48,7 @@
 		<script src="<?php echo base_url('assets/vendor/plugins/jquery-validation/dist/jquery.validate.min.js'); ?>"></script>
 		<script src="<?php echo base_url("assets/vendor/plugins/jquery-validation/dist/messages_es.js"); ?>"></script>
 		<script src="<?php echo base_url('assets/js/utils/dom.js') ?>"></script>
+		<script src="<?php echo base_url('assets/js/utils/guid.js') ?>"></script>
 		<script src="<?php echo base_url('assets/js/utils/alerts.js') ?>"></script>
 
 		<!-- /JS -->
@@ -142,7 +143,7 @@
 
 				$('div#modalPregunta').on('shown.bs.modal', function (e) {
 					$('form#formContenedorVeri').find('input[type=text]:first').focus();
-                })
+                });
 
 				$('.submit').on('click',function(e){					
 					e.preventDefault();
@@ -167,6 +168,7 @@
 									$.LoadingOverlay("hide",true);
 
 									$('div#modalPregunta').html(data.pregunta.modal).appendTo("body").modal({backdrop : false, show: true});
+
 									// $('div#modalPregunta').modal();
 									// $('div#modalPregunta').appendTo();
 								}else{
@@ -198,8 +200,28 @@
 				});
 			}); 	
 
-			function verificarRegistro(){
-				
+	function verificarRegistro(){
+
+		var form = $('#formContenedorVeri');
+
+		try {
+			form.closeAlert({alertType : 'alert-danger'});
+
+			//VALID FORM
+			if (!form.valid())
+				throw new Error("Formulario incompleto");
+		}catch(err) {
+
+			form.setAlert({
+				alertType :  'alert-danger',
+				dismissible : true,
+				header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+				msg : err.message ? err.message : err.statusText
+			});
+
+			return null;
+		}
+
 		var sendData = $('form#formContenedorVeri').serializeArray();
 		sendData.push({
 			name: "<?php echo $this->security->get_csrf_token_name(); ?>",
@@ -235,15 +257,27 @@
 							}).then(function() {
 								location.reload(); 
 							});
+
 					}else if(response.status == 'fail'){
 						
+						// Toast.fire({
+						// 	type: 'error',
+						// 	title: 'Respuesta no válida'
+						// });
+
+						form.setAlert({
+							alertType :  'alert-danger',
+							dismissible : true,
+							header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+							msg : "Respuesta no válida"
+						});	
+
+						$('form#formContenedorVeri').find('input[type=text]:first').focus().select();					
 						
-						Toast.fire({
-							type: 'error',
-							title: 'Respuesta no válida'
-						});
 					}else{
 						fnsshowError(response.message);
+
+						$('form#formContenedorVeri').find('input[type=text]:first').focus().select();
 					}
 				}
 			},
@@ -257,10 +291,19 @@
 	function fnsshowError(message) {
 		
 		$.each(message, function (index, value) {
-			Toast.fire({
-				type: 'error',
-				title: value
+
+			form.setAlert({
+				alertType :  'alert-danger',
+				dismissible : true,
+				header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+				msg : value
 			});
+			
+			// Toast.fire({
+			// 	type: 'error',
+			// 	title: value
+			// });
+
 			// if ($('input[name=' + index + ']').length > 0) {
 			// 	$('input[name=' + index + ']').attr('error', true);
 			// 	$('input[name=' + index + ']').setError(value);			
@@ -268,6 +311,7 @@
 			// 	error += value + '<br/>';
 			// }
 		});
+
 	}
 
 		</script>
