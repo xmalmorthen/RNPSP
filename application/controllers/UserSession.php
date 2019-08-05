@@ -55,6 +55,8 @@ class UserSession extends CI_Controller
           $response['message'] = array(trim($this->ion_auth->messages()));
 
           $user_id = $this->ion_auth->get_user_id();
+          $tipoUsuario = $this->ion_auth->get_users_groups()->row()->id;
+
           $this->load->model('Usuarios_model');
           $user = $this->Usuarios_model->SessionById($user_id);
 
@@ -62,6 +64,8 @@ class UserSession extends CI_Controller
             $response['status'] = false;
             $response['message'] = array("No se ha podido iniciar sesión");
           }
+
+          $user['idTipoUsuario'] = $tipoUsuario;
 
           $session = $this->session->local_userdata();
           $this->session->local_set_userdata($user);

@@ -121,6 +121,8 @@ class GetChecker {
         $_SESSION[SESSIONVAR]['permisos'] = $permisos;
         $_SESSION[SESSIONVAR]['permisosTab'] = $tieneTabs;
         
+// die(var_dump($_SESSION[SESSIONVAR]));
+
         $this->_checkPrivilege();
 
         $CI->session->set_flashdata('force',$CI->input->get('force'));
