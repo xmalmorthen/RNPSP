@@ -22,31 +22,51 @@ var _app = Backbone.View.extend({
 
 	guardar: function () {
 		var that = this;
-		var sendData = $('form#formContenedor').serializeArray();
-		sendData.push({
-			name: csrf.token_name,
-			value: csrf.hash
-		});
+		
+		var form = $('form#formContenedor');
+		form.closeAlert({alertType : 'alert-danger'});
 
-		Backbone.ajax({
-			dataType: "json",
-			method: 'POST',
-			url: base_url + 'Preguntas/registroSave',
-			data: sendData,
-			beforeSend: function () {
-				that.starLoader();
-			},
-			success: function (response) {
-				that.stopLoader();
-				if (response.status == 'ok') {
-					window.location.href=site_url;
-				} else {
-					that.showError(response.message);
+		try {
+			//VALID FORM
+			if (!form.valid())
+				throw new Error("Formulario incompleto");
+
+			var sendData = $('form#formContenedor').serializeArray();
+			sendData.push({
+				name: csrf.token_name,
+				value: csrf.hash
+			});
+
+			Backbone.ajax({
+				dataType: "json",
+				method: 'POST',
+				url: base_url + 'Preguntas/registroSave',
+				data: sendData,
+				beforeSend: function () {
+					that.starLoader();
+				},
+				success: function (response) {
+					that.stopLoader();
+					if (response.status == 'ok') {
+						window.location.href=site_url;
+					} else {
+						that.showError(response.message);
+					}
+				},
+				complete: function () {
 				}
-			},
-			complete: function () {
-			}
-		});
+			});
+
+		}catch(err) {
+
+			form.setAlert({
+				alertType :  'alert-danger',
+				dismissible : true,
+				header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+				msg : err.message ? err.message : err.statusText
+			});
+
+		}
 
 
 	},

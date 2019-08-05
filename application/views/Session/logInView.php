@@ -47,6 +47,9 @@
 		<script src="<?php echo base_url('assets/vendor/plugins/LoadingOverlay/v2.1.5/loadingOverlay.js'); ?>"></script>
 		<script src="<?php echo base_url('assets/vendor/plugins/jquery-validation/dist/jquery.validate.min.js'); ?>"></script>
 		<script src="<?php echo base_url("assets/vendor/plugins/jquery-validation/dist/messages_es.js"); ?>"></script>
+		<script src="<?php echo base_url('assets/js/utils/dom.js') ?>"></script>
+		<script src="<?php echo base_url('assets/js/utils/alerts.js') ?>"></script>
+
 		<!-- /JS -->
 		<!-- /VENDOR -->
 
@@ -136,6 +139,11 @@
 
 
 			$(function() {
+
+				$('div#modalPregunta').on('shown.bs.modal', function (e) {
+					$('form#formContenedorVeri').find('input[type=text]:first').focus();
+                })
+
 				$('.submit').on('click',function(e){					
 					e.preventDefault();
 
@@ -158,7 +166,7 @@
 								if(data.pregunta.cambioContrasena == '0'){
 									$.LoadingOverlay("hide",true);
 
-									$('div#modalPregunta').html(data.pregunta.modal).appendTo("body").modal('show');
+									$('div#modalPregunta').html(data.pregunta.modal).appendTo("body").modal({backdrop : false, show: true});
 									// $('div#modalPregunta').modal();
 									// $('div#modalPregunta').appendTo();
 								}else{
@@ -207,11 +215,14 @@
 				$.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 			},
 			success: function (response) {
-				$.LoadingOverlay("hide",true);
-				$('div#modalPregunta').show();
+				
 				if (response.status == 'ok') {
 					window.location.href=site_url;
 				} else {
+
+					$.LoadingOverlay("hide",true);
+					$('div#modalPregunta').show();
+
 					if(response.contadorIntentos != undefined){
 						$('small#numeroIntento').html('Intento: '+response.contadorIntentos+'/3');
 					}
@@ -225,6 +236,8 @@
 								location.reload(); 
 							});
 					}else if(response.status == 'fail'){
+						
+						
 						Toast.fire({
 							type: 'error',
 							title: 'Respuesta no válida'

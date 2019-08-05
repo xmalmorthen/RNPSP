@@ -1,10 +1,10 @@
 <!-- CSS -->
 <link rel="stylesheet" href="<?php echo base_url('assets/css/dise.css'); ?>">
+<script src="<?php echo base_url('assets/js/utils/dom.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/utils/alerts.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/views/preguntas/registro.js'); ?>"></script>
-
 <!-- /CSS -->
 
-<body>
     <?php if ($cambioContrasena != 0) { ?>
 	<div class="row bodyVew">
 
@@ -28,7 +28,7 @@
 				<div class="col-md-6">
 
 					<p><span class="clr">*</span>¿Cuál es el nombre de la mamá de tu mamá?</p>
-					<input type="text" class="form-control" name="pregunta1" required>
+					<input type="text" class="form-control" name="pregunta1" required minlength="5">
 
 				</div>
 			</div>
@@ -37,7 +37,7 @@
 				<div class="col-md-6">
 
 					<p><span class="clr">*</span>¿Cuál es el nombre del papá de tu papá?</p>
-					<input type="text" class="form-control" name="pregunta2" required>
+					<input type="text" class="form-control" name="pregunta2" required minlength="5">
 
 				</div>
 
@@ -48,7 +48,7 @@
 				<div class="col-md-6">
 
 					<p><span class="clr">*</span>¿Cuál es el nombre de tu mamá?</p>
-					<input type="text" class="form-control" name="pregunta3" required>
+					<input type="text" class="form-control" name="pregunta3" required minlength="5">
 
 				</div>
 
@@ -59,7 +59,7 @@
 				<div class="col-md-6">
 
 					<p><span class="clr">*</span>¿Cómo te llamaban en tu familia cuando eras niño?</p>
-					<input type="text" class="form-control" name="pregunta4" required>
+					<input type="text" class="form-control" name="pregunta4" required minlength="5">
 
 				</div>
 			</div>
@@ -69,7 +69,7 @@
 				<div class="col-md-6">
 
 					<p><span class="clr">*</span>¿En qué ciudad conociste a tu esposo(a), novio(a)?</p>
-					<input type="text" class="form-control" name="pregunta5" required>
+					<input type="text" class="form-control" name="pregunta5" required minlength="5">
 
 				</div>
 
@@ -80,7 +80,7 @@
 				<div class="col-md-6">
 
 					<p><span class="clr">*</span>¿Quién era el mejor amigo en infancia?</p>
-					<input type="text" class="form-control" name="pregunta6" required>
+					<input type="text" class="form-control" name="pregunta6" required minlength="5">
 
 				</div>
 
@@ -89,7 +89,7 @@
 			<div class="row">
 				<div class="col-md-6">
 					<p><span class="clr">*</span>¿Porque calle vivías cuando tenías 10 años?</p>
-					<input type="text" class="form-control" name="pregunta7" required>
+					<input type="text" class="form-control" name="pregunta7" required minlength="5">
 				</div>
 			</div>
 			<br>
@@ -97,14 +97,14 @@
 
 				<div class="col-md-6">
 					<p><span class="clr">*</span>¿Cuál es la fecha de nacimiento de tu hermano mayor?</p>
-					<input type="text" class="form-control" name="pregunta8" required>
+					<input type="text" class="form-control" name="pregunta8" required minlength="5">
 				</div>
 			</div>
 			<br>
 			<div class="row">
 				<div class="col-md-6">
 					<p><span class="clr">*</span>¿Cuál es el segundo nombre de tu hijo menor?</p>
-					<input type="text" class="form-control" name="pregunta9" required>
+					<input type="text" class="form-control" name="pregunta9" required minlength="5">
 				</div>
 
 			</div>
@@ -112,7 +112,7 @@
 			<div class="row">
 				<div class="col-md-6">
 					<p><span class="clr">*</span>¿Cuál es el nombre de tu hermano mayor?</p>
-					<input type="text" class="form-control" name="pregunta10" required>
+					<input type="text" class="form-control" name="pregunta10" required minlength="5">
 				</div>
 
 
@@ -161,16 +161,10 @@
 			</div>
             <?php } ?>
 
-
-
-
-</body>
-
 <script type="text/javascript">
 	$("#preguntaUnica").on("click", function (e) {
 		e.preventDefault();
 		$("#modalPregunta").modal("show");
-
 
 	});
 
