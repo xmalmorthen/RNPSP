@@ -17,8 +17,18 @@ class SOLICITUD_model extends MY_Model
 
   public function get(){
     $this->select('FOLIO,NOMBRE,PATERNO,MATERNO,FECHA_REGISTRO,TIPO_OPERACION,DESCRIPCION,ESTATUS,DESCRIPCION_ESTATUS,ID_DEPENDENCIA,NOMBRE_DPCIA');
-    $this->where('tipo_operacion <> ', 'ce'); // mostrar solo solicitudes que no han sido replicadas
-    $this->where('ID_DEPENDENCIA', $this->session->userdata(SESSIONVAR)['ID_ADSCRIPCION']);
+    
+    if ($_SESSION[SESSIONVAR]['idTipoUsuario'] == 1){ // usuario super admin
+      
+      $this->where('ESTATUS', '7'); // mostrar solo solicitudes que están en estatus concluida
+
+    } else {
+    
+      $this->where('tipo_operacion <> ', 'ce'); // mostrar solo solicitudes que no han sido replicadas
+      $this->where('ID_DEPENDENCIA', $this->session->userdata(SESSIONVAR)['ID_ADSCRIPCION']);
+
+    }
+
     return $this->response_list();
   }
 

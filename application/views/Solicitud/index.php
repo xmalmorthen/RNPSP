@@ -74,7 +74,7 @@
 <div class="row pull-right mt-2">
     <div class="col-md-12">
         <button class="btn btn-default m-1 d-none" id="Imprimir">Imprimir</button>
-		<?php if (verificaPermiso(16) == true) { ?>
+		<?php if ( $_SESSION[SESSIONVAR]['ID_ADSCRIPCION'] == 5 ) { // solo usuarios del c4 ?>
         <button class="btn btn-default m-1" id="Replicar">Replicar</button>
 		<?php } ?>
     </div>

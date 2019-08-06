@@ -143,7 +143,7 @@
             <input type="hidden" id="pID_EMISOR_Datos_personales" name="pID_EMISOR_Datos_personales" value="" >
         </form>
         <!-- CIB BLOQUE -->        
-        <?php if (verificaPermiso(14) == true) { ?>
+        <?php if (verificaPermiso(14) == true) { // solo usuarios del c4 ?>
         <br>
         <hr>
         <br>

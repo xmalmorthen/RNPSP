@@ -4,6 +4,13 @@
         function __construct(){
             parent::__construct();
             $this->load->library("breadcrumbs");
+            $this->checkAccess();
+        }
+
+        private function checkAccess(){
+            if ( $_SESSION[SESSIONVAR]['idTipoUsuario'] != 1 && $_SESSION[SESSIONVAR]['idTipoUsuario'] != 5 ){ // solo usuario superadmin y capacitador
+                redirect('Error/noPrivilegio');
+            }
         }
         
         function index(){

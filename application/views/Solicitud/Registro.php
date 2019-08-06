@@ -34,7 +34,7 @@
                 <li class="nav-item">
                     <a class="nav-link" id="Capacitacion-tab" data-toggle="tab" href="#Capacitacion" role="tab" aria-controls="Capacitacion" aria-selected="false" data-finish='false'>Capacitación</a>
                 </li>                            
-                <?php if (verificaPermiso(15) == true) { ?>
+                <?php if (verificaPermiso(15) == true) { // solo usurios del c4 ?>
                 <li class="nav-item">
                     <a class="nav-link" id="Identificacion-tab" data-toggle="tab" href="#Identificacion" role="tab" aria-controls="Identificacion" aria-selected="false" data-finish='false'>Identificación</a>
                 </li>

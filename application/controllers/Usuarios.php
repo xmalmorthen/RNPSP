@@ -6,11 +6,20 @@ class Usuarios extends CI_Controller
   {
     parent::__construct();
     $this->load->library('breadcrumbs');
+
+    $this->checkAccess();
+  }
+
+  private function checkAccess(){
+    if ( $_SESSION[SESSIONVAR]['idTipoUsuario'] != 1 && $_SESSION[SESSIONVAR]['idTipoUsuario'] != 2 ){ // solo usuario superadmin y administrador
+      redirect('Error/noPrivilegio');
+    }
   }
 
 
   public function index()
   {
+
     $this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');
     $this->breadcrumbs->push('[ Usuarios ] - Usuarios - Administración', site_url('alta/cedula/datosPersonales'));
     $this->session->set_flashdata('titleBody', '[ Usuarios ] - Usuarios - Administración');
