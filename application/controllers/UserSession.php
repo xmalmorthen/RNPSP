@@ -106,13 +106,21 @@ class UserSession extends CI_Controller
           $DB1->where(array('id_Usuario'=>$user['id']));
           //utils::pre($this->db->last_query());
           $responseDB = $DB1->count_all_results();
+          // utils::pre($this->db->last_query());
           // utils::pre($DB1->last_query());
           $DB1->close();
 
+          # PRIMERO VERIFICA SI TIENE EXISTE LAS RESPUESTAS A LAS PREGUNTAS
+          # SEGUNGO VERIFICA SI NO HIZO UN CAMBIO DE CONTRASEÑA
+          $cambioContrasena =  ($responseDB == 0)? 1: $responsesSel['contrasenaModificada'];
+
+          if($cambioContrasena == 1){
+            $this->session->set_userdata('active_session',1);
+          }
 
           $numPregunta = rand(1, 10);
           $response['pregunta'] = array(
-              'cambioContrasena' => ($responseDB == 0)? 1: $responsesSel['contrasenaModificada'],
+              'cambioContrasena' => $cambioContrasena,
               'pregunta' => $preguntas[$numPregunta],
               'idPregunta' => $numPregunta,
               'modal' => $this->load->view('Session/preguntas',array(
@@ -145,6 +153,8 @@ class UserSession extends CI_Controller
       'status' => false,
       'message' => 'No especificado'
     );
+
+    $this->session->set_userdata('active_session',false);
 
     try {
       $this->session->unset_userdata(SESSIONVAR);

@@ -240,6 +240,8 @@
 				
 				if (response.status == 'ok') {
 					window.location.href=site_url;
+				} else if(response.status == false){
+					location.reload();
 				} else {
 
 					$.LoadingOverlay("hide",true);

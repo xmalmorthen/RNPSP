@@ -146,6 +146,7 @@
                     $dataResponse['contadorIntentos'] = ($contadorIntentos == null? 2 : $contadorIntentos+1);
                 }else{
                     $dataResponse['contadorIntentos'] = 0;
+                    $this->session->set_userdata('active_session',1);
                 }
 
                 if($dataResponse['contadorIntentos'] == 4){

@@ -124,6 +124,11 @@ class GetChecker {
         $this->_checkPrivilege();
 
         $CI->session->set_flashdata('force',$CI->input->get('force'));
+
+        $active_session = $CI->session->userdata('active_session');
+        if(_CONTROLLER != 'preguntas' && $active_session != 1){
+            redirect('UserSession/logOut');
+        }
     }
 
     /*
