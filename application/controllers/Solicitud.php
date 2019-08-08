@@ -2215,4 +2215,53 @@
 			echo json_encode( [ 'results' => $responseModel ] );
 			exit;
 		}
+
+		# OPCION COMBO
+		# Obtiene la valores para el combo Dependencia de Adscipción actual de ficha Laboral
+		public function pID_DEPENDENCIA_ADSCRIPCION_ACTUAL(){
+			try {
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_cmbDependencias();
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+
+		# OPCION COMBO
+		# Obtiene la valores para el combo Corporación de Adscipción actual de ficha Laboral
+		public function pID_INSTITUCION(){
+			try {
+
+				$pIdDep = $this->input->get('pIdDep');
+
+				if(!$pIdDep){
+					throw new rulesException('Parámetros incorrectos');
+				}
+
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_cmbInstitucion($pIdDep);
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
+			}
+			catch (Exception $e) {
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
 }	

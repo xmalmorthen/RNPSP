@@ -140,6 +140,8 @@ var objViewLaboral = {
 
         }, "La fecha debe ser mayor o igual a la fecha de inicio.");
 
+        objViewLaboral.actions.populateDepcia();
+
         objViewLaboral.vars.general.init = true;
     },
     events : {
@@ -236,6 +238,66 @@ var objViewLaboral = {
                 $.each( objViewLaboral.vars.laboral.tables, function( key, value ) {
                     try{value.obj.responsive.rebuild().responsive.recalc();}catch(err){}
                 });                
+            },
+            pID_DEPENDENCIA_ADSCRIPCION_ACTUAL : function(e){
+                
+                var $this = $(this),
+                valDependencia = $this.val();
+
+                if (!valDependencia)
+                    return null;
+
+                var obj = $('#pID_INSTITUCION');
+                obj.prop('disabled', true);
+                obj.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+                var callUrl = base_url + "Solicitud/pID_INSTITUCION";
+
+                obj.append('<option disabled selected value><i class="fa fa-refresh fa-spin fa-3x fa-fw"></i> Actualizando, favor de esperar...</option>');
+
+                $.get(callUrl, { pIdDep : valDependencia },
+                    function (data) {
+
+                        if (data) {
+                            obj.find("option").remove();
+                            obj.append('<option disabled selected value>Seleccione una opción</option>');
+                            if (data.results) {
+
+                                if (data.results.status == 0) {
+                                    obj.find("option").remove();
+                                    obj.setError(data.results.message);                                
+                                    return null;
+                                }
+
+                                $.each(data.results.data,function(key, value) 
+                                {
+                                    var option = new Option(value.pNOMBRE, value.pID_INSTITUCION);
+                                    obj.append(option);
+
+                                    if ( obj.data('insert') )
+                                        if ( obj.data('insert') == value.pID_INSTITUCION ) {
+                                            
+                                            obj.removeData('insert');
+                                            obj.val(value.pclave).trigger('change');
+                                            
+                                        }
+                                });
+
+                            }
+                        }
+                        obj.data('populated',true);
+                        obj.prop("disabled", false);
+                        obj.LoadingOverlay("hide");
+
+                    }).fail(function (err) {                    
+                        obj.find("option").remove();
+                        obj.setError('ERROR al actualizar');
+                    }).always(function () {
+                        obj.LoadingOverlay("hide");
+                        MyCookie.session.reset();                                            
+                    });
+
+
             }
         }
     },
@@ -346,6 +408,58 @@ var objViewLaboral = {
                     objViewLaboral.actions.ajax.throwError(err,form,from,tabRef);                        
                 }
             }
+        },
+        populateDepcia : function(){
+            
+            var obj = $('#pID_DEPENDENCIA_ADSCRIPCION_ACTUAL');
+            obj.prop('disabled', true);
+            obj.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+            var callUrl = base_url + "Solicitud/pID_DEPENDENCIA_ADSCRIPCION_ACTUAL";
+
+            obj.append('<option disabled selected value><i class="fa fa-refresh fa-spin fa-3x fa-fw"></i> Actualizando, favor de esperar...</option>');
+
+            $.get(callUrl,
+                function (data) {
+                    if (data) {
+                        obj.find("option").remove();
+                        obj.append('<option disabled selected value>Seleccione una opción</option>');
+                        if (data.results) {
+
+                            if (data.results.status == 0) {
+                                obj.find("option").remove();
+                                obj.setError(data.results.message);                                
+                                return null;
+                            }
+
+                            $.each(data.results.data,function(key, value) 
+                            {
+                                var option = new Option(value.pDESCRIPCION, value.pID_DEPENDENCIA);
+                                obj.append(option);
+
+                                if ( obj.data('insert') )
+                                    if ( obj.data('insert') == value.pID_DEPENDENCIA ) {
+                                        
+                                        obj.removeData('insert');
+                                        obj.val(value.pclave).trigger('change');
+                                        
+                                    }
+                            });
+
+                            obj.on('change',objViewLaboral.events.change.pID_DEPENDENCIA_ADSCRIPCION_ACTUAL);
+                        }
+                    }
+                    obj.data('populated',true);
+                    obj.prop("disabled", false);
+                    obj.LoadingOverlay("hide");
+
+                }).fail(function (err) {                    
+                    obj.find("option").remove();
+                    obj.setError('ERROR al actualizar');
+                }).always(function () {
+                    obj.LoadingOverlay("hide");
+                    MyCookie.session.reset();                                            
+                });
         }
     }
 }

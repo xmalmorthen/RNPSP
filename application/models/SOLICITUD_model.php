@@ -20,10 +20,21 @@ class SOLICITUD_model extends MY_Model
     
     if ($_SESSION[SESSIONVAR]['idTipoUsuario'] == 1){ // usuario super admin
       
-      $this->where('ESTATUS', '7'); // mostrar solo solicitudes que están en estatus concluida
+      //$this->where('ESTATUS', '7'); // mostrar solo solicitudes que están en estatus concluida
 
     } else {
-    
+      
+      //"AS" MODIFICA TODO
+      
+      //"CE" NO MODIFICA DATOS PERSONALES, SOLO COMBO DE TIPO DE MOVIMIENTO Y DEMAS FICHAS
+      //"CA" NO MODIFICA DATOS PERSONALES, SOLO COMBO DE TIPO DE MOVIMIENTO Y DEMAS FICHAS
+      
+      //"BE" NO MODIFICA NADA DE NINGUNA FICHA, SOLO COMBO DE TIPO DE MOVIMIENTO
+      //"BA" NO MODIFICA NADA DE NINGUNA FICHA, SOLO COMBO DE TIPO DE MOVIMIENTO
+      
+      //"RE" NO MODIFICA DATOS PERSONALES, SOLO COMBO DE TIPO DE MOVIMIENTO Y DEMAS FICHAS
+      //"RA" NO MODIFICA DATOS PERSONALES, SOLO COMBO DE TIPO DE MOVIMIENTO Y DEMAS FICHAS
+
       $this->where('tipo_operacion <> ', 'ce'); // mostrar solo solicitudes que no han sido replicadas
       $this->where('ID_DEPENDENCIA', $this->session->userdata(SESSIONVAR)['ID_ADSCRIPCION']);
 
@@ -70,7 +81,9 @@ class SOLICITUD_model extends MY_Model
   public function sp_validaCURP($CURP){
 
     $this->procedure('sp_validaCURP');
-    $this->addParam('pCURP',$CURP,'N',array('name'=>'CURP','rule'=>'trim|required|min_length[16]|max_length[20]'));
+    $this->addParam('pCURP',$CURP,'N',array('name'=>'CURP','rule'=>'trim|required|min_length[16]|max_length[20]'));    
+    $this->addParam('pCURP_USR',$this->session->userdata(SESSIONVAR)['CURP'],'N',array('name'=>'CURP','rule'=>'trim|required|min_length[16]|max_length[20]'));
+
     $this->iniParam('tranEstatus','int');
     $this->iniParam('msg','varchar','80');
 
@@ -85,8 +98,8 @@ class SOLICITUD_model extends MY_Model
       if(count($response) > 0){
         $responseSelect = current($response);
         $responseOutput = end($response);
-
-        if ($responseOutput['tranEstatus'] != 0) {
+  
+        if ($responseOutput['tranEstatus'] == 1) {
 
           if ($responseSelect['TIPO_OPERACION'] == 'CE'){
 
@@ -2214,6 +2227,57 @@ class SOLICITUD_model extends MY_Model
         }
       }
       return $this->response;
+  }
+
+  public function  sp_cmbDependencias(){
+    
+    $this->procedure('sp_cmbDependencias');
+    $this->addParam('pCURP',$this->session->userdata(SESSIONVAR)['CURP'],'N');
+
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_list($query);
+
+    if($response === FALSE){
+      $this->response['status'] = 0;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
+    }else{
+      if(count($response) > 0){
+        $this->response['status'] = 1;
+        $this->response['data'] = $this->try_result($response);
+      }else{
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron resultados.';
+      }
+    }
+    return $this->response;
+
+  }
+
+  public function  sp_cmbInstitucion($pIdDep){
+    
+    $this->procedure('sp_cmbInstitucion');
+    $this->addParam('pCURP',$this->session->userdata(SESSIONVAR)['CURP'],'N');
+    $this->addParam('pIdDep',$pIdDep);
+
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_list($query);
+
+    if($response === FALSE){
+      $this->response['status'] = 0;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
+    }else{
+      if(count($response) > 0){
+        $this->response['status'] = 1;
+        $this->response['data'] = $this->try_result($response);
+      }else{
+        $this->response['status'] = 0;
+        $this->response['message'] = 'No se encontraron resultados.';
+      }
+    }
+    return $this->response;
+
   }
 
 }
