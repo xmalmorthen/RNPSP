@@ -18,25 +18,14 @@ class SOLICITUD_model extends MY_Model
   public function get(){
     $this->select('FOLIO,NOMBRE,PATERNO,MATERNO,FECHA_REGISTRO,TIPO_OPERACION,DESCRIPCION,ESTATUS,DESCRIPCION_ESTATUS,ID_DEPENDENCIA,NOMBRE_DPCIA');
     
-    if ($_SESSION[SESSIONVAR]['idTipoUsuario'] == 1){ // usuario super admin
+    if ($this->session->userdata(SESSIONVAR)['idTipoUsuario'] == 1){ // usuario super admin
       
       //$this->where('ESTATUS', '7'); // mostrar solo solicitudes que están en estatus concluida
 
     } else {
       
-      //"AS" MODIFICA TODO
-      
-      //"CE" NO MODIFICA DATOS PERSONALES, SOLO COMBO DE TIPO DE MOVIMIENTO Y DEMAS FICHAS
-      //"CA" NO MODIFICA DATOS PERSONALES, SOLO COMBO DE TIPO DE MOVIMIENTO Y DEMAS FICHAS
-      
-      //"BE" NO MODIFICA NADA DE NINGUNA FICHA, SOLO COMBO DE TIPO DE MOVIMIENTO
-      //"BA" NO MODIFICA NADA DE NINGUNA FICHA, SOLO COMBO DE TIPO DE MOVIMIENTO
-      
-      //"RE" NO MODIFICA DATOS PERSONALES, SOLO COMBO DE TIPO DE MOVIMIENTO Y DEMAS FICHAS
-      //"RA" NO MODIFICA DATOS PERSONALES, SOLO COMBO DE TIPO DE MOVIMIENTO Y DEMAS FICHAS
-
-      $this->where('tipo_operacion <> ', 'ce'); // mostrar solo solicitudes que no han sido replicadas
       $this->where('ID_DEPENDENCIA', $this->session->userdata(SESSIONVAR)['ID_ADSCRIPCION']);
+      $this->where('tipo_operacion', 'AS');
 
     }
 

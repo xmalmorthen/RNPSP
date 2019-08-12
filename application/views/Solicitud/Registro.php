@@ -111,6 +111,7 @@
     var formMode = "<?php echo $this->session->flashdata('formMode'); ?>",
         selectPrincipalTabId = "<?php echo $this->session->flashdata('selectPrincipalTabId'); ?>",
         selectSubTabId = "<?php echo $this->session->flashdata('selectSubTabId'); ?>",
-        id = "<?php echo isset($id) ? $id : ''; ?>";    
+        id = "<?php echo isset($id) ? $id : ''; ?>",
+        tipoUsuario = "<?php echo $this->session->userdata(SESSIONVAR)['idTipoUsuario']; ?>";
 </script>
 <!-- /JS -->

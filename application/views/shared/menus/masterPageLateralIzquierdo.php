@@ -12,12 +12,12 @@
                 <li class="submenu">
                     <a href="<?php echo site_url('Personal');?>" ><i class="fa fa-briefcase" aria-hidden="true"></i> <span> Personal </span></a>
                 </li>
-                <?php if ( $_SESSION[SESSIONVAR]['idTipoUsuario'] == 1 || $_SESSION[SESSIONVAR]['idTipoUsuario'] == 2 ) { // usuario super admin y administradores?>
+                <?php if ( $this->session->userdata(SESSIONVAR)['idTipoUsuario'] == 1 || $this->session->userdata(SESSIONVAR)['idTipoUsuario'] == 2 ) { // usuario super admin y administradores?>
                 <li class="submenu">
                     <a href="<?php echo site_url('Usuarios');?>" ><i class="fa fa-user-o" aria-hidden="true"></i> <span> Usuarios </span></a>
                 </li>
                 <?php } ?>
-                <?php if ( $_SESSION[SESSIONVAR]['idTipoUsuario'] == 1 || $_SESSION[SESSIONVAR]['idTipoUsuario'] == 5 ) { // usuario super admin y capacitadores?>
+                <?php if ( $this->session->userdata(SESSIONVAR)['idTipoUsuario'] == 1 || $this->session->userdata(SESSIONVAR)['idTipoUsuario'] == 5 ) { // usuario super admin y capacitadores?>
                 <li class="submenu">
                     <a href="<?php echo site_url('Curso');?>" ><i class="fa fa-book" aria-hidden="true"></i> <span> Curso </span></a>
                 </li>

@@ -611,7 +611,7 @@ var mainTabMenu = {
         }).then((result) => {
             if ( typeof result.dismiss !== 'undefined') {
                 window.location.href = base_url + 'Solicitud';
-            }else {
+            }else {                
                 if (result.value.from == 'query')                    
                     mainFormActions.populateCURPFields(result.value.data);                    
                 else {
@@ -655,6 +655,7 @@ var mainFormActions = {
         });        
     },
     fillData : function(data){
+
         data = data.results.data;
 
         mainTabMenu.var.pID_ALTERNA = data.pID_ALTERNA;
@@ -715,11 +716,12 @@ var mainFormActions = {
 
                 break;                                    
                 default:
+                    ref.html(value);
                 break;
             }            
         }
     }
-}
+};
 
 var fillData = {
     insertValueInSelect : function(ref,value,form){            
@@ -747,6 +749,32 @@ var fillData = {
         });
     },
     datosGenerales : {
+        rules : {
+            disabledComponents : 
+                    [
+                    'pCURP',
+                    'pRFC_DOMICILIO',
+                    'pNOMBRE_DATOS_PERSONALES',
+                    'pPATERNO_DATOS_PERSONALES',
+                    'pMATERNO_DATOS_PERSONALES',
+                    'pSEXO_DATOS_PERSONALES',
+                    'pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES',
+                    'pID_PAIS_NAC',
+                    'pID_ENTIDAD_NAC',
+                    'pID_MUNICIPIO_NAC',
+                    'pCIUDAD_NAC_DATOS_PERSONALES',
+                    'pID_NACIONALIDAD',
+                    'pMODO_NACIONALIDAD',
+                    'pFECHA_NACIONALIDAD',
+                    'pID_ESTADO_CIVIL',
+                    'pCARTILLA_SMN',
+                    'pCREDENCIAL_ELECTOR',
+                    'pPASAPORTE',
+                    'pLICENCIA_DATOS_PERSONALES',
+                    'pLICENCIA_VIG',
+                    'pCUIP'],
+            tmov :  ['AE', 'CE', 'DE', 'HE', 'RE', 'AA', 'CA', 'HA', 'RA']
+        },
         all : function(data){
             fillData.datosGenerales.datosPersonales(data);
             fillData.datosGenerales.desarrolloAcademico(mainTabMenu.var.pID_ALTERNA);
@@ -770,10 +798,42 @@ var fillData = {
             }
         },
         datosPersonales : function(data){
+
+            if ( $.inArray( data.pTIPO_OPERACION, fillData.datosGenerales.rules.tmov ) == -1 ){
+                fillData.datosGenerales.rules.disabledComponents.push('pTIPO_OPERACION');
+                $("#Datos_personales_form .btnGuardarSection").attr('offEvent','true');
+            }
+
+            if (tipoUsuario == 1 || tipoUsuario == 2){ //tipo de usuario administrador, superadministrador y c4 => falta validar el del c4
+                
+                if ()
+
+            }
+
+
+
+
+            fillData.datosGenerales.rules.disabledComponents.forEach( function(item) {
+                $("#" + item).prop("disabled", true);
+            });
+            $('*[offEvent="true"]').off('click').addClass('d-none');
+
+            setInterval(function(){  
+                fillData.datosGenerales.rules.disabledComponents.forEach( function(item) {
+                    $("#" + item).prop("disabled", true);    
+                });
+                
+                $('*[offEvent="true"]').off('click').addClass('d-none');
+            }, 100);
+
             //AutoFill
             $.each(data,function(key,value){
                 mainFormActions.insertValueInSelect($('#'+ key),value);
             });
+
+
+
+
 
             //Special
             //DATOS GENERALES - DATOS PERSONALES
@@ -788,6 +848,7 @@ var fillData = {
             mainFormActions.insertValueInSelect($('#pPASAPORTE'),data.pPASAPORTE);
             mainFormActions.insertValueInSelect($('#pLICENCIA_DATOS_PERSONALES'),data.pLICENCIA);
             mainFormActions.insertValueInSelect($('#pLICENCIA_VIG'),data.pFECHA_LICENCIA_VIG);
+            mainFormActions.insertValueInSelect($('#pFECHA_NAC'), moment( data.pFECHA_NAC ).format('DD/MM/YYYY'));
 
             fillData.datosGenerales.CIB(mainTabMenu.var.pID_ALTERNA);
 
