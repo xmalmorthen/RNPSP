@@ -639,6 +639,13 @@ var objViewDatosGenerales = {
                             obj.find("option").remove();
                             obj.append('<option disabled selected value>Seleccione una opción</option>');
                             if (data.results) {
+
+                                if (!data.results.status){
+                                    obj.find("option").remove();
+                                    obj.setError('ERROR al actualizar');
+                                    return null;
+                                }
+
                                 $.each(data.results.data,function(key, value) 
                                 {
                                     var option = new Option(value.pdescripcion, value.pclave);

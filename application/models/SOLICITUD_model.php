@@ -183,6 +183,7 @@ class SOLICITUD_model extends MY_Model
   public function  sp_cmbTipoOperacion($curp = null){
     $this->procedure('sp_cmbTipoOperacion');
     $this->addParam('pCURP',$curp,'N');
+    $this->addParam('pCURP_USR',$this->session->userdata(SESSIONVAR)['CURP'],'N');
 
     $buid = $this->build_query();
     $query = $this->db->query($buid);

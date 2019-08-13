@@ -112,6 +112,7 @@
         selectPrincipalTabId = "<?php echo $this->session->flashdata('selectPrincipalTabId'); ?>",
         selectSubTabId = "<?php echo $this->session->flashdata('selectSubTabId'); ?>",
         id = "<?php echo isset($id) ? $id : ''; ?>",
-        tipoUsuario = "<?php echo $this->session->userdata(SESSIONVAR)['idTipoUsuario']; ?>";
+        tipoUsuario = "<?php echo $this->session->userdata(SESSIONVAR)['idTipoUsuario']; ?>",
+        tUsr = "<?php echo $this->session->userdata(SESSIONVAR)['tipoUsuario']; ?>";
 </script>
 <!-- /JS -->

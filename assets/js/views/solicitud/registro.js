@@ -773,7 +773,7 @@ var fillData = {
                     'pLICENCIA_DATOS_PERSONALES',
                     'pLICENCIA_VIG',
                     'pCUIP'],
-            tmov :  ['AE', 'CE', 'DE', 'HE', 'RE', 'AA', 'CA', 'HA', 'RA']
+            tmov :  ['AE', 'CE', 'DE', 'HE', 'RE', 'AA', 'CA', 'HA', 'RA', 'BE', 'BA']
         },
         all : function(data){
             fillData.datosGenerales.datosPersonales(data);
@@ -804,14 +804,27 @@ var fillData = {
                 $("#Datos_personales_form .btnGuardarSection").attr('offEvent','true');
             }
 
-            if (tipoUsuario == 1 || tipoUsuario == 2){ //tipo de usuario administrador, superadministrador y c4 => falta validar el del c4
+            if (tUsr == 1){
                 
-                if ()
+                $rule = [ 'BE', 'BA', 'AS' ];
+
+                if ( $.inArray( data.pTIPO_OPERACION, $rule ) != -1 ){
+
+                    $array = fillData.datosGenerales.rules.disabledComponents;
+                    $search_term = 'pTIPO_OPERACION';
+
+                    for (var i=$array.length-1; i>=0; i--) {
+                        if ($array[i] === $search_term) {
+                            $array.splice(i, 1);
+                            break;
+                        }
+                    }
+
+                    fillData.datosGenerales.rules.disabledComponents = $array;
+
+                }
 
             }
-
-
-
 
             fillData.datosGenerales.rules.disabledComponents.forEach( function(item) {
                 $("#" + item).prop("disabled", true);

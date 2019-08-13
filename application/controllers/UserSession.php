@@ -66,7 +66,15 @@ class UserSession extends CI_Controller
           }
 
           $user['idTipoUsuario'] = $tipoUsuario;
-
+        
+          try {
+            $tu = $this->Usuarios_model->sp_getTipoUsr($user['CURP']);
+            $user['tipoUsuario'] = $tu['data']->tipoUsr;
+          } catch (Exception $e) {            
+            $response['status'] = false;
+            $response['message'] = array("No se ha podido obtener el tipo de usuario");
+          }
+          
           $session = $this->session->local_userdata();
           $this->session->local_set_userdata($user);
           $this->session->local_set_userdata(array_merge($session, $user));

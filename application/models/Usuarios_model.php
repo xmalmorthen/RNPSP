@@ -193,4 +193,37 @@ class Usuarios_model extends MY_Model
     }
     return $this->response;
   }
+
+  public function  sp_getTipoUsr($CURP = null){
+    
+    $response = [];
+    try {
+      $exec = "DECLARE	@tipoUsr int
+              EXEC [sp_getTipoUsr] @pCURP = N?,@tipoUsr = @tipoUsr OUTPUT
+              SELECT	@tipoUsr as N'tipoUsr'";
+
+      if (!$CURP)
+        $CURP = $this->session->userdata(SESSIONVAR)['CURP'];
+
+      $result = $this->db->query($exec,array($CURP));
+            
+      if (!$result){
+        throw new Exception($this->db->error()['message']);
+      }
+
+      $_response = $result->result()[0];
+
+      $response['status'] = 1;
+      $response['data'] = $_response;
+
+    }     
+    catch (Exception $e) {
+      log_message('error',$e->getMessage() . " [ Usuarios_model - sp_getTipoUsr ] [ GUID = {$this->config->item('GUID')} ]");
+      $response['status'] = 0;
+      $response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
+    }
+
+    return $response;
+
+  }
 }
