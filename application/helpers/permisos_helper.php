@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-if ( ! function_exists('renderMenu'))
+if ( ! function_exists('verificaPermiso'))
 {
   function verificaPermiso($idPermiso){
     $CI =& get_instance();
@@ -15,5 +15,14 @@ if ( ! function_exists('renderMenu'))
       }
     }
     return $valido;
+  }
+}
+
+if ( ! function_exists('verificaTipoUsuarioSesion'))
+{
+  function verificaTipoUsuarioSesion(){
+    $CI =& get_instance();
+    $tUsr = $CI->session->userdata(SESSIONVAR)['tipoUsuario'];
+    return $tUsr;
   }
 }

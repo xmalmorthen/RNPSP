@@ -18,9 +18,9 @@ class SOLICITUD_model extends MY_Model
   public function get(){
     $this->select('FOLIO,NOMBRE,PATERNO,MATERNO,FECHA_REGISTRO,TIPO_OPERACION,DESCRIPCION,ESTATUS,DESCRIPCION_ESTATUS,ID_DEPENDENCIA,NOMBRE_DPCIA');
     
-    if ($this->session->userdata(SESSIONVAR)['idTipoUsuario'] == 1){ // usuario super admin
+    if (verificaTipoUsuarioSesion() == 1){ // usuario super admin
       
-      //$this->where('ESTATUS', '7'); // mostrar solo solicitudes que están en estatus concluida
+      $this->where('ESTATUS', '7'); // mostrar solo solicitudes que están en estatus concluida
 
     } else {
       
@@ -2268,6 +2268,48 @@ class SOLICITUD_model extends MY_Model
     }
     return $this->response;
 
+  }
+
+  public function sp_concluyeRegistro($id){
+
+    //$this->arrayToPost({ 'id' => $id });
+
+    $this->procedure('sp_concluyeRegistro');
+    $this->addParam('pID_ALTERNA',$id,'');
+  
+    $buid = $this->build_query();
+    $query = $this->db->query($buid);
+    $response = $this->query_list($query);
+
+    if($response === FALSE){
+
+        $this->response['status'] = 0;
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
+        
+    }else{
+      if(count($response) > 0){
+
+        $this->response['status'] = 1;
+        $this->response['message'] = '';
+        $this->response['data'] = $response;
+        
+      }else{
+
+        $responseOutput = current($response);
+        $this->response['status'] = 1;
+        $this->response['message'] = 'No se encontraron resultados.';
+
+      }
+    }
+    return $this->response;
+  }
+
+  public function statusSolicitud($idAlterna){
+    
+    $this->select('FOLIO,TIPO_OPERACION,DESCRIPCION,ESTATUS,DESCRIPCION_ESTATUS');
+    $this->where('FOLIO', $idAlterna);
+    return $this->response_list();
+    
   }
 
 }

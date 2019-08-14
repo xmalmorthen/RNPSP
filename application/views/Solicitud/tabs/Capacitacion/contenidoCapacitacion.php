@@ -111,9 +111,11 @@
                         <button class="btn btn-default btnGuardarSection" id="guardarHabilidad">Guardar habilidad y/o aptitud</button>
                     </div>
                     <div class="col-md-4"></div>
-                    <div class="col-md-4">
-
+                    <?php if (verificaTipoUsuarioSesion() == 2 || verificaTipoUsuarioSesion() == 3) { // usuarios administrador de dependnecias y usuarios de dependencias?>
+                    <div class="col-md-4 text-right">
+                        <button class="btn btn-default btnGuardarSection" id="solicitudCompleta">Solicitud completa</button>
                     </div>
+                    <?php } ?>
                 </div>
                 <input type="hidden" id="pID_ALTERNA_Habilidades" name="pID_ALTERNA_Habilidades" value="">
                 <input type="hidden" id="pID_ESTADO_EMISOR_Habilidades" name="pID_ESTADO_EMISOR_Habilidades" value="">

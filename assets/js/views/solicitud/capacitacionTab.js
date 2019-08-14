@@ -10,7 +10,8 @@ var objViewCapacitacion = {
             },
             btns : {
                 guardarIdioma : null,
-                guardarHabilidad : null
+                guardarHabilidad : null,
+                solicitudCompleta : null
             },
             tables : {
                 tableIdiomas : {
@@ -45,6 +46,7 @@ var objViewCapacitacion = {
         // BUTTONS
         objViewCapacitacion.vars.capacitacion.btns.guardarIdioma = $('#guardarIdioma');
         objViewCapacitacion.vars.capacitacion.btns.guardarHabilidad = $('#guardarHabilidad');
+        objViewCapacitacion.vars.capacitacion.btns.solicitudCompleta = $('#solicitudCompleta');
 
         // INIT SELECTS
         objViewCapacitacion.vars.general.mainContentTab.find('select').select2({width : '100%'});
@@ -64,6 +66,7 @@ var objViewCapacitacion = {
         // CLICK
         objViewCapacitacion.vars.capacitacion.btns.guardarIdioma.on('click',objViewCapacitacion.events.click.capacitacion.guardarIdioma);
         objViewCapacitacion.vars.capacitacion.btns.guardarHabilidad.on('click',objViewCapacitacion.events.click.capacitacion.guardarHabilidad);
+        objViewCapacitacion.vars.capacitacion.btns.solicitudCompleta.on('click',objViewCapacitacion.events.click.capacitacion.solicitudCompleta);
         
         //FOCUSOUT
         $('input[type="date"]').on('focusout',function(event){
@@ -106,6 +109,123 @@ var objViewCapacitacion = {
                     objViewCapacitacion.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveCapacitacionHabilidad',from, tabRef, true, function(data){
                         fillData.capacitacion.habilidadesAptitudes(mainTabMenu.var.pID_ALTERNA);
                     });
+                },
+                solicitudCompleta : function(e){
+                    e.preventDefault();
+                    
+                    var callUrl = base_url + "Solicitud/ajaxSolicitudCompleta";
+
+                    $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+                    $.get(callUrl, 
+                        { id : mainTabMenu.var.pID_ALTERNA },
+                        function (data) {
+                            if (data) {
+                                if (data.results.status){
+
+                                    toIgnore = [ 
+                                        { idPestania: 1, idFicha: 4}, // datos generales - referencias
+                                        { idPestania: 1, idFicha: 5}, // datos generales - socioeconónico / dependientes económnicos
+                                        { idPestania: 2, idFicha: 2}, // laboral - Empleos diversos
+                                        { idPestania: 2, idFicha: 3}, // laboral - Actitudes hacia el empleo
+                                        { idPestania: 2, idFicha: 4}, // laboral - Comisiones
+                                        { idPestania: 3, idFicha: 1}, // capacitación - idiomnas y/o dialecto
+                                        { idPestania: 3, idFicha: 2},  // capacitación - habilidades y aptitudes                                        
+                                        { idPestania: 4, idFicha: 1},  // identificación - Media Filiación
+                                        { idPestania: 4, idFicha: 2},  // identificación - Señas Particulares
+                                        { idPestania: 4, idFicha: 3},  // identificación - Ficha Fotográfica
+                                        { idPestania: 4, idFicha: 4},  // identificación - Registro decadactilar
+                                        { idPestania: 4, idFicha: 5},  // identificación - Digitalización de documento
+                                        { idPestania: 4, idFicha: 6}  // identificación - Identificación de voz
+                                    ];
+
+                                    valid = true;
+                                    itemsProcessed = 0;
+
+                                    data.results.data.forEach( (item, index, array) => {
+                                        
+                                        if ( !toIgnore.find( qry => qry.idPestania == item.idPestania && qry.idFicha == item.idFicha ) ) {
+                                            
+                                            if ( item.tranEstatus == 0 ) {
+                                                
+                                                console.log(item);
+                                                valid = false;
+
+                                                //TODO - Xmal - MMarcar pestaña y ficha que contengan error
+                                                selectorPestania = '';
+                                                switch (item.idPestania) {
+                                                    case 1:
+                                                        selectorPestania = '#datosGenerales';
+                                                    break;
+                                                    case 2:
+                                                        selectorPestania = '#Laboral';
+                                                    break;
+                                                    case 3:
+                                                        selectorPestania = '#Capacitacion';
+                                                    break;
+                                                    case 4:
+                                                        selectorPestania = '#Identificacion';
+                                                    break;
+                                                
+                                                }
+                                                objPestania = $('#mainContainerTab ' + selectorPestania + '-tab')
+                                                dynTabs.markTab( objPestania,'<span class="text-danger tabMark errValidSolicitud mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
+                                                
+                                                objFicha = $('#myTabContent ' + selectorPestania + '.tab-pane .nav.nav-tabs li.nav-item:nth-child(' + item.idFicha + ') a.nav-link');
+                                                dynTabs.markTab( objFicha,'<span class="text-danger tabMark errValidSolicitud mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
+
+                                            }
+
+                                        }
+
+                                        itemsProcessed++;
+                                        if(itemsProcessed === array.length) {
+                                            
+                                            $.LoadingOverlay("hide");
+                                    
+                                            if (valid){
+                                                $('.validarReplicar').removeClass('d-none');
+                                                Swal.fire({ 
+                                                    type: 'success', 
+                                                    title: 'Aviso', 
+                                                    html: 'Solicitud válida'})
+                                                .then( function(){
+
+                                                    $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+                                                    window.location.href = site_url + 'Solicitud/Ver/' + mainTabMenu.var.pID_ALTERNA;
+
+                                                });
+                                            } else {
+                                                $('.validarReplicar').addClass('d-none');
+                                                Swal.fire({ 
+                                                    type: 'warning', 
+                                                    title: 'Aviso', 
+                                                    html: 'Solicitud incompleta, favor de complementar la información necesaria',
+                                                    footer: '<div>La información faltante requerida se ha marcado <br/>con el símbolo <span class="text-danger tabMark errValidSolicitud mr-2"><i class="fa fa-exclamation-triangle fa-2x" aria-hidden="true"></i></span>' });
+                                            }
+
+                                        }
+                                        
+                                    });
+                                    
+                                    return null;
+                                }
+                            }
+
+                            Swal.fire({ type: 'error', title: 'Error', html: data.results.message ? data.results.message : 'Error no especificado al intentar validar la solicitud.' });
+
+                        }).fail(function (err) {                    
+                            
+                            $.LoadingOverlay("hide",true);
+                            var msg = err.responseText;
+                            Swal.fire({ type: 'error', title: 'Error', html: msg });
+
+                        }).always(function () {
+                                        
+                            MyCookie.session.reset();
+
+                        });
+
                 }
             }
         },
@@ -224,5 +344,6 @@ var objViewCapacitacion = {
                 }
             }
         }
+        
     }
 }

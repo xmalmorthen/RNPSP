@@ -57,7 +57,11 @@
                 		<?php }} ?>
                         <td>
                             <a class='m-2' href="<?php echo site_url("Solicitud/Ver/{$value['options']['id']}") ?>" title='Ver'><i class="fa fa-eye fa-2x"></i></a>
-                            <a class='m-2' href="<?php echo site_url("Solicitud/Modificar/{$value['options']['id']}") ?>" title='Modificar'><i class="fa fa-pencil-square-o fa-2x"></i></a>
+                            <?php if ( verificaTipoUsuarioSesion() != 1  && $value['optiones']['idEstatus'] != 7 ) { // usuarios y administrador de dependencias y que el estatus de solicitud no este en concluida?>
+								<a class='m-2' href="<?php echo site_url("Solicitud/Modificar/{$value['options']['id']}") ?>" title='Modificar'><i class="fa fa-pencil-square-o fa-2x"></i></a>
+							<?php } else if (verificaTipoUsuarioSesion() == 1) { // usuarios superadmin y c4?>
+								<a class='m-2' href="<?php echo site_url("Solicitud/Modificar/{$value['options']['id']}") ?>" title='Modificar'><i class="fa fa-pencil-square-o fa-2x"></i></a>
+							<?php }?>
                             <?php if ($value['TipodeSolicitud'] == 'AS' && ( $value['options']['idEstatus'] == 1 || $value['options']['idEstatus'] == 6 ) ) { ?>
 								<a class='m-2' href="#"  name='eliminarSolicitud' data-id="<?php echo $value['options']['id'] ?>" title='Eliminar'><i class="fa fa-trash fa-2x"></i></a>
 							<?php } ?>								

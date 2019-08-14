@@ -26,6 +26,8 @@ var objViewVer = {
             nextTab.tab('show'); 
         });
 
+        objViewVer.actions.statusSolicitud();
+
         objViewVer.objs.refreshView.trigger('click');
     },    
     actions : {
@@ -49,6 +51,33 @@ var objViewVer = {
             objViewLaboral.init();
             objViewCapacitacion.init();
             objViewIdentificacion.init();
+        },
+        statusSolicitud : function(){
+
+            if (tUsr == 1){
+
+                $('.modeificarBtnSection').removeClass('d-none');
+
+            } else {
+
+                var callUrl = base_url + "Solicitud/ajaxStatusSolicitud/" + objViewVer.var.pID_ALTERNA;
+
+                $.get(callUrl,
+                function (data) {  
+                    
+                    try {
+                        if (data.results[0].ESTATUS == 7) {
+                            $('.modeificarBtnSection').remove();
+                        } else {
+                            $('.modeificarBtnSection').removeClass('d-none');
+                        }
+                    } catch (error) {}
+
+                }).fail(function (err) {
+                }).always(function () {
+                    MyCookie.session.reset();
+                });
+            }
         }
     }
 }

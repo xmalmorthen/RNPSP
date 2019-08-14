@@ -2264,4 +2264,66 @@
 			echo json_encode( [ 'results' => $responseModel ] );
 			exit;
 		}
+
+		public function ajaxSolicitudCompleta($id = null){
+			if (!$id)
+				$id = $this->input->get('id');
+		
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}		
+
+			$responseModel = NULL;
+			try {
+				if(!$id){
+					throw new rulesException('Parámetros incorrectos');
+				}
+				
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->sp_concluyeRegistro($id);
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
+			}
+			catch (Exception $e) {				
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
+
+		public function ajaxStatusSolicitud($id = null){
+			if (!$id)
+				$id = $this->input->get('id');
+		
+			if (! $this->input->is_ajax_request()) {
+				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
+			}		
+
+			$responseModel = NULL;
+			try {
+				if(!$id){
+					throw new rulesException('Parámetros incorrectos');
+				}
+				
+				$this->load->model('SOLICITUD_model');
+				$responseModel = $this->SOLICITUD_model->statusSolicitud($id);
+			} 
+			catch (rulesException $e){	
+				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
+			}
+			catch (Exception $e) {				
+				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
+				Msg_reporting::error_log($e);
+			}
+			
+			header('Content-type: application/json');
+			echo json_encode( [ 'results' => $responseModel ] );
+			exit;
+		}
 }	

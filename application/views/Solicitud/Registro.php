@@ -34,7 +34,7 @@
                 <li class="nav-item">
                     <a class="nav-link" id="Capacitacion-tab" data-toggle="tab" href="#Capacitacion" role="tab" aria-controls="Capacitacion" aria-selected="false" data-finish='false'>Capacitación</a>
                 </li>                            
-                <?php if (verificaPermiso(15) == true) { // solo usurios del c4 ?>
+                <?php if (verificaTipoUsuarioSesion() == 1) { // solo usurios del c4 y superadministrador?>
                 <li class="nav-item">
                     <a class="nav-link" id="Identificacion-tab" data-toggle="tab" href="#Identificacion" role="tab" aria-controls="Identificacion" aria-selected="false" data-finish='false'>Identificación</a>
                 </li>
@@ -62,7 +62,7 @@
                 <?php echo $this->load->view('Solicitud/tabs/Capacitacion/contenidoCapacitacion',null,TRUE) ?>
             </div>
         </div>
-        <?php if (verificaPermiso(15) == true) { ?>
+        <?php if (verificaTipoUsuarioSesion() == 1) { // solo usurios del c4 y superadministrador?>
         <div class="tab-pane fade" id="Identificacion" role="tabpanel" aria-labelledby="Tab3-tab">
             <?php echo $this->load->view('Solicitud/tabs/Identificacion/mnuTabIdentificacion',null,TRUE) ?>
             <div class="tab-content">
@@ -103,7 +103,7 @@
 <script src="<?php echo base_url('assets/js/views/solicitud/registro.js') ?>"></script>
 
 
-<?php if (verificaPermiso(15) == true) { ?>
+<?php if (verificaTipoUsuarioSesion() == 1) { // solo usurios del c4 y superadministrador?>
     <script src="<?php echo base_url('assets/js/views/solicitud/identificacionTab.js') ?>"></script>
 <?php } ?>
 
@@ -113,6 +113,6 @@
         selectSubTabId = "<?php echo $this->session->flashdata('selectSubTabId'); ?>",
         id = "<?php echo isset($id) ? $id : ''; ?>",
         tipoUsuario = "<?php echo $this->session->userdata(SESSIONVAR)['idTipoUsuario']; ?>",
-        tUsr = "<?php echo $this->session->userdata(SESSIONVAR)['tipoUsuario']; ?>";
+        tUsr = "<?php echo verificaTipoUsuarioSesion(); ?>";
 </script>
 <!-- /JS -->

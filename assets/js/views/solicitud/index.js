@@ -550,7 +550,7 @@ var objViewIndex = {
 
                             localStorage.setItem( replicationProc.guid, JSON.stringify( data ));
 
-                            window.location.href = site_url + 'Solicitud?replicationResult=' + replicationProc.guid;                            
+                            window.location.href = site_url + 'Solicitud?replicationResult=' + replicationProc.guid;
 
                         }
 

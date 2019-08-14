@@ -27,8 +27,7 @@
                 <li class="nav-item">
                     <a class="nav-link" id="Capacitacion-tab" data-toggle="tab" href="#Capacitacion" role="tab" aria-controls="Capacitacion" aria-selected="false" data-finish='false'>Capacitación</a>
                 </li>                            
-                <?php if (verificaPermiso(15) == true || ( isset($isFromPersonal) == true && verificaPermiso(19) == true )) 
-                { ?>
+                <?php if (verificaTipoUsuarioSesion() == 1 || ( isset($isFromPersonal) == true )) { // solo usurios del c4 y superadministrador?>
                 <li class="nav-item">
                     <a class="nav-link" id="Identificacion-tab" data-toggle="tab" href="#Identificacion" role="tab" aria-controls="Identificacion" aria-selected="false" data-finish='false'>Identificación</a>
                 </li>
@@ -41,7 +40,7 @@
         
         <?php if ( isset($isFromPersonal) == false) {
             $this->session->set_flashdata('isFromPersonal',false);?>
-        <div class="row mt-2 mr-2">
+        <div class="row mt-2 mr-2 d-none modeificarBtnSection">
             <div class="col-md-12 text-right">
                 <button class="btn btn-primary btn-lg btnEdit">Modificar</button>
             </div>
@@ -66,8 +65,7 @@
                 <?php echo $this->load->view('Solicitud/tabsVer/Capacitacion/contenidoCapacitacion',null,TRUE) ?>
             </div>
         </div>
-        <?php //if (verificaPermiso(15) == true) 
-        { ?>
+        <?php if (verificaTipoUsuarioSesion() == 1) { // solo usurios del c4 y superadministrador?>
         <div class="tab-pane fade" id="Identificacion" role="tabpanel" aria-labelledby="Tab3-tab">
             <?php echo $this->load->view('Solicitud/tabsVer/Identificacion/mnuTabIdentificacion',null,TRUE) ?>
             <div class="tab-content">
@@ -103,6 +101,8 @@
 
 <script>
     var id = "<?php echo isset($id) ? $id : ''; ?>";    
+    var tipoUsuario = "<?php echo $this->session->userdata(SESSIONVAR)['idTipoUsuario']; ?>",
+        tUsr = "<?php echo verificaTipoUsuarioSesion(); ?>";
     $(function() {
         objViewVer.init();
     });
