@@ -18,18 +18,29 @@ class SOLICITUD_model extends MY_Model
   public function get(){
     $this->select('FOLIO,NOMBRE,PATERNO,MATERNO,FECHA_REGISTRO,TIPO_OPERACION,DESCRIPCION,ESTATUS,DESCRIPCION_ESTATUS,ID_DEPENDENCIA,NOMBRE_DPCIA');
     
+die(var_dump($this->session->userdata(SESSIONVAR)));
+
     if (verificaTipoUsuarioSesion() == 1){ // usuario super admin
       
+      $this->where('tipo_operacion', 'AS'); // tipo de movimiento AS      
       $this->where('ESTATUS', '7'); // mostrar solo solicitudes que están en estatus concluida
+
+      $list = $this->response_list();
+
+      //TODO: agregar filtro "Las solicitudes creadas por el usuario que pertenece al C4 o sea SuperAdministrador deberán mostrarse en el listado aunque su estatus sea PENDIENTE."
+
 
     } else {
       
-      $this->where('ID_DEPENDENCIA', $this->session->userdata(SESSIONVAR)['ID_ADSCRIPCION']);
-      $this->where('tipo_operacion', 'AS');
+      $this->where('tipo_operacion', 'AS'); // tipo de movimiento AS
+      $this->where('ID_DEPENDENCIA', $this->session->userdata(SESSIONVAR)['ID_ADSCRIPCION']); // de su dependencia
+      $this->where('ESTATUS', '6'); // mostrar solo solicitudes que están en estatus pendiente
+
+      $list = $this->response_list();
 
     }
 
-    return $this->response_list();
+    return $list;
   }
 
   public function eliminarSolicitud($model){
@@ -233,31 +244,40 @@ class SOLICITUD_model extends MY_Model
 
   public function addDatosPersonales($model){
 
+    $model['pCURP_USR'] = $this->session->userdata(SESSIONVAR)['CURP'];
+
     $this->arrayToPost($model);
     $this->load->library('form_validation');
     $this->form_validation->set_rules('pTIPO_OPERACION', 'Tipo de movimiento', 'trim|required|max_length[3]');
-    $this->form_validation->set_rules('pID_PAIS_NAC', 'País de nacimiento', 'trim|required|numeric|max_length[10]');
-    $this->form_validation->set_rules('pNOMBRE_DATOS_PERSONALES', 'Nombre', 'trim|required|max_length[40]');
-    $this->form_validation->set_rules('pPATERNO_DATOS_PERSONALES', 'Apellido paterno', 'trim|required|max_length[40]');
-    $this->form_validation->set_rules('pMATERNO_DATOS_PERSONALES', 'Apellido materno', 'max_length[40]');
-    $this->form_validation->set_rules('pID_ENTIDAD_NAC', 'Estado de nacimiento', 'trim|required|numeric');
-    $this->form_validation->set_rules('pID_MUNICIPIO_NAC', 'Municipio de nacimiento', 'trim|required|numeric');
-    $this->form_validation->set_rules('pID_ESTADO_CIVIL', 'Estado civil', 'trim|required|numeric');
-    $this->form_validation->set_rules('pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES', 'Fecha de nacimiento', 'trim|required');
-    $this->form_validation->set_rules('pSEXO_DATOS_PERSONALES', 'Sexo', 'trim|required|max_length[1]');
-    $this->form_validation->set_rules('pCURP', 'CURP', 'trim|required|max_length[20]');
-    $this->form_validation->set_rules('pRFC', 'pRFC_DOMICILIO', 'max_length[20]');
-    $this->form_validation->set_rules('pCREDENCIAL_ELECTOR', 'Clave de elector', 'trim|max_length[30]');
-    $this->form_validation->set_rules('pCARTILLA_SMN', 'Cartilla del SMN', 'trim|max_length[20]');
-    $this->form_validation->set_rules('pLICENCIA_DATOS_PERSONALES', 'Licencia de conducir', 'trim|max_length[20]');
-    $this->form_validation->set_rules('pPASAPORTE', 'Pasaporte', 'trim|max_length[20]');
-    $this->form_validation->set_rules('pMODO_NACIONALIDAD', 'Modo de nacionalidad', 'trim|required|numeric');
-    $this->form_validation->set_rules('pID_NACIONALIDAD', 'Nacionalidad', 'trim|required|numeric');
-    //$this->form_validation->set_rules('pNIDEPERSON', '', 'numeric'); //envial NULL
-    $this->form_validation->set_rules('pLICENCIA_VIG', 'Vigencia de licencia', 'trim');
-    $this->form_validation->set_rules('pCIUDAD_NAC_DATOS_PERSONALES', 'Descripción ciudad de nacimiento', 'trim|required|max_length[50]');
-    $this->form_validation->set_rules('pFECHA_NACIONALIDAD', 'Fecha de nacionalidad', 'trim');
-    $this->form_validation->set_rules('pCUIP', 'CUIP', 'trim|max_length[50]');
+
+    $allValidateDatosPersonales = array_key_exists('allValidateDatosPersonales', $model) ? $model['allValidateDatosPersonales'] : 'true';
+
+    if ( $allValidateDatosPersonales == 'true' ) {
+
+      $this->form_validation->set_rules('pID_PAIS_NAC', 'País de nacimiento', 'trim|required|numeric|max_length[10]');
+      $this->form_validation->set_rules('pNOMBRE_DATOS_PERSONALES', 'Nombre', 'trim|required|max_length[40]');
+      $this->form_validation->set_rules('pPATERNO_DATOS_PERSONALES', 'Apellido paterno', 'trim|required|max_length[40]');
+      $this->form_validation->set_rules('pMATERNO_DATOS_PERSONALES', 'Apellido materno', 'max_length[40]');
+      $this->form_validation->set_rules('pID_ENTIDAD_NAC', 'Estado de nacimiento', 'trim|required|numeric');
+      $this->form_validation->set_rules('pID_MUNICIPIO_NAC', 'Municipio de nacimiento', 'trim|required|numeric');
+      $this->form_validation->set_rules('pID_ESTADO_CIVIL', 'Estado civil', 'trim|required|numeric');
+      $this->form_validation->set_rules('pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES', 'Fecha de nacimiento', 'trim|required');
+      $this->form_validation->set_rules('pSEXO_DATOS_PERSONALES', 'Sexo', 'trim|required|max_length[1]');
+      $this->form_validation->set_rules('pCURP', 'CURP', 'trim|required|max_length[20]');
+      $this->form_validation->set_rules('pRFC', 'pRFC_DOMICILIO', 'max_length[20]');
+      $this->form_validation->set_rules('pCREDENCIAL_ELECTOR', 'Clave de elector', 'trim|max_length[30]');
+      $this->form_validation->set_rules('pCARTILLA_SMN', 'Cartilla del SMN', 'trim|max_length[20]');
+      $this->form_validation->set_rules('pLICENCIA_DATOS_PERSONALES', 'Licencia de conducir', 'trim|max_length[20]');
+      $this->form_validation->set_rules('pPASAPORTE', 'Pasaporte', 'trim|max_length[20]');
+      $this->form_validation->set_rules('pMODO_NACIONALIDAD', 'Modo de nacionalidad', 'trim|required|numeric');
+      $this->form_validation->set_rules('pID_NACIONALIDAD', 'Nacionalidad', 'trim|required|numeric');
+      //$this->form_validation->set_rules('pNIDEPERSON', '', 'numeric'); //envial NULL
+      $this->form_validation->set_rules('pLICENCIA_VIG', 'Vigencia de licencia', 'trim');
+      $this->form_validation->set_rules('pCIUDAD_NAC_DATOS_PERSONALES', 'Descripción ciudad de nacimiento', 'trim|required|max_length[50]');
+      $this->form_validation->set_rules('pFECHA_NACIONALIDAD', 'Fecha de nacionalidad', 'trim');
+      $this->form_validation->set_rules('pCUIP', 'CUIP', 'trim|max_length[50]');
+
+    }
 
     if ($this->form_validation->run() === true) {
 
@@ -287,11 +307,14 @@ class SOLICITUD_model extends MY_Model
       $this->addParam('pCUIP','pCUIP','N');
       $this->addParam('pCIB',null,'');
       $this->addParam('pMotivoCIB',null,'');
+      $this->addParam('pCURP_USR','pCURP_USR','N');
+      
 
       $this->iniParam('pID_ALTERNA','numeric');
       $this->iniParam('txtError','varchar','250');
       $this->iniParam('msg','varchar','80');
       $this->iniParam('tranEstatus','int');
+
       $build = $this->build_query();
       $response = $this->query_multi($build);
       

@@ -822,6 +822,9 @@ var fillData = {
 
                     fillData.datosGenerales.rules.disabledComponents = $array;
 
+                    $("#Datos_personales_form .btnGuardarSection").removeAttr('offEvent');
+
+                    $('#Datos_personales_form').append('<input type="hidden" name="allValidateDatosPersonales" id="allValidateDatosPersonales" value="false" />');
                 }
 
             }
@@ -831,22 +834,12 @@ var fillData = {
             });
             $('*[offEvent="true"]').off('click').addClass('d-none');
 
-            setInterval(function(){  
-                fillData.datosGenerales.rules.disabledComponents.forEach( function(item) {
-                    $("#" + item).prop("disabled", true);    
-                });
-                
-                $('*[offEvent="true"]').off('click').addClass('d-none');
-            }, 100);
+            intervalRulesDatosPersonales(true);
 
             //AutoFill
             $.each(data,function(key,value){
                 mainFormActions.insertValueInSelect($('#'+ key),value);
             });
-
-
-
-
 
             //Special
             //DATOS GENERALES - DATOS PERSONALES
@@ -1667,4 +1660,25 @@ var fillData = {
 function refreshTable(e,self){
     e.preventDefault();
     eval($(self).data('call'));
+}
+
+var _intervalRulesDatosPersonales = null;
+function intervalRulesDatosPersonales( $make = true) {
+
+    if ($make) {
+
+        _intervalRulesDatosPersonales = setInterval(function(){  
+            fillData.datosGenerales.rules.disabledComponents.forEach( function(item) {
+                $("#" + item).prop("disabled", true);    
+            });
+            
+            $('*[offEvent="true"]').off('click').addClass('d-none');
+        }, 100);        
+
+    } else {
+
+        clearInterval(_intervalRulesDatosPersonales);
+
+    }
+
 }

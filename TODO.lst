@@ -11,7 +11,6 @@
 [
     - Sustituir los campos del modelo [ function altaElemento ]
 ]
-//TODO: Xmal - Implementar la replicación [ assets\js\views\solicitud\index.js ]
 
 
 //BLOQUE DE CÓDIGO PARA DECODIFICAR IMAGEN GUARDADA EN BD Y ESCRIBIRLA EN ARCHIVO
@@ -20,3 +19,5 @@
  $binary = prepareImageString($binHex);
  file_put_contents('PruebaDeImagenSubidaABD.jpg', $binary); 
 */
+
+//TODO: agregar filtro "Las solicitudes creadas por el usuario que pertenece al C4 o sea SuperAdministrador deberán mostrarse en el listado aunque su estatus sea PENDIENTE." [ application\models\SOLICITUD_model.php ]

@@ -144,7 +144,14 @@ $(document).ready(function () {
         }
     }
 
-    $.validator.setDefaults({
+    setValidatorDefaults();
+
+    $('[data-toggle="tooltip"]').tooltip();
+
+});
+
+function setValidatorDefaults($options){
+    $defaults = {
         ignore: [':disabled'],
         errorClass: "text-danger",
         debug: true,
@@ -156,8 +163,15 @@ $(document).ready(function () {
                 error.insertAfter(element);
             }
         }
-    });   
+    };
 
-    $('[data-toggle="tooltip"]').tooltip();
+    // if($options) {
+    //     if ( $options.hasOwnProperty("ignore") )
+    //         $defaults.ignore = $options.ignore;
+    // }
 
-});
+    $extend = $.extend($defaults, $options);
+
+    $.validator.setDefaults($extend);   
+
+}

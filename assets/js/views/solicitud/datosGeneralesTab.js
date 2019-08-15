@@ -246,25 +246,42 @@ var objViewDatosGenerales = {
             },
             datosGenerales : {
                 guardarDatosPersonales : function(e, from, tabRef){
-                    e.preventDefault();                    
+                    e.preventDefault();
 
-                    objViewDatosGenerales.actions.ajax.generateRequest($(this),base_url + 'Solicitud/ajaxSaveDatosGeneralesDatosPersonales','', tabRef, false , function(data){
-                        
-                        mainTabMenu.var.pID_ALTERNA = data.results.data.pID_ALTERNA ? data.results.data.pID_ALTERNA : null;
-
-                        if (mainTabMenu.var.pID_ALTERNA == null){
-                            Swal.fire({
-                                type: 'error',                        
-                                title: 'Error',
-                                html: "No se recuperó el ID ALTERNA",
-                                allowOutsideClick : false,
-                            }).then(function(result){
-                                window.location.href = base_url + 'Solicitud';
-                            });
-                            return null;
-                        }
+                    intervalRulesDatosPersonales(false);
+                    fillData.datosGenerales.rules.disabledComponents.forEach( function(item) {
+                        $("#" + item).prop("disabled", false);
                     });
 
+                    $this = $(this);
+
+                    setTimeout(function() {
+                        
+                        objViewDatosGenerales.actions.ajax.generateRequest($this,base_url + 'Solicitud/ajaxSaveDatosGeneralesDatosPersonales','', tabRef, false , function(data){
+                            
+                            $('#allValidateDatosPersonales').remove();
+                            fillData.datosGenerales.rules.disabledComponents.forEach( function(item) {
+                                $("#" + item).prop("disabled", true);
+                            });
+                            intervalRulesDatosPersonales(false);
+
+                            mainTabMenu.var.pID_ALTERNA = data.results.data.pID_ALTERNA ? data.results.data.pID_ALTERNA : null;
+
+                            if (mainTabMenu.var.pID_ALTERNA == null){
+                                Swal.fire({
+                                    type: 'error',                        
+                                    title: 'Error',
+                                    html: "No se recuperó el ID ALTERNA",
+                                    allowOutsideClick : false,
+                                }).then(function(result){
+                                    window.location.href = base_url + 'Solicitud';
+                                });
+                                return null;
+                            }
+                        });
+
+                    }, 500);
+                    
                 },
                 generarCIB : function(e, from, tabRef){
 
