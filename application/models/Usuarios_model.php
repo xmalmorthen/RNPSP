@@ -198,9 +198,9 @@ class Usuarios_model extends MY_Model
     
     $response = [];
     try {
-      $exec = "DECLARE	@tipoUsr int
-              EXEC [sp_getTipoUsr] @pCURP = N?,@tipoUsr = @tipoUsr OUTPUT
-              SELECT	@tipoUsr as N'tipoUsr'";
+      $exec = "DECLARE	@tipoUsr int, @id_dep int, @id_inst int
+              EXEC [sp_getTipoUsr] @pCURP = N?,@tipoUsr = @tipoUsr OUTPUT, @id_dep = @id_dep OUTPUT, @id_inst = @id_inst OUTPUT
+              SELECT	@tipoUsr as N'tipoUsr',@id_dep as N'id_dep',@id_inst as N'id_inst'";
 
       if (!$CURP)
         $CURP = $this->session->userdata(SESSIONVAR)['CURP'];

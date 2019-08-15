@@ -18,16 +18,20 @@ class SOLICITUD_model extends MY_Model
   public function get(){
     $this->select('FOLIO,NOMBRE,PATERNO,MATERNO,FECHA_REGISTRO,TIPO_OPERACION,DESCRIPCION,ESTATUS,DESCRIPCION_ESTATUS,ID_DEPENDENCIA,NOMBRE_DPCIA');
     
-die(var_dump($this->session->userdata(SESSIONVAR)));
+//die(var_dump($this->session->userdata(SESSIONVAR)));
 
     if (verificaTipoUsuarioSesion() == 1){ // usuario super admin
       
       $this->where('tipo_operacion', 'AS'); // tipo de movimiento AS      
-      $this->where('ESTATUS', '7'); // mostrar solo solicitudes que están en estatus concluida
+      $this->where('ESTATUS', '7'); // mostrar solo solicitudes que están en estatus concluida      
+      $this->where('ID_DEPENDENCIA is null', NULL, FALSE); // mostrar solo solicitudes que tengan dependencia registrada
 
       $list = $this->response_list();
 
       //TODO: agregar filtro "Las solicitudes creadas por el usuario que pertenece al C4 o sea SuperAdministrador deberán mostrarse en el listado aunque su estatus sea PENDIENTE."
+      
+      // $this->where('DpciaUsr', '999'); // mostrar solo solicitudes que tengan dependencia de usuario 999 Super Admin
+      // $this->where('ESTATUS', '6'); // mostrar solo solicitudes que están en estatus pendiente
 
 
     } else {

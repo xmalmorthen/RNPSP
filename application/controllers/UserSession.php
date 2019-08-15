@@ -70,6 +70,8 @@ class UserSession extends CI_Controller
           try {
             $tu = $this->Usuarios_model->sp_getTipoUsr($user['CURP']);
             $user['tipoUsuario'] = $tu['data']->tipoUsr;
+            $user['id_depUsr'] = $tu['data']->id_dep;
+            $user['id_adsUsr'] = $tu['data']->id_inst;
           } catch (Exception $e) {            
             $response['status'] = false;
             $response['message'] = array("No se ha podido obtener el tipo de usuario");
