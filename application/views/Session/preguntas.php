@@ -23,8 +23,7 @@
   </div>
 
 <!-- JS -->
-<script>
-  
+<script>  
   $(function() {
     $('#formContenedorVeri').submit(function(e){
       e.preventDefault();

@@ -77,8 +77,7 @@ class GetChecker {
     * Descripción: función privada para la lógica de ruteo cuando se requiera sesión    
     */
     private function _requiresession(){        
-        $this->_checkPrivilege();
-        
+        $this->_checkPrivilege();        
     }
 
     /*
@@ -107,9 +106,18 @@ class GetChecker {
                 echo json_encode( $responseModel );
             }
             exit();
-        }
-
+        } 
+        
         $CI =& get_instance();
+
+        // si es requerido contestar las preguntas de primer logueo y el controlador es diferente a preguntas, lo vuelve a enviar al registro de preguntas
+        $contestarPreguntas = isset($_SESSION['contestarPreguntas']) ? $_SESSION['contestarPreguntas'] : false;
+        if($contestarPreguntas === true && strtolower(_CONTROLLER) != 'preguntas'){
+
+            $redirectURI = $CFG->site_url('preguntas') . "?m=true";
+            header('Location: ' . $redirectURI , TRUE,303);
+
+        }
 
         $CI->load->model('Usuarios_model');
         $tieneTabs = $CI->Usuarios_model->PermisosTieneTabs();

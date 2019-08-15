@@ -42,7 +42,10 @@
                 'pregunta' => $preguntas[$numPregunta],
                 'idPregunta' => $numPregunta
             );
-    
+
+            if ( $this->input->get('m') )
+                $this->session->set_flashdata('alertMsg', 'Antes de continuar debe contestar las preguntas de verificación');
+
             $this->load->view('Preguntas/preguntasVerificacion',$data);
         }
 
@@ -91,8 +94,9 @@
                     'contrasenaModificada' => 0
                 );
                 $this->db->update('cat_Usuarios',$dataUpdate);
-
                 
+                $this->session->set_userdata('contestarPreguntas',false);
+
             } else {
                 $dataResponse['status'] = 'error';
                 $dataResponse['message'] = $this->form_validation->error_array();    

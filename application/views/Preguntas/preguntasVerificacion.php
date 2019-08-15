@@ -162,10 +162,17 @@
             <?php } ?>
 
 <script type="text/javascript">
-	$("#preguntaUnica").on("click", function (e) {
-		e.preventDefault();
-		$("#modalPregunta").modal("show");
+	var alertMsg = "<?php echo $this->session->flashdata('alertMsg'); ?>";
+	if (alertMsg){
+      Swal.fire({ type: 'warning', title: 'Atención', html: alertMsg });
+    }
 
+	$(function() {
+		$("#preguntaUnica").on("click", function (e) {
+			e.preventDefault();
+			$("#modalPregunta").modal("show");
+
+		});
 	});
 
 </script>

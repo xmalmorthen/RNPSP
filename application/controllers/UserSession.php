@@ -121,9 +121,11 @@ class UserSession extends CI_Controller
           # PRIMERO VERIFICA SI TIENE EXISTE LAS RESPUESTAS A LAS PREGUNTAS
           # SEGUNGO VERIFICA SI NO HIZO UN CAMBIO DE CONTRASEÑA
           $cambioContrasena =  ($responseDB == 0)? 1: $responsesSel['contrasenaModificada'];
-
+        
           if($cambioContrasena == 1){
             $this->session->set_userdata('active_session',1);
+
+            $this->session->set_userdata('contestarPreguntas',true);
           }
 
           $numPregunta = rand(1, 10);

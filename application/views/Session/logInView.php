@@ -186,7 +186,7 @@
 								Swal.fire({ type: 'error', title: 'Error', html: data.message ? data.message : 'Error al intentar iniciar sesión, favor de intentarlo.' });
 							}
 						}).fail(function (err) {
-							
+							$.LoadingOverlay("hide",true);
 							var msg = err.responseText;
 							Swal.fire({ type: 'error', title: 'Error', html: msg });
 						}).always(function () {
@@ -284,7 +284,7 @@
 				}
 			},
 			complete: function () {
-				$.LoadingOverlay("hide",true);
+				//$.LoadingOverlay("hide",true);
 			}
 		});
 
