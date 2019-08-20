@@ -99,17 +99,18 @@ class SOLICITUD_model extends MY_Model
   
         if ($responseOutput['tranEstatus'] == 1) {
 
-          if ($responseSelect['TIPO_OPERACION'] == 'CE'){
+          // if ($responseSelect['TIPO_OPERACION'] == 'CE'){
 
-            $this->response['status'] = 2;
-            $this->response['message'] = 'CURP ya replicada';
-          } else {
+          //   $this->response['status'] = 2;
+          //   $this->response['message'] = 'CURP ya replicada';
+
+          // } else {
 
             $this->response['status'] = $responseOutput['tranEstatus'];
             $this->response['message'] = $responseOutput['msg'];
             $this->response['data'] = $this->try_result($responseSelect);  
 
-          }
+          // }
 
         } else {
 
