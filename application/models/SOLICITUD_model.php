@@ -22,7 +22,7 @@ class SOLICITUD_model extends MY_Model
 
     if (verificaTipoUsuarioSesion() == 1){ // usuario super admin
       
-      $where = "(tipo_operacion = 'as' and estatus = 7 and tipousr != 1) or (estatus = 6 and tipousr = 1)";
+      $where = "(tipo_operacion = 'as' and estatus = 7 and tipousr != 1) or (estatus in (6,7) and tipousr = 1)";
 
       $this->where($where,NULL,FALSE);
 

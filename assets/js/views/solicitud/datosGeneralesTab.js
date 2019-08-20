@@ -248,6 +248,8 @@ var objViewDatosGenerales = {
                 guardarDatosPersonales : function(e, from, tabRef){
                     e.preventDefault();
 
+                    $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
                     intervalRulesDatosPersonales(false);
                     fillData.datosGenerales.rules.disabledComponents.forEach( function(item) {
                         $("#" + item).prop("disabled", false);
@@ -278,6 +280,14 @@ var objViewDatosGenerales = {
                                 });
                                 return null;
                             }
+                        }, function(){
+                            
+                            $('#allValidateDatosPersonales').remove();
+                            fillData.datosGenerales.rules.disabledComponents.forEach( function(item) {
+                                $("#" + item).prop("disabled", true);
+                            });
+                            intervalRulesDatosPersonales(false);
+
                         });
 
                     }, 500);
@@ -541,7 +551,7 @@ var objViewDatosGenerales = {
             $("#" + eTab.relatedTarget.id).trigger('click');
         },
         ajax : {
-            callResponseValidations : function(form, data, from, tabRef, resetForm, callback){
+            callResponseValidations : function(form, data, from, tabRef, resetForm, callback,errCallback){
                 try{
                     if (!data) 
                         throw new Error('Respuesta inesperada, favor de intentarlo de nuevo.');
@@ -578,10 +588,10 @@ var objViewDatosGenerales = {
                     
                     $.LoadingOverlay("hide",true);
                 }catch(err) {
-                    objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);
+                    objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef,errCallback);
                 }
             },
-            throwError: function(err,form,from,tabRef){
+            throwError: function(err,form,from,tabRef,errCallback){
                 $.LoadingOverlay("hide",true);
                 
                 form.setAlert({
@@ -602,8 +612,10 @@ var objViewDatosGenerales = {
                 }
                 dynTabs.markTab( dynTabs.getCurrentTab($('#myTabContent')).linkRef,'<span class="text-danger tabMark mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
                 
+                if (errCallback)
+                    errCallback();
             },
-            generateRequest: function($this,callUrl,from,tabRef, resetForm, callback){                
+            generateRequest: function($this,callUrl,from,tabRef, resetForm, callback, errCallback){                
                 var form = $this.parents('form:first');
                 form.closeAlert({alertType : 'alert-danger'});
                 
@@ -626,15 +638,15 @@ var objViewDatosGenerales = {
                     
                     $.post(callUrl,model,
                     function (data) {  
-                        objViewDatosGenerales.actions.ajax.callResponseValidations(form,data, from, tabRef, resetForm, callback);
+                        objViewDatosGenerales.actions.ajax.callResponseValidations(form,data, from, tabRef, resetForm, callback,errCallback);
                     }).fail(function (err) {
-                        objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                            
+                        objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef,errCallback);                            
                     }).always(function () {                        
                         MyCookie.session.reset();
                     });
 
                 }catch(err) {
-                    objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef);                        
+                    objViewDatosGenerales.actions.ajax.throwError(err,form,from,tabRef,errCallback);                        
                 }
             },
             populateCmbOperacion: function(){
