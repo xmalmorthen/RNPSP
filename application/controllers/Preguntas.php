@@ -138,7 +138,7 @@
                 // $this->db->where('Pregunta'.$this->input->post('idPreguntaSeguridad'),$this->input->post('preguntaSeguridad'));
                 // $this->db->where(array($idPregunta => $respuestaPreg));
                 $DB1->where(array('id_Usuario'=>$idUsuario));
-                $DB1->like($idPregunta,$this->input->post('preguntaSeguridad'));
+                $DB1->like($idPregunta,$this->input->post('preguntaSeguridad'),'none');
                 $DB1->order_by('FechaRegistro','desc');
                 //utils::pre($this->db->last_query());
                 $responseDB = $DB1->count_all_results();
