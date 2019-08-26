@@ -250,10 +250,12 @@ var objViewDatosGenerales = {
 
                     $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
-                    intervalRulesDatosPersonales(false);
-                    fillData.datosGenerales.rules.disabledComponents.forEach( function(item) {
-                        $("#" + item).prop("disabled", false);
-                    });
+                    if (mainTabMenu.var.nuevoRegistro == false) {
+                        intervalRulesDatosPersonales(false);
+                        fillData.datosGenerales.rules.disabledComponents.forEach( function(item) {
+                            $("#" + item).prop("disabled", false);
+                        });
+                    }
 
                     $this = $(this);
 
@@ -262,10 +264,13 @@ var objViewDatosGenerales = {
                         objViewDatosGenerales.actions.ajax.generateRequest($this,base_url + 'Solicitud/ajaxSaveDatosGeneralesDatosPersonales','', tabRef, false , function(data){
                             
                             $('#allValidateDatosPersonales').remove();
-                            fillData.datosGenerales.rules.disabledComponents.forEach( function(item) {
-                                $("#" + item).prop("disabled", true);
-                            });
-                            intervalRulesDatosPersonales(false);
+                            
+                            if (mainTabMenu.var.nuevoRegistro == false) {
+                                fillData.datosGenerales.rules.disabledComponents.forEach( function(item) {
+                                    $("#" + item).prop("disabled", true);
+                                });
+                                intervalRulesDatosPersonales();
+                            }
 
                             mainTabMenu.var.pID_ALTERNA = data.results.data.pID_ALTERNA ? data.results.data.pID_ALTERNA : null;
 
@@ -283,10 +288,15 @@ var objViewDatosGenerales = {
                         }, function(){
                             
                             $('#allValidateDatosPersonales').remove();
-                            fillData.datosGenerales.rules.disabledComponents.forEach( function(item) {
-                                $("#" + item).prop("disabled", true);
-                            });
-                            intervalRulesDatosPersonales(false);
+                            
+                            if (mainTabMenu.var.nuevoRegistro == false) {
+
+                                fillData.datosGenerales.rules.disabledComponents.forEach( function(item) {
+                                    $("#" + item).prop("disabled", true);
+                                });
+                                intervalRulesDatosPersonales();
+
+                            }
 
                         });
 
