@@ -19,8 +19,9 @@ class SOLICITUD_model extends MY_Model
     $this->select('FOLIO,NOMBRE,PATERNO,MATERNO,FECHA_REGISTRO,TIPO_OPERACION,DESCRIPCION,ESTATUS,DESCRIPCION_ESTATUS,ID_DEPENDENCIA,NOMBRE_DPCIA');
     
 //die(var_dump($this->session->userdata(SESSIONVAR)));
+    $_verificaTipoUsuarioSesion = verificaTipoUsuarioSesion();
 
-    if (verificaTipoUsuarioSesion() == 1){ // usuario super admin
+    if ($_verificaTipoUsuarioSesion == 1){ // usuario super admin
       
       $where = "(tipo_operacion = 'as' and estatus = 7 and tipousr != 1) or (estatus in (6,7) and tipousr = 1)";
 
@@ -29,10 +30,13 @@ class SOLICITUD_model extends MY_Model
       $list = $this->response_list();
 
     } else {
-      
-      $this->where('tipo_operacion', 'AS'); // tipo de movimiento AS
-      $this->where('ID_DEPENDENCIA', $this->session->userdata(SESSIONVAR)['ID_ADSCRIPCION']); // de su dependencia
-      $this->where('ESTATUS', '6'); // mostrar solo solicitudes que están en estatus pendiente
+
+      $where = "tipo_operacion = 'as' and ID_DEPENDENCIA = " . $this->session->userdata(SESSIONVAR)['ID_ADSCRIPCION'] . " and estatus in (6,7)";
+
+      // $this->where('tipo_operacion', 'AS'); // tipo de movimiento AS
+      // $this->where('ID_DEPENDENCIA', $this->session->userdata(SESSIONVAR)['ID_ADSCRIPCION']); // de su dependencia
+      // $this->where('ESTATUS', '6'); // mostrar solo solicitudes que están en estatus pendiente
+      // $this->or_where('ESTATUS', '7'); // mostrar solo solicitudes que están en estatus concluida
 
       $list = $this->response_list();
 
