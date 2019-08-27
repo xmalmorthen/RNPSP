@@ -33,7 +33,7 @@ validarVozFnc = function(e){
                     toIgnore = [ 
                         { idPestania: 1, idFicha: 4}, // datos generales - referencias
                         { idPestania: 1, idFicha: 5}, // datos generales - socioeconónico / dependientes económnicos
-                        { idPestania: 2, idFicha: 2}, // laboral - Empleos diversos
+                        //{ idPestania: 2, idFicha: 2}, // laboral - Empleos diversos
                         { idPestania: 2, idFicha: 3}, // laboral - Actitudes hacia el empleo
                         { idPestania: 2, idFicha: 4}, // laboral - Comisiones
                         { idPestania: 3, idFicha: 1}, // capacitación - idiomnas y/o dialecto
@@ -48,33 +48,37 @@ validarVozFnc = function(e){
                         
                         if ( !toIgnore.find( qry => qry.idPestania == item.idPestania && qry.idFicha == item.idFicha ) ) {
                             
+                            selectorPestania = '';
+                            switch (item.idPestania) {
+                                case 1:
+                                    selectorPestania = '#datosGenerales';
+                                break;
+                                case 2:
+                                    selectorPestania = '#Laboral';
+                                break;
+                                case 3:
+                                    selectorPestania = '#Capacitacion';
+                                break;
+                                case 4:
+                                    selectorPestania = '#Identificacion';
+                                break;
+                            
+                            }
+
+                            objPestania = $('#mainContainerTab ' + selectorPestania + '-tab');
+
                             if ( item.tranEstatus == 0 ) {
                                 
-                                console.log(item);
                                 valid = false;
 
-                                //TODO - Xmal - MMarcar pestaña y ficha que contengan error
-                                selectorPestania = '';
-                                switch (item.idPestania) {
-                                    case 1:
-                                        selectorPestania = '#datosGenerales';
-                                    break;
-                                    case 2:
-                                        selectorPestania = '#Laboral';
-                                    break;
-                                    case 3:
-                                        selectorPestania = '#Capacitacion';
-                                    break;
-                                    case 4:
-                                        selectorPestania = '#Identificacion';
-                                    break;
-                                
-                                }
-                                objPestania = $('#mainContainerTab ' + selectorPestania + '-tab')
                                 dynTabs.markTab( objPestania,'<span class="text-danger tabMark errValidSolicitud mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
                                 
                                 objFicha = $('#myTabContent ' + selectorPestania + '.tab-pane .nav.nav-tabs li.nav-item:nth-child(' + item.idFicha + ') a.nav-link');
                                 dynTabs.markTab( objFicha,'<span class="text-danger tabMark errValidSolicitud mr-2"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>');
+
+                            } else {
+                                
+                                dynTabs.unMarkTab( objPestania );
 
                             }
 
