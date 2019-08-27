@@ -77,6 +77,7 @@
     <div class="col-md-12">
         <button class="btn btn-default m-1 d-none" id="Imprimir">Imprimir</button>
 		<?php if ( $_SESSION[SESSIONVAR]['ID_ADSCRIPCION'] == 5 ) { // solo usuarios del c4 ?>
+		<button class="btn btn-default m-1" id="Validar">Validar</button>
         <button class="btn btn-default m-1" id="Replicar">Replicar</button>
 		<?php } ?>
     </div>
@@ -579,9 +580,11 @@
 <script src="<?php echo base_url("assets/vendor/datatable/dataTables.responsive.min.js"); ?>"></script>
 <script src="<?php echo base_url("assets/vendor/datatable/responsive.bootstrap4.min.js"); ?>"></script>
 <script src="<?php echo base_url('assets/js/utils/catalogs.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/utils/groupBy.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/views/solicitud/index.js') ?>"></script>
 <script>
 	var replicationResult = '<?php echo $replicationResult; ?>';
+	var validationResult = '<?php echo $validationResult; ?>';
 	
     $(function() {
         objViewIndex.init();
@@ -590,6 +593,9 @@
 
 		if (replicationResult)
 			objViewIndex.actions.showReplicationResult(replicationResult);
+
+		if (validationResult)
+			objViewIndex.actions.showValidationResult(validationResult);
 
 	});
 	

@@ -12,7 +12,6 @@
     - Sustituir los campos del modelo [ function altaElemento ]
 ]
 
-
 //BLOQUE DE CÓDIGO PARA DECODIFICAR IMAGEN GUARDADA EN BD Y ESCRIBIRLA EN ARCHIVO
 /*
  $binHex = prepareImageDBString($binaryFile);

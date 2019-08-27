@@ -23,7 +23,7 @@ class SOLICITUD_model extends MY_Model
 
     if ($_verificaTipoUsuarioSesion == 1){ // usuario super admin
       
-      $where = "(tipo_operacion = 'as' and estatus = 7 and tipousr != 1) or (estatus in (6,7) and tipousr = 1)";
+      $where = "(tipo_operacion = 'as' and estatus = 7 and tipousr != 1) or (estatus in (6,7,8) and tipousr = 1)";
 
       $this->where($where,NULL,FALSE);
 
@@ -2189,6 +2189,25 @@ class SOLICITUD_model extends MY_Model
       }
     }
     return $this->response;
+  }
+
+  public function sp_validarRegistros($model = null){
+      $buid = "EXEC [sp_validarRegistros] @CAMPO = '" . $model['ids'] . "';";
+      $query = $this->db->query($buid);
+      $response = $this->query_list($query);
+      if($response === FALSE){
+        $this->response['status'] = 0;
+        $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
+      }else{
+        if(count($response) > 0){
+          $this->response['status'] = 1;
+          $this->response['data'] = $response;
+        }else{
+          $this->response['status'] = 0;
+          $this->response['message'] = 'No se encontraron resultados.';
+        }
+      }
+      return $this->response;
   }
 
   public function sp_enviarBUS($model = null){

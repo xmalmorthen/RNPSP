@@ -13,6 +13,7 @@ var objViewIndex = {
             Nuevo : null,
             Imprimir : null,
             Replicar : null,
+            Validar : null,
             Eliminar : null,
             cancelReplication : null
         },
@@ -38,6 +39,7 @@ var objViewIndex = {
         objViewIndex.vars.btns.Nuevo = $('#Nuevo');
         objViewIndex.vars.btns.Imprimir = $('#Imprimir');
         objViewIndex.vars.btns.Replicar = $('#Replicar');
+        objViewIndex.vars.btns.Validar = $('#Validar');
         objViewIndex.vars.checkbox.checkAll = $('#checkAll');
         objViewIndex.vars.btns.Eliminar = $("a[name='eliminarSolicitud']");
         objViewIndex.vars.btns.cancelReplication = $('#cancelReplication');
@@ -63,6 +65,7 @@ var objViewIndex = {
         objViewIndex.vars.btns.Nuevo.on('click',objViewIndex.events.click.Nuevo);
         objViewIndex.vars.btns.Imprimir.on('click',objViewIndex.events.click.Imprimir);
         objViewIndex.vars.btns.Replicar.on('click',objViewIndex.events.click.Replicar);
+        objViewIndex.vars.btns.Validar.on('click',objViewIndex.events.click.Validar);
         objViewIndex.vars.btns.Eliminar.on('click',objViewIndex.events.click.Eliminar);
         objViewIndex.vars.btns.cancelReplication.on('click',objViewIndex.events.click.cancelReplication);
         
@@ -180,6 +183,65 @@ var objViewIndex = {
                 }catch(err) {
 
                     $('#frmAlertSumaryMsg').html('<h5>Eror al replicar.</h5> <br/>' + (err.message ? err.message : err.statusText));
+                    $('#frmAlertSumary').removeClass('d-none');
+                    $.LoadingOverlay("hide",true);
+
+                }
+
+            },
+            Validar : function(e, from){
+                e.preventDefault();
+                e.stopPropagation();
+
+                if (!objViewIndex.actions.validSelectedsCheck())
+                    return null;                
+
+                try {
+                    
+                    $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+
+                    var ids = []
+                    $.each( objViewIndex.vars.objs.itemsCheckeds, function( key, value ) {
+                        ids.push($(value).data().idreg);
+                    });
+
+                    var model = 'ids=' + ids.join(',');
+                    model = {model : model};
+                    model[csrf.token_name] = csrf.hash;
+                    
+                    var callUrl = base_url + 'Solicitud/ajaxValidarList';
+
+                    $.post(callUrl,model,
+                    function (data) {
+
+                        if (data.results.status != 1) {
+
+                            $('#frmAlertSumaryMsg').html('<h5>Eror al validar.</h5> <br/>' + data.results.message);
+                            $('#frmAlertSumary').removeClass('d-none');
+                            
+                        } else {
+
+                            localStorage.setItem( btoa('validarSolicitudes') , btoa(JSON.stringify( data.results.data )));
+                            window.location.href = site_url + 'Solicitud?validationResult=' + btoa('validarSolicitudes');
+                            
+                        }
+
+                        
+                    }).fail(function (err) {
+                    
+                        $('#frmAlertSumaryMsg').html('<h5>Eror al validar.</h5> <br/>' + (err.message ? err.message : err.statusText));
+                        $('#frmAlertSumary').removeClass('d-none');
+                        $.LoadingOverlay("hide",true);
+
+                    }).always(function () {
+
+                        MyCookie.session.reset();
+
+                    });
+
+                }catch(err) {
+
+                    $('#frmAlertSumaryMsg').html('<h5>Eror al validar.</h5> <br/>' + (err.message ? err.message : err.statusText));
                     $('#frmAlertSumary').removeClass('d-none');
                     $.LoadingOverlay("hide",true);
 
@@ -312,6 +374,8 @@ var objViewIndex = {
                                     areValid = true;
                                 }
                             });
+
+                            errorList +="</ul>";
 
                             //TODO: Xmal - Quitar línea de código al implementar
                             areValid = true;
@@ -459,10 +523,12 @@ var objViewIndex = {
         setBadgetinButtons : function(badgetContent){            
             objViewIndex.vars.btns.Imprimir.html('Imprimir <span class="badge badge-success">' + badgetContent + ' registros </span>');
             objViewIndex.vars.btns.Replicar.html('Replicar <span class="badge badge-success">' + badgetContent + ' registros </span>');
+            objViewIndex.vars.btns.Validar.html('Validar <span class="badge badge-success">' + badgetContent + ' registros </span>');
         },
         deleteBadgetinButtons : function(badgetContent){            
             objViewIndex.vars.btns.Imprimir.html('Imprimir');
             objViewIndex.vars.btns.Replicar.html('Replicar');
+            objViewIndex.vars.btns.Validar.html('Validar');
         },
         validSelectedsCheck : function(){
             var returnResponse = false;
@@ -602,6 +668,8 @@ var objViewIndex = {
                 }
             });
 
+            errorList +="</ul>";
+
             if (solicitudesError > 0) {
                 $('#frmAlertSumaryMsg').html('<h5>Eror al procesar una o varias de las solicitudes.</h5> <br/><br/>' + errorList);
                 $('#frmAlertSumary').removeClass('d-none');
@@ -618,6 +686,84 @@ var objViewIndex = {
                 html: msg,
                 footer: solicitudesError > 0 ? 'Favor de revisar el sumario de errores' : ''
             });
+
+        },
+        showValidationResult : function(ref){
+
+            data = atob(localStorage.getItem(ref));
+
+            if (!data) 
+                return false;
+
+            localStorage.removeItem(ref);
+
+            data = JSON.parse(data);
+
+            areErrors = false;
+                            
+            groupByIdAlterna = groupBy('id_alterna');
+
+            var errorList = '';
+
+            cantidadSolicitudes = 0;
+            solicitudesError = 0;
+            solicitudesValidas = 0;
+
+            $.each(groupByIdAlterna(data), function( idxIdAlterna, itemIdAlterna ) {
+                
+                errorBlock = null;
+                errUlBlock = '<div><ul class="">';
+
+                $.each(itemIdAlterna, function( idx, item) {
+                    
+                    if ( errorBlock == null)
+                        errorBlock = '<fieldset><legend style="font-size: 1rem!Important;font-weight: bold!Important;">' + (item.nombre + ' ' + item.paterno +  ( item.materno ? ' ' + item.materno : '' )) + '</legend>';
+
+                    if (item.estatus != 1){
+                      
+                        errUlBlock += '<li class="">' + item.motivo + '</li>';
+                        areErrors = true;
+                        
+                    } 
+                    
+                });
+
+                errUlBlock +="</ul></div>";
+                errorBlock += errUlBlock + "</fieldset><hr>";
+
+                if (areErrors) {
+                    
+                    errorList += errorBlock;
+                    solicitudesError ++;
+
+                } else {
+
+                    solicitudesValidas ++;
+
+                }
+
+                cantidadSolicitudes++;
+
+            });
+
+
+            if (solicitudesError > 0) {
+                
+                $('#frmAlertSumaryMsg').html('<h5>Eror al procesar una o varias de las solicitudes.</h5><br/>' + errorList);
+                $('#frmAlertSumary').removeClass('d-none');
+
+            }
+
+            msg = 'Proceso de validación <strong class="text-success _display-4">concluido.</strong> <br/><br/>' +
+            'Solicitudes válidas <strong class="text-success _display-4">' + solicitudesValidas + '</strong>' + ', con error <strong class="text-danger _display-4">' + solicitudesError + '</strong> de <strong class="text-info _display-4">' + cantidadSolicitudes + '</strong> procesados a validación.' ;
+
+            Swal.fire({
+                type: 'success',
+                title: 'Replicación',
+                html: msg,
+                footer: solicitudesError > 0 ? 'Favor de revisar el sumario de errores' : ''
+            });
+
 
         }
     }

@@ -11,17 +11,17 @@
                 <div class="row">
                     <div class="col-md-4">
                         Complexión <!-- Se llena del catálogo CAT_COMPLEXION -->
-                        <select  class="form-control" id="pCOMPLEXION" name="pCOMPLEXION" data-error="#err_pCOMPLEXION" data-query='bEZXMktOeGpFZmUremJDelREbGU4QzcxQVYyTER5ZDl4aUwwdytRajFBWUlIRU9uS3RsQU1Obm11T2NjajZpYkFvVk9uMGswS3lhVlNMekFPcSt2UnFwTVRmUDY5YkduOU5WK2QwMCtNOFpDaGFTMWVwcVYyU1ROMGxaRytPcGQ='></select>
+                        <select  class="form-control" id="pCOMPLEXION" name="pCOMPLEXION" data-error="#err_pCOMPLEXION" data-query='bEZXMktOeGpFZmUremJDelREbGU4QzcxQVYyTER5ZDl4aUwwdytRajFBWUlIRU9uS3RsQU1Obm11T2NjajZpYkFvVk9uMGswS3lhVlNMekFPcSt2UnFwTVRmUDY5YkduOU5WK2QwMCtNOFpDaGFTMWVwcVYyU1ROMGxaRytPcGQ=' required></select>
                         <span id="err_pCOMPLEXION"></span>
                     </div>
                     <div class="col-md-4">
                         Color de piel <!-- Se llena del catálogo CAT_COLORPIEL -->
-                        <select  class="form-control" id="pCOLOR_PIEL" name="pCOLOR_PIEL" data-error="#err_pCOLOR_PIEL" data-query='ZGs3Y3l6UTRDaW1OY3FqbkxTR2lWV2xDakwwTmV2YW9HbklNMGlPNDRtb1B5d1NMUUhiQjZuU0t6QzRaNGhjdUhaeU14dmtDakJibEpDS2RZeWtFVW14NlVjanJKYXozM3dpZGZJM2RocElGNFpEQmZMaWdmZ0lHNzZtK0UrZHY='></select>
+                        <select  class="form-control" id="pCOLOR_PIEL" name="pCOLOR_PIEL" data-error="#err_pCOLOR_PIEL" data-query='ZGs3Y3l6UTRDaW1OY3FqbkxTR2lWV2xDakwwTmV2YW9HbklNMGlPNDRtb1B5d1NMUUhiQjZuU0t6QzRaNGhjdUhaeU14dmtDakJibEpDS2RZeWtFVW14NlVjanJKYXozM3dpZGZJM2RocElGNFpEQmZMaWdmZ0lHNzZtK0UrZHY=' required></select>
                         <span id="err_pCOLOR_PIEL"></span>
                     </div>
                     <div class="col-md-4">
                         Cara <!-- Se llena del catálogo CAT_CARA -->
-                        <select  class="form-control" id="pCARA" name="pCARA" data-error="#err_pCARA" data-query='N3Q2b0dlbzJXMGlNL1ltbUVVQUt4dE1YeW5qZEVOclJUUVF2cFpEc1dmOFBQandDN2JZQmZiYTBmRDUrZjJ4ai8vV3RVbjd3UTVsUG82UTk5WDNVbmFkWG5xSDF3endVWjNFNjdNOVBTa0FmeUFDOUVHR2VHY25rbDRRT3NjcTE='></select>
+                        <select  class="form-control" id="pCARA" name="pCARA" data-error="#err_pCARA" data-query='N3Q2b0dlbzJXMGlNL1ltbUVVQUt4dE1YeW5qZEVOclJUUVF2cFpEc1dmOFBQandDN2JZQmZiYTBmRDUrZjJ4ai8vV3RVbjd3UTVsUG82UTk5WDNVbmFkWG5xSDF3endVWjNFNjdNOVBTa0FmeUFDOUVHR2VHY25rbDRRT3NjcTE=' required></select>
                         <span id="err_pCARA"></span>
                     </div>
                 </div>
@@ -35,22 +35,22 @@
                 <div class="row">
                     <div class="col-md-3">
                         Cantidad <!-- Se llena del catálogo CAT_CANTIDADCABELLO -->
-                        <select  class="form-control" id="pCABELLO_CANTIDAD" name="pCABELLO_CANTIDAD" data-error="#err_pCABELLO_CANTIDAD" data-query='YUFyVkNpRTNIY0ptU3llQzZFMXhEUVlvbFRzRnJQQkFjRWZ2Q2JkeXZjcTBBRjFnZjhIQzBuVmhOVnVQSFp1RzZKazhHcGdwaml2Q0o2R0pHMGRhWWtZdnlrWDBQK0wwMC9nVFB4R0FiVjdtdzBNb1hLKzMvbFo0aEt2QzY5SEl4ZlJrRVYwa1NURm1OYkxVM0o3cTA0eEZ0Ykh6RVNFUmc1OVp4MnVURHNFPQ=='></select>
+                        <select  class="form-control" id="pCABELLO_CANTIDAD" name="pCABELLO_CANTIDAD" data-error="#err_pCABELLO_CANTIDAD" data-query='YUFyVkNpRTNIY0ptU3llQzZFMXhEUVlvbFRzRnJQQkFjRWZ2Q2JkeXZjcTBBRjFnZjhIQzBuVmhOVnVQSFp1RzZKazhHcGdwaml2Q0o2R0pHMGRhWWtZdnlrWDBQK0wwMC9nVFB4R0FiVjdtdzBNb1hLKzMvbFo0aEt2QzY5SEl4ZlJrRVYwa1NURm1OYkxVM0o3cTA0eEZ0Ykh6RVNFUmc1OVp4MnVURHNFPQ==' required></select>
 						<span id="err_pCABELLO_CANTIDAD"></span>
                     </div>
                     <div class="col-md-3">
                         Color <!-- Se llena del catálogo CAT_COLORCABELLO -->
-                        <select  class="form-control" id="pCABELLO_COLOR" name="pCABELLO_COLOR" data-error="#err_pCABELLO_COLOR" data-query='ampQOC81UDNvVzQvdTVHYTFvdm9UMHZKUmFna1plTk5Ya2ljaG9nYVV4bEdXaVpPc2FreUJjTUxjS3F1aFJSanFzWFI4MWVQeFd0ZDA0MmJGQUdzclRDVy8weGtSYm9JWE9KR0UzcTRLbUlCYm1CMEFzMGFyS1NLT3JuVUdOYXVpYmY3b3RqWTQrRzVWQno5bmc0Ti9aK0Y4WGVSUWtNeTc5bm1xMDFMbC80PQ=='></select>
+                        <select  class="form-control" id="pCABELLO_COLOR" name="pCABELLO_COLOR" data-error="#err_pCABELLO_COLOR" data-query='ampQOC81UDNvVzQvdTVHYTFvdm9UMHZKUmFna1plTk5Ya2ljaG9nYVV4bEdXaVpPc2FreUJjTUxjS3F1aFJSanFzWFI4MWVQeFd0ZDA0MmJGQUdzclRDVy8weGtSYm9JWE9KR0UzcTRLbUlCYm1CMEFzMGFyS1NLT3JuVUdOYXVpYmY3b3RqWTQrRzVWQno5bmc0Ti9aK0Y4WGVSUWtNeTc5bm1xMDFMbC80PQ==' required></select>
 						<span id="err_pCABELLO_COLOR"></span>
                     </div>
                     <div class="col-md-3">
                         Forma <!-- Se llena del catálogo CAT_FORMACABELLO -->
-                        <select  class="form-control" id="pCABELLO_FORMA" name="pCABELLO_FORMA" data-error="#err_pCABELLO_FORMA" data-query='bzFOb2JyaU9Ra2NrSGJzUDg2QVlrYkJqOEQ4UElTM2M5YkJsRVMvL0xpTUxmZFVuc3hmVFlyeVBvQTB0NDJTVG15NkxOZGVwUGoydVVDMk9qTytSSG5USXZHWDdVQnBCUDJOOGNBT1UrbnEwS1E2WENFTmNiYzdEVzFTVHhMRXN1b1R1eFo1K01OekUxN0RHNGVvdkQ2amVKd3pyb3dFcy9pZDZuMHpaTzlzPQ=='></select>
+                        <select  class="form-control" id="pCABELLO_FORMA" name="pCABELLO_FORMA" data-error="#err_pCABELLO_FORMA" data-query='bzFOb2JyaU9Ra2NrSGJzUDg2QVlrYkJqOEQ4UElTM2M5YkJsRVMvL0xpTUxmZFVuc3hmVFlyeVBvQTB0NDJTVG15NkxOZGVwUGoydVVDMk9qTytSSG5USXZHWDdVQnBCUDJOOGNBT1UrbnEwS1E2WENFTmNiYzdEVzFTVHhMRXN1b1R1eFo1K01OekUxN0RHNGVvdkQ2amVKd3pyb3dFcy9pZDZuMHpaTzlzPQ==' required></select>
 						<span id="err_pCABELLO_FORMA"></span>
                     </div>
                     <div class="col-md-3">
                         Calvicie <!-- Se llena del catálogo CAT_CALVICIECABELLO -->
-                        <select  class="form-control" id="pCABELLO_CALVICIE" name="pCABELLO_CALVICIE" data-error="#err_pCABELLO_CALVICIE" data-query='THRobVJhbmFvOEVna1pWUzhQRnA4M0syakx6RUFKbThDdzNPRXU0UlMzZys5Y0VQYkVLL0lkeElOVnhJTmU4SU9BVklGbE9lc25VdmlWbTZLQU9CTENVWVhkOEtKUHJCdnRXRit0K0ZtWHF2aUN1ZHd0MjRTVXdkdVRKQjBxelJwSTUveG4vTnhPb2tReGd4TENKSmZDT0k5WHhZTHR6d0p2UzRua3hEdGNrPQ=='></select>
+                        <select  class="form-control" id="pCABELLO_CALVICIE" name="pCABELLO_CALVICIE" data-error="#err_pCABELLO_CALVICIE" data-query='THRobVJhbmFvOEVna1pWUzhQRnA4M0syakx6RUFKbThDdzNPRXU0UlMzZys5Y0VQYkVLL0lkeElOVnhJTmU4SU9BVklGbE9lc25VdmlWbTZLQU9CTENVWVhkOEtKUHJCdnRXRit0K0ZtWHF2aUN1ZHd0MjRTVXdkdVRKQjBxelJwSTUveG4vTnhPb2tReGd4TENKSmZDT0k5WHhZTHR6d0p2UzRua3hEdGNrPQ==' required></select>
 						<span id="err_pCABELLO_CALVICIE"></span>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         Implantación <!-- Se llena del catálogo CAT_IMPLANTACIONCABELLO -->
-                        <select  class="form-control" id="pCABELLO_IMPLANTAC" name="pCABELLO_IMPLANTAC" data-error="#err_pCABELLO_IMPLANTAC" data-query='dXFpdHpLd0EyS212TGV5aWxCeFJSZ2IxeGducXdXTVNNRE5LUHBLbFpLcmVkeXErbjdENmxkMWh4RURhYTEyblhrSTRKa0JKNi9RWXRKclhWUVRuanBRRHN6ZDQ4bXp4N3NBRWxVM29yb0lJNTZNeEJ1NzdIalIweTI5SGFHQmk1OS93RGtScGlmQ2VmN3hXTUg0azRTU1Ixa0pvS216eXhMd3FTY3YvTVFNPQ=='></select>
+                        <select  class="form-control" id="pCABELLO_IMPLANTAC" name="pCABELLO_IMPLANTAC" data-error="#err_pCABELLO_IMPLANTAC" data-query='dXFpdHpLd0EyS212TGV5aWxCeFJSZ2IxeGducXdXTVNNRE5LUHBLbFpLcmVkeXErbjdENmxkMWh4RURhYTEyblhrSTRKa0JKNi9RWXRKclhWUVRuanBRRHN6ZDQ4bXp4N3NBRWxVM29yb0lJNTZNeEJ1NzdIalIweTI5SGFHQmk1OS93RGtScGlmQ2VmN3hXTUg0azRTU1Ixa0pvS216eXhMd3FTY3YvTVFNPQ==' required></select>
 						<span id="err_pCABELLO_IMPLANTAC"></span>
                     </div>
                 </div>
@@ -72,17 +72,17 @@
                 <div class="row">
                     <div class="col-md-4">
                         Altura <!-- Se llena del catálogo CAT_ALTURAFRENTE -->
-                        <select  class="form-control" id="pFRENTE_ALTURA" name="pFRENTE_ALTURA" data-error="#err_pFRENTE_ALTURA" data-query='RkIwenJyRFc1TjBSTGtyNTVLRHh3MThycWJrR09IanlMWThMS29wdXkwSnFRQ2ZZQmJHNStMUm9tbjBYZWk4aWkrZFJZamhJMS9RR3VUaUc4bzA1Wk10dW4yU0h5YldDd2g4Ui94OUdtdFF5L1dJMEpFWHpmUzA1dUttN2loU1BOeDR2Tno5MTdWTTZRejNoQXIzZGgxYVpHVXptUUhBNHNaS3dVYXBqYlc4PQ=='></select>
+                        <select  class="form-control" id="pFRENTE_ALTURA" name="pFRENTE_ALTURA" data-error="#err_pFRENTE_ALTURA" data-query='RkIwenJyRFc1TjBSTGtyNTVLRHh3MThycWJrR09IanlMWThMS29wdXkwSnFRQ2ZZQmJHNStMUm9tbjBYZWk4aWkrZFJZamhJMS9RR3VUaUc4bzA1Wk10dW4yU0h5YldDd2g4Ui94OUdtdFF5L1dJMEpFWHpmUzA1dUttN2loU1BOeDR2Tno5MTdWTTZRejNoQXIzZGgxYVpHVXptUUhBNHNaS3dVYXBqYlc4PQ==' required></select>
 						<span id="err_pFRENTE_ALTURA"></span>
                     </div>
                     <div class="col-md-4">
                         Inclinación <!-- Se llena del catálogo CAT_INCLINACIONFRENTE -->
-                        <select  class="form-control" id="pFRENTE_INCLINACION" name="pFRENTE_INCLINACION" data-error="#err_pFRENTE_INCLINACION" data-query='aDhvMzJqaFF0MWU0YzBYZWRteTc4NzBKcEx2YkFIMzZHUUMyS1BjZjFzd3hwQnU0Rmk1a240UUtQeFE5OHZBanVXekovbzJ5dkd6anZDRHFkUC9NQUpRdVZxUldEWFc1NVhDN2JyQ0NTSlJINmhKSkpwZFphYVRpTXdvVFpTOWJmQlA5U2ZuREQ4bS81eE1pdHRmdXhacjFyTEMxUHdvMGQ4b3hGM01DY3VRPQ=='></select>
+                        <select  class="form-control" id="pFRENTE_INCLINACION" name="pFRENTE_INCLINACION" data-error="#err_pFRENTE_INCLINACION" data-query='aDhvMzJqaFF0MWU0YzBYZWRteTc4NzBKcEx2YkFIMzZHUUMyS1BjZjFzd3hwQnU0Rmk1a240UUtQeFE5OHZBanVXekovbzJ5dkd6anZDRHFkUC9NQUpRdVZxUldEWFc1NVhDN2JyQ0NTSlJINmhKSkpwZFphYVRpTXdvVFpTOWJmQlA5U2ZuREQ4bS81eE1pdHRmdXhacjFyTEMxUHdvMGQ4b3hGM01DY3VRPQ==' required></select>
 						<span id="err_pFRENTE_INCLINACION"></span>
                     </div>
                     <div class="col-md-4">
                         Ancho <!-- Se llena del catálogo CAT_ANCHOFRENTE -->
-                        <select  class="form-control" id="pFRENTE_ANCHO" name="pFRENTE_ANCHO" data-error="#err_pFRENTE_ANCHO" data-query='RTVYRFZUaU5GWE4wS2haMVIrT2g2S3pydlNRdnVqM1VhNUN0Z1N4RGphVTAxSEJEU0hWUEJYK2Z3VGVoQUtVMzBNMVRzVjkvdFFXcm1NSUMzWGNrSFVoVHBVaUkwYUJ4Q0t1WnQwSWxBeHNGSnF3MzJzNFRpRGhJaW0wWFN1cTdrRVp1djVwUFM4djdyK29SZlN3K3c4SGFpZDhjQ2tNeWdNZ1N2RXVGeG9ZPQ=='></select>
+                        <select  class="form-control" id="pFRENTE_ANCHO" name="pFRENTE_ANCHO" data-error="#err_pFRENTE_ANCHO" data-query='RTVYRFZUaU5GWE4wS2haMVIrT2g2S3pydlNRdnVqM1VhNUN0Z1N4RGphVTAxSEJEU0hWUEJYK2Z3VGVoQUtVMzBNMVRzVjkvdFFXcm1NSUMzWGNrSFVoVHBVaUkwYUJ4Q0t1WnQwSWxBeHNGSnF3MzJzNFRpRGhJaW0wWFN1cTdrRVp1djVwUFM4djdyK29SZlN3K3c4SGFpZDhjQ2tNeWdNZ1N2RXVGeG9ZPQ==' required></select>
 						<span id="err_pFRENTE_ANCHO"></span>
                     </div>
                 </div>
@@ -96,22 +96,22 @@
                 <div class="row">
                     <div class="col-md-3">
                         Dirección <!-- Se llena del catálogo CAT_DIRECCIONCEJAS -->
-                        <select  class="form-control" id="pCEJAS_DIRECCION" name="pCEJAS_DIRECCION" data-error="#err_pCEJAS_DIRECCION" data-query='c05SZlRLR29WMWRvYzNVNTRkK1JXREpRTkNnaCs2Mk13M3FtdTJoT0M3bTFMeWVSK0pwSkN1VmxZY3AzRkViSlBFblhkakJYV1NEVTJIN2QyL0l5OFVIYnd5SlBqaGNlQk41TXhRcmRaMGl2SkZTMlJFNUlEcFRRS1BNTUd2a1FrdlhESzR1bWJISWd0emhDMkZ0Y2xidE9aamVxQTgzV2Z3Tm5Za1BQZmFRPQ=='></select>
+                        <select  class="form-control" id="pCEJAS_DIRECCION" name="pCEJAS_DIRECCION" data-error="#err_pCEJAS_DIRECCION" data-query='c05SZlRLR29WMWRvYzNVNTRkK1JXREpRTkNnaCs2Mk13M3FtdTJoT0M3bTFMeWVSK0pwSkN1VmxZY3AzRkViSlBFblhkakJYV1NEVTJIN2QyL0l5OFVIYnd5SlBqaGNlQk41TXhRcmRaMGl2SkZTMlJFNUlEcFRRS1BNTUd2a1FrdlhESzR1bWJISWd0emhDMkZ0Y2xidE9aamVxQTgzV2Z3Tm5Za1BQZmFRPQ==' required></select>
 						<span id="err_pCEJAS_DIRECCION"></span>
                     </div>
                     <div class="col-md-3">
                         Implantación <!-- Se llena del catálogo CAT_IMPLANTACIONCEJAS -->
-                        <select  class="form-control" id="pCEJAS_IMPLANTAC" name="pCEJAS_IMPLANTAC" data-error="#err_pCEJAS_IMPLANTAC" data-query='ZDlxcEJSb0Nrd05JVklya3BOTG1CL0k0bnFHbW5lVlVUSFpEQnVKUWkyb1dZQUgzUjdsRXd2SFRIYndubTUwN1QvZDBxYWIvWE9LR1BwOW92SGlyU29mZjk0UHlkQnRnVFQ0VitPTUcrR0FQZS9rUUQ1OG5reXdOR2ZnY2FMckhwcHByMm9ZVHZ4UG1Kb3lBMkZzRTBlblhSanc3OHpVdXBVRnRDZUVnZHZRPQ=='></select>
+                        <select  class="form-control" id="pCEJAS_IMPLANTAC" name="pCEJAS_IMPLANTAC" data-error="#err_pCEJAS_IMPLANTAC" data-query='ZDlxcEJSb0Nrd05JVklya3BOTG1CL0k0bnFHbW5lVlVUSFpEQnVKUWkyb1dZQUgzUjdsRXd2SFRIYndubTUwN1QvZDBxYWIvWE9LR1BwOW92SGlyU29mZjk0UHlkQnRnVFQ0VitPTUcrR0FQZS9rUUQ1OG5reXdOR2ZnY2FMckhwcHByMm9ZVHZ4UG1Kb3lBMkZzRTBlblhSanc3OHpVdXBVRnRDZUVnZHZRPQ==' required></select>
 						<span id="err_pCEJAS_IMPLANTAC"></span>
                     </div>
                     <div class="col-md-3">
                         Forma <!-- Se llena del catálogo CAT_FORMACEJAS -->
-                        <select  class="form-control" id="pCEJAS_FORMA" name="pCEJAS_FORMA" data-error="#err_pCEJAS_FORMA" data-query='SmRYcFBJQkxZaVJhYjduR0N0QnBhOHBnZGZicWNoVGQxNzBBa2tNS0pMdTNjS2VGbE1DcllBQjF2bTd6VjJlRTBvNUFVcnJJd3lUaDl2WlBsNW9rcnhsU01TVExxcFVVcVZ6MjRlUk9jWUFaNCsyT1AxOWFXeUE4M1dOYmRxNTA='></select>
+                        <select  class="form-control" id="pCEJAS_FORMA" name="pCEJAS_FORMA" data-error="#err_pCEJAS_FORMA" data-query='SmRYcFBJQkxZaVJhYjduR0N0QnBhOHBnZGZicWNoVGQxNzBBa2tNS0pMdTNjS2VGbE1DcllBQjF2bTd6VjJlRTBvNUFVcnJJd3lUaDl2WlBsNW9rcnhsU01TVExxcFVVcVZ6MjRlUk9jWUFaNCsyT1AxOWFXeUE4M1dOYmRxNTA=' required></select>
 						<span id="err_pCEJAS_FORMA"></span>
                     </div>
                     <div class="col-md-3">
                         Tamaño <!-- Se llena del catálogo CAT_TAMANOCEJAS -->
-                        <select  class="form-control" id="pCEJAS_TAMANO" name="pCEJAS_TAMANO" data-error="#err_pCEJAS_TAMANO" data-query='VWVNNW1aQXI0cDZVVUpJc2hJay9IcFFGbmFFeURlUE53YzQ0VXlKNU5EVDgzU05Eb1FkdEJPYWtJWm9kMFlmVysxcXhERkZ0RGFHUE53NkN0WFoweGc2UVNTUVZxTHVMVmQ5TmVRK05GeGtRZk5FR2x0c0p5ckpMNjZPellTa1pORUptMlc2cDJtS2JQUXZXTDBMK012cXdTYldKU3JjaWQzMHl3SUpLSGNzPQ=='></select>
+                        <select  class="form-control" id="pCEJAS_TAMANO" name="pCEJAS_TAMANO" data-error="#err_pCEJAS_TAMANO" data-query='VWVNNW1aQXI0cDZVVUpJc2hJay9IcFFGbmFFeURlUE53YzQ0VXlKNU5EVDgzU05Eb1FkdEJPYWtJWm9kMFlmVysxcXhERkZ0RGFHUE53NkN0WFoweGc2UVNTUVZxTHVMVmQ5TmVRK05GeGtRZk5FR2x0c0p5ckpMNjZPellTa1pORUptMlc2cDJtS2JQUXZXTDBMK012cXdTYldKU3JjaWQzMHl3SUpLSGNzPQ==' required></select>
 						<span id="err_pCEJAS_TAMANO"></span>
                     </div>
                 </div>
@@ -126,17 +126,17 @@
                 <div class="row">
                     <div class="col-md-4">
                         Color <!-- Se llena del catálogo CAT_COLOROJOS -->
-                        <select  class="form-control" id="pOJOS_COLOR" name="pOJOS_COLOR" data-error="#err_pOJOS_COLOR" data-query='THUvNmhSU1FwTnNwcTJVbktEQ2dQRU9weXlOTnVnZkI1VzhGbzA3YkZpRHJsUXpWa0d4aDhmK1lMc3VZL09IVStzTGVpNG1KVWI0SUNaeDJKN0RVaHB0T1pkZVRjUzVqMlo2MXlGUDhDL3FaMXZ0eDJ5UlpIRzFxeVRINjJxR3g='></select>
+                        <select  class="form-control" id="pOJOS_COLOR" name="pOJOS_COLOR" data-error="#err_pOJOS_COLOR" data-query='THUvNmhSU1FwTnNwcTJVbktEQ2dQRU9weXlOTnVnZkI1VzhGbzA3YkZpRHJsUXpWa0d4aDhmK1lMc3VZL09IVStzTGVpNG1KVWI0SUNaeDJKN0RVaHB0T1pkZVRjUzVqMlo2MXlGUDhDL3FaMXZ0eDJ5UlpIRzFxeVRINjJxR3g=' required></select>
 						<span id="err_pOJOS_COLOR"></span>
                     </div>
                     <div class="col-md-4">
                         Forma <!-- Se llena del catálogo CAT_FORMAOJOS -->
-                        <select  class="form-control" id="pOJOS_FORMA" name="pOJOS_FORMA" data-error="#err_pOJOS_FORMA" data-query='OXdoU3d4bmk4MnlCZEViOHVWc2FhOVJrNVVMank0M1lUWUkyNlVpcUp3S3piNmNPWE9aUnRIUFZPUTI0Vkt5MDJBcWJtMklWdUdYNEdiSkFOdm1YUEl4UTY5R2lxdUNpNmZIVXVkQ0VybXlrNk9OM2lOemNwNDF2cW9jRG1XNmI='></select>
+                        <select  class="form-control" id="pOJOS_FORMA" name="pOJOS_FORMA" data-error="#err_pOJOS_FORMA" data-query='OXdoU3d4bmk4MnlCZEViOHVWc2FhOVJrNVVMank0M1lUWUkyNlVpcUp3S3piNmNPWE9aUnRIUFZPUTI0Vkt5MDJBcWJtMklWdUdYNEdiSkFOdm1YUEl4UTY5R2lxdUNpNmZIVXVkQ0VybXlrNk9OM2lOemNwNDF2cW9jRG1XNmI=' required></select>
 						<span id="err_pOJOS_FORMA"></span>
                     </div>
                     <div class="col-md-4">
                         Tamaño <!-- Se llena del catálogo CAT_TAMANOOJOS -->
-                        <select  class="form-control" id="pOJOS_TAMANO" name="pOJOS_TAMANO" data-error="#err_pOJOS_TAMANO" data-query='MjJYSDdXR0tRWC90cy8zK2Nzc0tQaHpnU3NFZy8rUWpuYlpIaXR3ZzlJRlBVVEZEbWZ1ay9weGNLSEI4NUhUd2RNaDZSZWRpaU5lNlA0TDN1Z3FnOWhJSVhaYzFGU0Njb21FU2xwR0FkVDdvSHl3SFBpeDdMallZd083WndFQ0M='></select>
+                        <select  class="form-control" id="pOJOS_TAMANO" name="pOJOS_TAMANO" data-error="#err_pOJOS_TAMANO" data-query='MjJYSDdXR0tRWC90cy8zK2Nzc0tQaHpnU3NFZy8rUWpuYlpIaXR3ZzlJRlBVVEZEbWZ1ay9weGNLSEI4NUhUd2RNaDZSZWRpaU5lNlA0TDN1Z3FnOWhJSVhaYzFGU0Njb21FU2xwR0FkVDdvSHl3SFBpeDdMallZd083WndFQ0M=' required></select>
 						<span id="err_pOJOS_TAMANO"></span>
                     </div>
                 </div>
@@ -150,27 +150,27 @@
                 <div class="row">
                     <div class="col-md-3">
                         Raíz <!-- Se llena del catálogo CAT_RAIZNARIZ -->
-                        <select  class="form-control" id="pNARIZ_RAIZ" name="pNARIZ_RAIZ" data-error="#err_pNARIZ_RAIZ" data-query='dzFzSlplNVArUDdiK1IwZjQwYjJqbzRRRWwzYktRVlhGV2ZiRHB2dlprbmhic3lUTE9KM0tsOEU0Uk1OZE9BYjhPM1ZZdnNJTHJ5K3hod2dpVFMrMkZpaUJld0gyM1hBV1l1QndzdDdMeTBvTG9MU2FoQ0JhSDMzRU5rOUJtRnk='></select>
+                        <select  class="form-control" id="pNARIZ_RAIZ" name="pNARIZ_RAIZ" data-error="#err_pNARIZ_RAIZ" data-query='dzFzSlplNVArUDdiK1IwZjQwYjJqbzRRRWwzYktRVlhGV2ZiRHB2dlprbmhic3lUTE9KM0tsOEU0Uk1OZE9BYjhPM1ZZdnNJTHJ5K3hod2dpVFMrMkZpaUJld0gyM1hBV1l1QndzdDdMeTBvTG9MU2FoQ0JhSDMzRU5rOUJtRnk=' required></select>
 						<span id="err_pNARIZ_RAIZ"></span>
                     </div>
                     <div class="col-md-3">
                         Dorso <!-- Se llena del catálogo CAT_DORSONARIZ -->
-                        <select  class="form-control" id="pNARIZ_DORSO" name="pNARIZ_DORSO" data-error="#err_pNARIZ_DORSO" data-query='alBJUWxoV2dVT2lRdU13VXFERUtSMDNxZ3Rib0wxTHVMV2Q4bUR2ZEZhclBGa3NXQlA1Q1laNi93WGVjdHdpZjk2bXV0WDMzWUI4eE8zNTh2R0NiWjllT01jZ01GVFowV0JSRkp3YkFncGxRalg3S1c4bzR1bEsrWkExM3lQYVg='></select>
+                        <select  class="form-control" id="pNARIZ_DORSO" name="pNARIZ_DORSO" data-error="#err_pNARIZ_DORSO" data-query='alBJUWxoV2dVT2lRdU13VXFERUtSMDNxZ3Rib0wxTHVMV2Q4bUR2ZEZhclBGa3NXQlA1Q1laNi93WGVjdHdpZjk2bXV0WDMzWUI4eE8zNTh2R0NiWjllT01jZ01GVFowV0JSRkp3YkFncGxRalg3S1c4bzR1bEsrWkExM3lQYVg=' required></select>
 						<span id="err_pNARIZ_DORSO"></span>
                     </div>
                     <div class="col-md-3">
                         Ancho <!-- Se llena del catálogo CAT_ANCHONARIZ -->
-                        <select  class="form-control" id="pNARIZ_ANCHO" name="pNARIZ_ANCHO" data-error="#err_pNARIZ_ANCHO" data-query='Tk84c0JGN3ZReU5PVDVDRUk1WGVTN1ZaTS9lWFRXR3NIVUpmWklRQ283MDM3K1RPYys3cy9TOGhzUXFUZlJxR1JTNTZaS0pYZmZESkMzU0N3b1RvQm9DeHkwZnZ5b1M5Y1FUeGVwblIvSThHd0daNnp6NHlmYnNSa0gxeUhsOXg='></select>
+                        <select  class="form-control" id="pNARIZ_ANCHO" name="pNARIZ_ANCHO" data-error="#err_pNARIZ_ANCHO" data-query='Tk84c0JGN3ZReU5PVDVDRUk1WGVTN1ZaTS9lWFRXR3NIVUpmWklRQ283MDM3K1RPYys3cy9TOGhzUXFUZlJxR1JTNTZaS0pYZmZESkMzU0N3b1RvQm9DeHkwZnZ5b1M5Y1FUeGVwblIvSThHd0daNnp6NHlmYnNSa0gxeUhsOXg=' required></select>
 						<span id="err_pNARIZ_ANCHO"></span>
                     </div>
                     <div class="col-md-3">
                         Base <!-- Se llena del catálogo CAT_BASENARIZ -->
-                        <select  class="form-control" id="pNARIZ_BASE" name="pNARIZ_BASE" data-error="#err_pNARIZ_BASE" data-query='WDhSeVFtdlVUdm83ZVVDMHFuRzkrbmNaWWZ5TkZsY05kS0M5dFBPUHhFUEx6cU5wSnJZSE1ab1JGWW1Edk4xaTdqN21WRzgxY0pjTjdrVUMrdU9nWC96RnhoNDZ1SWU2VUlvZHhITWxNRGhSakhWQXRrMmg2VVVMMkpaWExZRC8='></select>
+                        <select  class="form-control" id="pNARIZ_BASE" name="pNARIZ_BASE" data-error="#err_pNARIZ_BASE" data-query='WDhSeVFtdlVUdm83ZVVDMHFuRzkrbmNaWWZ5TkZsY05kS0M5dFBPUHhFUEx6cU5wSnJZSE1ab1JGWW1Edk4xaTdqN21WRzgxY0pjTjdrVUMrdU9nWC96RnhoNDZ1SWU2VUlvZHhITWxNRGhSakhWQXRrMmg2VVVMMkpaWExZRC8=' required></select>
 						<span id="err_pNARIZ_BASE"></span>
                     </div>
                     <div class="col-md-3">
                         Altura <!-- Se llena del catálogo CAT_ALTURANARIZ -->
-                        <select  class="form-control" id="pNARIZ_ALTURA" name="pNARIZ_ALTURA" data-error="#err_pNARIZ_ALTURA" data-query='azdHb09Wb0c2dS9YQ2x4UkR6bUpaN2pUeElZWlFsMUROOVBLMkw5T3hhODBzZWFIRnB6VEt0SDJtdTlKUWtpSU43eUZVcHFjaFJkRnl4cWZPVDE2eURjTksyYk5hWE9BaXJMdlc3czZ1dGZqdUYxNEhIaWg0ZHR6T1ZiSVgwL3BTcnVod2RHdVM5U1pEOUNWdVM2RkZydGE2ZC9NMHNRVUZLaDIvNzBjOSs0PQ=='></select>
+                        <select  class="form-control" id="pNARIZ_ALTURA" name="pNARIZ_ALTURA" data-error="#err_pNARIZ_ALTURA" data-query='azdHb09Wb0c2dS9YQ2x4UkR6bUpaN2pUeElZWlFsMUROOVBLMkw5T3hhODBzZWFIRnB6VEt0SDJtdTlKUWtpSU43eUZVcHFjaFJkRnl4cWZPVDE2eURjTksyYk5hWE9BaXJMdlc3czZ1dGZqdUYxNEhIaWg0ZHR6T1ZiSVgwL3BTcnVod2RHdVM5U1pEOUNWdVM2RkZydGE2ZC9NMHNRVUZLaDIvNzBjOSs0PQ==' required></select>
 						<span id="err_pNARIZ_ALTURA"></span>
                     </div>
                 </div>
@@ -184,12 +184,12 @@
                 <div class="row">
                     <div class="col-md-4">
                         Tamaño <!-- Se llena del catálogo CAT_TAMANOBOCA -->
-                        <select  class="form-control" id="pBOCA_TAMANO" name="pBOCA_TAMANO" data-error="#err_pBOCA_TAMANO" data-query='eHlzWUVIV1dKb3U3TC9tU1VLeks1bEpCamJlR0xmSDNxM1U3SVkzVVVHRThCcnAwdXViN2ZkaUZEbENNaVprV0xHT29GbmhLMVF2NXE2SHJwMGZLMzQvTCtLK1VTdi9LcGswdmhGcS9OYUFPMjlVZXlWRGgvcXVBdE1CMnE3VzM='></select>
+                        <select  class="form-control" id="pBOCA_TAMANO" name="pBOCA_TAMANO" data-error="#err_pBOCA_TAMANO" data-query='eHlzWUVIV1dKb3U3TC9tU1VLeks1bEpCamJlR0xmSDNxM1U3SVkzVVVHRThCcnAwdXViN2ZkaUZEbENNaVprV0xHT29GbmhLMVF2NXE2SHJwMGZLMzQvTCtLK1VTdi9LcGswdmhGcS9OYUFPMjlVZXlWRGgvcXVBdE1CMnE3VzM=' required></select>
 						<span id="err_pBOCA_TAMANO"></span>
                     </div>
                     <div class="col-md-4">
                         Comisuras <!-- Se llena del catálogo CAT_COMISURASBOCA -->
-                        <select  class="form-control" id="pBOCA_COMISURAS" name="pBOCA_COMISURAS" data-error="#err_pBOCA_COMISURAS" data-query='SWV3K04zN21xWVZlSmJSajFSSUE4K3V5SW1ua1kvVkNLeW1jSVhrY2szTXVHK0dYODNBR2IyemRoY2x6Ly93c29zM3Qxbm9hVEl4NVVHYkRLSnlFc3F6dHFrV0FFRkVYc0hnQ3ZQclFaZVJrYU9BVWt1NmpyVjVJMGg4Y2Ryc1BCSEw3ai9oRmJvY0UwQjJWSTZhNWlVOVhBYnlnY2NNaFpCMTZEUDU2dTBjPQ=='></select>
+                        <select  class="form-control" id="pBOCA_COMISURAS" name="pBOCA_COMISURAS" data-error="#err_pBOCA_COMISURAS" data-query='SWV3K04zN21xWVZlSmJSajFSSUE4K3V5SW1ua1kvVkNLeW1jSVhrY2szTXVHK0dYODNBR2IyemRoY2x6Ly93c29zM3Qxbm9hVEl4NVVHYkRLSnlFc3F6dHFrV0FFRkVYc0hnQ3ZQclFaZVJrYU9BVWt1NmpyVjVJMGg4Y2Ryc1BCSEw3ai9oRmJvY0UwQjJWSTZhNWlVOVhBYnlnY2NNaFpCMTZEUDU2dTBjPQ==' required></select>
 						<span id="err_pBOCA_COMISURAS"></span>
                     </div>
                 </div>
@@ -203,17 +203,17 @@
                 <div class="row">
                     <div class="col-md-4">
                         Espesor <!-- Se llena del catálogo CAT_ESPESORLABIOS -->
-                        <select  class="form-control" id="pLABIOS_ESPESOR" name="pLABIOS_ESPESOR" data-error="#err_pLABIOS_ESPESOR" data-query='bFBvRzBQQmtkK0NTRDh3aEdNN0R0cmFvM0luWU5GZW9SVE9Nb2dybERJMUdjWVFCZVkwemk4TVFKRlExekpxU09MK2pHSU9Ld2dkb0VFMHE1ZGZyS3A3NTVydllobDBURTQrV01UbytFaG5SNXI3ZXpzdXNmU0I2WDBTY3pXMDl0bnk2RDlhcU5nTGxWTmtzMUF3OTRTSDVkSUdKSzFsTVRyeXljOUZGRFlFPQ=='></select>
+                        <select  class="form-control" id="pLABIOS_ESPESOR" name="pLABIOS_ESPESOR" data-error="#err_pLABIOS_ESPESOR" data-query='bFBvRzBQQmtkK0NTRDh3aEdNN0R0cmFvM0luWU5GZW9SVE9Nb2dybERJMUdjWVFCZVkwemk4TVFKRlExekpxU09MK2pHSU9Ld2dkb0VFMHE1ZGZyS3A3NTVydllobDBURTQrV01UbytFaG5SNXI3ZXpzdXNmU0I2WDBTY3pXMDl0bnk2RDlhcU5nTGxWTmtzMUF3OTRTSDVkSUdKSzFsTVRyeXljOUZGRFlFPQ==' required></select>
 						<span id="err_pLABIOS_ESPESOR"></span>
                     </div>
                     <div class="col-md-4">
                         Altura naso-labial <!-- Se llena del catálogo CAT_ALTURALABIOS -->
-                        <select  class="form-control" id="pLABIOS_ALTURA" name="pLABIOS_ALTURA" data-error="#err_pLABIOS_ALTURA" data-query='U2hYS3NLTzZ5ZHNpME53TGc5U0hpUlAxdnZLM0xqbHdBYklrUmZCa1NXbGN0YXdjYlVLWnZ3WGY0NHZxTzJPVHRrVU5RV0tRY1A0dGcrMnNtV2Z5OUNsWFlzdm0vNnRHSXVYMW5KeFViQm5vcjRXZ3ZwN1VvRm1RSHFXNytVSkxJTklGT3JVcEN6K2NnY09xa0ZTekZzVW9NOWlZa2czZVZReXpCNnNzWEpBPQ=='></select>
+                        <select  class="form-control" id="pLABIOS_ALTURA" name="pLABIOS_ALTURA" data-error="#err_pLABIOS_ALTURA" data-query='U2hYS3NLTzZ5ZHNpME53TGc5U0hpUlAxdnZLM0xqbHdBYklrUmZCa1NXbGN0YXdjYlVLWnZ3WGY0NHZxTzJPVHRrVU5RV0tRY1A0dGcrMnNtV2Z5OUNsWFlzdm0vNnRHSXVYMW5KeFViQm5vcjRXZ3ZwN1VvRm1RSHFXNytVSkxJTklGT3JVcEN6K2NnY09xa0ZTekZzVW9NOWlZa2czZVZReXpCNnNzWEpBPQ==' required></select>
 						<span id="err_pLABIOS_ALTURA"></span>
                     </div>
                     <div class="col-md-4">
                         Prominencia <!-- Se llena del catálogo CAT_PROMINENCIALABIOS -->
-                        <select  class="form-control" id="pLABIOS_PROMINENCIA" name="pLABIOS_PROMINENCIA" data-error="#err_pLABIOS_PROMINENCIA" data-query='aG9KOENSWGQyTTIyVmR0M1hiMkV2UnNWTXRzRWVvOUpBRlNkT1E3TmI0Nmt5Y3RSdkF6eEpmcTBEQldpMnhRdWdNUU1rczQzbHpwVVQyaXFFUzdQQU5QWERMckxKbGZOd0RxbkxWYmJrUGIyUjVZUTV2Nm5odENWVzF0UlpXVzFWTGFmdlc3NVpKM2pUSnZKMmVYcUE1b1h2SEJpNWtFUllVY01tU1R4NUVNPQ=='></select>
+                        <select  class="form-control" id="pLABIOS_PROMINENCIA" name="pLABIOS_PROMINENCIA" data-error="#err_pLABIOS_PROMINENCIA" data-query='aG9KOENSWGQyTTIyVmR0M1hiMkV2UnNWTXRzRWVvOUpBRlNkT1E3TmI0Nmt5Y3RSdkF6eEpmcTBEQldpMnhRdWdNUU1rczQzbHpwVVQyaXFFUzdQQU5QWERMckxKbGZOd0RxbkxWYmJrUGIyUjVZUTV2Nm5odENWVzF0UlpXVzFWTGFmdlc3NVpKM2pUSnZKMmVYcUE1b1h2SEJpNWtFUllVY01tU1R4NUVNPQ==' required></select>
 						<span id="err_pLABIOS_PROMINENCIA"></span>
                     </div>
                 </div>
@@ -227,17 +227,17 @@
                 <div class="row">
                     <div class="col-md-4">
                         Tipo <!--   se llena del catalogo CAT_TIPOMENTON -->
-                        <select  class="form-control" id="pMENTON_TIPO" name="pMENTON_TIPO" data-error="#err_pMENTON_TIPO" data-query='dkZCcnVqSU9SekpWS25GOE83UEVwSThvYzBxVFUwZGVmbE9rM2k2OVFzUTBmQ1J1YSs2QjJ6ajFUVHhQejllTy9vUnExVVN1S0x1OUFlWGFGSlg3VzJvNGs3eXQ4UDlOSlpncVBzdis1Q2pCaC9USkRhaE8yN2lLaWcwRktJTUg='></select>
+                        <select  class="form-control" id="pMENTON_TIPO" name="pMENTON_TIPO" data-error="#err_pMENTON_TIPO" data-query='dkZCcnVqSU9SekpWS25GOE83UEVwSThvYzBxVFUwZGVmbE9rM2k2OVFzUTBmQ1J1YSs2QjJ6ajFUVHhQejllTy9vUnExVVN1S0x1OUFlWGFGSlg3VzJvNGs3eXQ4UDlOSlpncVBzdis1Q2pCaC9USkRhaE8yN2lLaWcwRktJTUg=' required></select>
 						<span id="err_pMENTON_TIPO"></span>
                     </div>
                     <div class="col-md-4">
                         Forma <!-- Se llena del catálogo CAT_FORMAMENTON -->
-                        <select  class="form-control" id="pMENTON_FORMA" name="pMENTON_FORMA" data-error="#err_pMENTON_FORMA" data-query='eWJacXdXVHlucWJWS3JPZmprWEc4cGZreW0wamdZMWNyeDdueWE4blBqc1VLcXNOQjRET3RuRnY1aWJEUlhuc0swNWkxeXVxUE1TTTd3QlpUbDZ2TWpBdnpGYktCRHpZdksxMERQdW5zWUtoTUcyV2VES3pad0VqdEhWaVM4ZnZnUFFVT0lMdmt2RHI3NDJpbGp2YnY4dncraVEwZjkxTFk4U3ZSdDQ0MWtvPQ=='></select>
+                        <select  class="form-control" id="pMENTON_FORMA" name="pMENTON_FORMA" data-error="#err_pMENTON_FORMA" data-query='eWJacXdXVHlucWJWS3JPZmprWEc4cGZreW0wamdZMWNyeDdueWE4blBqc1VLcXNOQjRET3RuRnY1aWJEUlhuc0swNWkxeXVxUE1TTTd3QlpUbDZ2TWpBdnpGYktCRHpZdksxMERQdW5zWUtoTUcyV2VES3pad0VqdEhWaVM4ZnZnUFFVT0lMdmt2RHI3NDJpbGp2YnY4dncraVEwZjkxTFk4U3ZSdDQ0MWtvPQ==' required></select>
 						<span id="err_pMENTON_FORMA"></span>
                     </div>
                     <div class="col-md-4">
                         Inclinación <!-- Se llena del catálogo CAT_INCLINACIONMENTON -->
-                        <select  class="form-control" id="pMENTON_INCLINACION" name="pMENTON_INCLINACION" data-error="#err_pMENTON_INCLINACION" data-query='Y0JwdzVtWkZqS0dvUDRLTGhTOW9YZ1FIdzhLYWQvQ3ZSRFc4NmQzYjZaTlRieHlaZFgvMTVGaXhPRzMvNU9mbUdTQ1RQb21rM25Zd0EwekVHVmZoTzRFL1NDUlRRNXRRckcyYjBqVTd1SUlNQXVob2JDeDRBYlJIT2txUDV0N0F4VzB2bUlJcmdWaWwrMktuSXRQSVdXd3YrVExab0FEN0ZiQzY3M0Y3VXVFPQ=='></select>
+                        <select  class="form-control" id="pMENTON_INCLINACION" name="pMENTON_INCLINACION" data-error="#err_pMENTON_INCLINACION" data-query='Y0JwdzVtWkZqS0dvUDRLTGhTOW9YZ1FIdzhLYWQvQ3ZSRFc4NmQzYjZaTlRieHlaZFgvMTVGaXhPRzMvNU9mbUdTQ1RQb21rM25Zd0EwekVHVmZoTzRFL1NDUlRRNXRRckcyYjBqVTd1SUlNQXVob2JDeDRBYlJIT2txUDV0N0F4VzB2bUlJcmdWaWwrMktuSXRQSVdXd3YrVExab0FEN0ZiQzY3M0Y3VXVFPQ==' required></select>
 						<span id="err_pMENTON_INCLINACION"></span>
                     </div>
                 </div>
@@ -251,12 +251,12 @@
                 <div class="row">
                 <div class="col-md-4">
                         Forma <!-- Se llena del catálogo CAT_FORMAOREJA -->
-                        <select  class="form-control" id="pOREJA_FORMA" name="pOREJA_FORMA" data-error="#err_pOREJA_FORMA" data-query='MTN2YnduWDF0Tm95MlNFc0tobnlXN1FNTVFvK1QwKzY0N2xCQy9FQWFyR1JEZUNTMW5Zdy9HU3U1SU5BWDlSQW55NEZhSnAwYUtaV3gySWVBZUxXcmpVUStCSHNxR2k3ZGU1WGE2ZSs4aUdsWlo4N1dNajl4R1drUTlaaE5TQm8='></select>
+                        <select  class="form-control" id="pOREJA_FORMA" name="pOREJA_FORMA" data-error="#err_pOREJA_FORMA" data-query='MTN2YnduWDF0Tm95MlNFc0tobnlXN1FNTVFvK1QwKzY0N2xCQy9FQWFyR1JEZUNTMW5Zdy9HU3U1SU5BWDlSQW55NEZhSnAwYUtaV3gySWVBZUxXcmpVUStCSHNxR2k3ZGU1WGE2ZSs4aUdsWlo4N1dNajl4R1drUTlaaE5TQm8=' required></select>
 						<span id="err_pOREJA_FORMA"></span>
                     </div>
                     <div class="col-md-4">
                         Original <!-- Se llena del catálogo CAT_OREJALOBDIMEN -->
-                        <select  class="form-control" id="pOREJA_ORIGINAL" name="pOREJA_ORIGINAL" data-error="#err_pOREJA_ORIGINAL" data-query='L3BCS3Z3aTA5dW92MEdQNHU4NWF6d1p4UHRXN1pRVTZZRXB4MmtjTDFWY1RybDJvZjhLbHZqZmdQUU9LSWNDSUxHZ2dBd1hrU3puZ3RlUkp3YkQrN1N2akplT2VPeDNJQzlDSWJaOGt0Mnk4ckw0elA5aUQwbDdhQ0o1S01FM29NaTdWb0dETloxeXpxZ2kzZVBoNmx2Z1dsZ3ovN0JDRkhTTjZCak85Rm5nPQ=='></select>
+                        <select  class="form-control" id="pOREJA_ORIGINAL" name="pOREJA_ORIGINAL" data-error="#err_pOREJA_ORIGINAL" data-query='L3BCS3Z3aTA5dW92MEdQNHU4NWF6d1p4UHRXN1pRVTZZRXB4MmtjTDFWY1RybDJvZjhLbHZqZmdQUU9LSWNDSUxHZ2dBd1hrU3puZ3RlUkp3YkQrN1N2akplT2VPeDNJQzlDSWJaOGt0Mnk4ckw0elA5aUQwbDdhQ0o1S01FM29NaTdWb0dETloxeXpxZ2kzZVBoNmx2Z1dsZ3ovN0JDRkhTTjZCak85Rm5nPQ==' required></select>
 						<span id="err_pOREJA_ORIGINAL"></span>
                     </div>
                 </div>
@@ -270,22 +270,22 @@
                 <div class="row">
                     <div class="col-md-3">
                         Superior <!-- Se llena del catálogo CAT_OREJAHELSUP -->
-                        <select  class="form-control" id="pOREJA_HEL_SUP" name="pOREJA_HEL_SUP" data-error="#err_pOREJA_HEL_SUP" data-query='MWJyM0Z1ZWZqTWdYTGpKa0JqWktwMlNJem9VYkh3VEYvME93TGFrWW5MdjJOSjBCZzVicmRQNHQ4djlTTE5xRWo1RFoySmRYSmRkczVIcGpjekxUNitpRFJYS21PRkdSelQzM3IvYW93QnZKcnJpeGtCcHk2UXRtbTRUN3NCTWx0NjN4cTBnTm9xaDYzNEpNS3RQMWEzd3RKSGV5cXV5Ty9Naytsd0pkaVhFPQ=='></select>
+                        <select  class="form-control" id="pOREJA_HEL_SUP" name="pOREJA_HEL_SUP" data-error="#err_pOREJA_HEL_SUP" data-query='MWJyM0Z1ZWZqTWdYTGpKa0JqWktwMlNJem9VYkh3VEYvME93TGFrWW5MdjJOSjBCZzVicmRQNHQ4djlTTE5xRWo1RFoySmRYSmRkczVIcGpjekxUNitpRFJYS21PRkdSelQzM3IvYW93QnZKcnJpeGtCcHk2UXRtbTRUN3NCTWx0NjN4cTBnTm9xaDYzNEpNS3RQMWEzd3RKSGV5cXV5Ty9Naytsd0pkaVhFPQ==' required></select>
 						<span id="err_pOREJA_HEL_SUP"></span>
                     </div>
                     <div class="col-md-3">
                         Posterior <!-- Se llena del catálogo CAT_OREJAHELPOST -->
-                        <select  class="form-control" id="pOREJA_HEL_POST" name="pOREJA_HEL_POST" data-error="#err_pOREJA_HEL_POST" data-query='bGFXOXBoZS9UaWNTekRzMGx4UnRIN0FNZUxRdC9XakJhMzhzU3luQW5oQlh4Y2RxMDdqZW9TeURQcUx5SVQ3SDh3Wk04clBZQzUxSEVuSkxJQ2RqV2lLZTZXMlVDbmY2bUNodFBHUWJKTUl3TUJweXQ3bktMTFd6enpZanNCU2YxWXg4bm1JVHZ6WDBiVXFtM3dIVHdoMmduT1VTai9Nckt4UkJDeDkrZGhjPQ=='></select>
+                        <select  class="form-control" id="pOREJA_HEL_POST" name="pOREJA_HEL_POST" data-error="#err_pOREJA_HEL_POST" data-query='bGFXOXBoZS9UaWNTekRzMGx4UnRIN0FNZUxRdC9XakJhMzhzU3luQW5oQlh4Y2RxMDdqZW9TeURQcUx5SVQ3SDh3Wk04clBZQzUxSEVuSkxJQ2RqV2lLZTZXMlVDbmY2bUNodFBHUWJKTUl3TUJweXQ3bktMTFd6enpZanNCU2YxWXg4bm1JVHZ6WDBiVXFtM3dIVHdoMmduT1VTai9Nckt4UkJDeDkrZGhjPQ==' required></select>
 						<span id="err_pOREJA_HEL_POST"></span>
                     </div>
                     <div class="col-md-3">
                         Adherencia <!-- Se llena del catálogo CAT_OREJAHELADHEREN -->
-                        <select  class="form-control" id="pOREJA_HEL_ADHEREN" name="pOREJA_HEL_ADHEREN" data-error="#err_pOREJA_HEL_ADHEREN" data-query='ZlJjaXhyUGNiVmhMbnV4c2xyQ3RCY3Z0bHlUTllRcjJ1K1NHMGdoT2hhQnROeDBQNnA0WXMxTDFFOVVzVjkzYnBFMW9ISHZYWU13QnpJakpzWVptcmJMNUlRZGRIM0tzQ1hoSmFEbkRxVUNHN1lnZlRpOFdkcXRidkxjSWZHNkVwR1lqQlZqZGpoajVnbjYzR25LTWZrY2J0NjJvcitnQ3R3NWRiUnpBQXpzPQ=='></select>
+                        <select  class="form-control" id="pOREJA_HEL_ADHEREN" name="pOREJA_HEL_ADHEREN" data-error="#err_pOREJA_HEL_ADHEREN" data-query='ZlJjaXhyUGNiVmhMbnV4c2xyQ3RCY3Z0bHlUTllRcjJ1K1NHMGdoT2hhQnROeDBQNnA0WXMxTDFFOVVzVjkzYnBFMW9ISHZYWU13QnpJakpzWVptcmJMNUlRZGRIM0tzQ1hoSmFEbkRxVUNHN1lnZlRpOFdkcXRidkxjSWZHNkVwR1lqQlZqZGpoajVnbjYzR25LTWZrY2J0NjJvcitnQ3R3NWRiUnpBQXpzPQ==' required></select>
 						<span id="err_pOREJA_HEL_ADHEREN"></span>
                     </div>
                     <div class="col-md-3">
                         Contorno <!-- Se llena del catálogo CAT_OREJAHELCONTORNO -->
-                        <select  class="form-control" id="pOREJA_HEL_CONTORNO" name="pOREJA_HEL_CONTORNO" data-error="#err_pOREJA_HEL_CONTORNO" data-query='Y2U2citwYUQzaldSMnBkN2V0U2VnM3BCemJ1OFJUamRDWEs5L2krNlF1c3VrTGFNZmJBQ2k2Y09vNlhkNkdhckJMZVlSZFN1Y1U4TFhlVjFGT2ZqTU1mZmlFV3NqOHJvaExCRUJuRnVQTm1IV1lWN3gwN3J4cG1OMTNFV0Y5YUlOcFpoTlo5YXRTQ0szQ2tmRWRvOE9qbjhVTUZqdEVveWJBT3F4VmlMaytJPQ=='></select>
+                        <select  class="form-control" id="pOREJA_HEL_CONTORNO" name="pOREJA_HEL_CONTORNO" data-error="#err_pOREJA_HEL_CONTORNO" data-query='Y2U2citwYUQzaldSMnBkN2V0U2VnM3BCemJ1OFJUamRDWEs5L2krNlF1c3VrTGFNZmJBQ2k2Y09vNlhkNkdhckJMZVlSZFN1Y1U4TFhlVjFGT2ZqTU1mZmlFV3NqOHJvaExCRUJuRnVQTm1IV1lWN3gwN3J4cG1OMTNFV0Y5YUlOcFpoTlo5YXRTQ0szQ2tmRWRvOE9qbjhVTUZqdEVveWJBT3F4VmlMaytJPQ==' required></select>
 						<span id="err_pOREJA_HEL_CONTORNO"></span>
                     </div>
                 </div>
@@ -299,17 +299,17 @@
                 <div class="row">
                     <div class="col-md-3">
                             Adherencia <!-- Se llena del catálogo CAT_OREJALOBADHEREN -->
-                            <select  class="form-control" id="pOREJA_LOB_ADHEREN" name="pOREJA_LOB_ADHEREN" data-error="#err_pOREJA_LOB_ADHEREN" data-query='T2VJM0paN1h3NTBwNnh5UlAyOHBIWWtlVVRhV3h4QTZEUnpEQ2Q1dURpNHdKTU8zRXgzUWlyTG0rb2dqTE53blJKOUVqSm5xS0V5QTYwLzY2cUtFRVBJU1VzME0wNm9rNEZBYjcwcEQ2STl6dmQxbkdDQm5nQXV3dDJJYno5YXFsS3VSSFExZDd1ck9lVnJzK1JyakFWUXZEUi9QamptQ1RFL0djdldxVnFvPQ=='></select>
+                            <select  class="form-control" id="pOREJA_LOB_ADHEREN" name="pOREJA_LOB_ADHEREN" data-error="#err_pOREJA_LOB_ADHEREN" data-query='T2VJM0paN1h3NTBwNnh5UlAyOHBIWWtlVVRhV3h4QTZEUnpEQ2Q1dURpNHdKTU8zRXgzUWlyTG0rb2dqTE53blJKOUVqSm5xS0V5QTYwLzY2cUtFRVBJU1VzME0wNm9rNEZBYjcwcEQ2STl6dmQxbkdDQm5nQXV3dDJJYno5YXFsS3VSSFExZDd1ck9lVnJzK1JyakFWUXZEUi9QamptQ1RFL0djdldxVnFvPQ==' required></select>
 						    <span id="err_pOREJA_LOB_ADHEREN"></span>
                         </div>
                         <div class="col-md-3">
                             Particularidad <!-- Se llena del catálogo CAT_OREJALOBPARTIC -->
-                            <select  class="form-control" id="pOREJA_LOB_PARTIC" name="pOREJA_LOB_PARTIC" data-error="#err_pOREJA_LOB_PARTIC" data-query='T25ZVTZZb2lia3A1T0xoZGM0N0FOWHZ3N2pzMG5pdzVVaFpIV2tiaUVETmMrTXhLRzdTK3g3SWpON0M3L1BnYm1hVCtWZzNnZis1bGQ4akMrR09qUE9XS3E1c1dnZU9maUlrSVJHTlZqRUtrZzhVME11S2c1WXBpSXBmK0E0eit0UHFrTXhETjk0Y1UxcmVSVEdxdlRhNjhLd2lYckpzaThzNUhVWXMrZ1p3PQ=='></select>
+                            <select  class="form-control" id="pOREJA_LOB_PARTIC" name="pOREJA_LOB_PARTIC" data-error="#err_pOREJA_LOB_PARTIC" data-query='T25ZVTZZb2lia3A1T0xoZGM0N0FOWHZ3N2pzMG5pdzVVaFpIV2tiaUVETmMrTXhLRzdTK3g3SWpON0M3L1BnYm1hVCtWZzNnZis1bGQ4akMrR09qUE9XS3E1c1dnZU9maUlrSVJHTlZqRUtrZzhVME11S2c1WXBpSXBmK0E0eit0UHFrTXhETjk0Y1UxcmVSVEdxdlRhNjhLd2lYckpzaThzNUhVWXMrZ1p3PQ==' required></select>
 						    <span id="err_pOREJA_LOB_PARTIC"></span>
                         </div>
                         <div class="col-md-3">
                             Dimensión <!-- Se llena del catálogo CAT_OREJALOBDIMEN -->
-                            <select  class="form-control" id="pOREJA_LOB_DIMEN" name="pOREJA_LOB_DIMEN" data-error="#err_pOREJA_LOB_DIMEN" data-query='M2h6U2tWc1BZZ2U4R2JkeGhmRHZaeklYdEw1djAxR3hkaTVhWXRoSjhOOXViYllaaFY2NzhSTmUrNjJRTXVWYVEwL0QvVDJHTDVvTmdzYWtsbXI3RFhYcmxHTGFmQjBxb3lYc0o2ZTg2blFvVTNnTVJ5bEZXSDZ1YmFZYmkrdmlUazNmc1hSV09QM1cvV3Q3VTdOU3Myb0doV1Zab3JJSkgwWUMyL2YyRUVNPQ=='></select>
+                            <select  class="form-control" id="pOREJA_LOB_DIMEN" name="pOREJA_LOB_DIMEN" data-error="#err_pOREJA_LOB_DIMEN" data-query='M2h6U2tWc1BZZ2U4R2JkeGhmRHZaeklYdEw1djAxR3hkaTVhWXRoSjhOOXViYllaaFY2NzhSTmUrNjJRTXVWYVEwL0QvVDJHTDVvTmdzYWtsbXI3RFhYcmxHTGFmQjBxb3lYc0o2ZTg2blFvVTNnTVJ5bEZXSDZ1YmFZYmkrdmlUazNmc1hSV09QM1cvV3Q3VTdOU3Myb0doV1Zab3JJSkgwWUMyL2YyRUVNPQ==' required></select>
 						    <span id="err_pOREJA_LOB_DIMEN"></span>
                         </div>
                 </div>
@@ -323,12 +323,12 @@
                 <div class="row">
                     <div class="col-md-4">
                         Tipo <!-- Se llena del catálogo CAT_TIPODESANGRE -->
-                        <select  class="form-control" id="pSANGRE" name="pSANGRE" data-error="#err_pSANGRE" data-query='OEhBMzZsSU5HcVlzaHRWQmVHb0lZUjBnbEN6UWR5YlZESU90OENxY2Z2WkRMMmRtQ2NmSHplV2pLdkVnMURxRnhkOG5RTmR4YXJxYi9RdGtYN3ZkQ3RwTGh6dkZPN0UwZnA2eVE0NU9UTjhCYTd6ZmVuYkxOSjhQZXEzdWdXV1ZwMk8xcm5iaW1Jb0tNQ1F4WlptL0tKbllYcEhObVpsTTlUWlNOU0wvLzQwPQ=='></select>
+                        <select  class="form-control" id="pSANGRE" name="pSANGRE" data-error="#err_pSANGRE" data-query='OEhBMzZsSU5HcVlzaHRWQmVHb0lZUjBnbEN6UWR5YlZESU90OENxY2Z2WkRMMmRtQ2NmSHplV2pLdkVnMURxRnhkOG5RTmR4YXJxYi9RdGtYN3ZkQ3RwTGh6dkZPN0UwZnA2eVE0NU9UTjhCYTd6ZmVuYkxOSjhQZXEzdWdXV1ZwMk8xcm5iaW1Jb0tNQ1F4WlptL0tKbllYcEhObVpsTTlUWlNOU0wvLzQwPQ==' required></select>
 						<span id="err_pSANGRE"></span>
                     </div>
                     <div class="col-md-4">
                         Factor RH <!-- se llen CAT_FACTORRH -->
-                        <select  class="form-control" id="pFACTOR_RH" name="pFACTOR_RH" data-error="#err_pFACTOR_RH" data-query='K0dpTXp3ZGpjaWlBVndlRFVUcTJSanNHSWhUSHlFOFBoT3JnY1E2U0Ntd2lvRVVyYU41YzZZbis1UWUxN3JycnVjdEs3L0w0U3VId2d6QTVkQ0xMQVpRaUlDNnBWSytXYTNaSmdMMmludWVRSitVUlNMVzFjOWx4UEJhdW1VbVA='></select>
+                        <select  class="form-control" id="pFACTOR_RH" name="pFACTOR_RH" data-error="#err_pFACTOR_RH" data-query='K0dpTXp3ZGpjaWlBVndlRFVUcTJSanNHSWhUSHlFOFBoT3JnY1E2U0Ntd2lvRVVyYU41YzZZbis1UWUxN3JycnVjdEs3L0w0U3VId2d6QTVkQ0xMQVpRaUlDNnBWSytXYTNaSmdMMmludWVRSitVUlNMVzFjOWx4UEJhdW1VbVA=' required></select>
 						<span id="err_pFACTOR_RH"></span>
                     </div>
                 </div>
@@ -377,7 +377,7 @@
     </div>    
     <div class="tab-pane fade" id="Senas_particulares" role="tabpanel" aria-labelledby="Senas_particulares-tab">
         <div class="_container">
-            <form action="#" id="Senas_particulares_form" name="Senas_particulares_form" autocomplete="off">
+            <form action="#" id="Senas_particulares_form" name="Senas_particulares_form" autocomplete="off" data-requireddata=false>
                 <br>
                 <div class="row">
                     <div class="col-md-12 text-center">
@@ -460,7 +460,7 @@
 
     <div class="tab-pane fade" id="Registro_decadactilar" role="tabpanel" aria-labelledby="Registro_decadactilar-tab">
         <div class="_container">
-            <form action="#" id="Registro_decadactilar_form" name="Registro_decadactilar_form" autocomplete="off">
+            <form action="#" id="Registro_decadactilar_form" name="Registro_decadactilar_form" autocomplete="off" data-requireddata=false>
                 <br>
                 <div class="row">
                     <div class="col-md-12 text-center">

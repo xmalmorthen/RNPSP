@@ -337,7 +337,7 @@
                 </div>
                 <div class="col-md-4">
                     Número interior
-                    <input type="text" class="form-control" id="pNUM_INTERIOR_DOMICILIO" name="pNUM_INTERIOR_DOMICILIO" >
+                    <input type="text" class="form-control" id="pNUM_INTERIOR_DOMICILIO" name="pNUM_INTERIOR_DOMICILIO" required>
                 </div>
             </div>
             <br>
