@@ -37,9 +37,9 @@ validarVozFnc = function(e){
                         { idPestania: 2, idFicha: 3}, // laboral - Actitudes hacia el empleo
                         { idPestania: 2, idFicha: 4}, // laboral - Comisiones
                         { idPestania: 3, idFicha: 1}, // capacitación - idiomnas y/o dialecto
-                        { idPestania: 3, idFicha: 2}  // capacitación - habilidades y aptitudes
-                        //{ idPestania: 4, idFicha: 6}  // identificación - identificación de voz
-                    ]
+                        { idPestania: 3, idFicha: 2},  // capacitación - habilidades y aptitudes
+                        { idPestania: 4, idFicha: 6}  // identificación - identificación de voz
+                    ];
 
                     valid = true;
                     itemsProcessed = 0;
