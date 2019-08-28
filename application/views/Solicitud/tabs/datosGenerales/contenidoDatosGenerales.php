@@ -336,7 +336,7 @@
                     <input type="text" class="form-control validarNumberSpecial" id="pNUM_EXTERIOR_DOMICILIO" name="pNUM_EXTERIOR_DOMICILIO" required>
                 </div>
                 <div class="col-md-4">
-                    Número interior
+                    <span class="clr">*</span>Número interior
                     <input type="text" class="form-control" id="pNUM_INTERIOR_DOMICILIO" name="pNUM_INTERIOR_DOMICILIO" required>
                 </div>
             </div>
@@ -482,8 +482,8 @@
                     <input type="text" class="form-control validarNumberSpecial" name="pNUM_EXTERIOR_REFERENCIAS" id="pNUM_EXTERIOR_REFERENCIAS" required>
                 </div>
                 <div class="col-md-4">
-                    Número interior
-                    <input type="text" class="form-control" name="pNUM_INTERIOR_REFERENCIAS" id="pNUM_INTERIOR_REFERENCIAS" >
+                    <span class="clr">*</span>Número interior
+                    <input type="text" class="form-control" name="pNUM_INTERIOR_REFERENCIAS" id="pNUM_INTERIOR_REFERENCIAS" required>
                 </div>
                 <div class="col-md-4">
                     <span class="clr">*</span>Número telefónico.

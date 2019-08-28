@@ -116,7 +116,7 @@
             $dataResponse = array('message'=>array(),'status'=>'ok');
 
             $this->load->library('form_validation');
-            $this->form_validation->set_rules('preguntaSeguridad', $this->input->post('DescPreguntaSeguridad'), 'required|min_length[5]');
+            $this->form_validation->set_rules('preguntaSeguridad', $this->input->post('DescPreguntaSeguridad'), 'required|min_length[3]');
 
             if ($this->form_validation->run($this) != false) {
                 $idUsuario = $this->ion_auth->user()->row()->id;

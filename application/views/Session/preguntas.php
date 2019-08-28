@@ -11,7 +11,7 @@
           <p><?php echo $pregunta; ?></p>
           <input type="hidden" class="form-control" value="<?php echo $idPregunta; ?>" name="idPreguntaSeguridad" >
           <input type="hidden" class="form-control" value="<?php echo $pregunta; ?>" name="DescPreguntaSeguridad" >
-          <input type="text" class="form-control" name="preguntaSeguridad" required minlength="5">
+          <input type="text" class="form-control" name="preguntaSeguridad" required minlength="3">
         </div>
         <div class="modal-footer">
           <input type="submit" class="btn btn-default" value="Verificar">
