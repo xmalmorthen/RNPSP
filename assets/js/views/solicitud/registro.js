@@ -564,6 +564,7 @@ var mainTabMenu = {
             },
             showCancelButton: true,
             confirmButtonText: 'Aceptar',
+            cancelButtonText: 'Cancelar',
             showLoaderOnConfirm: true,
             preConfirm: (CURP) => {
                 try {
