@@ -236,7 +236,7 @@ validarReplicarFnc = {
                     
                     $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin",text:'Replicando solicitud'});                    
 
-                    if ( data.results.data.length ==  replicationSingleProc.ids.length){
+                    if ( data.results.data.length ==  1){
 
                         clearInterval( validarReplicarFnc.vars.replicationInterval );
 
