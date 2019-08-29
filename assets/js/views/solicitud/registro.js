@@ -152,7 +152,7 @@ validarReplicarFnc = {
 
             if (data.results.status != 1) {
 
-                $('#frmAlertSumaryMsg').html('<h5>Eror al replicar.</h5> <br/>' + data.results.message);
+                $('#frmAlertSumaryMsg').html('<h5>Error al replicar.</h5> <br/>' + data.results.message);
                 $('#frmAlertSumary').removeClass('d-none');
                 $.LoadingOverlay("hide",true);
 
@@ -168,7 +168,7 @@ validarReplicarFnc = {
             
         }).fail(function (err) {
         
-            $('#frmAlertSumaryMsg').html('<h5>Eror al replicar.</h5> <br/>' + (err.message ? err.message : err.statusText) );
+            $('#frmAlertSumaryMsg').html('<h5>Error al replicar.</h5> <br/>' + (err.message ? err.message : err.statusText) );
             $('#frmAlertSumary').removeClass('d-none');
             $.LoadingOverlay("hide",true);
 
@@ -216,7 +216,7 @@ validarReplicarFnc = {
 
                     localStorage.removeItem('replicationSingleProc');
 
-                    $('#frmAlertSumaryMsg').html('<h5>Eror al replicar.</h5> <br/>' + data.results.message);
+                    $('#frmAlertSumaryMsg').html('<h5>Error al replicar.</h5> <br/>' + data.results.message);
                     $('#frmAlertSumary').removeClass('d-none');                    
                     $('.validarReplicar').html('Replicar').prop('disabled', false);
                     $.LoadingOverlay("hide",true);
@@ -227,7 +227,7 @@ validarReplicarFnc = {
 
                     localStorage.removeItem('replicationSingleProc');
 
-                    $('#frmAlertSumaryMsg').html('<h5>Eror al replicar.</h5> <br/>' + data.results.message);
+                    $('#frmAlertSumaryMsg').html('<h5>Error al replicar.</h5> <br/>' + data.results.message);
                     $('#frmAlertSumary').removeClass('d-none');                    
                     $('.validarReplicar').html('Replicar').prop('disabled', false);
                     $.LoadingOverlay("hide",true);
@@ -258,7 +258,7 @@ validarReplicarFnc = {
 
                 localStorage.removeItem('replicationSingleProc');
 
-                $('#frmAlertSumaryMsg').html('<h5>Eror al replicar.</h5> <br/>' + (err.message ? err.message : err.statusText) );
+                $('#frmAlertSumaryMsg').html('<h5>Error al replicar.</h5> <br/>' + (err.message ? err.message : err.statusText) );
                 $('#frmAlertSumary').removeClass('d-none');
                 $('.validarReplicar').html('Replicar').prop('disabled', false);
                 $.LoadingOverlay("hide",true);
@@ -290,7 +290,7 @@ validarReplicarFnc = {
         });
 
         if (solicitudesError > 0) {
-            $('#frmAlertSumaryMsg').html('<h5>Eror al procesar una o varias de las solicitudes.</h5> <br/>' + errorList);
+            $('#frmAlertSumaryMsg').html('<h5>Error al procesar una o varias de las solicitudes.</h5> <br/>' + errorList);
             $('#frmAlertSumary').removeClass('d-none');
         }
 

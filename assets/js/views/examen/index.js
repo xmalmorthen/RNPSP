@@ -134,7 +134,7 @@ var objViewIndex = {
                             });
 
                             if (areErrors) {
-                                $('#frmAlertMsg').html('Eror al procesar una o varias de las solicitudes. <br/>' + errorList);
+                                $('#frmAlertMsg').html('Error al procesar una o varias de las solicitudes. <br/>' + errorList);
                                 $('#frmAlert').removeClass('d-none');
                             }
 

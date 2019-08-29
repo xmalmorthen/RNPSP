@@ -154,7 +154,7 @@ var objViewIndex = {
 
                         if (data.results.status != 1) {
 
-                            $('#frmAlertSumaryMsg').html('<h5>Eror al replicar.</h5> <br/>' + data.results.message);
+                            $('#frmAlertSumaryMsg').html('<h5>Error al replicar.</h5> <br/>' + data.results.message);
                             $('#frmAlertSumary').removeClass('d-none');
                             $.LoadingOverlay("hide",true);
 
@@ -170,7 +170,7 @@ var objViewIndex = {
                         
                     }).fail(function (err) {
                     
-                        $('#frmAlertSumaryMsg').html('<h5>Eror al replicar.</h5> <br/>' + (err.message ? err.message : err.statusText));
+                        $('#frmAlertSumaryMsg').html('<h5>Error al replicar.</h5> <br/>' + (err.message ? err.message : err.statusText));
                         $('#frmAlertSumary').removeClass('d-none');
                         $.LoadingOverlay("hide",true);
 
@@ -182,7 +182,7 @@ var objViewIndex = {
 
                 }catch(err) {
 
-                    $('#frmAlertSumaryMsg').html('<h5>Eror al replicar.</h5> <br/>' + (err.message ? err.message : err.statusText));
+                    $('#frmAlertSumaryMsg').html('<h5>Error al replicar.</h5> <br/>' + (err.message ? err.message : err.statusText));
                     $('#frmAlertSumary').removeClass('d-none');
                     $.LoadingOverlay("hide",true);
 
@@ -216,7 +216,7 @@ var objViewIndex = {
 
                         if (data.results.status != 1) {
 
-                            $('#frmAlertSumaryMsg').html('<h5>Eror al validar.</h5> <br/>' + data.results.message);
+                            $('#frmAlertSumaryMsg').html('<h5>Error al validar.</h5> <br/>' + data.results.message);
                             $('#frmAlertSumary').removeClass('d-none');
                             
                         } else {
@@ -229,7 +229,7 @@ var objViewIndex = {
                         
                     }).fail(function (err) {
                     
-                        $('#frmAlertSumaryMsg').html('<h5>Eror al validar.</h5> <br/>' + (err.message ? err.message : err.statusText));
+                        $('#frmAlertSumaryMsg').html('<h5>Error al validar.</h5> <br/>' + (err.message ? err.message : err.statusText));
                         $('#frmAlertSumary').removeClass('d-none');
                         $.LoadingOverlay("hide",true);
 
@@ -241,7 +241,7 @@ var objViewIndex = {
 
                 }catch(err) {
 
-                    $('#frmAlertSumaryMsg').html('<h5>Eror al validar.</h5> <br/>' + (err.message ? err.message : err.statusText));
+                    $('#frmAlertSumaryMsg').html('<h5>Error al validar.</h5> <br/>' + (err.message ? err.message : err.statusText));
                     $('#frmAlertSumary').removeClass('d-none');
                     $.LoadingOverlay("hide",true);
 
@@ -406,7 +406,7 @@ var objViewIndex = {
                                             $( "body" ).unbind("DOMNodeRemoved");
 
                                             if (areErrors) {
-                                                $('#frmAlertSumaryMsg').html('<h5>Eror al procesar una o varias de las solicitudes.</h5> <br/><br/>' + errorList);
+                                                $('#frmAlertSumaryMsg').html('<h5>Error al procesar una o varias de las solicitudes.</h5> <br/><br/>' + errorList);
                                                 $('#frmAlertSumary').removeClass('d-none');
                                             }
 
@@ -441,7 +441,7 @@ var objViewIndex = {
                                 $('#imprimir').modal('hide');
 
                                 if (areErrors) {
-                                    $('#frmAlertSumaryMsg').html('<h5>Eror al procesar una o varias de las solicitudes.</h5> <br/><br/>' + errorList);
+                                    $('#frmAlertSumaryMsg').html('<h5>Error al procesar una o varias de las solicitudes.</h5> <br/><br/>' + errorList);
                                     $('#frmAlertSumary').removeClass('d-none');
                                 }
 
@@ -582,7 +582,7 @@ var objViewIndex = {
 
                         localStorage.removeItem('replicationProc');
 
-                        $('#frmAlertSumaryMsg').html('<h5>Eror al replicar.</h5> <br/>' + data.results.message);
+                        $('#frmAlertSumaryMsg').html('<h5>Error al replicar.</h5> <br/>' + data.results.message);
                         $('#frmAlertSumary').removeClass('d-none');
                         $('#frmAlertReplication').addClass('d-none');
                         $('#Replicar').html('Replicar').prop('disabled', false);
@@ -594,7 +594,7 @@ var objViewIndex = {
 
                         localStorage.removeItem('replicationProc');
 
-                        $('#frmAlertSumaryMsg').html('<h5>Eror al replicar.</h5> <br/>' + data.results.message);
+                        $('#frmAlertSumaryMsg').html('<h5>Error al replicar.</h5> <br/>' + data.results.message);
                         $('#frmAlertSumary').removeClass('d-none');
                         $('#frmAlertReplication').addClass('d-none');
                         $('#Replicar').html('Replicar').prop('disabled', false);
@@ -630,7 +630,7 @@ var objViewIndex = {
 
                     localStorage.removeItem('replicationProc');
 
-                    $('#frmAlertSumaryMsg').html('<h5>Eror al replicar.</h5> <br/>' + (err.message ? err.message : err.statusText));
+                    $('#frmAlertSumaryMsg').html('<h5>Error al replicar.</h5> <br/>' + (err.message ? err.message : err.statusText));
                     $('#frmAlertSumary').removeClass('d-none');
                     $('#frmAlertReplication').addClass('d-none');
                     $('#Replicar').html('Replicar').prop('disabled', false);
@@ -671,7 +671,7 @@ var objViewIndex = {
             errorList +="</ul>";
 
             if (solicitudesError > 0) {
-                $('#frmAlertSumaryMsg').html('<h5>Eror al procesar una o varias de las solicitudes.</h5> <br/><br/>' + errorList);
+                $('#frmAlertSumaryMsg').html('<h5>Error al procesar una o varias de las solicitudes.</h5> <br/><br/>' + errorList);
                 $('#frmAlertSumary').removeClass('d-none');
             }
 
@@ -749,7 +749,7 @@ var objViewIndex = {
 
             if (solicitudesError > 0) {
                 
-                $('#frmAlertSumaryMsg').html('<h5>Eror al procesar una o varias de las solicitudes.</h5><br/>' + errorList);
+                $('#frmAlertSumaryMsg').html('<h5>Error al procesar una o varias de las solicitudes.</h5><br/>' + errorList);
                 $('#frmAlertSumary').removeClass('d-none');
 
             }
