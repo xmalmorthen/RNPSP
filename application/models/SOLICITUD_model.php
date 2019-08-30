@@ -18,31 +18,28 @@ class SOLICITUD_model extends MY_Model
   public function get(){
     $this->select('FOLIO,NOMBRE,PATERNO,MATERNO,FECHA_REGISTRO,TIPO_OPERACION,DESCRIPCION,ESTATUS,DESCRIPCION_ESTATUS,ID_DEPENDENCIA,NOMBRE_DPCIA');
     
-//die(var_dump($this->session->userdata(SESSIONVAR)));
+    //die(var_dump($this->session->userdata(SESSIONVAR)));
+    
     $_verificaTipoUsuarioSesion = verificaTipoUsuarioSesion();
 
     if ($_verificaTipoUsuarioSesion == 1){ // usuario super admin
       
-      $where = "(tipo_operacion = 'as' and estatus = 7 and tipousr != 1) or (estatus in (6,7,8) and tipousr = 1)";
-
-      $this->where($where,NULL,FALSE);
+      //$where = "(tipo_operacion = 'as' and estatus = 7 and tipousr != 1) or (estatus in (6,7,8) and tipousr = 1)";
+      //$this->where($where,NULL,FALSE);
 
       $list = $this->response_list();
 
     } else {
 
       $where = "tipo_operacion = 'as' and DpciaUsr=" . $this->session->userdata(SESSIONVAR)['id_depUsr'] . ' and InstUsr=' . $this->session->userdata(SESSIONVAR)['id_adsUsr'] . " and estatus in (6,7)";
-
-//die(var_dump($this->session->userdata(SESSIONVAR)['id_depUsr']));
-
       $this->where($where,NULL,FALSE);
+
+      //die(var_dump($this->session->userdata(SESSIONVAR)['id_depUsr']));
 
       // $this->where('tipo_operacion', 'AS'); // tipo de movimiento AS
       // $this->where('ID_DEPENDENCIA', $this->session->userdata(SESSIONVAR)['ID_ADSCRIPCION']); // de su dependencia
       // $this->where('ESTATUS', '6'); // mostrar solo solicitudes que están en estatus pendiente
       // $this->or_where('ESTATUS', '7'); // mostrar solo solicitudes que están en estatus concluida
-
-
 
       $list = $this->response_list();
 
