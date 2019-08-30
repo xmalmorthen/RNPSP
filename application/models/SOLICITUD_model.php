@@ -31,12 +31,18 @@ class SOLICITUD_model extends MY_Model
 
     } else {
 
-      $where = "tipo_operacion = 'as' and ID_DEPENDENCIA = " . $this->session->userdata(SESSIONVAR)['ID_ADSCRIPCION'] . " and estatus in (6,7)";
+      $where = "tipo_operacion = 'as' and DpciaUsr=" . $this->session->userdata(SESSIONVAR)['id_depUsr'] . ' and InstUsr=' . $this->session->userdata(SESSIONVAR)['id_adsUsr'] . " and estatus in (6,7)";
+
+//die(var_dump($this->session->userdata(SESSIONVAR)['id_depUsr']));
+
+      $this->where($where,NULL,FALSE);
 
       // $this->where('tipo_operacion', 'AS'); // tipo de movimiento AS
       // $this->where('ID_DEPENDENCIA', $this->session->userdata(SESSIONVAR)['ID_ADSCRIPCION']); // de su dependencia
       // $this->where('ESTATUS', '6'); // mostrar solo solicitudes que están en estatus pendiente
       // $this->or_where('ESTATUS', '7'); // mostrar solo solicitudes que están en estatus concluida
+
+
 
       $list = $this->response_list();
 
