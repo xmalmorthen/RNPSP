@@ -249,7 +249,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         Número telefónico
-                        <input type="text" id="pNUM_TELEFONICO" name="pNUM_TELEFONICO"  class="form-control" maxlength="20">
+                        <input type="text" id="pNUM_TELEFONICO" name="pNUM_TELEFONICO"  class="form-control" maxlength="13" minlength="10">
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Área o departamento 
