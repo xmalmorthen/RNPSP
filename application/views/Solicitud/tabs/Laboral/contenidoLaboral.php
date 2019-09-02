@@ -204,7 +204,7 @@
 
     <div class="tab-pane fade" id="Empleos_diversos" role="tabpanel" aria-labelledby="Empleos_diversos-tab">
         <div class="_container">
-            <form name="Empleos_diversos_form" id="Empleos_diversos_form" action="#"  autocomplete="off" data-requireddata=true>
+            <form name="Empleos_diversos_form" id="Empleos_diversos_form" action="#"  autocomplete="off" data-requireddata=false>
                 <br>
                 <div class="row">
                     <div class="col-md-12 text-center">

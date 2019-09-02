@@ -33,7 +33,7 @@ validarVozFnc = function(e){
                     toIgnore = [ 
                         { idPestania: 1, idFicha: 4}, // datos generales - referencias
                         { idPestania: 1, idFicha: 5}, // datos generales - socioeconónico / dependientes económnicos
-                        //{ idPestania: 2, idFicha: 2}, // laboral - Empleos diversos
+                        { idPestania: 2, idFicha: 2}, // laboral - Empleos diversos
                         { idPestania: 2, idFicha: 3}, // laboral - Actitudes hacia el empleo
                         { idPestania: 2, idFicha: 4}, // laboral - Comisiones
                         { idPestania: 3, idFicha: 1}, // capacitación - idiomnas y/o dialecto
@@ -1607,7 +1607,11 @@ var fillData = {
 
                     }
 
+                    if (data.pESTATUS == 8)
+                        $('.validarReplicar').removeClass('d-none');
+
                 }
+                
                 $('#Identificacion_de_voz_form').LoadingOverlay("hide");
 
                 $('#Identificacion_de_voz_form').removeData('loading');

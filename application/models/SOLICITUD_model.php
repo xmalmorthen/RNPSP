@@ -132,6 +132,7 @@ class SOLICITUD_model extends MY_Model
         $this->response['message'] = $responseOutput['msg'];
       }
     }
+
     return $this->response;
   }
   
