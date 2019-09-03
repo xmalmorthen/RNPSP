@@ -255,7 +255,8 @@
 						$('div#modalPregunta').hide();
 						swal({
 								type: 'error',
-								title: 'Cuenta de usuario bloqueado'
+								title: 'Cuenta de usuario bloqueado',
+								footer: 'Póngase en contacto con el administrador del sistema'
 							}).then(function() {
 								location.reload(); 
 							});
