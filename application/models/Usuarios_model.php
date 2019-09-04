@@ -21,7 +21,7 @@ class Usuarios_model extends MY_Model
   {
     $returnResponse = array();
     try {
-      $this->db->select("id,NOMBRE,CURP,PATERNO,MATERNO,email,MotivoInactivo,id_EstatusUsuario,DescEstatus as EstatusUsuario,ID_ADSCRIPCION,DescAdscripcion as ADSCRIPCION,CONCAT(NOMBRE_JEFE,' ',PATERNO_JEFE,' ',MATERNO_JEFE) as JEFE", false);
+      $this->db->select("id,NOMBRE,CURP,PATERNO,MATERNO,email,MotivoInactivo,id_EstatusUsuario,active, DescEstatus as EstatusUsuario,ID_ADSCRIPCION,DescAdscripcion as ADSCRIPCION,CONCAT(NOMBRE_JEFE,' ',PATERNO_JEFE,' ',MATERNO_JEFE) as JEFE", false);
       $this->db->from('vw_Usuarios');
       $returnResponse = $this->response_list();
     } catch (Exception $e) {

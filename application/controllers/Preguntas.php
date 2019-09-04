@@ -155,7 +155,8 @@
 
                 if($dataResponse['contadorIntentos'] == 4){
                     $upodate = array(
-                        'active' => 0
+                        'active' => 0,
+                        'id_EstatusUsuario' => 3
                     );
                     $this->db->where('id',$idUsuario);
                     $this->db->update('cat_Usuarios',$upodate);
