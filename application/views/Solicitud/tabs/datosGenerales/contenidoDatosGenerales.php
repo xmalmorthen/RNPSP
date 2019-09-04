@@ -138,7 +138,7 @@
                     <button class="btn btn-default btnGuardarSection" id="guardarDatosPersonales"> Guardar datos personales</button>
                 </div>
             </div>
-            <input type="hidden" id="PID_ALTERNA_Datos_personales" name="PID_ALTERNA_Datos_personales" value="" >
+            <input type="hidden" id="pID_ALTERNA" name="pID_ALTERNA" value="" >
             <input type="hidden" id="pID_ESTADO_EMISOR_Datos_personales" name="pID_ESTADO_EMISOR_Datos_personales" value="" >
             <input type="hidden" id="pID_EMISOR_Datos_personales" name="pID_EMISOR_Datos_personales" value="" >
         </form>

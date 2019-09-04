@@ -667,6 +667,8 @@ var mainFormActions = {
 
         mainTabMenu.var.pID_ALTERNA = data.pID_ALTERNA;
 
+        $('#pID_ALTERNA').val(mainTabMenu.var.pID_ALTERNA);
+
         if (mainTabMenu.var.pID_ALTERNA == null){
             Swal.fire({
                 type: 'error',                        

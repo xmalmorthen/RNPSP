@@ -284,40 +284,50 @@ class SOLICITUD_model extends MY_Model
       $this->form_validation->set_rules('pFECHA_NACIONALIDAD', 'Fecha de nacionalidad', 'trim');
       $this->form_validation->set_rules('pCUIP', 'CUIP', 'trim|max_length[50]');
 
-    }
+    } 
 
     if ($this->form_validation->run() === true) {
 
-      $this->procedure('sp_addDatosPersonales');
-      $this->addParam('pTIPO_OPERACION','pTIPO_OPERACION');
-      $this->addParam('pID_PAIS_NAC','pID_PAIS_NAC');
-      $this->addParam('pNOMBRE','pNOMBRE_DATOS_PERSONALES','N');
-      $this->addParam('pPATERNO','pPATERNO_DATOS_PERSONALES','N');
-      $this->addParam('pMATERNO','pMATERNO_DATOS_PERSONALES','N');
-      $this->addParam('pID_ENTIDAD_NAC','pID_ENTIDAD_NAC');
-      $this->addParam('pID_MUNICIPIO_NAC','pID_MUNICIPIO_NAC');
-      $this->addParam('pID_ESTADO_CIVIL','pID_ESTADO_CIVIL');
-      $this->addParam('pFECHA_NAC','pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES');
-      $this->addParam('pSEXO','pSEXO_DATOS_PERSONALES','N');
-      $this->addParam('pCURP','pCURP','N');
-      $this->addParam('pRFC','pRFC_DOMICILIO','N');
-      $this->addParam('pCREDENCIAL_ELECTOR','pCREDENCIAL_ELECTOR','N');
-      $this->addParam('pCARTILLA_SMN','pCARTILLA_SMN','N');
-      $this->addParam('pLICENCIA','pLICENCIA_DATOS_PERSONALES','N');
-      $this->addParam('pPASAPORTE','pPASAPORTE','N');
-      $this->addParam('pMODO_NACIONALIDAD','pMODO_NACIONALIDAD');
-      $this->addParam('pID_NACIONALIDAD','pID_NACIONALIDAD');
-      $this->addParam('pNIDEPERSON',null);//envial NULL 
-      $this->addParam('pLICENCIA_VIG','pLICENCIA_VIG');
-      $this->addParam('pCIUDAD_NAC','pCIUDAD_NAC_DATOS_PERSONALES','N');
-      $this->addParam('pFECHA_NACIONALIDAD','pFECHA_NACIONALIDAD');
-      $this->addParam('pCUIP','pCUIP','N');
-      $this->addParam('pCIB',null,'');
-      $this->addParam('pMotivoCIB',null,'');
-      $this->addParam('pCURP_USR','pCURP_USR','N');
-      
+      if ( $allValidateDatosPersonales == 'false' ){
+        
+        $this->procedure('sp_UpdatepTIPO_OPERACION');
+        $this->addParam('pID_ALTERNA','pID_ALTERNA');
+        $this->addParam('pTIPO_OPERACION','pTIPO_OPERACION');
 
-      $this->iniParam('pID_ALTERNA','numeric');
+      } else {
+
+        $this->procedure('sp_addDatosPersonales');
+        $this->addParam('pTIPO_OPERACION','pTIPO_OPERACION');
+        $this->addParam('pID_PAIS_NAC','pID_PAIS_NAC');
+        $this->addParam('pNOMBRE','pNOMBRE_DATOS_PERSONALES','N');
+        $this->addParam('pPATERNO','pPATERNO_DATOS_PERSONALES','N');
+        $this->addParam('pMATERNO','pMATERNO_DATOS_PERSONALES','N');
+        $this->addParam('pID_ENTIDAD_NAC','pID_ENTIDAD_NAC');
+        $this->addParam('pID_MUNICIPIO_NAC','pID_MUNICIPIO_NAC');
+        $this->addParam('pID_ESTADO_CIVIL','pID_ESTADO_CIVIL');
+        $this->addParam('pFECHA_NAC','pFECHA_NAC_SOCIOECONOMICOS_DATOS_PERSONALES');
+        $this->addParam('pSEXO','pSEXO_DATOS_PERSONALES','N');
+        $this->addParam('pCURP','pCURP','N');
+        $this->addParam('pRFC','pRFC_DOMICILIO','N');
+        $this->addParam('pCREDENCIAL_ELECTOR','pCREDENCIAL_ELECTOR','N');
+        $this->addParam('pCARTILLA_SMN','pCARTILLA_SMN','N');
+        $this->addParam('pLICENCIA','pLICENCIA_DATOS_PERSONALES','N');
+        $this->addParam('pPASAPORTE','pPASAPORTE','N');
+        $this->addParam('pMODO_NACIONALIDAD','pMODO_NACIONALIDAD');
+        $this->addParam('pID_NACIONALIDAD','pID_NACIONALIDAD');
+        $this->addParam('pNIDEPERSON',null);//envial NULL 
+        $this->addParam('pLICENCIA_VIG','pLICENCIA_VIG');
+        $this->addParam('pCIUDAD_NAC','pCIUDAD_NAC_DATOS_PERSONALES','N');
+        $this->addParam('pFECHA_NACIONALIDAD','pFECHA_NACIONALIDAD');
+        $this->addParam('pCUIP','pCUIP','N');
+        $this->addParam('pCIB',null,'');
+        $this->addParam('pMotivoCIB',null,'');
+        $this->addParam('pCURP_USR','pCURP_USR','N');
+        
+        $this->iniParam('pID_ALTERNA','numeric');
+
+      }
+
       $this->iniParam('txtError','varchar','250');
       $this->iniParam('msg','varchar','80');
       $this->iniParam('tranEstatus','int');
