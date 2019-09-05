@@ -21,7 +21,7 @@ class Usuarios_model extends MY_Model
   {
     $returnResponse = array();
     try {
-      $this->db->select("id,NOMBRE,CURP,PATERNO,MATERNO,email,MotivoInactivo,id_EstatusUsuario,active, DescEstatus as EstatusUsuario,ID_ADSCRIPCION,DescAdscripcion as ADSCRIPCION,CONCAT(NOMBRE_JEFE,' ',PATERNO_JEFE,' ',MATERNO_JEFE) as JEFE", false);
+      $this->db->select("id,NOMBRE,CURP,PATERNO,MATERNO,email,MotivoInactivo,id_EstatusUsuario, DescEstatus as EstatusUsuario,ID_ADSCRIPCION,DescAdscripcion as ADSCRIPCION,CONCAT(NOMBRE_JEFE,' ',PATERNO_JEFE,' ',MATERNO_JEFE) as JEFE", false);
       $this->db->from('vw_Usuarios');
       $returnResponse = $this->response_list();
     } catch (Exception $e) {
@@ -56,7 +56,7 @@ class Usuarios_model extends MY_Model
     return $returnResponse;
   }
 
-  public function SessionById($idUsuario)
+    public function SessionById($idUsuario)
   {
     $returnResponse = array();
     try {
@@ -225,5 +225,25 @@ class Usuarios_model extends MY_Model
 
     return $response;
 
+  }
+
+  public function checkExistUserNameEdit($user_idExclude, $userName)
+  {
+    $response = true;
+
+    try {
+      $this->db->select('id')
+      ->from('cat_Usuarios')
+      ->where('id !=', $user_idExclude)
+      ->where('username', $userName);
+    
+      $query = $this->response_row();
+      
+      $response = count($query) == 0 ? false : true;
+
+    } catch (Exception $e) {
+      Msg_reporting::error_log($e);
+    }
+    return $response;
   }
 }

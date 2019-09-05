@@ -82,7 +82,7 @@ class Usuarios extends CI_Controller
       $response['message'] = 'method get not allowed';
     } else {
       $this->load->library('form_validation');
-      $this->form_validation->set_message('is_unique', 'El campo %s ya se encuentra registrado.');
+      $this->form_validation->set_message('is_unique', 'El uaurio %s ya se encuentra registrado.');
       $this->form_validation->set_message('required', 'Campo obligatorio');
       
       $this->form_validation->set_rules('pCORREO', 'Correo electrónico', 'trim|required|valid_email|is_unique[cat_Usuarios.username]');
@@ -259,6 +259,19 @@ class Usuarios extends CI_Controller
 
   }
 
+
+  public function checkExistUserNameEdit($str)
+  {    
+    $this->load->model('Usuarios_model');
+    if ($this->Usuarios_model->checkExistUserNameEdit($this->input->post('user_id'),$str))
+    {
+      $this->form_validation->set_message('checkExistUserNameEdit', 'El usuario ya se encuentra registrado.');
+      return FALSE;
+    }
+    else
+      return TRUE;
+  }
+
   public function guardarModificar()
   {
 
@@ -282,7 +295,8 @@ class Usuarios extends CI_Controller
     } else {
       $this->load->library('form_validation');
 
-      $this->form_validation->set_message('required', 'Campo obligatorio');      
+      $this->form_validation->set_message('is_unique', 'El usuario %s ya se encuentra registrado.');
+      $this->form_validation->set_message('required', 'Campo obligatorio');
 
       //$this->form_validation->set_rules('pCURP', 'CURP', 'required|min_length[18]|max_length[20]');
       $this->form_validation->set_rules('pCONTRASENA', 'Contraseña', 'trim|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']');
@@ -291,7 +305,7 @@ class Usuarios extends CI_Controller
         $this->form_validation->set_rules('MotivoInactivo', 'Motivo de cambio estatus a Inactivo', 'trim|required');
       }
       // $this->form_validation->set_rules('pCORREO', 'Correo electrónico', 'required|valid_email|is_unique[cat_Usuarios.username]');
-      $this->form_validation->set_rules('pCORREO', 'Correo electrónico', 'required|valid_email|callback_ValidpCORREO');
+      $this->form_validation->set_rules('pCORREO', 'Correo electrónico', 'required|valid_email|callback_checkExistUserNameEdit');
       
       if ($this->form_validation->run() === true) {
         $user_id = $this->input->post('user_id');
@@ -299,6 +313,7 @@ class Usuarios extends CI_Controller
         $password = $this->input->post('pCONTRASENA');
         
         $additional_data = [
+          'username' => strtolower($this->input->post('pCORREO')),
           'email' => strtolower($this->input->post('pCORREO')),
           'MotivoInactivo' => $this->input->post('MotivoInactivo'),
           'id_EstatusUsuario' => $this->input->post('pID_ESTATUS'),
