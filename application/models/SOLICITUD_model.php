@@ -22,6 +22,8 @@ class SOLICITUD_model extends MY_Model
     
     $_verificaTipoUsuarioSesion = verificaTipoUsuarioSesion();
 
+    $where = "estatus not in (1,3)";
+
     if ($_verificaTipoUsuarioSesion == 1){ // usuario super admin
       
       //$where = "(tipo_operacion = 'as' and estatus = 7 and tipousr != 1) or (estatus in (6,7,8) and tipousr = 1)";
@@ -31,7 +33,7 @@ class SOLICITUD_model extends MY_Model
 
     } else {
 
-      $where = "tipo_operacion = 'as' and DpciaUsr=" . $this->session->userdata(SESSIONVAR)['id_depUsr'] . ' and InstUsr=' . $this->session->userdata(SESSIONVAR)['id_adsUsr'] . " and estatus in (6,7)";
+      $where .= "tipo_operacion = 'as' and DpciaUsr=" . $this->session->userdata(SESSIONVAR)['id_depUsr'] . ' and InstUsr=' . $this->session->userdata(SESSIONVAR)['id_adsUsr'] . " and estatus in (6,7)";
       $this->where($where,NULL,FALSE);
 
       //die(var_dump($this->session->userdata(SESSIONVAR)['id_depUsr']));
@@ -342,7 +344,7 @@ class SOLICITUD_model extends MY_Model
         $resp = end($response);
         $this->response['status'] = $resp['tranEstatus'];
         $this->response['message'] = ($resp['tranEstatus'] == 1)? $resp['msg'] : $resp['txtError'];
-        $this->response['data'] = array('pID_ALTERNA'=> (array_key_exists('pID_ALTERNA',$resp)? $resp['pID_ALTERNA'] : false) );
+        $this->response['data'] = array('pID_ALTERNA'=> (array_key_exists('pID_ALTERNA',$resp)? $resp['pID_ALTERNA'] : ( isset($model['pID_ALTERNA']) ? $model['pID_ALTERNA'] : false) ) );
       }
     } else {
       $this->load->helper('html');
