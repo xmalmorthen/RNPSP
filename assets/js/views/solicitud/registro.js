@@ -813,38 +813,8 @@ var fillData = {
                 $("#Datos_personales_form .btnGuardarSection").attr('offEvent','true');
             }
 
-            if (tUsr == 1){
-                
-                $rule = [ 'BE', 'BA', 'AS' ];
-
-                if ( $.inArray( data.pTIPO_OPERACION, $rule ) != -1 ){
-
-                    $array = fillData.datosGenerales.rules.disabledComponents;
-                    $search_term = 'pTIPO_OPERACION';
-
-                    for (var i=$array.length-1; i>=0; i--) {
-                        if ($array[i] === $search_term) {
-                            $array.splice(i, 1);
-                            break;
-                        }
-                    }
-
-                    fillData.datosGenerales.rules.disabledComponents = $array;
-
-                    $("#Datos_personales_form .btnGuardarSection").removeAttr('offEvent');
-
-                    $('#Datos_personales_form').append('<input type="hidden" name="allValidateDatosPersonales" id="allValidateDatosPersonales" value="false" />');
-                }
-
-            }
-
-            fillData.datosGenerales.rules.disabledComponents.forEach( function(item) {
-                $("#" + item).prop("disabled", true);
-            });
-            $('*[offEvent="true"]').off('click').addClass('d-none');
-
-            intervalRulesDatosPersonales(true);
-
+            actualizaInputsFormDissable(data.pTIPO_OPERACION);
+            
             //AutoFill
             $.each(data,function(key,value){
                 mainFormActions.insertValueInSelect($('#'+ key),value);
@@ -1673,6 +1643,41 @@ var fillData = {
 function refreshTable(e,self){
     e.preventDefault();
     eval($(self).data('call'));
+}
+
+function actualizaInputsFormDissable(pTIPO_OPERACION){
+
+    if (tUsr == 1){
+                
+        $rule = [ 'BE', 'BA', 'AS' ];
+
+        if ( $.inArray( pTIPO_OPERACION, $rule ) != -1 ){
+
+            $array = fillData.datosGenerales.rules.disabledComponents;
+            $search_term = 'pTIPO_OPERACION';
+
+            for (var i=$array.length-1; i>=0; i--) {
+                if ($array[i] === $search_term) {
+                    $array.splice(i, 1);
+                    break;
+                }
+            }
+
+            fillData.datosGenerales.rules.disabledComponents = $array;
+
+            $("#Datos_personales_form .btnGuardarSection").removeAttr('offEvent');
+
+            $('#Datos_personales_form').append('<input type="hidden" name="allValidateDatosPersonales" id="allValidateDatosPersonales" value="false" />');
+        }
+
+    }
+
+    fillData.datosGenerales.rules.disabledComponents.forEach( function(item) {
+        $("#" + item).prop("disabled", true);
+    });
+    $('*[offEvent="true"]').off('click').addClass('d-none');
+
+    intervalRulesDatosPersonales(true);
 }
 
 var _intervalRulesDatosPersonales = null;

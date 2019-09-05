@@ -266,10 +266,7 @@ var objViewDatosGenerales = {
                             $('#allValidateDatosPersonales').remove();
                             
                             if (mainTabMenu.var.nuevoRegistro == false) {
-                                fillData.datosGenerales.rules.disabledComponents.forEach( function(item) {
-                                    $("#" + item).prop("disabled", true);
-                                });
-                                intervalRulesDatosPersonales();
+                                actualizaInputsFormDissable($('#pTIPO_OPERACION').val());
                             }
 
                             mainTabMenu.var.pID_ALTERNA = data.results.data.pID_ALTERNA ? data.results.data.pID_ALTERNA : null;
