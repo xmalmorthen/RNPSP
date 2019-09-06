@@ -27,7 +27,8 @@ class SOLICITUD_model extends MY_Model
     if ($_verificaTipoUsuarioSesion == 1){ // usuario super admin
       
       //$where = "(tipo_operacion = 'as' and estatus = 7 and tipousr != 1) or (estatus in (6,7,8) and tipousr = 1)";
-      //$this->where($where,NULL,FALSE);
+      
+      $this->where($where,NULL,FALSE);
 
       $list = $this->response_list();
 
