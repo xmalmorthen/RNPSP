@@ -3,6 +3,9 @@
     <div class="sidebar-inner leftscroll">
         <div id="sidebar-menu">
             <ul>
+                <?php if ($this->session->userdata(SESSIONVAR)['idTipoUsuario'] != 5) {?>
+                
+                
                 <li class="submenu">
                     <a href="<?php echo site_url();?>"><i class="fa fa-home" aria-hidden="true"></i><span> Principal </span> </a>
                 </li>
@@ -16,7 +19,8 @@
                 <li class="submenu">
                     <a href="<?php echo site_url('Usuarios');?>" ><i class="fa fa-user-o" aria-hidden="true"></i> <span> Usuarios </span></a>
                 </li>
-                <?php } ?>
+                <?php } 
+                }?>
                 <?php if ( verificaTipoUsuarioSesion() == 1 || $this->session->userdata(SESSIONVAR)['idTipoUsuario'] == 5 ) { // usuario super admin y capacitadores?>
                 <li class="submenu">
                     <a href="<?php echo site_url('Curso');?>" ><i class="fa fa-book" aria-hidden="true"></i> <span> Curso </span></a>
