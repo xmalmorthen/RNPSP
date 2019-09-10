@@ -82,7 +82,7 @@ class Usuarios extends CI_Controller
       $response['message'] = 'method get not allowed';
     } else {
       $this->load->library('form_validation');
-      $this->form_validation->set_message('is_unique', 'El uaurio %s ya se encuentra registrado.');
+      $this->form_validation->set_message('is_unique', 'El %s ya se encuentra registrado.');
       $this->form_validation->set_message('required', 'Campo obligatorio');
       
       $this->form_validation->set_rules('pCORREO', 'Correo electrónico', 'trim|required|valid_email|is_unique[cat_Usuarios.username]');
