@@ -311,7 +311,9 @@ var objViewIndex = {
                             if (!data.results.status) 
                                 Swal.fire({ type: 'error', title: 'Error', html: data.results.message});
                             else 
-                                location.reload();
+                                Swal.fire({ type: 'success', title: 'Cencelación', html: 'Solicitud cancelada correctamente'}).then( function(){
+                                    location.reload();
+                                });
 
                             $.LoadingOverlay("hide",true);
                         })
