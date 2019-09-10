@@ -29,10 +29,11 @@ class Usuarios extends CI_Controller
     if(verificaPermiso(1) == 1){  #Ver todas las dependencias
       $data['usuarios'] = $this->Usuarios_model->get();
     } else if(verificaPermiso(2) == 1){ #Ver solo de su dependencia	
+
       $this->load->model('Usuarios_model');
       $usuario = $this->Usuarios_model->user();
 
-      $this->Usuarios_model->where('cat_Usuarios.ID_ADSCRIPCION',$usuario['ID_ADSCRIPCION']);
+      $this->Usuarios_model->where('ID_ADSCRIPCION',$usuario['ID_ADSCRIPCION']);
       $data['usuarios'] = $this->Usuarios_model->get();
 
     }
