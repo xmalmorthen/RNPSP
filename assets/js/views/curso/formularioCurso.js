@@ -56,6 +56,7 @@ var objViewFormularioCurso = {
         objViewFormularioCurso.vars.FormularioCurso.cmbs.pTIPO_CURSO.on('change',objViewFormularioCurso.events.change.pTIPO_CURSO);
 
         objViewFormularioCurso.ajax.populateCmbTipoCurso();
+        objViewFormularioCurso.ajax.populateCmbEstatusCurso();
 
         $('#pFECHA_INICIO').attr('max', moment( new Date() ).format('YYYY-MM-DD'));
 
@@ -112,7 +113,8 @@ var objViewFormularioCurso = {
                                 reject(data.results.message);
                             } else {
 
-                                $('#pCURP').html(CURP.toUpperCase());
+                                $('#pCURPDetail').html(CURP.toUpperCase());
+                                $('#pCURP').val(CURP.toUpperCase());
                                 $('#pFECHA_NAC').html(data.results.data.FECHANAC);
                                 $('#pNOMBRE').html(data.results.data.NOMBRE);
                                 $('#pPATERNO').html(data.results.data.PATERNO);
@@ -193,6 +195,27 @@ var objViewFormularioCurso = {
                                 $.post(callUrl,model,
                                 function (data) {  
                                     
+                                    let err = null;
+
+                                    if (!data)
+                                        err = "Respuesta inesperada, favor de volverlo a intentar.";
+                                    else if(data.results.status == false)
+                                        err = data.results.message;
+
+                                    if (err){
+                                        form.setAlert({
+                                            alertType :  'alert-danger',
+                                            dismissible : true,
+                                            header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                                            msg : err
+                                        });
+                                        
+                                        form.data('withError',true);
+                                        
+                                        return null;
+
+                                    }
+
                                     Swal.fire({
                                         title: 'Guardado',
                                         html: "Curso registrado con éxito",
@@ -249,6 +272,7 @@ var objViewFormularioCurso = {
                 let callUrl = base_url + "ajaxCatalogos/index";
                 
                 cmbSelect.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+                objViewFormularioCurso.vars.FormularioCurso.cmbs.pTIPO_CURSO.prop("disabled", true);
                 cmbSelect.prop("disabled", true);
                 
                 $.get(callUrl,{
@@ -276,6 +300,7 @@ var objViewFormularioCurso = {
 
                 }).always(function () {   
                     MyCookie.session.reset();
+                    objViewFormularioCurso.vars.FormularioCurso.cmbs.pTIPO_CURSO.prop("disabled", false);
                     cmbSelect.LoadingOverlay("hide", true);
                 });
 
@@ -287,6 +312,40 @@ var objViewFormularioCurso = {
         populateCmbTipoCurso: function(){
             
             let cmbSelect = $('#pTIPO_CURSO');
+            let callUrl = base_url + "ajaxCatalogos/index";
+            
+            cmbSelect.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+            cmbSelect.prop("disabled", true);
+            
+            $.get(callUrl,{
+                qry : cmbSelect.data('query')
+            },
+            function (data) {
+
+                if (!data){
+                    cmbSelect.setError('ERROR al actualizar');
+                    return null;
+                }
+
+                cmbSelect.empty().append('<option disabled selected value>Seleccione una opción</option>');
+                
+                data.results.forEach(item => {
+                    option = new Option(item.text,item.id);
+                    cmbSelect.append(option);
+                });
+                
+                cmbSelect.prop("disabled", false);
+
+            }).fail(function (err) {
+
+            }).always(function () {   
+                MyCookie.session.reset();
+                cmbSelect.LoadingOverlay("hide", true);
+            });
+        },
+        populateCmbEstatusCurso: function(){
+            
+            let cmbSelect = $('#pESTATUS_CURSO');
             let callUrl = base_url + "ajaxCatalogos/index";
             
             cmbSelect.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});

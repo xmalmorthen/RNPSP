@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-4">
             <h6 class="borderButtom">CURP</h6>                
-            <p id='pCURP'></p>
+            <p id='pCURPDetail'></p>
         </div>
         <div class="col-md-4">
             <h6 class="borderButtom">Fecha de nacimiento</h6>
@@ -33,8 +33,7 @@
     <h2 class='text-center'>Datos del curso</h2>
     <br>
     <form id="Validar_examen_form" name="Validar_examen_form" action="#">
-        <input type="hidden" name="pID_ALTERNA" value=''>
-        <input type="hidden" name="pID_DEPENDENCIA" value=''>
+        <input type="hidden" id='pCURP' name="pCURP" value=''>
 
         <div class="row">   
             <div class="col-md-3">
@@ -70,13 +69,7 @@
             </div>
             <div class="col-md-3">
                 Estatus
-                <select style="width:356px;" class="form-control" id="pESTATUS_CURSO" name="pESTATUS_CURSO" data-error="#err_pESTATUS_CURSO" data-query='' required>
-                    <option disabled selected value>Seleccione una opción</option>
-                    <option value="01">En curso</option>
-                    <option value="02">Aprobado</option>
-                    <option value="03">No aprobado</option>
-                    <option value="04">Sin curso</option>
-                </select>
+                <select name="pESTATUS_CURSO" id="pESTATUS_CURSO"  class="form-control" data-error="#err_pESTATUS_CURSO" data-query='cFVjV0hUWmN4RWtDZWVEcXpVSEZPNU1vcitOVE9VK0RXL3I2WE9PMTA2QnVINWlWMWFieHByZ2RJUWtoajBOdnlZUVBxWjN3VjlMUW9iM2JURmdwODkvMDlHZUMrcGRWNkZIcG80S3pXYkEwWGxRcjFMQjB6aDhjRG1HbWh3TWxJdlAwT21UT1NIbGpVOUxkeCtCZTM1RmdYekxsQk8vSGhadnB1cEl0b0FnPQ==' required></select>                
                 <span id="err_pESTATUS_CURSO"></span>
             </div>            
         </div>

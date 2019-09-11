@@ -100,7 +100,7 @@ class CURSO_model extends MY_Model
     $this->arrayToPost($model);
     
     $this->procedure('sp_addRegistroCurso');
-    $this->addParam('pID_ALTERNA','pID_ALTERNA','');
+    $this->addParam('pCURP','pCURP','');
     $this->addParam('pID_CURSO','pID_CURSO','');
     $this->addParam('pESTATUS_CURSO','pESTATUS_CURSO','');
     $this->addParam('pFECHA_INICIO','pFECHA_INICIO','');
