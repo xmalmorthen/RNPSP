@@ -53,19 +53,20 @@
             </div>
             <div class="col-md-3">
                 Fecha de fin
-                <input type="date" class="form-control FECHA_FIN" name="FECHA_FIN" id="FECHA_FIN" required>
+                <input type="date" class="form-control pFECHA_FIN" name="pFECHA_FIN" id="pFECHA_FIN" required>
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col-md-3">
                 Vigencia
-                <select style="width:356px;" class="form-control" id="pVIGENCIA" name="pVIGENCIA" data-error="#err_pVIGENCIA" data-query='' required>
+                <input type="date" class="form-control pVIGENCIA" name="pVIGENCIA" id="pVIGENCIA" required>
+                <!-- <select style="width:356px;" class="form-control" id="pVIGENCIA" name="pVIGENCIA" data-error="#err_pVIGENCIA" data-query='' required>
                     <option disabled selected value>Seleccione una opción</option>
                     <option value="1">Vigente</option>
                     <option value="2">No vigente</option>
                 </select>
-                <span id="err_pVIGENCIA"></span>
+                <span id="err_pVIGENCIA"></span> -->
             </div>
             <div class="col-md-3">
                 Estatus

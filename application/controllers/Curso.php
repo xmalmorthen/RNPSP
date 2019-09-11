@@ -60,38 +60,7 @@
 
         }
 
-        function validar($id = null, $ads = null){
-
-            if (!$id || !$ads)
-				show_error('Parámetros incorrecto', 403, 'Error en la petición');
-
-            // BREADCRUMB
-            $this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');		
-            $this->breadcrumbs->push('[ Curso ] - Curso - Formulario de curso', site_url('alta/cedula/datosPersonales'));
-            // /BREADCRUMB
-
-            $this->load->model('CURSO_model');
-            $responseModel = $this->CURSO_model->getInfo($id);
-
-            $model = [
-                'pID_ALTERNA' => $id,
-                'pID_DEPENDENCIA' => $ads,
-                'pCURP' => $responseModel['status'] ? $responseModel['data']['CURP'] : '-',
-                'pCUIP' => $responseModel['status'] ? $responseModel['data']['CUIP'] : '-',
-                'pNOMBRE' => $responseModel['status'] ? $responseModel['data']['NOMBRE'] : '-',
-                'pPATERNO' => $responseModel['status'] ? $responseModel['data']['PATERNO'] : '-',
-                'pMATERNO' => $responseModel['status'] ? $responseModel['data']['MATERNO'] : '-',
-                'pFECHA_NAC' => $responseModel['status'] ? $responseModel['data']['FECHA_NAC'] : '-',
-                'pRFC' => $responseModel['status'] ? $responseModel['data']['RFC'] : '-'
-            ];
-
-            // TITLE BODY PAGE
-            $this->session->set_flashdata('titleBody','[ Curso ] - Curso - Formulario de curso');
-            // /TITLE BODY PAGE
-            $this->load->view("Curso/formularioCurso", $model);
-        }
-
-        function ajaxValidar(){
+        function ajaxSaveCurso(){
             if (! $this->input->is_ajax_request()) {
 				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
 			}
@@ -110,7 +79,7 @@
 				parse_str($_POST["model"], $model);
 				                
 				$this->load->model('CURSO_model');
-				$responseModel = $this->CURSO_model->validar($model);
+				$responseModel = $this->CURSO_model->sp_addRegistroCurso($model);
 
 			} 
 			catch (rulesException $e){	
@@ -123,6 +92,7 @@
 			header('Content-type: application/json');
 			echo json_encode( [ 'results' => $responseModel ] );
 			exit;
+            
         }
 
         
