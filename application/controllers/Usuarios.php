@@ -318,6 +318,7 @@ class Usuarios extends CI_Controller
           'email' => strtolower($this->input->post('pCORREO')),
           'MotivoInactivo' => $this->input->post('MotivoInactivo'),
           'id_EstatusUsuario' => $this->input->post('pID_ESTATUS'),
+          'active' => $this->input->post('pID_ESTATUS') != 3 ? 1 : 0
         ];
 
         if(strlen(trim($password))>0){
