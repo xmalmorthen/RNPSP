@@ -3,12 +3,10 @@
     <div class="sidebar-inner leftscroll">
         <div id="sidebar-menu">
             <ul>
-                <?php if ($this->session->userdata(SESSIONVAR)['idTipoUsuario'] != 5) {?>
-                
-                
                 <li class="submenu">
                     <a href="<?php echo site_url();?>"><i class="fa fa-home" aria-hidden="true"></i><span> Principal </span> </a>
                 </li>
+                <?php if ($this->session->userdata(SESSIONVAR)['idTipoUsuario'] != 5) {?>
                 <li class="submenu">
                    <a href="<?php echo site_url('Solicitud');?>" ><i class="fa fa-envelope-o"  aria-hidden="true"></i><span> Solicitudes </span></a>
                 </li>

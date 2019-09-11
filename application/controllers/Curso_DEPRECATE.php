@@ -12,54 +12,44 @@
                 redirect('Error/noPrivilegio');
             }
         }
-
+        
         function index(){
             // BREADCRUMB
             $this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');		
-            $this->breadcrumbs->push('[ Curso ] - Curso - Formulario de curso', site_url('curso'));
+            $this->breadcrumbs->push('[ Curso ] - Curso - Administración de curso', site_url('alta/cedula/datosPersonales'));
             // /BREADCRUMB
         
             // TITLE BODY PAGE
             $this->session->set_flashdata('titleBody','[ Curso ] - Curso - Administración de curso');
             // /TITLE BODY PAGE
-            
-            $this->load->view("Curso/formularioCurso");
-        }
-        
-        function ajaxGetData($CURP = null){
-            if (! $this->input->is_ajax_request()) {
-				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
-			}
 
-            if (!$CURP)
-				$CURP = $this->input->get('CURP');
+            $this->load->model('CURSO_model');
+			$solicitudesList = $this->CURSO_model->get();
+			
+            $model = [];
+			$items = [];
 
-            $responseModel = NULL;
-			try {
-				
-				if(!$CURP){
-					throw new rulesException('Parámetros incorrectos');
+			if(is_array($solicitudesList)){
+				foreach ($solicitudesList as $value) {
+					$item = array(
+						'Nombre' => $value['NOMBRE'],
+						'ApellidoPaterno' => $value['PATERNO'],
+						'ApellidoMaterno' => $value['MATERNO'],
+						'Adscripcion' => $value['NOMBRE_DPCIA'],
+						'Estatus' => $value['DESCRIPCION_ESTATUS'],
+						'options' => array(
+							'id' => $value['FOLIO'],
+                            'ads' => $value['ID_DEPENDENCIA']
+						)
+					);
+					array_push( $items, $item );	
 				}
-				                
-				$this->load->model('CURSO_model');
-				$responseModel = $this->CURSO_model->sp_getDatosPersonaCurso($CURP);
-
-			} 
-			catch (rulesException $e){	
-				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));
-                Msg_reporting::error_log($e);
-			}
-			catch (Exception $e) {
-				header("HTTP/1.0 500 " . utf8_decode($e->getMessage()));
-                Msg_reporting::error_log($e);
 			}
 			
-			header('Content-type: application/json');
-			echo json_encode( [ 'results' => $responseModel ] );
-			exit;
-
-        }
-
+			$model['items'] = $items;
+            $this->load->view("Curso/administrarCurso",$model);
+        }        
+        
         function validar($id = null, $ads = null){
 
             if (!$id || !$ads)

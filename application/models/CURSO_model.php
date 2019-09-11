@@ -71,5 +71,29 @@ class CURSO_model extends MY_Model
     }
 
     return $this->response;
+
   }
+
+  public function sp_getDatosPersonaCurso($CURP){
+    $this->arrayToPost( [ 'pCURP' => $CURP ]);
+    
+    $this->procedure('sp_getDatosPersonaCurso');
+    $this->addParam('pCURP',$CURP,'');
+    
+    $call = $this->build_query();
+    $query = $this->db->query($call);
+    $response = $this->query_row($query);
+
+    if($response == FALSE){
+      $this->response['status'] = false;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
+    }else{
+      $this->response['status'] = true;
+      $this->response['data'] = $response;
+    }
+
+    return $this->response;
+
+  }
+
 }
