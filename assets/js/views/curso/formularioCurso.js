@@ -249,12 +249,18 @@ var objViewFormularioCurso = {
                 let callUrl = base_url + "ajaxCatalogos/index";
                 
                 cmbSelect.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+                cmbSelect.prop("disabled", true);
                 
                 $.get(callUrl,{
                     qry : cmbSelect.data('query'),
                     params : "ID_TIPO_CAPACITACI = " + objViewFormularioCurso.vars.FormularioCurso.cmbs.pTIPO_CURSO.val()
                 },
                 function (data) {
+
+                    if (!data){
+                        cmbSelect.setError('ERROR al actualizar');
+                        return null;
+                    }
 
                     cmbSelect.empty().append('<option disabled selected value>Seleccione una opción</option>');
                     
@@ -264,6 +270,7 @@ var objViewFormularioCurso = {
                     });
 
                     cmbSelect.val(null).trigger("change");
+                    cmbSelect.prop("disabled", false);
 
                 }).fail(function (err) {
 
@@ -283,11 +290,17 @@ var objViewFormularioCurso = {
             let callUrl = base_url + "ajaxCatalogos/index";
             
             cmbSelect.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+            cmbSelect.prop("disabled", true);
             
             $.get(callUrl,{
                 qry : cmbSelect.data('query')
             },
             function (data) {
+
+                if (!data){
+                    cmbSelect.setError('ERROR al actualizar');
+                    return null;
+                }
 
                 cmbSelect.empty().append('<option disabled selected value>Seleccione una opción</option>');
                 
@@ -297,6 +310,7 @@ var objViewFormularioCurso = {
                 });
 
                 cmbSelect.val(null).trigger("change");
+                cmbSelect.prop("disabled", false);
 
             }).fail(function (err) {
 

@@ -39,12 +39,12 @@
         <div class="row">   
             <div class="col-md-3">
                 Tipo de curso
-                <select name="pTIPO_CURSO" id="pTIPO_CURSO"  class="form-control" data-error="#err_pTIPO_CURSO" data-query='NUMzcXVkTGtuK3hmbEZqcm52TVVCb2FETW5IajVDSXBjcUNkOFBBZ2FaUDM5dVRDNHQyRVZNU25CRHNJUUJ2Wnc5Q281aWtINnVEcFI5aXB3ajdFZUl0b01qOGYxM25LUjRqc2VaaGJwcHpKRGUrZDF2ZFJucmJEOEtoNjJ5SGRFWDRyVVRBQ24rdG9HQWhHbFFJbmwwSlhwcWNNa2ptemlzclgrbTlzd21jPQ==' required></select>
+                <select name="pTIPO_CURSO" id="pTIPO_CURSO"  class="form-control" data-error="#err_pTIPO_CURSO" data-query='NUMzcXVkTGtuK3hmbEZqcm52TVVCb2FETW5IajVDSXBjcUNkOFBBZ2FaUDM5dVRDNHQyRVZNU25CRHNJUUJ2Wnc5Q281aWtINnVEcFI5aXB3ajdFZUl0b01qOGYxM25LUjRqc2VaaGJwcHpKRGUrZDF2ZFJucmJEOEtoNjJ5SGRFWDRyVVRBQ24rdG9HQWhHbFFJbmwwSlhwcWNNa2ptemlzclgrbTlzd21jPQ==' disabled required></select>
                 <span id="err_pTIPO_CURSO"></span>
             </div>
             <div class="col-md-3">
                 Curso
-                <select name="pID_CURSO" id="pID_CURSO"  class="form-control" data-error="#err_pID_CURSO" data-query='UlIyVzIvZ0JnWkZWaEgvOW9NME9rd2puR0pGWnR6VVc1cXJMSTk0eldMN1pxNHpiNHlOdVNRcHl4dkpLcjB0emMrMjg2WnMzU1FKdkNEWS9TbXdJZndsZTh6UDMyVUtWUUEzRVhkZEtRUUZWdS9FSTdSYVhRSkNPamRPNzFKLzExdDJMbmNkaFMvRmZMRUNqRU5qWlQ1Kzl2NjRickxNSWZmd0FWSi8rZGh3PQ==' data-cascade='true' data-force-refresh='true' required></select>
+                <select name="pID_CURSO" id="pID_CURSO"  class="form-control" data-error="#err_pID_CURSO" data-query='UlIyVzIvZ0JnWkZWaEgvOW9NME9rd2puR0pGWnR6VVc1cXJMSTk0eldMN1pxNHpiNHlOdVNRcHl4dkpLcjB0emMrMjg2WnMzU1FKdkNEWS9TbXdJZndsZTh6UDMyVUtWUUEzRVhkZEtRUUZWdS9FSTdSYVhRSkNPamRPNzFKLzExdDJMbmNkaFMvRmZMRUNqRU5qWlQ1Kzl2NjRickxNSWZmd0FWSi8rZGh3PQ==' data-cascade='true' data-force-refresh='true' disabled required></select>
                 <span id="err_pID_CURSO"></span>
             </div>
             <div class="col-md-3">
@@ -88,6 +88,7 @@
 
 <script src="<?php echo base_url('assets/vendor/plugins/select2/js/select2.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/utils/dom.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/utils/catalogs.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/utils/alerts.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/views/curso/formularioCurso.js') ?>"></script>
 
