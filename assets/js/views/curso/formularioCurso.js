@@ -7,6 +7,10 @@ var objViewFormularioCurso = {
             forms : {
                 Validar_examen_form : null,
             },
+            cmbs: {
+                pTIPO_CURSO : null,
+                pID_CURSO: null
+            },
             btns : {
                 guardar : null
             }
@@ -24,6 +28,10 @@ var objViewFormularioCurso = {
 
         // BUTTONS
         objViewFormularioCurso.vars.FormularioCurso.btns.guardar = $('#guardar');
+
+        // SELECTS
+        objViewFormularioCurso.vars.FormularioCurso.cmbs.pTIPO_CURSO = $('#pTIPO_CURSO');
+        objViewFormularioCurso.vars.FormularioCurso.cmbs.pID_CURSO = $('#pID_CURSO');
 
         // INIT SELECTS
         objViewFormularioCurso.vars.FormularioCurso.forms.Validar_examen_form.find('select').select2({width : '100%'});
@@ -44,20 +52,105 @@ var objViewFormularioCurso = {
         // CLICK
         objViewFormularioCurso.vars.FormularioCurso.btns.guardar.on('click',objViewFormularioCurso.events.click.FormularioCurso.guardar);
                
-        objViewFormularioCurso.ajax.populateCmbCurso();
+        // CHANGE
+        objViewFormularioCurso.vars.FormularioCurso.cmbs.pTIPO_CURSO.on('change',objViewFormularioCurso.events.change.pTIPO_CURSO);
+
+        objViewFormularioCurso.ajax.populateCmbTipoCurso();
+        objViewFormularioCurso.ajax.populateCmbEstatusCurso();
 
         $('#pFECHA_INICIO').attr('max', moment( new Date() ).format('YYYY-MM-DD'));
 
-        $.validator.addMethod("FECHA_FIN", function(value, element) {
+        $.validator.addMethod("pFECHA_FIN", function(value, element) {
             
             return value < $('#pFECHA_INICIO').val() ? false : true;
 
         }, "La fecha debe ser mayor o igual a la fecha de inicio del curso.");
 
+        $.validator.addMethod("pVIGENCIA", function(value, element) {
+            
+            return value < $('#pFECHA_FIN').val() ? false : true;
+
+        }, "La fecha debe ser mayor o igual a la fecha final del curso.");
+
         objViewFormularioCurso.vars.FormularioCurso.forms.Validar_examen_form.LoadingOverlay("hide");
 
-        
         objViewFormularioCurso.vars.general.init = true;
+
+        objViewFormularioCurso.fireInitEvent();
+        
+    },
+    fireInitEvent : function(){
+        Swal.fire({
+            title: 'Clave CURP',
+            input: 'text',
+            inputAttributes: {
+                autocapitalize: 'off'
+            },
+            showCancelButton: true,
+            confirmButtonText: 'Aceptar',
+            cancelButtonText: 'Cancelar',
+            showLoaderOnConfirm: true,
+            preConfirm: function(CURP) {
+                try {
+
+                    if (CURP.length == 0)
+                        throw new Error('Debe especificar la clave CURP');
+                    else if (CURP.length < 18 || CURP.length > 20)
+                        throw new Error('Formato de CURP incorrecto');
+
+                    return new Promise(function(resolve, reject) {
+
+                        var callUrl = base_url + 'Curso/ajaxGetData';
+
+                        $.get(callUrl,{
+                            CURP : CURP.toUpperCase()
+                        },
+                        function (data) {
+                            
+                            if (!data){
+                                reject('Ocurrió un problema, favor de intentarlo de nuevo.');
+                            } else if (data.results.status != true){
+                                reject(data.results.message);
+                            } else {
+
+                                $('#pCURPDetail').html(CURP.toUpperCase());
+                                $('#pCURP').val(CURP.toUpperCase());
+                                $('#pFECHA_NAC').html(data.results.data.FECHANAC);
+                                $('#pNOMBRE').html(data.results.data.NOMBRE);
+                                $('#pPATERNO').html(data.results.data.PATERNO);
+                                $('#pMATERNO').html(data.results.data.MATERNO);
+
+                                resolve (true);
+                            }
+
+                        }).fail(function (err) {    
+                            
+                            reject(err);
+
+                        });
+
+                    }).then( function(response) {
+                        return true;
+                    }).catch( function(err) {
+                        Swal.showValidationMessage(err.statusText ? err.statusText : (err.message ? err.message : err));
+                    });
+
+                } catch (error) {
+
+                    Swal.showValidationMessage(error);
+
+                }
+            },
+            allowOutsideClick: false,
+            onBeforeOpen: function() {  
+                $('.swal2-container').css('z-index','2000');
+                $('.swal2-container').data('preserve',true).data('preserveCall','mainTabMenu.mainInit');
+            }
+        }).then(function(result) {
+            if ( typeof result.dismiss !== 'undefined') {
+                window.location.href = base_url;
+            }
+        });
     },
     events : {
         click : {
@@ -97,23 +190,45 @@ var objViewFormularioCurso = {
 
                                 $selectDisabled.prop("disabled", true);
 
-                                var callUrl = base_url + "Curso/ajaxValidar";
+                                var callUrl = base_url + "Curso/ajaxSaveCurso";
 
                                 $.post(callUrl,model,
                                 function (data) {  
                                     
-                                    var alertOpt = {
-                                        alertType : !data.results.status ? 'alert-danger' : 'alert-success',
-                                        dismissible : true,
-                                        header : !data.results.status ? '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error' : '<i class="fa fa-check" aria-hidden="true"></i> Guardado',
-                                        msg : data.results.message
-                                    };
-                                    form.setAlert(alertOpt);
-                                    
-                                    form.trigger('reset');
-                                    $('select').trigger('change');
-                                    
-                                    form.data('withError',false);
+                                    let err = null;
+
+                                    if (!data)
+                                        err = "Respuesta inesperada, favor de volverlo a intentar.";
+                                    else if(data.results.status == false)
+                                        err = data.results.message;
+
+                                    if (err){
+                                        form.setAlert({
+                                            alertType :  'alert-danger',
+                                            dismissible : true,
+                                            header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                                            msg : err
+                                        });
+                                        
+                                        form.data('withError',true);
+                                        
+                                        return null;
+
+                                    }
+
+                                    Swal.fire({
+                                        title: 'Guardado',
+                                        html: "Curso registrado con éxito",
+                                        type: 'info',                                        
+                                    }).then(function(result){
+
+                                        form.trigger('reset');
+                                        $('select').trigger('change');
+                                        form.data('withError',false);
+
+                                        objViewFormularioCurso.fireInitEvent();
+
+                                    });
 
                                 }).fail(function (err) {
                                     
@@ -149,34 +264,118 @@ var objViewFormularioCurso = {
 
                 }                
             }
+        },
+        change : {
+            pTIPO_CURSO : function(e){
+
+                let cmbSelect = objViewFormularioCurso.vars.FormularioCurso.cmbs.pID_CURSO;
+                let callUrl = base_url + "ajaxCatalogos/index";
+                
+                cmbSelect.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+                objViewFormularioCurso.vars.FormularioCurso.cmbs.pTIPO_CURSO.prop("disabled", true);
+                cmbSelect.prop("disabled", true);
+                
+                $.get(callUrl,{
+                    qry : cmbSelect.data('query'),
+                    params : "ID_TIPO_CAPACITACI = " + objViewFormularioCurso.vars.FormularioCurso.cmbs.pTIPO_CURSO.val()
+                },
+                function (data) {
+
+                    if (!data){
+                        cmbSelect.setError('ERROR al actualizar');
+                        return null;
+                    }
+
+                    cmbSelect.empty().append('<option disabled selected value>Seleccione una opción</option>');
+                    
+                    data.results.forEach(item => {
+                        option = new Option(item.text,item.id);
+                        cmbSelect.append(option);
+                    });
+
+                    cmbSelect.val(null).trigger("change");
+                    cmbSelect.prop("disabled", false);
+
+                }).fail(function (err) {
+
+                }).always(function () {   
+                    MyCookie.session.reset();
+                    objViewFormularioCurso.vars.FormularioCurso.cmbs.pTIPO_CURSO.prop("disabled", false);
+                    cmbSelect.LoadingOverlay("hide", true);
+                });
+
+            }
+
         }
     },
     ajax:{
-        populateCmbCurso: function(){
+        populateCmbTipoCurso: function(){
             
-            var cmbSelect = $('#pID_CURSO');
-            var callUrl = base_url + "ajaxCatalogos/index";
+            let cmbSelect = $('#pTIPO_CURSO');
+            let callUrl = base_url + "ajaxCatalogos/index";
             
             cmbSelect.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+            cmbSelect.prop("disabled", true);
             
             $.get(callUrl,{
                 qry : cmbSelect.data('query')
             },
             function (data) {
-                cmbSelect.append('<option disabled selected value>Seleccione una opción</option>');
+
+                if (!data){
+                    cmbSelect.setError('ERROR al actualizar');
+                    return null;
+                }
+
+                cmbSelect.empty().append('<option disabled selected value>Seleccione una opción</option>');
                 
                 data.results.forEach(item => {
-                    var option = new Option(item.text,item.id);
+                    option = new Option(item.text,item.id);
                     cmbSelect.append(option);
                 });
-
-                cmbSelect.val(null).trigger("change");
+                
+                cmbSelect.prop("disabled", false);
 
             }).fail(function (err) {
 
             }).always(function () {   
                 MyCookie.session.reset();
-                cmbSelect.LoadingOverlay("hide");
+                cmbSelect.LoadingOverlay("hide", true);
+            });
+        },
+        populateCmbEstatusCurso: function(){
+            
+            let cmbSelect = $('#pESTATUS_CURSO');
+            let callUrl = base_url + "ajaxCatalogos/index";
+            
+            cmbSelect.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+            cmbSelect.prop("disabled", true);
+            
+            $.get(callUrl,{
+                qry : cmbSelect.data('query')
+            },
+            function (data) {
+
+                if (!data){
+                    cmbSelect.setError('ERROR al actualizar');
+                    return null;
+                }
+
+                cmbSelect.empty().append('<option disabled selected value>Seleccione una opción</option>');
+                
+                data.results.forEach(item => {
+                    option = new Option(item.text,item.id);
+                    cmbSelect.append(option);
+                });
+
+                cmbSelect.val(null).trigger("change");
+                cmbSelect.prop("disabled", false);
+
+            }).fail(function (err) {
+
+            }).always(function () {   
+                MyCookie.session.reset();
+                cmbSelect.LoadingOverlay("hide", true);
             });
         }
     }

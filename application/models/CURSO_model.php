@@ -71,5 +71,60 @@ class CURSO_model extends MY_Model
     }
 
     return $this->response;
+
   }
+
+  public function sp_getDatosPersonaCurso($CURP){
+    $this->arrayToPost( [ 'pCURP' => $CURP ]);
+    
+    $this->procedure('sp_getDatosPersonaCurso');
+    $this->addParam('pCURP',$CURP,'');
+    
+    $call = $this->build_query();
+    $query = $this->db->query($call);
+    $response = $this->query_row($query);
+
+    if($response == FALSE){
+      $this->response['status'] = false;
+      $this->response['message'] = 'No se encontró la CURP registrada.';
+    }else{
+      $this->response['status'] = true;
+      $this->response['data'] = $response;
+    }
+
+    return $this->response;
+
+  }
+
+  public function sp_addRegistroCurso($model){
+    $this->arrayToPost($model);
+    
+    $this->procedure('sp_addRegistroCurso');
+    $this->addParam('pCURP','pCURP','');
+    $this->addParam('pID_CURSO','pID_CURSO','');
+    $this->addParam('pESTATUS_CURSO','pESTATUS_CURSO','');
+    $this->addParam('pFECHA_INICIO','pFECHA_INICIO','');
+    $this->addParam('pFECHA_FIN','pFECHA_FIN','');
+    $this->addParam('pVIGENCIA','pVIGENCIA','');
+    $this->iniParam('txtError','varchar','250');
+    $this->iniParam('msg','varchar','80');
+    $this->iniParam('tranEstatus','int');
+    
+    $call = $this->build_query();
+    $query = $this->db->query($call);
+    $response = $this->query_row($query);
+
+    if($response == FALSE){
+      $this->response['status'] = false;
+      $this->response['message'] = 'Ha ocurrido un error al procesar su última acción.' . " [ GUID = {$this->config->item('GUID')} ]";
+    }else{
+      $this->response['status'] = (bool)$response['tranEstatus'];
+      $this->response['message'] = ($response['tranEstatus'] == 1)? $response['msg'] : $response['txtError'];
+    }
+
+    return $this->response;
+
+  }
+
+
 }
