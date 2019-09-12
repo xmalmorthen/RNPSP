@@ -175,3 +175,19 @@ function setValidatorDefaults($options){
     $.validator.setDefaults($extend);   
 
 }
+
+window.addEventListener('load', function() {
+    
+    function updateOnlineStatus(event) {
+      
+        if (!navigator.onLine){
+        $('body').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-cloud fa-2x",text:'Conexión a internet perdida'});
+      } else {
+        $('body').LoadingOverlay("hide", true);
+      }
+
+    }
+  
+    window.addEventListener('online',  updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
+  });
