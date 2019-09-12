@@ -4,9 +4,11 @@
 
 <!-- /CSS -->
 <div class="row bodyVew">
+	<?php if (!isConsultasUser()) { // init - verificar si es usuario consulta ?>
     <div class="col-md-12 mb-4">
         <button class="btn btn-default btn-lg" id="Nuevo"> Nuevo </button>
     </div>
+	<?php } ?>
 	
     <div class="col-md-12">
 		<div id='frmAlertSumary' class="alert alert-danger alert-dismissible fade show d-none" role="alert">
@@ -57,12 +59,18 @@
                 		<?php }} ?>
                         <td>
                             <a class='m-2' href="<?php echo site_url("Solicitud/Ver/{$value['options']['id']}") ?>" title='Ver'><i class="fa fa-eye fa-2x"></i></a>
-                            <?php if ( (verificaTipoUsuarioSesion() != 1  && $value['options']['idEstatus'] != 7 && $value['TipodeSolicitud'] == 'AS')  || verificaTipoUsuarioSesion() == 1) { // usuarios y administrador de dependencias y que el estatus de solicitud no este en concluida ó usuarios superadmin y c4?> 
+							
+                            <?php 
+								if (!isConsultasUser()) { // init - verificar si es usuario consulta
+								if ( (verificaTipoUsuarioSesion() != 1  && $value['options']['idEstatus'] != 7 && $value['TipodeSolicitud'] == 'AS')  || verificaTipoUsuarioSesion() == 1) { // init - usuarios y administrador de dependencias y que el estatus de solicitud no este en concluida ó usuarios superadmin y c4
+							?> 
 								<a class='m-2' href="<?php echo site_url("Solicitud/Modificar/{$value['options']['id']}") ?>" title='Modificar'><i class="fa fa-pencil-square-o fa-2x"></i></a>
-							<?php }?>
-                            <?php if ($value['TipodeSolicitud'] == 'AS' && ( $value['options']['idEstatus'] == 1 || $value['options']['idEstatus'] == 6 ) ) { ?>
-								<a class='m-2' href="#"  name='eliminarSolicitud' data-id="<?php echo $value['options']['id'] ?>" title='Eliminar'><i class="fa fa-trash fa-2x"></i></a>
-							<?php } ?>								
+							<?php } // end - usuarios y administrador de dependencias y que el estatus de solicitud no este en concluida ó usuarios superadmin y c4?>
+                            <?php 
+								if ($value['TipodeSolicitud'] == 'AS' && ( $value['options']['idEstatus'] == 1 || $value['options']['idEstatus'] == 6 ) ) { ?>
+								<a class='m-2' href="#" name='eliminarSolicitud' onclick="objViewIndex.events.click.Eliminar(<?php echo $value['options']['id'] ?>)" data-id="<?php echo $value['options']['id'] ?>" title='Eliminar'><i class="fa fa-trash fa-2x"></i></a>
+							<?php } 
+							} // end - verificar si es usuario consulta?>
                         </td>
                     </tr>
                 <?php } ?>

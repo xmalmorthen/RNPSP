@@ -34,7 +34,7 @@ class SOLICITUD_model extends MY_Model
 
     } else {
 
-      $where .= "tipo_operacion = 'as' and DpciaUsr=" . $this->session->userdata(SESSIONVAR)['id_depUsr'] . ' and InstUsr=' . $this->session->userdata(SESSIONVAR)['id_adsUsr'] . " and estatus in (6,7)";
+      $where .= " and tipo_operacion = 'as' and DpciaUsr=" . $this->session->userdata(SESSIONVAR)['id_depUsr'] . ' and InstUsr=' . $this->session->userdata(SESSIONVAR)['id_adsUsr'] . " and estatus in (6,7)";
       $this->where($where,NULL,FALSE);
 
       //die(var_dump($this->session->userdata(SESSIONVAR)['id_depUsr']));

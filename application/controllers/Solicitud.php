@@ -1,10 +1,35 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
     class Solicitud extends CI_Controller {
-        function __construct()
+        
+		private function checkAccess(){
+			$redirect = false;
+			
+			if (isConsultasUser())
+				$redirect = true;
+
+			if ($redirect)
+				if (!$this->input->is_ajax_request()) {
+					redirect('Error/noPrivilegio');
+				} else {
+					$responseModel = [
+						'status' => false,
+						'message'=> 'Privilegios insuficientes para ejecutar ésta acción',
+						'data'=> null
+					];
+					header('Content-type: application/json');
+					echo json_encode( [ 'results' => $responseModel ] );
+					exit;
+				}
+        }
+
+		
+		function __construct()
         {
             parent::__construct();    
             $this->load->library('breadcrumbs');
+
+			//die(var_dump($this->session->userdata(SESSIONVAR)));
         }
 
 		public function index(){
@@ -49,6 +74,8 @@
         }
 
         public function Alta(){
+			$this->checkAccess();
+
 			// BREADCRUMB
 			$this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');		
 			$this->breadcrumbs->push('[ Solicitudes ] - Solicitudes - Persona - Alta', site_url('Solicitud/Alta'));
@@ -64,6 +91,8 @@
         }
 		
 		public function Modificar($id = null){
+			$this->checkAccess();
+
 			if (!$id)
 				show_error('Parámetros incorrecto', 403, 'Error en la petición');
 
@@ -171,6 +200,8 @@
 		
 		//ELIMINAR
 		public function ajaxEliminar(){
+			$this->checkAccess();
+			
 			if (! $this->input->is_ajax_request()) {
 				if (ENVIRONMENT == 'production') redirect('Error/e404','location');
 			}

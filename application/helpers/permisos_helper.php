@@ -26,3 +26,11 @@ if ( ! function_exists('verificaTipoUsuarioSesion'))
     return $tUsr;
   }
 }
+
+if ( ! function_exists('isConsultasUser'))
+{
+  function isConsultasUser(){
+    $CI =& get_instance();
+    return $CI->session->userdata(SESSIONVAR)['idTipoUsuario'] == 4;
+  }
+}

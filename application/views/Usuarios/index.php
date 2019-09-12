@@ -43,11 +43,12 @@
                                         <td>
                                             <!-- <a class='m-2' href="<?php echo site_url("personaCedula/index?id={$value['id']}"); ?>"><i class="fa fa-print fa-2x"></i></a> -->
                                             <a class='m-2' href="<?php echo site_url("Usuarios/Ver?curp={$value['CURP']}"); ?>"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></a>
+                                            <?php if (!isConsultasUser()) {?>
                                             <a class='m-2' href="<?php echo site_url("Usuarios/Modificar?curp={$value['CURP']}")?>"><i class="fa fa-pencil-square-o fa-2x"></i></a>
                                             <!-- id_EstatusUsuario = 2 => Inactivo -->
                                             <?php if ($value['id_EstatusUsuario'] != 2 && $value['id_EstatusUsuario'] != 3) {?>
                                                 <a class='m-2 borrar' onclick="app.borrarUsuario(<?php echo $value['id']; ?>)" href="#" data-id="<?php echo $value['id']; ?>"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></a>
-                                            <?php } ?>
+                                            <?php } }?>
                                         </td>
                                     </tr>
                                     <?php } ?>

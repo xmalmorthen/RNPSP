@@ -5,15 +5,28 @@ class Usuarios extends CI_Controller
   function __construct()
   {
     parent::__construct();
-    $this->load->library('breadcrumbs');
-
-    $this->checkAccess();
+    $this->load->library('breadcrumbs');    
   }
 
   private function checkAccess(){
-    if ( $_SESSION[SESSIONVAR]['idTipoUsuario'] != 1 && $_SESSION[SESSIONVAR]['idTipoUsuario'] != 2 ){ // solo usuario superadmin y administrador
-      redirect('Error/noPrivilegio');
-    }
+      $redirect = false;
+      
+      if (isConsultasUser())
+        $redirect = true;
+
+      if ($redirect)
+        if (!$this->input->is_ajax_request()) {
+          redirect('Error/noPrivilegio');
+        } else {
+          $responseModel = [
+            'status' => false,
+            'message'=> 'Privilegios insuficientes para ejecutar ésta acción',
+            'data'=> null
+          ];
+          header('Content-type: application/json');
+          echo json_encode( [ 'results' => $responseModel ] );
+          exit;
+        }
   }
 
 
@@ -26,9 +39,12 @@ class Usuarios extends CI_Controller
 
     $this->load->model('Usuarios_model');
     $data = array('usuarios'=>array());
-    if(verificaPermiso(1) == 1){  #Ver todas las dependencias
+
+		//die(var_dump($this->session->userdata(SESSIONVAR)));
+
+    if(verificaPermiso(1) == 1 || ( verificaTipoUsuarioSesion() == 1 && isConsultasUser() )){  #Ver todas las dependencias
       $data['usuarios'] = $this->Usuarios_model->get();
-    } else if(verificaPermiso(2) == 1){ #Ver solo de su dependencia	
+    } else if(verificaPermiso(2) == 1 || ( verificaTipoUsuarioSesion() != 1 && isConsultasUser() )){ #Ver solo de su dependencia	
 
       $this->load->model('Usuarios_model');
       $usuario = $this->Usuarios_model->user();
@@ -46,6 +62,8 @@ class Usuarios extends CI_Controller
 
   public function Registro()
   {
+    $this->checkAccess();
+
     $this->breadcrumbs->push('<i class="fa fa-home"></i>', '/');
     $this->breadcrumbs->push('[ Usuarios ] - Usuarios - Registro de usuarios - Alta', site_url('alta/cedula/datosPersonales'));
     $this->session->set_flashdata('titleBody', '[ Usuarios ] - Usuarios - Registro de usuarios - Alta');
@@ -126,7 +144,8 @@ class Usuarios extends CI_Controller
 
   public function Modificar()
   {
-    
+    $this->checkAccess();
+
     $curp = $this->input->get('curp');
 
     $this->load->model('Usuarios_model');
@@ -387,6 +406,8 @@ class Usuarios extends CI_Controller
   }
 
   public function darBaja($id = null){
+    $this->checkAccess();
+
     if (!$id)
 				$id = $this->input->post('id');
 		

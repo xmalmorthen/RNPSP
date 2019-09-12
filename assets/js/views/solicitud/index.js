@@ -57,6 +57,7 @@ var objViewIndex = {
             "initComplete": function(settings, json) {
                 objViewIndex.vars.general.table.dom.removeClass('d-none');
                 $('.bodyVew').LoadingOverlay("hide");
+                
             }
         });
 
@@ -273,7 +274,9 @@ var objViewIndex = {
 
             },
             Eliminar : function(e){
-                e.preventDefault();
+                
+                if (typeof e.preventDefault !== 'undefined')
+                    e.preventDefault();
 
                 Swal.fire({
                     title: 'Aviso',
@@ -298,7 +301,7 @@ var objViewIndex = {
                         
                         $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
-                        var id = $(e.currentTarget).data('id');
+                        var id = typeof e.currentTarget !== 'undefined' ? $(e.currentTarget).data('id') : e;
                         var callUrl = base_url + 'Solicitud/ajaxEliminar';
                         
                         var model = [];
