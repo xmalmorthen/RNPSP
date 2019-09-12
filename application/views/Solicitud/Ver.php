@@ -38,7 +38,7 @@
     <!-- LISTA DE SUBMENUS -->
     <div class="tab-content" id="myTabContent">
         
-        <?php if ( isset($isFromPersonal) == false) {
+        <?php if ( isset($isFromPersonal) == false && !isConsultasUser()) {
             $this->session->set_flashdata('isFromPersonal',false);?>
         <div class="row mt-2 mr-2 d-none modeificarBtnSection">
             <div class="col-md-12 text-right">

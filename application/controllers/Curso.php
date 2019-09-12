@@ -1,16 +1,36 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
     class Curso extends CI_controller{
+
+		private function checkAccess(){
+			$redirect = false;
+			
+			if (isConsultasUser())
+				$redirect = true;
+			else if ( $_SESSION[SESSIONVAR]['idTipoUsuario'] != 1 && $_SESSION[SESSIONVAR]['idTipoUsuario'] != 5 ){ // solo usuario superadmin y capacitador
+                redirect('Error/noPrivilegio');
+            }
+
+			if ($redirect)
+				if (!$this->input->is_ajax_request()) {
+					redirect('Error/noPrivilegio');
+				} else {
+					$responseModel = [
+						'status' => false,
+						'message'=> 'Privilegios insuficientes para ejecutar ésta acción',
+						'data'=> null
+					];
+					header('Content-type: application/json');
+					echo json_encode( [ 'results' => $responseModel ] );
+					exit;
+				}
+        }
+
         function __construct(){
             parent::__construct();
             $this->load->library("breadcrumbs");
-            $this->checkAccess();
-        }
 
-        private function checkAccess(){
-            if ( $_SESSION[SESSIONVAR]['idTipoUsuario'] != 1 && $_SESSION[SESSIONVAR]['idTipoUsuario'] != 5 ){ // solo usuario superadmin y capacitador
-                redirect('Error/noPrivilegio');
-            }
+            $this->checkAccess();
         }
 
         function index(){
