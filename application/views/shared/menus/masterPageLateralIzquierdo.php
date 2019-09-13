@@ -19,7 +19,10 @@
                 </li>
                 <?php } 
                 }?>
-                <?php if ( (verificaTipoUsuarioSesion() == 1 && !isConsultasUser()) || $this->session->userdata(SESSIONVAR)['idTipoUsuario'] == 5 ) { // usuario super admin que no sea de consulta y capacitadores?>
+                <?php 
+                //if ( (verificaTipoUsuarioSesion() == 1 && !isConsultasUser()) || $this->session->userdata(SESSIONVAR)['idTipoUsuario'] == 5 )
+                if ( $this->session->userdata(SESSIONVAR)['idTipoUsuario'] == 5 )
+                 { // usuario super admin que no sea de consulta y capacitadores?>
                 <li class="submenu">
                     <a href="<?php echo site_url('Curso');?>" ><i class="fa fa-book" aria-hidden="true"></i> <span> Curso </span></a>
                 </li>
