@@ -764,7 +764,7 @@ var objViewIndex = {
 
             Swal.fire({
                 type: 'success',
-                title: 'Replicación',
+                title: 'Validación',
                 html: msg,
                 footer: solicitudesError > 0 ? 'Favor de revisar el sumario de errores' : ''
             });
