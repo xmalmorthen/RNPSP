@@ -59,7 +59,7 @@ var dynTabs = {
 
                 }
 
-                if (formElement.data('hasSaved') == true || formElement.data('hasDiscardChanges') == true) 
+                if (formElement.data('hasSaved') == true || formElement.data('hasDiscardChanges') == true || formElement.data('retrieved') == true)
                     return null;
 
                 if ( formElement.data('requireddata') != false  ) {

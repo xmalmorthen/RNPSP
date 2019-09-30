@@ -322,13 +322,13 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4">
-                        Tipo <!-- Se llena del catálogo CAT_TIPODESANGRE -->
-                        <select  class="form-control" id="pSANGRE" name="pSANGRE" data-error="#err_pSANGRE" data-query='OEhBMzZsSU5HcVlzaHRWQmVHb0lZUjBnbEN6UWR5YlZESU90OENxY2Z2WkRMMmRtQ2NmSHplV2pLdkVnMURxRnhkOG5RTmR4YXJxYi9RdGtYN3ZkQ3RwTGh6dkZPN0UwZnA2eVE0NU9UTjhCYTd6ZmVuYkxOSjhQZXEzdWdXV1ZwMk8xcm5iaW1Jb0tNQ1F4WlptL0tKbllYcEhObVpsTTlUWlNOU0wvLzQwPQ==' ></select>
+                        <span class="clr">*</span>Tipo <!-- Se llena del catálogo CAT_TIPODESANGRE -->
+                        <select  class="form-control" id="pSANGRE" name="pSANGRE" data-error="#err_pSANGRE" data-query='OEhBMzZsSU5HcVlzaHRWQmVHb0lZUjBnbEN6UWR5YlZESU90OENxY2Z2WkRMMmRtQ2NmSHplV2pLdkVnMURxRnhkOG5RTmR4YXJxYi9RdGtYN3ZkQ3RwTGh6dkZPN0UwZnA2eVE0NU9UTjhCYTd6ZmVuYkxOSjhQZXEzdWdXV1ZwMk8xcm5iaW1Jb0tNQ1F4WlptL0tKbllYcEhObVpsTTlUWlNOU0wvLzQwPQ==' required></select>
 						<span id="err_pSANGRE"></span>
                     </div>
                     <div class="col-md-4">
-                        Factor RH <!-- se llen CAT_FACTORRH -->
-                        <select  class="form-control" id="pFACTOR_RH" name="pFACTOR_RH" data-error="#err_pFACTOR_RH" data-query='K0dpTXp3ZGpjaWlBVndlRFVUcTJSanNHSWhUSHlFOFBoT3JnY1E2U0Ntd2lvRVVyYU41YzZZbis1UWUxN3JycnVjdEs3L0w0U3VId2d6QTVkQ0xMQVpRaUlDNnBWSytXYTNaSmdMMmludWVRSitVUlNMVzFjOWx4UEJhdW1VbVA=' ></select>
+                        <span class="clr">*</span>Factor RH <!-- se llen CAT_FACTORRH -->
+                        <select  class="form-control" id="pFACTOR_RH" name="pFACTOR_RH" data-error="#err_pFACTOR_RH" data-query='K0dpTXp3ZGpjaWlBVndlRFVUcTJSanNHSWhUSHlFOFBoT3JnY1E2U0Ntd2lvRVVyYU41YzZZbis1UWUxN3JycnVjdEs3L0w0U3VId2d6QTVkQ0xMQVpRaUlDNnBWSytXYTNaSmdMMmludWVRSitVUlNMVzFjOWx4UEJhdW1VbVA=' required></select>
 						<span id="err_pFACTOR_RH"></span>
                     </div>
                 </div>

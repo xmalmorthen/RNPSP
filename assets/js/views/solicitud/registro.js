@@ -881,7 +881,43 @@ var fillData = {
         },
         desarrolloAcademico : function(pID_ALTERNA){
 
-            $('#Desarrollo_form').data('loading',true);
+            const form = $('#Desarrollo_form');
+            form.LoadingOverlay("show");
+            form.data('loading',true);
+
+            fillData.genericPromise(base_url + `Solicitud/vwNivelEstudios`,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+
+                if (data) {
+
+                    mainFormActions.insertValueInSelect($('#pID_GRADO_ESCOLAR'),data.pID_GRADO_ESCOLAR);
+                    mainFormActions.insertValueInSelect($('#pNOMBRE_ESCUELA'),data.pNOMBRE_ESCUELA);
+                    mainFormActions.insertValueInSelect($('#pESPECIALIDAD_DESARROLLO'),data.pESPECIALIDAD);
+                    mainFormActions.insertValueInSelect($('#pCEDULA_PROFESIONAL'),data.pCEDULA_PROFESIONAL);
+                    mainFormActions.insertValueInSelect($('#pINICIO_DESARROLLO'), moment( data.pFECHA_INICIO,'DD/MM/YYYY' ).format('YYYY-MM-DD'));
+                    mainFormActions.insertValueInSelect($('#pTERMINO_DESARROLLO'), moment( data.pFECHA_TERMINO,'DD/MM/YYYY' ).format('YYYY-MM-DD'));
+                    mainFormActions.insertValueInSelect($('#pREGISTRO_SEP'),data.pREGISTRO_SEP);
+                    mainFormActions.insertValueInSelect($('#pFOLIO_CERTIFICADO'),data.pFOLIO_CERTIFICADO);
+                    mainFormActions.insertValueInSelect($('#pPROMEDIO'),data.pPROMEDIO);
+
+                }
+
+                form.removeData('loading');
+                form.data('requireddata',false);
+                form.data('retrieved', true);
+
+                form.LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                form.setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.statusText
+                });
+                
+                form.LoadingOverlay("hide");
+            });
 
             var tableRef = $('#' + objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.obj.tables().nodes().to$().attr('id')),
                 tableObj = objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.obj,
@@ -898,9 +934,6 @@ var fillData = {
                         var row = [ value.pID_NIVEL_ESTUDIOS_EXT, value.pMAXIMA_ESCOLARIDAD, value.pESPECIALIDAD, value.pFECHA_INICIO, value.pFECHA_TERMINO, value.pPROMEDIO ];
                         tableObj.row.add( row ).draw( false );
                     });
-                    
-                    $('#Desarrollo_form').data('requireddata',false);
-
                 }
 
                 //Boton para refrescar datatable
@@ -909,19 +942,56 @@ var fillData = {
                     btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.datosGenerales.desarrolloAcademico(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
 
                 tableRef.LoadingOverlay("hide");
-
-                $('#Desarrollo_form').removeData('loading');
+                
             })
             .catch( (err) => {
                 tableRef.setError(err.statusText);
                 tableRef.LoadingOverlay("hide");
             });
 
-            
-
         },
         domicilio : function(pID_ALTERNA){
-            $('#Domicilio_form').data('loading',true);
+            
+            const form = $('#Domicilio_form');
+
+            form.LoadingOverlay("show");
+            form.data('loading',true);
+
+            fillData.genericPromise(base_url + `Solicitud/vwDomicilio`,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+
+                if (data) {
+
+                    mainFormActions.insertValueInSelect($('#pCODIGO_POSTAL_DOMICILIO'),data.pCODIGO_POSTAL);
+                    mainFormActions.insertValueInSelect($('#pID_ENTIDAD_DOMICILIO'),data.pID_ENTIDAD);
+                    mainFormActions.insertValueInSelect($('#pID_MUNICIPIO_DOMICILIO'),data.pID_MUNICIPIO);
+                    mainFormActions.insertValueInSelect($('#pCIUDAD_DOMICILIO'),data.pCIUDAD);
+                    mainFormActions.insertValueInSelect($('#pCOLONIA_DOMICILIO'),data.pCOLONIA);
+                    mainFormActions.insertValueInSelect($('#pCALLE_DOMICILIO'),data.pCALLE);
+                    mainFormActions.insertValueInSelect($('#pNUM_EXTERIOR_DOMICILIO'),data.pNUM_EXTERIOR);
+                    mainFormActions.insertValueInSelect($('#pNUM_INTERIOR_DOMICILIO'),data.pNUM_INTERIOR);
+                    mainFormActions.insertValueInSelect($('#pENTRE_CALLE_DOMICILIO'),data.pENTRE_CALLE);
+                    mainFormActions.insertValueInSelect($('#pY_CALLE_DOMICILIO'),data.pY_CALLE);
+                    mainFormActions.insertValueInSelect($('#pTELEFONO_DOMICILIO'),data.pTELEFONO);
+                }
+
+                form.removeData('loading');
+                form.data('requireddata',false);
+                form.data('retrieved', true);
+
+                form.LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                form.setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.statusText
+                });
+                
+                form.LoadingOverlay("hide");
+            });
+
 
             var tableRef = $('#' + objViewDatosGenerales.vars.datosGenerales.tables.tableDomicilio.obj.tables().nodes().to$().attr('id')),
                 tableObj = objViewDatosGenerales.vars.datosGenerales.tables.tableDomicilio.obj,
@@ -938,9 +1008,6 @@ var fillData = {
                         var row = [ value.pID_DOMICILIO_EXT, value.pCODIGO_POSTAL, value.pNOM_ESTADO, value.pCOLONIA, value.pCALLE, value.pNUM_EXTERIOR, value.pNUM_INTERIOR ];
                         tableObj.row.add( row ).draw( false );
                     });
-
-                    $('#Domicilio_form').data('requireddata',false);
-
                 }
 
                 //Boton para refrescar datatable
@@ -948,9 +1015,7 @@ var fillData = {
                 if (btnRefreshRef.find('.refreshTable').length == 0)
                     btnRefreshRef.prepend("<a href='#' class='refreshTable mr-3 float-left' data-call='fillData.datosGenerales.domicilio(mainTabMenu.var.pID_ALTERNA);' onclick='refreshTable(event,this)' title='Actualizar registros'><i class='fa fa-refresh fa-3x' aria-hidden='true'></i></a>");
 
-                tableRef.LoadingOverlay("hide");
-
-                $('#Domicilio_form').removeData('loading');
+                tableRef.LoadingOverlay("hide");                
             })
             .catch( (err) => {
                 tableRef.setError(err.statusText);
@@ -959,6 +1024,55 @@ var fillData = {
 
         },
         referencias : function(pID_ALTERNA){
+
+            const form = $('#Referencias_form');
+
+            form.LoadingOverlay("show");
+            form.data('loading',true);
+            form.data('requireddata',false);
+
+            fillData.genericPromise(base_url + `Solicitud/vwReferencias`,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+
+                if (data) {
+
+                    mainFormActions.insertValueInSelect($('#pID_TIPO_DOM'),data.pID_TIPO_DOM);
+                    mainFormActions.insertValueInSelect($('#pNOMBRE_REFERENCIAS'),data.pNOMBRE);
+                    mainFormActions.insertValueInSelect($('#pPATERNO_REFERENCIAS'),data.pPATERNO);
+                    mainFormActions.insertValueInSelect($('#pMATERNO_REFERENCIAS'),data.pMATERNO);
+                    mainFormActions.insertValueInSelect($('#pSEXO_REFERENCIAS'),data.pSEXO);
+                    mainFormActions.insertValueInSelect($('#pID_OCUPACION'),data.pID_OCUPACION);
+                    mainFormActions.insertValueInSelect($('#pID_TIPO_REFERENCIA'),data.pID_TIPO_REFERENCIA);
+                    mainFormActions.insertValueInSelect($('#pCODIGO_POSTAL_REFERENCIAS'),data.pCODIGO_POSTAL);
+                    mainFormActions.insertValueInSelect($('#pID_ENTIDAD_REFERENCIAS'),data.pID_ENTIDAD);
+                    mainFormActions.insertValueInSelect($('#pID_MUNICIPIO_REFERENCIAS'),data.pID_MUNICIPIO);
+                    mainFormActions.insertValueInSelect($('#pCIUDAD_REFERENCIAS'),data.pCIUDAD);
+                    mainFormActions.insertValueInSelect($('#pCOLONIA_REFERENCIAS'),data.pCOLONIA);
+                    mainFormActions.insertValueInSelect($('#pCALLE_REFERENCIAS'),data.pCALLE);
+                    mainFormActions.insertValueInSelect($('#pNUM_EXTERIOR_REFERENCIAS'),data.pNUM_EXTERIOR);
+                    mainFormActions.insertValueInSelect($('#pNUM_INTERIOR_REFERENCIAS'),data.pNUM_INTERIOR);
+                    mainFormActions.insertValueInSelect($('#pTELEFONO_REFERENCIAS'),data.pTELEFONO_REFERENCIAS);
+                    mainFormActions.insertValueInSelect($('#pENTRE_CALLE_REFERENCIAS'),data.pENTRE_CALLE);
+                    mainFormActions.insertValueInSelect($('#pY_CALLE_REFERENCIAS'),data.pY_CALLE);
+
+                }
+
+                form.removeData('loading');
+                form.data('retrieved', true);
+
+                form.LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                form.setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.statusText
+                });
+                
+                form.LoadingOverlay("hide");
+            });
+
             var tableRef = $('#' + objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.obj.tables().nodes().to$().attr('id')),
                 tableObj = objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.obj,
                 callUrl = base_url + `Solicitud/getReferencias`;
@@ -989,8 +1103,6 @@ var fillData = {
                 tableRef.LoadingOverlay("hide");
             });
             
-            $('#Referencias_form').data('requireddata',false);
-
         },
         socioeconomicos : function(pID_ALTERNA){
             $('#Socioeconomicos_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
@@ -1025,6 +1137,47 @@ var fillData = {
             });
         },
         dependientesEconomicos : function(pID_ALTERNA){
+
+            const form = $('#Dependientes_form');
+            form.data('requireddata',false);
+            //$('#Socioeconomicos_form').removeData('hasChanged');
+
+            form.LoadingOverlay("show");
+            form.data('loading',true);
+
+            fillData.genericPromise(base_url + `Solicitud/vwDependientes`,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+
+                if (data) {
+
+                    mainFormActions.insertValueInSelect($('#pNOMBRE_SOCIOECONOMICOS'),data.pNOMBRE);
+                    mainFormActions.insertValueInSelect($('#pPATERNO_SOCIOECONOMICOS'),data.pPATERNO);
+                    mainFormActions.insertValueInSelect($('#pMATERNO_SOCIOECONOMICOS'),data.pMATERNO);
+                    mainFormActions.insertValueInSelect($('#pSEXO_SOCIOECONOMICOS'),data.pSEXO);
+                    mainFormActions.insertValueInSelect($('#pFECHA_NAC_SOCIOECONOMICOS'),data.pFECHA_NACIMIENTO);
+                    mainFormActions.insertValueInSelect($('#pID_RELACION'),data.pID_TIPO_DEPENDIENT);
+                    mainFormActions.insertValueInSelect($('#pID_RELACION_SOCIOECONOMICOS'),data.pID_SUBTIPO_REF);
+                    
+                }
+
+                form.removeData('loading');
+                form.data('retrieved', true);
+
+                form.LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                form.setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.statusText
+                });
+                
+                form.LoadingOverlay("hide");
+            });
+
+
+
             var tableRef = $('#' + objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.obj.tables().nodes().to$().attr('id')),
                 tableObj = objViewDatosGenerales.vars.datosGenerales.tables.tableSocioeconomicos.obj,
                 callUrl = base_url + `Solicitud/getDependientes`;
@@ -1055,8 +1208,8 @@ var fillData = {
                 tableRef.LoadingOverlay("hide");
             });
 
-            $('#Dependientes_form').data('requireddata',false);
-            $('#Socioeconomicos_form').removeData('hasChanged');
+            
+            
 
         }
     },
