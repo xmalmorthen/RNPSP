@@ -17,7 +17,7 @@ database = "zzhpregpersonalc4"
 
 ;username = "zzhpregperc4des"
 ;password = "Tc1ij?94"
-;database = "zzhpregperc4des"
+;database = "zzhpregpersonalc4des"
 
 [sendMail] ;Configuración de correo electrónico
 protocol = ""
