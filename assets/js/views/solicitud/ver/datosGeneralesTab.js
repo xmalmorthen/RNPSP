@@ -143,25 +143,25 @@ var objViewDatosGenerales = {
         socioeconomicos : function(pID_ALTERNA){
             $('#Socioeconomicos_form').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 
-            // var callUrl = base_url + `Solicitud/vwSocioEc`;
-            // objViewDatosGenerales.fill.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
-            // .then( (data) => {  
-            //     if (data) {
-            //         $.each(data,function(key,value){
-            //             objViewDatosGenerales.fill.insertValueInSelect(key,value,'Socioeconomicos_form');
-            //         });
-            //     }
-            //     $('#Socioeconomicos_form').LoadingOverlay("hide");
-            // })
-            // .catch( (err) => {
-            //     $('#Socioeconomicos_form').setAlert({
-            //         alertType :  'alert-danger',
-            //         dismissible : true,
-            //         header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
-            //         msg : err.statusText
-            //     });
-            //     $('#Socioeconomicos_form').LoadingOverlay("hide");
-            // });
+            var callUrl = base_url + `Solicitud/vwSocioEc`;
+            objViewDatosGenerales.fill.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {  
+                if (data) {
+                    $.each(data,function(key,value){
+                        objViewDatosGenerales.fill.insertValueInSelect(key,value,'Socioeconomicos_form');
+                    });
+                }
+                $('#Socioeconomicos_form').LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                $('#Socioeconomicos_form').setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.statusText
+                });
+                $('#Socioeconomicos_form').LoadingOverlay("hide");
+            });
 
             
             var tableRef = $('#tableSocioeconomicos'),
