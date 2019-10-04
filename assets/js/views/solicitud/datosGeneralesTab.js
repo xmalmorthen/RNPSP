@@ -628,7 +628,7 @@ var objViewDatosGenerales = {
                 
                 try {
                     //VALID FORM
-                    if ($('#allValidateDatosPersonales').val() == true) {
+                    if ($('#allValidateDatosPersonales').val() == true || form.context.id != 'Datos_personales_form') {
                         if (!form.valid())
                             throw new Error("Formulario incompleto");
                     }            
