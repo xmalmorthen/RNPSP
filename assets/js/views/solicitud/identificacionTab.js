@@ -170,8 +170,9 @@ var objViewIdentificacion = {
 
                     try {
                         //VALID FORM
-                        if (!form.valid())
-                            throw new Error("Formulario incompleto");
+                        if (mainTabMenu.var.nuevoRegistro)
+                            if (!form.valid())
+                                throw new Error("Formulario incompleto");
 
                         $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
 

@@ -716,7 +716,6 @@ var mainFormActions = {
                         if (!ref.val())
                             ref.data('insert', value);                        
 
-
                     } else {
 
                         ref.data('insert', value);
@@ -1154,7 +1153,7 @@ var fillData = {
                     mainFormActions.insertValueInSelect($('#pPATERNO_SOCIOECONOMICOS'),data.pPATERNO);
                     mainFormActions.insertValueInSelect($('#pMATERNO_SOCIOECONOMICOS'),data.pMATERNO);
                     mainFormActions.insertValueInSelect($('#pSEXO_SOCIOECONOMICOS'),data.pSEXO);
-                    mainFormActions.insertValueInSelect($('#pFECHA_NAC_SOCIOECONOMICOS'),data.pFECHA_NACIMIENTO);
+                    mainFormActions.insertValueInSelect($('#pFECHA_NAC_SOCIOECONOMICOS'),moment( data.pFECHA_NACIMIENTO,'DD/MM/YYYY' ).format('YYYY-MM-DD') );
                     mainFormActions.insertValueInSelect($('#pID_RELACION'),data.pID_TIPO_DEPENDIENT);
                     mainFormActions.insertValueInSelect($('#pID_RELACION_SOCIOECONOMICOS'),data.pID_SUBTIPO_REF);
                     
@@ -1222,7 +1221,121 @@ var fillData = {
         },
         adscripcionActual : function(pID_ALTERNA){
             
-            $('#Adscripcion_actual_form').data('loading',true);
+            const form = $('#Adscripcion_actual_form');
+
+            form.LoadingOverlay("show");
+            form.data('loading',true);            
+
+            fillData.genericPromise(base_url + `Solicitud/vwAdscripcion`,{ pID_ALTERNA : pID_ALTERNA})
+            .then( async (data) => {
+
+                if (data) {
+                    var nombreCompleto = (data.pMATERNO_JEFE ? data.pMATERNO_JEFE + ' ' : '') + (data.pPATERNO_JEFE ? data.pPATERNO_JEFE + ' ' : '') + (data.pNOMBRE_JEFE ? data.pNOMBRE_JEFE : '');
+                    
+                    mainFormActions.insertValueInSelect($('#pCP_EMP_ADSCRIPCION_ACTUAL'),data.pCODIGO_POSTAL);                    
+                    mainFormActions.insertValueInSelect($('#pCIUDAD'),data.pCIUDAD);
+                    mainFormActions.insertValueInSelect($('#Colonia_Adscripcion_actual'),data.pCOLONIA);
+                    mainFormActions.insertValueInSelect($('#Calle'),data.pCALLE);
+                    mainFormActions.insertValueInSelect($('#pNUM_EXTERIOR'),data.pNUM_EXTERIOR);
+                    mainFormActions.insertValueInSelect($('#pNUM_INTERIOR'),data.pNUM_INTERIOR);
+                    mainFormActions.insertValueInSelect($('#pTELEFONO'),data.pTELEFONO);
+                    mainFormActions.insertValueInSelect($('#pFECHA_INGRESO'),moment( data.pFECHA_INGRESO,'DD/MM/YYYY' ).format('YYYY-MM-DD'));
+                    mainFormActions.insertValueInSelect($('#pPUESTO_ADSCRIPCION_ACTUAL'),data.pID_PUESTO);
+                    mainFormActions.insertValueInSelect($('#pESPECIALIDAD'),data.pESPECIALIDAD);
+                    mainFormActions.insertValueInSelect($('#pRANGO'),data.pRANGO);
+                    mainFormActions.insertValueInSelect($('#pID_NIVEL_MANDO'),data.pID_NIVEL_MANDO);
+                    mainFormActions.insertValueInSelect($('#pNUMERO_PLACA'),data.pNUMERO_PLACA);
+                    mainFormActions.insertValueInSelect($('#pNUMERO_EXPEDIENTE'),data.pNUMERO_EXPEDIENTE);
+                    mainFormActions.insertValueInSelect($('#pSUELDO_BASE'),data.pSUELDO_BASE);
+                    mainFormActions.insertValueInSelect($('#pCOMPENSACION'),data.pCOMPENSACION);
+                    mainFormActions.insertValueInSelect($('#pDIVISION'),data.pDIVISION);
+                    mainFormActions.insertValueInSelect($('#pFUNCIONES'),data.pFUNCIONES);
+                    mainFormActions.insertValueInSelect($('#ID_JEFE'),data.pCUIP_JEFE);
+                    mainFormActions.insertValueInSelect($('#pNOMBREJEFEINMEDIATO'),nombreCompleto);
+
+                    await new Promise( (resolve) => {
+                        const $interval = setInterval(() => {
+                            if ($('#pID_DEPENDENCIA_ADSCRIPCION_ACTUAL').data('populated')) {
+                                clearInterval($interval);
+                                mainFormActions.insertValueInSelect($('#pID_DEPENDENCIA_ADSCRIPCION_ACTUAL'),data.pID_DEPENDENCIA);
+                                resolve(true);
+                            }
+                        }, 300);
+                    });
+
+                    if (!$('#pID_DEPENDENCIA_ADSCRIPCION_ACTUAL').select2('data')[0].id)
+                        $('#pID_DEPENDENCIA_ADSCRIPCION_ACTUAL').trigger('change');
+
+                    await new Promise( (resolve) => {
+                        const $interval = setInterval(() => {
+                            if ($('#pID_INSTITUCION').data('populated')) {
+                                clearInterval($interval);
+                                mainFormActions.insertValueInSelect($('#pID_INSTITUCION'),data.pID_INSTITUCION);
+                                resolve(true);
+                            }
+                        }, 300);
+                    });
+
+                    if (!$('#pID_INSTITUCION').select2('data')[0].id)
+                        $('#pID_INSTITUCION').trigger('change');
+                    
+                    await new Promise( (resolve) => {
+                        const $interval = setInterval(() => {
+                            if ($('#pID_AREA').data('populated')) {
+                                clearInterval($interval);
+                                mainFormActions.insertValueInSelect($('#pID_AREA'),data.pID_AREA);
+                                resolve(true);
+                            }
+                        }, 300);
+                    });
+
+                    if (!$('#pID_AREA').select2('data')[0].id)
+                        $('#pID_AREA').trigger('change');
+
+                    await new Promise( (resolve) => {
+                        const $interval = setInterval(() => {
+                            if ($('#pID_ENTIDAD_ADSCRIPCION_ACTUAL').data('populated')) {
+                                clearInterval($interval);
+                                mainFormActions.insertValueInSelect($('#pID_ENTIDAD_ADSCRIPCION_ACTUAL'),data.pID_ENTIDAD);
+                                resolve(true);
+                            }
+                        }, 300);
+                    });
+
+                    if (!$('#pID_ENTIDAD_ADSCRIPCION_ACTUAL').select2('data')[0].id)
+                        $('#pID_ENTIDAD_ADSCRIPCION_ACTUAL').trigger('change');
+
+                    await new Promise( (resolve) => {
+                        const $interval = setInterval(() => {
+                            if ($('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').data('populated')) {
+                                clearInterval($interval);
+                                mainFormActions.insertValueInSelect($('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL'),data.pID_MUNICIPIO);
+                                resolve(true);
+                            }
+                        }, 300);
+                    });
+
+                    if (!$('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').select2('data')[0].id)
+                        $('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').trigger('change');                                        
+
+                }
+
+                form.removeData('loading');
+                form.data('requireddata',false);
+                form.data('retrieved', true);
+
+                form.LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                form.setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.statusText
+                });
+                
+                form.LoadingOverlay("hide");
+            });            
 
             var tableRef = $('#' + objViewLaboral.vars.laboral.tables.tableAdscripcionactual.obj.tables().nodes().to$().attr('id')),
                 tableObj = objViewLaboral.vars.laboral.tables.tableAdscripcionactual.obj,

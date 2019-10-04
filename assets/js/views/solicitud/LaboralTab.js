@@ -230,7 +230,10 @@ var objViewLaboral = {
                 $('#pID_AREA').getCatalog({
                     query : 'dlIwdE11aDdRNlltQitFQjRFVWd6UXZGbUFDS2xxeFJpNDA2b1pkUi9GMUtabi9ncDZERVVDTnlMLzBEakEwTzAybnVNa0RUUGdlek92bjNmZWozNkVCbU12UG5MdUZZVExjdnZvczdwbm43c0lONnAyeHFSUU96SWlkd3NDZVQ=',
                     params :  '[ID_DEPENDENCIA]=' + valDependencia + ' and [ID_INSTITUCION]=' + valInstitucion,
-                    emptyOption : true
+                    emptyOption : true,
+                    success : function(data){
+                        $('#pID_AREA').data('populated',true);
+                    }
                 });
                 
             },
