@@ -1331,7 +1331,12 @@ var fillData = {
                             $('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').val($('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').data('insert'));
                         }
                         $('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').trigger('change');       
-                    }                                 
+                    }
+
+                    await new Promise( (resolve) => {
+                        const $interval = setInterval(() => {clearInterval($interval);resolve(true);
+                        }, 300);
+                    });
 
                 }
 
@@ -1339,8 +1344,6 @@ var fillData = {
                 form.data('retrieved', true);
                 form.data('hasChanged', false);
                 
-                console.log('Adscripcion_actual_form quitado el hasChanged');
-
                 form.removeData('loading');
 
                 form.LoadingOverlay("hide");

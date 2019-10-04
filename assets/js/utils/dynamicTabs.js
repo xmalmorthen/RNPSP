@@ -186,8 +186,6 @@ var dynTabs = {
                         formElement.data('hasChanged',true);
                         $(e.target).removeError();
 
-                        console.log(e.currentTarget.id + ' agregado el hasChanged');
-
                     });
 
                 } else {
