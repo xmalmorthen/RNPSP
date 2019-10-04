@@ -190,7 +190,7 @@ var dynTabs = {
 
                 } else {
                     if (!loaderShow) {
-                        loaderShow = true;
+                        //loaderShow = true;
 
                         $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
                     }

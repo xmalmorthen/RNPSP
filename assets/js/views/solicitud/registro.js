@@ -720,8 +720,10 @@ var mainFormActions = {
 
                     } else {
 
-                        ref.data('insert', value);
-                        
+                        if (!ref.data('populated'))
+                            ref.data('insert', value);
+                        else
+                            ref.val(value).trigger('change.select2').trigger('change');
                     }
 
                 break;                                    
@@ -1317,26 +1319,35 @@ var fillData = {
                     await new Promise( (resolve) => {
                         const $interval = setInterval(() => {
                             if ($('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').data('populated')) {
-                                clearInterval($interval);
-                                
+                                clearInterval($interval);                                
                                 resolve(true);
                             }
                         }, 300);
                     });
 
+                    console.log('valor antes de insertValueInSelect: ' + $('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').val());
+
                     mainFormActions.insertValueInSelect($('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL'),data.pID_MUNICIPIO);
 
-                    if (!$('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').select2('data')[0].id) {
-                        if ($('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').data('insert')) {
-                            $('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').val($('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').data('insert'));
-                        }
-                        $('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').trigger('change');       
-                    }
+                    console.log('valor despues de insertValueInSelect: ' + $('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').val());
 
-                    await new Promise( (resolve) => {
-                        const $interval = setInterval(() => {clearInterval($interval);resolve(true);
-                        }, 300);
+                    
+                    const $val = await new Promise( (resolve) => {
+                        $resend = false;
+                        const $interval = setInterval(() => {
+                            console.log('condifión: ' + $('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').val());
+                            if ($('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').val() != null) {
+                                clearInterval($interval);
+                                resolve($('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').val());
+                            } else if (!$resend) {
+                                mainFormActions.insertValueInSelect($('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL'),data.pID_MUNICIPIO);
+                                $resend = true;
+                            }
+                        }, 1000);
                     });
+
+                    //if (!$('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').select2('data')[0].id) 
+                        //$('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').trigger('change');
 
                 }
 
