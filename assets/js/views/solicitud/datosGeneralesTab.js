@@ -238,7 +238,8 @@ var objViewDatosGenerales = {
 
         // });
 
-        $('#Datos_personales_form').find('input, select').removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError').removeData('hasChanged');
+        $('#Datos_personales_form').find('input, select').removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError');        
+
     },
     events : {
         click : {

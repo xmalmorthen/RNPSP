@@ -175,10 +175,17 @@ var dynTabs = {
                     $.LoadingOverlay("hide",true);
 
                     //Rutina para verificar si se hace algún cambio en cualquier forulario
-                    formElement.find('input, select').change(function(e) {                
-                        formElement.removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError');
+                    formElement.find('input, select').change(function(e) {
+
+                        if ( $(e.target).data('ignoreChangeFirst') ) {
+                            $(e.target).removeData('ignoreChangeFirst');
+                            return null;
+                        }
+
+                        formElement.removeData('hasSaved').removeData('hasDiscardChanges').removeData('withError').removeData('withError').removeData('retrieved');
                         formElement.data('hasChanged',true);
                         $(e.target).removeError();
+
                     });
 
                 } else {

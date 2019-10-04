@@ -814,9 +814,14 @@ var fillData = {
             actualizaInputsFormDissable(data.pTIPO_OPERACION);
             
             //AutoFill
+            $ignore = ['pID_ENTIDAD_NAC','pID_MUNICIPIO_NAC']
             $.each(data,function(key,value){
-                mainFormActions.insertValueInSelect($('#'+ key),value);
+                if ( $.inArray(key,$ignore) == -1) {
+                    mainFormActions.insertValueInSelect($('#'+ key),value);
+                }
             });
+
+            $('#pID_MUNICIPIO_NAC').data('ignoreChangeFirst', true);
 
             //Special
             //DATOS GENERALES - DATOS PERSONALES
@@ -837,7 +842,7 @@ var fillData = {
 
             objViewDatosGenerales.actions.ajax.populateCmbOperacion();
 
-            $('#Datos_personales_form').data('requireddata',false);
+            $('#Datos_personales_form').data('retrieved',true);
 
         },
         CIB : function(pID_ALTERNA){
