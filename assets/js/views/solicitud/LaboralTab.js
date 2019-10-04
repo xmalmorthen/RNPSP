@@ -201,6 +201,7 @@ var objViewLaboral = {
                 if (!valInstitucion) return null;
 
                 $('#pID_ENTIDAD_ADSCRIPCION_ACTUAL').LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+                $('#pID_ENTIDAD_ADSCRIPCION_ACTUAL').prop("disabled", true);
 
                 var callUrl = base_url + 'ajaxCatalogos';
                 $.get(callUrl,
@@ -218,6 +219,7 @@ var objViewLaboral = {
                 }).fail(function (err) {})
                 .always(function () {
                     $('#pID_ENTIDAD_ADSCRIPCION_ACTUAL').LoadingOverlay("hide");
+                    $('#pID_ENTIDAD_ADSCRIPCION_ACTUAL').prop("disabled", false);
                     MyCookie.session.reset();
                 });
                 
@@ -235,7 +237,7 @@ var objViewLaboral = {
                         $('#pID_AREA').data('populated',true);
                     }
                 });
-                
+
             },
             tableResponsive : function(){
                 $.each( objViewLaboral.vars.laboral.tables, function( key, value ) {
@@ -257,6 +259,11 @@ var objViewLaboral = {
                 var callUrl = base_url + "Solicitud/pID_INSTITUCION";
 
                 obj.append('<option disabled selected value><i class="fa fa-refresh fa-spin fa-3x fa-fw"></i> Actualizando, favor de esperar...</option>');
+                
+                if ($('#puesto').data('populated',true))
+                    $('#pPUESTO_ADSCRIPCION_ACTUAL').val(null).trigger('change');
+                if ($('#pID_AREA').data('populated',true))
+                    $('#pID_AREA').val(null).trigger('change');
 
                 $.get(callUrl, { pIdDep : valDependencia },
                     function (data) {
@@ -288,6 +295,7 @@ var objViewLaboral = {
 
                             }
                         }
+
                         obj.data('populated',true);
                         obj.prop("disabled", false);
                         obj.LoadingOverlay("hide");

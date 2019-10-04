@@ -24,6 +24,8 @@ $.fn.getCatalog = function(options) {
                 return null;
         }
 
+        obj.removeData('populated');
+
         var typeOfObj = obj[0].tagName.toLowerCase();
         switch (typeOfObj) {
             case 'select':
