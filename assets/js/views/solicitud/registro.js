@@ -420,6 +420,9 @@ var mainTabMenu = {
                     forms.each(function( index ) {
                 
                         if ( $(this).data('requireddata') != false ) {
+
+                            //console.log()
+
                             allFormsSaved = false;
                             
                             idrefForm = $(this).closest('.tab-pane').attr('id');
@@ -842,7 +845,7 @@ var fillData = {
 
             objViewDatosGenerales.actions.ajax.populateCmbOperacion();
 
-            $('#Datos_personales_form').data('retrieved',true);
+            $('#Datos_personales_form').data('retrieved',true).data('requireddata',false);
 
         },
         CIB : function(pID_ALTERNA){
@@ -1299,12 +1302,14 @@ var fillData = {
                     await new Promise( (resolve) => {
                         const $interval = setInterval(() => {
                             if ($('#pID_ENTIDAD_ADSCRIPCION_ACTUAL').data('populated')) {
-                                clearInterval($interval);
-                                mainFormActions.insertValueInSelect($('#pID_ENTIDAD_ADSCRIPCION_ACTUAL'),data.pID_ENTIDAD);
+                                clearInterval($interval);                                
+                                
                                 resolve(true);
                             }
                         }, 300);
                     });
+
+                    mainFormActions.insertValueInSelect($('#pID_ENTIDAD_ADSCRIPCION_ACTUAL'),data.pID_ENTIDAD);
 
                     if (!$('#pID_ENTIDAD_ADSCRIPCION_ACTUAL').select2('data')[0].id)
                         $('#pID_ENTIDAD_ADSCRIPCION_ACTUAL').trigger('change');
@@ -1313,20 +1318,30 @@ var fillData = {
                         const $interval = setInterval(() => {
                             if ($('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').data('populated')) {
                                 clearInterval($interval);
-                                mainFormActions.insertValueInSelect($('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL'),data.pID_MUNICIPIO);
+                                
                                 resolve(true);
                             }
                         }, 300);
                     });
 
-                    if (!$('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').select2('data')[0].id)
-                        $('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').trigger('change');                                        
+                    mainFormActions.insertValueInSelect($('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL'),data.pID_MUNICIPIO);
+
+                    if (!$('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').select2('data')[0].id) {
+                        if ($('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').data('insert')) {
+                            $('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').val($('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').data('insert'));
+                        }
+                        $('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').trigger('change');       
+                    }                                 
 
                 }
 
-                form.removeData('loading');
                 form.data('requireddata',false);
                 form.data('retrieved', true);
+                form.data('hasChanged', false);
+                
+                console.log('Adscripcion_actual_form quitado el hasChanged');
+
+                form.removeData('loading');
 
                 form.LoadingOverlay("hide");
             })
