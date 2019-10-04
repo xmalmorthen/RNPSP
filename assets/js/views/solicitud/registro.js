@@ -445,8 +445,7 @@ var mainTabMenu = {
                     });
 
                     $(e.relatedTarget).data('finish',allFormsSaved);
-
-                    // TODO: Xmal - Quitar comentarios en bloque para implementación
+                    
                     if (!$(e.relatedTarget).data('finish')){
                         
                         $.LoadingOverlay("hide", true);

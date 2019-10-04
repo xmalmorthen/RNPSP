@@ -1,11 +1,14 @@
 //IMPLEMENTACIÓN
-//TODO: Xmal - Quitar comentarios en bloque para implementación [ assets\js\views\solicitud\registro.js ]
-//TODO: Xmal - Quitar comentarios en bloque para implementación [ assets\js\utils\dynamicTabs.js ]
-//TODO: Xmal - Quitar comentarios al implementar [ assets\js\views\solicitud\index.js ]
-//TODO: Xmal - Quitar línea al implementar [ application\controllers\Reportes.php ]
 
-//TODO: Xmal - Quitar línea de código al implementar [ assets\js\views\solicitud\index.js ] 
-//TODO: Xmal - Quitar el comentario de la siguiente línea de código al implementar [ application\controllers\Reportes.php ]
+//TODO: Xmal - Resetear controles corporación, estado, municipio, area o departamento, cuando se cambie la dependencia [ficha labolral / adscripcion actual]
+//TODO: Xmal - Reprogramar el comportamiento del combo municipio de nacimiento ( en edición se pierde la selección del elemento ) [ ficha datos generales / datos personales ]
+//TOTO: Xmal - Revisar porque no se muestra la alerta de modificación antes de cambiar de tab cuando se está en modo edición y con datos populados en los controles.
+//TODO: Xmal - Continuar con la implementación de llenado de información en controles para la solicitud en modalidad edición... contunuar a partir de la ficha laboral / empleos diversos
+
+//REPORTES
+    //TODO: Xmal - Quitar comentarios al implementar [ assets\js\views\solicitud\index.js ]
+    //TODO: Xmal - Quitar línea al implementar [ application\controllers\Reportes.php ]
+    //TODO: Xmal - Quitar línea de código al implementar [ assets\js\views\solicitud\index.js ] 
 
 //TODO: Xmal - Implementar la impresión [ assets\js\views\solicitud\index.js ]
 [

@@ -577,7 +577,6 @@
 
             $iter = 1;
             foreach ($model['data']['data'] as $key => $item) {
-                //TODO: Xmal - Quitar el comentario de la siguiente línea de código al implementar
                 if ($item['estatus'] == 1) 
                 {
 

@@ -76,7 +76,6 @@ var dynTabs = {
                             msg : 'Formulario incompleto'
                         });
         
-                        //TODO: Xmal - Quitar comentarios en bloque para implementación
                         e.preventDefault();
                         return null;
                     }
