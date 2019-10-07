@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="<?php echo base_url("assets/vendor/plugins/select2/css/select2.min.css"); ?>">
 <!-- /CSS -->
 
-<div class="_container d-none">
+<div class="_container d-none tabsContainer">
     <div class="alert alert-success text-right iconografia" role="alert">
         <span class="">[ <i class="text-success fa fa-floppy-o fa-2x" aria-hidden="true" ></i> Formulario guardado ] - </span>
         <span class="">[ <i class="text-danger fa fa-exclamation-triangle fa-2x" aria-hidden="true"></i> Error en formulario ] -</span>

@@ -890,7 +890,7 @@ var fillData = {
         desarrolloAcademico : function(pID_ALTERNA){
 
             const form = $('#Desarrollo_form');
-            form.LoadingOverlay("show");
+            $('.tabsContainer').LoadingOverlay("show");
             form.data('loading',true);
 
             fillData.genericPromise(base_url + `Solicitud/vwNivelEstudios`,{ pID_ALTERNA : pID_ALTERNA})
@@ -914,7 +914,7 @@ var fillData = {
                 form.data('requireddata',false);
                 form.data('retrieved', true);
 
-                form.LoadingOverlay("hide");
+                $('.tabsContainer').LoadingOverlay("hide");
             })
             .catch( (err) => {
                 form.setAlert({
@@ -924,7 +924,7 @@ var fillData = {
                     msg : err.statusText
                 });
                 
-                form.LoadingOverlay("hide");
+                $('.tabsContainer').LoadingOverlay("hide");
             });
 
             var tableRef = $('#' + objViewDatosGenerales.vars.datosGenerales.tables.tableDesarrollo.obj.tables().nodes().to$().attr('id')),
@@ -962,7 +962,7 @@ var fillData = {
             
             const form = $('#Domicilio_form');
 
-            form.LoadingOverlay("show");
+            $('.tabsContainer').LoadingOverlay("show");
             form.data('loading',true);
 
             fillData.genericPromise(base_url + `Solicitud/vwDomicilio`,{ pID_ALTERNA : pID_ALTERNA})
@@ -987,7 +987,7 @@ var fillData = {
                 form.data('requireddata',false);
                 form.data('retrieved', true);
 
-                form.LoadingOverlay("hide");
+                $('.tabsContainer').LoadingOverlay("hide");
             })
             .catch( (err) => {
                 form.setAlert({
@@ -997,7 +997,7 @@ var fillData = {
                     msg : err.statusText
                 });
                 
-                form.LoadingOverlay("hide");
+                $('.tabsContainer').LoadingOverlay("hide");
             });
 
 
@@ -1035,7 +1035,7 @@ var fillData = {
 
             const form = $('#Referencias_form');
 
-            form.LoadingOverlay("show");
+            $('.tabsContainer').LoadingOverlay("show");
             form.data('loading',true);
             form.data('requireddata',false);
 
@@ -1068,7 +1068,7 @@ var fillData = {
                 form.removeData('loading');
                 form.data('retrieved', true);
 
-                form.LoadingOverlay("hide");
+                $('.tabsContainer').LoadingOverlay("hide");
             })
             .catch( (err) => {
                 form.setAlert({
@@ -1078,7 +1078,7 @@ var fillData = {
                     msg : err.statusText
                 });
                 
-                form.LoadingOverlay("hide");
+                $('.tabsContainer').LoadingOverlay("hide");
             });
 
             var tableRef = $('#' + objViewDatosGenerales.vars.datosGenerales.tables.tableReferencias.obj.tables().nodes().to$().attr('id')),
@@ -1150,7 +1150,7 @@ var fillData = {
             form.data('requireddata',false);
             //$('#Socioeconomicos_form').removeData('hasChanged');
 
-            form.LoadingOverlay("show");
+            $('.tabsContainer').LoadingOverlay("show");
             form.data('loading',true);
 
             fillData.genericPromise(base_url + `Solicitud/vwDependientes`,{ pID_ALTERNA : pID_ALTERNA})
@@ -1171,7 +1171,7 @@ var fillData = {
                 form.removeData('loading');
                 form.data('retrieved', true);
 
-                form.LoadingOverlay("hide");
+                $('.tabsContainer').LoadingOverlay("hide");
             })
             .catch( (err) => {
                 form.setAlert({
@@ -1181,7 +1181,7 @@ var fillData = {
                     msg : err.statusText
                 });
                 
-                form.LoadingOverlay("hide");
+                $('.tabsContainer').LoadingOverlay("hide");
             });
 
 
@@ -1232,7 +1232,7 @@ var fillData = {
             
             const form = $('#Adscripcion_actual_form');
 
-            form.LoadingOverlay("show");
+            $('.tabsContainer').LoadingOverlay("show");
             form.data('loading',true);            
 
             fillData.genericPromise(base_url + `Solicitud/vwAdscripcion`,{ pID_ALTERNA : pID_ALTERNA})
@@ -1325,17 +1325,11 @@ var fillData = {
                         }, 300);
                     });
 
-                    console.log('valor antes de insertValueInSelect: ' + $('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').val());
-
                     mainFormActions.insertValueInSelect($('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL'),data.pID_MUNICIPIO);
 
-                    console.log('valor despues de insertValueInSelect: ' + $('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').val());
-
-                    
                     const $val = await new Promise( (resolve) => {
                         $resend = false;
                         const $interval = setInterval(() => {
-                            console.log('condifión: ' + $('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').val());
                             if ($('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').val() != null) {
                                 clearInterval($interval);
                                 resolve($('#pID_MUNICIPIO_ADSCRIPCION_ACTUAL').val());
@@ -1357,7 +1351,7 @@ var fillData = {
                 
                 form.removeData('loading');
 
-                form.LoadingOverlay("hide");
+                $('.tabsContainer').LoadingOverlay("hide");
             })
             .catch( (err) => {
                 form.setAlert({
@@ -1367,7 +1361,7 @@ var fillData = {
                     msg : err.statusText
                 });
                 
-                form.LoadingOverlay("hide");
+                $('.tabsContainer').LoadingOverlay("hide");
             });            
 
             var tableRef = $('#' + objViewLaboral.vars.laboral.tables.tableAdscripcionactual.obj.tables().nodes().to$().attr('id')),
@@ -1407,6 +1401,48 @@ var fillData = {
             });
         },
         empleosDiversos : function(pID_ALTERNA){
+            const form = $('#Empleos_diversos_form');
+            
+            $('.tabsContainer').LoadingOverlay("show");
+            form.data('loading',true);
+
+            fillData.genericPromise(base_url + `Solicitud/vwEmpleoAdicional`,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+
+                if (data) {
+                    mainFormActions.insertValueInSelect($('#pEMPRESA'),data.pEMPRESA);
+                    mainFormActions.insertValueInSelect($('#pCP_EMP_EMPLEOS_DIVERSOS'),data.pCP_EMP);
+                    mainFormActions.insertValueInSelect($('#pID_ENTIDAD_EMPLEOS_DIVERSOS'),data.pID_ENTIDAD);
+                    mainFormActions.insertValueInSelect($('#pID_MUNICIPIO_EMPLEOS_DIVERSOS'),data.pID_MUNICIPIO);
+                    mainFormActions.insertValueInSelect($('#pCOLONIA_EMPLEOS_DIVERSOS'), data.pCOLONIA_EMP);
+                    mainFormActions.insertValueInSelect($('#pCALLE_Y_NUM_EMPLEOS_DIVERSOS'),data.pCALLE_Y_NUM_EMP);
+                    mainFormActions.insertValueInSelect($('#pNUM_TELEFONICO'),data.pNUM_TELEFONICO);
+                    mainFormActions.insertValueInSelect($('#pDESCRIP_AREA'),data.pAREA);
+                    mainFormActions.insertValueInSelect($('#pDESCRIP_FUNCION'),data.pDESCRIP_FUNCION);
+                    mainFormActions.insertValueInSelect($('#pSUELDO_EMPLEOS_DIVERSOS'),data.pSUELDO);
+                    mainFormActions.insertValueInSelect($('#pFECHA_INICIO_EMPLEOS_DIVERSOS'),moment( data.pFECHA_INGRESO,'DD/MM/YYYY' ).format('YYYY-MM-DD'));
+                    mainFormActions.insertValueInSelect($('#pFECHA_TERMINO_EMPLEOS_DIVERSOS'),moment( data.pFECHA_SEPARACION,'DD/MM/YYYY' ).format('YYYY-MM-DD'));
+                    mainFormActions.insertValueInSelect($('#ID_MOTIVO_MOV_LAB'),data.pID_MOTIVO_MOV_LAB);
+                    mainFormActions.insertValueInSelect($('#pID_TIPO_MOV_LAB'),data.pID_TIPO_MOV_LAB);
+                    mainFormActions.insertValueInSelect($('#pDESCRIPCION'),data.pDESCRIPCION);
+                }
+
+                form.removeData('loading');
+                form.data('retrieved', true);
+
+                $('.tabsContainer').LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                form.setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.statusText
+                });
+                
+                $('.tabsContainer').LoadingOverlay("hide");
+            });
+            
             var tableRef = $('#' + objViewLaboral.vars.laboral.tables.tableEmpleosdiversos.obj.tables().nodes().to$().attr('id')),
                 tableObj = objViewLaboral.vars.laboral.tables.tableEmpleosdiversos.obj,
                 callUrl = base_url + `Solicitud/getEmpleoAdicional`;
@@ -1437,6 +1473,11 @@ var fillData = {
             });
         },
         actitudesHaciaEmpleo : function(pID_ALTERNA){
+            const form = $('#Actitudes_hacia_el_empleo_form');
+            
+            $('.tabsContainer').LoadingOverlay("show");
+            form.data('loading',true);
+                 
             var callUrl = base_url + `Solicitud/getActitud`;
             fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {  
@@ -1450,6 +1491,11 @@ var fillData = {
 
                     $('#Actitudes_hacia_el_empleo_form').removeData('hasChanged');
                 }
+
+                form.removeData('loading');
+                form.data('retrieved', true);
+
+                $('.tabsContainer').LoadingOverlay("hide");
             })
             .catch( (err) => {
                 $('#Actitudes_hacia_el_empleo_form').setAlert({
@@ -1461,6 +1507,38 @@ var fillData = {
             });
         },
         comisiones : function(pID_ALTERNA){
+            const form = $('#Comisiones_form');
+            
+            $('.tabsContainer').LoadingOverlay("show");
+            form.data('loading',true);
+
+            fillData.genericPromise(base_url + `Solicitud/vwComision`,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+
+                if (data) {
+                    mainFormActions.insertValueInSelect($('#pFECHA_INICIO_COMISIONES'),moment( data.pFECHA_INICIO,'DD/MM/YYYY' ).format('YYYY-MM-DD'));
+                    mainFormActions.insertValueInSelect($('#pFECHA_TERMINO_COMISIONES'),moment( data.pFECHA_TERMINO,'DD/MM/YYYY' ).format('YYYY-MM-DD'));
+                    mainFormActions.insertValueInSelect($('#ID_TIPO_COMISION'),data.pID_TIPO_COMISION);
+                    mainFormActions.insertValueInSelect($('#pID_MOTIVO'),data.pID_MOTIVO);
+                    mainFormActions.insertValueInSelect($('#pDESTINO'), data.pDESTINO);
+                }
+
+                form.removeData('loading');
+                form.data('retrieved', true);
+
+                $('.tabsContainer').LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                form.setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.statusText
+                });
+                
+                $('.tabsContainer').LoadingOverlay("hide");
+            });
+            
             var tableRef = $('#' + objViewLaboral.vars.laboral.tables.tableComisiones.obj.tables().nodes().to$().attr('id')),
                 tableObj = objViewLaboral.vars.laboral.tables.tableComisiones.obj,
                 callUrl = base_url + `Solicitud/getComision`;
@@ -1501,6 +1579,37 @@ var fillData = {
             fillData.capacitacion.habilidadesAptitudes(mainTabMenu.var.pID_ALTERNA);
         },
         idiomasDialectos : function(pID_ALTERNA){
+            const form = $('#Idiomas_dialectos_form');
+            
+            $('.tabsContainer').LoadingOverlay("show");
+            form.data('loading',true);
+
+            fillData.genericPromise(base_url + `Solicitud/getIdiomaHablado`,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+
+                if (data) {
+                    mainFormActions.insertValueInSelect($('#pID_IDIOMA'),data[0].pID_IDIOMA);
+                    mainFormActions.insertValueInSelect($('#pGRADO_LECTURA'),data[0].pPORCENTAJE_LECTURA);
+                    mainFormActions.insertValueInSelect($('#pGRADO_ESCRITURA'),data[0].pPORCENTAJE_ESCRITURA);
+                    mainFormActions.insertValueInSelect($('#pGRADO_CONVERSACION'),data[0].pPORCENTAJE_CONVERSACION);
+                }
+
+                form.removeData('loading');
+                form.data('retrieved', true);
+
+                $('.tabsContainer').LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                form.setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.statusText
+                });
+                
+                $('.tabsContainer').LoadingOverlay("hide");
+            });
+            
             var tableRef = $('#' + objViewCapacitacion.vars.capacitacion.tables.tableIdiomas.obj.tables().nodes().to$().attr('id')),
                 tableObj = objViewCapacitacion.vars.capacitacion.tables.tableIdiomas.obj,
                 callUrl = base_url + `Solicitud/getIdiomaHablado`;
@@ -1531,6 +1640,36 @@ var fillData = {
             });
         },
         habilidadesAptitudes : function(pID_ALTERNA){
+            const form = $('#Habilidades_aptitudes_form');
+            
+            $('.tabsContainer').LoadingOverlay("show");
+            form.data('loading',true);
+
+            fillData.genericPromise(base_url + `Solicitud/getHabilidadAptitud`,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+
+                if (data) {
+                    mainFormActions.insertValueInSelect($('#pID_TIPO_APTITUD'),data[0].pID_TIPO_APTITUD);
+                    mainFormActions.insertValueInSelect($('#pESPECIFIQUE'),data[0].pESPECIFIQUE);
+                    mainFormActions.insertValueInSelect($('#pID_GRADO_APT_HAB'),data[0].pID_GRADO_APT_HAB);
+                }
+
+                form.removeData('loading');
+                form.data('retrieved', true);
+
+                $('.tabsContainer').LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                form.setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.statusText
+                });
+                
+                $('.tabsContainer').LoadingOverlay("hide");
+            });
+            
             var tableRef = $('#' + objViewCapacitacion.vars.capacitacion.tables.tableHabilidades.obj.tables().nodes().to$().attr('id')),
                 tableObj = objViewCapacitacion.vars.capacitacion.tables.tableHabilidades.obj,
                 callUrl = base_url + `Solicitud/getHabilidadAptitud`;
