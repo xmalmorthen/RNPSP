@@ -96,6 +96,7 @@
 <script src="<?php echo base_url('assets/js/utils/serialized.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/utils/validaRFC.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/utils/validaCveElector.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/utils/imageExists.js') ?>"></script>
 
 <script src="<?php echo base_url('assets/js/views/solicitud/datosGeneralesTab.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/views/solicitud/laboralTab.js') ?>"></script>
