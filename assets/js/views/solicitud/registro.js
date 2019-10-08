@@ -760,6 +760,31 @@ var fillData = {
             );
         });
     },
+    previewImg : function($this){
+        const $href = $($this).attr('href'),
+            $alt = $($this).attr('alt');
+
+
+        if ($href == '#')
+            Swal.fire({
+                type: 'error',
+                title: 'Imagen',
+                text: 'No se pudo recuperar la imágen'
+            });
+        else 
+            Swal.fire({
+                imageUrl: $href,
+                imageWidth: 250,
+                imageAlt: $alt,
+                text: $alt,
+                onOpen: () => {},
+                onBeforeOpen: () =>{
+                    $('.swal2-image').addClass('img-thumbnail');
+                }
+            });
+        
+        return false;
+    },
     datosGenerales : {
         rules : {
             disabledComponents : 
@@ -1847,13 +1872,14 @@ var fillData = {
 
                         if ('name' in value) {
 
-                            imageExists(value.name).then( (value) =>{
-                                if (value){
+                            imageExists(value.name).then( (response) =>{
+                                if (response){
                                     $content.attr("src", value.name).attr("alt", value.originalName);
                                     $content.parent().find('div.custom-file label.custom-file-label').html(value.originalName);
                                 } else {
-                                    $content.attr("src", imageBreak ).attr("alt", 'No se pudo obtener la imágen');
-                                    $content.parent().find('div.custom-file label.custom-file-label').html( 'Error al recuperar imágen' );        
+                                    const $alt = 'Error al recuperar imágen';
+                                    $content.attr("src", imageBreak ).attr("alt", $alt);
+                                    $content.parent().find('div.custom-file label.custom-file-label').html($alt);
                                 }
                             });
                             
@@ -1930,18 +1956,30 @@ var fillData = {
             //BLOQUE PARA EL LINK AL DOCUMENTO E INFORMACIÓN
             var callUrl = base_url + `Solicitud/vwRegDecadactilar`;
             fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
-            .then( (data) => {  
+            .then( async (data) => {  
                 if (data) {
                     //INFORMACIÓN
                     fillData.camposGeneralesInformacionRegistroDecadactilar(data);
 
                     if (data.pIMG_DOCUMENTO) {
                         //DOCUMENTO
+                        const imageBreak = base_url + 'assets/images/imageError.png';
 
-                        $('#thumb_pIMAGEN_Decadactilar').attr("src", data.pIMG_DOCUMENTO.name).attr("alt", data.pIMG_DOCUMENTO.originalName);
-                        $('#thumb_pIMAGEN_Decadactilar').parent().find('div.custom-file label.custom-file-label').html(data.pIMG_DOCUMENTO.originalName);
+                        imageExists(data.pIMG_DOCUMENTO.name).then( (result) => {
 
-                        form.data('requireddata',false);
+                            if (result) {
+                                $('#thumb_pIMAGEN_Decadactilar').attr("src", data.pIMG_DOCUMENTO.name).attr("alt", data.pIMG_DOCUMENTO.originalName);
+                                $('#thumb_pIMAGEN_Decadactilar').parent().find('div.custom-file label.custom-file-label').html(data.pIMG_DOCUMENTO.originalName);
+                            } else {
+                                $alt = 'Error al recuperar imágen';
+                                $('#thumb_pIMAGEN_Decadactilar').attr("src", imageBreak).attr("alt", $alt);
+                                $('#thumb_pIMAGEN_Decadactilar').parent().find('div.custom-file label.custom-file-label').html($alt);
+                            }
+
+                            form.data('requireddata',false);
+
+                        });
+                        
                     }
                 }
 
@@ -1981,9 +2019,9 @@ var fillData = {
                             if ('pimgPath' in value)
                                 $imageExist = await imageExists(value.pimgPath.name)
 
-                            let preview = '<th class="text-danger"><a class="m-2 previewImg" href="#" title="Ver" ><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></a></th>'
+                            let preview = '<th class="text-danger"><a class="m-2 previewImg" href="#" onclick="return fillData.previewImg(this)"  title="Ver" ><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></a></th>'
                             if ($imageExist)
-                                preview = '<th><a class="m-2 previewImg" href="' + value.pimgPath.name + '" title="Ver" alt="'+ value.pimgPath.originalName + '" ><i class="fa fa-eye fa-2x"></i></a></th>';
+                                preview = '<th><a class="m-2 " href="' + value.pimgPath.name + '" onclick="return fillData.previewImg(this)" title="Ver" alt="' + value.pimgPath.originalName + '" ><i class="fa fa-eye fa-2x"></i></a></th>';
 
                             var row = [ value.pID_REG_DECADACT_EXT, value.pDEPENDENCIA, value.pINSTITUCION, value.pFECHA_REGISTRO, preview ];
 
@@ -1993,33 +2031,7 @@ var fillData = {
                             if (count == 0)
                                 resolve(true);
                         });
-                    });
-
-                    $('.previewImg').on('click', function(e){
-                        e.preventDefault(); 
-
-                        const $href = $(this).attr('href'),
-                            $alt = $(this).attr('alt');
-
-
-                        if ($href == '#')
-                            Swal.fire({
-                                type: 'error',
-                                title: 'Imagen',
-                                text: 'No se pudo recuperar la imágen'
-                            });
-                        else 
-                            Swal.fire({
-                                imageUrl: $href,
-                                imageWidth: 250,
-                                imageAlt: $alt,
-                                text: $alt,
-                                onOpen: () => {},
-                                onBeforeOpen: () =>{
-                                    $('.swal2-image').addClass('img-thumbnail');
-                                }
-                            });
-                    });
+                    });                    
                     
                 }
 
@@ -2037,7 +2049,38 @@ var fillData = {
         },
         digitalizacionDocumento : function(pID_ALTERNA){
 
-            $('#Digitalizacion_de_documento_form').data('loading',true);
+            const form = $('#Digitalizacion_de_documento_form');
+            $('.tabsContainer').LoadingOverlay("show");
+            form.data('loading',true);
+
+            fillData.genericPromise(base_url + `Solicitud/vwDocumento`,{ pID_ALTERNA : pID_ALTERNA})
+            .then( (data) => {
+
+                if (data) {
+
+                    mainFormActions.insertValueInSelect($('#pID_CATEGORIA_DOC'),data.pID_CATEGORIA_DOC);
+                    mainFormActions.insertValueInSelect($('#FECHA_DOCUMENTO'),moment( data.pFECHA_DOCUMENTO,'DD/MM/YYYY' ).format('YYYY-MM-DD'));
+                    $('#thumb_pIMAGEN_Digitalizacion').attr("src", data.pNOMBRE_DOCUMENTO.name).attr("alt", data.pNOMBRE_DOCUMENTO.originalName);
+                    $('#thumb_pIMAGEN_Digitalizacion').parent().find('div.custom-file label.custom-file-label').html(data.pNOMBRE_DOCUMENTO.originalName);
+
+                }
+
+                form.removeData('loading');
+                form.data('requireddata',false);
+                form.data('retrieved', true);
+
+                $('.tabsContainer').LoadingOverlay("hide");
+            })
+            .catch( (err) => {
+                form.setAlert({
+                    alertType :  'alert-danger',
+                    dismissible : true,
+                    header : '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error',
+                    msg : err.statusText
+                });
+                
+                $('.tabsContainer').LoadingOverlay("hide");
+            });
 
             //BLOQUE PARA EL GRID
             var tableRef = $('#' + objViewIdentificacion.vars.identificacion.tables.tableDigitalizaciondoc.obj.tables().nodes().to$().attr('id')),
@@ -2051,8 +2094,17 @@ var fillData = {
             fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {
                 if (data) {
-                    $.each( data, function(key,value) {
-                        var row = [ value.pID_DOCUMENTO_EXT, value.pDESC_CATEGORIA_DOC, value.pVALOR ? `<a href="${value.pVALOR.name}" target="_blank" rel="noopener noreferrer"><i class="fa fa-file-text-o fa-2x" aria-hidden="true"></i> ${value.pVALOR.originalName}</a>` : '', value.pFECHA_DOCUMENTO, value.pESTATUS];
+                    $.each( data, async function(key,value) {
+
+                        let $imageExist = false;
+                        if ('pVALOR' in value)
+                            $imageExist = await imageExists(value.pVALOR.name)
+
+                        let preview = '<th class="text-danger"><a class="m-2 previewImg" href="#" onclick="return fillData.previewImg(this)"  title="Ver" ><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></a></th>';
+                        if ($imageExist)
+                            preview = '<th><a class="m-2 " href="' + value.pVALOR.name + '" onclick="return fillData.previewImg(this)" title="Ver" alt="' + value.pVALOR.originalName + '" ><i class="fa fa-eye fa-2x"></i></a></th>';
+
+                        var row = [ value.pID_DOCUMENTO_EXT, value.pDESC_CATEGORIA_DOC, value.pFECHA_DOCUMENTO, value.pESTATUS, preview];
                         tableObj.row.add( row ).draw( false );
                     });
 

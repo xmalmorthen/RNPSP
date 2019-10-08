@@ -823,20 +823,21 @@
                 <br>
                 <br>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-4 align-self-end">
                         <span class="clr">*</span>Categoría de documento <!-- CAT_CATEGORIA_DOC -->
                         <select  class="form-control" id="pID_CATEGORIA_DOC" name="pID_CATEGORIA_DOC" data-error="#err_pID_CATEGORIA_DOC" data-query='WkdEc3EycHBEQVhpWmoxRTlWdFV4MHd5NmIycFdRY1JDWU44WHdObU1UQnoyQnVGUGp4WjlLYUFYSWhjY1k3WmpxelM1dEl3eXZXam5KQ3lTckhHOSt2djZQMWsvVEYwalZPRm9ySWRxZVhzazRsd0J6VzhBZXgzU3d1ckJSa2JuaHQ2SFhBMW9NamQ4b2RNaERIODVsZVBBWm9EUlVVM0hVb2JBbXJrdFV3PQ==' required></select>
 						<span id="err_pID_CATEGORIA_DOC"></span>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 align-self-end">
                         Fecha documento
                         <input type="date" id="FECHA_DOCUMENTO" name="FECHA_DOCUMENTO" class="form-control">
                     </div>
                     <div class="col-md-4">
-                        <span class="clr">*</span>Documento
+                        <img id="thumb_pIMAGEN_Digitalizacion" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
+                        <span class="clr">*</span>Documento                        
                         <div class="custom-file">
-                            <input type="file" id="pIMAGEN" name="pIMAGEN" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN' accept="image/jpg,image/jpeg" data-accept= "jpg" data-maxfilesize='204800' required>
-                            <label class="custom-file-label" for="pIMAGEN">Seleccionar documento</label>
+                            <input type="file" id="pIMAGEN" name="pIMAGEN" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_Digitalizacion' accept="image/jpg,image/jpeg" data-accept= "jpg" data-maxfilesize='204800' required>
+                            <label class="custom-file-label" for="pIMAGEN">Seleccionar imágen</label>
                         </div>
                     </div>
                 </div>                
@@ -865,10 +866,10 @@
                     <table id="tableDigitalizaciondoc" class="table display table-striped dt-responsive" style="width:100%">
                         <thead>
                                 <th>Id documento</th>
-                                <th>Categoría de documento</th>
-                                <th>Valor</th>
+                                <th>Categoría de documento</th>                                
                                 <th>Fecha documento</th>
                                 <th>Estatus</th>
+                                <th>&nbsp;</th>
                         </thead>
                         <tbody>                                
                         </tbody>
