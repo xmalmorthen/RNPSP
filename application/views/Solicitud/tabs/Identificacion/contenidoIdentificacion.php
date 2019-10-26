@@ -825,7 +825,7 @@
                 <div class="row">
                     <div class="col-md-4 align-self-end">
                         <span class="clr">*</span>Categoría de documento <!-- CAT_CATEGORIA_DOC -->
-                        <select  class="form-control" id="pID_CATEGORIA_DOC" name="pID_CATEGORIA_DOC" data-error="#err_pID_CATEGORIA_DOC" data-query='WkdEc3EycHBEQVhpWmoxRTlWdFV4MHd5NmIycFdRY1JDWU44WHdObU1UQnoyQnVGUGp4WjlLYUFYSWhjY1k3WmpxelM1dEl3eXZXam5KQ3lTckhHOSt2djZQMWsvVEYwalZPRm9ySWRxZVhzazRsd0J6VzhBZXgzU3d1ckJSa2JuaHQ2SFhBMW9NamQ4b2RNaERIODVsZVBBWm9EUlVVM0hVb2JBbXJrdFV3PQ==' required></select>
+                        <select  class="form-control" id="pID_CATEGORIA_DOC" name="pID_CATEGORIA_DOC" data-error="#err_pID_CATEGORIA_DOC" data-query='T0FTSEU3Um9XZ1hFRlc0L2VGUzNJQlErNk1MbnRmSTZ3b1BoRnBBTWJhTlVMMldJbkdvc2RCSGZzNHZHR09iWHdkMWFFVE4wMEFrM3JHUlJxVXlmbnpLejJ3dkFrYmdRZ21ISG1ld2E0NFVEbE82ZEh4dHE4VDVQc3M3RElMVTN6RGtqWXo4YjNhbzZIR1RocnN4RjlnQ29xM1M5VjFqdlBpWkdpUFJGWjE4PQ==' required></select>
 						<span id="err_pID_CATEGORIA_DOC"></span>
                     </div>
                     <div class="col-md-4 align-self-end">

@@ -29,8 +29,8 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                    <span class="clr">*</span>Código postal
-                        <input type="number"  id="pCP_EMP_ADSCRIPCION_ACTUAL" name="pCP_EMP_ADSCRIPCION_ACTUAL" class="form-control" class="form-control" minlength=5 maxlength=5 required>
+                    Código postal
+                        <input type="number"  id="pCP_EMP_ADSCRIPCION_ACTUAL" name="pCP_EMP_ADSCRIPCION_ACTUAL" class="form-control" class="form-control" minlength=5 maxlength=5>
                     </div>
                     <div class="col-md-4">
                         <span class="clr">*</span>Estado <!-- Se llena del catalogo "CAT_ENTIDAD" -->
@@ -46,32 +46,32 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <span class="clr">*</span>Ciudad
-                        <input type="text" id="pCIUDAD" name="pCIUDAD" class="form-control" class="form-control" maxlength="50" required>
+                        Ciudad
+                        <input type="text" id="pCIUDAD" name="pCIUDAD" class="form-control" class="form-control" maxlength="50">
                     </div>
                     <div class="col-md-4">
-                        <span class="clr">*</span>Colonia/Localidad
-                        <input type="text" id="Colonia_Adscripcion_actual" name="Colonia_Adscripcion_actual" class="form-control" class="form-control" maxlength="60" required>
+                        Colonia/Localidad
+                        <input type="text" id="Colonia_Adscripcion_actual" name="Colonia_Adscripcion_actual" class="form-control" class="form-control" maxlength="60">
                     </div>
                     <div class="col-md-4">
-                        <span class="clr">*</span>Calle
-                        <input type="text" id="Calle" name="Calle" class="form-control" maxlength="50" required>
+                        Calle
+                        <input type="text" id="Calle" name="Calle" class="form-control" maxlength="50">
                     </div>
 
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <span class="clr">*</span>Número exterior
-                        <input type="text" id="pNUM_EXTERIOR" name="pNUM_EXTERIOR" class="form-control validarNumberSpecial" required>
+                        Número exterior
+                        <input type="text" id="pNUM_EXTERIOR" name="pNUM_EXTERIOR" class="form-control validarNumberSpecial">
                     </div>
                     <div class="col-md-4">
                         Número interior
                         <input type="text" id="pNUM_INTERIOR" name="pNUM_INTERIOR" class="form-control">
                     </div>
                     <div class="col-md-4">
-                        <span class="clr">*</span>Número telefónico
-                        <input type="text"  id="pTELEFONO" name="pTELEFONO"  class="form-control" minlength="10" maxlength="13" required>
+                        Número telefónico
+                        <input type="text"  id="pTELEFONO" name="pTELEFONO"  class="form-control" minlength="10" maxlength="13">
                     </div>
                 </div>
                 <br>

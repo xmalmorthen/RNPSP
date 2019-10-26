@@ -403,14 +403,15 @@
                 </div>
             </div>
             <br>
-            <div class="row">
+            <input type="hidden" name="pID_TIPO_DOM" id="pID_TIPO_DOM" value="2">
+            <!--<div class="row">
                 <div class="col-md-4">
                     <span class="clr">*</span>Tipo domicilio <br>
                     <select style="width:356px;" name="pID_TIPO_DOM" id="pID_TIPO_DOM" class="form-control" data-error="#err_pID_TIPO_DOM" data-query='Y1lyVjUzQWNiNnc2UlN1UGhHbTNLRC9QZFhvelZUSVIxOC9HemtrSzZSdnZBYlpSR1lXU1BQb1VSOTI4a1M2MFBrOWxXL3MxYWhDSG5uMUZMZDIrU3hzNkd6UllzMndnMlExZjNmZUZOblNqQnEwbjQ0bUJ6N0laaEpsTW4xTVVsL2dtczlReTN0emxjTU04ZVFpeUxqYU9CeFgySUY1eUdOVk9aZVI5VlRZPQ==' required></select>
                     <span id="err_pID_TIPO_DOM"></span>
                 </div>
             </div>
-            <br>
+            <br>-->
             <div class="row">
                 <div class="col-md-4">
                     <span class="clr">*</span>Nombre
@@ -562,11 +563,13 @@
                         <span class="clr">*</span>Ingreso familiar adicional (mensual)
                         <input type="number" class="form-control" id="pINGRESO_FAMILIAR" name="pINGRESO_FAMILIAR" required>
                     </div>
-                    <div class="col-md-4">
-                        Su domicilio es <br> <!-- Se llena del catálogo CAT_TIPO_DOMICILIO -->
+                    
+                    <input type="hidden" name="pID_TIPO_DOMICILIO" id='pID_TIPO_DOMICILIO' value="1">
+                    <!--<div class="col-md-4">
+                        Su domicilio es <br> 
                         <select style="width:356px;" name="pID_TIPO_DOMICILIO" id="pID_TIPO_DOMICILIO" class="form-control" data-error="#err_pID_TIPO_DOMICILIO" data-query='Y3ZMRjVwQ3hJdU1nVy95Yk15enNSWmpyaXBYbHFmQVdMOHUxTkVlY3RSZ3ZWTElpRVRkZ2V6alpURTQ5WC9ONm9oVnBsTEpSNzdPMDFUUTFUcVBZQzFFL2d2LytMZVFWR1dWS1FKSmt0c2JYWDBOWTd1dW85TTFENjVVYnJadlJuNG5za3kyRkhHMitISmIxTTZlQ2JZaGtqQTdaeHplRE5LNzVrWHp1cW53PQ=='></select>
                         <span id="err_pID_TIPO_DOMICILIO"></span>
-                    </div>
+                    </div>-->
                 </div>
                 <br>
                 <div class="row">
