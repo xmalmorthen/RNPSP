@@ -141,6 +141,7 @@ var iDB = {
             iDB.vars.db.tables.forEach(function (table) {
                 if (table.name == obj[0].id){
                     var data = table.count().then(function(count){
+
                         if (count > 0){
                             //FROM INDEXED DB
                             obj.prop("disabled", false);
@@ -155,6 +156,7 @@ var iDB = {
                                 }
                             });
 
+                            $iter = 0;
                             innerInterval = setInterval(function(){
                                 if (obj.find('option:enabled').length > 0 ) {
                             
@@ -163,6 +165,7 @@ var iDB = {
                                     if ( obj.data('insert') ) {                                        
                                         
                                         obj.val(obj.data('insert'));
+                                        $iter++;
 
                                         if (obj.val() == obj.data('insert') && obj.data('populated') == true) {
                                         
@@ -173,10 +176,20 @@ var iDB = {
 
                                             obj.trigger('change').trigger('change.select2');
 
-                                            obj.closest('form').removeData('hasChanged')
+                                            obj.closest('form').removeData('hasChanged');
 
                                             options.success(data);
+
+                                        } else if ($iter == 10){
+
+                                            intervalRefObj = selValueInterval.find( refInterval => refInterval.nombre == obj[0].id );
+                                            clearInterval( intervalRefObj.objInterval );
+
+                                            obj.removeData('insert');
+                                            obj.setError('No se encontró el elemento en el catálogo');
+                                            options.error('No se encontró el elemento en el catálogo');
                                         }
+
                                     }
                                     
                                 }
