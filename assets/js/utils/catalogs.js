@@ -31,9 +31,9 @@ $.fn.getCatalog = function(options) {
         var typeOfObj = obj[0].tagName.toLowerCase();
         switch (typeOfObj) {
             case 'select':
-                obj.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
+                /*obj.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
                 obj.prop("disabled", true);
-                obj.find("option").remove();                
+                obj.find("option").remove();*/
                 
                 //POPULATE FROM INDEXDB
                 iDB.actions.populateObjectFromIDB(obj,options);
@@ -43,7 +43,7 @@ $.fn.getCatalog = function(options) {
                     qry : options.query,
                     params : options.params
                 },
-                function (data) {                    
+                function (data) {
                     options.success(data);
                 }).fail(function (err) {                    
                     options.error(err);

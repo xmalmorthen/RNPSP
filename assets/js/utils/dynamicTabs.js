@@ -161,8 +161,16 @@ var dynTabs = {
 
                 var objsToInsertLoaderTab = 0;
                 $.each( formElement.find('select'), function() {
-                    if ($(this).data('insert') !== undefined) 
+                    if ($(this).data('insert') !== undefined)  {
+                        
                         objsToInsertLoaderTab ++;
+
+                        if ( $(this).data('populated') ) {
+                            $(this).val($(this).data('insert')).trigger('change.select2').trigger('change');
+                            $(this).removeData('insert');
+                        }
+
+                    }
                 });  
                 
 
@@ -191,7 +199,6 @@ var dynTabs = {
                 } else {
                     if (!loaderShow) {
                         //loaderShow = true;
-
                         $.LoadingOverlay("show", {image:"",fontawesome:"fa fa-cog fa-spin"});
                     }
                 }

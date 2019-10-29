@@ -55,7 +55,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <span class="clr">*</span>País de nacimiento <!-- Se llena del catálogo CAT_PAIS -->
-                    <select  class="form-control" id="pID_PAIS_NAC" name="pID_PAIS_NAC" data-error="#err_pID_PAIS_NAC" data-query='Vng1R1BwYXMzcnpkdHJEcjUxbG13VFhkcStKTTRvTW5idXdHa1F3TVBNcGhnS1JpQmtZMW5RR0ZKdEEvdUJiVVd6enhqNFdTNEhsaTNlVmI0Uzcxb1ZkSFVlQ3l4cnhKMVQwdWpvY2ZPRm8zckszc1JzNjlDbFhXTGFqZFlPd2s=' required><option value="">Seleccione</option></select>
+                    <select  class="form-control" id="pID_PAIS_NAC" name="pID_PAIS_NAC" data-error="#err_pID_PAIS_NAC" data-query='Vng1R1BwYXMzcnpkdHJEcjUxbG13VFhkcStKTTRvTW5idXdHa1F3TVBNcGhnS1JpQmtZMW5RR0ZKdEEvdUJiVVd6enhqNFdTNEhsaTNlVmI0Uzcxb1ZkSFVlQ3l4cnhKMVQwdWpvY2ZPRm8zckszc1JzNjlDbFhXTGFqZFlPd2s=' required></select>
                     <span id="err_pID_PAIS_NAC"></span>
                 </div>
                 <div class="col-md-4">
@@ -233,7 +233,7 @@
             <div class="row">
                 <div class="col-md-4">
                     Registro SEP
-                    <select style="width:356px;" class="form-control" id="pREGISTRO_SEP" name="pREGISTRO_SEP" data-error="#err_pREGISTRO_SEP" data-query=''>
+                    <select style="width:356px;" class="form-control" id="pREGISTRO_SEP" name="pREGISTRO_SEP" data-error="#err_pREGISTRO_SEP" data-query='' data-populated=true>
                         <option disabled selected value>Seleccione una opción</option>
                         <option value="1">SI</option>
                         <option value="0">NO</option>
@@ -552,7 +552,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         ¿Vive con su familia? <br><!-- S/N = SI/NO -->
-                        <select style="width:356px;" class="form-control" id="pVIVE_FAMILIA" name="pVIVE_FAMILIA" data-error="#err_pVIVE_FAMILIA" data-query=''>
+                        <select style="width:356px;" class="form-control" id="pVIVE_FAMILIA" name="pVIVE_FAMILIA" data-error="#err_pVIVE_FAMILIA" data-query='' data-populated=true>
                             <option disabled selected value>Seleccione una opción</option>
                             <option value="S">SI</option>
                             <option value="N">NO</option>

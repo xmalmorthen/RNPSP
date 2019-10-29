@@ -134,126 +134,102 @@ var iDB = {
                 //console.log('Populado terminado ');
             }
         },
-        populateObjectFromIDB : function(obj,options){
+        populateObjectFromIDB : async function(obj,options){
 
-            var selValueInterval = [];
+            $data = null;
 
-            iDB.vars.db.tables.forEach(function (table) {
-                if (table.name == obj[0].id){
-                    var data = table.count().then(function(count){
+            console.log( obj.context.name + ' iniciando populando');
 
-                        if (count > 0){
-                            //FROM INDEXED DB
-                            obj.prop("disabled", false);
-                            if (options.emptyOption){
-                                obj.append('<option disabled selected value>Seleccione una opción</option>');
-                            }
-                            obj.LoadingOverlay("hide");
+            $disObj = obj.prop("disabled");
+            obj.prop("disabled", true);
+            obj.data('populating',true);
+            obj.LoadingOverlay("show");
 
-                            table.each(function(data) {  
-                                if (data) {
-                                    obj.append('<option value=' + data.id + '>' + data.text + '</option>');
-                                }
-                            });
+            obj.append('<option disabled selected value><i class="fa fa-refresh fa-spin fa-3x fa-fw"></i> Actualizando, favor de esperar...</option>');                                    
 
-                            $iter = 0;
-                            innerInterval = setInterval(function(){
-                                if (obj.find('option:enabled').length > 0 ) {
-                            
-                                    //SI SE ASIGNA UN VALOR Y AUN NO ESTA POPULADO
-                                    //LO OBTIENE DEL DATA [INSERT]
-                                    if ( obj.data('insert') ) {                                        
-                                        
-                                        obj.val(obj.data('insert'));
-                                        $iter++;
+            $_tbl = iDB.vars.db.tables.find(qry => qry.name == obj.context.name);
+            $count = 0;
+            if ($_tbl != null)
+                $count = await $_tbl.count().then( (count) => {return count;});
 
-                                        if (obj.val() == obj.data('insert') && obj.data('populated') == true) {
-                                        
-                                            intervalRefObj = selValueInterval.find( refInterval => refInterval.nombre == obj[0].id );
-                                            clearInterval( intervalRefObj.objInterval );
+            if ($count > 0) {
 
-                                            obj.removeData('insert');
+                obj.find("option").remove();
 
-                                            obj.trigger('change').trigger('change.select2');
+                if (options.emptyOption)
+                    obj.append('<option disabled selected value>Seleccione una opción</option>');
 
-                                            obj.closest('form').removeData('hasChanged');
+                $iterFnc = ($_table, $item,$_count) => {
+                    return new Promise ( resolve => {
+                        $_table.each( ($row) =>{
+                            $item.append('<option value=' + $row.id + '>' + $row.text + '</option>');
 
-                                            options.success(data);
-
-                                        } else if ($iter == 10){
-
-                                            intervalRefObj = selValueInterval.find( refInterval => refInterval.nombre == obj[0].id );
-                                            clearInterval( intervalRefObj.objInterval );
-
-                                            obj.removeData('insert');
-                                            obj.setError('No se encontró el elemento en el catálogo');
-                                            options.error('No se encontró el elemento en el catálogo');
-                                        }
-
-                                    }
-                                    
-                                }
-                            }, 300);
-
-                            selValueInterval.push({ nombre: obj[0].id, objInterval : innerInterval });
-                            
-                            obj.data('populated',true);
-
-                        } else {
-                            //FROM AJAX
-                            obj.data('populating',true);
-                            obj.append('<option disabled selected value><i class="fa fa-refresh fa-spin fa-3x fa-fw"></i> Actualizando, favor de esperar...</option>');                                
-                            var callUrl = base_url + "ajaxCatalogos/index";
-                            $.get(callUrl,{
-                                qry : options.query,
-                                params : options.params
-                            },
-                            function (data) {
-                                if (data) {
-                                    obj.find("option").remove();
-                                    if (options.emptyOption){
-                                        obj.append('<option disabled selected value>Seleccione una opción</option>');
-                                    }
-                                    if (data.results) {
-                                        $.each(data.results,function(key, value) 
-                                        {
-                                            obj.append('<option value=' + value.id + '>' + value.text + '</option>');
-                                        });
-                                    }
-                                }
-                                obj.prop("disabled", false);
-                                
-                                //SI SE ASIGNA UN VALOR Y AUN NO ESTA POPULADO
-                                //LO OBTIENE DEL DATA [INSERT]
-                                if ( obj.data('insert') ) {
-
-                                    obj.val(obj.data('insert'));
-                                    
-                                    obj.removeData('insert');
-
-                                    obj.trigger('change').trigger('change.select2');
-
-                                }
-                                
-                                obj.removeData('populating');
-                                obj.data('populated',true);
-                                
-                                options.success(data);
-                            }).fail(function (err) {                    
-                                obj.find("option").remove();
-                                obj.setError('ERROR al actualizar');
-                                options.error(err);
-                            }).always(function () {
-                                obj.LoadingOverlay("hide");
-                                MyCookie.session.reset();
-                                
-                                if ( $.isFunction( options.always ) )
-                                    options.always();
-                            });
-                        }
+                            if ($item.children('option:enabled').length == $_count)
+                                resolve(true);
+                        });                        
                     });
-                }
-            });
+                };
+                
+                await $iterFnc(iDB.vars.db.tables.find(qry => qry.name == obj.context.name),obj,await iDB.vars.db.tables.find(qry => qry.name == obj.context.name).count().then( (count) => {return count;}));
+            } else {
+
+                $iterFnc = function($item) {                                
+                    return new Promise( (resolve) => {
+                                                                                                
+                        $iter = 0;
+                        callUrl = base_url + "ajaxCatalogos/index";
+                        $.get(callUrl,{
+                            qry : options.query,
+                            params : options.params
+                        },
+                        function (data) {
+                            
+                            if (data) {
+                                
+                                $item.find("option").remove();
+
+                                if (options.emptyOption){
+                                    $item.append('<option disabled selected value>Seleccione una opción</option>');
+                                }
+
+                                if (data.results) {
+                                    $.each(data.results,function(key, value) 
+                                    {
+                                        $item.append('<option value=' + value.id + '>' + value.text + '</option>');
+                                    });
+                                }
+                            }
+                            
+                            resolve(data);
+
+                        }).fail(function (err) {
+                            
+                            $item.find("option").remove();
+                            $item.setError('ERROR al actualizar');
+                            options.error(err);
+
+                        }).always(function () {
+                            MyCookie.session.reset();
+                        });
+
+                    });
+                };
+
+                $data = await $iterFnc(obj);
+            }
+
+            obj.data('populated',true);
+            obj.removeData('populating');
+
+            obj.prop("disabled", $disObj);
+            obj.LoadingOverlay("hide",true);
+
+            if ( obj.data('insert') )
+                obj.val(obj.data('insert'));
+
+            options.success($data);
+            
+            console.log( obj.context.name + ' ok populado');
 
         }
     }

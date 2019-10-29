@@ -342,7 +342,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <span class="clr">*</span>¿Usa anteojos? <!-- S/N = SI/NO -->
-                        <select  class="form-control" id="pLENTES" name="pLENTES" data-error="#err_pLENTES" data-query='' required>
+                        <select  class="form-control" id="pLENTES" name="pLENTES" data-error="#err_pLENTES" data-query='' data-populated=true required>
                             <option disabled selected value>Seleccione una opción</option>
                             <option value="S">SI</option>
                             <option value="N">NO</option>

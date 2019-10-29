@@ -711,21 +711,32 @@ var mainFormActions = {
                 break;
                 case 'select':                
                     
-                    if (!$(ref).data('query') || $(ref).data('query').trim().length == 0) {
-
-                        ref.val(value);
-                        ref.trigger('change');
-                        if (!ref.val())
-                            ref.data('insert', value);                        
-
+                    $options = ref.children('option:enabled');
+                    if ($options.length == 0) {
+                        ref.data('insert', value);
                     } else {
 
                         if (!ref.data('populated'))
                             ref.data('insert', value);
-                        else
-                            ref.val(value).trigger('change.select2').trigger('change');
-                    }
+                        else {
 
+                            $areInserted = false;
+
+                            $options.each(function ($key, $value) {
+                                if ($value.value == value) {
+                                    ref.val(value).trigger('change.select2').trigger('change');
+                                    $areInserted = true;
+                                }
+                            });
+
+                            if (!$areInserted) {
+                                ref.data('insert', value);
+                            } else {
+                                ref.removeData('insert');
+                            }
+                        }
+                    }
+                    
                 break;                                    
                 default:
                     ref.html(value);
@@ -836,12 +847,12 @@ var fillData = {
         },
         datosPersonales : function(data){
 
+            //console.log(data);
+
             if ( $.inArray( data.pTIPO_OPERACION, fillData.datosGenerales.rules.tmov ) == -1 ){
                 fillData.datosGenerales.rules.disabledComponents.push('pTIPO_OPERACION');
                 $("#Datos_personales_form .btnGuardarSection").attr('offEvent','true');
             }
-
-            actualizaInputsFormDissable(data.pTIPO_OPERACION);
             
             //AutoFill
             $ignore = ['pID_ENTIDAD_NAC','pID_MUNICIPIO_NAC']
@@ -871,6 +882,8 @@ var fillData = {
             fillData.datosGenerales.CIB(mainTabMenu.var.pID_ALTERNA);
 
             objViewDatosGenerales.actions.ajax.populateCmbOperacion();
+
+            actualizaInputsFormDissable(data.pTIPO_OPERACION);
 
             $('#Datos_personales_form').data('retrieved',true).data('requireddata',false);
 

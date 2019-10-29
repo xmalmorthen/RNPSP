@@ -472,12 +472,13 @@ var objViewDatosGenerales = {
                     }, 300);
                 });
 
+
                 if (value == -1)
-                    $('#pID_ENTIDAD_NAC').val(-1).trigger('change').trigger('change.select2').prop( "disabled", true );
+                    $('#pID_ENTIDAD_NAC').prop( "disabled", false ).val(-1).trigger('change').trigger('change.select2').prop( "disabled", true );
                 else if (value != 82)
-                    $('#pID_ENTIDAD_NAC').val(99).trigger('change').trigger('change.select2').prop( "disabled", true );
+                    $('#pID_ENTIDAD_NAC').prop( "disabled", false ).val(99).trigger('change').trigger('change.select2').prop( "disabled", true );
                 else
-                    $('#pID_ENTIDAD_NAC,#pID_MUNICIPIO_NAC').val(null).trigger('change').trigger('change.select2').prop( "disabled", false );
+                    $('#pID_ENTIDAD_NAC,#pID_MUNICIPIO_NAC').prop( "disabled", false ).val(null).trigger('change').trigger('change.select2');
 
                 await new Promise( (resolve) => {
                     const $interval = setInterval(() => {
@@ -489,56 +490,16 @@ var objViewDatosGenerales = {
                 });
 
                 if (value == -1) // país diferente a méxico
-                    $('#pID_MUNICIPIO_NAC').val(-1).trigger('change').trigger('change.select2').prop( "disabled", true );
+                    $('#pID_MUNICIPIO_NAC').prop( "disabled", false ).val(-1).trigger('change').trigger('change.select2').prop( "disabled", true );
                 else if (value != 82)
-                    $('#pID_MUNICIPIO_NAC').val(999999).trigger('change').trigger('change.select2').prop( "disabled", true );
-
-                // if (value != 82){ // país diferente a méxico
-
-
-                //     intervalEstadoMunicipio = setInterval(function(){
-
-                //         if (value == -1) { // sin información
-
-                //             if ( !$('#pID_ENTIDAD_NAC').val()  )
-                //                 $('#pID_ENTIDAD_NAC').val(-1).trigger('change').trigger('change.select2').prop( "disabled", true );
-                //             else if ( $('#pID_ENTIDAD_NAC').val() != -1)
-                //                 $('#pID_ENTIDAD_NAC').val(-1).trigger('change').trigger('change.select2').prop( "disabled", true );
-                            
-                //             if ( !$('#pID_MUNICIPIO_NAC').val())
-                //                 $('#pID_MUNICIPIO_NAC').val(-1).trigger('change').trigger('change.select2').prop( "disabled", true );
-                //             else if ( $('#pID_MUNICIPIO_NAC').val() != -1)
-                //                 $('#pID_MUNICIPIO_NAC').val(-1).trigger('change').trigger('change.select2').prop( "disabled", true );
-                            
-                //         } else { // cualquier otro país
-
-                //             if ( !$('#pID_ENTIDAD_NAC').val() )                            
-                //                 $('#pID_ENTIDAD_NAC').val(99).trigger('change').trigger('change.select2').prop( "disabled", true );
-                //             else if ( $('#pID_ENTIDAD_NAC').val() != 99)
-                //                 $('#pID_ENTIDAD_NAC').val(99).trigger('change').trigger('change.select2').prop( "disabled", true );
-                            
-                //             if ( !$('#pID_MUNICIPIO_NAC').val() )
-                //                 $('#pID_MUNICIPIO_NAC').val(999999).trigger('change').trigger('change.select2').prop( "disabled", true );
-                //             else if ( $('#pID_MUNICIPIO_NAC').val() != 999999)
-                //                 $('#pID_MUNICIPIO_NAC').val(999999).trigger('change').trigger('change.select2').prop( "disabled", true );
-                            
-                //         }
-
-                //         if ( $('#pID_ENTIDAD_NAC').val() && $('#pID_MUNICIPIO_NAC').val() ) {
-                //             clearInterval(intervalEstadoMunicipio);
-                //             $('#pID_ENTIDAD_NAC,#pID_MUNICIPIO_NAC').prop( "disabled", true );
-                //         }
-
-                //     }, 300);
-
-                // } else if (value)
-                //     $('#pID_ENTIDAD_NAC,#pID_MUNICIPIO_NAC').prop( "disabled", false );
+                    $('#pID_MUNICIPIO_NAC').prop( "disabled", false ).val(999999).trigger('change').trigger('change.select2').prop( "disabled", true );
 
             },
             pID_NACIONALIDAD : function(e){
                 var value = $(this).val();
                 if (value != 82){
-                    $('#pMODO_NACIONALIDAD').val(3).trigger('change').trigger('change.select2');
+                    $prop = $('#pMODO_NACIONALIDAD').prop("disabled");
+                    $('#pMODO_NACIONALIDAD').prop( "disabled", false ).val(3).trigger('change').trigger('change.select2').prop( "disabled", $prop );
                 }
             }
         }

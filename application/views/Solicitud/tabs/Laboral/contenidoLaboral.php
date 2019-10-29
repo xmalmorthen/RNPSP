@@ -368,7 +368,7 @@
                     </div>
                     <div class="col-md-4">
                         ¿Conoce el reglamento de los reconocimientos? <!-- S/N = SI/NO -->
-                        <select class="form-control" id="pCONOCE_REG_RECON" name="pCONOCE_REG_RECON" data-error="#err_pCONOCE_REG_RECON" data-query=''>
+                        <select class="form-control" id="pCONOCE_REG_RECON" name="pCONOCE_REG_RECON" data-error="#err_pCONOCE_REG_RECON" data-query='' data-populated=true>
                             <option disabled selected value>Seleccione una opción</option>
                             <option value="S">SI</option>
                             <option value="N">NO</option>
@@ -384,7 +384,7 @@
                 <div class="row" >
                     <div class="col-md-4" >
                         ¿Conoce la reglamentación de los ascensos? <!-- S/N = SI/NO -->
-                        <select class="form-control" id="pCONOCE_REG_ASCENSO" name="pCONOCE_REG_ASCENSO" data-error="#err_pCONOCE_REG_ASCENSO" data-query=''>
+                        <select class="form-control" id="pCONOCE_REG_ASCENSO" name="pCONOCE_REG_ASCENSO" data-error="#err_pCONOCE_REG_ASCENSO" data-query='' data-populated=true>
                             <option disabled selected value>Seleccione una opción</option>
                             <option value="S">SI</option>
                             <option value="N">NO</option>
