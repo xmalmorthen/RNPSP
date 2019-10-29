@@ -136,9 +136,11 @@ var iDB = {
         },
         populateObjectFromIDB : async function(obj,options){
 
-            $data = null;
+            $data = null;            
 
-            console.log( obj.context.name + ' iniciando populando');
+            if (obj.data('populated') || obj.data('populating')) return null;
+
+            //console.log( obj.context.name + ' iniciando populando');
 
             $disObj = obj.prop("disabled");
             obj.prop("disabled", true);
@@ -224,12 +226,15 @@ var iDB = {
             obj.prop("disabled", $disObj);
             obj.LoadingOverlay("hide",true);
 
-            if ( obj.data('insert') )
-                obj.val(obj.data('insert'));
+            if ( obj.data('insert') ) {
+                obj.val(obj.data('insert')).trigger('change.select2').trigger('change');
+                obj.removeData('insert')
+                //console.log( obj.attr('name') + ' val from insert [ ' + obj.data('insert') + ' ]');
+            }
 
             options.success($data);
             
-            console.log( obj.context.name + ' ok populado');
+            //console.log( obj.context.name + ' ok populado');
 
         }
     }
