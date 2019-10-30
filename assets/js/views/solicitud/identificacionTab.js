@@ -266,7 +266,7 @@ var objViewIdentificacion = {
                                 }
                             });
                         } else {
-                            msg = "Debe" + ( form.data('requireddata') == false ? ' remplazar ' : ' seleccionar' ) + ' al menos una imágen.';
+                            msg = "Debe" + ( form.data('requireddata') == false ? ' remplazar ' : ' seleccionar' ) + ' al menos una imagen.';
                             throw new Error(msg);
                         }
 

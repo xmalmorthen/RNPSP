@@ -801,7 +801,7 @@ class SOLICITUD_model extends MY_Model
     $this->addParam('pNUMERO_AUTOS','pNUMERO_AUTOS','N',array('name'=>'Vehículo y costo aproximado','rule'=>'trim|max_length[100]'));
     $this->addParam('pCALIDAD_VIDA','pCALIDAD_VIDA','N',array('name'=>'Calidad de vida','rule'=>'trim|max_length[50]'));
     $this->addParam('pVICIOS','pVICIOS','N',array('name'=>'Vicios','rule'=>'trim|max_length[100]'));
-    $this->addParam('pIMAGEN_PUBLICA','pIMAGEN_PUBLICA','N',array('name'=>'Imágen pública','rule'=>'trim|max_length[50]'));
+    $this->addParam('pIMAGEN_PUBLICA','pIMAGEN_PUBLICA','N',array('name'=>'Imagen pública','rule'=>'trim|max_length[50]'));
     $this->addParam('pCOMPORTA_SOCIAL','pCOMPORTA_SOCIAL','N',array('name'=>'Comportamiento social ','rule'=>'trim|max_length[40]'));
     // $this->addParam('pINGRESO_MENSUAL','pINGRESO_MENSUAL','N',array('name'=>'Ingreso mensual adicional','rule'=>'trim|max_length[30]'));
     $this->addParam('pRESPONSABLE_CORP',null); // no se encontro en el formulario

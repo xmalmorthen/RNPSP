@@ -791,7 +791,7 @@ var fillData = {
             Swal.fire({
                 type: 'error',
                 title: 'Imagen',
-                text: 'No se pudo recuperar la imágen'
+                text: 'No se pudo recuperar la imagen'
             });
         else 
             Swal.fire({
@@ -1902,7 +1902,7 @@ var fillData = {
                                     $content.attr("src", value.name).attr("alt", value.originalName);
                                     $content.parent().find('div.custom-file label.custom-file-label').html(value.originalName);
                                 } else {
-                                    const $alt = 'Error al recuperar imágen';
+                                    const $alt = 'Error al recuperar imagen';
                                     $content.attr("src", imageBreak ).attr("alt", $alt);
                                     $content.parent().find('div.custom-file label.custom-file-label').html($alt);
                                 }
@@ -1911,7 +1911,7 @@ var fillData = {
                             form.data('requireddata',false);
                         } else {
                             $content.attr("src", imageThumb ).attr("alt", 'Sin imagen');
-                            $content.parent().find('div.custom-file label.custom-file-label').html( 'Seleccionar imágen' );
+                            $content.parent().find('div.custom-file label.custom-file-label').html( 'Seleccionar imagen' );
                         }
 
                     }); 
@@ -1996,7 +1996,7 @@ var fillData = {
                                 $('#thumb_pIMAGEN_Decadactilar').attr("src", data.pIMG_DOCUMENTO.name).attr("alt", data.pIMG_DOCUMENTO.originalName);
                                 $('#thumb_pIMAGEN_Decadactilar').parent().find('div.custom-file label.custom-file-label').html(data.pIMG_DOCUMENTO.originalName);
                             } else {
-                                $alt = 'Error al recuperar imágen';
+                                $alt = 'Error al recuperar imagen';
                                 $('#thumb_pIMAGEN_Decadactilar').attr("src", imageBreak).attr("alt", $alt);
                                 $('#thumb_pIMAGEN_Decadactilar').parent().find('div.custom-file label.custom-file-label').html($alt);
                             }

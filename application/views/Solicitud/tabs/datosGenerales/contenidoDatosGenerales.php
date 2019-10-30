@@ -605,7 +605,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4" >
-                        Imágen pública
+                        Imagen pública
                         <input type="text" class="form-control" id="pIMAGEN_PUBLICA" name="pIMAGEN_PUBLICA" maxlength="50">
                     </div>
                     <div class="col-md-4">

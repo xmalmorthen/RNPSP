@@ -116,19 +116,19 @@ var objViewIdentificacion = {
                     /*******************************************************************************/            
                     //CAMPOS DE IMÁGENES
                     thumb_pIMAGEN_IZQUIERDO.attr("src", data.pIMG_PERFILIZQ ? data.pIMG_PERFILIZQ.name : imageBreak ).attr("alt", data.pIMG_PERFILIZQ ? data.pIMG_PERFILIZQ.originalName : data.pIMG_PERFILIZQ.name);
-                    thumb_pIMAGEN_IZQUIERDO.parent().find('span').html( data.pIMG_PERFILIZQ ? data.pIMG_PERFILIZQ.originalName : 'Seleccionar imágen' );
+                    thumb_pIMAGEN_IZQUIERDO.parent().find('span').html( data.pIMG_PERFILIZQ ? data.pIMG_PERFILIZQ.originalName : 'Seleccionar imagen' );
 
                     thumb_pIMAGEN_FRENTE.attr("src", data.pIMG_FRENTE ? data.pIMG_FRENTE.name : imageBreak ).attr("alt", data.pIMG_FRENTE ? data.pIMG_FRENTE.originalName : data.pIMG_FRENTE.name);
-                    thumb_pIMAGEN_FRENTE.parent().find('span').html( data.pIMG_FRENTE ? data.pIMG_FRENTE.originalName : 'Seleccionar imágen' );
+                    thumb_pIMAGEN_FRENTE.parent().find('span').html( data.pIMG_FRENTE ? data.pIMG_FRENTE.originalName : 'Seleccionar imagen' );
 
                     thumb_pIMAGEN_DERECHO.attr("src", data.pIMG_PERFILDR ? data.pIMG_PERFILDR.name : imageBreak ).attr("alt", data.pIMG_PERFILDR ? data.pIMG_PERFILDR.originalName : data.pIMG_PERFILDR.name);
-                    thumb_pIMAGEN_DERECHO.parent().find('span').html( data.pIMG_PERFILDR ? data.pIMG_PERFILDR.originalName : 'Seleccionar imágen' );
+                    thumb_pIMAGEN_DERECHO.parent().find('span').html( data.pIMG_PERFILDR ? data.pIMG_PERFILDR.originalName : 'Seleccionar imagen' );
 
                     thumb_pIMAGEN_FIRMA.attr("src", data.pIMG_FIRMA ? data.pIMG_FIRMA.name : imageBreak ).attr("alt", data.pIMG_FIRMA ? data.pIMG_FIRMA.originalName : data.pIMG_FIRMA.name);
-                    thumb_pIMAGEN_FIRMA.parent().find('span').html( data.pIMG_FIRMA ? data.pIMG_FIRMA.originalName : 'Seleccionar imágen' );
+                    thumb_pIMAGEN_FIRMA.parent().find('span').html( data.pIMG_FIRMA ? data.pIMG_FIRMA.originalName : 'Seleccionar imagen' );
 
                     thumb_pIMAGEN_HUELLA.attr("src", data.pIMG_HUELLA ? data.pIMG_HUELLA.name : imageBreak ).attr("alt", data.pIMG_HUELLA ? data.pIMG_HUELLA.originalName : data.pIMG_HUELLA.name);
-                    thumb_pIMAGEN_HUELLA.parent().find('span').html( data.pIMG_HUELLA ? data.pIMG_HUELLA.originalName : 'Seleccionar imágen' );
+                    thumb_pIMAGEN_HUELLA.parent().find('span').html( data.pIMG_HUELLA ? data.pIMG_HUELLA.originalName : 'Seleccionar imagen' );
                     /*******************************************************************************/
                     
                 }

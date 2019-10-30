@@ -514,7 +514,7 @@
                         <img id="thumb_pIMAGEN_Decadactilar" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
                         <div class="custom-file">
                             <input type="file" id="pIMAGEN" name="pIMAGEN" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_Decadactilar' accept="image/jpg,image/jpeg" data-accept= "jpg" data-maxfilesize='122880'>
-                            <label class="custom-file-label" for="pIMAGEN">Seleccionar imágen</label>
+                            <label class="custom-file-label" for="pIMAGEN">Seleccionar imagen</label>
                         </div>
                     </div>
                 </div>
@@ -705,7 +705,7 @@
                                 <img id="thumb_pIMAGEN_IZQUIERDO" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
                                 <div class="custom-file">
                                     <input type="file" id="pIMAGEN_IZQUIERDO" name="pIMAGEN_IZQUIERDO" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_IZQUIERDO' accept="image/jpg,image/jpeg" data-accept= "jpg" data-maxfilesize='204800' required>
-                                    <label class="custom-file-label" for="pIMAGEN_IZQUIERDO">Seleccionar imágen</label>
+                                    <label class="custom-file-label" for="pIMAGEN_IZQUIERDO">Seleccionar imagen</label>
                                 </div>
                             </div>
                         </div>
@@ -719,7 +719,7 @@
                                 <img id="thumb_pIMAGEN_FRENTE" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
                                 <div class="custom-file">
                                     <input type="file" id="pIMAGEN_FRENTE" name="pIMAGEN_FRENTE" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_FRENTE' accept="image/jpg,image/jpeg" data-accept= "jpg" data-maxfilesize='204800' required>
-                                    <label class="custom-file-label" for="pIMAGEN_FRENTE">Seleccionar imágen</label>
+                                    <label class="custom-file-label" for="pIMAGEN_FRENTE">Seleccionar imagen</label>
                                 </div>
                             </div>
                         </div>
@@ -733,7 +733,7 @@
                                 <img id="thumb_pIMAGEN_DERECHO" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
                                 <div class="custom-file">
                                     <input type="file" id="pIMAGEN_DERECHO" name="pIMAGEN_DERECHO" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_DERECHO' accept="image/jpg,image/jpeg" data-accept= "jpg" data-maxfilesize='204800' required>
-                                    <label class="custom-file-label" for="pIMAGEN_DERECHO">Seleccionar imágen</label>
+                                    <label class="custom-file-label" for="pIMAGEN_DERECHO">Seleccionar imagen</label>
                                 </div>
                             </div>
                         </div>
@@ -751,7 +751,7 @@
                                 <img id="thumb_pIMAGEN_FIRMA" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
                                 <div class="custom-file">
                                     <input type="file" id="pIMAGEN_FIRMA" name="pIMAGEN_FIRMA" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_FIRMA' accept="image/jpg,image/jpeg" data-accept= "jpg" data-maxfilesize='204800'>
-                                    <label class="custom-file-label" for="pIMAGEN_FIRMA">Seleccionar imágen</label>
+                                    <label class="custom-file-label" for="pIMAGEN_FIRMA">Seleccionar imagen</label>
                                 </div>
                             </div>
                         </div>
@@ -765,7 +765,7 @@
                                 <img id="thumb_pIMAGEN_HUELLA" class="img-thumbnail rounded mx-auto d-block thumbnailPreview mb-3" src="<?php echo base_url('assets/images/imgThumb.png') ?>" alt="img"/>
                                 <div class="custom-file">
                                     <input type="file" id="pIMAGEN_HUELLA" name="pIMAGEN_HUELLA" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_HUELLA' accept="image/jpg,image/jpeg" data-accept= "jpg" data-maxfilesize='204800'>
-                                    <label class="custom-file-label" for="pIMAGEN_HUELLA">Seleccionar imágen</label>
+                                    <label class="custom-file-label" for="pIMAGEN_HUELLA">Seleccionar imagen</label>
                                 </div>
                             </div>
                         </div>
@@ -837,7 +837,7 @@
                         <span class="clr">*</span>Documento                        
                         <div class="custom-file">
                             <input type="file" id="pIMAGEN" name="pIMAGEN" class='custom-file-input inputFile' data-renderin='thumb_pIMAGEN_Digitalizacion' accept="image/jpg,image/jpeg" data-accept= "jpg" data-maxfilesize='204800' required>
-                            <label class="custom-file-label" for="pIMAGEN">Seleccionar imágen</label>
+                            <label class="custom-file-label" for="pIMAGEN">Seleccionar imagen</label>
                         </div>
                     </div>
                 </div>                
