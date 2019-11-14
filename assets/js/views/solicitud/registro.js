@@ -1947,8 +1947,25 @@ var fillData = {
             fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
             .then( (data) => {
                 if (data) {
+
+                    groupByFechaRegistro = groupBy('pFECHA_REGISTRO');
+                    data = groupByFechaRegistro(data);
+                    
                     $.each( data, function(key,value) {
-                        var row = [ value.pID_FICHA_FOTOGRAF_EXT, value.pNUM_FOLIO, value.pIMAGEN, value.pDEPENDENCIA, value.pINSTITUCION,value.pFECHA_REGISTRO ];
+                        action = '<div class="imgPreview"><ul>';
+                        $.each( value, async function(_key,_value) {
+
+                            let $imageExist = false;
+                            if ('pimgPath' in _value)
+                                $imageExist = await imageExists(value.pimgPath.name)
+
+                            action += '<li class="mx-2"><a class="' + ( !$imageExist ? 'text-danger' : '') + '" href="' + ( $imageExist ? _value.pimgPath.name : '#') + '" onclick="return fillData.previewImg(this)" title="Ver" alt="' + ( $imageExist ? _value.pimgPath.originalName : 'No se pudo recuperar')  + '"><i class="fa ' + ( $imageExist ? 'fa-eye' : 'fa-exclamation-triangle') + '"></i><span>' + _value.pIMAGEN + '<sspan></a></li>';
+                        });
+
+                        action += '</ul></div>'
+                                                
+                        // var row = [ value.pID_FICHA_FOTOGRAF_EXT, value.pNUM_FOLIO, value.pIMAGEN, value.pDEPENDENCIA, value.pINSTITUCION,value.pFECHA_REGISTRO ];
+                        var row = [ value[0].pDEPENDENCIA, value[0].pINSTITUCION,value[0].pFECHA_REGISTRO,action ];
                         tableObj.row.add( row ).draw( false );
                     });
 

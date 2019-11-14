@@ -790,12 +790,13 @@
                 <div class="col-md-12">
                     <table id="tableFichafotografica" class="table display table-striped dt-responsive" style="width:100%">
                         <thead>
-                                <th>Id ficha fotográfica</th>
+                                <!-- <th>Id ficha fotográfica</th>
                                 <th>Num. folio</th>
-                                <th>Imágenes</th>
+                                <th>Imágenes</th> -->
                                 <th>Dependencia</th>
                                 <th>Institución</th>
                                 <th>Fecha de registro</th>
+                                <th></th>
                         </thead>
                         <tbody>                               
                         </tbody>

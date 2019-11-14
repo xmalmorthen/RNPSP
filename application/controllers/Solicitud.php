@@ -2103,6 +2103,14 @@
 			try {
 				$this->load->model('SOLICITUD_model');
 				$responseModel = $this->SOLICITUD_model->sp_B2_MF_getFichaFotografica($idAlterna);
+
+				if ($responseModel['status'] == 1) {
+					foreach ($responseModel['data'] as $key => $value) {
+						if (in_array('pimgPath',$responseModel['data'][$key]))
+							$responseModel['data'][$key]['pimgPath'] = (Utils::isJSON($value['pimgPath']))? utils::addPath(STATIC_DOCUMMENTS_PATH.'fichaFotografica/',$value['pimgPath']) : null;
+					}
+				}
+
 			} 
 			catch (rulesException $e){	
 				header("HTTP/1.0 400 " . utf8_decode($e->getMessage()));

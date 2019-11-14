@@ -245,3 +245,31 @@ input:focus, select:focus, .select2-selection:focus {
 .custom-file-label::after {
     content: "Abrir"!important;
 }
+
+div.imgPreview ul {
+    margin: 0;
+    padding: 0;
+}
+
+div.imgPreview li {
+    text-align: center;
+    display: inline-block;
+}
+
+div.imgPreview i {
+    display: block;
+    text-align: center;
+}
+
+div.imgPreview a{
+  text-decoration:none;
+  /* width:100%;
+  height:100%; */
+  display:block;
+  margin:0;
+  padding:0;
+}
+
+div.imgPreview a span{
+  display:block;
+}
