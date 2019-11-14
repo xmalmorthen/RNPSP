@@ -2106,8 +2106,7 @@
 
 				if ($responseModel['status'] == 1) {
 					foreach ($responseModel['data'] as $key => $value) {
-						if (in_array('pimgPath',$responseModel['data'][$key]))
-							$responseModel['data'][$key]['pimgPath'] = (Utils::isJSON($value['pimgPath']))? utils::addPath(STATIC_DOCUMMENTS_PATH.'fichaFotografica/',$value['pimgPath']) : null;
+						$responseModel['data'][$key]['pimgPath'] = (Utils::isJSON($value['pimgPath']))? utils::addPath(STATIC_DOCUMMENTS_PATH.'fichaFotografica/',$value['pimgPath']) : null;
 					}
 				}
 

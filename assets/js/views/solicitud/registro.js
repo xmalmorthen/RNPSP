@@ -1945,29 +1945,33 @@ var fillData = {
             tableObj.clear().draw();
 
             fillData.genericPromise(callUrl,{ pID_ALTERNA : pID_ALTERNA})
-            .then( (data) => {
+            .then( async (data) => {
                 if (data) {
 
                     groupByFechaRegistro = groupBy('pFECHA_REGISTRO');
                     data = groupByFechaRegistro(data);
                     
-                    $.each( data, function(key,value) {
-                        action = '<div class="imgPreview"><ul>';
-                        $.each( value, async function(_key,_value) {
+                    const $keys = Object.keys(data);
+                    for (let i = 0; i < $keys.length; i++) {
+                        const value = data[$keys[i]]
 
+                        let $action = '<div class="imgPreview"><ul>';
+
+                        for (let index = 0; index < value.length; index++) {
+                            const item = value[index]
                             let $imageExist = false;
-                            if ('pimgPath' in _value)
-                                $imageExist = await imageExists(value.pimgPath.name)
+                            if ('pimgPath' in item)
+                                $imageExist = await imageExists(item.pimgPath.name)
 
-                            action += '<li class="mx-2"><a class="' + ( !$imageExist ? 'text-danger' : '') + '" href="' + ( $imageExist ? _value.pimgPath.name : '#') + '" onclick="return fillData.previewImg(this)" title="Ver" alt="' + ( $imageExist ? _value.pimgPath.originalName : 'No se pudo recuperar')  + '"><i class="fa ' + ( $imageExist ? 'fa-eye' : 'fa-exclamation-triangle') + '"></i><span>' + _value.pIMAGEN + '<sspan></a></li>';
-                        });
+                            $action += '<li class="mx-2"><a class="' + ( !$imageExist ? 'text-danger' : '') + '" href="' + ( $imageExist ? item.pimgPath.name : '#') + '" onclick="return fillData.previewImg(this)" title="Ver" alt="' + ( $imageExist ? item.pimgPath.originalName : 'No se pudo recuperar')  + '"><i class="fa ' + ( $imageExist ? 'fa-eye' : 'fa-exclamation-triangle') + '"></i><span>' + item.pIMAGEN + '<sspan></a></li>';
+                        }
 
-                        action += '</ul></div>'
+                        $action += '</ul></div>'
                                                 
                         // var row = [ value.pID_FICHA_FOTOGRAF_EXT, value.pNUM_FOLIO, value.pIMAGEN, value.pDEPENDENCIA, value.pINSTITUCION,value.pFECHA_REGISTRO ];
-                        var row = [ value[0].pDEPENDENCIA, value[0].pINSTITUCION,value[0].pFECHA_REGISTRO,action ];
+                        var row = [ value[0].pDEPENDENCIA, value[0].pINSTITUCION,value[0].pFECHA_REGISTRO,$action ];
                         tableObj.row.add( row ).draw( false );
-                    });
+                    };
 
                     $('#Ficha_fotografica_form').data('requireddata',false);
 
