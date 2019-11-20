@@ -2057,27 +2057,52 @@ var fillData = {
             .then( async (data) => {
                 if (data) {
 
-                    await new Promise( (resolve) =>{
-                        let count = data.length;
-                        $.each( data, async function(key,value) {
+                    groupByFechaRegistro = groupBy('pFECHA_REGISTRO');
+                    data = groupByFechaRegistro(data);
 
+                    const $keys = Object.keys(data);
+                    for (let i = 0; i < $keys.length; i++) {
+                        const value = data[$keys[i]]
+
+                        let $action = '<div class="imgPreview"><ul>';
+
+                        for (let index = 0; index < value.length; index++) {
+                            const item = value[index]
                             let $imageExist = false;
-                            if ('pimgPath' in value)
-                                $imageExist = await imageExists(value.pimgPath.name)
+                            if ('pimgPath' in item)
+                                $imageExist = await imageExists(item.pimgPath.name)
 
-                            let preview = '<th class="text-danger"><a class="m-2 previewImg" href="#" onclick="return fillData.previewImg(this)"  title="Ver" ><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></a></th>'
-                            if ($imageExist)
-                                preview = '<th><a class="m-2 " href="' + value.pimgPath.name + '" onclick="return fillData.previewImg(this)" title="Ver" alt="' + value.pimgPath.originalName + '" ><i class="fa fa-eye fa-2x"></i></a></th>';
+                            $action += '<li class="mx-2"><a class="' + ( !$imageExist ? 'text-danger' : '') + '" href="' + ( $imageExist ? item.pimgPath.name : '#') + '" onclick="return fillData.previewImg(this)" title="Ver" alt="' + ( $imageExist ? item.pimgPath.originalName : 'No se pudo recuperar')  + '"><i class="fa ' + ( $imageExist ? 'fa-eye' : 'fa-exclamation-triangle') + '"></i><span>' + item.pimgPath.originalName + '<sspan></a></li>';
+                        }
 
-                            var row = [ value.pID_REG_DECADACT_EXT, value.pDEPENDENCIA, value.pINSTITUCION, value.pFECHA_REGISTRO, preview ];
+                        $action += '</ul></div>'
+                                                
+                        var row = [ value[0].pDEPENDENCIA, value[0].pINSTITUCION,value[0].pFECHA_REGISTRO,$action ];
+                        tableObj.row.add( row ).draw( false );
+                    };
 
-                            tableObj.row.add( row ).draw( false );
 
-                            count --;
-                            if (count == 0)
-                                resolve(true);
-                        });
-                    });                    
+                    // await new Promise( (resolve) =>{
+                    //     let count = data.length;
+                    //     $.each( data, async function(key,value) {
+
+                    //         let $imageExist = false;
+                    //         if ('pimgPath' in value)
+                    //             $imageExist = await imageExists(value.pimgPath.name)
+
+                    //         let preview = '<th class="text-danger"><a class="m-2 previewImg" href="#" onclick="return fillData.previewImg(this)"  title="Ver" ><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></a></th>'
+                    //         if ($imageExist)
+                    //             preview = '<th><a class="m-2 " href="' + value.pimgPath.name + '" onclick="return fillData.previewImg(this)" title="Ver" alt="' + value.pimgPath.originalName + '" ><i class="fa fa-eye fa-2x"></i></a></th>';
+
+                    //         var row = [ value.pID_REG_DECADACT_EXT, value.pDEPENDENCIA, value.pINSTITUCION, value.pFECHA_REGISTRO, preview ];
+
+                    //         tableObj.row.add( row ).draw( false );
+
+                    //         count --;
+                    //         if (count == 0)
+                    //             resolve(true);
+                    //     });
+                    // });                    
                     
                 }
 

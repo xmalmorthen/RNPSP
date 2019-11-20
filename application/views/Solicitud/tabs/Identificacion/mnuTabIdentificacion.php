@@ -17,7 +17,7 @@
                 <a class="nav-link" id="Digitalizacion_de_documento-tab" data-toggle="tab" href="#Digitalizacion_de_documento" role="tab" aria-controls="Digitalizacion_de_documento" aria-selected="false" style="color:#02657C">Digitalización de documento</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="Identificacion_de_voz-tab" data-toggle="tab" data-callback="objViewIdentificacion.callback.identificacionVoz" href="#Identificacion_de_voz" role="tab" aria-controls="Identificacion_de_voz" aria-selected="false" style="color:#02657C">Identificacion de voz</a>
+                <a class="nav-link" id="Identificacion_de_voz-tab" data-toggle="tab" data-callback="objViewIdentificacion.callback.identificacionVoz" href="#Identificacion_de_voz" role="tab" aria-controls="Identificacion_de_voz" aria-selected="false" style="color:#02657C">Identificación de voz</a>
             </li>
         </ul>
     </div>

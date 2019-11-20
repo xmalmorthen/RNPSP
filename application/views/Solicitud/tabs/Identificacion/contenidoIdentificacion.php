@@ -478,7 +478,7 @@
                         <p class='inFolio'></p>
                     </div>
                     <div class="col-md-4">
-                        <h6 class="borderButtom">Adscripcion</h6>
+                        <h6 class="borderButtom">Adscripción</h6>
                         <p class='inAdscripcion'></p>
                     </div>
                     <div class="col-md-4">
@@ -535,7 +535,7 @@
                 <div class="col-md-12">
                     <table id="tableRegistrodecadactilar" class="table display table-striped dt-responsive" style="width:100%">
                         <thead>
-                                <th>Id registro dactilar</th>
+                                <!-- <th>Id registro dactilar</th> -->
                                 <th>Dependencia</th>
                                 <th>Institución</th>
                                 <th>Fecha de registro</th>
