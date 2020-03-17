@@ -12,11 +12,11 @@ dbdriver = "sqlsrv" ;mysqli / mssql / sqlsrv
 hostname = "184.168.194.53"
 
 username = "zzhpregpersc4"
-password = "h705m!lD"
+password = "ya21Pk126Ak!hf4"
 database = "zzhpregpersonalc4"
 
 ;username = "zzhpregperc4des"
-;password = "Tc1ij?94"
+;password = "1&v9jtA1#Ownl448"
 ;database = "zzhpregpersonalc4des"
 
 [sendMail] ;Configuración de correo electrónico
